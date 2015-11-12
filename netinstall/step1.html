@@ -65,7 +65,7 @@ There are different releases of Debian - <b>Experimental</b> (just don't, becaus
 <br><br>
 However, when Testing is still new in life there may be some things that could break your system (meaning you might have crashes or package install conflicts to sort out)... so running stable at the moment should be very sufficient, and highly recommended for production systems or servers.  You can still install some packages from testing as well, by using the "-t testing" option with apt-get, while your default release is set to stretch or stable.  
 <br><br><a name="1"></a>
-Upgrading to Testing, or Stretch, later on is also possible - see my page <a href="netinstall/upgrade.html">upgrade debian</a>.
+Upgrading to Testing, or Stretch, later on is also possible - see my page <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade debian</a>.
 
 <br><br><br><br>
 
@@ -111,15 +111,15 @@ Options...
 </table>
 <br><br>
 
-Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care - see my <a href="netinstall/upgrade.html">upgrade Debian</a> page.  But it may be impossible to run Debian without systemd in the future... check out Devuan?
+Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care - see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page.  But it may be impossible to run Debian without systemd in the future... check out Devuan?
 <br><br>
 You could also use Fsmithred's Live CD made with Refractasnapshot that doesn't include systemd either... <a href="http://sourceforge.net/projects/refracta/files/isohybrid/">http://sourceforge.net/projects/refracta/files/isohybrid/</a>
 <br><br>
 
-<b>2.</b> &nbsp;&nbsp;for more advanced users who already have a Linux OS to work from, you can make your own Debian Live CD, with all the software you need pre-installed, using <b>Live Helper </b>-see my <a href="tutorial/17-remote-install.html">Remote install</a> page.
+<b>2.</b> &nbsp;&nbsp;for more advanced users who already have a Linux OS to work from, you can make your own Debian Live CD, with all the software you need pre-installed, using <b>Live Helper </b>-see my <a href="{{site.baseurl}}/tutorial/17-remote-install.html">Remote install</a> page.
 <br><br>
 <b>3.</b>&nbsp;&nbsp; If you have a Debian system already running and at hand, you can "clone" it with refractasnapshot and then run it as a LiveCd or install it to another machine. This isn't a real clone, but a compressed copy of the system, and when you install it to another box you have options such as user name and passwords setup, and separate /home or /var partitions.  A real clone tool, such as partimage or clonezilla etc, makes an exact copy of the hdd partition.
--see my <a href="tutorial/16-system-backup.html">System backup</a> page.
+-see my <a href="{{site.baseurl}}/tutorial/16-system-backup.html">System backup</a> page.
 <br><br>
 
 <br>
@@ -137,7 +137,7 @@ You could also use Fsmithred's Live CD made with Refractasnapshot that doesn't i
 <br><br>
 
 <h2>Make a bootable USB stick</h2>
-Put the ISO onto a usb stick with a few easy steps with <a href="http://unetbootin.sourceforge.net/">Unetbootin</a> - see my <a href="helps/01-usb-installer.html">usbinstaller</a> page
+Put the ISO onto a usb stick with a few easy steps with <a href="http://unetbootin.sourceforge.net/">Unetbootin</a> - see my <a href="{{site.baseurl}}/helps/01-usb-installer.html">usbinstaller</a> page
 
 <br><br>
 <hr noshade="noshade">
@@ -198,7 +198,7 @@ If you're going to to wipe the W partition (yeah!) but there's data on it, back-
 <br><br>
 <div class="caut">Take care if you actually shift a Windows (Win 7) partition along the HDD, say to make more space for a Linux partition, as this will LIKELY render the Windows OS unbootable because the W boot sector will be changed. You would then need to fix that with a Windows Disk by running the repair boot option.</div>
 <br><br>
-Debian installer might not see the Win OS and so you will need to do some work to add the Windows OS to the boot menu later.  Some tips on my <a href="helps/02-grub.html">GRUB page</a> - although I only cover Legacy GRUB. Windows 8 boots with UEFI boot menu which makes it complex to have Debian on the same menu (<a href="http://www.getreu.net/public/downloads/doc/legacy2UEFIboot/Transform-Debian_7_wheezy-from_legacy_to_UEFI_boot_mode.html">see here</a> for example). With Debian on the Legacy menu you'll have to switch between Legacy and UEFI menus in BIOS settings. 
+Debian installer might not see the Win OS and so you will need to do some work to add the Windows OS to the boot menu later.  Some tips on my <a href="{{site.baseurl}}/helps/02-grub.html">GRUB page</a> - although I only cover Legacy GRUB. Windows 8 boots with UEFI boot menu which makes it complex to have Debian on the same menu (<a href="http://www.getreu.net/public/downloads/doc/legacy2UEFIboot/Transform-Debian_7_wheezy-from_legacy_to_UEFI_boot_mode.html">see here</a> for example). With Debian on the Legacy menu you'll have to switch between Legacy and UEFI menus in BIOS settings. 
 <br><br>
 
 <br>
@@ -231,7 +231,7 @@ Debian installer might not see the Win OS and so you will need to do some work t
 <br>
 5. install software.. uncheck all (tap Spacebar) including graphical desktop (which installs the bloated Gnome, or Xfce with a lot of extras), select laptop if installing to a laptop. 
 <br><br>
-6. Install GRUB (if for clean install) or otherwise don't - add the new install to GRUB later.  To do that I used "Grub Customizer" loaded on another Debian OS on the same box but there are other ways to do it, "Boot repair disk" being a good way too. (see my <a href="helps/02-grub.html">GRUB page</a>) 
+6. Install GRUB (if for clean install) or otherwise don't - add the new install to GRUB later.  To do that I used "Grub Customizer" loaded on another Debian OS on the same box but there are other ways to do it, "Boot repair disk" being a good way too. (see my <a href="{{site.baseurl}}/helps/02-grub.html">GRUB page</a>) 
 <br><br>
 -the netinstaller didn't detect my other OS so couldn't set up grub. 
 <br><br>
@@ -458,13 +458,13 @@ lightdm to be prefered over xdm, and gdm3 comes with a 40mb gnome dependency blo
 <br><br>
 I took out <span style="color:#7C2020">synaptic apt-xapian-index gdebi</span> as I hardly need them.
 <br><br>
-Again, you can choose between chromium, iceweasel and midori, you have wicd instead of network-manager, and you can set up ip tables instead of firestarter (see my <a href="config/firewall.html">firewall</a> page)
+Again, you can choose between chromium, iceweasel and midori, you have wicd instead of network-manager, and you can set up ip tables instead of firestarter (see my <a href="{{site.baseurl}}/config/firewall.html">firewall</a> page)
 <br><br>
 It's possible to run openbox alone without installing the lxde package (but just the parts of it you might need) and without even a Display Manager (login screen etc), but its a little complex to set up at this stage 
 <br><br>
 To do that I leave out lxde and lightdm, and add instead: <span style="color:#7C2020">openbox lxpanel lxtask leafpad</span>.  Then at boot, when reaching the command prompt, just type "startx" and Enter. 
 
-<br><span class="ht">Warning! this is not perhaps a good idea for beginner Debian users.</span> Installing LXDE will be more straightforward. But see see my page, <a href="config/plain-openbox.html">plain openbox</a> if this is the way you want to go!
+<br><span class="ht">Warning! this is not perhaps a good idea for beginner Debian users.</span> Installing LXDE will be more straightforward. But see see my page, <a href="{{site.baseurl}}/config/plain-openbox.html">plain openbox</a> if this is the way you want to go!
 
 <br><br>
 <hr noshade="noshade">
@@ -472,11 +472,11 @@ To do that I leave out lxde and lightdm, and add instead: <span style="color:#7C
 
 <h2 id="8" class="tag">Install Thunar file manager</h2>
 
-Thunar is the best light-weight gui file browser in my opinion, beating the default LXDE file manager, because of its ability to carry out possibly any action whatsoever on files through its right-click menu. There are more powerful file browsers about, such as Dolphin or Krusader (both KDE), but you should look at this one first, and see my custom actions on my <a href="config/thunar.html">thunar page</a>. For example, Krusader can do some picture resizing actions - but you need the KIO plugins installed, whereas with thunar, all you need is imagemagic (a small program) and a few custom actions and you can resize pic's with two clicks - or resize a whole directory of pic's, even recursively.
+Thunar is the best light-weight gui file browser in my opinion, beating the default LXDE file manager, because of its ability to carry out possibly any action whatsoever on files through its right-click menu. There are more powerful file browsers about, such as Dolphin or Krusader (both KDE), but you should look at this one first, and see my custom actions on my <a href="{{site.baseurl}}/config/thunar.html">thunar page</a>. For example, Krusader can do some picture resizing actions - but you need the KIO plugins installed, whereas with thunar, all you need is imagemagic (a small program) and a few custom actions and you can resize pic's with two clicks - or resize a whole directory of pic's, even recursively.
 <br><br>
 There are alternative file browsers too, such as xfe (with no bookmarking except your own real symlinks), gentoo (two pane with task buttons), emelfm2 (lots of task buttons), and rox-filer (very basic graphical). 
 <br><br> 
-But for those bored of GUI mouse-clicking browsers there's Ranger (which takes up my 2nd desktop in full screen) - see my <a href="config/ranger.html">ranger page</a>.
+But for those bored of GUI mouse-clicking browsers there's Ranger (which takes up my 2nd desktop in full screen) - see my <a href="{{site.baseurl}}/config/ranger.html">ranger page</a>.
 <br><br>
 <form>
 <textarea name="T" id="install" rows="2" cols="80">

@@ -1,6 +1,6 @@
 # Site settings
 title: debian install notes
-baseurl: /debian-install     # the subpath of your site, e.g. /blog/
+baseurl: /debian-install/     # the subpath of your site, e.g. /blog/
 url: http://dquinton.github.io/    # the base hostname & protocol for your site
 github_username:  dquinton
 
