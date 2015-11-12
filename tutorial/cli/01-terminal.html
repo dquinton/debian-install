@@ -5,13 +5,35 @@ title: Basic Terminal
 id: cli
 ---
 
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1"> Terminal keys</a></li>
+                <li><a href="#2"> Apt commands </a></li>
+                <li><a href="#3"> apt-history</a></li>
+                <li><a href="#4"> Other commands </a></li>
+                <li><a href="#5"> Nano keys</a></li>
+              </ul>
+    </li>
+  </ul>
+</div>
 
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1"> Terminal keys</a><br>
+   <a href="#2"> Apt commands </a><br>
+   <a href="#3">apt-history </a><br>
+   <a href="#4"> Other commands </a><br>
+   <a href="#5">Nano keys </a><br>
+</td></tr></table></div>
 
 <div class="parent"><a href="../../cli.html">CLI</a> ></div>
 
 <div class="cont">
 
-<h2>Terminal keys</h2>
+<h2 id="1" class="tag">Terminal keys</h2>
 <table cellpadding="3" width="50%" style="background-color: transparent">
   <tr>
     <td width="150">home</td>    <td>moves the cursor to the beginning of the command line</td>
@@ -51,7 +73,7 @@ id: cli
 
 <br><br><br>
 
-<h2>Apt commands</h2>
+<h2 id="2" class="tag">Apt commands</h2>
 <table cellpadding="3" width="50%" style="background-color: transparent">
   <tr>
     <td width="300">apt-get check [package]</td>
@@ -137,9 +159,41 @@ id: cli
   <br>
   see my <a href="../../netinstall/upgrade.html">upgrade Debian page</a>  for system upgrade commands
   
+  <br><br><br><br>
+  HowTo Build a Package from Source the Smart Way<br>
+<a href="http://forums.debian.net/viewtopic.php?f=16&t=38976">http://forums.debian.net/...</a>
+<br><br>
+convert a .rpm package (from Redhat Linux) to .deb package with alien<br>
+<a href="http://www.howtoforge.com/converting_rpm_to_deb_with_alien">http://www.howtoforge.com/...</a>
+<br><br>
+How to download .deb files from repository even if they are already installed <br>
+<a href="http://hukkinen.jp/blog/post/HUKKINEN/2012/06/downloading-deb-packages-with-apt-in-userspace/">http://hukkinen.jp/blog/...</a>
+
+<br><br><br><br>
+<h2 id="3" class="tag">apt-history</h2>
+<font size="3">This is one very good script I found, wriiten by Benjamin York, adapted from info given at&nbsp;<a href="http://redclay.altervista.org/wiki/doku.php?id=projects:old-projects">http://redclay.altervista.org</a></font>
+<div><font size="3">Copy the script from&nbsp;<a href="https://github.com/blyork/apt-history/blob/master/apt-history">https://github.com/blyork</a></font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font color="#b45f06" size="3">sudo leafpad /usr/bin/apt-history</font></div>
+<div><font size="3">paste the script and save</font></div>
+<div><font color="#b45f06" size="3">sudo chmod +x /usr/bin/apt-history</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">in a terminal run&nbsp;</font></div>
+<div><font color="#b45f06" size="3">sudo apt-history &lt;parameter&gt;</font></div>
+<div>
+<div><font size="3"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp; &nbsp;&nbsp;</span></span>install &nbsp;- Lists all packages that have been installed.</font></div>
+<div><font size="3">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; upgrade &nbsp;- Lists all packages that have been upgraded.</font></div>
+<div><font size="3">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; remove &nbsp; - Lists all packages that have been removed.</font></div>
+<div><font size="3">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; rollback - Lists rollback information.</font></div>
+<div><font size="3">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; list &nbsp; &nbsp; - Lists all contents of dpkg logs.</font></div>
+</div>
+<div><br>
+</div>
   <br><br> <br><br>
     
-<h2>Other commands</h2>
+<h2 id="4" class="tag">Other commands</h2>
   <table cellpadding="3" style="background-color: transparent">
   <tr>
     <td width="300">whoami</td>
@@ -199,8 +253,89 @@ id: cli
   </tr>
 </table>
 
+<br><br>
+<h2 id="5" class="tag">Nano keys</h2>
+
+<table cellpadding="3" width="50%" style="background-color: transparent">
+  <tr>
+    <td width="150">ctrl-x</td>    <td>close</td>
+  </tr>
+  <tr>
+    <td>ctrl-o</td>    <td>save</td>
+  </tr>
+  <tr>
+    <td>ctrl-k</td>    <td>cut line</td>
+  </tr>
+  <tr>
+    <td>ctrl-u</td>    <td>uncut from buffer</td>
+  </tr>
+  <tr>
+    <td>ctrl-6</td>    <td>start select</td>
+  </tr>
+  <tr>
+    <td>alt-6</td>    <td>copy selected</td>
+  </tr>
+  <tr>
+    <td>ctrl-w</td>    <td>search</td>
+  </tr>
+  <tr>
+    <td>alt-w</td>    <td>repeat search</td>
+  </tr>
+  <tr>
+    <td>ctrl-\</td>    <td>search-replace</td>
+  </tr>
+  <tr>
+    <td>alt-/</td>    <td>go to last line</td>
+  </tr>
+  <tr>
+    <td>alt-\</td>    <td>go to top</td>
+  </tr>
+  <tr>
+    <td>ctrl--</td>    <td>go to line, column</td>
+  </tr>
+  <tr>
+    <td>alt-(</td>    <td>go up a para.</td>
+  </tr>
+  <tr>
+    <td>alt-)</td>    <td>go down a para.</td>
+  </tr>
+  <tr>
+    <td>ctrl-r</td>    <td>insert another file</td>
+  </tr>
+  <tr>
+    <td>alt-t</td>    <td>cut from cursor to end</td>
+  </tr>
+  <tr>
+    <td>alt-m</td>    <td>toggle enable mouse</td>
+  </tr>
+</table>
 
 
+<br><br>
+Top 25 Performance Monitoring Tools<br>
+<a href="http://www.thegeekstuff.com/2011/12/linux-performance-monitoring-tools/">thegeekstuff.com/2011/</a>
 
+<br><br>
+50 most used Unix/Linux commands<br>
+<a href="http://www.thegeekstuff.com/2010/11/50-linux-commands/">thegeekstuff.com/2010/</a>
+
+<br><br>
+Safe removal of data - file shredding<br>
+<a href="http://superuser.com/questions/19326/how-to-wipe-free-disk-space-in-linux">see this post http://superuser.com/...</a>
+
+<br><br><br>
+Debian Forums<br>
+<a href="http://forums.debian.net/">http://forums.debian.net/</a>
+<br><br>
+Linux Forums<br>
+<a href="http://www.linuxforums.org/">http://www.linuxforums.org/</a>
+<br><br>
+Just Linux<br>
+<a href="http://www.justlinux.com/forum/index.php">http://www.justlinux.com/forum/index.php</a>
+<br><br>
+The Linux Documentation Project<br>
+<a href="http://tldp.org/">http://tldp.org/</a>
+
+<br><br>
 
 </div>
