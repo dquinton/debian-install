@@ -288,14 +288,16 @@ url: http://username.github.io/</textarea>&nbsp;
 <br><br>
 
 
-then insert  <b>{{site.baseurl}} </b>before all your internal links - <i>possibly</i> only navbar and sub-pages' links.. certainly any link that a sub-page will see 
+then insert  <b>&#123;&#123;site.baseurl}} </b>before all your internal links - <i>possibly</i> only navbar and sub-pages' links.. certainly any link that a sub-page will see 
 <br><br>
-e.g. {{site.baseurl}}/css/styles.css etc - I use bluetish's powerful search-replace tool to make a fast work, using my navbar.html page to get all the links
+e.g. &#123;&#123;site.baseurl}}/css/styles.css etc - I use bluetish's powerful search-replace tool to make a fast work, using my navbar.html page to get all the links
 <br><br>
 
-images: change<b> href="../</b> to <b>href="{{site.baseurl}}/ </b>and also <b>src="../ </b>to <b>src="{{site.baseurl}}/</b>
+images: change<b> href="../</b> ---> <b>href="&#123;&#123;ssite.baseurl}}/ </b>
 <br><br>
-Also, the css links in your header, as well as links in css files, such as, background-image: url({{site.baseurl}}/zimages/banner1.gif);
+and also <b>src="../ </b>---> <b>src="&#123;&#123;ssite.baseurl}}/</b>
+<br><br>
+Also, the css links in your header, as well as links in css files, such as, background-image: url(&#123;&#123;ssite.baseurl}}/zimages/banner1.gif);
 
 <br><br><br><br>
 
@@ -312,7 +314,7 @@ jekyll serve --watch</textarea>&nbsp;
 <br>
 or, if you are setting the base url, you need to serve the site at that url
 <form>
-<textarea name="T" id="cmd" rows="1" cols="30">
+<textarea name="T" id="cmd" rows="1" cols="50">
 jekyll serve --watch --baseurl /project-name/</textarea>&nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
