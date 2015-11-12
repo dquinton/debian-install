@@ -121,9 +121,9 @@ header.html<br>
 <html lang="en">
 
 <head>
-     <link rel="stylesheet" href="/css/1.css" media="all" type="text/css">
-     <link rel="stylesheet" href="/css/mob.css" media="only screen and (max-device-width: 600px)" type="text/css">
-   <link rel="stylesheet" href="/css/nav.css">
+     <link rel="stylesheet" href="css/1.css" media="all" type="text/css">
+     <link rel="stylesheet" href="css/mob.css" media="only screen and (max-device-width: 600px)" type="text/css">
+   <link rel="stylesheet" href="css/nav.css">
     <meta charset="UTF-8">
     <meta name="description" content="&#123;&#123;page.description}}" />
     <meta http-equiv="date" content="&#123;&#123;page.date |date: '%A, %d  %Y %H:%M:%S GMT'}}" />
@@ -163,8 +163,8 @@ navbar.html<br>
 <div class="nav">
 <nav>
   <ul>
-    <li><a href="/index.html" id="intro">Home</a></li>
-    <li><a href="/about.html" id="abt">About</a></li>
+    <li><a href="index.html" id="intro">Home</a></li>
+    <li><a href="about.html" id="abt">About</a></li>
 
 ..etc..
 
@@ -313,11 +313,12 @@ jekyll --serve --baseurl /my-project/</textarea>&nbsp;
 this way will generate Github-ready pages, because it tells the localhost:4000 to look at the right place
 
 <br><br><br><br>
-<b>3.</b> set the base url in the html header, with &#60;base href="/project-name/"> and leave all your links as they are.
+<b>3.</b> set the base url in the html header, with &#60;base href="project-name/"> and leave all your links as they are.
 <br><br>
 Just need to test this one. Bear in mind this affects ALL url's, even # links and queries, so you need to test it works. 
 
-If your links are preceded with "/" to make them point to the root normally, then only the root of the base url in the base tag will be referenced, so you need to remove the "/".
+If your links are preceded with "/" to make them point to the root normally, then only the root of the base url in the base tag will be referenced, so you need to remove the "/".<br>
+At the same time, you need to remove all "../" too.
 
 
 <br><br><br><br>
