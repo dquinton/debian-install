@@ -279,49 +279,28 @@ So the site won't work at all.
 
 <b>1.</b> set the base url in the jekyll  <b>_config.yml</b> file
 <form>
-<textarea name="T" id="file" rows="1" cols="30">
-baseurl: '/project-name'</textarea>&nbsp;
+<textarea name="T" id="file" rows="2" cols="30">
+baseurl: '/project-name'
+url: http://username.github.io/</textarea>&nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <a href="http://jekyllrb.com/docs/configuration/">http://jekyllrb.com/docs/configuration/</a>
 <br><br>
 
 
-then in all your links, use {{site.baseurl}}/css/styles.css etc
+most blogs tell you to use this all your links: {{site.baseurl}}/css/styles.css etc
 <br><br>
-and to serve locally, use 
-<form>
-<textarea name="T" id="cmd" rows="1" cols="30">
-jekyll serve --baseurl ''</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
 
+but it seems to work fine if you just take out leading "/" from links, with the jekyll config set up.
 
-so that the base url is not added on the pages - but you will need to run `jekyll serve' to generate pages for Github!
-<br><br><br><br>
-
-<b>2.</b> add the base url to all your links, such as, my-project/css/styles.css
 <br><br>
-then to serve locally, use 
-<form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-jekyll --serve --baseurl /my-project/</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
 
-<br>
-this way will generate Github-ready pages, because it tells the localhost:4000 to look at the right place
-
-<br><br><br><br>
-<b>3.</b> set the base url in the html header, with &#60;base href="project-name/"> and leave all your links as they are.
-<br><br>
-Just need to test this one. Bear in mind this affects ALL url's, even # links and queries, so you need to test it works. 
-
-If your links are preceded with "/" to make them point to the root normally, then only the root of the base url in the base tag will be referenced, so you need to remove the "/".<br>
-At the same time, you need to remove all "../" too.
+If your links are preceded with "/" to make them point to the root normally, then only the root ot your site will be referenced, so you need to remove the "/".<br>
+At the same time, you need to remove "../" in some cases too.
 
 
-<br><br><br><br>
+
+
 
 
 <h2 id="5" class="tag">5. Serving up with Jekyll..</h2>
