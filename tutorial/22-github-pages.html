@@ -355,7 +355,7 @@ git clone https://github.com/user/repository.git</textarea>&nbsp;
 
 or, without cloning, run
 <form>
-<textarea name="T" id="cmd" rows="1" cols="50">
+<textarea name="T" id="cmd" rows="1" cols="80">
 git remote add origin git@github.com:username/reponame.git</textarea>&nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -405,7 +405,7 @@ git push</textarea>&nbsp;
 <br>
 and you'll be promted for username and password.
 <br><br>
-If however you didn't cloke the repo to local, and there are files on Github repo you don't have locally, you will get an error, "error: failed to push some refs to 'https://github.com/...' hint: Updates were rejected because the remote contains work that you do not have locally."
+If however you didn't clone the repo to local, and there are files on Github repo you don't have locally, you will get an error, "error: failed to push some refs to 'https://github.com/...' hint: Updates were rejected because the remote contains work that you do not have locally."
 <br><br>
 so you can use `git push origin master' or `git push -f' to force ovewrite of files
 <br><br>
@@ -431,7 +431,14 @@ check commit history with
 git log</textarea>&nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br><br>
 
+To enable Git to store your username/pw (15min default) run
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+git config --global credential.helper cache</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 
 
