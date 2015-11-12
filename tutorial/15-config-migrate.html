@@ -1,0 +1,88 @@
+---
+layout: default
+description: Locations of important Debian config files, needed for a backup script - by D Quinton
+title: Config migrate
+id: tutor
+---
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+
+When I install Linux I copy over all my config files from my last install (if not just copy my whole home) - its essential otherwise I'd be wasting time reconfiguring.
+<br><br>
+I also build up a set of config files for copying over to Linux systems that I install on other people's PC's.
+<br>
+
+Most contig files will be found in <b>~/</b> (user's home) as hidden dot-directories, and also in ~/.config/.
+<br><br>
+<span style="line-height:32px;font-size:medium">Then in <b>~/.local/share</b> you have .desktop files for the menu if you made changes there and marble map images if you use that.
+<br><br>
+<h3>Files I migrate/tweak for LXDE installs</h3>
+
+
+<table cellpadding="2" border="1" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px">
+<tr>
+<td width="500"><span style="color:#0b5394">Config Files</span></td><td><span style="color:#0b5394">File Location</span></td>
+</tr>
+<tr>
+<td>LXDE panels</td><td>~/.config/lxpanel/LXDE/panels/</td>
+</tr>
+<tr>
+<td>Desktop: wallpaper</td><td>~/.config/pcmanfm/LXDE/pcmanfm.conf</td>
+</tr>
+<tr>
+<td>Desktop: widget</td><td>~/.config/lxsession/LXDE/desktop.conf<br>
+</td>
+</tr>
+<tr>
+<td>Openbox menu</td><td>~/.config/openbox/menu.xml</td>
+</tr>
+<tr>
+<td>Openbox window decoration/work spaces/keybindings/mouse behaviours/menus/app opening positions</td><td>~/.config/openbox/lxde-rc.xml</td>
+</tr>
+<tr>
+<td>.desktop files</td><td>~/.local/share/applications/</td>
+</tr>
+<tr>
+<td>Libreoffice toolbars</td><td>~/.config/libreoffice/4/user/config/soffice.cfg/modules/swriter/ &nbsp; etc</td>
+</tr>
+<tr><td>Ranger config</td><td>~/.config/ranger/</td></tr>
+<tr><td>.Xresources, .bashrc, .bash_aliases</td><td>~/</td></tr>
+
+</table>
+<br><br><br>
+
+I also regularly backup config files somewhere safe, with a script  (for LXDE)
+
+<form><textarea name="T" id="cmd" rows="19" cols="120">
+#!/bin/bash
+rsync -ru ~/.config/libreoffice/4/user/registrymodifications.xcu ~/Settings/LO\ macro/
+rsync -ru ~/.config/openbox/* ~/.config/lxterminal/lxterminal.conf ~/.config/pcmanfm/LXDE/pcmanfm.conf ~/Settings/OB-lxde/
+rsync -ru ~/.config/lxpanel/LXDE/panels/* ~/Settings/OB-lxde/panels/
+rsync -ru ~/.config/ranger/* ~/Settings/ranger/
+rsync -ru ~/.config/Thunar/* ~/Settings/thunar/
+rsync -ru ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-power-manager.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar-volman.xml ~/.config/xfce4/xfce4-notes.gtkrc ~/Settings/xfce/rsync -ru ~/.kde/share/apps/k3b/k3bui.rc ~/Settings/kde/apps-k3b/
+rsync -ru ~/.kde/share/config/k3brc ~/.kde/share/config/kdeglobals ~/kdenlive/.kde/share/config/kdenliverc ~/Settings/kde/share-config/
+rsync -ru ~/.luckyBackup/profiles/* ~/Settings/lucky\ backup/
+rsync -ru ~/kdenlive/.kde/share/apps/kdenlive/kdenliveui.rc ~/Settings/kde/apps-kdenlive/
+rsync -ru -r ~/scripts/* ~/Settings/scripts/
+cp ~/.bash_aliases ~/.bashrc ~/.compton.conf ~/.gtk-bookmarks ~/.gtkrc-2.0 ~/.gtkrc-2.0-gnome-color-chooser ~/Settings/HOME\ files/
+rsync -ru --delete-after ~/.local/share/notes/ ~/Settings/notes/
+rsync -ru ~/.bluefish/* ~/Settings/bluefish/</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+lines 3 &amp;4 swap for these if openbox not lxde:
+<form><textarea name="T" id="cmd" rows="2" cols="80">
+<cp ~/.config/openbox/* ~/.config/lxterminal/lxterminal.conf ~/Settings/OB/
+<cp ~/.config/lxpanel/OB/panels/* ~/Settings/OB/panels/</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+
+</div>

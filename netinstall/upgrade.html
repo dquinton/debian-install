@@ -1,0 +1,379 @@
+---
+layout: default
+description: How to upgrade your Debian system and software, dist-upgrade to a later Debian release, and how to install a newer kernel - by D Quinton
+title: Upgrade Debian
+id: net
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Upgrade packages</a></li>
+                <li><a href="#2">Security updates</a></li>
+                <li><a href="#3">Upgrade to new release</a></li>
+                <li><a href="#4">Jessie without systemd</a></li>
+                <li><a href="#5">Using backports</a></li>
+                <li><a href="#6">Upgrade the kernel</a></li>
+                <li><a href="#7">Upgrade notes</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Upgrade packages</a><br>
+   <a href="#2">Security updates</a><br>
+   <a href="#3">Upgrade to new release</a><br>
+   <a href="#4">Jessie without systemd</a><br>
+   <a href="#5">Using backports</a><br>
+   <a href="#6">Upgrade the kernel</a><br>
+   <a href="#7">Upgrade notes</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
+
+<div class="cont">
+
+<h2 id="1" class="tag">Update packages to most recent releases</h2> 
+(if following debian stable there may be only a few new releases and only ones with security patches) 
+
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get update && sudo apt-get upgrade </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+But the safest way to upgrade, that will handle any dependency problems, would be to use:
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo aptitude upgrade --full-resolver </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+if your sources list is correct (on the debian release you are following) you can run this for a real full upgrade (with -s option to simulate if you like)
+
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get dist-upgrade </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br><br>
+
+<h2 id="2" class="tag">Debian stable security releases</h2>
+If you want to keep your debian system up to date with security patches (released as updated packages) make sure you have these lines in your /etc/apt/sources.list
+
+<form>
+<textarea name="T" id="file" rows="5" cols="80">
+deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
+deb-src http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
+
+deb http://security.debian.org/ wheezy/updates main contrib non-free
+deb-src http://security.debian.org/ wheezy/updates main contrib non-free</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and run the first line above to update package lists and upgrade packages
+
+<br><br><br><br>
+
+<h2 id="3" class="tag">Update to a new debian release</h2>
+First change your sources list to point to the release you want to upgrade to
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo nano /etc/apt/sources.list</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+Check your apt.conf file isn't pointing to your current release, for example it might say
+APT::Default-Release "wheezy";
+<br><br>
+mine didn't after using netinstall CD.  If it does remove that line or change it.. 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo nano /etc/apt/apt.conf</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+developers recommend 
+<form>
+<textarea name="T" id="install" rows="2" cols="80">
+sudo apt-get update
+sudo apt-get dist-upgrade</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+and that can be simulated first with the -s option
+<br>but it is probably much better to do this booted into recovery mode so that many daemons and drivers are not loaded.
+<br><br>
+You could first download all the packages needed for the upgrade with
+
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get update && sudo apt-get --download-only dist-upgrade</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+then boot into recovery mode and run dist-upgrade
+<br><br>
+
+Aptitude can be used with 
+<form>
+<textarea name="T" id="install" rows="1" cols="30">
+sudo aptitude full-upgrade</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+-this command replaces "aptitude dist-upgrade" - it will present solutions to conflicts, and ask confirmation before downloading
+<br><br>
+It can be simulated first with
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo aptitude --simulate full-upgrade</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+or
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo aptitude --simulate full-upgrade > ~/upgrade.txt</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+(to put the result into a text file in home)
+<br><br>
+
+You could try the apt-get dist-upgrade way first, and see if its all plain-sailing or not.... but if APT is asking you to remove like about half of your system, because of breakages, then you had better think wisely. 
+<br><br>
+Next, try the aptitude way, as it will offer perhaps a better solution - removing some but not so many packages, which can be reinstalled later on (if they are needed or exist in the release - note that some packages are obsoleted and replaced with ones of different names).
+<br><br>
+I upgraded just now and there were quite a few packages to be removed by aptitude dist-upgrade, so I ran through the ones I thought were important (many lib's will have different names) at Debian packages, and I only found a few that will need re-installing.
+<br><br>
+<span class="caut">Caution!  If you (by mistake) use the apt-get command "upgrade" after changing your sources file, and actually you are intending to upgrade to another release, apt will not actually upgrade to the new release but will only update your installed packages from the new release -and you will get an irreparable mix of packages from different releases.</span>
+<br><br>
+For example, if you are stable and you do an upgrade with packages from testing, you will get a mixed install of both stable and testing - and then trying to dist-upgrade, you will have hundreds of packages held back, unable to install because of countless dependency problems.
+<br><br>
+If you did that, you can revert to stable in sources and do an apt-get update, apt-get upgrade, to revert to stable install, and then change sources to testing again, update lists and do a dist-upgrade. 
+<br><br>
+The plain "upgrade" command will <i>not add</i> any new packages or <i>remove</i> unneeded ones -which is necessary when upgrading to another release.
+
+<br><br><br><br>
+
+<h2 id="4" class="tag">Upgrading to Jessie without installing systemd</h2>
+su to root then make this apt conf file with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="100">
+echo -e 'Package: systemd\nPin: origin ""\nPin-Priority: -100' > /etc/apt/preferences.d/systemd</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+You may also need to deny "upstart" (ubuntu's startup daemon) from installing as well
+<form>
+<textarea name="T" id="cmd" rows="1" cols="100">
+echo -e '\nPackage: upstart\nPin: origin ""\nPin-Priority: -100' >> /etc/apt/preferences.d/systemd</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+then run a dist upgrade with the simulate option to check what will install - and aptitude should be used
+<br><br>
+note that policykit-1 will not install because it depends on libpam-systemd!  This means there may be some errors on startup, hotplugging media will not work (mounting) and there will be no shutdown/reboot option on the logout menu!  (this is so with LXDE, as the update removes lxsession, lxpolkit)
+
+To get around these problems, I use a power-off script with a yad dialogue, udevil disk management (see my <a href="../config/plain-openbox.html">plain OB</a> page), and to prevent the dbus error messages on media insert, turn off the auto-mounting in pcmanfm preferences.
+
+But we might not have the pleasure of choosing sysvinit over systemd for much longer, with Debian, and who knows?  If we can't carry on without switching to systemd, then our other choices are... Devuan, or Slackware, which continues to be systemd-free (that's not a package name there!) 
+<br><br>
+See my <a href="go-devuan.html">Devuan page</a>!
+
+<br><br><br><br>
+
+<h2 id="5" class="tag">Using backports to update packages</h2>
+If you follow the current Stable but want some better updates you can give backports a go, which is a way of adding updated packages to your stable debian. <br>
+See <a href="http://wiki.debian.org/DebianSoftware">http://wiki.debian.org/DebianSoftware</a><br>
+and <a href="http://backports.debian.org/">http://backports.debian.org/</a>
+
+The backports sources list entry looks like 
+<form>
+<textarea name="T" id="file" rows="1" cols="80">
+deb http://ftp.debian.org/debian/ wheezy-backports main</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+(depending on the Debian stable code name)
+<br><br>
+check to see if your packages are available in wheezy-backports by doing a search at packages.debian.org
+<br><br>
+update apt cache and then install a package from backports with 
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get -t wheezy-backports install <package></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br><br>
+
+<h2 id="6" class="tag">Upgrading the kernel</h2>
+
+This may be useful (or necessary) when you have hardware that needs latest drivers or to get laptop hot-keys functioning. You have somn choices...
+<br><br><br>
+
+<h3>1. Install the pae kernel for newer computers</h3>
+search for available kernels with 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+apt-cache search linux-image </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+install the pae kernel
+<br><br>
+
+reboot and select the new kernel if necessary<br>
+if it runs well and fixes hardware issues such as video or networking, you can remove the non-pae kernel with apt-get
+<br><br>
+find its package name with 
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+dpkg --list | grep linux</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+<h3>2. Install from stable backports</h3>
+add the backports to sources with the line 
+<form>
+<textarea name="T" id="file" rows="1" cols="80">
+deb http://ftp.debian.org/debian/ wheezy-backports main non-free contrib</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+update APT and search for available kernels with apt-cache search linux-image 
+install the desired kernel
+
+<br><br><br>
+<h3>3. Install from Testing on Stable</h3>
+<span class="caut">note that this method may install quite a lot of packages from testing and you could end up with a mixed distro Debian.</span>
+<br><br>
+First add Testing to sources (with stable set to default in apt preferences if running a stable Debian install), then apt-get update, apt-cache search linux-image to see what kernels are available
+<br><br>
+Install the linux-headers first, e.g. apt-get install linux-headers-3.xx-x
+<br><br>
+reinstall initramfs-tools from testing, 
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install -t testing initramfs-tools </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+ -as without doing this a looping problem is caused with linux-image
+<br><br>
+install the corresponding linux-image with aptitude, e.g. aptitude install linux-image-3.xx-x<br>
+reboot and the new kernel will load automatically
+
+<br><br><br>
+<h3>4. Install newer kernel after upgrade to Jessie</h3>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+apt-cache search linux-image</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+<span style="color: #800080; ">installing linux-headers-3.16-amd64 hit dependency problems, gcc-4.8 needed, but gcc-4.7 installed</span><br>
+install in this order: gcc-4.8-base, gcc-4.8
+<br>
+<form>
+<textarea name="T" id="install" rows="2" cols="80">
+apt-get install linux-headers-3.16-amd64
+apt-get install linux-image-3.16-amd64</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+<a href="https://wiki.debian.org/HowToUpgradeKernel">https://wiki.debian.org/HowToUpgradeKernel</a>
+
+
+<br><br><br><br>
+
+<h2 id="7" class="tag">Upgrade notes</h2>
+<br>
+<h3>Wheezy to Jessie</h3><br>
+
+Packages needing re-install after upgrade:<br>
+with APT... audacious audacious-plugins icedtea-7-plugin lxpanel blueman<br>
+manual .... googleearth multisystem <br>
+(ge needs ia32-libs which are obsoleted in Jessie - install a dummy package from <a href="http://forums.debian.net/viewtopic.php?f=10&t=111898">/viewtopic.php?f=10&t=111898</a>)
+<br><br>
+<span style="color:#800080">mplayer fails to play files - mplayer error while loading shared libraries: libdvdnavmini.so.4: cannot open shared object file</span><br>
+as root<br>
+<form>
+<textarea name="T" id="cmd" rows="2" cols="80">
+cd /usr/lib/x86_64-linux-gnu
+ln -s libdvdnav.so.4.1.2 libdvdnavmini.so.4</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+<h3>Squeeze to Wheezy</h3><br>
+<span style="color:#800080">on login, the default session shows Xsession, not Xfce</span><br>
+-in 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/lightdm/lightdm.conf</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+change <span style="color:#076b00">user-session=lightdm-xsession</span> to <span style="color:#076b00">user-session=xfce</span>
+<br><br>
+
+<span style="color:#800080">Broken apt-get after update?</span><br>
+If you choose to keep the original sudoers file, you won't be able to apt-get or aptitude later,
+so you need to terminal: su, root p/w, visudo
+<br><br>
+cursor down after the line <span style="color:#076b00">Defaults  env_reset</span>
+<br><br>
+highlight this line here and middle mouse button in the terminal to paste it:
+<form>
+<textarea name="T" id="file" rows="1" cols="100">
+ Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+then CTRL-X, y and Enter<br><br>
+from <a href="http://note.harajuku-tech.org/cksum-dpkg-warning-ldconfig-not-found-in-path">http://note.harajuku-tech.org/...</a>
+
+<br><br><br><br>
+<b>Next page: </b>
+<br><br>
+<h3><b><a href="go-devuan.html">Go Devuan</a></b> - moving to the Devuan branch of Debian</h3>
+<br><br>
+
+</div>

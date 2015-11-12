@@ -1,0 +1,415 @@
+---
+layout: default
+description: Configuring Thunar file manager with righ-click custom actions - by D Quinton
+title: Thunar
+id: config
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Some tips</a></li>
+                <li><a href="#2">Menu bar shortcut keys</a></li>
+                <li><a href="#3">Right-click custom actions</a></li>
+                <li><a href="#4">Custom actions to backup files</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Some tips</a><br>
+   <a href="#2">Menu bar shortcut keys</a><br>
+   <a href="#3">Right-click custom actions</a><br>
+   <a href="#4">Custom actions to backup files</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../configure.html">Configure</a> ></div>
+
+
+<div class="cont">
+
+
+For those who haven't yet progressed from using a graphical interface file manager, and for learner PC users, I recommend Thunar, as it's light-weight, fast and expandable with all kinds of right-click actions you can make yourself.
+<br>
+<br>
+
+
+<h2 id="1" class="tag">Some tips</h2>
+<br>
+<h3>To drag-select files</h3>
+<div class="bullet"><ul><li>if single click opens file, Ctrl-click on a file, then click on it again and drag </li>
+<li> if hover-over select set to longer delay, or double click opens files, just click and drag</li>
+<li> To select multiple files with the keyboard, hold Ctrl and use up/down and hit Space, just Down without Ctrl to deselect all</li></ul></div>
+
+<br>
+<h3>To move files</h3>
+<div class="bullet"><ul><li>Click on a file once (with Ctrl if single click opens) and then click and drag.</li>
+<li>Dragging a file onto the location buttons will open the location and the file can be dropped there or hovered over a directory there and dropped into it (can use Space to drop too).</li>
+<li>Shift+Drag = move (just dragging a file might make a copy of it, ie if to another media)</li>
+<li>Ctrl+Drag = copy</li>
+<li>Ctrl+Shift+Drag = make link</li>
+<li>The mouse pointer changes for each operation</li></ul></div>
+
+<br>
+<h3>Navigate</h3>
+Alt-left go back in the directory history<br>
+Alt-right go forwards
+
+<br><br>
+
+<h3>Tabs</h3>
+Thunar 1.6 has a Tabs feature, which makes it easier for moving files to locations all in one window and without going back and forwards in the directory browse history.  You can select and drag files to the <b>tab header</b> and then drop them at that location.
+<br><br>
+My tabs shortcuts are Crtl-Space and Shift-Space to add or close tabs.  But there's no easy shortcut to switch from one tab to the next!!
+<br><br>
+There's a "Skip All" button in the Copy/Move dialogue so that you can copy a whole dir of files over and skip all the identical files, but if you want to copy over updated files you'll still have to click on Replace one-by-one, checking the time-stamps. For updating you need to make a custom action that will `rsync -u` the selected files to the next tab.
+<br><br>
+
+<h3>Shortcut panel</h3>
+
+No Documents, Downloads, Music, Video folders in home? -go to them in the 'Go' menu and they will appear. Then drag them to the shorcuts on the left.
+<br><br>
+You can set the directory location of these icons by editing the ~/.config/user-dirs.dirs file, e.g.
+<br>
+<form>
+<textarea name="T" id="file" rows="1" cols="30">
+XDG_MUSIC_DIR="$HOME/Music"</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+just edit the path to your music dir, and restart the file manager if it's opened.
+<br><br><br>
+You can select which places will show in the left-hand panel.  Just right click there and select from DEVICES, PLACES or NETWORK.
+<br><br>
+
+Switch to expandable folder tree with Ctrl-E, and to Places pane with Ctrl-B.  Hit the same again and the tree pane is hidden.
+<br><br><br>
+Another massive improvement with 1.6 is the ejecting of media... with 1.4 there would always be an error saying data needs to be written, even long after a file transfer was done.  Pulling out a USB stick, for example, would often render the stick read-only.  Now in 1.6 the eject button, next to the mounted device, has a wait/process icon and then the media disappears from Devices, safe to pull out.
+
+
+<br><br>
+<br><br>
+
+<h2 id="2" class="tag">Modify the menu bar accelerator keys </h2>
+
+Set up GTK accels
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+nano ~/.gtkrc-2.0</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+add the line
+<form><textarea name="T" id="file" rows="1" cols="30">
+gtk-can-change-accels=1</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and restart Thunar. Then mouse over a menu item and type a new shortcut key (works with any GTK drop-down menus).
+<br><br>
+<h3>Here are my own shortcuts</h3>
+
+<table><tr><td style="color: #2D46CF; font-weight: bold; " width="150"> Alt-W</td><td> New window</td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> Alt-Escape</td><td> Close</td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> Ctrl-Space</td><td> New Tab</td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> Shift-Space</td><td> Close Tab</td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; ">Alt-N</td><td>New folder </td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> Alt-D</td><td> Duplicate</td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> Alt-L</td><td> Make Link</td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> Alt-Q</td><td> Home</td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> Alt-1 to Alt-0</td><td> Locations</td></tr></table>
+
+<br><br>
+<br><br>
+
+<h2 id="3" class="tag">Right-click custom actions </h2>
+
+This is what makes Thunar much more versatile than some other file managers, having the ability to launch nearly any command on selected dir's and files through the right-click menu.  There are lots of ideas in the links below and then all mine are listed here too.  You can make any kind of custom action depending on what you need to do, you just need to experiment with the Thunar macros (i.e. %f, %F, %n, etc) and see what works. 
+<br><br>
+There is a limit however as to what you add to the right-click menu, as that menu is going to get quite full!
+<br><br>
+Note that all my custom actions here are included in my Ranger keybinds which is a faster way to work than with Thunar. I use yad here instead of zenity.
+<br><br>
+<a href="http://docs.xfce.org/xfce/thunar/custom-actions">Introduction thunar.xfce.org/...</a><br>
+<a href="http://salinelinux.proboards.com/index.cgi?board=software&action=print&thread=98">http://salinelinux...</a><br>
+<a href="http://forums.debian.net/viewtopic.php?p=285354">http://forums.debian.net/...</a><br>
+
+  <br><br>
+
+
+<h3>Here are the best custom actions I've found/used so far</h3>
+
+
+
+<table cellpadding="4" border="1" width="80%" style="border-collapse:collapse;"  bordercolor="#888">
+<tbody>
+<tr style="color: #2D46CF; font-weight: bold; ">
+<td width="30%" height="30">Name</td>
+<td width="50%">Command</td>
+<td width="20%">Appearance conditions</td>
+</tr>
+<tr>
+<td>search here</td>
+<td style="background-color: #B4C2FE;">catfish --fileman=thunar --path=%f</td>
+<td>directories</td>
+</tr>
+<tr>
+<td>edit as root</td>
+<td style="background-color: #CAD4FF; ">gksu leafpad %f</td>
+<td>text files, other files</td>
+</tr>
+<tr>
+<td>open terminal here (set preferred terminal in the settings manager)</td>
+<td style="background-color: #B4C2FE; ">exo-open --working-directory %f --launch TerminalEmulator</td>
+<td>directories</td>
+</tr>
+<tr>
+<td>open terminal here</td>
+<td style="background-color: #CAD4FF; ">exo-open --working-directory %d --launch TerminalEmulator</td>
+<td>all other files</td>
+</tr>
+<tr>
+<td>open root thunar here</td>
+<td style="background-color: #B4C2FE; ">gksu thunar %f</td>
+<td>directories</td>
+</tr>
+<tr>
+<td>make executable</td>
+<td style="background-color: #CAD4FF; ">chmod +x %F</td>
+<td>all other files</td>
+</tr>
+<tr>
+<td>New File (click on blank space)</td>
+<td style="background-color: #B4C2FE; ">leafpad %f/"`yad --height=100 --width=400 --entry --title=New\ File --text=Enter\ file\ name`"</td>
+<td>directories</td>
+</tr>
+<tr>
+<td>New File (click on a file -no blank space)</td>
+<td style="background-color: #CAD4FF; ">leafpad %d/"`yad --height=100 --width=400 --entry --title=New\ File --text=Enter\ file\ name`"</td>
+<td>all other files</td>
+</tr>
+<tr>
+<td>display disk usage</td>
+<td style="background-color: #B4C2FE; ">du -chs --apparent-size %N | zenity --text-info</td>
+<td>all</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>duplicate file (with suffix)</td>
+<td style="background-color: #A3E3A8; ">cp %n %n_1</td>
+<td>all</td>
+</tr>
+<tr>
+<td>send to &#60;cloud sync> folder</td>
+<td style="background-color: #C5F2C9; ">cp %n /home/username/&#60;sync_folder>/%n</td>
+<td>text files</td>
+</tr>
+<tr>
+<td>move to</td>
+<td  style="background-color: #A3E3A8; ">mv %F "`yad --file --directory --height=400 --width=500`"</td>
+<td>all</td>
+</tr>
+<tr>
+<td>copy to</td>
+<td style="background-color: #C5F2C9; ">cp %F "`yad --file --directory --height=400 --width=500`"</td>
+<td>all</td>
+</tr>
+<tr>
+<td>sync files/dirs to</td>
+<td style="background-color: #A3E3A8; ">rsync -a %F "`yad --file --directory --height=400 --width=500`"</td>
+<td>directories, text files</td>
+</tr>
+<tr>
+<td>make a symlink (select directory)</td>
+<td style="background-color: #C5F2C9; ">ln -s "`yad --file --directory --height=400 --width=500 --title=Choose\ Directory\ to\ Link\ to!`"</td>
+<td>directories</td>
+</tr>
+<tr>
+<td>create a bookmark to a directory</td>
+<td style="background-color: #A3E3A8; ">ln -s %f ~/Bookmarks/%n</td>
+<td>directories</td>
+</tr>
+<tr>
+<td>compare</td>
+<td style="background-color: #C5F2C9; ">meld %F</td>
+<td>text, other, directories</td>
+</tr>
+<tr>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+
+<tr>
+<td>delete bypass trash (with confirm)</td>
+<td style="background-color: #FA8E8E; ">yad --height=100 --width=300 --question --title="DELETE FILE" --window-icon="/usr/share/icons/Tango/16x16/actions/edit-delete.png" --text="DELETE\ %N\ FOREVER!!" ; if [ $? = 0 ] ; then rm -r %F ; fi</td>
+<td>as you prefer</td>
+</tr>
+<tr>
+<td>secure delete (with confirm)</td>
+<td style="background-color: #FFB2B2; ">yad --height=100 --width=300 --question --title="FILE\ SHREDDER" --window-icon="/usr/share/icons/Tango/16x16/actions/edit-delete.png" --text="SHRED\ IT!!" ; if [ $? = 0 ] ; then srm %f ; fi</td>
+<td>text files</td>
+</tr>
+<tr>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+<tr>
+<td>start a slide show of images from 1st file, 3 sec int, -d to draw file name (need to install feh)</td>
+<td style="background-color: #F6D893; ">feh -dFZ -D 3 *</td>
+<td>image files</td>
+</tr>
+<tr>
+<td>...F full screen, start on selected file<br>
+...Z auto-zooms images if nec</td>
+<td style="background-color: #F7E9A5; ">feh -dFZ --start-at %n *</td>
+<td>image files</td>
+</tr>
+<tr>
+<td>start slideshow of a whole directory of images recursively, by file name order</td>
+<td style="background-color: #F6D893; ">feh -rSfilename -dFZ -D 4 %f</td>
+<td>directories</td>
+</tr>
+<tr>
+<td>the -g sets the window size (<a href="http://man.finalrewind.org/1/feh/">man page</a>)</td>
+<td style="background-color: #F7E9A5; ">feh -r -g 1024x768 %f</td>
+<td>directories</td>
+</tr>
+<tr>
+<td>Edit in Xnview</td>
+<td style="background-color: #F6D893; ">/usr/sbin/xnview %n</td>
+<td>*.jpg;*.JPG;*.JPEG;*.png;*.PNG etc /image files<br>
+</td>
+</tr>
+<tr>
+<td align="right">put in thunar's uca.xml:</td>
+<td>&lt;icon&gt;/opt/XnView/xnview_2.png&lt;/icon&gt;</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+
+<tr>
+<td>extract audio from video</td>
+<td style="background-color: #CEA6CE; ">ffmpeg -i %f -vn -ar 44100 -ac 2 -ab 192 -f mp3 output.mp3</td>
+<td>video files</td>
+</tr>
+<tr>
+<td>open dir with easytag</td>
+<td style="background-color: #CEA6CE; ">easytag %d</td>
+<td>audio files</td>
+</tr>
+<tr>
+<td><br></td>
+<td><br></td>
+<td><br></td>
+</tr>
+
+<tr>
+<td>create 7z archive</td>
+<td style="background-color: #D3C296; ">7z a -t7z %n.7z %N</td>
+<td>directories, other files, text</td>
+</tr>
+<tr>
+<td>create tar.bz2 archive</td>
+<td style="background-color: #E2D3AC; ">tar jcf %n.tar.bz2 %n</td>
+<td>directories, other files, text</td>
+</tr>
+<tr>
+<td>Extract here (tar.bz2)</td>
+<td style="background-color: #D3C296; ">tar -xjf %n</td>
+<td>*.tar.bz2;*.tbz2 /other files</td>
+</tr>
+<tr>
+<td>Extract here (tar.gz)</td>
+<td style="background-color: #E2D3AC; ">tar -zxf %n</td>
+<td>*.tar.gz /other files</td>
+</tr>
+<tr>
+<td>Extract here (zip)</td>
+<td style="background-color: #D3C296; ">unzip %f</td>
+<td>*.zip&nbsp;&nbsp;/other files</td>
+</tr>
+<tr>
+<td>Extract here (xz)</td>
+<td style="background-color: #E2D3AC; ">tar -xJf %f</td>
+<td>*.xz /other files</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>mount iso (`mkdir /mnt/mounted` 1st)</td>
+<td style="background-color: #D8ABB9; ">gksu 'mount -o loop -t iso9660 %f /mnt/mounted' &amp;&amp; thunar '/mnt/mounted'</td>
+<td>*.iso;*.ISO;*.nrg;*.NRG</td>
+</tr>
+<tr>
+<td>unmount iso (do on the ISO already mounted)</td>
+<td style="background-color: #E4C9D1; ">gksu 'umount /mnt/mounted'</td>
+<td>*.iso;*.ISO;*.nrg;*.NRG</td>
+</tr>
+<tr>
+<td>clone a directory tree (make empty dir's)</td>
+<td style="background-color: #D8ABB9; ">find . -type d -exec mkdir -p -- ../{} \; %F</td>
+<td>directories</td>
+</tr>
+</tbody>
+</table>
+
+<br><br> Also, see my Image processing page for custom actions with Mogrify for converting and resizing images.
+Plus my custom actions with ffmpeg commands on my HD Video page
+
+<br><br>
+<br><br>
+
+
+<h2 id="4" class="tag">Custom actions to backup files (using scripts)</h2>
+
+duplicate file (with infix "_1")
+<form><textarea name="T" id="file" rows="5" cols="50">
+#!/bin/bash
+name=${1%.*}
+extension=${1##*.}
+infix="${2:-_1}"
+cp -v "$1" "${name}${infix}.${extension}"</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+Thunar command:	<b>~/duplicate.sh %f</b>	<br>
+conditions: any
+<br><br>
+copy to backup (1st make the dir)
+<form><textarea name="T" id="file" rows="2" cols="50">
+#!/bin/bash
+cp $1 ~/backups/$1_$(date +"%y%m%d")</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+Thunar command: <b>~/backup.sh %n</b>	<br>
+conditions: text, other files
+
+<br><br><br><br>
+<b>Tip:</b> in the custom action description, an underscore "_" before a character makes that character the shortcut key for the action on the right click menu.
+<br><br>
+So for opening a file with leafpad, I use  <b>_.leafpad %f</b> which means I can hit the "context menu" button to the right of Space bar and then "dot" and I get leafpad, which is quite fast. 
+
+<br><br><br><br>
+
+</div>

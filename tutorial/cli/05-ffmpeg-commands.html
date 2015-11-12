@@ -1,0 +1,193 @@
+---
+layout: default
+description: Some ffmpeg commands for cutting audio and transcoding HD video - by D Quinton
+title: Ffmpeg commands
+id: cli
+---
+
+<div class="parent"><a href="../../cli.html">CLI</a> ></div>
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Pre-install, get an ISO</a></li>
+                <li><a href="#2">Prepare to install</a></li>
+                <li><a href="#3">Get a partition ready!</a></li>
+                <li><a href="#4">The install</a></li>
+                <li><a href="#5">Sources list</a></li>
+                <li><a href="#6">Prevent "recommended"</a></li>
+                <li><a href="#7">Install the desktop</a></li>
+                <li><a href="#8">Install Thunar</a></li>
+                <li><a href="#9">Sudoers file</a></li>
+                <li><a href="#10">Enable the wireless</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Pre-install, get an ISO</a><br>
+   <a href="#2">Prepare to install</a><br>
+   <a href="#3">Get a partition ready!</a><br>
+   <a href="#4">The install</a><br>
+   <a href="#5">Sources list</a><br>
+   <a href="#6">Prevent "recommended"</a><br>
+   <a href="#7">Install the desktop</a><br>
+   <a href="#8">Install Thunar</a><br>
+   <a href="#9">Sudoers file</a><br>
+   <a href="#10">Enable the wireless</a><br>
+</td></tr></table></div>
+
+<div class="cont">
+
+<div><br>
+</div>
+<div><b><font size="5">Cutting up an audio track</font></b></div>
+<div><br>
+</div>
+<div>ffmpeg makes this very easy indeed - and its a program already installed on your system, hopefully.</div>
+<div><br>
+</div>
+<div>the command needed looks like this</div>
+<div><font color="#eeeeee" style="background-color:rgb(7,55,99)"><br>
+</font></div>
+<div><font color="#eeeeee" style="background-color:rgb(7,55,99)">ffmpeg -ss {sec} -t {sec} -i file -acodec copy output-file</font></div>
+<div><br>
+</div>
+<div>-ss &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; option for start position in the track - either hh:mm:ss or just seconds</div>
+<div>-t &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the duration time to cut until, also hh:mm:ss or just seconds</div>
+<div>&nbsp; (I tried the option -to which sets the cut-up-to point, and is found in ffmpeg man page, but it doesn't work at all)</div>
+<div>-i &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;the input file</div>
+<div>-acodec or -c:a &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;sets the audio codec to use - and "copy" keeps the original codec and quality</div>
+<div>-aq or -q:a &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; will set the audio quality (VBR or variable bitrate), e.g. -aq 200</div>
+<div>-ab or -b:a &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;will set audio bitrate, e.g. -ab 192k</div>
+<div><br>
+</div>
+<div>It would follow that video files can be cut as well, but with compressed video files the results might not be perfect, as with h264 mp4 if you make cuts on frames that are not "key frames" you will very likely end up with smearing of video data (blocky picture at the cut point). &nbsp;So Avidemux would be a safer option with cutting compressed video, but with raw AVI you could try ffmpeg.</div>
+<div><br>
+</div>
+<div>This is how i cut up an audio track...</div>
+<div>
+<ol><li><span style="font-size:16px;line-height:1.6;background-color:transparent">open track in audacity</span></li>
+<li><span style="font-size:16px;line-height:1.6;background-color:transparent">select the part of the track to cut</span></li>
+<li><span style="font-size:16px;line-height:1.6;background-color:transparent">set the selection measure at bottom to "Length" and units of seconds</span></li>
+<li><span style="font-size:16px;line-height:1.6;background-color:transparent">copy and insert the start/duration on the ffmpeg line, e.g.</span></li>
+</ol>
+</div>
+<div><font color="#b45f06">ffmpeg -ss 34 -t 572 -i file -acodec copy output-file</font></div>
+<div><br>
+</div>
+<div>I'm using ranger as well, so I have a mapped key with the ffmpeg line, like this</div>
+<div>map fvf2 ffmpeg -ss 00 -i %%f -acodec copy %%f_</div>
+<div><br>
+</div>
+<div>I noticed a glitch, however, which I couldn't sort out. &nbsp;For three out of 20 cuts I made, the file produced was only 1K in size -and I checked and rechecked the values on the ffmpeg line. Hmm.. so for those few what I did was export the selection straight from Audacity - change output format to "(external program)" and in Options under that, select ffmpeg. &nbsp;</div>
+<div>It works just as well, although it seems to take a little longer to process (because a file opened in audacity is first conveeted to raw data so that edits and effects can be made - which means exporting a chunk of a track will require that audacity re-encode it to a lossy format, hence the little extra time it takes compared to cutting a lossy format file with ffmpeg).</div>
+<div><br>
+</div>
+<div>ffmpeg results! &nbsp;Most of the cut tracks have up to 10 or 15 sec of the previous track ending on the front of them, sometimes the start of the next track at the end... even when I was precise with the values taken from audacity, so what's going on there???</div>
+<div>--&gt; because of that, I found it easier to export the selection from audacity as ogg file, q 8.</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="5">Conversions</font></b></div>
+<div><a href="http://linuxconfig.org/ffmpeg-audio-format-conversions">http://linuxconfig.org/ffmpeg-audio-format-conversions</a></div>
+<div><br>
+</div>
+<div>I have some useful video conversion commands on this page&nbsp;<a href="06-transcoding.html">transcoding-mts</a></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">flac to ogg</font></b></div>
+<div><font color="#f3f3f3" style="background-color:rgb(7,55,99)">find . -depth -name "*.flac" -exec ffmpeg -i {} -c:a libvorbis -q:a 7 {}.ogg \;</font></div>
+<div><br>
+</div>
+<div><span style="font-size:16px;line-height:1.6;background-color:transparent">this searches to the lowest levels of directories first, built on&nbsp;</span><span style="font-size:16px;line-height:1.6;background-color:transparent">the basic form of</span></div>
+<span style="background-color:rgb(159,197,232)">ffmpeg -i file.flac -c:a libvorbis -q:a 7 file.ogg</span>
+<div><span style="font-size:16px;line-height:1.6;background-color:transparent"><br>
+</span></div>
+<div>the problem with the recursive command above is that it's not very tidy, results-wise, as find just puts ".ogg" onto the end of the full file name with extension, so song.flac &gt; song.flac.ogg</div>
+<div><br>
+</div>
+<div>a script makes the results tidier, without the need to search/replace "flac.ogg" everywhere</div>
+<div><font color="#38761d">#!/bin/bash</font></div>
+<div><font color="#38761d">for a in *.flac; do</font></div>
+<div><font color="#38761d">&nbsp;&lt;/dev/null ffmpeg&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">-i "$a" -c:a libvorbis -q:a 7 "${a%.*}.ogg&nbsp;</span></font></div>
+<div><span style="font-size:16px;line-height:1.6;background-color:transparent"><font color="#38761d">done</font></span></div>
+<div><br>
+</div>
+<div>this searches in the current directory. &nbsp;to make it recursive you can try double globbing: <font color="#38761d">for a in ./**/*.flac; do</font></div>
+<div><br>
+</div>
+<div>there is also oggenc</div>
+<div><span style="background-color:rgb(159,197,232)">find . -name "*flac" -exec oggenc -q 7 {} \;</span></div>
+<div><br>
+</div>
+<div>also dir2ogg</div>
+<div><span style="background-color:rgb(159,197,232)">dir2ogg -q 8 -n -r --convert-all /dir</span></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">flac to mp3</font></b><br>
+<font color="#f3f3f3" style="background-color:rgb(7,55,99)">find . -depth -name "*.flac" -exec ffmpeg -i {} -c:a libmp3lame -q:a 0 {}.mp3 \;</font></div>
+<div><br>
+</div>
+<div>or a script,</div>
+<div>
+<div><font color="#38761d">for a in *.flac; do</font></div>
+<div><font color="#38761d">&nbsp;&lt;/dev/null ffmpeg&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">-i "$a" -c:a libmp3lame -q:a 0 "${a%.*}.mp3&nbsp;</span></font></div>
+<div><span style="font-size:16px;line-height:1.6;background-color:transparent"><font color="#38761d">done</font></span></div>
+</div>
+<div><br>
+</div>
+<div>Tip: add the option -size to hit files of certain size and above, e.g.<br>
+<span style="background-color:rgb(118,165,175)">find . -depth -name "*.flac" -size +4M -exec ffmpeg -i {} -c:a libmp3lame -q:a 0 {}.mp3 \;</span></div>
+<div>size can be in k as well, like 4000k = 4M</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">ogg to mp3</font></b></div>
+<div><span style="color:rgb(243,243,243);background-color:rgb(7,55,99)">find . -depth -name "*.ogg" -exec ffmpeg -i {} -c:a libmp3lame -q:a 0 {}.mp3 \;</span></div>
+<div><br>
+</div>
+<div>there's a script I found ogg2mp3&nbsp;<a href="https://github.com/monksy/ogg2mp3/blob/master/ogg2mp3" rel="noreferrer" style="font-size:16px;line-height:1.6;background-color:transparent">https://github.com/monksy/ogg2mp3/...</a>&nbsp;but this might be obsolete having a good ffmpeg install
+<div><span style="color:rgb(204,0,0);font-size:16px;line-height:1.6;background-color:transparent">sudo apt-get install vorbis-tools</span></div>
+<div><br>
+</div>
+<div>copy the script (bottom of page) and save to file ogg2mp3 in your scripts</div>
+<div><span style="color:rgb(180,95,6);font-size:16px;line-height:1.6;background-color:transparent">chmod +x ogg2mp3</span></div>
+<div><br>
+</div>
+<div>make a bash alias</div>
+<div><font color="#38761d">alias ogg2mp3='ogg2mp3 -B 256 --vbr-new -V 0 *.ogg'</font></div>
+</div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font size="5"><b>Split audio from a video</b></font></div>
+<div>get audio metadata with</div>
+<div><font color="#b45f06">ffmpeg -i video.avi </font>etc</div>
+<div><br>
+</div>
+<div>examples</div>
+<div><font color="#b45f06">ffmpeg -i input.mpg -c copy audio.m4a </font>&nbsp; &nbsp; - AAC</div>
+<div><font color="#b45f06">ffmpeg -i input.flv -c copy audio.mp3 </font>&nbsp; &nbsp; &nbsp; - MP3</div>
+<div><font color="#b45f06">ffmpeg -i input.mpeg -c copy audio.ac3</font> &nbsp; &nbsp;- AC3</div>
+<div><br>
+</div>
+<div>or you can specify quality/codec</div>
+<div><font color="#b45f06">ffmpeg -i video.flv -vn -ar 44100 -ac 2 -ab 192k -f mp3 output.mp3</font></div>
+<div><br>
+</div>
+<div><br>
+</div>
+
+</div>

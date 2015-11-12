@@ -1,0 +1,121 @@
+---
+layout: default
+description: Set up Apache and php5 for running php files locally - by D Quinton
+title: Php local
+id: tutor
+---
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+<div>To enable local PHP files (on disk) to open in a browser..</div>
+<div><br>
+</div>
+<div>
+<ul><li><span style="background-color:transparent;color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6">Install Apache2</span></li></ul>
+</div>
+<div><span style="background-color:transparent;font-family:PT Sans,sans-serif;line-height:1.6"><font color="#cc0000">sudo apt-get install apache2 php5</font></span></div>
+<div><br>
+</div>
+<div>
+<div>
+<ul><li><span style="background-color:transparent;color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6">to test apache to see if it's running, get your ip address at eg eth1</span></li></ul>
+</div>
+<div><font color="#b45f06">ifconfig</font></div>
+<div><br>
+</div>
+<div>
+<ul><li><span style="background-color:transparent;color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6">then load it in a browser, e.g.</span></li></ul>
+</div>
+<div>192.168.1.80</div>
+</div>
+<div><br>
+</div>
+<div>
+<ul><li><span style="background-color:transparent;color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6">open the apache conf file</span></li></ul>
+</div>
+<div><span style="background-color:transparent;font-family:PT Sans,sans-serif;line-height:1.6"><font color="#b45f06">sudo leafpad /etc/apache2/apache2.conf</font></span></div>
+<div><br>
+</div>
+<div>
+<ul><li><span style="color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6;background-color:transparent">scroll down to around line 164, then add this segment to the directory part of file</span></li></ul>
+</div>
+<div>starting with &lt;Directory /&gt;</div>
+<div><br>
+</div>
+<div>-----------------------------</div>
+<div><font color="#38761d">&lt;Directory /home/-user-/-webdir-&gt;</font></div>
+<div><font color="#38761d"><span style="white-space:pre">	</span>Options Indexes FollowSymLinks</font></div>
+<div><font color="#38761d"><span style="white-space:pre">	</span>AllowOverride None</font></div>
+<div><font color="#38761d"><span style="white-space:pre">	</span>Require all granted</font></div>
+<div><font color="#38761d">&lt;/Directory&gt;</font></div>
+<div>------------------------------</div>
+<div><br>
+</div>
+<div><span style="color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6;background-color:transparent">save the file&nbsp;</span></div>
+<div><br>
+</div>
+<div>
+<ul><li><span style="color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6;background-color:transparent">edit the files in</span><span style="background-color:transparent;color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6">&nbsp;/etc/apache2/sites-available/ and change the Document root</span></li></ul>
+</div>
+<div><br>
+</div>
+<div><font color="#b45f06">sudo leafpad /etc/apache2/sites-available/000-default.conf</font></div>
+<div><font color="#b45f06">sudo leafpad /etc/apache2/sites-available/default-ssl.conf</font></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>set DocumentRoot to /home/user/wherever-you-keep-your-website/</div>
+<div><br>
+</div>
+<div>save the file&nbsp;</div>
+<div><br>
+</div>
+<div><span style="color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6;background-color:transparent">restart apache</span></div>
+<div><br>
+</div>
+<div><font color="#b45f06">sudo service apache2 restart</font></div>
+<div><br>
+</div>
+<div>and note any errors that occur!</div>
+<div><br>
+</div>
+<div>
+<ul><li><span style="background-color:transparent;color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6">use "localhost" in a browser to open your Document root dir</span></li></ul>
+<div><br>
+</div>
+</div>
+<div><br>
+</div>
+<div><font size="5"><b>Mysql</b></font></div>
+<div><br>
+</div>
+<div>Some websites recomment installing LAMP - Linux apache mysql php - but this is a huge download and lots of disk space once installed.</div>
+<div><br>
+</div>
+<div>The above method works just fine for viewing php files.</div>
+<div><br>
+</div>
+<div>But if you need to set up a server you most likely will need mysql as well, like so...</div>
+<div><br>
+</div>
+<div><font color="#cc0000">sudo apt-get install mysql-server&nbsp;</font><span style="background-color:transparent"><font color="#cc0000">php-pear php5-mysql</font></span></div>
+<div><br>
+</div>
+<div>you will set upa mysql p/w during the install</div>
+<div><br>
+</div>
+<div>
+<div>then setup mysql by running:</div>
+<div><font color="#b45f06">mysql_secure_installation</font></div>
+<div><br>
+</div>
+<div>enter your p/w then answer Y to all (not to change p/w)</div>
+<div><br>
+</div>
+<div><font color="#b45f06">service apache2 restart</font></div>
+</div>
+
+</div>

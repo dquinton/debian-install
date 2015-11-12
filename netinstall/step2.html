@@ -1,0 +1,415 @@
+---
+layout: default
+description: Installing Debian with the Netinstall CD - Step 2 of 4 - by D Quinton
+title: Debian install - Step 2 
+id: net
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">ffmpeg with Kdenlive</a></li>
+                <li><a href="#2">More video editors</a></li>
+                <li><a href="#3">XnView Multi Platform</a></li>
+                <li><a href="#4">Libre Office</a></li>
+                <li><a href="#5">Google Earth</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">ffmpeg with Kdenlive</a><br>
+   <a href="#2">More video editors</a><br>
+   <a href="#3">XnView Multi Platform</a><br>
+   <a href="#4">Libre Office</a><br>
+   <a href="#5">Google Earth</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
+
+<div class="cont">
+
+<br>
+<h2 id="1" class="tag">Kdenlive with ffmpeg</h2>
+
+Kdenlive is KDE's non-linear video editor (hence its name.. KDE-n-li-v-e) that is both powerful and easy to use. It's also well supported online. <br>
+I give some tips on it on my page, <a href="../tutorial/04-working-with-hd-video.html">working with HD video</a>.
+<br><br><br>
+
+<h3>Basic install</h3>
+If you're not to concerned about getting the latest codecs, you can just use this install line (you could always build ffmpeg from source later -see Option 2 below).
+<br><br>
+Set up the multimedia repository first -see Step1 at the end. 
+<br><br>
+<form>
+<textarea name="T" id="install" rows="2" cols="80">
+sudo apt-get install ffmpeg x264 libmp3lame0 libquicktime2 kdenlive frei0r-plugins dvgrab recordmydesktop dvdauthor genisoimage</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+Note: with wheezy, kdenlive might complain that you need to install a higher version of MLT, so if that is the case, look below.
+<br><br>
+<br><br>
+<h3>Install with the latest video codecs</h3>
+<br>
+
+<span class="ht">Choice a.</span> <br>
+Download a tar.bz2 archive which includes Kdenlive, MLT, ffmpeg and allows kdenlive to be run stand-alone from any previous install of these modules on the system. <br> 
+<a href="http://kdenlive.org/download-development">http://kdenlive.org/download-development</a><br>
+(You must login first to see the download links!)
+<br><br>
+Note for Wheezy: The newer daily builds, labeled "ubuntu12.04" etc., need a newer version of libc6 installed than what's available in the repo, so it needs installing from testing...
+<br>
+add the testing repository first, <br>
+
+<form>
+<textarea name="T" id="file" rows="1" cols="80">
+deb http://http.debian.net/debian testing main</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+apt-get update, then...<br>
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get -t testing install libc6</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+Unpack the archive and move the resulting dir to ~/<br>
+cd to the dir and test it with ./start-kdenlive to run the start-up script
+<br><br>
+It's also wise to test out the daily-build vs the repository version and go with what feels most stable. 
+<br><br><br><br>
+ 
+<span class="ht">Choice b.</span> <br>
+
+use the build script to install the latest versions of ffmpeg, mlt rendering engine, x264 and Kdenlive into a directory without changing anything on the system.<br><br>
+
+<a href="http://www.mltframework.org/twiki/bin/view/MLT/BuildScripts">http://www.mltframework.org...</a>
+<br><br><br>
+
+migrate config files if you previously used Kdenlive
+<br>
+
+<form>
+<textarea name="T" id="cmd" rows="3" cols="80">
+cp ~/.kde/share/config/kdenliverc ~/kdenlive/.kde/share/config/
+cp ~/.kde/share/config/kdeglobals ~/kdenlive/.kde/share/config/
+cp ~/.kde/share/apps/kdenlive/kdenliveui.rc ~/kdenlive/share/apps/kdenlive/</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+But make sure the environmentals point to the bin files in the new kdenlive directory
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+leafpad ~/kdenlive/.kde/share/config/kdenliverc</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+<form>
+<textarea name="T" id="file" rows="6" cols="80">
+[env]
+..
+ffmpegpath[$e]=$HOME/kdenlive/bin/ffmpeg
+ffplaypath[$e]=$HOME/kdenlive/bin/ffplay
+mltpath[$e]=$HOME/kdenlive/share/mlt/profiles/
+rendererpath[$e]=$HOME/kdenlive/bin/melt</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+or, remove those lines from the file (if they point to /usr/bin/) and run the start-up script and kdenlive will add the lines with the local env.
+<br><br>
+edit the kdenlive .desktop file with
+<form>
+<textarea name="T" id="file" rows="1" cols="80">
+Exec=/home/your-user-name/kdenlive/start-kdenlive</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+<b>If you'd like to have the latest ffmpeg and MLT on your system...</b>
+<br><br>
+download the ffmpeg stable release <a href="http://ffmpeg.org/download.html#releases">download.html#releases</a> (e.g. 1.2 "Magic") or the snapshot posted up the page (might give problems)
+<br><br>
+next get the build dependencies:<br>
+
+<form>
+<textarea name="T" id="install" rows="7" cols="80">
+sudo apt-get update
+sudo apt-get install cmake build-essential yasm libqt4-dev kdelibs5-dev libsdl1.2-dev libsdl-image1.2-dev libxml2-dev libx264-dev libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libschroedinger-dev libmp3lame-dev libfaac-dev libfaad-dev libgsm1-dev libopencore-amrnb-dev libopencore-amrwb-dev libsamplerate0-dev libjack-dev libsox-dev ladspa-sdk swh-plugins libmad0-dev libpango1.0-dev</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+Then open a terminal in the ffmpeg dir, and run ./configure with the compilation flags (I omitted --enable-libdc1394) <a href="http://kdenlive.org/download-source#ffmpeg">http://kdenlive.org/...</a>
+<br><br>
+
+<form>
+<textarea name="T" id="cmd" rows="5" cols="80">
+./configure --prefix=/usr --enable-shared --enable-libmp3lame --enable-gpl --enable-libfaac --enable-libvorbis --enable-pthreads --enable-libfaac --enable-libxvid --enable-x11grab --enable-libgsm --enable-libx264 --enable-libtheora --enable-nonfree --disable-stripping --enable-avfilter --enable-libschroedinger --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-version3</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+followed by 
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+make -j3
+sudo make install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+download MLT from sourceforge <a href="http://sourceforge.net/projects/mlt/files/">mlt/files/</a><br>
+or follow this guide to pull from git <a href="http://kevin.deldycke.com/2010/11/latest-stable-kdenlive-development-version-mlt/">kevin.deldycke.com...</a>
+<br><br>
+get mlt build dependencies
+<br>
+<form>
+<textarea name="T" id="install" rows="3" cols="80">
+sudo apt-get install libavdevice-dev libswscale-dev libvorbis-dev libsox-dev libsamplerate-dev frei0r-plugins-dev libdv-dev libavformat-dev libquicktime-dev libxml2-dev libsdl-dev libsdl-image1.2-dev</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+if you previously had mlt installed, remove it with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo dpkg --remove --force-depends libmlt2 libmlt++3 libmlt-data melt</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+cd to the mlt directory and run:
+<br>
+<form>
+<textarea name="T" id="cmd" rows="4" cols="80">
+./configure --prefix=/usr --enable-gpl
+make clean
+make
+sudo make install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+Install KDE's system settings manager to enable changes to appearance in Kdenlive or any other KDE app.<br>
+
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install systemsettings</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><hr noshade="noshade">
+<br><br>
+
+<h2 id="2" class="tag">More video editors..</h2><br>
+Flowblade, another non-linear video editor, and it looks good <a href="http://code.google.com/p/flowblade/">http://code.google.com/p/flowblade/</a> 
+<br><br>
+Download the binary archive (.deb) and install it with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo dpkg -i flowblade</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+(hit Tab to complete package name)
+<br><br>
+then sort out dependencies with:
+<br>
+<form>
+<textarea name="T" id="install" rows="1" cols="30">
+sudo apt-get install -f</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+There's pitivi. .................
+<br><br>
+Also see here <a href="http://stray-notes.blogspot.com/2010/11/linux-video-editing.html">http://stray-notes.blogspot.com/...</a>
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="3" class="tag">XnView Multi Platform</h2>
+A very cool image processing program available as a .deb at the forum, <a href="http://newsgroup.xnview.com/viewforum.php?f=82">http://newsgroup.xnview.com/...</a>
+
+<br><br>
+See my <a href="../tutorial/03-image-processing.html">image processing</a> page for tips using XnView, setup and configuring appearance.
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="4" class="tag">Libre Office</h2>
+<br>
+This is the office suite to have if you need document productivity - its by far the best developed in the Open Source world. 
+<br><br>
+You need a Java Runtime Environment for running macros, such as openjdk:
+
+<br>
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install openjdk-7-jre</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>(version number changes here, it now has "7" in the name)
+<br><br>
+Then you can just apt-get install libreoffice (wheezy installs Libre Office 3.5, Jessie, )
+or better, download LibreOffice 4 from <a href="http://www.libreoffice.org/download/?nodetect">libreoffice.org/download/</a>
+<br><br>
+To remove an older version (because installing a newer version will leave the previous version in /opt/libreoffice4.x - all 557mb of it)
+
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get remove libreoffice*</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+
+extract from the downloaded tar file and cd to the dir and into the DEBS dir, and then: 
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo dpkg -i *.deb</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+If the install fails to make Menu entries you can get by that with a few links in your usr/share/apps dir...<br> just check the version number and, as root,
+<br>
+<form>
+<textarea name="T" id="cmd" rows="8" cols="100">
+cd /usr/share/applications/ 
+ln -s /opt/libreoffice4.4/share/xdg/base.desktop libreoffice4.4-base.desktop
+ln -s /opt/libreoffice4.4/share/xdg/calc.desktop libreoffice4.4-calc.desktop
+ln -s /opt/libreoffice4.4/share/xdg/draw.desktop libreoffice4.4-draw.desktop
+ln -s /opt/libreoffice4.4/share/xdg/impress.desktop libreoffice4.4-impress.desktop
+ln -s /opt/libreoffice4.4/share/xdg/math.desktop libreoffice4.4-math.desktop
+ln -s /opt/libreoffice4.4/share/xdg/startcenter.desktop libreoffice4.4-startcenter.desktop
+ln -s /opt/libreoffice4.4/share/xdg/writer.desktop libreoffice4.4-writer.desktop</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+Tip: to change the toolbar icons to small, and tango for example, go to Tools > Options > LibreOffice > View
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="5" class="tag">Google Earth</h2>
+
+Downlaod from <a href="http://www.google.com/intl/en_uk/earth/download/ge/agree.html">earth/download/...</a>
+<br><br>
+Enable multiarch if you run amd64 machine! 
+(From 7.0 Debian supports simultaneous running of i386 and amd64 binaries and G-earth is i386 library dependant)
+<br><br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo dpkg --add-architecture i386 && sudo apt-get update</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+cd to Downloads and install G-earth
+<br>
+<form>
+<textarea name="T" id="install" rows="1" cols="30">
+sudo dpkg -i googleearth*.deb</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+for i386, a dependency lsb-core is needed, for amd64 platform the package install ends with errors: 
+<br><br>
+googleearth depends on libfreeimage3 ... lsb-core ... ia32-libs-gtk 
+<br><br>
+Sort it out with:
+
+<form>
+<textarea name="T" id="install" rows="1" cols="30">
+sudo apt-get -f install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+The following NEW packages will be installed:
+  <huge heap of i386 packages>
+Need to get 56.9 MB of archives. After this operation, 171 MB of additional disk space will be used
+Enter y
+<br><br>
+In Debian Jessie, ia32-libs does not exist, and Google earth still depends on it (they say this has changed in sid), so if you hit this problem you can install a dummy i32-libs package from here <a href="http://forums.debian.net/viewtopic.php?f=10&t=111898">http://forums.debian.net/viewtopic.php?f=10&t=111898</a>
+<br><br>
+
+Note: after enabling another architecture, you may have to specify from then on which arch to retrieve and install packages from, like this
+<br><br>
+apt-get install -a amd64 <package>
+<br><br>
+or set the preference for your architecture with editing the apt.conf file
+<br><br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo leafpad /etc/apt/apt.conf</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+and add a line like this
+<br>
+<form>
+<textarea name="T" id="file" rows="1" cols="30">
+APT::Architecture="amd64";</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+save it and apt-get install will retrieve from amd64 packages
+<br><br>
+if you need to be done with i386, or any other arch:
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo dpkg --remove-architecture i386</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+<br>
+<b>Next page: </b><br><br>
+<h3><b><a href="step3.html">Step3</a></b> - media players, media rippers, desktop apps, ClamTK, rootkit hunter</h3>
+<br><br>
+</div>

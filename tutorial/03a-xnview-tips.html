@@ -1,0 +1,139 @@
+---
+layout: default
+description: Some tricks for XnviewMP - by D Quinton
+title: XnView Tips
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#3">Tips</a></li>
+                <li><a href="#4">Search Similar files tool</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#3">Tips</a><br>
+   <a href="#4">Search Similar files tool</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+
+<div class="cont">
+
+
+
+<h3 id="3" class="tag">Database</h3>
+
+<div>Thumbnail generation and IPTC data&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">import&nbsp;</span><span style="font-size:16px;line-height:1.6;background-color:transparent">etc is only made and added to the db as you load the images from each folder, so if you want to build your db in one go, select a folder in your list in Tree and then press the Show sub-folders on the Tool bar, and wait for the loading bar to reach 100% before moving to another folder.</span></div>
+<div><br>
+</div>
+<div>Better, go to Settings &gt; Catalogue<span style="font-size:16px;line-height:1.6;background-color:transparent">&nbsp;and use Add Folder, and let the contents be added to the db - bear in mind this may use up quite a lot of RAM, especially if you add a folder with 50k images or more - so keep an eye on it lest it slows your desktop to a crawl (if it does, Ctr-Alt-F2, login, killall XnView). &nbsp;</span></div>
+<div><br>
+</div>
+
+<h3>Edit XMP/IPTC data</h3>
+<div>you can select multiple (or single) images and edit the IPTC data with the right-click context menu, which is useful for wiping all keywords.</div>
+<div>Use the Categories pane to set keywords to multiple files (effects when clicking on the List again)</div>
+<div><br>
+</div>
+
+<h3>Grouping files</h3>
+<div>as there is currently no album feature, to group files for export or whatever:</div>
+<div>1st off add the "Select tagged files" and any rating stars you will use to the tool bar, or make shortcut keys, then,</div>
+<div>
+<ol><li>select with mouse</li>
+<li>hit Space to tag/untag</li>
+<li>when done hit "select tagged files"</li>
+<li>Ctrl-1 -- Ctrl-5 to apply star ratings</li>
+<li>untag all (or leave them tagged as closing the program will untag them if set to do that)</li>
+<li>move to next folder</li>
+</ol>
+
+</div>
+<div><br>
+</div>
+<h3>! Setting the save quality !</h3>
+
+
+<div>Make sure you test with some copies first to find out what % you need, so you don't overwrite originals losing image quality.</div>
+<div>This setting is in the <b>Batch Convert </b>dialogue from the Tools menu in Browser, or under <b>File menu &gt; Formats</b> in the Preview tab.</div>
+<div><br>
+</div>
+
+<h3>problems</h3>
+<div>can't filter folders by category (yet - even though "Global/Folder" has been added to the Match drop-down in the Categories Filter pane) -category shows images from the whole db.</div>
+<div><br>
+</div>
+<div>images removed or renamed with another programme will still be found in the Xnviewmp db (as file names) but the thumbnails will be blank in Category view</div>
+<div>solution: Settings &gt;Cache DB &gt;click on Optimize and OK</div>
+<div><br>
+</div>
+<div>images loaded in the Browser (added to catalogue) and moved to another folder, given ratings etc (had metadata written to xmp file) and moved back to original folder, the thumbs will not show the new rating star or color code, because the db sees them as they were in that folder to start with (without ratings).</div>
+<div>solution: select those thumbs and Edit &gt; Update catalogue from files or right click and Rebuild thumbnails - but I've had times it doesn't work, the thumbs remain with no ratings showing (but in the info pane, under XMP, you can see the ratings are there).</div>
+<div>solution 2: move the files to a new folder and they will be entered to the catalogue again in ne location, after that the thumbs will show correct rating etc.</div>
+<div><br>
+</div>
+<div>can't upload to Picasa Web Albums it appears, but there are some others like flickr</div>
+<div><br>
+</div>
+<div>cannot create a new folder in the left pane favorites&nbsp;tree (Favorites doesn't update if new folders are created or renamed - it only does on restart).</span></div>
+<div><br>
+</span></div>
+<div><br>
+</span></div>
+
+
+<h2 id="4" class="tag">Search Similar files tool</h2>
+<div>Find this on the Tools menu. &nbsp;You can load files to compare with another directory for similar file name, file data or picture content. &nbsp;When you have selected files and/or folders, hit OK and the tool searches. &nbsp;The results show up in a new window, and similar files/photos sit side-by-side. &nbsp;You can then copy/move/delete either one of them by buttons under the images above. &nbsp;It would be nice if you could select all and copy but you can't!</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b>Search for Originals on back-up media?</b></div>
+<div>I wanted to use the Search similar files tool for this but it was going to take too much time, searching and copying files one by one from the search result.</div>
+<div><br>
+</div>
+<div>So I got onto Stackoverflow and asked for help to make a script. &nbsp;This script will take a list of file names in a file, search for them on a specific location, copy the files found to another location and report any files that were not found, printing those filenames to another file. &nbsp;</div>
+<div>Here's how:</div>
+<div>
+<ul><li>Select your files in Xnviewmp that you want to find the Originals for and then copy their file names to clipboard (Edit &gt; Copy to Clipboard &gt; Selected file names)</span></li>
+<li><font color="#b45f06" style="font-size:16px;line-height:1.6">leafpad /</font><font color="#0b5394" style="font-size:16px;line-height:1.6">directory</font><font color="#b45f06" style="font-size:16px;line-height:1.6">/my pictures/copylist</font> paste that list into the file </span>and save it</span></li>
+<li>make the script</span><font color="#b45f06" style="font-size:16px;line-height:1.6"> leafpad ~/scripts/findcopypics&nbsp;</font>with this content</li></ul>
+</div>
+<div>
+<div><font color="#38761d">#!/bin/bash</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d">dir=somewhere/to/search/</font></div>
+<div><font color="#38761d">dest=somewhere/to/copy/to/</font></div>
+<div><font color="#38761d">toCopyList=</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/</font><font color="#0b5394" style="font-size:16px;line-height:1.6">directory</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/my pictures/copylist</font><span style="color:rgb(56,118,29);font-size:16px;line-height:1.6">&nbsp;</span></div>
+<div><font color="#38761d">notCopied=</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/</font><font color="#0b5394" style="font-size:16px;line-height:1.6">directory</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/my pictures/missed</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d">while read line; do</font></div>
+<div><font color="#38761d">&nbsp; &nbsp;find "$dir" -name "$line" -exec cp '{}' $dest \; -printf "%f\n" &nbsp; &nbsp;</font></div>
+<div><font color="#38761d">done &lt; "$toCopyList" &gt; cpList</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d">&nbsp;cat cpList "$toCopyList" | sort | uniq -c | sed -nr '/^ +1/s/^ +1 +(.*)/\1/p' \</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &gt; "$notCopied"</font></div>
+<div style="font-size:16px;line-height:1.6"><br>
+</div>
+</div>
+<div>
+<ul><li>save that file and make it executable <font color="#b45f06">chmod +x&nbsp;~/</font><span style="color:rgb(180,95,6)">scripts/findcopypics</span></li>
+<li>plug in the back-up media if it's external and run the script with<font color="#b45f06">&nbsp;sh&nbsp;~/</font><span style="color:rgb(180,95,6)">scripts/findcopypics</span></li>
+<li><font color="#0b5394">thanks to Navaneeth Krishnan for his help with the script</font></li></ul>
+<div><font color="#b45f06"><br>
+</font></div>
+<div><font color="#b45f06"><br>
+</font></div>
+</div>

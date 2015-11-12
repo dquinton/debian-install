@@ -1,0 +1,33 @@
+---
+layout: default
+description: How to repair a USB stick stuck as "read-only" - by D Quinton
+title: Format usb stick
+id: help
+---
+
+<div class="parent"><a href="../helps.html">Helps</a> ></div>
+
+<div class="cont">
+
+<font size="4"><b>Damaged file system causes USB stick to be mounted as read-only</b></font>
+<div><br>
+</div>
+<div>I find this pretty annoying with Debian, when a USB stick decides to go read-only after I've done one or two copy operations to it. &nbsp;Logging out or restarting didn't fix it, restarting Thunar didn't (as sometimes it has).</div>
+<div><br>
+</div>
+<div>So what's the reason for this? &nbsp;It can be a corrupted file system, I read, that causes the system to see it as an unsafe device, thus it is rendered un-writable. &nbsp;</div>
+<div>It <b>doesn't help</b> to pull out a USB drive without clicking on eject in Thunar -even if it appears that all the file transfers have finished.</div>
+<div><br>
+</div>
+<div>The fix? &nbsp;I did the following and it worked. &nbsp;But it will wipe off any files on the stick, so c<span style="font-size:16px;line-height:1.6">opy the files off the stick first if you need them!</span><span style="font-size:16px;line-height:1.6">&nbsp;(sdb1 is my usb partition) &nbsp;</span></div>
+<div><font color="#b45f06" style="font-size:16px;line-height:1.6">sudo umount /dev/</font><font color="#0b5394" style="font-size:16px;line-height:1.6">sdb1</font></div>
+<font color="#b45f06">sudo mkfs.vfat /dev/</font><font color="#0b5394">sdb1</font>
+<div>remove and re-insert it to test it -this repairs the M-DOS partition table (which can be done in Gparted too).</div>
+<div><br>
+</div>
+<div>fix a USB FAT file system&nbsp;<a href="http://jamesmcdonald.id.au/faqs/mine/Restoring%20Corrupted%20USB%20Drive%20Using%20GNULinux/Corrupted%20USB%20Key%20Restoration%20Under%20GNU_Linux%20(Ubuntu%207.04).html" rel="noreferrer">http://jamesmcdonald.id.au/...</a></div>
+<div>automating usb flash drive mounting&nbsp;<a href="http://www.monperrus.net/martin/automounting+usb+flash+drives+on+linux+with+udev+and+pmount" rel="noreferrer">http://www.monperrus.net/...</a></div>
+<div><br>
+</div>
+
+</div>

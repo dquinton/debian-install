@@ -1,0 +1,348 @@
+---
+layout: default
+description: Configure the bash prompt and set bash aliae, along with some tips on navigating directories - by D Quinton
+title: Bash prompt and aliases
+id: config
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">bash prompt colours</a></li>
+                <li><a href="#2">Bash aliases</a></li>
+                <li><a href="#3">Bash aliases for root</a></li>
+                <li><a href="#4">Bash numbered selection</a></li>
+                <li><a href="#5">navigating directories</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">bash prompt colours</a><br>
+   <a href="#2">Bash aliases</a><br>
+   <a href="#3">Bash aliases for root</a><br>
+   <a href="#4">Bash numbered selection</a><br>
+   <a href="#5">navigating directories</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../configure.html">Configure</a> ></div>
+
+<div class="cont">
+
+
+<h2 id="1" class="tag">Changing the bash prompt colours </h2>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+leafpad ~/.bashrc</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+find and uncomment the line: "<span style="color:#0F4F0B">force_color_prompt=yes</span>"
+<br><br>
+
+Here are my example colours - using light blue user and time, dk gray >, light gray working dir, and normal input text..
+edit the 'PS1' line to read:
+<form>
+<textarea name="T" id="file" rows="2" cols="80">
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u\[\033[0;35m\]>\[\033[01;34m\]\t\[\033[0;35m\]:\[\033[0;37m\]\w\[\033[01;34m\]\$\[\033[00m\] '</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+with a space at the end before the closing quote mark.
+<br><br>
+<a href="http://tldp.org/HOWTO/Bash-Prompt-HOWTO/">http://tldp.org/HOWTO/Bash-Prompt-HOWTO/</a>
+<br><br><br>
+
+<b>And for root user</b>, to set the prompt colours when you switch to root user (su).. <br>
+su to root, then open root's bashrc file,
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+leafpad ~/.bashrc</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(first I needed to copy everything from "force....." to the line "unset...." in my user .bashrc to the root .bashrc)
+<br><br>
+edit 'PS1' line (I use light green user and time, dk gray >, light gray working dir, cyan input)
+    
+<form><textarea name="T" id="file" rows="2" cols="80">
+PS1='${debian_chroot:+($debian_chroot)}\[\033[1;32m\]\u\[\033[1;30m\]>\[\033[1;32m\]\t\[\033[1;30m\]:\[\033[0;37m\]\w\[\033[0;36m\]\# '</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+<br><br>
+
+<h2 id="2" class="tag">Bash aliases</h2>
+With a bash alias we can issue shortcuts at the prompt that trigger commands.
+
+<b>Example</b>
+make a new file for aliases:
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+nano ~/.bash_aliases</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+add this and save, 
+<form><textarea name="T" id="file" rows="1" cols="30">
+alias e='exit'</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+then open a new terminal and type "e" and Enter - and the terminal closes.
+<br><br>
+look at the examples here <a href="http://www.cyberciti.biz/tips/bash-aliases-mac-centos-linux-unix.html">http://www.cyberciti.biz/...</a> and search for whatever you might need elsewhere.<br>
+you could glean many useful bash functions from here <a href="http://tldp.org/LDP/abs/html/sample-bashrc.html">http://tldp.org/LDP/abs/html/sample-bashrc.html</a>
+ <br><br>
+
+There are endless possibilities, but be careful not to take over a real command name with an alias, and try to make them memorable (my advice).
+<br><br>
+OK, here's my alias list, and the 1st one will print the .bash_aliases file contents to remind you of what you can use!
+<br><br>
+<form><textarea name="T" id="file" rows="70" cols="160">
+alias al='cat ~/.bash_aliases'            #prints your .bash_aliases file to terminal
+alias apt='grep apt ~/.bash_aliases'          #prints only the apt aliases of .bash_aliases
+alias dp='grep dpkg ~/.bash_aliases'        #prints only the dpkg aliases of .bash_aliases
+alias ht='htop'                                 #decent terminal task manager
+alias rr='ranger'                              #ranger, the very capable bash dir browser
+alias lf='leafpad'
+alias slf='sudo leafpad'
+alias ..='cd ..'
+###   cs set in bashrc =cd then ls
+alias cd2='cd `yad --title="Cd to" --file --directory --height=400 --width=500`'
+alias cs2='cs `yad --title="Cd to and list" --file --directory --height=400 --width=500`'      #cs is a function to cd to dir then list dir/files -see below
+alias h='history'
+alias e='exit'
+
+alias ls='ls --color=auto --group-directories-first'    #list dir/files horizontally
+                                                      #shows dir/file list with permissions, owner, file size, date modified
+alias ll='ls -lh --color=auto --group-directories-first'
+alias lt='ls -alhrt'                              #shows dir/file list sorted recently modified first
+alias la='ls -alh'                               #shows dir/file list including hidden
+alias l.='ls -d .* --color=auto'                  #shows only hidden files
+alias ll.='ls -lhd .* --color=auto'
+alias lr='ls -Rh'                                  #shows files recursively
+
+alias m10='ps auxf | sort -nr -k 4 | head -10'       #lists top ten memory-using processes 
+alias f10m='~/scripts/find10m'                           #scripts to list files over 10m or 100m
+alias f100m='~/scripts/find100m'
+
+alias a-u='sudo apt-get update'
+alias a-udif='sudo apt-get update -o Acquire::Pdiffs=true'
+alias a-i='sudo apt-get install'
+alias a-r='sudo apt-get remove'
+alias a-rp='sudo apt-get remove --purge'
+alias a-if='sudo apt-get -f install'
+alias at-i='sudo aptitude install'
+alias a-a='sudo apt-get autoremove'
+alias a-ud='sudo apt-get update && sudo apt-get upgrade'
+alias a-ug='sudo apt-get upgrade'
+alias a-du='sudo apt-get dist-upgrade'
+alias ap-du='sudo aptitude dist-upgrade'
+alias a-c='sudo apt-get autoclean'
+alias a-clean='sudo apt-get clean'
+alias a-s='apt-cache search'        #enter name/part of name of package 2 c available versions
+alias ahi='apt-history install'       #need apt-history
+alias ahu='apt-history upgrade'
+alias ahr='apt-history remove'
+alias dpk='sudo dpkg -i'            #install deb
+alias dpkr='sudo dpkg -r'            #uninstall deb
+
+alias a-s='apt-cache search'   #enter name/part of name of package 2 c available pkgs
+alias a-v='apt-cache showpkg'   #enter name of package 2 c available versions
+alias a-d='apt-cache depends'   #enter name of package 2 list dependencies
+alias dpv='dpkg -s' 	               #enter pkg name to c version
+alias dpq='dpkg-query -l'           #same
+alias dpc='dpkg -S'	                 #enter command to c what package belongs
+alias dpl='dpkg --list | grep'    #enter part of pkg name to list all installed 
+
+alias power0='sudo shutdown -h now'
+alias boot0='sudo reboot'
+
+alias mnt='sudo mount'
+alias umnt='sudo umount'
+alias frac='gksu refractasnapshot-gui'
+
+alias chownme='sudo chown -R $USER'      #type file or dir after
+alias addme='sudo adduser $USER'          #type group name after
+alias addgrp='sudo groupadd'                #type group name after
+
+alias bkp-s='sudo sh ~/scripts/bkpsys'     #these two scripts are tar backups found on my system backup page
+alias bkp-h='sh ~/scripts/bkphome'
+alias frac='sudo refractasnapshot'</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+find10m script line
+<form><textarea name="T" id="file" rows="1" cols="120">
+find . -type f -size +10000k -exec ls -lh {} \; | awk '{ print $6$7" "$8" "$9 $10$11$12 ": " $5 }'</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+find100m script line 
+<form><textarea name="T" id="file" rows="1" cols="120">
+find . -type f -size +100000k -exec ls -lh {} \; | awk '{ print $6$7" "$8" "$9 $10$11$12 ": " $5 }'</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+<h3>Bash cd to dir and list files</h3>
+add this to your .bashrc file to make "cs" cd to a dir and list all files there
+<form><textarea name="T" id="file" rows="3" cols="50">
+function cs {
+	builtin cd "$@" && ls -F
+}</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+<br><br>
+
+<h2 id="3" class="tag">Bash aliases for root user</h2>
+You may want to make a simpler bash alias file and save it in /root so that when you su to root in a terminal, you can use certain aliases, like e for exit, which is quite handy.  You'll need to sudo cp the file to /root or open Thunar as root user (but be careful).  You'll have to edit /root/.bashrc again and add the bash_aliases to it so it will look up the file, i.e
+
+<form><textarea name="T" id="file" rows="3" cols="50">
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+the ~/ will not point to you home dir, but it will point to /root as it is opened by root user.<br>
+plus you can add the "function cs " code above.
+
+<br>
+<br><br>
+
+<h2 id="4" class="tag">Bash numbered selection</h2>
+And here's a nice way to open config files, using a number selection<br>
+add this to .bash_aliases:
+<form><textarea name="T" id="file" rows="1" cols="50">
+alias b1='sh ~/scripts/bashfileoption'</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+which calls this script:
+<form><textarea name="T" id="file" rows="32" cols="100">
+#!/bin/bash
+#this part will display in the terminal, its your options when you hit "b1" and enter
+echo "Select a file to open  
+	1) /etc/apt/sources.list
+	2) /etc/fstab 
+	3) /etc/lightdm/lightdm.conf 
+	4) ~/.config/lxsession/LXDE/autostart
+	5) ~/.config/openbox/lxde-rc.xml
+        6) ~/.config/openbox/menu.xml
+        7) ~/.config/openbox/menu-utility.xml
+
+	30) ~/.bashrc
+	31) ~/.bash_aliases
+	32) ~/scripts/bashfileoption
+	33) ~/scripts/bashcommands
+	
+#this part contains the commands that are run by each option
+read n
+case $n in
+    1) gksu leafpad /etc/apt/sources.list;;
+    2) gksu leafpad /etc/fstab;;
+    3) gksu leafpad /etc/lightdm/lightdm.conf;;
+    4) nano ~/.config/lxsession/LXDE/autostart &;;
+    5) leafpad ~/.config/openbox/lxde-rc.xml &;;
+    6) leafpad ~/.config/openbox/menu.xml &;;
+    7) leafpad ~/.config/openbox/menu-utility.xml &;;
+    30) leafpad ~/.bashrc &;;
+    31) leafpad ~/.bash_aliases &;;
+    32) leafpad ~/scripts/bashfileoption &;;
+    33) leafpad ~/scripts/bashcommands &;;    
+    *) invalid option;;
+esac</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+With plain OB, you need ~/.config/openbox/autostart and ~/.config/openbox/rc.xml
+
+<br><br>
+Note: you use &;; at the end of each command line so that the bash terminal does not wait for you to close the file before giving the prompt back, i.e. it opens the file and the process is done.  Without that the process is still going while file is open -which is not a bad idea for system files opened with gksu.
+<br><br>
+
+Actually you can do any process you can think of with other scripts like this.
+<br><br>
+So how about one for common bash commands...
+<form><textarea name="T" id="file" rows="17" cols="80">
+#!/bin/bash
+echo "Select a command
+	1) sudo fdisk -l
+	2) sudo blkid
+	3)
+	4)
+	5) "
+
+read n
+case $n in
+    1) sudo fdisk -l;;
+    2) sudo blkid;;
+    3) ;;
+    4) ;;
+    5) ;;
+    *) invalid option;;
+esac</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+add to bash_aliases something like,
+<form><textarea name="T" id="file" rows="1" cols="80">
+alias b2='sh ~/scripts/bashcommands'</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+<br><br>
+
+<h2 id="5" class="tag">Easier navigating directories</h2>
+Tired of using cd coupled with tab auto-completion of file names? Is there a way to display a directory's contents and then select a sub-dir or file to navigate to, using keys?
+<br><br>
+1. You can use zenity or yad, which is very adaptable, e.g.
+<form>
+<textarea name="T" id="file" rows="2" cols="80">
+alias cdz='cd `zenity --file-selection --directory`'
+alias csz='cs `zenity --file-selection --directory`' </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<form>
+<textarea name="T" id="file" rows="2" cols="80">
+alias cdz='cd `yad --file --directory --height=400 --width=500`'
+alias csz='cs `yad --file --directory --height=400 --width=500`'</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+2. You can use <b>Ranger</b>, a fully functioning x-terminal based file browser/manager which uses simple cursor keys to travel down and up the dir tree, some native commands to yank and paste files and so forth, plus key mapping to any bash command you like, inline preview of images, pdf files, and archive contents, details of video and audio files and lots more... see my <a href="ranger.html">ranger page</a>.
+
+
+<br><br><br>
+<b>Next page: </b><h3><b><a href="xterm.html">Xterm</a> - configure the x-tools</h3>
+<br><br>
+</div>

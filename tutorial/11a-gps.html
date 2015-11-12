@@ -1,0 +1,133 @@
+---
+layout: default
+description: Geo data collating with Viking and map-making with QGIS - by D Quinton
+title: Geo data
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Viking</a></li>
+                <li><a href="#2">QGIS  </a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Viking</a><br>
+   <a href="#2"> QGIS</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+<h2 id="1" class="tag">Viking</h2>
+
+
+<h3>Use Viking to import data from a GPS unit:</h3>
+Only some Garmin units can transfer through USB to viking (see the list <a href="http://www.gpsbabel.org/htmldoc-1.5.0/fmt_garmin.html">here</a> - works using a Garmin 60csx, but not a 62s)
+<br>
+<div class="bullet"><ul><li>In Viking, go through File > Acquire > From GPS</li>
+<li>/dev/ttyUSB0 will be shown as the serial port </li>
+<li>select tracks and/or waypoints and hit OK and the data will import to the program</li></ul></div>
+<br><br>
+
+For a Garmin 62s (and many others on the list) hook up the device to a USB port and read the gpx and waypoint files through a file browser, search in the Garmin/gpx and Garmin/gpx/archived dir's.
+<br><br>
+Viking supports layers including map backgrounds, colour-coding of tracks, waypoint symbols, and a lot of track and waypoints editing tools.  
+You can also geotag photos by correlating them against a track that was made at the time of shooting photos.  Your camera's clock should first be synced to the gps unit's clock, to the second - but, just incase it wasn't, there is an offset option so that if the camera's clock was different to the GPS unit's clock at the time of shooting, Viking will add/subtract so many seconds to/from the pictures's timestamps (without altering the image timestamp data), so that the pics are correlated to the right points on the track.
+<br><br>
+Also, you can write geo-coordinate data to multiple photos from any waypoint.  Geotagged photos can be imported to the map too.
+<br><br>
+What's limited is the ability to print decent maps as only the screen is sent to the print dialogue, which makes it impossible to print large scale of areas off the screen.<br>
+Other limitations are lack of drawing or labeling tools, and that waypoint titles can get crowded and overlapped.  But then, this is purely a data compiler, not so much a map production suite (aka GIS).
+
+
+<br><br><br><br>
+
+
+<h2 id="2" class="tag">QGIS</h2>
+
+Once you have collated your GPS data and tidied up tracks, renumbered the points etc, its time to make it presentable, with labels that don't overlap, area shading, and quality PNG detail for printing.
+<br><br>
+What we need is Geo Info System software, and for that we have QGIS (Quantum GIS).
+ <br><br>
+<form><textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install qgis </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+Doumentation <a href="http://docs.qgis.org/2.0/en/docs/index.html">http://docs.qgis.org/2.0/en/docs/index.html</a>
+<br><br>
+to import geo data from e.g. Viking, first export the layers from Viking as GPX files, then in qgis,
+
+<div class="bullet"><ul><li> either open the GPS import tool, Vector menu > GPS > <b>GPS Tools</b></li>
+
+<li>or click on <b>Vector layer</b> button at left, select file, Open, select which attributes to import, OK</li></ul></div>
+
+<br><br>
+With the second way, you can import track waypoints, which will make it possible to alter the track (how?).<br>
+However, it imports without any useful name, so you need to rename the layer, with is a simple righ-click<br>
+You also may need to set the track colour in the layer properties in order for it to become visible<br>
+<br><br>
+To update the geo data in the layer after changes were made to the source gpx file by an external progam, e.g. updates were made in Viking and it was re-exported... click on the QGIS <b>Refresh button</b>!
+<br><br><br>
+
+<h3>Waypoint labels</h3> (or any feature labels) - double click on the layer, Labels > check "Label this layer.." then select "name" on drop-down list, OK - but you could select another field, as in altitude, etc.
+<br><br>
+<h3>Annotation -labels</h3>  
+install the plugin "<b>Easy custom labeling</b>" from Plugins menu > Manage and Install<br>
+and also "<b>Memory Layer Saver</b>" plugin so that your labels will be saved in the project
+<br><br>
+
+<div class="bullet"><ul><li>select a layer</li>
+<li>click on the "Easy" button to genrate a layer for labels - then choose what label field to use -select name</li>
+<li>all waypoint labels get redrawn! (then you don't need to draw them with layer properties)</li>
+<li>click click the move button, click on and drag a label</li></ul></div>
+
+<br><br>
+Add Lat-Lon grid: View menu > Decorations > Grid - set "Interval X" and "Y" to 0.05, check "annotations"<br>
+Add scale bar : View menu > Decorations > Scale<br>
+(note that these will not be present in the print window - need to make others there)
+
+<br><br><br>
+<h3>Calculate an area</h3> - the polygonize algorithm requires shapely module
+
+<form><textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install python-shapely </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+select the layer to work with, then open the Toolbox with right-click on the tool bar > Toolbox<br>
+then navigate to: QGIS Geoalgorithms > Vector geometry tools > polygonize
+<br><br>
+I didn't succeed with this yet, as my lines were either broken, or needed specitically two ends, not multiple.  <br>
+You can also run error checking with Vector geometry tools > <b>Check validity</b> to see where there are faults in the lines, e.g. loops or crossing.
+<br><br>
+Or, Vector menu > Geometry tools > Liner to polygons (but this is not area)
+
+<br><br><br>
+
+<h3>Printing</h3>
+ Toolbar > New Print Composer, name it, OK.. 
+ 
+<div class="bullet"><ul><li>set the paper size first, A3 if you need it</li>
+<li>click on "Add new map" buttin then drag a rectangle over the tile.</li>
+<li>click "Move item content" button, and drag map to center, zoom once with scroll button</li>
+<li>Item properties tab to right > Main properties ..set best scale in </li>
+<li>Item properties > Grid ..Click the Add + button, set X,Y intervals to 0.05 or whatever, check "Draw coordinates" </li>
+<li>scale bar - find the button on left toolbar - you need to play around with the "map units per bar unit" - I set it to 0.01, the units to meters and label "km"</li>
+<li>make a title with "Add new label" (text box)</li>
+<li>Legend - add with the button to left, can set auto update or manual if you want to remove some layers from it</ul></div>
+
+
+
+
+
+</div>

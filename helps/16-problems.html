@@ -1,0 +1,167 @@
+---
+layout: default
+description: Some problems in Linux and the fixes - by D Quinton
+title: Problems
+id: help
+---
+
+<div class="parent"><a href="../helps.html">Helps</a> ></div>
+
+<div class="cont">
+
+<font size="3">1.<b><font color="#741b47">&nbsp;</font></b></font><span style="font-size:medium"><span style="font-weight:bold;"><font color="#0b5394">Network Manager applet becomes invisible</font></span><b style="color:rgb(116,27,71)">&nbsp;</b>in the notification area&nbsp;on the panel? Go to panel preferences and edit Notification area, check that icon size =16px as below that the nm-applet icon vanishes! This is only one solution.&nbsp;</span>
+<div><font size="3">terminal:&nbsp;<font color="#b45f06">nm-applet</font></font></div>
+<div><font size="3">shows&nbsp;GdkPixbuf problem?</font></div>
+<div><span style="background-color:rgb(207,226,243);line-height:27px;font-size:medium">CHECK that the panel size &gt;18px -this is the element I completely forgot to adjust for ages. &nbsp;I had it the smallest size possible.</span></div>
+<div><font color="#0b5394" size="3"><span style="line-height:27px;background-color:rgb(207,226,243)">Adjusting to 18px the applet reappeared!!!!!!</span></font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">2. <font color="#0b5394"><b><font style="">Alsa sound is always muted</font></b> </font>(speakers) on start-up and needs unmuting in mixer</font></div>
+<div><font size="3">set the mixer volume in your profile with&nbsp;<br>
+</font><span style="color:rgb(180,95,6);font-size:medium">sudo leafpad /etc/rc.local</span></div>
+<div><span style="font-size:medium">add these lines before "<font color="#38761d">exit 0"</font></span></div>
+<font color="#38761d">amixer -q set Speaker 100%&nbsp;</font>
+<div><font color="#38761d">amixer -q set Headphone 100%&nbsp;</font></div>
+<div><font color="#38761d">amixer -q set Master 50%</font></div>
+<div><span style="font-size:medium;line-height:27px">==========</span><font size="3">Did not solve the issue!</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">try this<font color="#741b47">&nbsp;</font><a href="http://ubuntuforums.org/showthread.php?t=764576" rel="noreferrer">ubuntuforums.org...</a></font></div>
+<div><font color="#cc0000" size="3">sudo apt-get install alsa-utils</font></div>
+<div><font size="3">set the speaker and master volume how you'd like it to be at start-up then</font></div>
+<div><font color="#b45f06" size="3">sudo alsactl store</font></div>
+<div><font size="3">get the stored values used with every boot by adding to the file /etc/rc.local, above <font color="#38761d">exit 0</font>, the line</font></div>
+<div><font color="#38761d" size="3">alsactl restore</font></div>
+<div><font size="3">==========Problem solved!</font></div>
+<div><font color="#741b47"><br>
+</font></div>
+<div><font size="3">3.&nbsp;</font><b style="line-height:27px;font-size:medium"><font color="#0b5394" style="">Forgot the root password!</font></b><span style="font-size:medium"><font color="#0b5394">&nbsp;</font> duh!</span></div>
+<div><span style="font-size:medium">the easiest way to rectify this situation is to boot and get the grub menu up (press escape if its not set to show up)</span></div>
+<div><span style="font-size:medium">highlight your Linux entry and&nbsp;</span><span style="font-size:medium;line-height:27px">press e</span></div>
+<div><span style="font-size:medium">on the line with your Linux kernel version, add the word <font color="#0b5394">single</font></span></div>
+<div><span style="font-size:medium">boot from there -might be F10</span></div>
+<div><span style="font-size:medium">you boot into a root command line</span></div>
+<div><span style="font-size:medium">type <font color="#0b5394">passwd</font> and Enter</span></div>
+<div><span style="font-size:medium">enter your new password</span></div>
+<div><span style="font-size:medium">finally <font color="#0b5394">reboot</font></span></div>
+<div><span style="font-size:medium"><font color="#0b5394"><br>
+</font></span></div>
+<div><span style="font-size:medium">4. <b><font color="#0b5394" style="">Forgot the User password</font></b>&nbsp;</span></div>
+<div><span style="font-size:medium"><font color="#b45f06">su</font></span></div>
+<div><span style="font-size:medium"><font color="#b45f06">passwd &lt;user&gt;</font></span></div>
+<div><span style="font-size:medium">enter new password twice to reset it</span></div>
+<div><span style="font-size:medium"><br>
+</span></div>
+<div><span style="font-size:medium">5.<font color="#0b5394"><b style=""> No read/write access to a Linux partition</b></font> (ext3/ext4)</span></div>
+<div><span style="font-size:medium">fstab already has UUID= &lt;mount&gt; &lt;type&gt; defaults [or users,exec] 0 2</span></div>
+<div><font color="#b45f06" style="line-height:25px;font-size:medium">sudo chown -R &lt;user&gt; /media/FILES </font><span style="line-height:25px;font-size:medium">(where it's mounted)</span></div>
+<div><font size="3"><span style="line-height:24px"><br>
+</span></font></div>
+<div><span style="line-height:27px;font-size:medium">6.</span><font color="#0b5394" style="line-height:27px;font-size:medium"><b style="">&nbsp;No permissions on an NTFS partition for new user</b></font></div>
+<div><span style="line-height:25px;font-size:medium">find the user's uid and gid with:</span></div>
+<div><font color="#b45f06" size="3"><span style="line-height:24px">sudo id -u &lt;user&gt;</span></font></div>
+<div><font color="#b45f06" size="3"><span style="line-height:24px">sudo id -g &lt;user&gt;</span></font></div>
+<div><font size="3"><span style="line-height:24px">changing the uid is quite a task&nbsp;</span><a href="http://www.ibm.com/developerworks/aix/library/au-satuidgid/" rel="noreferrer">au-satuidgid/</a></font></div>
+<div><font size="3">so we can just edit fstab where on the NTFS partiton line we might have uid=1000, so we alter this uid to our user's uid.</font></div>
+<div><font size="3">or we change it to "users".</font></div>
+<div><font size="3"><span style="line-height:24px"><br>
+</span></font></div>
+<div><span style="line-height:27px;font-size:medium">7.</span><font color="#0b5394" style="line-height:27px;font-size:medium"><b style="">&nbsp;K3b can't detect the executables cdrecord, cdrdao and growisofs of the new user</b></font></div>
+<div>
+<ol><li><span style="font-size:medium">cdrecord is done by wodim, so give it permissiond of user with&nbsp;</span><font color="#b45f06" style="font-size:medium">sudo chown &lt;user&gt;:&lt;user&gt;&nbsp;/usr/bin/wodim</font></li>
+<li><font size="3"><span style="line-height:27px">same for /usr/bin/cdrdao and&nbsp;</span></font><span style="line-height:26px;font-size:medium">/usr/bin/growisofs</span></li>
+</ol>
+</div>
+<div>8.<b style="color:rgb(11,83,148);line-height:26px;font-size:medium;">&nbsp;CUPS returns "Request entity too large" error when entering an admin page (add printer etc)</b></div>
+http://localhost:631/admin pages can't be reached and the error log shows "unable to create directory /var/spool/cups/tmp"
+<div>so the spool directory likely needs creating!</div>
+<div>
+<div><font color="#b45f06">sudo mkdir /var/spool/cups</font></div>
+<div><font color="#b45f06">sudo mkdir /var/spool/cups/tmp&nbsp;</font></div>
+<div>if those are present already then they might need to belong to the lp group</div>
+<div><font color="#b45f06">sudo chown -R root:lp /var/spool/cups</font></div>
+<div>and your user needs to be added to the lp/lpadmin group</div>
+<div>
+<div><font color="#b45f06">sudo adduser &lt;user&gt; lp</font></div>
+<div><font color="#b45f06">sudo adduser &lt;user&gt; lpadmin</font></div>
+</div>
+<div>the other error that will occur if your user is not added to the lp/lpadmin group is that logging into the admin page with your user name will return a failed&nbsp;unauthorized&nbsp;page.</div>
+<div><br>
+</div>
+<div>9.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;Sound Juicer can't read a CD</b></div>
+<div>An error message pops up saying: <span style="background-color:rgb(204,204,204)">"Sound Juicer could not read the track listing on this CD.&nbsp;The specified location is not supported."</span></div>
+I solved this by running:</div>
+<div><font color="#cc0000">sudo apt-get install gvfs-backends</font>
+<div><font color="#0b5394" size="3"><span style="line-height:24px"><b><br>
+</b></span></font></div>
+</div>
+<div>10.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;A KDE app reports that Trash is full when trying to delete a file (and Trash is not full)</b></div>
+<font color="#b45f06">leafpad ~/,local.share/Trash/metadata</font><br>
+edit the line "Size=nnnnnnnnnnnnn"<br>
+to "Size=0"
+<div><br>
+</div>
+<div>11.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;gksu saves root password to keyring</b></div>
+<div>I just found this happening recently. &nbsp;When I launch any app using gksu it pops up without need for root password and a notice also pops up,&nbsp;<b>Granted permissions without asking for password.</b></div>
+<div>I'm not sure if it's since I added "gksu" launched apps onto the Openbox menu or not. &nbsp;To eradicate this insecure behaviour, I edit the file&nbsp;<font color="#0b5394">~/.gconf/apps/gksu/%gconf.xml</font></div>
+<div>so that it reads</div>
+<div><font color="#38761d">&lt;entry name="save-to-keyring" mtime="1368699346" type="bool" value="<b>false</b>"/&gt;</font></div>
+<div>then restart the session (logout/login)</div>
+<div><br>
+</div>
+<div>12.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;File system is inaccessible with error:</b><span style=""><b style="font-size:medium;color:rgb(11,83,148);line-height:26px">&nbsp;</b><font color="#0b5394" size="3"><span style="line-height:25.98958396911621px"><b>Transport endpoint is not connected.</b></span></font></span><b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;</b></div>
+<div>This error can possibly come up for lots of reasons. &nbsp;A disk partition becomes inaccessible while an app is reading/writing to it. &nbsp;In my case it seems to be ntfs-3g dropping the fs. &nbsp;I found how to remedy it (but not fix it for good) with umount and mount operations. &nbsp;The mount point had disappeared too.</div>
+<div>
+<div><font color="#b45f06">sudo fdisk -l</font></div>
+<div>
+<div><font color="#b45f06">sudo umount /dev/sda2</font></div>
+</div>
+<div>
+<div><font color="#b45f06">sudo mkdir /media/FILES</font></div>
+<div><font color="#b45f06">sudo mount /dev/sda2 /media/FILES</font></div>
+</div>
+<div>Apparently it is something to do with package fuse. &nbsp;Hopefully this will be updated. &nbsp;Otherwise download latest here&nbsp;<a href="http://sourceforge.net/projects/fuse/files/fuse-2.X/">http://sourceforge.net/...</a></div>
+</div>
+<div><br>
+</div>
+<div>13.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;Can't use checkinstall - "/bin/mkdir: cannot create directory"</b></div>
+<div>
+<div><font color="#b45f06">sudo leafpad /etc/checkinstallrc</font></div>
+</div>
+<div>search Trans and edit the line to read:</div>
+<div><font color="#38761d">TRANSLATE=0</font></div>
+<div><br>
+</div>
+<br>
+14.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;Apt list gets locked - exiting terminal while apt was running!</b><br>
+remove the lock file<font color="#b45f06"><br>
+</font>
+<div><font color="#b45f06">sudo rm -f /var/lib/apt/lists/lock</font>
+<div>then retry apt<br>
+&nbsp; 
+<div>15.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;Tumblerd process eats up the system memory as it creates and holds thumbnail data as video is encoded</b></div>
+</div>
+</div>
+<div>stop video thumbnailing by renaming the video thumbnailer module in <font color="#0b5394">/usr/lib/x86_64-linux-gnu/</font>   like so:<font face="Arial, Verdana, sans-serif"><br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<font color="#b45f06">&nbsp;cd&nbsp;/usr/lib/x86_64-linux-gnu/tumbler-1/plugins/<br>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; sudo mv&nbsp;tumbler-gst-thumbnailer.so&nbsp;tumbler-gst-thumbnailer.so.bak&nbsp;</font></font></div>
+that's just my work-around for the moment!  No more video thumbnails with that remedy though.
+<div><font face="Arial, Verdana, sans-serif"><font color="#b45f06"><br>
+</font></font></div>
+<div>15.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;Error using make -&nbsp;</b><font color="#0b5394" size="3"><span style="line-height:25.98958396911621px;"><b>Package libconfig was not found in the pkg-config search path.</b></span></font></div>
+<div><font color="#b45f06" face="Arial, Verdana, sans-serif">echo $PKG_CONFIG_PATH</font></div>
+if this returns&nbsp;empty&nbsp;or something other than /usr/lib/pkgconfig, then it may have been reset earlier on.
+<div>set it to default with&nbsp;</div>
+<div><font color="#b45f06">export $PKG_CONFIG_PATH /usr/lib/pkgconfig</font><br>
+<div>might need to install libconfig<br>
+<div><font color="#cc0000" face="Arial, Verdana, sans-serif">sudo apt-get install libconfig-dev libconfig8-dev libconfig9 libdrm-dev</font></div>
+</div>
+</div>
+<div><font color="#cc0000" face="Arial, Verdana, sans-serif"><br>
+</font></div>
+<div>16.<b style=""><font color="#0b5394" size="3"><span style="line-height:26px">&nbsp;Error "</span><span style="line-height:25.98958396911621px">unprivileged user cannot mount ntfs block devices"</span><span style="line-height:26px">&nbsp;</span></font></b><br>
+can't mount an inserted USB drive and get above error message...</div>
+<div>there's bound to be a /dev/sdb1 entry in your /etc/fstab file</div>
+<div>have a look and if it's there remove that line and save the file, and that's all it is.</div>
+
+</div>

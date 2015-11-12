@@ -1,0 +1,342 @@
+---
+layout: default
+description: My comparison of dual-pane tile browsers for Linux - by D Quinton
+title: Dual pane browsers
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">X file explorer</a></li>
+                <li><a href="#2">Sunflower </a></li>
+                <li><a href="#3">Midnight Commander </a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">X file explorer</a><br>
+   <a href="#2">Sunflower  </a><br>
+   <a href="#3">Midnight Commander </a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+<div><font size="3"><b><span style="background-color:rgb(204,204,204)">As a note, I don't use any of the programmes listed below anymore! &nbsp;I guess I grew out of them. &nbsp;For me it's ranger for file browsing and even opening media, with its inline preview of images, and opening them with feh, while videos open in mplayer,</span></b></font><b style="font-size:medium;line-height:1.6;background-color:rgb(204,204,204)">&nbsp;it's unbeatable.</b></div>
+<br><br>
+
+<h2 id="1" class="tag">First up it's X file explorer</h2>
+
+
+<div><font size="3"><span style="line-height:27px">Xfe is light-weight and opens up fast - that in itself is a good reason to migrate to it from dolphin, if you are a&nbsp;</span>dual</span><span style="line-height:27px">-panel file manger person.</span></font></div>
+<div><font size="3"><br>
+</span></font></div>
+<div><span style="line-height:27px;font-size:medium">It has many good features but also lacks some common to the kde file managers or nautilus.</span></div>
+<div>
+<ul><li><font size="3">dual panel</span></font></li>
+<li><font size="3">button-style location bar as well as editable location</span></font></li>
+<li><font size="3">fully&nbsp;</span><span style="line-height:25px">configurable</span>&nbsp;colours and fonts (xf write has configuration of its own) -but alpha has no effect.</span></font></li>
+<li><font size="3">confirmation dialogues with directory location</span></li>
+<li>full archiving capabilities (bar .ar and .cbz)</span></li></ul></font>
+</div>
+
+<div style="display:block;margin-right:auto;margin-left:auto;text-align:center"><a href="../zimages/xfe.jpg"  imageanchor="1"><img border="0" height="500" src="../zimages/xfe.jpg" width="800"></a></div>
+<br>
+
+<div><br>
+
+
+<div><span style="line-height:27px;font-size:medium">
+<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-top-color:rgb(136,136,136);border-right-color:rgb(136,136,136);border-bottom-color:rgb(136,136,136);border-left-color:rgb(136,136,136);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px">
+<tbody>
+<tr>
+<td style="width:319px;height:26px">&nbsp;What's lacking</td>
+<td style="width:658px;height:26px">&nbsp;Work-around</td>
+</tr>
+<tr>
+<td style="width:319px;height:26px">&nbsp;No "Places" or shortcuts on the left&nbsp;panel</td>
+<td style="width:658px;height:26px">&nbsp;Create a dir with symlinks in root.&nbsp;<br>
+1. RC on / in folder tree &gt; Panel &gt; New Folder, start xfe as root on prompt<br>
+2. give the new dir the name "A sym"<br>
+3. navigate to "A sym" and add symlinks with RC, <br>
+<span>&nbsp;&nbsp; &nbsp;</span>number them or make certain ones last by naming with x.. or z..<br>
+This becomes your short-cut list. "A sym" will always be in the location buttons over a panel.</td>
+</tr>
+<tr>
+<td>&nbsp;Difficult to navigate to removable media (through /media) because of not having "Places"</td>
+<td><span style="line-height:24px">&nbsp;in home add symlinks to /media to access removable drives easier, and partition drives.</span><br style="line-height:23px">
+<div style="line-height:24px">really need a button dedicated to each removable drive at top</div>
+</td>
+</tr>
+<tr>
+<td style="width:319px;height:26px">
+<div style="line-height:24px"><br>
+</div>
+&nbsp;Bookmarks can't be removed individually, rearranged, or shown in the left panel</td>
+<td style="width:658px;height:26px">&nbsp;Do the above for navigation shortcuts.</td>
+</tr>
+<tr>
+<td style="width:319px;height:26px">&nbsp;Can't expand dir's in a panel</td>
+<td style="width:658px;height:26px">&nbsp;But when moving, copying files, drag and hold over a dir it will open, copy/move/cancel dialogue appears, and the dir returns up-level after the action completed.</td>
+</tr>
+<tr>
+<td style="width:319px;height:26px">&nbsp;No "+" selection markers by files/dir's like with dolphin</td>
+<td style="width:658px;height:26px">&nbsp;CTRL-click on files.</td>
+</tr>
+<tr>
+<td>&nbsp;Can't configure tool bars&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;No dir/file search&nbsp;</td>
+<td>&nbsp;Need to use catfish</td>
+</tr>
+<tr>
+<td>&nbsp;copy progress shows each file moving, does not show a total eg total files size, percentage copied/moved, est time left.</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;can't remove or add columns</td>
+<td>&nbsp;drag a column to cover over an unneeded one</td>
+</tr>
+<tr>
+<td>&nbsp;opening a file the "open with" dialogue does not give a prog list!</td>
+<td>&nbsp;have to enter the program name (launch command)</td>
+</tr>
+<tr>
+<td>&nbsp;no paste into dir option&nbsp;</td>
+<td>&nbsp;select the files to copy/move, F5 = copy to, F6 = move to (it's automatically set to the the opposite panel's directory location)</td>
+</tr>
+<tr>
+<td>&nbsp;file selection in panel is lost when switching panel</td>
+<td>&nbsp;need to Ctrl-C/Ctrl-X before switching panels or use F5/F6</td>
+</tr>
+<tr>
+<td>&nbsp;sorting of files 1,12,2,24,3, not 1,2,3,12,24</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;no mouse-drag select files except from the bottom empty space</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;cannot browse directories while a file copy/move operation is in progress</td>
+<td>&nbsp;open a new xfe instance to browse&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;can't rename multiple files!</td>
+<td>&nbsp;must use pyrenamer or thunar</td>
+</tr>
+<tr>
+<td>&nbsp;no drive space info below panels</td>
+<td>&nbsp;rely on xfce panel Mount devices plugin</td>
+</tr>
+<tr>
+<td>&nbsp;delete greyed out? or&nbsp;SHIFT-del unresponsive<span style="line-height:27px">?&nbsp;</span></td>
+<td>&nbsp;in &gt; preferences &gt; general check "include command to by-pass trash"</td>
+</tr>
+<tr>
+<td>&nbsp;can't drag a dir over to a panel to replace dir of same name and its files -the copied dir goes inside the dir of its same name</td>
+<td>&nbsp;delete dir first then copy over fresh (if small)</td>
+</tr>
+<tr>
+<td>&nbsp;can't handle some archives, e.g. .ar, .cbz</td>
+<td>&nbsp;use thunar with archive plugin</td>
+</tr>
+
+</tbody>
+</table>
+<br>
+</span></div>
+<div><span style="line-height:27px;font-size:medium">Tips:</span></div>
+<div>
+<div style="font-size:medium;line-height:27px">Edit a dir/file name -select and press F9 or properties button.</div>
+<div>press first letter of a dir and the first dir beginning with that letter will open in the panel&nbsp;</span><span style="line-height:22px"><br>
+</span></div>
+<div>to install .deb packages just click to open them in X File Package, then find the buttons on the bottom bar.</span></div>
+<div style="font-size:medium;line-height:27px"><br>
+</div>
+<div>
+<div style="line-height:27px;font-size:medium">If linux plain text doc's become executables -select multiple files, &gt; Properties &gt; Permissions uncheck executable, but only works in home partition, so give extension like .txt (use pyrenamer as can't multiple rename extensions in xfe).</div>
+<div style="line-height:27px;font-size:medium">
+<div>But .txt is not linux so in respect to linux text files xfe is disfunctional.</div>
+</div>
+<div style="line-height:27px;font-size:medium"><br>
+</div>
+<div style="line-height:27px;font-size:medium"><br>
+</div>
+<a name="#1"></a>
+
+<h2 id="2" class="tag">Sunflower</h2>
+<div style="line-height:27px;font-size:medium"><font size="3" style="font-size:15px;line-height:27px"><a href="http://code.google.com/p/sunflower-fm/">sunflower-fm/</a>&nbsp;(download the .deb)&nbsp;</font></div>
+<div style="line-height:27px;font-size:medium">A nice and promising dual-panel file browser (it's only in alpha stage so far). &nbsp;One cool thing is the ease of comparing directories with the tap of F12 (or whatever shortcut you like!) -see pic below.</div>
+<div style="line-height:27px;font-size:medium"><br>
+</div>
+<div>
+<div>
+<div style="display:block;margin-right:auto;margin-left:auto;text-align:center"><a href="../zimages/sunflower1.png"  imageanchor="1"><img border="0" height="500" src="../zimages/sunflower1.png" width="800"></a></div>
+<br>
+</div>
+<div>
+<div><br>
+</span></font></div>
+<div style="font-size:medium;line-height:27px"><font size="4"><b>Useful Keyboard shortcuts</b></font></span></div>
+<div>hint: edit the hotkeys for Clipit first to avoid calling clipit menu with ctrl-alt-P&nbsp;</span></font>-set clipit history &lt;Super&gt;&lt;H&gt;</span></div>
+<div style="font-size:medium;line-height:27px">(my own are in bold blue)</div>
+<div style="font-size:medium;line-height:27px"><br>
+</div>
+<div>
+<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-top-color:rgb(136,136,136);border-right-color:rgb(136,136,136);border-bottom-color:rgb(136,136,136);border-left-color:rgb(136,136,136);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px">
+<tbody>
+<tr>
+<td style="width:329px;height:399px">
+<div>copy path&nbsp;</font><span style="font-size:medium">shift</span><font size="3">-ctrl-L</font></div>
+<div>deselect all&nbsp;</font><span style="font-size:medium">shift</span><font size="3">-ctrl-A</font></div>
+<div>go to parent dir Backspace/<b><font color="#0b5394">ctrl-</font></b><font color="#0b5394"><b>Left</b></font>&nbsp;&nbsp;</font></div>
+<div>go to root <font color="#0b5394"><b>Backslash</b></font>&nbsp;&nbsp;</font></div>
+<div>toggle selection&nbsp;</font><span style="font-size:medium">shift</span><font size="3">-Down/</font><span style="font-size:medium">shift</span><font size="3">-Up</font></div>
+<div>select with same ext&nbsp;<b><font color="#0b5394">ctrl-]</font>&nbsp;</b></font></div>
+<div style="line-height:27px">invert selection&nbsp;</font><b style="font-size:medium;line-height:27px"><font color="#0b5394">ctrl</font></b><font size="3" style="line-height:27px"><b><font color="#0b5394">-,</font></b></font></div>
+<div>open selected dir in new tab&nbsp;</font><span style="font-size:medium">shift</span><font size="3">-ctrl-T</font></div>
+<div>select app and execute <b><font color="#0b5394">ctrl-.</font></b></font></div>
+<div>show open with menu ctrl-Menu</font></div>
+<div>swap panels ctrl-U</font></div>
+<div style="font-size:15px;line-height:27px"><span style="font-size:medium;line-height:27px">refresh ctrl-R</span></div>
+<div>quick search ctrl-F</font></div>
+<div>find files<font color="#0b5394"> <b>Alt-F</b></font><b>&nbsp;</b></font></div>
+<div>show hidden files<b><font color="#0b5394">&nbsp;ctrl-/</font></b></font></div>
+</td>
+<td style="width:327px;height:399px">
+<div>create dir <b><font color="#0b5394">F1</font>&nbsp;</b></font></div>
+<div>create file <b><font color="#0b5394">ctrl-F1</font>&nbsp;</b></font></div>
+<div>rename F2</font></div>
+<div>view selected (text/image) F3</font></div>
+<div>edit selected (text with leafpad) F4</font></div>
+<div>copy selected F5</font></div>
+<div>move selected F6</font></div>
+<div>compare dir for difference F12</font></div>
+<div><br>
+</font></div>
+<div>show bookmarks left ctrl-F1</font></div>
+<div style="font-size:15px;line-height:27px"><span style="font-size:medium">show bookmarks&nbsp;right ctrl-F2</span></div>
+<div style="font-size:15px;line-height:27px"><span style="font-size:medium">move divider handle Alt-pg up / Alt-pg dn / Alt- home</span></div>
+<div style="line-height:27px"><br>
+</div>
+</td>
+<td style="width:352px;height:399px">
+<div>bookmark current dir ctrl-D</font></div>
+<div>bookmarks Alt-1 - 0</font></div>
+<div>edit bookmarks ctrl-B</font></div>
+<div>$HOME&nbsp;<b><font color="#0b5394">Alt-Q</font></b></font></div>
+<div>root <b><font color="#0b5394">Alt-1</font></b></font></div>
+<div>/media<font size="3" style="font-size:15px;line-height:27px"><b><font color="#0b5394">&nbsp;Alt-2</font></b></font></div>
+<div><br>
+</font></div>
+<div>duplicate tab ctrl-T</font></div>
+<div>close tab ctrl-W</font></div>
+<div>switch panel Tab / Alt-Left Alt-Right</font></div>
+<div>next tab ctrl-Tab</font></div>
+<div>terminal copy/paste use sh-ctrl-C /sh-ctrl-V</font></div>
+<div><br>
+</font></div>
+<div>Preferences ctrl-alt-P&nbsp;
+</font></div>
+<div style="line-height:27px"><br>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<br>
+</span></font></div>
+<div>What it lacks</span></font></div>
+<div>Symlink icons are not different to directory icons.</span></font></div>
+<div>thumbnailing</span></font></div>
+<div><br>
+</span></font></div>
+<div<span style="line-height:24px"><br>
+</span></font></div>
+<div style="font-size:medium;line-height:27px"><font size="4"><b>Sunflower vs Thunar vs Xfe !</b></font></span></div>
+<div><br>
+</span></font></div>
+<div><b>Pluses for Sunflower</b></span></font></div>
+<div style="font-size:medium;line-height:27px">
+<ul><li>customizable keyboard shortcuts</span></li>
+<li>select files with Shift and Up/Down, then move further down with just Down key, then use shift-Down again to add more files to selection, or go back up over files to deselect</span></li>
+<li>two panels makes it easy to send files across</span></li>
+<li>two directories can be compared and files copied across</span></li>
+<li>opens text/image files for quick view, esc to close</span></li>
+<li>tabs help to keep more locations ready for file moves/copies</span></li>
+<li>custom commands can be created (and accessed by menu bar)</span></li></ul>
+</div>
+
+
+
+
+
+<div><br>
+</span></font></div>
+<div><b>For Thunar</b></span></font></div>
+<div style="font-size:medium;line-height:27px">
+<ul><li>shortcuts panel is indispensible</span></li>
+<li>location shortcut keys can be edited (need <font color="#38761d">gtk-can-change-accels=1</font> in your ~/.gtkrc-2.0 file) with mouse hover and type new</span></li>
+<li>address bar buttons very helpful</span></li>
+<li>to select multiple files hold Ctrl use up/down and hit Space, just Down to deselect all</span></li>
+<li>context menu custom actions are very nice</span></li>
+<li>thumbnailing is supreme</span></li></ul>
+</div>
+
+
+<div><br>
+</span></font></div>
+<div><b>and Xfe</b></span></font></div>
+<div>
+<ul style="font-size:medium;line-height:27px"><li>the only thing it has that Sunflower doesn't is its own customizable appearance and choice of icon set, as well as thumbnailing (which is slow).</span></li>
+<li>what is doesn't have is selection info like disk usage and free space among lots else!</span></li></ul>
+<div style="font-size:medium"><span style="line-height:25.98958396911621px"><br>
+</span></div>
+<div style="font-size:medium"><span style="line-height:25.98958396911621px"><br>
+</span></div>
+
+
+<h2 id="3" class="tag">Midnight Commander</h2>
+<div style="font-size:medium"><span style="line-height:25.98958396911621px">I haven't used this one much yet, but it is dual panel, opens in a bash window with `mc' and can compare directories, then copy over files not found in other etc. &nbsp;It looks more keyboard-friendly than GUI browsers, and with that, possibly faster to work with once you've learned the keys. &nbsp;Text docs can be viewed in own viewer.</span></div>
+<div><span style="font-size:medium;line-height:25.98958396911621px">Download it here&nbsp;</span><font size="3"><span style="line-height:25.98958396911621px"><a href="http://www.midnight-commander.org/">http://www.midnight-commander.org/</a></span></font></div>
+<div><font size="3">Documentation here&nbsp;<a href="http://www.midnight-commander.org/wiki/doc">http://www.midnight-commander.org/wiki/doc</a></font></div>
+<div style="font-size:medium"><span style="line-height:25.98958396911621px"><br>
+</span></div>
+<div>
+<div style="display:block;margin-right:auto;margin-left:auto;text-align:center"><a href="../zimages/mc1.jpeg"  imageanchor="1"><img border="0" height="500" src="../zimages/mc1.jpeg" width="800"></a></div>
+
+<br>
+</div>
+<div style="font-size:medium"><span style="line-height:25.98958396911621px">Tip:
+</span></div>
+<div style="font-size:medium"><span style="line-height:25.98958396911621px">To make mc transparent you need to edit the ~/.mc/ini file and change the line under [Colors] to</span></div>
+<div>
+<div><span style="line-height:25.98958396911621px;font-size:medium"><font color="#38761d">base_color=normal=,default:selected=,:marked=,default:markselect=,:menu=,:menuhot=,:menusel=,:menuhotsel=,:dnormal=,:dfocus=,:dhotnormal=,:dhotfocus=,:input=,$</font></span></div>
+<div style="font-size:medium;line-height:25.98958396911621px">edit colours&nbsp;<a href="http://plug-and-pray.blogspot.com/2009/09/editing-midnight-commanders-color.html">http://plug-and-pray.blogspot.com/...</a>
+</div>
+</div>
+<div style="font-size:medium"><span style="line-height:25.98958396911621px"><br>
+</span></div>
+<div><span style="line-height:25.98958396911621px"><font size="4"><b>Just tabs?</b></font></span></div>
+<div style="font-size:medium"><span style="line-height:25.98958396911621px">If we were happy just having tabs, Thunar 1.6 is lightning fast to open as many tabs as you need, with a GTK shortcut key (point to file menu and enter shortcut) to do that (Ctrl-Space for me).</span></div>
+<div style="font-size:medium"><span style="line-height:25.98958396911621px">Then there's a X terminal program Ranger, which if you get into, might see you quit using all of your GUI file managers!! &nbsp;Because Ranger, as well as being a directory browser, is a complete and competant file manager in itself, and its easy to use with just the keyboard (though mouse works too) &nbsp;-see my <a href="../config/ranger.html">Ranger page</a></span></div>
+<div style="font-size:medium"><br>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+

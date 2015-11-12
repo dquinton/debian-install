@@ -1,0 +1,851 @@
+---
+layout: default
+description: Installing Debian from the Netinstall CD or Live CD and getting the system up and running - Step 1 of 4 - by D Quinton
+title: Step 1 - Netinstall CD
+id: net
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Pre-install, get an ISO</a></li>
+                <li><a href="#2">Prepare to install</a></li>
+                <li><a href="#3">Get a partition ready!</a></li>
+                <li><a href="#4">The install</a></li>
+                <li><a href="#5">Sources list</a></li>
+                <li><a href="#6">Prevent "recommended"</a></li>
+                <li><a href="#7">Install the desktop</a></li>
+                <li><a href="#8">Install Thunar</a></li>
+                <li><a href="#9">Sudoers file</a></li>
+                <li><a href="#10">Enable the wireless</a></li>
+                <li><a href="#11">Add groups</a></li>
+                <li><a href="#12">Mount partitions</a></li>
+                <li><a href="#13">Desktop settings</a></li>
+                <li><a href="#14">Build dependencies</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Pre-install, get an ISO</a><br>
+   <a href="#2">Prepare to install</a><br>
+   <a href="#3">Get a partition ready!</a><br>
+   <a href="#4">The install</a><br>
+   <a href="#5">Sources list</a><br>
+   <a href="#6">Prevent "recommended"</a><br>
+   <a href="#7">Install the desktop</a><br>
+   <a href="#8">Install Thunar</a><br>
+   <a href="#9">Sudoers file</a><br>
+   <a href="#10">Enable the wireless</a><br>
+   <a href="#11">Add groups</a><br>
+   <a href="#12">Mount partitions</a><br>
+   <a href="#13">Desktop settings</a><br>
+   <a href="#14">Build dependencies</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
+
+<div class="cont">
+
+
+<span class="bblue">updated September 2015</span>
+<br><br><br>
+
+The following method is ideal for building a minimal Debian install (without bloat) as it can install just the basic system without a desktop environment or any software packages, following which, you boot into a command prompt where you can install whatever else is needed for you to use Debian, through an internet connection. The Netinstall CD does give you the choice to install a full Desktop Environment as well, if you choose to, but then you can't specify exactly what you want installed at that level.
+<br><br>
+Another method is to get a Debian Live CD with a full DE of your choice, if you prefer, but then you lose the fun of keeping the install cut down to exactly what packages you want to be installed on your box.
+<br><br>
+There are different releases of Debian - <b>Experimental</b> (just don't, because there will be many breakages of your system), <b>Unstable</b> (don't either, there will still be breaks), <b>Testing</b> (where packages from new release are sent down to before becoming stable, will still be bugs), and <b>Stable</b> (where packages are well-tested and bugs mostly already repaired).
+<br><br>
+<b>Jessie</b> became the new Debian stable in 2015.. Debian 8.  For better package updates, you can follow Debian testing, by adding "<b>stretch</b>" or "<b>testing</b>" to your package sources list instead of "<b>jessie</b>" (I'll show how below).  If you add "testing", your Debian will stay with testing even when Stretch becomes the new Stable, Debian 9.  
+<br><br>
+However, when Testing is still new in life there may be some things that could break your system (meaning you might have crashes or package install conflicts to sort out)... so running stable at the moment should be very sufficient, and highly recommended for production systems or servers.  You can still install some packages from testing as well, by using the "-t testing" option with apt-get, while your default release is set to stretch or stable.  
+<br><br><a name="1"></a>
+Upgrading to Testing, or Stretch, later on is also possible - see my page <a href="upgrade.html">upgrade debian</a>.
+
+<br><br><br><br>
+
+<h2 id="1" class="tag">Pre-install, get an ISO file...</h2>
+<hr noshade="noshade">
+<br><br>
+
+<h2>Debian Netinstall</h2>
+
+Debian 8.0 Jessie installer CD (under "Small CDs") <a href="http://www.debian.org/distrib/netinst">http://www.debian.org/distrib/netinst</a>
+<br><br>
+Debian Testing (under "Netinst") <a href="http://www.debian.org/devel/debian-installer/">http://www.debian.org/devel/debian-installer/</a>
+<br><br>
+If you would like to install Wheezy (Debian 7) and upgrade to Jessie so as to prevent systemd installing, look here.. <br>
+<a href="http://cdimage.debian.org/cdimage/archive/7.8.0/i386/iso-cd/">32bit Debian 7</a> &nbsp;&nbsp;     <a href="http://cdimage.debian.org/cdimage/archive/7.8.0/amd64/iso-cd/">64bit Debian 7</a>
+<br><br>
+
+
+<br><br>
+<h2> Debian Live CD</h2>
+
+Options...
+<br>
+<b>1.</b> &nbsp;&nbsp;download a Debian Live CD with a desktop of your choice... 
+<br>the first part of the install method on this page, the desktop packages, will not be needed and the resulting install will not be very minimal, or with the exact packages you'd like installed - but it is a faster way if you just need a box with Debian running, like for a server that you won't be using for personal use.....
+<br><br>
+
+<!-- Live CD table -->
+
+<table border="1" cellspacing="0" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px">
+<tr>
+<td style="width:360px;height:24px">&nbsp;Downloads for 32 bit machines</td>
+<td style="width:360px;height:24px">&nbsp;Downloads for 64 bit machines</td>
+</tr>
+<tr>
+<td style="width:360px;height:24px">&nbsp;<a href="http://live.debian.net/cdimage/release/stable/i386/iso-hybrid/">Debian 7 Wheezy&nbsp;</a></td>
+<td style="width:360px;height:24px">&nbsp;<a href="http://live.debian.net/cdimage/release/stable/amd64/iso-hybrid/">Debian 7 Wheezy</a></td>
+</tr>
+<tr>
+<td style="width:360px;height:24px">&nbsp;<a href="http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current-live/i386/iso-hybrid/">Debian 8 Jessie</a></td>
+<td style="width:360px;height:24px">&nbsp;<a href="http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current-live/amd64/iso-hybrid/">Debian 8 Jessie</a></td>
+</tr>
+</table>
+<br><br>
+
+Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care - see my <a href="upgrade.html">upgrade Debian</a> page.  But it may be impossible to run Debian without systemd in the future... check out Devuan?
+<br><br>
+You could also use Fsmithred's Live CD made with Refractasnapshot that doesn't include systemd either... <a href="http://sourceforge.net/projects/refracta/files/isohybrid/">http://sourceforge.net/projects/refracta/files/isohybrid/</a>
+<br><br>
+
+<b>2.</b> &nbsp;&nbsp;for more advanced users who already have a Linux OS to work from, you can make your own Debian Live CD, with all the software you need pre-installed, using <b>Live Helper </b>-see my <a href="/tutorial/17-remote-install.html">Remote install</a> page.
+<br><br>
+<b>3.</b>&nbsp;&nbsp; If you have a Debian system already running and at hand, you can "clone" it with refractasnapshot and then run it as a LiveCd or install it to another machine. This isn't a real clone, but a compressed copy of the system, and when you install it to another box you have options such as user name and passwords setup, and separate /home or /var partitions.  A real clone tool, such as partimage or clonezilla etc, makes an exact copy of the hdd partition.
+-see my <a href="/tutorial/16-system-backup.html">System backup</a> page.
+<br><br>
+
+<br>
+<br>
+<h3>So the options are.....</h3>
+<div class="bullet"><ul><li>Use the Netinstall Cd to get started with (its more fun than using a live CD which has the desktop environment already), and once you've spent more time building your Debian, you can use Refractasnapshot to backup or clone it.</li>
+
+<li>Use a Live CD, in case you don't have the time to build Debian from scratch yourself.</li>
+
+<li>Clone another Debian install.</li>
+
+<li>Make your own Live CD - but it takes a lot more time to get it right, plus it needs a sizeable area on disk to work with.</li></ul></div>
+<br>
+<hr noshade="noshade">
+<br><br>
+
+<h2>Make a bootable USB stick</h2>
+Put the ISO onto a usb stick with a few easy steps with <a href="http://unetbootin.sourceforge.net/">Unetbootin</a> - see my <a href="/helps/01-usbinstaller">usbinstaller</a> page
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="2" class="tag">Prepare to install</h2>
+
+The netinstall CD image that you have downloaded and burned to USB stick or CD will install only the very basic Debian Linux system and all the packages necessary to build a desktop environment and run programs will be retrieved afterwards, at your own leisure.
+<br><br>
+You need to have an internet connection available, either by ethernet cable or with a wireless network (so long as you have the ESSID, password and the wireless firmware files), as the installer will download most of the system and APT package lists.
+
+<br><br>
+The installer may ask for missing firmware, such as for wireless.  You can get a zipped archive of firmware from Debian, and simply copy it to the USB stick with the Live ISO and unpack it there.  The installer will search for what it wants.  <a href="https://www.debian.org/releases/stable/amd64/ch06s04.html.en">https://www.debian.org/releases/stable/amd64/ch06s04.html.en</a>
+<br><br>
+Otherwise, the wireless and other firmware can be loaded after Debian is installed (see below).
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="3" class="tag">Get a partition ready! </h2>
+
+If you have a brand new PC to install on, or one with nothing worth keeping on the disk, you can format the harddisks with the installer - just go to no. 2 below.
+
+On a PC which already has an OS installed, use Gparted to make free space for your new partitions -> <br> Get the <a href="http://gparted.org/download.php">Gparted Live CD</a> or install it if you have a Linux OS already on the PC.  Then...
+<br>
+<div class="numb"><ol>
+<li>shrink a large partition which has some unused space, to make enough for your combined system and home area, perhaps 30 or 40Gb (see below about resizing Windows).  </li> 
+<br>
+Note: it's not advisable to move a partition along on the hdd, as Gparted will actually copy the whole file system, sector by sector, taking a very long time.  Shrinking from the right should be fast, but if you need to <i>move</i> the partition along to the <i>right</i>, it would be better to copy the data off it, delete it and then create new partitions.
+<br><br>
+<li>make an <b>Extended</b> partition =total size of the partitions needed for Linux, or else resize existing Extended partition to add Logical partitions to it.</li>
+<li>make a Logical partition for Linux root, ~15Gb (generous) formatted with ext4, another one for the home partition (if you choose to make it separate), anything from 2Gb to 20Gb... formatted ext3 or ext4 also.</li>
+<li>then a swap area (but no need to make if there's an existing swap of another Linux install) which just needs 1Gb to work fine in my opinion and formatted as Linux swap.</li>
+</ol></div>
+
+<br><br>
+<h2>Windows dual-boot</h2>
+
+If you are planning to dual boot Debian with Windows (i.e. have both installed and choose from Grub menu which one to boot) it will be easy as chips if your Win OS partition was custom sized with separate data partitions - then you just need to resize any data partition to make space for Debian.  However, if your PC came with factory-installed Windoze, then the OS partition may indeed take up half or even the whole of the hard-disk.  In that case, you'll need to run some operations in W so that you can shrink the OS partition down to a more moderate 50 to 80Gb.
+<br><br>
+I ran the following tasks in Win7 to do this: 
+
+<div class="bullet"><ul>
+<li>disk clean-up</li>
+<li>disable "page file" and "kernel memory dump" [system>advanced tab]</li>
+<li>turn off system restore [system>system protection]</li>
+<li>turn off hybernation [power>change when computer sleeps>sleep>hibernate>0]</li>
+<li>turn off search feature [prog and features>turn windows features on or off]</li>
+<li>turn off indexing for drives [rightclick drive>properties>uncheck index>click Apply>click Ignore all]</li>
+<li>defrag [admin tools]</li>
+<li>attempt to shrink partition in disk management. </li> 
+</ul></div>
+<br>
+Finally I shrunk it right down to the size I wanted it with Gparted (but you may want to back up the partition before doing this).
+<br><br>
+If you're going to to wipe the W partition (yeah!) but there's data on it, back-up what you need to external drive or data partition if present, or else shrink down the W partition and make a temporary partition to move stuff onto.
+<br><br>
+<div class="caut">Take care if you actually shift a Windows (Win 7) partition along the HDD, say to make more space for a Linux partition, as this will LIKELY render the Windows OS unbootable because the W boot sector will be changed. You would then need to fix that with a Windows Disk by running the repair boot option.</div>
+<br><br>
+Debian installer might not see the Win OS and so you will need to do some work to add the Windows OS to the boot menu later.  Some tips on my <a href="/helps/02-grub.html">GRUB page</a> - although I only cover Legacy GRUB. Windows 8 boots with UEFI boot menu which makes it complex to have Debian on the same menu (<a href="http://www.getreu.net/public/downloads/doc/legacy2UEFIboot/Transform-Debian_7_wheezy-from_legacy_to_UEFI_boot_mode.html">see here</a> for example). With Debian on the Legacy menu you'll have to switch between Legacy and UEFI menus in BIOS settings. 
+<br><br>
+
+<br>
+
+<h3>Now get an ethernet cable internet connection, or have the ESSID of your wireless network to hand, if wireless connection is your only option!</h3>
+
+<br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="4" class="tag">The install</h2>
+1. I chose Graphical expert install but plain Graphical install does the job and it might be faster.
+<br><br>
+2. configure network hardware: insert usb stick at firmware prompt for network hardware (or if it's on your Live CD stick just wait).
+<br><br>
+3. then set up the network by either Ethernet (eth0) or wireless (wlan0), if you have the ESSID ready (your wireless network name)
+<br><br>
+4. Partitioning: 
+<div class="bullet"><ul>
+<li>choose Manual, go down the list to select the new root partition, </li>
+<li>press Enter on "do not use" and change to Ext4 journaling file system (or what you previously formatted it to)</li>
+<li>set mount point to /</li> 
+<li>set bootable flag to on</li>
+<li>do not format (unless a previous install on it was unsuccessful)</li>
+<li>choose the home partition and tap again on  "do not use" change it to ext3; mount as /home</li>
+<li>choose the swap if it's the first Linux install on the machine and set it to swap.</li>
+<li>Finish partitioning</li>
+</ul></div>
+
+<br>
+5. install software.. uncheck all (tap Spacebar) including graphical desktop (which installs the bloated Gnome, or Xfce with a lot of extras), select laptop if installing to a laptop. 
+<br><br>
+6. Install GRUB (if for clean install) or otherwise don't - add the new install to GRUB later.  To do that I used "Grub Customizer" loaded on another Debian OS on the same box but there are other ways to do it, "Boot repair disk" being a good way too. (see my <a href="/helps/02-grub.html">GRUB page</a>) 
+<br><br>
+-the netinstaller didn't detect my other OS so couldn't set up grub. 
+<br><br>
+Then finish the install to set-up users and passwords... restart and boot into a system with, as yet, no desktop (it will be just a command prompt).
+
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="5" class="tag">Sources list</h2>
+
+If the installer failed to download the APT files and didn't make the sources.list properly,
+you'll need to put that right before you can retrieve/install packages from Debian.  APT is the the package manager that controls package installation and it needs to have lists of packages from the Debian release you choose, with their current version numbers.
+<br><br>
+At the command prompt, login as root, with "root" as username and the root password that you made during the Netinstall CD process, then enter
+<br><br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+nano /etc/apt/sources.list </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(and hit Enter at end)
+<br><br>
+The command "nano" there opens a file to edit it inside the command-line (because you don't have a GUI file editor yet).
+<br><br>
+You'll need these lines handy, on another screen while you follow these steps, because you won't have a graphical interface yet and won't have access this web page (OK, you could try using elinks!)
+<br>
+Make sure you have the repository lines like the ones below in the file.
+
+<br><br>
+example of lines needed:
+<br>
+<form>
+<textarea name="T" id="file" rows="2" cols="80">
+deb http://ftp.uk.debian.org/debian/ wheezy main contrib non-free
+deb-src http://ftp.uk.debian.org/debian/ wheezy main contrib non-free</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and for security updates:
+<br>
+<form>
+<textarea name="T" id="file" rows="2" cols="80">
+deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
+deb http://security.debian.org/ wheezy/updates main contrib non-free</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(but your sources file may already have these lines, or similar, made during the install process)
+<br><br>
+
+Or you can use "http.debian.net" which will automatically retrieve from your most local mirror:
+<br>
+<form>
+<textarea name="T" id="file" rows="1" cols="80">
+deb http://http.debian.net/debian wheezy main contrib non-free</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+see <a href="http://http.debian.net/">http://http.debian.net/</a>
+<br><br>
+also you can add the multimedia repository to the sources file, which has many useful codecs:
+<form>
+<textarea name="T" id="file" rows="1" cols="80">
+deb http://www.deb-multimedia.org testing main non-free</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+My sources list looks like so
+
+<form>
+<textarea name="T" id="file" rows="11" cols="80">
+#local
+deb http://http.debian.net/debian jessie main contrib non-free
+deb-src http://http.debian.net/debian jessie main contrib non-free
+
+#updates
+deb http://ftp.debian.org/debian/ jessie-updates main contrib non-free
+#deb-src http://ftp.debian.org/debian/ jessie-updates main contrib non-free
+deb http://security.debian.org/ jessie/updates main contrib non-free
+
+#multimedia
+deb http://www.deb-multimedia.org jessie main non-free</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>Then save the file, either with Ctrl-X (close file), y (yes) and Enter, or else, Ctrl-O (write out file), Enter and Ctrl-X.
+<br><br>
+then update your Debian's package lists (which are updated frequently at the server side repository)  
+<br>if your lists are old you'll get errors when installing packages because old package versions will no longer be available.
+<br><br>
+Run the update with (while still as root)
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+apt-get update</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+then, if you added the multimedia repository, you need to add the repository key (and you must be root user, or switched with su, to add it)
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+apt-get install deb-multimedia-keyring && apt-get update</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+you can make a system upgrade now as well if you like, to make sure all is up to date, including the kernel etc.
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+apt-get upgrade && apt-get dist-upgrade</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="6" class="tag">Prevent install of "recommended" packages</h2>
+ 
+Setting this up in the APT conf file does the same thing as adding the option <i>--no-install-recommends</i> to every install command. It prevents all the "recommended" packages being installed which are promoted by the ones we want and that means a lot less files to download and less disk space used, and quite possibly a few less processes running. Besides, why would you want to install what something else wants and what you don't know about?
+<br><br>
+still as root, type
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+nano /etc/apt/apt.conf</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+fill the file with:
+<form>
+<textarea name="T" id="file" rows="2" cols="80">
+APT::Install-Recommends "false";
+APT::Install-Suggests "false";</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+Also you can knock out the downloading of language packs with every apt-get update, by adding to the same file:
+
+<form>
+<textarea name="T" id="file" rows="1" cols="80">
+Acquire::Languages { "en"; "none"; };</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>and add whatever language you need to be downloaded before the "none"
+<br>then save the file, Ctrl-X, y, Enter
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="7" class="tag">Install the desktop environment</h2>
+
+Follow this part only when using the Netinstall CD (a Debian Live CD will have a desktop environment already -though you might still need some of the following packages). 
+<br>
+<br>
+The Debian command to install software via the Terminal is '<i>apt-get install</i>'... You will need these 'apt-get' commands handy on paper or on another screen as you won't have a desktop at this stage of install.  
+<br><br>
+If you like, you can make some files with package lists (e.g. desktop, apps, build) which you can save to a USB stick.  Then, on the command line that we've just been using, after netinstall CD and reboot, you mount the stick (find its device node with "<i>fdisk -l</i>" command, perhaps sdb1), mount it with '<i>mount /dev/sdb1 /mnt</i>' and '<i>cd /mnt</i>' and the dir with those files you made, with an '<i>ls</i>' command to see what's there...  
+<br><br>
+then run:
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo apt-get install $(< desktop)</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+where "desktop" is the name of a file with package names.
+
+<br><br><br>
+<h3>XFCE Desktop</h3>
+Apologies for anything that no longer works!!! I don't run Xfce any more and so I can't really make corrections here.
+<br><br>
+So, as root, type
+<form>
+<textarea name="T" id="install" rows="3" cols="100">
+apt-get install xorg xfce4 lightdm network-manager-gnome pm-utils hdparm cpufrequtils xfce4-power-manager chromium leafpad xfce4-power-manager xfce4-notifyd tango-icon-theme firestarter dmz-cursor-theme xcursor-themes rxvt-unicode</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+I took out <span style="color:#7C2020">synaptic apt-xapian-index gdebi</span> as I hardly need them (package manager, and gui package installer)
+<br><br>
+This gets you a window manager, light desktop, display manager (login), network manager, power manager, browser, text editor and a cool terminal.
+<br><br>
+There's iceweasel (open-source firefox) instead of chromium, or midori, which is a little less memory-consuming than both of them (but its not available to Jessie, it's in testing)
+<br><br>
+wicd is an alternative to network-manager-gnome (but the latter may handle mobile/vpn better).<br>
+lightdm is your best choice of display manager.  Gnome's gdm3 comes with bloat of dependencies at 40Mb. 
+<br><br><br>
+
+<h3>LXDE Desktop</h3>
+
+
+<form>
+<textarea name="T" id="install" rows="3" cols="100">
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils network-manager-gnome chromium tango-icon-theme openbox-themes firestarter dmz-cursor-theme xcursor-themes moblin-cursor-theme rxvt-unicode</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+lightdm to be prefered over xdm, and gdm3 comes with a 40mb gnome dependency bloat.
+<br><br>
+I took out <span style="color:#7C2020">synaptic apt-xapian-index gdebi</span> as I hardly need them.
+<br><br>
+Again, you can choose between chromium, iceweasel and midori, you have wicd instead of network-manager, and you can set up ip tables instead of firestarter (see my <a href="/config/firewall.html">firewall</a> page)
+<br><br>
+It's possible to run openbox alone without installing the lxde package (but just the parts of it you might need) and without even a Display Manager (login screen etc), but its a little complex to set up at this stage 
+<br><br>
+To do that I leave out lxde and lightdm, and add instead: <span style="color:#7C2020">openbox lxpanel lxtask leafpad</span>.  Then at boot, when reaching the command prompt, just type "startx" and Enter. 
+
+<br><span class="ht">Warning! this is not perhaps a good idea for beginner Debian users.</span> Installing LXDE will be more straightforward. But see see my page, <a href="/config/plain-openbox.html">plain openbox</a> if this is the way you want to go!
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="8" class="tag">Install Thunar file manager</h2>
+
+Thunar is the best light-weight gui file browser in my opinion, beating the default LXDE file manager, because of its ability to carry out possibly any action whatsoever on files through its right-click menu. There are more powerful file browsers about, such as Dolphin or Krusader (both KDE), but you should look at this one first, and see my custom actions on my <a href="/config/thunar.html">thunar page</a>. For example, Krusader can do some picture resizing actions - but you need the KIO plugins installed, whereas with thunar, all you need is imagemagic (a small program) and a few custom actions and you can resize pic's with two clicks - or resize a whole directory of pic's, even recursively.
+<br><br>
+There are alternative file browsers too, such as xfe (with no bookmarking except your own real symlinks), gentoo (two pane with task buttons), emelfm2 (lots of task buttons), and rox-filer (very basic graphical). 
+<br><br> 
+But for those bored of GUI mouse-clicking browsers there's Ranger (which takes up my 2nd desktop in full screen) - see my <a href="/config/ranger.html">ranger page</a>.
+<br><br>
+<form>
+<textarea name="T" id="install" rows="2" cols="80">
+apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra thunar-media-tags-plugin zip unzip bzip2 p7zip-full xdg-user-dirs</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+<b>prepare for bluetooth, bash, NTFS and FAT32 support, and Java</b>
+<form>
+<textarea name="T" id="install" rows="2" cols="80">
+apt-get install bluetooth blueman command-not-found bash-completion ntfs-3g blktool dosfstools mtools openjdk-7-jre icedtea-7-plugin</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+(note that, the opensource java, openjdk and icedtea actually change their name with each new version - I suppose it will be 8 next)
+
+<br><br>
+<b>some extras</b>
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+apt-get install locate less git </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+before booting into the desktop, you could set up the wireless and edit your sudoers file (below)
+<br>
+unmount any usb device that you might have used files from, with '<i>umount /mnt</i>'
+<br>
+then type '<i>reboot</i>' to terminate processes and boot into your new desktop!
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="9" class="tag">Sudoers file</h2>
+To give your user(s) super-user priveleges, they need to be added to the sudoer file. This means that they can run commands with '<i>sudo</i>' infront to do things as root (nearly) with their user password.
+<br><br> 
+as root still (and if you already rebooted then you need to open a Terminal and "switch user" to root, with the command '<i>su</i>' and enter the root password), run "visudo",
+</form>
+<br>
+and then, either add this line after the root's line: 
+<form>
+<textarea name="T" id="file" rows="1" cols="50">
+yourusername     ALL=(ALL:ALL) ALL</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>    
+or, add the sudo group to sudoers, which is the more recommended practice:
+    <form>
+<textarea name="T" id="file" rows="1" cols="50">
+%sudo     ALL=(ALL:ALL) ALL</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+write to file by Ctrl-X, y, Enter, and if you switched to root then type '<i>exit</i>' and Enter to return to normal user.
+
+<br><br>
+and if you added the sudo group to sudoers, now add your user(s) to the sudo group!
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+adduser <username> sudo</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="10" class="tag">Enable the wireless</h2>
+
+If you don't have the wireless firmware installed yet, first identify the wireless chipset, using this command
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+lspci -nn | grep Network</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+Then go to the Debian Wi-Fi page (and you'll need to reboot into the Desktop to get to the internet) <a href="https://wiki.debian.org/WiFi#PCI_Devices">https://wiki.debian.org/WiFi#PCI_Devices</a> and find the correct firmware for your device.  
+<br><br>If the firmware is included in the kernel, but wireless still doesn't work, check the interfaces file below, and check that your wireless interface is wlan0 or wlan1 (with wicd you need to set this in Preferences).
+
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/network/interfaces</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+comment out everything but the lines (I mean insert a '#' before each line to comment out)
+<form>
+<textarea name="T" id="file" rows="2" cols="30">
+auto lo
+iface lo inet loopback</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+check if user is added to netdev group with 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+groups <youruser></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+and add your user to that group if it wasn't listed with above command
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+adduser <username> netdev</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+and if you already rebooted, restart networking with:
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo /etc/init.d/network-manager restart</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="11" class="tag">Add groups </h2>
+
+While you're adding groups, here's some more you'll probably need: <span class="blue">dialout plugdev lpadmin admin clamav fuse audio</span>
+<br><br>
+to add user to a new group, e.g.
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo groupadd dialout</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+then,
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+adduser <username> dialout</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+and just use the 'up' key on the command line to get the last command and change the group name until you've added all you need.
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+ 
+<h2 id="12" class="tag">Mount partitions (fstab file)</h2>
+
+Hopefully you know that Linux uses a file to handle disk partitions so the system can mount them with all kinds of preferred options?  You need to get this file tidy so that your partitions are nicely mounted at boot (those you want mounted) and you can read/write to them without the file manager saying "not authorized" etc.
+<br><br>
+Note: to write to NTFS file systems you need ntfs-3g (install line above)
+<br><br>
+Find the disks and their sizes on system to note their device names (e.g. sda2)
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo fdisk -l</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+List the uuid's of disks
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo blkid</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+You need to add an fstab entry for each harddisk partition that wants mounting at boot. So open the <b>fstab</b> file with:
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo leafpad /etc/fstab</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+First of all, you can omit the USB or DVD device lines that might have been added during the install. 
+<br>Don't touch the lines for your linux install (mounted on /) or home partition (/home), or swap, and don't give two lines the same mount point (especially not both "/")!
+<br><br>
+example of line for NTFS partition
+<form>
+<textarea name="T" id="file" rows="1" cols="100">
+UUID="B04C39A04C3961F0" /media/FILES ntfs-3g defaults,nls=utf8,uid=1000,umask=000 0 0</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+example of a data partition with ext3 format
+<form>
+<textarea name="T" id="file" rows="1" cols="100">
+UUID=a482820a-ca98-4d19-albe-d2dd53b49b06 /media/Data    ext3    users,defaults    0  2</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+create mounts for any partitions you added that are mounted in /media, e.g.
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo mkdir /media/D1</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+and mount the partitions to the mount points (or you can reboot) 
+<form>
+<textarea name="T" id="cmd" rows="2" cols="50">
+sudo mount –t ntfs-3g /dev/sda2 /media/D1
+sudo mount /dev/sda6 /media/Data</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(my examples)
+<br><br>
+check the partitions are mounted with:
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+df -hT</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+If you can't write to the partition (it's read-only):
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo chown -R <youruser> /media/D1</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+ 
+
+If your installation CD (e.g. Debian Live Build) left you with NO fstab file at all, you will need to add good root, home (if separate) and swap lines above the ones for data partitions.
+<br><br>
+example (tab separated):
+<form>
+<textarea name="T" id="file" rows="8" cols="100">
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+proc            /proc           proc    defaults        0       0
+# sda5
+UUID=cc3bca0d-aee4-4b9c-95c2-57212cc36d4d    /               ext3    defaults,noatime    0       1
+# sda6 
+UUID=ab67d8fe-d76b-4e21-abbe-e10d162e1d27    /home           ext3    defaults        0       2
+# sda7 
+UUID=a7db1e95-4acd-4754-a043-a8d27405c316    none            swap    sw              0       0</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+currently, I put /var on its own partition as the contents change quite a lot (e.g. apt cache) and / is on a solid state disk that shouldn't need so many write operations
+<form>
+<textarea name="T" id="file" rows="1" cols="100">
+UUID=5d327347-dd0a-4540-9a2e-9e86a05db5c6    /var    ext3    defaults,noatime    0    2</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+since Debian 7 /tmp is on tmpfs (RAM) so it doesn't need moving to another partition
+<br><br>
+there's an fstab documentation here ..<a href="https://help.ubuntu.com/community/Fstab">ubuntu.com/community/Fstab</a>
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="13" class="tag">Quick desktop settings</h2>
+<br>
+<h3>Get sound working:</h3>
+In XFCE, add Mixer to the panel and Left click on it, to open Alsa Mixer, then add '<i>master</i>', '<i>speaker</i>', '<i>PCM</i>', '<i>Pc Beep</i>' (so as to silence it!) and check unmute sound. 
+<br><br>
+In LXDE, add Volume Control applet, right-click on it and open settings.
+<br><br>
+Check that your user is in the audio group with `groups &#60;user>`
+<br><br><br>
+
+<b>Display:</b> select theme, Tango icons or whichever you like
+<br><br>
+<b>Set power options:</b> like close laptop lid suspends PC or turns off the display, critical battery warning, inactivity time, screen sleep time, uncheck lock screen, etc.
+<br><br>
+<b>Removable media:</b> in the file manager settings, check auto mount when hot-plugged or inserted
+<br><br><br>
+
+
+<b>XFCE problem:</b> on login, the default session shows Xsession, not Xfce, so open a file<br><br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo leafpad /etc/lightdm/lightdm.conf</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+and edit&nbsp;&nbsp; 'user-session=lightdm-xsession'&nbsp;  --> &nbsp; 'user-session=xfce'
+<br>
+<br>or uncomment the line "#usersession=default" (remove "#") and change "default" to xfce
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="14" class="tag">Prepare to install software</h2>
+add the debian multimedia repository if you haven't already
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+nano /etc/apt/sources.list</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+add the line
+<form>
+<textarea name="T" id="file" rows="1" cols="80">
+deb http://www.deb-multimedia.org testing main non-free</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+then 
+<form>
+<textarea name="T" id="cmd" rows="3" cols="80">
+sudo apt-get update 
+sudo apt-get install deb-multimedia-keyring 
+sudo apt-get update</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+<br>
+<h2>Build dependencies</h2>
+Get dependencies needed for building software from source (you could leave this for another time).
+<br>
+<form>
+<textarea name="T" id="install" rows="3" cols="100">
+sudo apt-get install build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev x11-xserver-utils libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake checkinstall</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+Note: bear in mind that the build dependencies will need updating all the time, whenever you have to build from source, to enable compiling without meeting dependency problems. All you have to do is run the above command again and all that needs updating will be, but do remember to run '<i>apt-get update</i>' first.
+
+<br><br><br><br><br>
+
+<b>Next page: </b>
+<br><br><h3><b><a href="step2.html">Step2</a></b> - video editors, ffmpeg, XnViewMP, Libre Office, Google Earth</h3>
+<br><br>
+</div>

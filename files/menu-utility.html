@@ -1,0 +1,150 @@
+---
+layout: default
+description: Openbox utility apps menu file - by D Quinton
+keywords: debian, lxde, openbox
+title: menu-utility.xml
+---
+
+<div class="cont">
+
+<form><textarea name="T" id="file" rows="50" cols="150">
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu>
+	<menu id="menu-utility" label="Utility">
+		<item label="Customise Appearance">
+			<action name="Execute">
+				<execute>lxappearance</execute>
+			</action>
+		</item>
+		<item label="Window Management ">
+			<action name="Execute">
+				<execute>obconf</execute>
+			</action>
+		</item>
+		<item label="Gnome-color-chooser">
+			<action name="Execute">
+				<execute>gnome-color-chooser</execute>
+			</action>
+		</item>
+		<item label="KDE settings">
+			<action name="Execute">
+				<execute>systemsettings</execute>
+			</action>
+		</item>
+		<item label="Power Manager">
+			<action name="Execute">
+				<execute>xfce4-power-manager-settings</execute>
+			</action>
+		</item>
+		<item icon="~/.config/openbox/icons/nm-device-wired.svg" label="Network Connections">
+			<action name="Execute">
+				<execute>nm-connection-editor</execute>
+			</action>
+		</item>
+		<item label="Alsa Mixer">
+			<action name="Execute">
+				<execute>alsamixer</execute>
+			</action>
+		</item>
+		<item label="OB keybindings">
+			<action name="Execute">
+				<execute>~/.obkey-master/obkey ~/.config/openbox/lxde-rc.xml</execute>
+			</action>
+		</item>
+		<item label="OB menu">
+			<action name="Execute">
+				<execute>obmenu</execute>
+			</action>
+		</item>
+		<item label="ClamTK">
+			<action name="Execute">
+				<execute>clamtk</execute>
+			</action>
+		</item>
+		<item label="Firestarter">
+			<action name="Execute">
+				<execute>su-to-root -X -c /usr/sbin/firestarter</execute>
+			</action>
+		</item>
+		<item label="Etherape">
+			<action name="Execute">
+				<execute>gksu etherape</execute>
+			</action>
+		</item>
+		<item label="GD Map">
+			<action name="Execute">
+				<execute>gdmap</execute>
+			</action>
+		</item>
+		<item label="Bleachbit">
+			<action name="Execute">
+				<execute>bleachbit</execute>
+			</action>
+		</item>
+		<item label="Lucky Backup">
+			<action name="Execute">
+				<execute>luckybackup</execute>
+			</action>
+		</item>
+		<item label="Catfish">
+			<action name="Execute">
+				<execute>catfish</execute>
+			</action>
+		</item>
+		<item label="Meld">
+			<action name="Execute">
+				<execute>meld</execute>
+			</action>
+		</item>
+		<item label="Regexxer">
+			<action name="Execute">
+				<execute>regexxer</execute>
+			</action>
+		</item>
+		<item label="Ksnapshot">
+			<action name="Execute">
+				<execute>ksnapshot</execute>
+			</action>
+		</item>
+		<item label="Character map">
+			<action name="Execute">
+				<execute>kcharselect</execute>
+			</action>
+		</item>
+		<item label="Qshutdown">
+			<action name="Execute">
+				<execute>qshutdown</execute>
+			</action>
+		</item>
+		<item label="Printer status">
+			<action name="Execute">
+				<execute>chromium http://localhost:631/printers/HP_P1102</execute>
+			</action>
+		</item>
+		<item label="Unetbootin">
+			<action name="Execute">
+				<execute>unetbootin</execute>
+			</action>
+		</item>
+		<item label="Multisystem">
+			<action name="Execute">
+				<execute>multisystem</execute>
+			</action>
+		</item>
+		<item label="Gpartition Ed">
+			<action icon="~/.config/openbox/icons/gparted.png" name="Execute">
+				<execute>gksu gparted</execute>
+			</action>
+		</item>
+		<item label="Grub Customizer">
+			<action name="Execute">
+				<execute>gksu grub-customizer</execute>
+			</action>
+		</item>
+	</menu>
+</openbox_menu>
+</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+</div>

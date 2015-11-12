@@ -1,0 +1,1392 @@
+---
+layout: default
+description: Ranger key-binds and configuration - by D Quinton
+keywords: debian, ranger, keybinds, file manager, terminal
+title: Ranger
+id: config
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Install</a></li>
+                <li><a href="#2">Features</a></li>
+                <li><a href="#3">Default key-bindings</a></li>
+                <li><a href="#4">My keybindings</a></li>
+                <li><a href="#5">Note on mapping keys</a></li>
+                <li><a href="#6">Useful native commands</a></li>
+                <li><a href="#7">inline image preview</a></li>
+                <li><a href="#8">Refine info for images</a></li>
+                <li><a href="#9">Refine info for audio/video</a></li>
+                <li><a href="#10">Integrate system trash</a></li>
+                <li><a href="#11">UI enhancements</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="parent"><a href="../configure.html">Configure</a> ></div>
+
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+ <ul type= "none">
+                <li><a href="#1">Install</a></li>
+                <li><a href="#2">Features</a></li>
+                <li><a href="#3">Default key-bindings</a></li>
+                <li><a href="#4">My keybindings</a></li>
+                <li><a href="#5">Note on mapping keys</a></li>
+                <li><a href="#6">Useful native commands</a></li>
+                <li><a href="#7">inline image preview</a></li>
+                <li><a href="#8">Refine info for images</a></li>
+                <li><a href="#9">Refine info for audio/video</a></li>
+                <li><a href="#10">Integrate system trash</a></li>
+                <li><a href="#11">UI enhancements</a></li>
+             </ul>
+</td></tr></table></div>
+
+<div class="cont">
+
+<br><br>
+I was looking for a tidy way to navigate directories in a bash shell, so that I could speed up my work a bit.  I'm familiar with cd and tab completion of names, but sometimes my mind goes blank, so to have the list of directories to visibly choose from would be better for me.  Actually, an `ls` in the current dir, using the cursor keys and Enter on a chosen directory would have been pretty good, and I was looking at the possibility of doing that.  Then my search brought me across Roman Zimbelmann's impressive python project, Ranger - the terminal based file browser. 
+<br><br><br><br>
+	<table cellpadding="2" align="center"><tr>
+<td><a href="../zimages/ranger-08-dirs-size.jpeg"><img src="../zimages/ranger-08-dirs-size.jpeg" width="320" height="200" alt="ranger showing directories"></a></td>
+<td>&nbsp;<a href="../zimages/ranger-07-file-pager.jpeg"><img src="../zimages/ranger-07-file-pager.jpeg" width="320" height="200" alt="ranger showing file content"></a></td>
+<td>&nbsp;<a href="../zimages/ranger-01-image-inline.jpeg"><img src="../zimages/ranger-01-image-inline.jpeg" width="320" height="200" alt="ranger with image shown inline"></a></td>
+<td>&nbsp;<a href="../zimages/ranger-02-image-exifdata.jpeg"><img src="../zimages/ranger-02-image-exifdata.jpeg" width="320" height="200" alt="ranger with image showing exif"></a></td>
+</tr>
+<tr>
+<td width="50" align="center" valign="top">Ranger, in fullscreen, showing directories</td>
+<td width="50" align="center" valign="top">the content of a text file  shown in the pager</td>
+<td width="50" align="center" valign="top">an image file displayed inline</td>
+<td width="50" align="center" valign="top">EXIF data displayed for an image file  </td>
+</tr>
+<tr>
+<td><a href="../zimages/ranger-03-video-media-info.jpeg"><img src="../zimages/ranger-03-video-media-info.jpeg" width="320" height="200" alt="ranger with video info"></a></td>
+<td>&nbsp;<a href="../zimages/ranger-04-audio-media-info.jpeg"><img src="../zimages/ranger-04-audio-media-info.jpeg" width="320" height="200" alt="ranger with audio file info"></a></td>
+<td>&nbsp;<a href="../zimages/ranger-06-archive-pager.jpeg"><img src="../zimages/ranger-06-archive-pager.jpeg" width="320" height="200" alt="ranger with archive content"></a></td>
+</tr>
+<tr>
+<td width="50" align="center" valign="top">media info shown for a video file</td>
+<td width="50" align="center" valign="top">media info shown for an audio file</td>
+<td width="50" align="center" valign="top">content shown for an archive</td>
+</tr>
+<tr><td></td><td></td><td></td></tr>
+</table>
+
+
+
+<br><br>
+a name="1"></a><br>
+
+<h2 id="1">Install</h2>
+download ranger from <a href="http://ranger.nongnu.org/download.html">http://ranger.nongnu.org/download.html</a>
+unpack, and run sudo make install
+
+or clone from git for latest version see changes (need git installed)
+
+<form><textarea name="T" id="cmd" rows="2" cols="80">
+mkdir ~/Downloads/ranger-git && cd ~/Downloads/ranger-git
+git clone git://git.sv.gnu.org/ranger.git</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+optional installs for Ranger:
+<form><textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install w3m w3m-img less xsel atool mediainfo jhead</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+w3m and w3m-image are responsible for in-line preview of images (only with rxvt, urxvt and xterm)
+
+<br><br>
+read the man page with 'man ranger'
+<br><br>
+After installing, copy over the config files so that you can make modifications
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+ranger --copy-config=all</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+ 
+<b>Note</b>, the config files may be incompatible with new versions of ranger.<br>
+<br>
+The Ranger Q&A forum site has been removed.  There is an Arch Wiki page to help us out here <a href="http://wiki.archlinux.org/index.php/Ranger">http://wiki.archlinux.org/index.php/Ranger</a>
+
+<br><br><br>
+
+To get started, two commands needed..
+
+<table><tr><td width="120">ranger</td>		<td>launches ranger from the current dir in shell (I make a bash alias <span class="bblue">rr</span>)</td></tr>
+<tr><td>S</td>			   <td>in Ranger, drops to a shell at current dir (from where Ctrl-D or `exit' returns to Ranger)</td></tr></table>
+
+<br>
+<a name="2"></a><br>
+<h2>Features</h2>
+<div class="bullet"><ul><li> displays two columns: active directory level at center, upper dir level at left; and a preview pane at the right</li>
+<li>navigate with cursor keys: right/left move across the columns of dir levels (i.e. down/up the directory tree), and down/up moves the highlight down/up the file list in active level column</li>
+<li>mouse roller also moves up/down the file list</li>
+<li>[ and ] keys move into next or previous dir on same dir level without returning up a level and down into the next dir (which would be same as left, up or down, right)</li>
+<li>mouse click on dir or file moves highlight to it</li>
+<li>Enter, right-click on dir/file or click to blank space at 3rd column at right, enters the dir or opens the file</li>
+<li>Spacebar selects files, which then can be yanked (copied) or cut, or a process run on the selected</li>
+<li>copied or cut files are stored by path and name on a copy buffer, which can be added to from multiple dir's, or displayed, or manipulated anyway you like</li>
+<li>'v' selects all if nothing is selected, again and it deselects all, and if some are selected with Space then 'v' inverts selection, 'uv' deselects all if some are selected</li>
+<li>if files are selected they remain so when leaving the dir and will still be selected when returning to the dir</li>
+<li>able to search for string in file names, search and auto-enter dir or auto-open file, search and filter the files displayed as you type, or search and select files with string</li>
+<li>by default all text files, pdf, html and other recognised file types can be previewed in the right-hand pane</li>
+<li>mediainfo shows details of any audio/video file while exiftool does for image files</li>
+<li>Ranger's file type executor "Rifle" opens files with a choice of programs, just hit 'r' and choose, or the Rifle number and Enter</li>
+<li>audio is played through shell (mplayer), image/video opened with respective program</li>
+<li>any dir can be bookmarked with a character and easily navigated to</li>
+<li>files can be tagged with any character</li>
+<li>files with no recognised ext are green</li>
+<li>last active file in directory is remembered if returning to dir visited before</li>
+<li>dir shows no. of files it contains, or disk usage with 'dc', then selected files disk usage shown at lower right</li>
+<li>file permissions, owner, group and modified date displayed at lower left</li>
+<li>disk free space shown at lower right</li>
+<li>file transfer progress bar</li>
+<li>file permissions easily changed on selected files by typing an octal number followed by '='</li>
+<li>almost limitless key mapping for easy commands in current dir, first key displays choices, second (or third..) key executes command or brings up console withwhich to modify the command, such as for renaming, replacing, or confirming with Enter</li>
+<li>can run ranger python commands in "console" or normal shell commands (while using ranger's macros which can insert file name or path into the shell command)</li>
+<li>press Up in the console to cycle the commands history</li>
+<li>supports multple tabs and transferring files to next tab is also possible</li>
+</ul></div>
+<br>
+And that's just the basics!  There are endless possibilities with Ranger because it incorporates the bash shell.
+
+<br><br>
+<a name="3"></a><br>
+
+<br><br><table cellpadding="4" border="1" width="15%" style="border-collapse: collapse; position: absolute; left: 700px; "><tr><td><span style="font-size: 18px; ">Get my <a href="../files/ranger-keybinds_quinton.pdf">key mapping sheet!</a></span></td></tr></table>
+
+<h2>Default key-bindings</h2>
+
+    
+<h3>navigation</h3>
+<table width="900"><tr><td style="width: 140px;">arrows</td><td>traverse in/out of dir's, move up/down lists</td></tr>
+
+<tr><td>j, {n} j     </td><td>move up 10 lines (default, <b>I change it to 4</b>), or move up 10 lines {n} times</td></tr>
+
+<tr><td>k, {n} k     </td><td>move down 10 lines, or move down 10 lines {n} times</td></tr>
+
+<tr><td>g {letter}     </td><td>quick go to (system level dir's)</td></tr>
+
+<tr><td>g n     </td><td>new tab made at home</td></tr>
+
+<tr><td>Ctrl-n     </td><td>new tab opened at current dir</td></tr>
+
+<tr><td>tab, shift-tab     </td><td>switch tab </td></tr>
+
+<tr><td>q     </td><td>quit tab or ranger if only one tab</td></tr>
+
+<tr><td>u q     </td><td>restore closed tab</td></tr>
+
+<tr><td>[     </td><td>move up 1 dir in same parent</td></tr>
+
+<tr><td>]     </td><td>move down 1 dir in same parent</td></tr>
+
+<tr><td>H     </td><td>move back 1 dir in history (<b>I make this h</b>)</td></tr>
+
+<tr><td>L     </td><td>move forward 1 dir in history (<b>I make this l</b>)</td></tr>
+
+<tr><td>m {x}     </td><td>bookmark the dir x (any letter/digit)</td></tr>
+
+<tr><td>`{x} or '{x}     </td><td>go to dir bookmarked x</td></tr>
+
+<tr><td>``     </td><td>go to previous dir = effectively you can use `` to go back and forth between two locations</td></tr>
+
+<tr><td>pg up, pg dn, <br>home, end     </td><td>move down/up file list</td></tr>
+
+</tr><td>d c     </td><td>update cumulative dir size</td>
+
+<tr><td>d u     </td><td>show dir content summary</td></tr>
+
+<tr><td>J     </td><td>escape Ranger from reading a heavy dir/file</td></tr></table>
+<br>
+
+<h3>sorting</h3>
+
+<table width="900"><tr><td style="width: 140px;">o t      </td><td>sort by type first</td></tr>
+
+<tr><td>o s                   </td><td>sort by size first</td></tr>
+
+<tr><td>o a /o c /o m    </td><td>sort by time</td></tr>
+ 
+<tr><td>o n                   </td><td>sort natural</td></tr>
+
+<tr><td>o {T/S/A/C/M}  </td><td>sort in reverse order</td></tr>
+
+<tr><td>o r                    </td><td>reverse the sort order</td></tr></table>
+
+<br>
+
+<h3>file actions</h3>
+
+<table width="900"><tr><td style="width: 140px;">/, f    </td><td>enter file name to navigate (<b>f can't do this with my keybinds</b> as I make use of it)</td></tr>
+
+<tr><td>n     </td><td>search newest file in dir, or next after search with /, f</td></tr>
+
+<tr><td>N      </td><td>previous file after search</td></tr>
+
+<tr><td>c..    </td><td>set the next search order</td></tr>
+
+<tr><td>o..  </td><td>set the sort order</td></tr>
+
+<tr><td>i      </td><td>focus a highlighted file with less (but only able to see part of file) <br>
+				i to toggle focus, E to edit in nano</td></tr>
+				
+<tr><td>y y    </td><td>copy</td></tr>
+
+<tr><td>y a   </td><td>copy add to buffer (can copy-paste files from multiple directories this way)</td></tr>
+                
+<tr><td>y r   </td><td>copy remove from buffer</td></tr>
+                
+<tr><td>y G   </td><td>copy all files from selected to bottom of list</td></tr>
+
+<tr><td>y gg   </td><td>copy all files from selected to top of list</td></tr>
+
+<tr><td>d d   </td><td>cut (da, dr also to cut from multiple directories, dG, dgg also)</td></tr>
+
+<tr><td>p p   </td><td>paste</td></tr>
+
+<tr><td>p o     </td><td>paste with over-write</td></tr>
+
+<tr><td>u d      </td><td>clears copy/cut buffer, also uy (<b>I change this to uu as it seems faster</b>)</td></tr>
+
+<tr><td>c w    </td><td>rename (<b>I make this fr</b> -see below)</td></tr>
+
+<tr><td>A			</td><td>append/edit name</td></tr>
+
+<tr><td>I			</td><td>prepend/edit name</td></tr>
+
+<tr><td>E			</td><td>edit file with nano (<b>I change this to fe</b>)</td></tr>
+
+<tr><td>insert		</td><td>touch (enter name of new file) (<b>I make this ft</b>)</td></tr>
+
+<tr><td>delete      </td><td>deletes file (no confirm single files by default -can change in conf.rc)</td></tr>
+
+<tr><td>r      </td><td>open file with program</td></tr>
+
+<tr><td>r 1     </td><td>unpacks selected archive (need to install <b>atool</b>) -actually hits the 1st option with rifle (you can just type 1 Enter)</td></tr>
+
+<tr><td>+ / -   </td><td>chmod commands, e.g. 6</td></tr></table>
+
+<br>
+<h3>marking</h3>
+<table width="900"><tr><td style="width: 140px;">Space              </td><td>mark</td></tr>
+
+<tr><td>v                      </td><td>invert selection</td></tr>
+
+<tr><td>V, uV                </td><td>marks/unmarks files as cursor moves, until escape pressed, or yanked etc (<b>I change this to b</b>)</td></tr>
+
+<tr><td>u v                   </td><td>unmark all files</td></tr>
+
+<tr><td>t                      </td><td>tag toggle</td></tr>
+
+<tr><td>u t                   </td><td>remove all tags</td></tr>
+
+<tr><td>T                     </td><td>remove any tags of selected files</td></tr>
+
+<tr><td>"{x}                  </td><td>custom tag </td></tr></table>
+
+<br>
+<h3>operation</h3>
+<table width="900"><tr><td style="width: 140px;">Ctrl-R               </td><td>reload</td></tr>
+
+<tr><td>Ctrl-H, z h        </td><td>toggle hidden files</td></tr>
+
+<tr><td>z                      </td><td>toggle settings</td></tr>
+
+<tr><td>:, ;                     </td><td>open console to enter commands</td></tr>
+
+<tr><td>s, !, @, #          </td><td>open shell console</td></tr>
+
+<tr><td>1?                    </td><td>display all key bindings alphabetically</td></tr>
+
+<tr><td>2?                    </td><td>Ranger commands usage</td></tr>
+
+<tr><td>3?                    </td><td>Ranger settings</td></tr>
+
+<tr><td>?, F1                </td><td>man page</td></tr>
+
+<tr><td>W                     </td><td>message log</td></tr>
+
+<tr><td>w                     </td><td>job queue</td></tr>
+
+<tr><td>11,12,13,14 Enter    </td><td>(on image file) set image as desktop background with feh (11=scale, 12=tile, 13-center, 14=fill)</td></tr></table>
+<br><br>
+
+<h3>Macros used in console and shell</h3>
+<table width="900"><tr><td style="width: 140px;">%f   			</td><td>the highlighted file</td></tr>
+
+<tr><td>%d   			</td><td>the path of the current directory</td></tr>
+
+<tr><td>%s   			</td><td>the selected files in the current directory. (defaults to highlighted file if none selected)</td></tr>
+
+<tr><td>%t   			</td><td>all tagged files in the current directory</td></tr>
+
+<tr><td>%c   			</td><td>the full paths of the currently copied/cut files</td></tr></table>
+<br><br>
+
+<h3>Flags used with open_with and shell commands</h3>
+(type <b>r</b> for open_with, or <b>s</b>, <b>!</b>, <b>@</b> for shell.  open_with flags must be plain with no dash -)
+<br><br>
+<table width="900"><tr><td style="width: 140px;">-f                   </td><td>runs process in background - would be useful for an encoding/mogrify, ranger will still b usable while the process completes</td></tr>
+
+<tr><td>-c                   </td><td>runs on current file, not selected</td></tr>
+
+<tr><td>-r                    </td><td>runs with super user privileges</td></tr>
+
+<tr><td>-t                    </td><td>will show the process in a new terminal window (opens xterm)</td></tr></table>
+<br><br>
+
+
+<h3>Flags used with only the shell command</h3>
+<table width="900"><tr><td style="width: 140px;">-p                  </td><td>sends the process to the pager - which is closed with q, or canceled before with Ctrl-C</td></tr>
+
+<tr><td>-s                  </td><td>silent mode - the output is discarded</td></tr>
+
+<tr><td>-w                 </td><td>bash waits at the end of the process so that you can read the output and then press enter</td></tr></table>
+
+<br><br>
+typing '@-rf leafpad' will open a file with sudo (writes `shell -rf leafpad %s` to console)
+
+
+Check the rc.conf file
+
+<br><br>
+<a name="4"></a><br>
+
+<h2>My keybindings</h2>  
+
+<h3 style="color: #2D46CF; ">keybinds I changed from the default..</h3>
+
+<form><textarea name="T" id="file" rows="46" cols="100">
+map k  move down=4
+map j  move up=4
+map h     history_go -1
+map l     history_go 1
+
+     #move up/down parent dir by 5 -a messy hack as `move_parent up=20` dunna work! nonetheless, this is very useful for navigation
+map {	 chain move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1
+map }	 chain move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1
+
+     #move up/down parent dir by 20 -you might want to scrub the Midnight Commander F keys mapping in rc.conf
+map <F9>     chain move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1
+
+map <F10>    chain move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1
+
+map g/ cd /
+
+map /  console search
+map \]  console find
+map \[  console travel
+map \\  console mark
+map |  console filter
+ 
+alias filter     scout -iprt
+alias find       scout -aet
+alias mark       scout -mr
+alias unmark     scout -Mr
+alias search     scout -rts
+alias travel     scout -aefikst
+
+map fe  edit
+map du shell -p du -ch -d 1 | sort -rh
+map dz shell -p du -ch -d 1 | sort -k 2b
+ 
+map uu uncut
+map <C-n>     tab_new %d
+
+map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+<h3 style="color: #2D46CF; ">then all those I added..</h3>
+<table><tr><td style="padding-right: 20px; " valign="top">
+<table cellpadding="2">
+<tr><td style="color: #2D46CF; font-weight: bold;" width="100">f</td><td> <a href="#fi">files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> O</td><td> <a href="#op">open files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> y,d,p</td><td> <a href="#yk">yanking</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> P</td><td> <a href="#su">super user</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> X,x</td><td> <a href="#del">delete</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> dot-number</td><td> <a href="#con">config files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> ';</td><td> <a href="#cdcon">cd config dir's</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-k </td><td><a href="#bk">backup</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-l</td><td> <a href="#sym">symlinks</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-d</td><td>  <a href="#dir">directories</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-a</td><td>   <a href="ar">archives</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-i</td><td>   <a href="#iso">iso</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-s</td><td>   <a href="#src">source files</a></td></tr></table>
+</td>
+<td>
+<table cellpadding="2">
+<tr><td style="color: #2D46CF; font-weight: bold; " width="100"> fi </td><td> <a href="#img">image files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> F</td><td>  <a href="#feh">feh</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> fim</td><td>  <a href="#mog">mogrify</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> E</td><td>  <a href="#exif">exiftool</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> fa</td><td>   <a href="#aud">audio files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> fv</td><td>    <a href="#vid">video files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold;">  comma-m</td><td> <a href="#mt">mounting</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-n</td><td> <a href="#nfs">nfs</a> </td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> J</td><td> <a href="#git">Github</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-z</td><td>    <a href="#brn">bashburn</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> G</td><td>   <a href="#gpg">gpg encryption</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> R</td><td>   <a href="#batch">batch renaming</a></td></tr></table>
+</td></tr>
+</table>
+<br><br>
+
+<a name="fi"></a>
+
+<br><br>
+
+<h3>map f for files</h3>
+<form><textarea name="T" id="file" rows="25" cols="120">
+################## My keyinds ######################
+
+map ga cd /etc/apt
+map M chain tab_new; cd /media
+map zx toggle_option preview_images
+
+##### files ##########
+
+map fl less %f                 #view file with less. q to quit (ranger i doesn't show full file)
+map fm    console mkdir             #(space after) create dir
+map ft    console touch             #(space after) create file
+map f+    shell -s chmod +x %f                     #make a file executable
+map f=   console shell -s chmod 664 %%s                #chmod operations
+map fr    console rename
+map fb    bulkrename %s
+map fp   shell -f pyrenamer %d                            #GUI renamer, or another, `Thunar -B %d'
+map fg   console shell -p grep -nT ? %%s                      #grep (search) pattern in files
+map f?   console shell perl -pi -e 's/?/@/g' %%s            #replace string in files
+map f2   shell -f meld %s 	                                #compare two files in meld
+map ff   console shell find . -name "*?*" -type f -print | less       #find files and print paths to pager
+map f\   shell -f catfish --path=%d                          #find files with catfish
+map fd1   console shell -s cp "$f" "$f"_1                    #duplicate selected file
+map fd2   shell -s sh ~/scripts/duplicate %f
+map fW   console shell touch tmpfile; mv tmpfile %%f           #wipe a file clean (overwrite with blank)</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+fd2 script, puts suffix inside the file extension:
+<form><textarea name="T" id="file" rows="6" cols="80">
+#!/bin/bash
+ name=${1%.*} 
+ extension=${1##*.}      
+ infix="${2:-_1}" 
+ cp -v "$1" "${name}${infix}.${extension}"              
+#            (can change _1 to date-time etc)</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<a name="op"></a><br>
+
+<br><br>
+<h3>map O to open files</h3>
+<form><textarea name="T" id="file" rows="9" cols="120">
+##### open file ##########
+
+map Op    shell -f leafpad %f                #open with leafpad
+map Ow   shell -f libreoffice4.4 %s        #will open any open doc format file, or other compatible, with libre office (change version)
+map On  shell -f rxvt -e nano %f        #open file forked in nano
+map Ol  shell -f rxvt -e less %f         #open forked to view
+map Ot shell -f rxvt -cd %d              #open current dir in new terminal</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<a name="yk"></a><br>
+
+<br><br>
+<h3>map y,d,p for yank, cut and paste commands</h3>
+<form><textarea name="T" id="file" rows="27" cols="150">
+##### yanking ##########
+
+map y2    shell -s cp %s "`yad --title="Copy To" --file --directory --height=400 --width=500`"
+map d2    shell -s mv %s "`yad --title="Move To" --file --directory --height=400 --width=500`"
+map ys chain save_copy_buffer; shell less ~/.config/ranger/copy_buffer                    #saves copy buffer to file and then shows the file in pager
+map yb chain save_copy_buffer; shell less ~/.config/ranger/copy_buffer | xsel --clipboard     #copy buffer to clipbd
+map yp shell echo -n %d/%f | xsel --clipboard   #copy filename and path
+map yn shell echo -n %s | xsel --clipboard      #copy filenames
+map yd shell echo -n %d | xsel --clipboard      #copy directory name
+map pc shell -f rsync -ru %s %d/%f/                        #copy the selected files into highlighted dir
+map pm shell -f mv -u %s %d/%f                            #move the selected files into highlighted dir
+map pdc shell -f rsync -ru %c %d/%f/                         #copy buff'd into dir
+map pdm shell -f mv -u %c %d/%f                              #move buff'd into dir
+map ps shell -f rsync -rul %c %d                        #sync buffer'd files into curr dir  :links as links
+map pr shell -f rsync -ruL %c %d                      #sync buffer'd files into curr dir  :inc link-referred files
+map pds shell -f rsync -rul %c %d/%f/              #copy buff into h'd dir
+map pdm shell -f mv -u %c %d/%f                  #move buff into h'd dir
+map ytt shell -f rsync -rul %s %D                      #sync sel'd into dir on next tab  :links as links
+map yff shell -f rsync -rul %S %d                    #sync sel'd from dir on next tab  :links as links
+map ytr shell -f rsync -ruL %s %D                  #sync sel'd into dir on next tab  :inc link-referred files
+map yfr shell -f rsync -ruL %S %d                 #sync sel'd from dir on next tab  :inc link-referred files
+map dtt shell -f mv %s %D                            #move sel'd into dir on next tab
+map dff shell -f mv %S %d                             #move sel'd from dir on next tab
+map p\x shell mkdir moved; mv -t moved `xsel -b -o`           #remove files via list on clipbd (collected with yn)
+map p\c shell mkdir copied; cp -t copied `xsel -b -o`         #copy files via list (yn)</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="su"></a><br>
+
+<br><br>
+<h3>map P for commands with super user privelege</h3>
+<form><textarea name="T" id="file" rows="13" cols="120">
+##### Super-user ##########
+
+map Pm console shell -r mkdir 
+map Pt   console shell -r touch 
+map Pn console shell -r nano 
+map Pe   shell -r nano %f                    #edit file with nano
+map Pp    shell -f gksu leafpad %f             #open with leafpad
+map Pr console shell -r mv %%f               #(type new name after) rename file
+map P+   shell -rs chmod +x %f                           #make a file executable
+map Pw console shell -r chown -R $USER:$USER %%s            #change ownership of sel'd files
+map Ps shell -r rsync -u %c %d                #sync buffered to dir
+map Pyt shell -r rsync -u %s %D                   #sync selected to next tab</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="del"></a><br>
+
+<br><br>
+<h3>map X for delete commands</h3>
+<form><textarea name="T" id="file" rows="10" cols="120">
+##### delete ##########
+
+map &#60;S-DELETE> console delete
+map X    console delete
+map PX console shell -r rm %%s               #delete files with super-user priveleges
+map fX console shell -tf shred -uv %d/%s           #shred files
+map xx1 cd ~/.local/share/Trash/files
+map xx2 cd /media/FILES/.Trash-1000/files
+map xx3 cd /media/VIDEO/.Trash-1000/files</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="con"></a><br>
+
+<br><br>
+<h3>map dot for finding config files</h3>
+<form><textarea name="T" id="file" rows="9" cols="80">
+####### Edit config files ##########
+
+map .1 shell -f leafpad ~/.config/ranger/rc.conf
+map .2 shell -fr rxvt -e nano /etc/apt/sources.list
+map .3 shell -fr rxvt -e nano /etc/fstab
+map .4 shell -f leafpad ~/.config/openbox/rc.xml
+map .5 shell -f leafpad ~/.config/openbox/menu.xml
+map .6 shell nano ~/.config/openbox/autostart</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="cdcon"></a><br>
+
+<br><br>
+<h3>map '; for cd to config dir's</h3>
+<form><textarea name="T" id="file" rows="12" cols="80">
+##### cd to config dir's ##########
+
+map ';x cd ~/.xnviewmp
+map ';l cd ~/.local/share
+map ';u1 cd ~/.config/uzbl
+map ';u2 cd ~/.local/share/uzbl
+map ';o cd ~/.config/openbox
+map ';r cd ~/.config/ranger
+map ';s cd ~/QuickLink/Settings
+map ';ac cd ~/QuickLink/applications-config
+map ';au cd ~/QuickLink/applications-usr</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="bk"></a><br>
+
+<br><br>
+<h3>map comma-k for backup commands/scripts</h3>
+<form><textarea name="T" id="file" rows="7" cols="120">
+##### backup ##########
+
+map ,k1   shell -s cp ~/.config/ranger/* ~/Settings/ranger/    #backup the ranger config dir
+map ,k2   shell -s sh ~/scripts/backup %s                             
+map ,k3   shell -s sh ~/scripts/backup-config-files
+map ,k4   shell -s gksu sh ~/scripts/backup-sys-files</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+script for ,k2 (as Ranger chokes on the date-time macros thinking they are its own)
+<form><textarea name="T" id="file" rows="2" cols="50">
+#!/bin/bash
+cp "$1" ~/backups/"$1"_$(date +"%y%m%d")</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(the k3 and k4 scripts are simple rsync commands)
+
+<a name="sym"></a><br>
+
+<br><br><br>
+<h3>map comma-l for symlink commands</h3>
+<form><textarea name="T" id="file" rows="7" cols="150">
+##### symlinks ##########
+
+map ,ll shell ln -s %d/%f ~/Links/           #make a symlink to selected dir/file in ~/Links
+map ,ld shell ln -s %d/%f ~/Desktop/           #make a symlink to selected dir/file in ~/Desktop (i.e a desktop shortcut)
+map ,lL shell -s ln -s "`yad --title="Make a Symlink To" --file --height=400 --width=500`" %d            #make a symlink in current dir
+map ,lr shell -s ln -fsT "`yad --title="Re-link To" --file --height=400 --width=500`" %f         #change the target of a symlink</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="dir"></a><br>
+
+<br><br>
+<h3>map comma-d for directory commands</h3>
+<form><textarea name="T" id="file" rows="9" cols="150">
+##### directory ##########
+
+map ,ds shell -w rsync -a --update --progress %d/ "`yad --title='Sync with directory' --file --height=400 --width=500 --directory`"
+                #sync contents of current dir with another dir, shows progress
+map ,dc shell -s find . -type d -exec mkdir -p -- ../tree_clone/{} \;             
+                        #clone the dir tree of current dir down -creates empty dir's in new dir 1 level up
+map ,do shell -rs chown -R $USER %f                 #change ownership of dir to user (recursively)
+map ,dx console shell -f find . -type d -maxdepth 1 -empty -delete       #remove empty directories in current dir</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="ar"></a><br>
+
+<br><br>
+<h3>map comma-a for archive commands</h3>
+<form><textarea name="T" id="file" rows="11" cols="120">
+##### archive ##########
+
+map ,a1 console shell zip -r ?.zip %%s
+                           #make zip archive from selected files, replace ? with archive name
+map ,a2 console shell -f 7z a -t7z ?.7z %%s
+                           #make 7z archive from selected
+map ,a3 console shell -f tar cvpf ?.tar %%s
+                           #make tar archive from selected
+map ,a4 console shell -f tar cvzpf ?.tgz %%s
+                           #make tar zip archive from selected</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<a name="iso"></a><br>
+
+<br><br>
+<h3>map comma-i for iso/dvd commands</h3>
+<form><textarea name="T" id="file" rows="9" cols="150">
+##### iso/dvd ##########
+
+map ,i1 chain shell gksu 'mount -o loop -t iso9660 %f /mnt/mounted'; cd /mnt/mounted     #mount iso - mkdir /mnt/mounted first!!
+map ,i2 shell -s gksu umount /mnt/mounted                                #unmount the mounted iso
+map ,i3 shell -ft growisofs -dvd-compat -Z /dev/dvd1=%f            #burn iso to dvd (`dvd1' etc is usb dvd writer, `dvd' is internal)
+map ,xx console shell -s mkfs -t vfat /dev/sdX                 #format a usb stick (repair it), change X
+map ,cdc console shell -ft gksu cdrdao copy		#copy audio cd, see my page cd copy
+map ,cdej console shell -s eject /dev/sr0              #eject laptop CDROM</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="src"></a><br>
+<br><br>
+<h3>map comma-s for source file commands (though dropping to shell might be more advisable)</h3>
+<form><textarea name="T" id="file" rows="6" cols="50">
+##### source archives ##########
+
+map ,s1	console shell -ft ./configure
+map ,s2 shell -ft make
+map ,s3 shell -pw sudo make install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="img"></a><br>
+
+<br><br>
+<h3>map fi for image file commands</h3>
+<form><textarea name="T" id="file" rows="9" cols="150">
+##### image files ##########
+
+map fiv shell /usr/sbin/xnview %f                                #edit image with XnViewMP
+map fip1 console shell -ft google picasa create "" %%s            
+                #googlecl command upload selected pics to new Picasa album -enter album name in "", use * to upload all files
+map fip2 console shell -ft google picasa post "" %%s                #upload to existing album
+map fip3 console shell -pw google picasa list-albums                #list albums
+map fipx console shell -ft google picasa delete ""                    #delete album -name ""</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="feh"></a><br>
+
+<br><br>
+<h3>map F for feh image viewer commands</h3>
+<form><textarea name="T" id="file" rows="13" cols="150">
+##### feh commands ##########
+
+map Fs shell ls | xarg ;feh -dFZ  -D4 -Sfilename             #start feh slideshow in dir of images, escape to quit
+map Fc shell feh -dFZ -D4 -Sfilename --start-at %f *      #start slideshow from current file
+map Fr shell feh -rdFZ -D4 -Sfilename %f                    #start slideshow from selected dir -recursive
+
+###  Openbox! To set the desktop bg image and copy to autostart, use this: 
+### (this method builds a collection - it copies the pic to a folder "~/wallpapers"... then the 'sed' command replaces a line in the autostart file, to look up the image you chose at startup -my line is no.7)
+###  You could just do '11,12,13, or 14, Enter' in Ranger to set feh bg and use a line in autostart:  sh ~/.fehbg & (without making a collection)
+
+map Fb chain shell -f feh --bg-scale %f; shell cp %f ~/wallpapers; sed -i '7s/.*/feh --bg-scale ~\/wallpapers\/%f \&/' ~/.config/openbox/autostart
+</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="mog"></a><br>
+
+<br><br>
+<h3>map fim for mogrify commands</h3>
+<form><textarea name="T" id="file" rows="13" cols="150">
+##### mogrify commands ##########
+
+map fim1 shell -f mogrify -format jpg -quality 100 *.png      #convert png to jpeg -progress will be noted by green temp file moving down list
+map fim2 shell -f mkdir "../${PWD##*/}_a"; mogrify -path "../${PWD##*/}_a" -resize '1200x1200>' -quality 90 *.jpg *.JPG            
+                                    #reduce jpegs in current dir and place new images in dir_a 1 level up
+map fim3 console shell -f mogrify -resize '1200x1200>' -quality 90 *{.jpg|.JPG}
+                                                        #reduce jpegs in current dir, OVERWRITE files, 1200pix, 90%
+map fim4 console shell -f find . -type f -iname "*.jpg" -print0 | xargs -0 mogrify -resize '1024x1024>' -quality 84 {} \;
+                                                        #reduce jpegs RECURSIVELY, start from current dir, OVERWRITE files, 1024pix, 84%
+map fim5 shell -f sh ~/scripts/image-resize.sh %f           #see image processing page for these 2 scripts
+map fim6 shell -f sh ~/scripts/image-convert.sh %f
+map fixx shell -f jhead -di %s                           #remove iptc keywords from selected images</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+            
+<a name="exif"></a><br>
+
+<br><br>
+<h3>map E for exiftool and jhead commands</h3>
+<form><textarea name="T" id="file" rows="42" cols="150">
+##### exiftool commands ##########
+
+### To adjust EXIF date use - or +, then yy:mm:dd, e.g. +=:04:05 0 to add on 4 months and 5 days and no time change; or -=0 03:20:15 to subtract 3 hrs, 20min, 15sec and no date change
+
+map Ed1 console chain shell -p exiftool -m -overwrite_original -alldates-+=':: 0' %%s
+map Ed2 console shell jhead -ds:: %%s 
+            #yyyy:mm:dd or yyyy:mm or yyyy / use -dt to set date-time i.e. -dtyyyy:mm:dd-hh:mm:ss  (no space after -ds or -dt)
+map Ed3 console shell exiftool -overwrite_original "-filemodifydate>alldates" %%s 
+            #this creates exif dates on files that have no EXIF data (e.g. stills cut from video)
+
+###add keywords or rating:
+map Es shell -f exiftool -m -overwrite_original -xmp:subject+="`yad --entry --button='Write keywords':0 --undecorated --width=400 --height=50`" %s
+map Er console shell -f exiftool -m -overwrite_original -xmp:rating=2 %%s
+map Eb1 shell -f exiftool -m -overwrite_original -xmp:label=red %%s           #add color label
+map Eb2 shell -f exiftool -m -overwrite_original -xmp:label=yellow %%s
+map Eb3 shell -f exiftool -m -overwrite_original -xmp:label=green %%s
+map Eb4 shell -f exiftool -m -overwrite_original -xmp:label=blue %%s
+map Eb5 shell -f exiftool -m -overwrite_original -xmp:label=purple %%s
+ 
+###add comment (crude! it replaces existing comment and blank or cancel also replaces!  I need to work on it)
+map Ec shell -f exiftool -m -overwrite_original -comment="`yad --form --button='Write comment':0 --field=:TXT --undecorated --width=400 --height=200`" %s
+ 
+###remove keywords and rating:
+map Ex1 console shell -f exiftool -m -overwrite_original -xmp:subject= %%s      #remove keywords
+map Ex2 console shell -f exiftool -m -overwrite_original -xmp:rating= %%s      #remove rating
+map Ex2 console shell -f exiftool -m -overwrite_original -xmp:label= %%s       #remove label
+ 
+###subject/rating/label from list of file names on the clipboard
+map Els console shell -f xsel -b -o | xargs exiftool -m -overwrite_original -xmp:subject+="`yad --entry --button='Write keywords':0 --undecorated --width=400 --height=50`"
+map Elr console shell -f xsel -b -o | xargs exiftool -m -overwrite_original -xmp:rating=2
+map Elb console shell -f xsel -b -o | xargs exiftool -m -overwrite_original -xmp:label=`yad --list --undecorated --width=100 --height=200 --column red yellow green blue purple --separator=''`
+ 
+#sort image files into folders by date (this is a very handy tool to use after an import of files from SD card)
+map Ef console shell -fs sh ~/scripts/exif-sort
+
+#sort files into folders by modified date -replace * for $@ to hit only selected files
+map fD console shell -fs sh ~/scripts/sort-files</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+script for Ef, "exif-sort"
+<form><textarea name="T" id="file" rows="2" cols="80">
+#!/bin/bash
+exiftool -r "-directory<datetimeoriginal" -d "%y-%m-%d" *.{jpg,JPG}</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+script for fD, "sort-files" (a very useful one to have when you've imported 400 clips from a video camera etc - no EXIF data)
+<form><textarea name="T" id="file" rows="2" cols="80">
+#!/bin/bash
+for i in  *; do DAT=$(date -r $i +%y-%m-%d); mkdir -p $DAT; mv $i $DAT ; done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="vid"></a><br>
+
+<br><br>
+<h3>map fv for video file commands</h3>
+<form><textarea name="T" id="file" rows="15" cols="120">
+##### video files ##########
+
+map fvg shell -f gnome-mplayer %s
+map fvv shell -f vlc %s
+#map fvf..	{my ffmpeg commands...}
+
+##### ffmpeg commands ##########
+
+map fvf1 console shell -ft ffmpeg -i %f -vn -acodec libvorbis -ac 2 -ab 256k -ar 44100 %f.ogg     #extract audio from video (ogg)
+map fvf2 console shell -ft ffmpeg -i %f -vn -ar 44100 -c:a 2 -q:a 0 -f mp3 %f.mp3                            # (mp3)
+map fvf3 console shell -f ffmpeg -i %f -target pal-dvd out.vob
+map fvf4 console shell -ft flac-ogg %%s        #convert flac to ogg
+map fvf5 console shell -ft flac-mp3 %%s        #convert flac to mp3</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+scripts tor ffmpeg conversion of flac to ogg/mp3 - but see audio file commands for oggenc
+<br>
+"flac-ogg" 
+<form><textarea name="T" id="file" rows="4" cols="80">
+#!/bin/bash
+for a in *.flac; do
+ < /dev/null ffmpeg -i "$a" -c:a libvorbis -q:a 7 "${a%.*}.ogg"
+done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>  
+<br>
+"flac-mp3"
+<form><textarea name="T" id="file" rows="4" cols="80">
+#!/bin/bash
+for a in *.flac; do
+ < /dev/null ffmpeg -i "$a" -q:a 0 "${a%.*}.mp3"
+done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>       
+<a name="aud"></a><br>
+<br><br>
+<h3>map fa for audio edit commands</h3>
+<form><textarea name="T" id="file" rows="8" cols="120">
+##### audio files ##########
+
+map fae shell -f easytag %d
+map faa shell -f audacity %s
+map fa1 shell -ft oggenc %s -q 7     #convert flac or other raw format to ogg
+map fa2 console shell -ft find . -type f -name "*flac" -exec oggenc -q 7 {} \;   #convert all flac to ogg
+map fa3 shell -ft ogg2mp3 -B 256 --vbr-new -V 0 *.ogg %s        #convert ogg to mp3 (how horrible) need vorbis-tools</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+<a name="mt"></a><br>
+
+<br><br>
+<h3>map comma-m and comma-u for mounting/unmouning drives</h3>
+<form><textarea name="T" id="file" rows="17" cols="120">
+##### mounting ##########
+
+map ,mm console shell -s pmount /dev/sdb1         
+                        #use pmount to mount devices if sys does not auto-mount
+map ,uu console shell -s pumount %f
+map ,m1 shell -s pmount /dev/sdc1
+map ,m2 shell -s pmount /dev/sdc2
+map ,m5 shell -s pmount /dev/mmcblk0p1                  #mount SD card
+map ,m6 console shell -r mount /dev/sda4 %%f
+map ,u1 shell -s pumount /dev/sdc1
+map ,u2 shell -s pumount /dev/sdc2
+map ,u5 shell -s pumount /dev/mmcblk0p1
+map ,u6 shell -r umount %f
+map ej	shell -s eject %s             #eject selected external volumes (safely remove)
+map ,d1 shell -pwr fdisk -l       #list partitions
+map ,d2 shell -pwr blkid            #list partitions with UUID</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="nfs"></a><br>
+
+<br><br>
+<h3>map comma-n for mounting nfs</h3>
+<form><textarea name="T" id="file" rows="9" cols="80">
+##### nfs ##########
+
+map ,nr shell -ftr /etc/init.d/nfs-kernel-server restart
+map ,nm shell -r mount 10.0.0.1:/ ~/Shared
+map ,n1 console shell -r mount 10.0.0.1:/home/? ~/Shared
+map ,n2 shell -r mount 10.0.0.1:/media/D1 ~/Shared
+map ,n3 shell -r mount 10.0.0.1:/media/D2 ~/Shared
+map ,nu shell -r umount %f</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="git"></a><br>
+
+<br><br>
+<h3>map J for Jekyll and Github commands</h3>
+<form><textarea name="T" id="file" rows="5" cols="80">
+##### Github-jekyll ##########
+
+map Js shell -ft jekyll serve --watch
+map Jc console shell -ft git commit -a -m "updating pages"</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="brn"></a><br>
+
+<br><br>
+<h3>map comma-z for bashburn commands</h3>
+<form><textarea name="T" id="file" rows="11" cols="150">
+##### bashburn ##########
+
+map ,z1 shell ln -s %d/%f ~/Projects/bashburn/burn/           #make a symlink to selected dir/file in bashburn dir
+map ,z2 shell ln -s %d/* ~/Projects/bashburn/burn/  	 	#make a symlinks to all files/dirs (%s doesn't work with ln command)
+map ,z2 cd /tmp/burn                                    #cd to the bashburn temp dir
+map ,z3 console shell -r sh ~/scripts/bashburn-links ?      
+            #move links in bashburn temp to a session dir (replace ? with a dir name)  
+map ,zX console shell rm -r ~/Projects/bashburn/burn/*           #delete contents from bashburn temp
+map ,z4 cd ~/Projects/bashburn                    #cd to the bashburn sessions dir (not present by default)
+map ,z5 shell -r cp %s ~/Projects/bashburn/burn/             #add links from a session to bashburn tmp dir</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+script for ,z3 "bashburn-links"
+
+<form><textarea name="T" id="file" rows="5" cols="100">
+#!/bin/bash 
+mkdir -p ~/Projects/bashburn/"$1" 
+sudo mv ~/Projects/bashburn/burn/* ~/Projects/bashburn/"$1"/ 
+ 
+# (edit bashburn temp dir to dir in home then no need for sudo to move these links)</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="gpg"></a><br>
+
+<br><br>
+<h3>map G for GPG encryption commands</h3>
+<form><textarea name="T" id="file" rows="8" cols="100">
+##### encrypt ##########
+
+#if not encrypting to default recipient (set in gpg config file) must add -r name or email
+map Ge shell -ft gpg2 -es %f
+map Gd shell -ft gpg2 -d %f
+map Gce shell -ft xsel -b -o | gpg2 -es | xsel --clipboard
+map Gcd shell -ft xsel -b -o | gpg2 -d | xsel --clipboard</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<a name="batch"></a><br>
+<br><br>
+<h3>map R for file renaming commands</h3>
+
+<span class="bblue">Rr</span>: replace, <span class="bblue">Rs</span>: find spaces, <span class="bblue">Ru</span>: change case, <span class="bblue">Rp</span>: prepend, <span class="bblue">Ra</span>: append, <span class="bblue">Re</span>: exif date, <span class="bblue">Rn</span>: numbering, <span class="bblue">Rc</span>: cut
+<br><br>
+Here's my complete Ranger renaming tool that just might take care of all your needs for naming files! 
+<br><br>
+You might want to have these printed on a sheet because some commands are too long and a #comment after it disables ability to edit the line when shown in console.  You should also run some tests on dummy files - don't assume that they all work perfectly!!!
+<br><br>
+
+<form><textarea name="T" id="file" rows="62" cols="155">
+###################################
+##### batch renaming ##########
+
+
+#replacing
+map Rr1 console shell -fs rename 's/?/@/g' %%s         
+#replace string - ?=old @=new, \ looks in extension ie 's/\?/\@/',  mode: file-?ame.ext > file-@ame.ext
+
+map Rr2 console shell find . -depth -name "* *" -execdir prename -n 'y/?/@/' {} +  
+                #replace recurs - ?=old @=new
+
+map Rs1 console shell -fs rename 's/ /_/g' %s    
+                # replace spaces with _ in selected file names
+
+map Rs2 console shell -fs find . -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;     
+                 # replace spaces with _ recursively from current location  
+
+map Ru1 shell rename 'y/a-z/A-Z/' %%s                #change lower case letters to upper case
+ 
+map Ru2 shell rename 'y/A-Z/a-z/' %%s                 #change upper case letters to lower case
+
+#prepending
+map Rp1 console shell -fs rename 's/^/P/' %%s		
+                  #Prepend to file names -change P, mode: file-name.ext > Pfile-name.ext
+
+map Rp2 console shell -fs i=0; for file in %%s; do mv "$file" $(printf "%0.2d$file" $i); i=$((i+1)); done		
+                  #prepend numbering: 0=start from, 2=digits, +1=step, mode: file-name1.ext > 00file-name1.ext file-name2.ext > 01file-name2.ext
+
+#appending
+map Ra1 console shell -fs rename 's/\.(.*)/A.$1/' %%s
+                  #Append to file names inside the ext -change A, mode: file-name.ext > file-nameA.ext
+
+map Ra2 console shell -fs rename 's/$/A/' %%s	
+                  #Append to file names without ext, or after ext -change A, mode: file-name > file-nameA
+
+map Ra3 shell -fs sh ~/scripts/append-date                   
+                  #append modified date to all file names in dir (script below), mode: file-name.ext > file-name_130825-1520.ext  
+
+map Ra4 console shell -fs i=0; for file in %%s; do mv "$file" $(printf "${file%.*}_%0.2d.${file##*.}" $i); i=$((i+1)); done		
+                  #append numbering: i=0 start from, 2=digits, +1=step, mode: file-name.ext > file-name_00.ext, file-name_01.ext
+
+#exif date
+map Re1 shell -fs sh ~/scripts/exif-date-prepend	
+                  #Prepend exif date to file name  - need exiftool, mode: file-name.ext > 120806-1134_file-name.ext
+
+map Re2 shell -fs ~/scripts/exif-date-append
+                  #Append exif date to file names inside ext, mode: file-name.ext > file-name_120806-1134.ext
+
+map Re3 shell -fs sh ~/scripts/exifdate-name %%s       
+                #Rename files from exif date, mode: DSC_4322.JPG > 150812-163544.JPG
+
+#sequential numbering
+map Rn console shell -fs i=0; for file in %%s; do mv "$file" $(printf "NAME_%0.3d.${file##*.}" $i); i=$((i+1)); done		
+                  #sequential numbering: i=0 =start from, 3 =digits, +1 =step, mode: file-name.ext > new-name_000.ext, new-name_001.ext
+                  # WARNING: if numbering digits are not correct (e.g. only 1 digit for 12 files) some files will be LOST (overwritten with others)!
+
+#cutting characters
+map Rc1 console shell -fs for file in %%s; do mv "$file" "`echo $file | cut -c2-`"; done		
+                  #cut until char 2 of selected file names (ie cut one char only) -change 2,  mode: file-name.ext > ile-name.ext
+
+map Rc2 console shell -fs for file in *; do mv "$file" "$(echo $file | sed -e 's/\(.*\)[0-9a-zA-Z]\{2\}\.\([^.]*\)/\1.\2/')"; done 			
+                  #cut any characters from back of selected file names -change {2,  mode: file-name.ext > file-na.ext</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+script for append file modified date (Ra3)
+<form><textarea name="T" id="file" rows="2" cols="100">
+#!/bin/bash
+for file in $@; do mv "$file" "${file%.*}_$( date -r "$file" +%y%m%d-%H%M ).${file##*.}"; done</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+note the use of the <b>parameter $@</b> which will hit all the files passed to bash script, not all the files in dir
+<br><br><br>
+
+script for image date prepend (Re1)
+<form><textarea name="T" id="file" rows="2" cols="80">
+#!/bin/bash
+exiftool '-filename<${DateTimeOriginal}_%f.%e' -d %y%m%d-%H%M $@</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+script for image date append (Re2)
+<form><textarea name="T" id="file" rows="2" cols="80">
+#!/bin/bash
+exiftool '-filename<%f_${DateTimeOriginal}.%e' -d %y%m%d-%H%M $@</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+script for renaming images with date-time (Re3)
+<form><textarea name="T" id="file" rows="2" cols="80">
+#!/bin/bash
+exiftool '-filename<${DateTimeOriginal}.%e' -d %y%m%d-%H%M%S $@</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+<br><br><br>
+One problem is, however, with so many key-bindings, is the lack of sort-by-key in the command visual.  They are sorted alphabetically by command, and so finding the one you want........ I split the renaming up so as to not fill up R with a huge mix up of commands.
+
+<br><br>
+<a name="5"></a><br>
+
+
+<h2>Notes on mapping keys</h2>
+<div class="bullet"><ul><li> `console` is used to run ranger specific commands where typing input is necessary, such as pattern or new file name </li>
+<li>`console shell` is used to run bash commands, where typing is needed (can use ranger macros and the shell flags)</li>
+<li>`chain` allows multiple commands to be run consecutively, each separated by `;`</li>
+<li>without `console` a key-mapped command will execute immediately, without needing confirmation (in some cases it could be dangerous!)</li>
+<li>`%s`in the mapping expands to the file names in the console, so to avoid sending a continuous line of file names to the shell, which it can't use, we need to use `%%s`  which remains `%s` on the console, and shell can act on each file</li>
+</ul></div>
+examples
+<table><tr><td width="200"><b>map a enter_bookmark a </b>  </td>                 <td>will map key a to go to bookmark a (same as using the ' with its list of bookmarks)</td></tr></table>
+
+<br><br>
+<a name="6"></a><br>
+
+
+<h2>Useful native commands</h2> 
+<br>
+<span style="font-size: 20; ">search_inc</span>
+<table><tr><td width="320"><b>map / console search_inc</b> (space after)</td><td>which searches as you type, but no filtering like scout</td></tr></table>
+<br>
+<span style="font-size: 20; ">scout</span>
+<table><tr><td width="320"><b>map / console scout -ilt</b> (space after)</td><td>hit / and type pattern, searches as you type, missing letters out, can correct your search until right file is selected</td></tr></table>
+<br><br>
+<h3>scout options as listed in commands.py:</h3>
+
+<table><tr><td style="font-weight: bold; " width="70">-a</td> <td>automatically open a file on unambiguous match</td></tr>
+<tr><td style="font-weight: bold; " width="70">-e </td><td>open file on hitting Enter</td></tr>
+<tr><td style="font-weight: bold; " width="70">-f </td><td>reduces file list to scout hits, (same as filter command does)</td></tr>
+<tr><td style="font-weight: bold; " width="70">-g</td> <td>interpret pattern as a glob pattern</td></tr>
+<tr><td style="font-weight: bold; " width="70">-i </td><td>ignore case</td></tr>
+<tr><td style="font-weight: bold; " width="70">-k</td> <td>keep the console open when changing a directory with the command</td></tr>
+<tr><td style="font-weight: bold; " width="70">-l</td> <td>letter skipping; e.g. allow "rdme" to match the file "readme"</td></tr>
+<tr><td style="font-weight: bold; " width="70">-m </td><td>mark the matching files on hitting Enter</td></tr>
+<tr><td style="font-weight: bold; " width="70">-M </td><td>unmark the matching files on hitting enter</td></tr>
+<tr><td style="font-weight: bold; " width="70">-p </td><td>permanent filter on hitting Enter (unmatched files stay hidden)</td></tr>
+<tr><td style="font-weight: bold; " width="70">-s </td><td>smart case: lower case hits all, uppercase hits only uppercase</td></tr>
+<tr><td style="font-weight: bold; " width="70">-t </td><td>searches as you type</td></tr>
+<tr><td style="font-weight: bold; " width="70">-v</td><td> inverts the match</td></tr></table>
+<br><br>
+<h3>ready-made Ranger aliases for the `scout` command</h3>
+
+<table><tr><td width="160">alias filter     </td><td>scout -iprt</td></tr>
+<tr><td>alias find       </td><td>scout -aet</td></tr>
+<tr><td>alias mark       </td><td>scout -mr</td></tr>
+<tr><td>alias unmark     </td><td>scout -Mr</td></tr>
+<tr><td>alias search     </td><td>scout -rts</td></tr>
+<tr><td>alias travel     </td><td>scout -aefikst</td></tr></table>
+    
+<br><br>
+
+<span style="font-size: 20; ">filter</span>
+<table><tr><td width="320"><b>map | console filter</b> (space after)</td><td>filters file base names, case-sensitive</td></tr></table>
+<br><br>
+<span style="font-size: 20; ">travel</span>
+<table><tr><td width="320"><b>map \[ travel</b> (space after)</td> <td>pretty much does `scout -efklt` -will navigate into the dir filtered when Enter is pressed, and the console is kept open to search for the next dir to enter</td></tr></table>
+<br><br>
+
+
+
+<h3>find tagged files</h3>
+<div class="bullet"><ul><li> quickly go to tagged files in dir with `ct` and `n`</li>
+<li>use the %t macro to execute a command on all tagged files in dir</li>
+<li>show the tagged file with, e.g.</li>
+</ul></div>
+<table> <tr> <td width="60">map f"console shell less ~/.config/ranger/tagged</td></tr></table>
+
+<br><br>
+<h3>set nano as editor</h3>
+add this line to the end of your ~/.bashrc file<br>
+<form><textarea name="T" id="file" rows="1" cols="30">
+export EDITOR=nano</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+<br><br>
+<a name="7"></a><br>
+
+<h2>In-line preview of images</h2> 
+To have images showing in the pager at right of file list, first install <span class="inst">w3m w3m-img</span>
+then enable image preview "set preview_images true" in conf.rc
+<br><br>
+This only works with rxvt, rxvt-unicode, and xterm terminals - so I advise switching to URxvt.  See my <a href="urxvt.html">Rxvt-unicode</a> page
+
+<br><br>
+<a name="8"></a><br>
+
+<h2>Refine the info displayed for image files</h2>
+To refine the info shown in pager for image files (because otherwise there's way too much info there and it runs off the screen and you don't want to hit `i` every time you need a useful exif data), add this line to <b>scope.sh</b> in ~/.config/ranger, for image mimetype:
+
+<form><textarea name="T" id="file" rows="3" cols="120">
+try exiftool -f -filename -filesize -datetimeoriginal -modifydate -imagesize -aperture -shutterspeed -iso -focallength -model -lensid -shuttercount -subject -hierarchicalsubject -comment -rating -label -GPSposition -GPSaltitude "$path" && { dump | trim | sed 's/: -//;s/ ://;s/GP S/GPS /;'; exit 5; } || exit 1;;</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+<a name="9"></a><br>
+
+<h2>Refine the info displayed for video/audio files</h2>
+I have mediainfo commands that can go in scope.sh file as well, and if you want to add more tags to the commands, you need to run 
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+mediainfo --info-parameters >mediainfo-tags </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+to put all the available tags into a file - and read that file to see what you can use - test them with:
+<br><br>
+mediainfo --inform="<span style="color: #2D46CF; "><b>group</b></span>;%<span style="color: #2D46CF; "><b>tag</b></span>%" <span style="color: #2D46CF; "><b>file</b></span>
+<br><br>
+
+
+mediainfo commands will print any extra characters placed outside the `%<i>tag</i>%` in the output, so I add some to denote tabs (>) and line breaks (^) and pipe to sed to convert them to real tab spaces and line breaks before sending to output, so that the info that mediainfo returns from a file will be displayed nicely.. now that's clever :^)
+<br><br>
+
+<form><textarea name="T" id="file" rows="23" cols="150">
+video/*)
+try mediainfo --inform="General;General^---------------------------------------------- ^File Name>>>%FileName%.%FileExtension% ^Date Modified>>%File_Modified_Date_Local% ^File Size>>>%FileSize/String% ^Format>>>>%Format% ^Encoder>>>>%Encoded_Application%" "$path" && 
+{ dump | sed 's/\^/\n/g;s/>/\t/g'; } &&
+try mediainfo --inform="Video;^Video^---------------------------------------------- ^Encoding>>>%Encoded_Library% ^Standard>>>%Standard% ^Avrg BitRate>>%BitRate/String% ^Max BitRate>>>%BitRate_Maximum/String% ^Width>>>>%Width% ^Height>>>>%Height% ^Aspect Ratio>>%DisplayAspectRatio%/%DisplayAspectRatio/String% ^Pixel Ratio>>>%PixelAspectRatio% ^Frame Rate>>>%FrameRate/String% ^Frame Count>>>%FrameCount% ^Duration>>>%Duration/String3%" "$path" &&
+{ dump | sed 's/\^/\n/g;s/>/\t/g'; } &&
+try mediainfo --inform="Audio;^Audio^---------------------------------------------- ^Format>>>>%Format% ^Muxing>>>>%MuxingMode% ^BitRate>>>>%BitRate/String% ^Maximum BitRate>>%BitRate_Maximum/String% ^Channel(s)>>>%Channel(s)% ^Sample Rate>>>%SamplingRate/String% ^Duration>>>%Duration/String3%" "$path" &&
+{ dump | sed 's/\^/\n/g;s/>/\t/g'; exit 0; } || exit 1;;
+audio/*)
+try mediainfo --inform="General;General^---------------------------------------------- ^File Name>>>%FileName%.%FileExtension% ^Date Modified>>%File_Modified_Date_Local% ^File Size>>>%FileSize/String% ^Album>>>>%Album% ^Track Name>>>%Track% ^Track No.>>>%Track/Position%/%Track/Position_Total% ^Artist>>>>%Performer% ^Genre>>>>%Genre% ^Encoder>>>>%Encoded_Library%" "$path" && 
+{ dump | sed 's/\^/\n/g;s/>/\t/g'; } &&
+try mediainfo --inform="Audio;^Audio^---------------------------------------------- ^Format>>>>%Format% ^Profile>>>>%Format_Profile% ^Mode>>>>%Format_Settings_Mode% ^BitRate>>>>%BitRate/String% ^Channel(s)>>>%Channel(s)% ^Sample Rate>>>%SamplingRate/String% ^Compression>>>%Compression_Mode% ^Duration>>>%Duration/String3%" "$path" &&
+{ dump | sed 's/\^/\n/g;s/>/\t/g'; exit 0; } || exit 1;;</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(this all goes inside the mimetype "case" section, between lines "case" and "esac")
+<br><br>
+Note that "File_Modified_Date_Local" shows the date in local time, but "File_Modified_Date" shows it in UTC (GMT).
+<br><br><br>
+
+If .ogg files don't show any info (they should because ogg is a mimetype, but they don't for me), you need to add this as a new case section:
+
+<form><textarea name="T" id="file" rows="12" cols="150">
+case "$extension" in
+    ogg)
+ try mediainfo --inform="General;General^---------------------------------------------- ^File Name>>>%FileName%.%FileExtension% ^Date Modified>>%File_Modified_Date_Local% ^File Size>>>%FileSize/String% ^Album>>>>%Album% ^Track Name>>>%Track% ^Track No.>>>%Track/Position%/%Track/Position_Total% ^Artist>>>>%Performer% ^Encoder>>>>%Encoded_Library%" "$path"  && 
+     { dump | sed 's/\^/\n/g;s/>/\t/g';  } &&
+        try mediainfo --inform="Audio;^Audio^---------------------------------------------- ^Format>>>>%Format% ^Profile>>>>%Format_Profile% ^Mode>>>>%Format_Settings_Mode% ^BitRate>>>>%BitRate/String% ^Channel(s)>>>%Channel(s)% ^Sample Rate>>>%SamplingRate/String% ^Compression>>>%Compression_Mode% ^Duration>>>%Duration/String3%" "$path" &&
+     { dump | sed 's/\^/\n/g;s/>/\t/g';  exit 0; } || exit 1;;
+esac</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+<a name="10"></a><br>
+
+<h2>Integrate system trash with bash</h2>
+download the zipped file from git (on the right of page) <a href="https://github.com/andreafrancia/trash-cli">https://github.com/andreafrancia/trash-cli</a>
+<br><br>
+unzip it, enter the dir and run
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+sudo python setup.py install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<h3>trash-cli commands</h3>
+
+<table cellpadding="2"><tr><td width="120">trash-put                     </td><td>trashes files and directories</td></tr>
+<tr><td>trash-empty                </td><td>empty the trashcan(s). use flag --shred to wipe it</td></tr>
+<tr><td>trash-list                      </td><td>list trashed file</td></tr>
+<tr><td>restore-trash               </td><td>restore a trashed file (trashed from the current dir)</td></tr>
+<tr><td>trash-rm                      </td><td>remove individual files from trash can</td></tr>
+<tr><td>trash-empty 7		  </td><td>empties files trashed more than 7 days ago</td></tr></table>
+<br><br>
+with ranger, map the delete key - map <DELETE> shell -s trash-put %s<br>
+works a charm!
+<br><br>
+bookmark ~/.local/share/Trash/files to easily retrieve files
+<br><br>
+or you could map keys to the trash places for each disk partition, use `shell cd`
+<br><br>
+then to restore a file, select and yank with yy, then hit h (I change history key to lower case h from H) to return to the dir you just deleted the file, and pp to drop the file back and restore it there.
+
+<br><br>
+<a name="10"></a><br>
+
+<h2>UI enhancements!</h2>
+<h3>1. Remove "user@host" from the title bar</h3>
+<div class="bullet"><ul><li>in ranger type `g R`</li>
+<li>navigate to gui/widgets/ and highlight titlebar.py</li>
+<li>type exactly: `@ gksu leafpad` <Enter></li>
+<li>or if you have leafpad/editor mapped to a key, e.g. my `shell -f gksu leafpad %s` is mapped to Ps</li>
+
+<li>in the file comment these lines (#), then save and quit/restart ranger</li></ul></div>
+<form><textarea name="T" id="file" rows="4" cols="80">
+        #bar.add(self.fm.username, 'hostname', clr, fixed=True)
+        #bar.add('@', 'hostname', clr, fixed=True)
+        #bar.add(self.fm.hostname, 'hostname', clr, fixed=True)
+        #bar.add(':', 'hostname', clr, fixed=True)</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+<h3>2. Adjust colour of title bar (dir path)</h3>
+<div class="bullet"><ul><li>rsync -r /usr/local/lib/python2.7/dist-packages/ranger/colorschemes</li>
+ ~/.config/ranger/
+<li>or in ranger type `gR`, `yy` on colorschemes and `pp` in ~/.config/ranger/</li>
+
+<li>edit the color scheme default (backup first)</li>
+
+<li>under "context.titlebar"</li></ul></div>
+
+<form><textarea name="T" id="file" rows="7" cols="80">
+	    elif context.directory:
+                fg = black
+	    elif context.file:
+                fg = black
+            elif context.tab:
+                if context.good:
+                    bg = blue</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+indent must be exact
+change white in tab??
+<br><br><br><br>
+
+<span class="bblue">Got there! Now go ahead and enjoy some real file management!</span>
+
+
+<br><br><br>
+<b>Next page: </b>
+<br><br>
+<h3><b><a href="firewall.html">Firewall</a> - set up a simple firewall using iptables</h3>
+<br><br>
+</div>

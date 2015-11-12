@@ -1,0 +1,368 @@
+---
+layout: default
+description: Installing Debian - Step 4 of 4 - web browsers, gpg, xiphos bible, gps, skype - by D Quinton
+title: Debian install - Step 4
+id: net
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Light-weight web browsers</a></li>
+                <li><a href="#2">Chromium</a></li>
+                <li><a href="#3">Opera</a></li>
+                <li><a href="#4">Midori</a></li>
+                <li><a href="#5">OpenGPG</a></li>
+                <li><a href="#6">Bible</a></li>
+                <li><a href="#7">GPS</a></li>
+                <li><a href="#8">Skype and others</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Light-weight web browsers</a><br>
+   <a href="#2">Chromium</a><br>
+   <a href="#3">Opera</a><br>
+   <a href="#4">Midori</a><br>
+   <a href="#5">OpenGPG</a><br>
+   <a href="#6">Bible</a><br>
+   <a href="#7">GPS</a><br>
+   <a href="#8">Skype and others</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
+
+<div class="cont">
+
+
+<h2 id="1" class="tag">Light-weight web browsers</h2>
+There plenty of light and fast web browsers to choose from if the sites you intend to visit work with them.. such as midori, seamonkey, and... 
+<br><br>
+<div class="bullet"><ul><li>surf - from <a href="http://surf.suckless.org/">http://surf.suckless.org/</a></li>
+<li>dwb, </li>
+<li>dillo, </li>
+<li>uzbl.... see my <a href="/tutorial/10-uzbl.html">uzbl page</a> - uzbl could almost replace my need for chromium... but it takes days to configure it and there's not much info around, and actually I can't get as much usability out of it, which kind of goes against the name.</li>
+<li>elinks, links2, lynx - CLI browsers, run links2 with the switch <b>-g</b> to allow graphics on page.</li>
+<li>jumanji  (from <a href="http://pwmt.org/projects/jumanji/">http://pwmt.org/...</a> <a href="https://wiki.archlinux.org/index.php/Jumanji">wiki.archlinux.org/</a>) - like uzbl but with tabs built in by design - need to install libunique-dev and also <a href="http://pwmt.org/projects/girara/download/">girara</a></li></ul></div>
+
+<br><br>
+there's a useful list here at Arch wiki <a href="https://wiki.archlinux.org/index.php/List_of_Applications/Internet#Web_browsers">Web_browsers</a>
+<br><br>
+mem usages: surf 140mb... dillo 12mb... elinks 12mb... luakit 79mb... dwb 53mb... uzbl 55mb
+<br><br><br>
+
+and then the heavy-weights...
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="2" class="tag">Chromium</h2>
+
+Adobe Flash Player is no longer being updated for Linux, so there's a solution for all flash content:
+<br>
+Google are continuing flash media support for Linux with their Pepper Flash Player for Chrome, install and it runs a download of chrome (45mb) with the flash player :(
+<br><br>
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install pepperflashplugin-nonfree</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+for wheezy you need to get it from <a href="http://packages.debian.org/wheezy-backports/pepperflashplugin-nonfree">wheezy-backports</a>
+<br><br><br>
+
+<b>Solution for Youtube only:</b><br>
+looks like with youtube, html5 is coming standard?<br>
+if its not for you then you can try requesting html5 from <a href="http://www.youtube.com/html5">youtube</a>
+<br><br><br>
+<b>VLC plugin</b>
+a simple plugin allows the browser to play any web movie that VLC is capable of playing<br><br>
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install browser-plugin-vlc</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+<h3>Extensions</h3>
+some useful ones: <br>
+
+<div class="bullet">
+	<ul><li>too many tabs, tab scissors, back to top button (in options uncheck "enable animation"), 
+full-screen google maps, quick bookmarks, recently closed tabs, vertical tabs, session manager, copy tab url, clickboard </li>
+	<li>scriptsafe (click on green icon to see what sources are blocked then allow/trust those you need to work, or else distrust anything that's not wanted) </li>
+	<li>hola (alters your IP address) </li>
+	<li>change colors - allows custom colours for any wb page, background, text links, can be set to any web address domain or global (chromium does not allow CSS anymore) </li>
+	<li>stylish - add styles fromt he user styles and apply them to web pages </li>
+	<li>youtube downloaders: <a href="http://en.savefrom.net/user.php?helper=chrome">http://en.savefrom.net</a> <a href="http://youtubedownloader.anoniamto.com/?Down=install_chrome">http://youtubedownloader</a> (drag and drop the download from download-bar onto the extension page) but they might not work anymore</li>
+</ul></div>
+ <br><br>
+
+<h3>User scripts</h3>
+! Warning, extensions each eat up some RAM, like between 13-20mb each (press Shift-Escape to see all chromium processes including opened tabs). 
+<br><br>
+user scripts rather than extensions can help. <a href="http://userscripts.org/scripts">http://userscripts.org/scripts....</a>
+<br><br>
+First install the extension "TamperMonkey" and then to install a user script, click install on the user script page (the script will not show on extensions page, but in Tampermonkey).
+<br>
+<div class="bullet"><ul>
+	<li>multi column view of Google search <a href="http://userscripts.org/scripts">10299</a></li>
+	<li>text area backup <a href="http://userscripts-mirror.org/scripts/show/319100">319100</a> </li>
+	<li>simple form saver <a href="http://userscripts-mirror.org/scripts/show/66442">66442</a></li>
+	<li>docs online viewer <a href="http://userscripts-mirror.org/scripts/show/127774">127774</a> </li>
+	<li><del>download youtube videos</del> <a><a href="http://userscripts-mirror.org/scripts/show/25105"><del>25105</del></a></a>  not working </li>
+	<li>viewtube <a href="http://userscripts-mirror.org/scripts/show/87011">87011</a> -watch media with html5 and download, has buttons for default video definition and format</li>
+</ul></div>
+ 
+<br><br>
+Stop the white background flash just before a page loads<br>
+see this answer <a href="http://stackoverflow.com/questions/16243105/google-chrome-override-white-blank-page-between-webpage-loads">http://stackoverflow.com/</a>
+<br><br>
+copy into two files in a dir and open chrome://extensions/ - check the "Developer mode" at top right of the page, and add the folder you saved the files in<br>
+I changed "black" to "gray" - works nicely.
+
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="3" class="tag">Opera</h2>
+A fully featured web-browser to contend with Chrome and Firefox, with tons of options and addons.
+<br><br>
+download 12.16 here <a href="http://www.opera.com/computer/linux">http://www.opera.com/computer/linux</a>
+<br><br>
+Flash plugin - get from adobe, then in the download dir,
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+mkdir ~/.local/lib/opera/plugins/ && cp libflashplayer.so ~/.local/lib/opera/plugins/</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and restart Opera
+<br><br><br>
+my addons: flash video downloader, documents, scroll to top, open-in-background-with-long-press, yet another statusbar, turn off the lights
+<br><br>
+see more about it on my <a href="/tutorial/09-opera.html">Opera page</a>.  At the moment Opera (linux v 12.16) can't properly handle dynamic web page content, like lots of Google stuff, yahoo news headlines etc... v25 is out for Win/Mac<br>
+there's OperaBeta for Linux <a href="http://www.opera.com/computer/beta">http://www.opera.com/computer/beta</a>
+
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="4" class="tag">Midori</h2>
+Download the latest .deb file from <a href="http://midori-browser.org/download/debian/">midori-browser.org</a>
+<br><br>
+A light-weight web browser. You need to enable the userscripts plugin in Preferences, then just find and install what you need (though i couldn't get youtube downloader working)
+<br><br>
+To get flash working, run
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install flashplugin-nonfree</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="5" class="tag">OpenGPG</h2>
+-the open source standard for encrypting files and emails.
+<br><br>
+
+Both "Pretty Good Privacy" (PGP) and GnuPG implement OpenGPG.  The latter is a command-line program for Linux, and there is a simple gui front-end to it, called GNU Privacy Assistant (debian <b>gpa</b> package).  PGP works through the plugins for thunderbird or evolution email clients (see ubuntu help link).<br>
+<a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">http://en.wikipedia.org/wiki/Pretty_Good_Privacy</a><br>
+<a href="https://help.ubuntu.com/community/GnuPrivacyGuardHowto">https://help.ubuntu.com/community/GnuPrivacyGuardHowto</a><br>
+<a href="http://www.phildev.net/pgp/gpgsigning.html">http://www.phildev.net/pgp/gpgsigning.html</a>
+<br><br>
+
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install gnupg2 gpa</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<span style="color:#800080">A lot of useless keys appear in the gpa window.</span>
+<br>
+solve this by either starting the program: gpa --disable-x509
+<br><br>
+or rename the file "<b>com-certs.pem</b>" and remove the <b>.kbx</b> files in ~/.gnupg and then restart gpa
+<br>
+<form>
+<textarea name="T" id="cmd" rows="2" cols="80">
+sudo mv /usr/share/gnupg/gnupg2/com-certs.pem /usr/share/gnupg/gnupg2/com-certs.pem_bak</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="6" class="tag">Bible</h2>
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install xiphos fonts-sil-ezra </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+or download latest from <a href="https://sourceforge.net/projects/gnomesword/files/Xiphos/">https://sourceforge.net/</a>
+<br><br>
+install dependencies<br>
+<form>
+<textarea name="T" id="install" rows="2" cols="80">
+sudo apt-get install libgtkhtml-4.0-dev libgtkhtml-editor-4.0-dev webkitgtk-3.0 libwebkitgtk-3.0-dev  libgsf-1-dev libgnomeprintui2.2 libicu-dev</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+Download the newest sword engine from <a href="http://crosswire.org/sword/software/swordapi.jsp">http://crosswire.org/</a>
+<br>
+unpack and install with <span style="color:#994900"></span> 
+<form>
+<textarea name="T" id="cmd" rows="3" cols="30">
+./userinst.sh
+make
+sudo make install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+(read INSTALL file)
+<br><br>
+if success then unpack xiphos and cd there, install with 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+./waf configure build install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+<hr noshade="noshade">
+<br>
+
+<h2 id="7" class="tag">GPS</h2>
+
+<h3> Handheld Garmin devices</h3>
+With devices that download the data through gpsbabel, you need to add your user to plugdev if not already added:
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+groups <username>
+sudo adduser <username> plugdev</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+plus, add your user to the <b>dialout</b> group -as with my 60csx (firmware 4.0) it was picked up on /dev/ttyUSB0, which belongs to the dialout group
+<br><br><br>
+
+<h3>Viking</h3>
+An excellent app for collating, sorting and exporting geo data.  It can be simple or complex and its stable.
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install gpsbabel gpsbabel-gui viking</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+Get the latest Viking from here <a href="http://sourceforge.net/projects/viking/files/">http://sourceforge.net/projects/viking/files/</a>
+<br><br>
+get build dependencies<br>
+<form>
+<textarea name="T" id="install" rows="2" cols="120">
+sudo apt-get install libcurl4-openssl-dev gnome-doc-utils libexif-dev scrollkeeper libbz2-dev libmagic-dev libgps-dev intltool libexpat1 libexpat1-dev libgtk2.0-dev libgexiv2-dev libsqlite3-dev libmapnik-dev</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+make directories<br>
+<form>
+<textarea name="T" id="cmd" rows="2" cols="80">
+sudo mkdir -p /usr/local/share/gnome/help/viking
+sudo mkdir /usr/local/share/omf</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+unpack viking and run:
+<form>
+<textarea name="T" id="cmd" rows="3" cols="30">
+./configure
+make
+sudo make install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+or sudo checkinstall to make a deb package
+<br><br>
+See my <a href="../tutorial/11a-gps.html">Geo data page</a> for more details!
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="8" class="tag">Skype</h2> 
+
+Enable multiarch (if you haven't already i.e. with installing Google earth)
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo dpkg --add-architecture i386 && sudo apt-get update</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+download skype from their <a href="http://www.skype.com/en/download-skype/skype-for-linux/">page</a> and install it
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+sudo dpkg -i skype-debian*.deb
+sudo apt-get -f install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(a fair few i386 packages will be installed)
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h3>Others!</h3>
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install flush axel-kapt tucan pdfshuffler gperiodic xrandr</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+axel-kapt -download accelerator<br>
+tucan -upload-downloader for file share sites<br>
+flush or transmission -bit torrent handlers<br>
+xrandr -dual monitor/multi-display control<br>
+
+
+<br><br><br>
+
+<b>Next pages: </b>
+<br><br>
+<h3><a href="/lxde-fast.html">LXDE fast install</a>&nbsp;&nbsp;&nbsp;<a href="../configure.html">Configure Debian</a></h3>
+<br><br>
+</div>

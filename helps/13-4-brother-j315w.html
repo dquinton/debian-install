@@ -1,0 +1,87 @@
+---
+layout: default
+description: Install tips for Brother J315W printer - by D Quinton
+title: Brother J315W
+id: help
+---
+
+<div class="parent"><a href="../helps.html">Helps</a> > <a href="13-printers.html">Printers</a> ></div>
+
+<div class="cont">
+
+Simple. &nbsp;Followed the instructions here&nbsp;<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_prn1a.html">http://welcome.solutions.brother.com/...</a>
+<div><br>
+</div>
+<div>
+<ol><li><span style="font-size:16px;line-height:1.6">Download the printer driver and cupswrapper driver from&nbsp;</span><a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html">..brother.com</a></li>
+<li><span style="font-size:16px;line-height:1.6">Step 4. Install LPR driver</span></li>
+</ol>
+</div>
+<div>
+<div>
+<ul>
+<ul><li><span style="font-size:16px;line-height:1.6">1. Turn on the printer and connect the USB cable.</span></li>
+<li><span style="font-size:16px;line-height:1.6">2. </span><span style="font-size:16px;line-height:1.6">Install LPR driver.</span></li></ul></ul>
+</div>
+<div><span style="font-size:16px;line-height:1.6"><font color="#b45f06"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>sudo dpkg &nbsp;-i &nbsp;--force-all &nbsp;&lt;lpr-drivername&gt;</font></span></div>
+<div><br>
+</div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>I needed to sudo mkdir for a lot of non existing dir's (on a new laptop)</div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>/usr/local/etc/cups</div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>/usr/local/etc/cups/certs</div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>/usr/local/etc/cups/ppd</div>
+<div><br>
+</div>
+<div>
+<div><span>&nbsp;<span>&nbsp;&nbsp; &nbsp;</span>&nbsp; &nbsp;</span>/var/spool/</div>
+<div><span>&nbsp;&nbsp; <span>&nbsp;&nbsp; &nbsp;</span>&nbsp;</span>/var/spool/lpd/dcpj315w</div>
+</div>
+<div><br>
+</div>
+<div><span style="font-size:16px;line-height:1.6"><span>&nbsp;&nbsp; &nbsp;</span>3. Install cupswrapper driver.</span></div>
+<div><br>
+</div>
+<div><font color="#b45f06"><span><span>&nbsp;&nbsp; &nbsp;</span>&nbsp;&nbsp; &nbsp;</span>sudo dpkg &nbsp;-i &nbsp;--force-all &nbsp;&lt;cupswrapper-drivername&gt;</font></div>
+<div><br>
+</div>
+<div><span>&nbsp;&nbsp;<span>&nbsp;&nbsp; &nbsp;</span> &nbsp;</span>/var/tmp</div>
+<div><br>
+</div>
+<div><span>&nbsp;<span>&nbsp;&nbsp; &nbsp;</span>&nbsp; &nbsp;</span>It prints!</div>
+</div>
+<div><br>
+</div>
+<div><span>&nbsp; &nbsp; 4. Download the scanner driver and scan tool from&nbsp;</span><a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_scn.html#brscan3">...brother.com/...brscan3</a></div>
+<div><span>&nbsp; &nbsp; 5. install away!</span><br>
+</div>
+<div><span><span>&nbsp; &nbsp; 6. follow the instructions here to allow normal users to scan&nbsp;</span></span><a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_scn1c.html#d6">...instruction_scn1c.html#d6</a></div>
+<div><br>
+</div>
+<div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span><font color="#b45f06">sudo leafpad /lib/udev/rules.d/60-libsane.rules</font></div>
+<div><br>
+</div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>Add the following two lines to the end of the device list. (Before the line "# The following rule will disable ..."):</div>
+<div><br>
+</div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span><font color="#38761d"># Brother scanner</font></div>
+<div><font color="#38761d"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>ATTRS{idVendor}=="04f9", MODE="0664", GROUP="scanner", ENV{libsane_matched}="yes"</font></div>
+<div><br>
+</div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;7.&nbsp;</span></span>add user to scanner group</div>
+<div><span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <font color="#b45f06">&nbsp;</font></span><font color="#b45f06">sudo adduser &lt;username&gt; scanner</font></div>
+<div><br>
+</div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;8. To let the scan-key-tool operate it must be started with command&nbsp;</span></span><font color="#b45f06">brscan-skey</font></div>
+<div><font color="#b45f06"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp;&nbsp;</span></span></font>Then Scan can be pressed on the machine. &nbsp;<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_scn3.html">scn3...</a><br>
+<span style="font-size:16px;line-height:1.6"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>add it to Xfce autostart apps or&nbsp;</span>/etc/xdg/lxsession/<span style="font-size:16px;line-height:1.6">LXDE/autostart with @brscan-skey</span></div>
+<div><span style="font-size:16px;line-height:1.6"><br>
+</span></div>
+<div><span style="font-size:16px;line-height:1.6"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp; Try xsane or other scanner app -might not require the scan-key-tool (I haven't tested it yet)</span></span><br>
+</span></div>
+<div><br>
+</div>
+<div><span>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span>Reboot.</div>
+</div>
+
+</div>

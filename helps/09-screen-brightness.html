@@ -1,0 +1,185 @@
+---
+layout: default
+description: Methods for setting screen brightness and binding to keys - by D Quinton
+title: Screen brightness
+id: help
+---
+
+<div class="parent"><a href="../helps.html">Helps</a> ></div>
+
+<div class="cont">
+
+<font size="3">I installed Debian wheezy on a Lenovo S200 Netbook just last year -Nov 2012, and I had&nbsp;some surprises with it... like half the function buttons not working, and the bluetooth not up either. &nbsp;The biggest problem though was the brightness keys not functioning at all -and I guess it's because the kernel doesn't have the function key setup for this newer netbook.</font>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">As an aside note, I got bluetooth working by running Lubuntu live CD and going through all of the loaded firmware files, Googling them all to find out which one was the one I needed. &nbsp;I figured it was the ath3k-1.fw file and the Ar3k directory... copied these into Debian's &nbsp;/lib/firmware and I got Bluetooth up!</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">Ok, about brightness, the methods I found and the one that worked...</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><b><font size="4">1. GRUB</font></b></div>
+<div>
+<div><font color="#b45f06" size="3">sudo leafpad /etc/default/grub</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">Change this line</font></div>
+<div><font color="#38761d" size="3">GRUB_CMLINE_LINUX_DEFAULT="quiet splash"</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">to&nbsp;</font></div>
+<div><font color="#38761d" size="3">GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_backlight=vendor"</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><font color="#b45f06">sudo update-grub</font> and reboot</font></div>
+<div><br>
+</div>
+<div><b><font size="4">2. xrandr</font></b></div>
+<div><font size="3">xrandr --output LVDS1 --brightness 0.8</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><b><font size="4">3. xbacklight</font></b></div>
+<div><font color="#cc0000" size="3">sudo apt-get install xbacklight</font></div>
+<div><font color="#b45f06" size="3">sudo xbacklight -10</font></div>
+<div><font size="3">get error: No outputs have backlight property</font></div>
+<div><font size="3">&nbsp;</font></div>
+<div><b><font size="4">4. setpci</font></b></div>
+<div><font size="3">e.g. sudo setpci -s 00:02.0 F4.B=[value 1-ff]</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">this one worked for my Lenovo!</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">so how to make it easy?</font></div>
+<div><font size="3">Let's use scripts!</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">Credit to whoever posted these (which I adapted) and I don't have the link with me...</font></div>
+<div>
+<ul><li><font size="3"><span style="line-height:25px">make two scripts, named br-up and br-dn</span></font></li></ul>
+<font size="3"><span style="line-height:25px">content for br-up:</span></font></div>
+<div style="overflow:auto;width:750px;height:200px;background-color:#b8b9c8">
+
+<div><font size="3">
+<div>#!/bin/bash</div>
+<div><br>
+</div>
+<div># these are the possible values:</div>
+<div># 42 56 70 92 AF CC E5 FF</div>
+<div># 30 40 50 60 70 80 90 100 %</div>
+<div><br>
+</div>
+<div>Current=`sudo setpci -s 00:02.0 F4.B`</div>
+<div>case $Current in</div>
+<div>&nbsp; 10)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=20</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 20)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=30</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 30)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=42</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 42)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=56</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 56)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=70</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 70)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=92</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 92)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=af</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; af)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=cc</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; cc)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=e5</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; e5)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=ff</div>
+<div>&nbsp; ;;</div>
+<div>esac</div>
+<div><br>
+</div>
+</font></div>
+</div>
+<br>
+<br>
+<div>content for br-dn:</div>
+</div>
+<div style="overflow:auto;width:750px;height:200px;background-color:#b8b9c8">
+<div>#!/bin/bash</div>
+<div><br>
+</div>
+<div># these are the possible values:</div>
+<div># 42 56 70 92 AF CC E5 FF</div>
+<div># 30 40 50 60 70 80 90 100 %</div>
+<div><br>
+</div>
+<div>Current=`sudo setpci -s 00:02.0 F4.B`</div>
+<div>case $Current in</div>
+<div>&nbsp; ff)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=e5</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; e5)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=cc</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; cc)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=af</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; af)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=92</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 92)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=70</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 70)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=56</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 56)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=42</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 42)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=30</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 30)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=20</div>
+<div>&nbsp; ;;</div>
+<div>&nbsp; 20)</div>
+<div>&nbsp; &nbsp; sudo setpci -s 00:02.0 F4.B=10</div>
+<div>&nbsp; ;;</div>
+<div>esac</div>
+</div>
+
+<div>
+<ul><li>put in home, or your scripts dir and make executable with right-click &gt;Properties, chmod +x or thunar right-click custom action</li>
+<li>edit sudoers file so as to not need to enter sudo password for setpci&nbsp;<span style="color:rgb(180,95,6)">sudo leafpad /etc/sudoers</span></li>
+<li>add the line</li></ul>
+<font color="#38761d">ALL ALL=(ALL) NOPASSWD: setpci</font></div>
+<div>
+<ul><li>map keys to the scripts <font color="#38761d">~/br-up</font> and <font color="#38761d">~/br-dn&nbsp;</font>-with Openbox-LXDE this is done in the file ~/.config/openbox/lxde-rc.xml&nbsp;</li></ul>
+e.g.&nbsp;<br>
+<font color="#38761d">&lt;!--keybindings for Brightness --&gt;<br>
+&nbsp;&lt;keybind key="W-Up"&gt;<br>
+&nbsp; &nbsp; &lt;action name="Execute"&gt;<br>
+<span style="white-space:pre">	</span> &lt;execute&gt;~/br-up&lt;/execute&gt;<br>
+<span style="white-space:pre">	</span>&lt;/action&gt;<br>
+&nbsp; &lt;/keybind&gt;<br>
+&nbsp;&lt;keybind key="W-Down"&gt;<br>
+&nbsp; &nbsp; &lt;action name="Execute"&gt;<br>
+<span style="white-space:pre">	</span> &lt;execute&gt;~/br-dn&lt;/execute&gt;<br>
+<span style="white-space:pre">	</span>&lt;/action&gt;<br>
+&nbsp; &lt;/keybind&gt;</font><br>
+<ul><li>I map the Up/Down keys to brightness as I use Super-Q and Super-A for volume control, through Audacious hot keys.</li>
+<li>then set the new keybindings with&nbsp;<font color="#b45f06">openbox --reconfigure</font></li>
+<li>set the brightness level at start-up with e.g. <font color="#38761d">@sudo setpci -s 00:02.0 F4.B=CC</font>&nbsp;in /etc/xdg/lxsession/LXDE/autostart</li>
+<li>or, make .desktop files in ~/.local/share/applications with the same script commands, name them, set icons and add them to a panel as launchers</li></ul>
+</div>
+<div><br>
+</div>
+<div>however, this is probably a better way&nbsp;<a href="http://efreedom.com/Question/H-13196/Setpci-Making-Script-Manually-Change-Brightness">http://efreedom.com/Question...</a></div>
+
+</div>

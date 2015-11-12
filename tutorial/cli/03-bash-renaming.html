@@ -1,0 +1,106 @@
+---
+layout: default
+description: Every kind of file renaming you might need, all on the command line - by D Quinton
+title: Bash renaming
+id: cli
+---
+
+<div class="parent"><a href="../../cli.html">CLI</a> ></div>
+
+<div class="cont">
+
+I took a look at using pure bash commands to run renaming tasks and this is what I found out, the real basics (and practically what I tend to need the most).
+These commands, coupled with Ranger, have replaced my need for any gui rename tool - although I do use XnView's bulk rename tool a lot for pics.
+<div>Make sure you copy a load of files to a test directory and carry out some tests before doing anything serious with renaming commands - because a slightly wrong command can see dozens of files overwritten and disappearing in an instant!</div>
+
+<div>
+<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px">
+<tbody>
+<tr>
+<td style="width:505.79861092567444px;height:21.79861092567444px">rename 's/string-to-replace/with-what/' *</td>
+<td style="width:677.7986109256744px;height:21.79861092567444px">the * wild card will search every file in the directory and replace the string all of them. &nbsp;Use extensions to be safe, if need be, e.g. *.jpg; and use the flag "g" to replace every instance on a line: 's/string/new/g'</td>
+</tr>
+<tr>
+<td>rename 's/\.JPG/\.jpg/' *</td>
+<td>the forward-slashes escape the dots, which otherwise would be a bash pattern</td>
+</tr>
+<tr>
+<td>rename 's/\.JPG//' *</td>
+<td>this will strip the extension off file names</td>
+</tr>
+<tr>
+<td>rename 's/ //' *</td>
+<td>this will remove spaces from file names</td>
+</tr>
+<tr>
+<td>rename 's/ /_/' *</td>
+<td>this will replace spaces for underlines</td>
+</tr>
+<tr>
+<td>rename 'y/A-Z/a-z/' *</td>
+<td>this will change upper case letters to lower case in all file names</td>
+</tr>
+<tr>
+<td>rename 's/(.*)/PREFIX$1/' *.odt<br>
+or, simpler<br>
+rename 's/^/PREFIX/' *.odt</td>
+<td>prepends a string PREFIX to files of .odt type</td>
+</tr>
+<tr>
+<td>rename 's/(.*)/$1SUFFIX/' beach.png<br>
+or<br>
+rename 's/$/SUFFIX/' file</td>
+<td>appends a string SUFFIX to the file, but appends to end, e.g. beach.png_original</td>
+</tr>
+<tr>
+<td>rename 's/\.(.*)/SUFFIX.$1/' *.png&nbsp;</td>
+<td>appends a string SUFFIX to files of .png type, inside the extension, ie beach_01-03-12.png<br>
+note: if we use&nbsp;'s/(.*)\.(.*)/$1SUFFIX.$2/' as can be found on some web pages, if you try appending digits, say 33 and so enter "$133.$2" the file will vanish!</td>
+</tr>
+<tr>
+<td><font color="#3d85c6">for file in *; do mv "$file" "$(echo $file | sed -e 's/string-to-replace/with-what/')"; done</font></td>
+<td><span style="color:rgb(61,133,198)">nb, rename command may not be the best for a huge number of files, but it's not bad. &nbsp;</span><i style="color:rgb(61,133,198)">for</i><span style="color:rgb(61,133,198)">&nbsp;with&nbsp;</span><i style="color:rgb(61,133,198)">mv</i><span style="color:rgb(61,133,198)">&nbsp;and&nbsp;</span><i style="color:rgb(61,133,198)">sed</i><span style="color:rgb(61,133,198)">&nbsp;can be used (as below)</span></td>
+</tr>
+<tr>
+<td>rename 's/whot/what/' **/*.odt</td>
+<td>yet rename can search deep into all levels, with globstars</td>
+</tr>
+<tr>
+<td>find . -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;</td>
+<td>this will replace spaces for all files and directories, going to furthest depth first and working its way out to top of each dir hierarchy (without "-depth" when find gets to a&nbsp;dir with space in name it<span style="font-size:16px;line-height:1.6;background-color:transparent">&nbsp;will&nbsp;change the name of it&nbsp;</span><span style="font-size:16px;line-height:1.6;background-color:transparent">and not&nbsp;go deeper, because the dir name was changed so the paths below have changed)&nbsp;</span></td>
+</tr>
+<tr>
+<td>for file in *; do mv "$file" "$(echo $file | sed -e 's/<span style="background-color:rgb(111,168,220)">^.....</span>//')"; done<br>
+or<br>
+for file in *; do mv "$file" &nbsp;"$(echo $file | sed 's/<span style="background-color:rgb(111,168,220)">^.\{5\}</span>//')"; done<br>
+or<br>
+for file in *; do mv "$file" "`echo $file | cut<span style="background-color:rgb(111,168,220)"> -c5-</span>`"; done</td>
+<td>removes here the first 5 characters of all the files names in the dir<br>
+<br>
+for reads the file name, then mv writes that file a new name, which it hears from echo which puts the original file name through sed.<br>
+here the "-c5" cuts until chracter 5, so it cuts off 4 char</td>
+</tr>
+<tr>
+<td>for file in *; do mv "$file" "$(echo $file | sed -e 's/<span style="background-color:rgb(111,168,220)">..$</span>//')"; done</td>
+<td>this one removes 2 characters from the back of file names, including from the very end ie extension</td>
+</tr>
+<tr>
+<td>for file in *; do mv "$file" "$(echo $file | sed -e 's/\(.*\)[0-9a-zA-Z]\<span style="background-color:rgb(111,168,220)">{2\</span>}\.\([^.]*\)/\1.\2/')"; done<br>
+<br>
+&nbsp;this part&nbsp;([^.]*\)<span style="font-size:16px;line-height:1.6">&nbsp;checks to see if the . is the last one or not (ie extension)</span></td>
+<td>this is the one for removing last two characters before the extension of all files in the dir. &nbsp;Just a little Warning! if removing the last 2 char from all files will produce all with the same name, there will be only ONE file remaining from all of them after running this sed! &nbsp;All files will write to the same name, leaving only one file.</td>
+</tr>
+<tr>
+<td>i=0; for file in *; do mv "$file" $(printf "NAME_%0.3d.jpg" $i); i=$((i+1)); done</td>
+<td>this one took me hours to find! &nbsp;it renames files in the dir with sequential numbering, just like the GUI renamers do. &nbsp;Obviously, replace NAME_ and .jpg with what you like. The 3 stands for how many digits to the numbering, i=0 sets the number to start counting from, and +1 denotes the step.</td>
+</tr>
+</tbody>
+</table>
+<br>
+See my <a href="../../config/ranger.html">Ranger</a> page for more uses. With easy key-bindings, its fast work sorting out files with&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">Ranger</span><span style="font-size:16px;line-height:1.6;background-color:transparent">&nbsp;- faster than GUI clicking and hitting Tab to-next-field of gui renamers probably (though perhaps not).</span></div>
+<div><br>
+<div><br>
+</div>
+</div>
+
+</div>

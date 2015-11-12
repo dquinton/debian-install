@@ -1,0 +1,67 @@
+---
+layout: default
+description: Finding the real genisoimage from cdrtools - by D Quinton
+title: Cdrtools
+id: tutor
+---
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+<div>I found out that "genisoimage" that ships with Debian (forked from mkisofs) is buggy, and that the original program is better, found in Joerg Schilling's cdrtools.&nbsp;</div>
+<div>I was trying to make an iso file from dvd files and when I checked the finished iso, the VIDEO_TS folder was all lower-case - no good for DVD players I thought!</div>
+<br>
+There's a lot of tools there...
+<div><br>
+</div>
+<div>get it from</div>
+<div><a href="http://sourceforge.net/projects/cdrtools/files/alpha/">http://sourceforge.net/projects/cdrtools/files/alpha/</a></div>
+<div>or&nbsp;<a href="http://sourceforge.net/projects/schilytools/files/">http://sourceforge.net/projects/schilytools/files/</a></div>
+<div><br>
+</div>
+<div>unpack and in the top dir just run&nbsp;</div>
+<div><font color="#b45f06">make&nbsp;</font></div>
+<div><font color="#b45f06">sudo make install</font>&nbsp;</div>
+<div><br>
+</div>
+<div>the binaries are installed to /opt/schily/</div>
+<div><br>
+</div>
+<div>then, to add /opt/schily/bin/ to your PATH,&nbsp;<span style="font-size:16px;line-height:1.6">add this to end of your ~/.bashrc file</span></div>
+<div><font color="#38761d">export PATH=$PATH:/opt/schilly/bin/</font></div>
+<div><br>
+</div>
+<div>or add it to an existing export line</div>
+<div><span style="font-size:16px;line-height:1.6"><font color="#38761d">export PATH=$PATH:$HOME/scripts:/opt/schily/bin/</font></span></div>
+<div><br>
+</div>
+<div><span style="font-size:16px;line-height:1.6">test your path (restart the bash terminal)</span></div>
+<div><font color="#b45f06">echo "$PATH"</font></div>
+<div><br>
+</div>
+<div><span style="font-size:16px;line-height:1.6">to add /opt/schilly/share/man/ to MANPATH (so that you can hit "<font color="#b45f06">man cdrecord</font>" or "<font color="#b45f06">man mkisofs</font>" etc - or run&nbsp;</span><font color="#0b5394">xman</font><span style="font-size:16px;line-height:1.6">&nbsp;and then find the man page you want)&nbsp;</span></div>
+<div>put this in your bash.rc file</div>
+<div><font color="#38761d">export MANPATH=$MANPATH:/opt/schily/share/man/</font></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><span style="line-height:1.6"><font size="4"><b>uses</b></font></span></div>
+<div><span style="font-size:16px;line-height:1.6">create iso from dvd files</span></div>
+<div><font color="#b45f06">mkisofs -dvd-video -udf -o image.iso &lt;directory&gt;</font></div>
+<div><br>
+</div>
+<div>or like this when in the dir containing the&nbsp;<span style="font-size:16px;line-height:1.6">VIDEO_TS dir</span></div>
+<div><font color="#b45f06">mkisofs -dvd-video -udf -o ../dvd.iso</font></div>
+<div><br>
+</div>
+<div>(all necessary dvd files, VOB, bup and ifo must be present. &nbsp;The ../ creates the iso dvd.iso one level up)</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>more coming up!</div>
+

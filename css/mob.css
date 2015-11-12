@@ -1,0 +1,41 @@
+
+nav {
+  display: block;
+  float: left;
+  height: 20px;
+  border-collapse: collapse;
+  border: none;
+  margin: 0px 0px 60px;
+  position: fixed; 
+  top: 0px;
+  z-index: 10;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0px;
+    display: none;
+}
+
+nav ul li {
+    display: none;
+  background: #333648;
+    padding: 0px;
+}
+
+
+nav ul ul {
+  visibility: hidden;
+    }
+
+.onpage {
+  visibility: hidden;
+    }
+    
+.ban {
+  background-image: url(/zimages/banner1-mob.gif);
+  padding-top: 10px;
+  width: 100%;
+  height: 90px;
+  }
+  

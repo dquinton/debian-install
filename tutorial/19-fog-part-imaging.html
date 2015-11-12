@@ -1,0 +1,321 @@
+---
+layout: default
+description: Cloning OS partitions to multiple boxes using Fog - by D Quinton
+title: Fog
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Installing FOG</a></li>
+                <li><a href="#2">Uploading an image </a></li>
+                <li><a href="#3">Download an image to clients </a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Installing FOG</a><br>
+   <a href="#2">Uploading an image  </a><br>
+   <a href="#3">Download an image to clients </a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+Fog is a server that can make images of any harddrive and then download them to other, multiple, computers, thus cloning an entire system in a very speedy way. &nbsp;Computers are booted by the LAN connected to the FOG server and are registered with Fog. &nbsp;Then any task is set for a computer or a group of them, and when they are rebooted they and woke by the LAN again the tasks are performed - such as Data wipe, upload an image, deploy an image.
+<div><br>
+<div>Fog Wiki&nbsp;<a href="https://wiki.fogproject.org/wiki/index.php/FOGUserGuide">https://wiki.fogproject.org/wiki/index.php/FOGUserGuide</a><br>
+<div><br>
+
+<h2 id="1" class="tag">Installing FOG</h2>
+
+<p style="margin-bottom:0cm"><b>1.</b><b> </b>Install Debian with
+LXDE desktop from a Live CD and&nbsp;<span style="background-color:transparent;line-height:1.6"">install a Gigabit LAN card on
+	the PCI card slot of the PC to become the server.</span></p>
+<p style="margin-bottom:0cm"><b style="background-color:transparent;line-height:1.6">2.</b><span style="background-color:transparent;line-height:1.6">  Set up the interfaces file, but check that the Gigabit card is actually eth0
+with:</span></p>
+<font color="#b45f06"><br>
+/sbin/ifconfig -a<br>
+ip link show</font>
+<p style="margin-bottom:0cm">will show which adapter is UP â ie
+the one plugged in to a cable</p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">/etc/network/interfaces will look like:</span></p>
+<br>
+<font color="#38761d"># The loopback network interface<br>
+auto lo <br>
+iface lo inet loopback <br>
+<br>
+auto eth0 eth1 <br>
+iface eth0 inet static <br>
+address 192.168.1.1 <br>
+netmask 255.255.255.0</font>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">where eth0 is the Gigabit network card
+we want for the server, it has a fixed IP</span></p>
+<p style="margin-bottom:0cm">and eth1 is the on-board ethernet card
+that can receive internet connection (DHCP IP address) 
+</p>
+<p style="margin-bottom:0cm"><br>
+
+</p>
+<p style="margin-bottom:0cm">!! you wil need a firewall running when
+you connect to the outside world, such as firestarter  â see extra
+installs at the end.</p>
+<p style="margin-bottom:0cm"><br>
+</p>
+<p style="margin-bottom:0cm"> 
+</p>
+<h3>the FOG dependencies</h3>
+(the FOG install script will download them anyway, but it will not
+show you the download progress, so it's helpful to have them
+pre-installed)</span></p>
+<font color="#cc0000">sudo apt-get install apache2 php5 php5-json php5-gd php5-cli php5-mysql php5-curl mysql-server tftpd-hpa tftp-hpa nfs-kernel-server vsftpd net-tools wget xinetd sysv-rc-conf tar gzip build-essential cpp gcc g++ m4 htmldoc lftp openssh-server php-gettext clamav-freshclam</font>
+<p style="margin-bottom:0cm"><br>
+</p>
+<p style="margin-bottom:0cm"><b style="background-color:transparent;line-height:1.6">3.&nbsp;</b><span style="background-color:transparent">mysql will not start for some crazy reason...</span></p>
+<p style="margin-bottom:0cm">and the packages (mysql-server-5.5) will not be configured when running the FOG install - fix with:</p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6"><font color="#b45f06">sudo nano /etc/mysql/my.cnf</font></span></p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">put a comment â#â in front of the line "bind-address" and save the file with Ctrl-X, y, Enter</span></p>
+<p style="margin-bottom:0cm">then reconfigure with</p>
+<p style="margin-bottom:0cm"><span style="white-space:pre">	</span><font color="#cc0000">sudo aptitude install mysql-server</font></p>
+<p style="margin-bottom:0cm"><br>
+</p>
+<p style="margin-bottom:0cm"><font face="Liberation Serif, serif"><font size="3" style="font-size:12pt"><b>5.
+</b></font></font><font face="Liberation Serif, serif"><font size="3" style="font-size:12pt">
+do</font></font>wnload FOG from <a href="http://www.fogproject.org/">www.fogproject.org</a></p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">&gt; unpack the zipped folder (easy
+with Ranger, just highlight, press 1 and Enter)</span></p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">&gt; enter the Fog folder, then to the
+bin/ folder, and run install tool with</span></p>
+<p style="margin-bottom:0cm"><span style="color:rgb(180,95,6);background-color:transparent;line-height:1.6">sudo ./installfog.sh</span></p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">Answer the questions:</span></p>
+<br>
+<br>
+2 Debian<br>
+N normal server <br>
+Enter the IP address 192.168.1.1 <br>
+DNS address? N <br>
+change default from eth0? N <br>
+use FOG for DHCP? N <br>
+Lang packs? N <br>
+Donate? N <br>
+Continue? Y Enter <br>
+MySQL password? Enter (leave blank) <br>
+Storage /images? Enter <br>
+MySQL password blank? Y
+<p style="margin-bottom:0cm">.... 
+</p>
+<p style="margin-bottom:0cm">Press <b>Enter</b> when database
+updated 
+</p>
+<p style="margin-bottom:0cm"><br>
+</p>
+<p style="margin-bottom:0cm"><b>6. </b> To enable the image storage,
+possibly need to run</p>
+<font color="#b45f06">sudo chown -R fog:root /images</font>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">and check in the file
+/etc/default/tftpd-hpa there is:</span></p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">TFTP_DIRECTORY="/tftpboot"</span></p>
+<p style="margin-bottom:0cm">not TFTP_DIRECTORY="/srv/tftp"
+</p>
+<p style="margin-bottom:0cm"><br>
+</p>
+<p style="margin-bottom:0cm"><b>7.</b>  the desktop shortcut can be
+made made with</p>
+<font color="#b45f06">nano ~/.local/share/applications/fog.desktop</font>
+<p style="margin-bottom:0cm"><span style="color:rgb(56,118,29);background-color:transparent;line-height:1.6">[Desktop Entry]&nbsp;</span></p>
+<font color="#38761d">Version=1.0 <br>
+Name=FOG Server <br>
+Exec=chromium http://192.168.1.1/fog/management/ <br>
+Terminal=false <br>
+X-MultipleArgs=false <br>
+Type=Application <br>
+Icon=computer <br>
+Categories=System;</font>
+<br><br>
+FOG is ready to roll!
+<br><br>
+Login at 192.168.1.1/fog/ 
+
+<br><br><br><br>
+
+<h2 id="2" class="tag">Uploading an image</h2>
+
+Log in with the FOG username and password<br>
+&gt; Go to Image Management &gt;Create
+<br><br>
+New Image</span></p>
+<ul><li>
+<p style="margin-bottom:0cm">Enter new image name, like the
+	next Lubuntu image e.g. Lubuntu-10 etc 
+	</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">Operating System, Linux 
+	</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">Image Type, Single Disk -
+	Resizable <font color="#0b5394">(Note: multiple partition would be nice, to upload root and home partitions, but the image will be deployed exactly the same size as it was imaged, say 160Gb or whatever, and that will be impossible for an 80Gb PC, or missing a lot of space for a 250Gb PC. So Single Disc Resizable is the easiest and fastest for deploying to hundreds of PC's)</font></p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">click Add 
+	</p>
+</li></ul>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">&gt; plug in a LAN cable to the Lubuntu
+laptop and boot with network (PXE)</span></p>
+<ul><li>
+<p style="margin-bottom:0cm">when FOG menu appears, select
+	Quick Registration 
+	</p>
+</li></ul>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">&gt; Go to Host Management in FOG &gt;
+List all hosts</span></p>
+<ul><li>
+<p style="margin-bottom:0cm">click on the new Lubuntu host 
+	</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">on Host Image, select the new
+	image name you just made 
+	</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">click Update 
+	</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">select Basic Tasks at the side 
+	</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">select Upload 
+	</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">Create Upload Task 
+	</p>
+</li></ul>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">&gt; reboot the laptop with
+Ctrl-Alt-Del, then boot with LAN again</span></p>
+<ul><li>
+<p style="margin-bottom:0cm">the upload task will start, it
+	will first resize the harddisk 
+	</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">with a slow switch it takes over 1 hour
+	to upload, fast switch, 12 min, for a system with 6Gb data</p>
+</li></ul>
+
+<br><br>
+
+<h2 id="3" class="tag">Download an image to clients </h2>
+
+&gt; boot computers with LAN and Quick register them
+&gt; Host Management &gt; List all</span></p>
+<ul><li>enter a new group name and Process group changes 
+</li></ul>
+<p style="margin-bottom:0cm">&gt; Group management &gt; List all
+groups 
+</p>
+<ul><li>
+<p style="margin-bottom:0cm">select the group 
+	</p>
+	
+</li></ul>
+<p style="margin-bottom:0cm">[for junk computers] 
+</p>
+<ul>
+	<li>
+<p style="margin-bottom:0cm">Basic Tasks, select Advanced,
+	Fast wipe, Create Fast wipe task 
+	</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">reboot the PC's to start the
+	data wipe 
+	</p>
+</li></ul>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">[for old Lubuntu computers, and junk
+PC's after data wipe]</span></p>
+<ul>
+	<li>
+<p style="margin-bottom:0cm">Basic Tasks, Download (or click
+	on download arrow next to group name) 
+	</p>
+</li></ul>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">[multicast should be faster, but all
+the computers must be ready to start at once, and they must all be of
+same spec, so it often doesn't work]</span></p>
+<p style="margin-bottom:0cm"><br>
+</p>
+<p style="margin-bottom:0cm">When done with a task or group.. 
+</p>
+<p style="margin-bottom:0cm">&gt; List all groups, click delete next
+to the group 
+</p>
+<ul><li>
+<p style="margin-bottom:0cm">check the remove hosts with
+	group, then Remove 
+	</p>
+</li></ul>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">Removing the hosts is recommended so
+that new hosts won't get confused.</span></p>
+<p style="margin-bottom:0cm"><br>
+</p>
+<p style="margin-bottom:0cm">The max no. of PC's that can download
+at one go is set in Storage Node &gt; Max Clients 
+</p>
+<ul><li>
+<p style="margin-bottom:0cm">if set to a low number, like 1,
+	then only one computer will process and the others will wait in
+	queue</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">It's not a good idea to upload
+	twice onto the same image, you should make a new image every upload</p>
+	</li>
+<li>
+<p style="margin-bottom:0cm">delete the image that's not
+	needed anymore so that people don't download old images to the
+	computers</p>
+</li></ul>
+<p style="margin-bottom:0cm"><br>
+
+</p>
+<p style="margin-bottom:0cm">The storage node you use must be set Master Node and the password must match the FOG user password!</p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">If you change the FOG user password you would need to change it in Storage Node so that an image
+can upload - if the password is wrong, the upload will nearly complete
+but get stuck at the end, unable to transfer the uploaded data from
+/tmp into the node in /images (though it should be able to be copied from there).</span></p>
+<p style="margin-bottom:0cm"><br>
+</p>
+<p style="margin-bottom:0cm">The IP address of the server is
+192.168.1.1 
+</p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">This is set in /etc/network/interfaces
+file in order for clients to successfully make DHCP sign up with the
+server (get an IP address)</span></p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">The server IP is in three places in Fog
+Configuration &gt; Fog Settings</span></p>
+<p style="margin-bottom:0cm">-General Settings 
+</p>
+<p style="margin-bottom:0cm">-TFTP Server 
+</p>
+<p style="margin-bottom:0cm">-Web Server 
+</p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">It is set there by the FOG install
+script and they don't need changing, so long as you enter it
+correctly when installing FOG.</span></p>
+</div>
+</div>
+</div>
+
+</div>

@@ -1,0 +1,231 @@
+html { background: #8C8C8C; }
+
+body, h1, h2, h3, h4, h5, h6, p, a, ul, ol, li, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  background: transparent; }
+
+div.ban {
+  background-image: url(/zimages/banner1.gif);
+  border: 0;
+  margin: 0px 0px 0px;
+  padding-top: 10px;
+  width: 100%;
+  height: 116px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+div.pagemenu {
+  font-family: Monospace;
+  font-size: 1.2em;
+  line-height: 22px;
+  float: right; 
+  margin-right: 130px;
+}
+
+div.parent {             /* link to parent above page title */
+  background: transparent; 
+  font-family: Monospace;
+  font-size: 1.1em;
+  line-height: 16px;
+  position: absolute;
+  top: 145px;
+  left: 45px;
+  }
+.parent a:link { color: #0058BA; text-decoration: none;}  
+.parent a:focus,
+.parent a:hover { color: #0058BA; text-decoration: underline;  }
+.parent a:visited { color: #0058BA; }
+
+
+div.cont { 
+  background: #BDBEC6; 
+  color: #0A0A0A;
+  min-height: 600px;
+  font-family:  PT Sans, Dejavu sans, Tahoma, sans-serif;
+  font-size: 1.0em;
+  line-height: 130%;
+  margin: 0px 30px 0px;      /* grey margin off the page sides */
+  padding: 80px 0px 40px;  /* body text from top, edges, bottom */
+  padding-left: 100px;
+  padding-right: 400px;
+}
+
+.tag:target { 
+  color:#03203C; 
+  margin-top: 0px; 
+  padding-top: 50px; 
+}
+
+
+a,
+a:link { color: #1A4FA5; text-decoration: none;}
+a:focus,
+a:hover {color: #154DA7; text-decoration: underline;  }
+a:visited {color: #7F2961; }
+a:active  { color: #80244D; } 
+
+h1 { 
+  background-color:#ADADAD;
+  font-family: Monospace;
+  font-size: 2.3em;
+  padding-top: 45px;
+  padding-bottom: 15px;
+  padding-left: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+h2 { 
+  font-size: 1.5em;
+  padding: 0px 0px 10px;
+}
+
+h3 { 
+  font-size: 1.2em;
+  padding: 0px 0px 6px;
+}
+
+
+h4 {
+  background-color:#BF787D;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding-left: 12px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+
+.blue {
+  color:#2D46CF;
+}
+
+.bblue {
+  color:#2D46CF;
+  font-weight: bold;
+}
+
+.ht { display:inline;
+  background-color:#87C6FC;
+  #font-weight: bold;
+}
+
+.caut { display:inline;
+  background-color:#E1C386;
+  #font-weight: bold;
+}
+
+.ctr {
+  text-align: center;
+  font-size: 0.9em;
+  font-weight: bold; }
+
+.in {                  /* indented */
+    text-indent: 50px;
+}
+
+.bullet ul { 
+  margin-left: 0px;
+  padding: 6px 0px 0px;
+  line-height: 140%; 
+}
+.bullet ul li { 
+  margin-left: 20px;
+  padding: 6px 6px 0px;
+  line-height: 140%; 
+}
+
+ul {                   /* normal bullet lists */
+  padding: 6px 0px 0px;
+}
+ul li { 
+  margin-left: 20px;
+  padding: 0px 6px 4px;
+  line-height: 120%; 
+  }
+
+.numb ol {
+  margin-left: 0px;
+  padding: 6px 0 0;
+}  
+  
+.numb ol li {
+  margin-left: 0px;
+  padding: 0 0 0 0;
+   line-height: 140%;
+  list-style-type: none;
+  counter-increment: item;
+}
+.numb ol > li:before {
+  display: inline-block;
+  width: 1em;
+  padding-right: 0.5em;
+  font-weight: bold;
+  content: counter(item) ".";
+}
+
+img {
+    border-style: dashed;
+    border-width: 2px;
+    border-color: #ccc;
+}
+
+table {
+    background-color: #CECECE;
+}
+
+.index {
+	margin-left: 60px; 
+	background-color: transparent; 
+	font-size: 1.1em;
+} 
+
+.inst {  color:#7C2020;}
+.cmd {   color:#6A3200;}
+.file {  color:#0F4F0B;}
+
+textarea#install { 
+  background-color : #CCCCCC;
+  border: 2px solid #6C6D80;
+  padding: 8px;
+  margin: 6px 0px 4px;
+  border-radius: 5px 5px 2px 2px;
+  color: #7C2020;
+}
+
+textarea#cmd { 
+  background-color : #CCCCCC;
+  border: 2px solid #6C6D80;
+  padding: 8px;
+  margin: 6px 0px 4px;
+  border-radius: 5px 5px 2px 2px;
+  color: #6A3200;
+}
+
+textarea#file { 
+  background-color : #CCCCCC;
+  border: 2px solid #6C6D80;
+  padding: 8px;
+  margin: 6px 0px 4px;
+  border-radius: 5px 5px 2px 2px;
+  color: #0F4F0B;
+}
+
+input.submitLink {
+  background-color: transparent;
+  text-decoration: underline;
+  font-size: 0.7em;
+  vertical-align: super;
+  border: none;
+  padding: 0px 0px 0px;
+  color: #153597;
+  cursor: pointer;
+}
+
+

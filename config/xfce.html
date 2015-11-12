@@ -1,0 +1,166 @@
+---
+layout: default
+description: Configuring XFCE - menu, panels, themes, clock format - by D Quinton
+title: XFCE
+id: config
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">The Xfce menu</a></li>
+                <li><a href="#2">change the clock format</a></li>
+                <li><a href="#3">keyboard shortcuts</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">The Xfce menu</a><br>
+   <a href="#2">change the clock format</a><br>
+   <a href="#3">keyboard shortcuts</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../configure.html">Configure</a> ></div>
+
+
+<div class="cont">
+
+
+There's not much on this page, just what I noted when I was using this Desktop a few years back! 
+
+<br><br><br><br>
+
+<table cellpadding="4" border="1" align="right" width="35%" style="border-collapse: collapse; "><tr><td>Xfce FAQ <a href="http://wiki.xfce.org/faq">http://wiki.xfce.org/faq</a><br>
+    Xfce tips <a href="http://wiki.xfce.org/tips">http://wiki.xfce.org/tips</a><br>
+    Xfce archive (updates) <a href="http://archive.xfce.org/src/xfce">http://archive.xfce.org/src/xfce</a></td></tr></table>
+    
+<h2 id="1" class="tag">The Xfce menu</h2>
+
+
+    
+The Xfce desktop installs a <b>menu file</b> to store contents of the menu, which are: <b>root entries</b> (the Run program etc) and <b>sub-menus</b> which pop-up a programs list.  
+<br><br>
+This file looks for <br>
+<b>.directory files</b>, to get the name and icon for each sub-menu, <br>
+<b>.desktop files</b> so as to populate the sub-menus with programs, sorting them using the Category it finds in each one.  Each program has its own .desktop file, normally in /usr/share/applications.
+<br><br>
+To make changes to how your menu looks, either the menu root entries or sub-menus, the menu file needs to be copied from /usr to /home (so it can be edited a little more easily).  Xfce will look in /home first before referring to the files in /usr, which means that changes to the file in home will affect only the user, not globally.  
+
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+cp /etc/xdg/menus/xfce-applications.menu ~/.config/menus</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+Then, to put items under the right sub-menus the .desktop file for each item needs to be copied over to /home as well, which you could do one-by-one or all in one go,
+
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+cp /user/share/applications/* ~/.local/share/applications/</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+<h3>1. Remove root entries from the menu</h3>
+e.g. web browser, about xfce, help 
+<ul><li> find the ".desktop" file of any you want removed, edit it and remove the line with "X-Xfce-Toplevel"</li></ul>
+<br>
+<h3>2. Refine categories for sub-menus</h3>
+<ul><li> in the copied menu file edit the submenu entries</li></ul>
+<br>
+<h3>3. Add new sub-menus</h3>
+<ul><li>a straight forward business of duplicating an existing sub-menu entry, from &#60;Menu> ... &#60;/Menu>, and changing its name and category</li>
+    <li>then you must add a <b>.directory file</b> for the new sub-menu in ~/.local/share/desktop-directories with the content, for example:</li></ul>
+    <form><textarea name="T" id="cmd" rows="1" cols="80">
+nano ~/.local/share/desktop-directories/gps.directory</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<form><textarea name="T" id="file" rows="6" cols="30">
+[Desktop Entry]
+Version=1.0
+Type=Directory
+Icon=viking
+Name=GPS
+Comment=GPS apps</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+   <ul><li>the name must be the same as for the sub-menu and the sub-menu entry must point to the .directory file name to locate it.</li>
+<li>get the icon name from launcher properties "select an icon". </li></ul>
+<br>
+<h3>4. Move a program to another sub-menu</h3>
+ <ul><li>the easiest way is to look through the sub-menus for programs in the wrong places, and then find their .desktop file and alter its category (KDE apps will be in the kde folder). </li> 
+ <li>If you enter a valid category the program will move to the new sub-menu as soon as you re-open the menu.</li></ul>
+
+<br>
+<h3>5. Remove items from the sub-menus</h3>
+ <ul><li>idea! to de-clutter the Settings menu, take off everything that's available in Settings Manager: </li>
+ <li>add the line "NoDisplay=true" to the .desktop file.</li>
+ <li>do the same for any other apps you don't want to see on the menu</li></ul>
+<br>
+Official guide is at the <a href="http://wiki.xfce.org/howto/customize-menu">xfce wiki</a>
+
+
+
+<br><br>
+<br><br>
+
+<h2 id="2" class="tag">change the clock format and colour</h2>
+
+On the panel add the clock applet, select digital display and Custom Format, then use date-time macros, e.g. 
+<br><br>
+<b>%c</b> full time n date,  <b>%x</b> date, <b>%X </b>local time 12hr,<br>
+<b>%R</b> hour n minute, <b>%H</b> hour, <b>%M</b> minute, <b>%S</b> seconds, <b> %s</b> seconds of the day! <br>
+<b>%A</b> wk day, <b>%d</b> day of month, <br>
+<b>%m</b> month numeral, <b>%h</b> month name, <b>%g</b> year numeral  <br>
+<br><br>
+With the clock applet, use a span around the macros to change the colour/font, e.g. 
+<form><textarea name="T" id="file" rows="1" cols="80">
+<span color="#D5AE18" font="Webdings 10">%R:%S %d.%h</span></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+With Orage clock it's easy enough to set colour n font ("foreground" refers to the clock digits).
+<br><br>
+<br><br>
+
+<h2 id="3" class="tag">keyboard shortcuts (key-bindings)</h2>
+
+It's really simple to set a keyboard shortcut for any app.  For example, Super-1 for Thunar, Super-2 for Chromium, Super-3 for leafpad, Super-4 for Xfce4-terminal etc.
+
+<div class="bullet"><ul><li>go to Keyboard in Settings</li>
+<li>click on the Add button</li>
+<li>enter the command that launches the app (find it from a launcher on a panel)</li>
+<li>in the next dialogue, press your shortcut key combination</li>
+<li>it will be applied immediately</li>
+<li>edit any shortcuts by double clicking them</li>
+<li>Use the command `<b>xfdesktop -menu</b>` to pop up the Xfce menu at the mouse location.</li>
+<li>Use the command `<b>xfce4-popup-applicationsmenu</b>` to pop up the menu on the panel (Ctrl-Escape for me).</li></ul></div>
+<br><br>
+
+<span class="caut">Xfce's window manger works really well, but it did go hay-wire a ew times -like windows suddenly lost decoration and would stick in the top left corner covering each-other.. To recover the desktop, close programs with the menu quit, then open Run with ALT-F2, and type <b>xfwm4 --replace</b> and hit enter</span>
+<br><br><br>
+<br><br><br>
+
+
+<div align="center">
+<a href="../zimages/xterm1.jpg"><img src="../zimages/xterm1.jpg" width="550" height="344" alt="xterm half alpha"></a><br><br>
+<span style="font-size: 18; font-style: oblique; "> Here's how my xterm used to look ^</span>
+</div>
+
+<br><br><br><br>
+<b>Next page: </b>
+<br><br>
+<h3><b><a href="lxde-openbox.html">LXDE/Openbox</a></h3>
+<br><br>
+</div>

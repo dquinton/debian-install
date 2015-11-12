@@ -1,0 +1,207 @@
+---
+layout: default
+description: Rescuing lost data on NTFS, ext3 or flash media - by D Quinton
+title: Undelete
+id: help
+---
+
+<div class="parent"><a href="../helps.html">Helps</a> ></div>
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">ntfsundelete </a></li>
+                <li><a href="#2">photorec/testdisk </a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">ntfsundelete </a><br>
+   <a href="#2">photorec/testdisk </a><br>
+</td></tr></table></div>
+
+<div class="cont">
+
+<div><font size="4"><b></b></font></div>
+
+<h2 id="1" class="tag">using ntfsundelete</h2>
+
+
+<font size="3">
+<div><font size="3"><br>
+</font></div>
+This might save your life one day (or the life of some files you removed bypassing the trash!)</font>
+<div><font size="3"><span style="line-height:27px"><br>
+</span></font>
+<div><font size="3">In Linux it's easy (relatively, if you act quickly) to reclaim files that have been wiped from disk -because really they are still there but their names are gone and their inodes have been offered for new files to be stored in their place.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">You can "undelete" wiped files from Linux partitions (ext3/ext4) and NTFS -so long as you haven't been using the partition and stored new files over the lost ones. &nbsp;So if something goes wrong you should make a rescue op immediately.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><span style="line-height:27px">Today I managed to wipe 200Gb of very important data off an external drive. &nbsp;I couldn't believe it had happened. &nbsp;One thing I need to watch out for is when an external drive is not present and an app needs to access it, say for a DVD project, it will create the partition somewhere locally and carry on! &nbsp;Then inserting the external drive makes another entry with a _ after it in /media -it was when I tried removing the phony local version of the drive that it decided to take out loads of real data with it (but left some), and I still can't understand how because I had already unplugged the drive.</span></font></div>
+<div><font size="3"><br>
+</font>
+<div><font size="3">Fortunately I had just enough space around on different drives to rescue everything. &nbsp;The deleted files have to be copied to a different partition than the one they were on, and the one recovering from must be unmounted. &nbsp;My drive was NTFS so I'll show how that works.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">note: ntfsundelete is installed with ntfs-3g</font></div>
+<div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">[get device i.e. sdb1 etc]</font></div>
+<div><font color="#b45f06" size="3">sudo fdisk -l</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">[unmount drive]</font></div>
+<div><font color="#b45f06" size="3">sudo umount /media/VIDEO</font></div>
+<div><font size="3">or click on eject in a file browser</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">[list files available for undelete, might need&nbsp;</font><span style="font-size:medium;line-height:27px">force option -f</span><span style="font-size:medium">]&nbsp;</span></div>
+<div><font color="#b45f06" size="3">sudo ntfsundelete /dev/sdb1 -f</font></div>
+<div><span style="font-size:medium">adjust the scroll lines of the Terminal to a few thousand to show long lists.</span></div>
+<div><font size="3">
+<div><br>
+</div>
+<div>[list files of certain type available for undelete]&nbsp;</div>
+<div style="color:rgb(180,95,6)">sudo ntfsundelete /dev/sdb1 -m *.MTS -f</div>
+<div style="color:rgb(180,95,6)"><br>
+</div>
+<div>[list files with something in the filename, available for undelete]&nbsp;</div>
+<div><font color="#b45f06">sudo ntfsundelete /dev/sdb1 -m something\* -f</font></div>
+<div><font color="#b45f06"><br>
+</font></div>
+<div>
+<div>[combine the above two]&nbsp;</div>
+<div><font color="#b45f06">sudo ntfsundelete /dev/sdb1 -m something\*MTS -f</font></div>
+</div>
+</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">[undelete with file name]</font></div>
+<div><font color="#b45f06" size="3">sudo ntfsundelete /dev/sdb1 -u -m 0032.MTS -f</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">[undelete with wildcard extension (will recover ALL files with the ex.), to a destination dir with -d switch]</font></div>
+<div><font color="#b45f06" size="3">sudo ntfsundelete /dev/sdb1 -u -m *.MTS -d /media/VIDEO</font></div>
+<div><font color="#b45f06" size="3">sudo ntfsundelete /dev/sdb1 -u -m&nbsp;<span style="line-height:27px">something\</span></font><span style="color:rgb(180,95,6);font-size:medium">*.MTS -d /media/VIDEO</span></div>
+<div><font color="#b45f06" size="3"><span style="line-height:27px"><br>
+</span></font></div>
+<div><font size="3">[undelete with inode range, to a destination dir]</font></div>
+<div><font color="#b45f06" size="3">sudo ntfsundelete /dev/sdb1 -u -i 7245-7275 -d /media/VIDEO -f</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">[change permissions to user for undeleted files if necessary]</font></div>
+<div><font color="#b45f06" size="3">sudo chown <i>username</i> *.MTS</font></div>
+</div>
+</div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">Notes</font></div>
+<div>
+<ol><li><font size="3"><span style="line-height:27px">If you cancel the terminal with the process going, you can restart with exactly the same command and dir location and the process will skip all the files already recovered -it won't write over them, or it can't.</span></font></li>
+<li><font size="3"><span style="line-height:27px">If you try to split the process between different target directories it will be impossible using a wildcard extension, you'd have to use inode ranges, I'd say. combine them?</span></font></li>
+</ol>
+</div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><br>
+</font></div>
+</div>
+
+
+<div><font size="3">Undelete files on ext3/ext4 partitions</font></div>
+<div><a href="http://everydaylht.com/howtos/system-administration/undelete-files-on-an-ext3-or-ext4-file-system/" rel="noreferrer"><font size="3">http://everydaylht.com/</font></a></div>
+<div><a href="http://extundelete.sourceforge.net/" rel="noreferrer"><font size="3">http://extundelete.sourceforge.net/</font></a></div>
+<div><font size="3">Undelete files on NTFS from Linux</font></div>
+<div><font size="3"><a href="http://www.howtogeek.com/howto/13706/recover-deleted-files-on-an-ntfs-hard-drive-from-a-ubuntu-live-cd/" rel="noreferrer">http://www.howtogeek.com/.../</a></font></div>
+<div><font size="3"><a href="http://linux.die.net/man/8/ntfsundelete" rel="noreferrer">http://linux.die.net/man/8/ntfsundelete</a></font></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><font size="4"><b></b></font></div>
+
+<h2 id="2" class="tag">using photorec or testdisk</h2>
+
+
+<div><font size="3">After&nbsp;recovering files from my removable drive (see on the left) I realised that there were some videos yet to be encoded from raw files -and I couldn't get those files after the restore as they were written over -luckily I remembered I hadn't used the SD card much since then, I had just formatted it.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">So in comes photorec, packaged with testdisk, for recovering from FAT format disks -and also from ext3/ext4 and NTFS.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">
+<div><font color="#cc0000">&nbsp;sudo apt-get install testdisk</font></div>
+<div><br>
+</div>
+<div><font color="#b45f06">&nbsp;sudo photorec</font></div>
+<div><br>
+</div>
+<div>1. choose disk to rescue files from</div>
+<div>2. choose partition on disk (and also file options -search for extensions)</div>
+<div>3. choose format type</div>
+<div>4. choose rescue from freespace or whole disk</div>
+<div>5. select directory to rescue files to: use left/right arrows to go up/down dir tree</div>
+<div>e.g. use left to get out of /home/username, then down to /media, right and down to reach dir</div>
+<div>6. enter the chosen dir and press C</div>
+<div><br>
+</div>
+<div>tip: stop photorec in taskmanager if it's eating the cpu even after it's finished the process!</div>
+<div><br>
+</div>
+<div>using <b>Testdisk</b> is just as easy, it will list the deleted files and it works on NTFS, FAT (SD cards etc) and ext2&nbsp;<a href="http://www.cgsecurity.org/wiki/TestDisk" rel="noreferrer">http://www.cgsecurity.org/wiki/TestDisk</a></div>
+<div><br>
+</div>
+<div><font color="#b45f06">&nbsp;sudo testdisk</font></div>
+<div>1. choose log option</div>
+<div>2. choose disk to rescue files from</div>
+</font>
+<div><font size="3">3. choose partition table type (Intel)</font></div>
+<div><font size="3">4. choose [Advanced] File System Utils</font></div>
+<div><font size="3">5. select partition</font></div>
+<div><font size="3">6. choose option [undelete] or [Image Creation]</font></div>
+<div><font size="3">7. search for deleted directory or file and press C</font></div>
+<div><font size="3">8. select directory to copy files to: use left/right arrows to go up/down dir tree</font></div>
+<div><font size="3">9. enter the chosen dir (e.g. Desktop), go down one to .. and press C</font></div>
+</div>
+<div><font size="3">10. cd to where the recovery dir has been copied to and run:&nbsp;</font></div>
+<div><span style="color:rgb(180,95,6);font-size:medium;line-height:1.6">&nbsp;sudo chown -R&nbsp;<i>username</i>&nbsp;./recovered-dir-name</span></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="4"><b>Using dd to make an image of a partition first</b></font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">I had one SDHC card that photorec and testdisk couldn't see any deleted files on, even though I had recently had MTS files on it and just formatted it.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">So I made an image of the SD card with</font></div>
+<div><span style="color:rgb(180,95,6);font-size:medium">&nbsp;dd if=/dev/mmcblk0p1 of=/media/FILES/RECOV/disk.img bs=1024M</span></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">then</font></div>
+<div><font size="3"><font color="#b45f06">&nbsp;photorec</font>&nbsp;</font><span style="color:rgb(180,95,6);font-size:medium;line-height:27px">/media/FILES/RECOV/disk.img</span></div>
+<div><span style="color:rgb(180,95,6);font-size:medium;line-height:27px"><br>
+</span></div>
+<div><span style="font-size:medium;line-height:27px">but alas, no files were found either! &nbsp;duh, the card had been formatted.</span></div>
+<div><span style="font-size:medium;line-height:27px"><br>
+</span></div>
+<div><span style="font-size:medium;line-height:27px"><br>
+</span></div>
+<div><span style="line-height:27px"><b><font size="4">Then there's extundelete</font></b></span></div>
+<div><font color="#cc0000"><font size="3"><span style="line-height:27px">sudo apt-get install&nbsp;</span></font><span style="background-color:transparent;line-height:27px"><font size="3">extundelete</font></span></font></div>
+<div><font size="3"><span style="line-height:27px"><br>
+</span></font></div>
+<div><font size="3"><span style="line-height:27px">see here&nbsp;</span></font><span style="background-color:transparent;line-height:27px"><font size="3"><a href="http://www.gnutoolbox.com/extundelete/" rel="noreferrer">http://www.gnutoolbox.com/extundelete/</a></font></span></div>
+
+</div>

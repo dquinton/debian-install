@@ -1,0 +1,621 @@
+---
+layout: default
+description: Keybindings and scripts for Uzbl the lighter web browser - by D Quinton
+title: Uzbl
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">My keybinds</a></li>
+                <li><a href="#2">Setup  </a></li>
+                <li><a href="#3">Polipo caching </a></li>
+                <li><a href="#4">Uzbl scripts </a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">My keybinds</a><br>
+   <a href="#2">Setup  </a><br>
+   <a href="#3">Polipo caching </a><br>
+   <a href="#4">Uzbl scripts </a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+<div dir="ltr">
+<div><br>
+</div>
+<div>Here's a light web browser that employs gtkwebkit (as do many others, including Chrome)... &nbsp;You practically need to build it yourself to get any functionality... Uzbl means "usable"... and I was hoping it would be able to replace my need for chromium for an every-day browser, but it seems to load pages much slower and sometimes hangs.</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>what is it? <a href="http://lwn.net/Articles/341245/">http://lwn.net/Articles/341245/</a> - old page!</div>
+<div><a href="https://wiki.archlinux.org/index.php/UZBL-Browser">https://wiki.archlinux.org/...</a></div>
+<div><a href="http://www.uzbl.org/">http://www.uzbl.org/</a></div>
+<div><br>
+</div>
+<div>
+<div style="display:block;text-align:left"><a href="../zimages/uzbl.jpeg"  imageanchor="1"><img border="0" height="250" src="../zimages/uzbl.jpeg" width="400"></a></div>
+above: how a Google search page looks using a css style sheet (<span style="font-size:16px;line-height:1.6">note the background is not white)</span></div>
+<div><br>
+</div>
+<div>It has&nbsp;</div>
+<div>
+<ul><li>a super fast startup</li>
+<li>many actions possible with keys so its fast</li>
+<li>endless possibilities with key-binds</li>
+<li>no bloat at all</li>
+<li>searchable history&nbsp;</li>
+<li>searchable bookmarks</li>
+<li>keyword commands, using double Tab to show possible/ Tab to complete</li></ul>
+</div>
+<div>Problems</div>
+<div>
+<ul><li>some sites have internal scroll bars which get splattered along the page when scrolling e.g. Google sites :(</li>
+<li>some web page items don't get rendered</li>
+<li>flash not working on all sites</li>
+<li>app can freeze up waiting for load to finish (hence, I suppose, multiple instances of uzbl-browser are the way to go)</li></ul>
+</div>
+<div><br>
+</div>
+<div>install</div>
+<font color="#cc0000">sudo apt-get install uzbl suckless-tools youtube-dl</font>
+<div><br>
+</div>
+<div>or from the git repos.&nbsp;<a href="https://github.com/Dieterbe/uzbl">https://github.com/Dieterbe/uzbl</a>&nbsp;-need to install python3 to compile</div>
+<div><br>
+</div>
+<div>config file is in ~/.config/uzbl and it contains layout, key-binds, context menu and proxy settings.&nbsp;<span style="font-size:16px;line-height:1.6">= $XDG_CONFIG_HOME/uzbl/config</span></div>
+<div>and data files are in ~/.local/uzbl/ = $XDG_DATA_HOME/uzbl/</div>
+<div><br>
+</div>
+<div><br>
+</div>
+
+<h2 id="1" class="tag">My keybinds</h2>
+
+</b>(defaults with my mods in <b>bold</b>)</div>
+<div>i<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>toggle insert mode (press to be able to enter text on web pages)</div>
+<div>escape<span style="white-space:pre">	</span>return to command mode</div>
+<div>o<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>URL</div>
+<div><font color="#0b5394"><b>wo</b></font><span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>URL in new tab</div>
+<div>O<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>edit URL</div>
+<div>S <span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>stop loading</div>
+<div>r<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>reload</div>
+<div>R<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>reload ignore cache</div>
+<div>zs<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>SSL url</div>
+<div>zS<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>SSL url new tab</div>
+<div><br>
+</div>
+<div><font color="#0b5394"><b>ww</b></font><span style="white-space:pre"><b>	</b><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>new window (new tab if new w =tab is set)</div>
+<div><strike>gn &nbsp;<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>new tab</strike></div>
+<div><font color="#0b5394"><b>wc</b></font><span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>clone tab</div>
+<div><b><font color="#0b5394">tg+n</font></b><span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>go to tab n</div>
+<div><font color="#0b5394"><b>[&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp;</span></span></span></span></b></font>next tab left ....and <b><font color="#0b5394">Alt-Left</font></b></div>
+<div><font color="#0b5394"><b>]</b></font><span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span><span style="font-size:16px;line-height:1.6">next tab right ....and <b><font color="#0b5394">Alt-Right</font></b></span></div>
+<div><b style="font-size:16px;line-height:1.6"><font color="#0b5394">Alt-[</font></b>&nbsp;<span>&nbsp;&nbsp; &nbsp;<span>&nbsp; first tab ( &lt;</span></span>Mod1&gt;[ )</div>
+<div><b style="font-size:16px;line-height:1.6"><font color="#0b5394">Alt</font></b><b style="font-size:16px;line-height:1.6"><font color="#0b5394">-]<span>&nbsp;&nbsp; &nbsp;</span></font></b><span><span>&nbsp;<span>&nbsp; last tab</span></span></span></div>
+<div>ZZ, <strike>gC</strike><span style="white-space:pre">	</span>close tab</div>
+<div><b><font color="#0b5394">QQ</font></b><span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>reset all tabs</div>
+<div><br>
+</div>
+<div>fl<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>spawn numbering of links, enter number to follow one</div>
+<div>Fl<span style="white-space:pre">	</span> <span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>" follow in new tab</div>
+<div>FL<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span> " to clipboard</div>
+<div><br>
+</div>
+<div><b><font color="#0b5394">Ctrl-m</font></b><span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>make bookmark from url</div>
+<div><span style="font-size:16px;line-height:1.6"><b><font color="#0b5394">Ctrl-a</font></b></span><span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>insert url from history - I prefer H</div>
+<div><span style="font-size:16px;line-height:1.6"><b><font color="#0b5394">Ctrl-z</font></b></span><span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>insert url from bkmark - I prefer B</div>
+<div><strike>Ctrl-m [tags] </strike><span>&nbsp;&nbsp; &nbsp;</span>insert bkmark (doesn't work)</div>
+<div><br>
+</div>
+<div><b><font color="#0b5394">T</font></b><span style="white-space:pre"><b><font color="#0b5394">	</font></b><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>hide/show status bar</div>
+<div>:<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>enter command</div>
+<div><br>
+</div>
+<div>Ctrl-Left<span style="white-space:pre">	</span>history backward (mine)</div>
+<div>Ctrl-Right<span style="white-space:pre">	</span>history forward (mine)</div>
+<div>middle button<span style="white-space:pre">	</span>open in new window</div>
+<div><br>
+</div>
+<div><b><font color="#0b5394">j</font></b><span style="white-space:pre">	<span>&nbsp;&nbsp; <span>&nbsp;&nbsp; &nbsp;</span>&nbsp;</span></span>scroll up, also <b><font color="#0b5394">Up</font></b>, home</div>
+<div><b><font color="#0b5394">k</font></b><span style="white-space:pre">	<span>&nbsp;&nbsp; <span>&nbsp;&nbsp; &nbsp;</span>&nbsp;</span></span>scroll down (I changed them round), also <b><font color="#0b5394">Down</font></b>, end</div>
+<div>h<span style="white-space:pre">	<span>&nbsp;&nbsp; <span>&nbsp;&nbsp; &nbsp;</span>&nbsp;</span></span>scr horiz left, also $ to end</div>
+<div>l<span style="white-space:pre">	<span>&nbsp;&nbsp; <span>&nbsp;&nbsp; &nbsp;</span>&nbsp;</span></span>scr horiz right, also ^ to start</div>
+<div>G [string]<span style="white-space:pre">	</span>go to on page?</div>
+<div><br>
+</div>
+<div>-/+ <span style="white-space:pre">	<span>&nbsp;&nbsp;<span>&nbsp;&nbsp; &nbsp;</span> &nbsp;</span></span>zoom, T zoom type?</div>
+<div>1/2<span style="white-space:pre">	<span>&nbsp;&nbsp;<span>&nbsp;&nbsp; &nbsp;</span> &nbsp;</span></span>set zoom level</div>
+<div><font color="#0b5394"><b>Ctrl-left</b> </font><span>&nbsp;&nbsp; &nbsp;</span>back&nbsp;</div>
+<div><b style="font-size:16px;line-height:1.6"><font color="#0b5394">Ctrl-right </font></b><span style="font-size:16px;line-height:1.6">&nbsp; forward</span></div>
+<div>/ *<span style="white-space:pre">	<span>&nbsp;&nbsp;<span>&nbsp;&nbsp; &nbsp;</span> &nbsp;</span></span>search</div>
+<div>? *<span style="white-space:pre">	<span>&nbsp;&nbsp; <span>&nbsp;&nbsp; &nbsp;</span>&nbsp;</span></span>search backward</div>
+<div>n/N<span style="white-space:pre">	<span>&nbsp;&nbsp;<span>&nbsp;&nbsp; &nbsp;</span> &nbsp;</span></span>next search hit</div>
+<div>Ctrl-p<span style="white-space:pre">	</span>print page<span style="white-space:pre">	</span></div>
+<div><br>
+</div>
+<div>yu<span style="white-space:pre">	<span>&nbsp;<span>&nbsp;&nbsp; &nbsp;</span>&nbsp; &nbsp;</span></span>yank tab url &nbsp;-I change xclip for <font color="#3d85c6"><b>xsel</b></font> or <font color="#3d85c6"><b>xsel --clipboard</b></font></div>
+<div>yU<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span></span>yank selected link url</div>
+<div>yy <span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;</span><span>&nbsp;&nbsp; &nbsp;</span></span>yank uzbl title</div>
+<div>ys <span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>yank follow url</div>
+<div><br>
+</div>
+<div>p<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span><span style="white-space:pre">	</span>load url from primary</div>
+<div>'p<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span> " &nbsp;in new tab</div>
+<div>P <span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>load url from clipboard</div>
+<div><b><font color="#0b5394">'P</font></b><span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span> " &nbsp;in new tab&nbsp;</div>
+<div><br>
+</div>
+<div>D<span style="white-space:pre">	<span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span></span>temp bkmark (I switched these two round)</div>
+<div>Ctrl-d<span style="white-space:pre">	</span>select temp bkmark</div>
+<div><br>
+</div>
+<div><br>
+</div>
+
+<h2 id="2" class="tag">Setup</font></h2>
+<div>copy the uzbl icon&nbsp;</div>
+<font color="#b45f06">sudo cp /usr/share/uzbl/example/data/uzbl.png /usr/share/icons/uzbl.png</font>
+<div><br>
+</div>
+<div><font color="#38761d">[Desktop Entry]</font></div>
+<div><font color="#38761d">Encoding=UTF-8</font></div>
+<div><font color="#38761d">Version=1.0</font></div>
+<div><font color="#38761d">Type=Application</font></div>
+<div><font color="#38761d">Terminal=false</font></div>
+<div><font color="#38761d">Icon=uzbl.png</font></div>
+<div><font color="#38761d">Name=uzbl</font></div>
+<div><font color="#38761d">Exec=uzbl</font></div>
+<div><font color="#38761d">Comment[en]=web-browser adhering to the unix concepts!</font></div>
+<div><font color="#38761d">Categories=Network;</font></div>
+<div><font color="#38761d">MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;</font></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>to set uzbl-tabbed to open with "uzbl" command and launcher</div>
+<div>cd /usr/bin</div>
+<div><font color="#b45f06">&nbsp;sudo ln -fsT uzbl-tabbed uzbl</font></div>
+<div><br>
+</div>
+<div>in ~/.config/uzbl/config</div>
+<div><span style="font-size:16px;line-height:1.6">set new window makes new tab</span></div>
+<div><font color="#38761d">@on_event &nbsp; REQ_NEW_WINDOW event NEW_TAB %s</font></div>
+<div><br>
+</div>
+<div>Set the "home" page (end of config file) -but every new tab will open there.</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">Flash</font></b></div>
+<div>I'm still not sure about how to enable the flash plugin, whether the gtkwebkit can handle flash by itself somehow??</div>
+<div>&nbsp;-I installed nspluginwrapper - see how to on my <a href="../netinstall/step4.html">Step4 page</a></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><font size="4"><b>Appearance</b></font></div>
+<div>my changes</div>
+<div><font color="#38761d">set mode_section &nbsp; &nbsp; &nbsp;= &lt;span background="#303030" foreground="#3B71B7"</font></div>
+<div><font color="#38761d">set keycmd_section &nbsp; &nbsp;= &lt;span \@prompt_style&gt;\@[\@keycmd_prompt]\@&lt;/span&gt;&lt;span \@modcmd_style&gt;\@modcmd&lt;/span&gt;&lt;span \@keycmd_style&gt;\@keycmd&lt;/span&gt;&lt;span \@completion_style&gt;\@completion_list&lt;/span&gt;</font></div>
+<div><font color="#38761d">set progress_section &nbsp;= &lt;span foreground="#4489CC"&gt;</font></div>
+<div><font color="#38761d">set scroll_section &nbsp; &nbsp;= &lt;span foreground="#3B71B7"&gt;\@[\@scroll_message]\@&lt;/span&gt;</font></div>
+<div><font color="#38761d">set uri_section &nbsp; &nbsp; &nbsp; = &lt;span foreground="#5578A6"&gt;\@[\@uri]\@&lt;/span&gt;</font></div>
+<div><font color="#38761d">set status_section &nbsp; &nbsp;= &lt;span foreground="#4489CC"&gt;\@status_message&lt;/span&gt;</font></div>
+<div><font color="#38761d">set selected_section &nbsp;= &lt;span foreground="#46A4FF"&gt;\@[\@SELECTED_URI]\@&lt;/span&gt;</font></div>
+<div>etc</div>
+<div>
+<div><font color="#38761d">set progress.format &nbsp; &nbsp; = â¦%d%p %c</font></div>
+<div><font color="#38761d">set progress.done &nbsp; &nbsp; &nbsp; = â¦</font></div>
+</div>
+<div><br>
+</div>
+<div><font color="#38761d">set status_format &nbsp; &nbsp; &nbsp; = &lt;span font_family="monospace"&gt;@mode_section @keycmd_section @progress_section &nbsp;@scroll_section @selected_section @download_section&lt;/span&gt;</font></div>
+<div><br>
+</div>
+<div>Tabs settings&nbsp;<a href="http://www.uzbl.org/wiki/uzbl_tabbed">http://www.uzbl.org/wiki/uzbl_tabbed</a></div>
+<div><br>
+</div>
+<div>in particular</div>
+<div>
+<div><font color="#38761d">set new_tab_title &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = ..</font></div>
+<div><font color="#38761d">set max_title_len &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = 20</font></div>
+<div><span style="color:rgb(56,118,29);font-size:16px;line-height:1.6">set selected_tab_text &nbsp; &nbsp; &nbsp; = foreground = "#46A4FF"</span></div>
+</div>
+<div><br>
+</div>
+<div>to set maximised, with openbox that's easy, or else</div>
+<div>&nbsp;<font color="#38761d">set geometry=maximized&nbsp;</font></div>
+<div><br>
+</div>
+<div>hide tabs command
+</div>
+<div>
+<div><font color="#38761d">@cbind tt<span style="white-space:pre">		</span>=&nbsp;toggle show_tablist 1 0</font></div>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">Styles</font></b></div>
+<div>-add a dir in the config dir into which you can put css style sheet files,&nbsp;<span style="font-size:16px;line-height:1.6"><font color="#0b5394">~/.config/uzbl/css</font></span></div>
+<div><span style="font-size:16px;line-height:1.6">-make a&nbsp;</span><span style="font-size:16px;line-height:1.6">default style sheet&nbsp;</span><span style="font-size:16px;line-height:1.6"><font color="#0b5394">~/.config/uzbl/css/default.css</font></span></div>
+<div>-and set it in uzbl config file:</div>
+<div><font color="#38761d">set stylesheet_uri = file://@config_home/uzbl/css/default.css</font></div>
+<div><br>
+</div>
+<div>background colour - to cut out the white!</div>
+<div>
+<div><font color="#38761d">* {&nbsp;</font><span style="color:rgb(56,118,29);background-color:transparent">background: #8F6C6C&nbsp;!important;&nbsp;</span><span style="color:rgb(56,118,29);background-color:transparent">}</span><br>
+that was quite brown, this is better AFAFAF</div>
+<div><span style="color:rgb(56,118,29);background-color:transparent"><br>
+</span></div>
+<div><span style="font-size:16px;line-height:1.6">more background colours are possible, doing it like this (the * in above example sets all of them one color)</span></div>
+</div>
+<div>
+<div><font color="#38761d">body&nbsp;</font><font color="#38761d" style="font-size:16px;line-height:1.6">{&nbsp;</font><span style="font-size:16px;line-height:1.6;background-color:transparent;color:rgb(56,118,29)">background: #8F6C6C&nbsp;!important;&nbsp;</span><span style="font-size:16px;line-height:1.6;background-color:transparent;color:rgb(56,118,29)">}</span></div>
+<div><font color="#38761d">h1 {background-color:#6495ed;}</font></div>
+<div><font color="#38761d">p {background-color:#e0ffff;}</font></div>
+<div><font color="#38761d">div {background-color:#b0c4de;}</font></div>
+</div>
+<div><br>
+</div>
+<div>though that's not perfect.</div>
+<div><br>
+</div>
+<div>
+<div>links colours</div>
+<div><font color="#38761d">
+<div>a:link &nbsp; &nbsp;{ color: #274DC5; } &nbsp;/* unvisited links */</div>
+<div>a:visited { color: #B04684; } &nbsp;/* visited links &nbsp; */</div>
+<div>a:hover &nbsp; { color: #B02562; } &nbsp;/* user hovers &nbsp; &nbsp; */</div>
+<div>a:active &nbsp;{ color: #763652; } &nbsp;/* active links &nbsp; &nbsp;*/</div>
+<div><br>
+</div>
+</font></div>
+</div>
+<div>You can have a unique style sheet for any web site - see the "alternative method" here&nbsp;<a href="http://www.uzbl.org/wiki/change_style.sh">http://www.uzbl.org/wiki/change_style.sh</a></div>
+<div>Though I'm not sure how to do it yet!
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>
+<div><b><font size="4">Commands</font></b></div>
+<div>see the readme page&nbsp;<a href="http://www.uzbl.org/readme.php">http://www.uzbl.org/readme.php</a></div>
+<div><br>
+</div>
+<div>I changed this line</div>
+<div><font color="#38761d">@on_event &nbsp; FOCUS_ELEMENT &nbsp;sh 'if [ "$1" = INPUT -o "$1" = TEXTAREA -o "$1" = SELECT ]; then echo "@set_mode insert" &gt; $UZBL_FIFO; fi' %s</font></div>
+<div>to this</div>
+<div><font color="#38761d">@on_event &nbsp; FORM_ACTIVE &nbsp; &nbsp;@set_mode insert</font></div>
+<div>and I get better results when clicking in a text area - before I would type and text would go in <i>both</i> the form and the command line! &nbsp;</div>
+<div><br>
+</div>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">Web Jumps</font></b></div>
+<div><font size="2"><br>
+</font></div>
+<div>
+<div><font color="#38761d" size="2"># Web searching binds</font></div>
+<div><font color="#38761d">@cbind &nbsp;,gg&lt;Google:&gt;_ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = uri http://www.google.com/search?q=\@&lt;encodeURIComponent(%r)&gt;\@</font></div>
+<div><font color="#38761d">@cbind &nbsp;,ddg&lt;DuckDuckGo:&gt;_ &nbsp; &nbsp;= uri http://duckduckgo.com/?q=%s</font></div>
+<div><font color="#38761d">@cbind &nbsp;,wiki&lt;Wikipedia:&gt;_ &nbsp; &nbsp; &nbsp; = uri http://en.wikipedia.org/w/index.php?title=Special:Search&amp;search=\@&lt;encodeURIComponent(%r)&gt;\@&amp;go=Go</font></div>
+<div><font color="#38761d">@cbind ,yt&lt;Youtube:&gt;_ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = set uri = http://www.youtube.com/results?search_type=&amp;search_query=%s&amp;ag=f</font></div>
+<div><font color="#38761d">@cbind ,gi&lt;Google Image:&gt;_ &nbsp; &nbsp; = uri http://www.google.com/search?tbm=isch&amp;as_q=\@&lt;encodeURIComponent(%r)&gt;\@</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d">#Hard-bound links</font></div>
+<div><font color="#38761d">@cbind &nbsp;gh &nbsp;= uri http://www.uzbl.org</font></div>
+</div>
+<div><br>
+</div>
+<div>( the \ key doesn't seem to work)</div>
+<div>Note: there is <font color="#3d85c6">ibind</font> that allows function in input mode, <font color="#3d85c6">cbind</font> for command mode, and <font color="#3d85c6">ebind</font> which is global
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><font size="4"><b>Bookmarks</b></font></div>
+<div>the bookmark file is in ~/.local/share/uzbl, which you can edit by hand, but it mustn't have any blank lines.</div>
+<div>The default bookmark open url script searches both the URL and tag, so ideally two bookmark open methods would be nice.</div>
+<div>You could always make a html page of your bookmarks.</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">Context menus</font></b></div>
+<div><br>
+</div>
+<div>
+<div><font color="#38761d"># Default context menu</font></div>
+<div><font color="#38761d">menu_add New Tab (gw) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= event REQ_NEW_WINDOW</font></div>
+<div><font color="#38761d">menu_add Clone Tab (c) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = event REQ_NEW_WINDOW \@uri</font></div>
+<div><font color="#38761d">menu_add Tab from Primary X ('p) = sh 'echo "event REQ_NEW_WINDOW $(xsel -o)" &gt; "$UZBL_FIFO"'</font></div>
+<div><font color="#38761d">menu_add Gmail &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = set uri = http://gmail.com</font></div>
+<div><font color="#38761d">menu_add Go Uzbl &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; = set uri = http://uzbl.org</font></div>
+<div><font color="#38761d">menu_add Copy Tab Uri &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= sh 'echo -n "$UZBL_URI" | xsel'</font></div>
+<div><font color="#38761d">menu_separator separator_1</font></div>
+<div><font color="#38761d">menu_add Close Tab &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;= exit</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d"># Link context menu</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d">menu_link_add Open in New Tab &nbsp;&nbsp;<i>=</i> event NEW_BG_TAB_NEXT \@SELECTED_URI</font></div>
+<div><font color="#38761d"><i><br>
+</i></font></div>
+<div><br>
+</div>
+</div>
+<div><br>
+</div>
+
+<h2 id="3" class="tag">Caching webpages with Polipo</h2>
+<div>Uzbl has no caching on its own, adhering to UNIX principle where each app should only do its own job - &nbsp;caching&nbsp;<span style="font-size:16px;line-height:1.6">therefore&nbsp;</span><span style="font-size:16px;line-height:1.6">is another app's job. &nbsp;And caching is definitely required, so that things are speedy. &nbsp;</span><span style="font-size:16px;line-height:1.6">So here comes P</span><span style="font-size:16px;line-height:1.6">olipo..</span></div>
+<div><a href="https://wiki.archlinux.org/index.php/Polipo">https://wiki.archlinux.org/index.php/Polipo</a></div>
+<div><a href="http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/">http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/</a></div>
+<div><br>
+</div>
+<div><font color="#cc0000">apt-get install polipo</font></div>
+<div><br>
+</div>
+<div>add to autostart</div>
+<div><font color="#38761d">polipo &amp;</font></div>
+<div><br>
+</div>
+<div><font color="#b45f06">mkdir ~/.polipo-cache</font></div>
+<div><font color="#b45f06">sudo cp /etc/polipo/config /etc/polipo/config.orig</font></div>
+<div><font color="#b45f06">sudo nano /etc/polipo/config</font></div>
+<div>edit line:</div>
+<div><font color="#38761d">diskCacheRoot = "~/.polipo-cache/"</font></div>
+<div><span style="font-size:16px;line-height:1.6">[might get too big to be put in home! separate partition?]</span></div>
+<div>Note, if you copy polipo config file to home dir, you need to call it on start, like this, <font color="#b45f06">polipo -c ~/.polipo.conf</font>
+</div>
+<div><font color="#b45f06"><br>
+</font></div>
+<div>if you stick with the /var/cache/polipo default cache location, then follow the archwiki page re how to make a polipo user</div>
+<div><br>
+</div>
+<div>restart polipo..</div>
+<div><font color="#b45f06">sudo /etc/init.d/polipo restart&nbsp;</font>or<font color="#b45f06">&nbsp;service polipo restart</font></div>
+<div><br>
+</div>
+<div>add a line to uzbl config</div>
+<div><font color="#38761d">set proxy_url = http://127.0.0.1:8123</font></div>
+<div><br>
+</div>
+<div><font color="#a64d79">problem: can't open CUPS web interface on localhost:631</font></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">Daemonise</font></b></div>
+<div>to have polipo work in the background</div>
+<div>add to the config file</div>
+<div>
+<div><font color="#38761d">logFile = "~/.polipo.log"</font></div>
+<div><font color="#38761d">logLevel = &nbsp; &nbsp;</font>(see<font color="#38761d">&nbsp;<a href="https://github.com/jech/polipo/blob/master/log.h">here</a>&nbsp;</font>for possible values)</div>
+<div>and make the log file</div>
+<font color="#b45f06">touch ~/.polipo.log</font>
+<div><br>
+</div>
+<div>or add this so that Polipo bypasses the log file and outputs to a terminal (if started there)</div>
+<div><font color="#38761d">logFile = ""</font></div>
+<div><font color="#38761d">logSyslog = false</font></div>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><span style="line-height:1.6"><b><font size="4">Purging the polipo cache&nbsp;</font></b></span></div>
+<div><span style="font-size:16px;line-height:1.6">as polipo never removes a file from the cache, it installs a script in /etc/cron.daily which will tidy it up.</span></div>
+<div>very useful info here <a href="http://go2linux.garron.me/modify-polipo-cache-size-and-purge-rules">http://go2linux.garron.me/....</a></div>
+<div><br>
+</div>
+<div><br>
+</div>
+
+<h2 id="4" class="tag">Uzbl scripts</h2>
+<div><a href="http://www.uzbl.org/wiki/scripts">http://www.uzbl.org/wiki/scripts</a></div>
+<div><br>
+</div>
+<div>Here's where a lot of extension can be made to the operability of the browser.</div>
+<div>I'm only just at this stage.... and trying to figure out these scripts. &nbsp;<b>To test them run uzbl from a terminal and see what errors are turned out.</b></div>
+<div>(happy face if they work for me)
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>
+<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px">
+<tbody>
+<tr>
+<td style="width:487.79861092567444px;height:33.79861092567444px">&nbsp;script I've tried</td>
+<td style="width:204.79861092567444px;height:33.79861092567444px">&nbsp;dependencies</td>
+<td style="width:147.79861092567444px;height:33.79861092567444px">&nbsp;works yet?</td>
+<td style="width:54.79861092567444px;height:33.79861092567444px">&nbsp;score</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:21.79861092567444px">show keybindings&nbsp;<a href="http://www.uzbl.org/wiki/show_keybindings.sh">show_keybindings.sh</a></td>
+<td style="width:204.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:147.79861092567444px;height:21.79861092567444px">&nbsp;:(</td>
+<td style="width:54.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:21.79861092567444px"><a href="http://www.uzbl.org/wiki/keyword-bookmarks">keyword-bookmarks</a></td>
+<td style="width:204.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:147.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:54.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:21.79861092567444px"><a href="http://www.uzbl.org/wiki/bookmark_with_tags_for_folders">bookmark_with_tags_for_folders</a></td>
+<td style="width:204.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:147.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:54.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:21.79861092567444px"><a href="http://www.uzbl.org/wiki/insert_bookmark.sh" style="font-size:16px;line-height:1.6">insert_bookmark.sh</a></td>
+<td style="width:204.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:147.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:54.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:21.79861092567444px">clean up the history from duplicate sites&nbsp;<a href="http://www.uzbl.org/wiki/clean_history">clean_history</a></td>
+<td style="width:204.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:147.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:54.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:23.79861092567444px">send open tabs to a queue to open them later on&nbsp;<a href="http://www.uzbl.org/wiki/article_queue.py">article_queue.py</a></td>
+<td style="width:204.79861092567444px;height:23.79861092567444px">&nbsp;</td>
+<td style="width:147.79861092567444px;height:23.79861092567444px">&nbsp;</td>
+<td style="width:54.79861092567444px;height:23.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:43.79861092567444px">undo closed tab&nbsp;<a href="http://www.uzbl.org/wiki/undo_tabbed">undo_tabbed</a>&nbsp;</td>
+<td style="width:204.79861092567444px;height:43.79861092567444px">&nbsp;socat</td>
+<td style="width:147.79861092567444px;height:43.79861092567444px">&nbsp;froze the desktop :(</td>
+<td style="width:54.79861092567444px;height:43.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:21.79861092567444px">lich downloader&nbsp;<a href="http://www.uzbl.org/wiki/lich-download.sh">lich-download.sh</a>&nbsp;&nbsp;</td>
+<td style="width:204.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:147.79861092567444px;height:21.79861092567444px">&nbsp;&nbsp;:)</td>
+<td style="width:54.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:21.79861092567444px">download destination and progress&nbsp;<a href="http://www.uzbl.org/wiki/dl-progress-zenity">dl-progress-zenity</a></td>
+<td style="width:204.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:147.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:54.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:23.79861092567444px">download progress in the status bar&nbsp;<a href="http://www.uzbl.org/wiki/dl-progress-statusbar">dl-progress-statusbar</a></td>
+<td style="width:204.79861092567444px;height:23.79861092567444px">&nbsp;</td>
+<td style="width:147.79861092567444px;height:23.79861092567444px">&nbsp;</td>
+<td style="width:54.79861092567444px;height:23.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:21.79861092567444px">download yt videos&nbsp;<a href="http://www.uzbl.org/wiki/youtube-dl">youtube-dl</a></td>
+<td style="width:204.79861092567444px;height:21.79861092567444px">&nbsp;youtube-dl ratpoison</td>
+<td style="width:147.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:54.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+</tr>
+<tr>
+<td style="width:487.79861092567444px;height:21.79861092567444px">disable flash and play video in mplayer&nbsp;<a href="http://www.uzbl.org/wiki/ytvp">ytvp</a></td>
+<td style="width:204.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:147.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+<td style="width:54.79861092567444px;height:21.79861092567444px">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<br>
+</div>
+<div><span style="font-size:16px;line-height:1.6">&nbsp; &nbsp; &nbsp;&nbsp;</span></div>
+<div><br>
+</div>
+<div><b><font size="4">Troubleshoot Scripts</font></b></div>
+<div>I had a problem getting scripts in my home config dir&nbsp;<span style="font-size:16px;line-height:1.6">to work</span><span style="font-size:16px;line-height:1.6">&nbsp;- which was probably my&nbsp;</span><span style="font-size:16px;line-height:1.6">XDG_CONFIG_HOME not being set.</span></div>
+<div><br>
+</div>
+<div>
+<div>Uzbl sets some bind code at the start:</div>
+<div><font color="#38761d">set data_home &nbsp; = @(echo $XDG_DATA_HOME)@</font></div>
+<div><font color="#38761d">set cache_home &nbsp;= @(echo $XDG_CACHE_HOME)@</font></div>
+<div><font color="#38761d">set config_home = @(echo $XDG_CONFIG_HOME)@</font></div>
+<div><br>
+</div>
+<div>so you need these variable to be set if you are going to use them -system-wide in /etc/profiles, add these lines</div>
+<div><font color="#38761d">export XDG_CONFIG_HOME="$HOME/.config"</font></div>
+<div><font color="#38761d">export XDG_DATA_HOME="$HOME/.local/share"</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div>or perhaps in ~/.bashrc for per user</div>
+<div><br>
+</div>
+<div>or else edit the uzbl config file to read echo $HOME/.local and echo $HOME/.config</div>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><font size="4"><b>Here's one I made!</b></font></div>
+<div>It will add the URL of a link to the temporary bookmark list - need xsel (or change to xclip) - problem is uzbl doesn't clear the list on exit!</div>
+<div><font color="#b45f06">cd&nbsp;</font><span style="color:rgb(180,95,6);font-size:16px;line-height:1.6">~/.config/uzbl/scripts/ &amp;&amp;&nbsp;</span><span style="color:rgb(180,95,6);font-size:16px;line-height:1.6">leafpad insert_temp_link.sh</span></div>
+<div><font color="#b45f06"><br>
+</font></div>
+<div><span style="color:rgb(56,118,29);font-size:16px;line-height:1.6">#!/bin/sh</span></div>
+<div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d">. "$UZBL_UTIL_DIR/uzbl-dir.sh"</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d">&gt;&gt; "$UZBL_TEMPS_FILE" || exit 1</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d">echo "`xsel` $UZBL_TITLE" &gt;&gt; "$UZBL_TEMPS_FILE"</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><span style="color:rgb(180,95,6)">sudo +x&nbsp;</span><span style="color:rgb(180,95,6);font-size:16px;line-height:1.6">insert_temp_link.sh</span></div>
+<div><span style="color:rgb(180,95,6)"><br>
+</span></div>
+in uzbl config, Link context menu
+<div><font color="#38761d">menu_link_add Temp Bookmark = chain 'sh "echo -n "$1" | xsel" "\@SELECTED_URI"' 'spawn @scripts_dir/insert_temp_link.sh'</font></div>
+<div><br>
+</div>
+</div>
+<div>make another, flush_temp.sh, to flush the temp file when you need to,</div>
+<div>
+<div><font color="#38761d">#!/bin/bash</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d">touch ~/.local/share/uzbl/newtemp</font></div>
+<div><font color="#38761d">mv -f ~/.local/share/uzbl/newtemp ~/.local/share/uzbl/temps</font></div>
+</div>
+<div><br>
+</div>
+<div>and bind it like this</div>
+<div><font color="#38761d">@cbind &nbsp;d4<span style="white-space:pre">	</span> <span style="white-space:pre">	</span>= spawn @scripts_dir/flush_temp.sh</font></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><font size="4"><b>Masquerade</b></font></div>
+<div>you set the useragent so that some problem websites might work properly</div>
+<div>eg</div>
+<div><font color="#38761d">set useragent &nbsp; &nbsp; &nbsp; = Mozilla/5.0 (X11; Linux x86_64; rv:2.0b9pre) Chrome/32.0.1667.0</font></div>
+pages&nbsp;rendered</span>&nbsp;with very little style</span>
+<div dir="ltr"><br>
+<div><span style="color:rgb(56,118,29);font-size:16px;line-height:1.6">set useragent &nbsp; &nbsp; &nbsp; =&nbsp;</span><span style="color:rgb(56,118,29)">Uzbl (Webkit 1.3) &nbsp;(X11; Linux x86_64)</span></div>
+<div>rendered properly</div>
+<div><br>
+</div>
+<div><font color="#38761d">set useragent &nbsp; &nbsp; &nbsp; = Mozilla/5.0 (X11; Linux x86_64; rv:2.0b9pre) Gecko/20130328 Firefox/22.0</font></div>
+<div>runs nice too (latest Firefox version)</div>
+<div><br>
+<a href="http://www.useragentstring.com/pages/useragentstring.php" style="color:rgb(56,118,29)">http://www.useragentstring.com/</a></div>
+</div>
+
+</div>

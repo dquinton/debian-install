@@ -1,0 +1,206 @@
+---
+layout: default
+description: Terminal shortcuts, basic commands and using Apt - by D Quinton
+title: Basic Terminal
+id: cli
+---
+
+
+
+<div class="parent"><a href="../../cli.html">CLI</a> ></div>
+
+<div class="cont">
+
+<h2>Terminal keys</h2>
+<table cellpadding="3" width="50%" style="background-color: transparent">
+  <tr>
+    <td width="150">home</td>    <td>moves the cursor to the beginning of the command line</td>
+  </tr>
+  <tr>
+    <td>end</td>    <td>moves the cursor to the end of the command line</td>
+  </tr>
+  <tr>
+    <td>Ctrl-W</td>    <td>deletes the word immediately before the cursor</td>
+  </tr>
+  <tr>
+    <td>Ctrl-K</td>    <td>deletes everything immediately after the cursor</td>
+  </tr>
+  <tr>
+    <td>Ctrl-Y</td>    <td>undo a deletion</td>
+  </tr>
+  <tr>
+    <td>Ctrl-C</td>    <td>cancels the active process</td>
+  </tr>
+  <tr>
+    <td>Up</td>    <td>cycles through previously made commands</td>
+  </tr>
+  <tr>
+    <td>Tab</td>    <td>auto completes if there's only one possibility</td>
+  </tr>
+  <tr>
+    <td>Shift-pg up/home</td>    <td>move up the terminal (handy with no scroll bar)/go to top</td>
+  </tr>
+  <tr>
+    <td>Shift-pg dn/end</td>    <td>move down the termnal/go back to the prompt (down does too)</td>
+  </tr>
+  <tr>
+    <td>Ctrl-R</td>    <td>shows reverse history, type a few letters to search a previous line, then press Ctrl-R repeatedly to find the command, and press Right, to edit, or hit Enter to execute</td>
+  </tr>
+</table>
+
+
+<br><br><br>
+
+<h2>Apt commands</h2>
+<table cellpadding="3" width="50%" style="background-color: transparent">
+  <tr>
+    <td width="300">apt-get check [package]</td>
+    <td width="600">check dependencies</td>
+  </tr>
+  <tr>
+    <td>apt-get install -s [package]</td>
+    <td>simulate install</td>
+  </tr>
+  <tr>
+    <td>sudo apt-get build-dep [package]</td>
+    <td>attempt to install dependencies</td>
+  </tr>
+  <tr>
+    <td>apt-get install [package]</td>
+    <td>install package</td>
+  </tr>
+  <tr>
+    <td>apt-get install -f [package]</td>
+    <td>install without broken dependencies</td>
+  </tr>
+  <tr>
+    <td>apt-get install --reinstall [package]</td>
+    <td>reinstall package</td>
+  </tr>
+  <tr>
+    <td>apt-get remove [package]</td>
+    <td>remove package</td>
+  </tr>
+  <tr>
+    <td>apt-get remove --purge [package]</td>
+    <td>remove package including its config files</td>
+  </tr>
+  <tr>
+    <td>apt-get clean</td>
+    <td>clean cache</td>
+  </tr>
+  <tr>
+    <td>apt-get autoclean</td>
+    <td>clean cache from packages that can't be downloaded</td>
+  </tr>
+  <tr>
+    <td>apt-get install -f</td>
+    <td>clean broken install</td>
+  </tr>
+  <tr>
+    <td>sudo dpkg --configure -a</td>
+    <td>or, failing that</td>
+  </tr>
+  <tr>
+    <td>apt-cache search [package]</td>
+    <td>search for packages in the apt cache with a name, or part of a name</td>
+  </tr>
+  <tr>
+    <td>apt-cache show [package]</td>
+    <td>to list dependencies of installed</td>
+  </tr>
+  <tr>
+    <td>apt-cache search [package]</td>
+    <td>to list dependencies of package not installed</td>
+  </tr>
+  <tr>
+    <td>dpkg --list | grep &lt;name&gt;</td>
+    <td>list any installed packages with a name</td>
+  </tr>
+  <tr>
+    <td>dpkg -s [package]</td>
+    <td>check version of installed package</td>
+  </tr>
+  <tr>
+    <td>dpkg-query -l [package]</td>
+    <td>also can use dpkg-query, wildcards too</td>
+  </tr>
+  <tr>
+    <td>dpkg -S [command]</td>
+    <td>to find the package that owns a command</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+  </table>
+  <br>
+  see my <a href="../../netinstall/upgrade.html">upgrade Debian page</a>  for system upgrade commands
+  
+  <br><br> <br><br>
+    
+<h2>Other commands</h2>
+  <table cellpadding="3" style="background-color: transparent">
+  <tr>
+    <td width="300">whoami</td>
+    <td>what user is logged in?</td>
+  </tr>
+  <tr>
+    <td>sudo shutdown -h now</td>
+    <td>force shutdown</td>
+  </tr>
+  <tr>
+    <td>sudo shutdown -h 01:30 &amp;</td>
+    <td>planned shutdown</td>
+  </tr>
+  <tr>
+    <td>sudo shutdown -c</td>
+    <td>cancel planned shutdown</td>
+  </tr>
+  <tr>
+    <td>sudo logout</td>
+    <td>logout</td>
+  </tr>
+  <tr>
+    <td>sudo reboot</td>
+    <td>reboot</td>
+  </tr>
+  <tr>
+    <td>rm -rf /some-dir/some-dir/</td>
+    <td>!delete a dir and its contents entirely !!!</td>
+  </tr>
+  <tr>
+    <td>sudo fdisk -l</td>
+    <td>get a list of local partitions</td>
+  </tr>
+  <tr>
+    <td>ls -l /dev/disk/by-uuid</td>
+    <td>get the uuid of all partitions</td>
+  </tr>
+  <tr>
+    <td>free</td>
+    <td>get memory usage stats</td>
+  </tr>
+  <tr>
+    <td>sudo passwd &lt;username&gt;</td>
+    <td>change a user password</td>
+  </tr>
+  <tr>
+    <td>sudo passwd</td>
+    <td>change the root password</td>
+  </tr>
+  <tr>
+    <td>apt-file update</td>
+    <td>use apt-file</td>
+  </tr>
+  <tr>
+    <td>apt-file search [file name]</td>
+    <td>find package that installs a missing file</td>
+  </tr>
+</table>
+
+
+
+
+
+</div>

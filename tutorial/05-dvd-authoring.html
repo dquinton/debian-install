@@ -1,0 +1,144 @@
+---
+layout: default
+description: Producing simple DVDs from films with DVD styler and Bombono - by D Quinton
+title: Dvd authoring
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Bombono!</a></li>
+                <li><a href="#2">DVD styler  </a></li>
+                <li><a href="#3">Cutting with Avidemux </a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Bombono!</a><br>
+   <a href="#2">DVD styler  </a><br>
+   <a href="#3">Cutting with Avidemux </a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+
+<div><h2 id="1" class="tag">Bombono!</h2>
+
+<div>fast dvd creation, and easy menus, a great dvd authoring tool! &nbsp;see the&nbsp;tutorial&nbsp;</span><a href="http://www.bombono.org/cgi-bin/wiki/Bombono_Tutorial" rel="nofollow" style="line-height:25px">here</a></div>
+<div>
+</b></div>
+1. to add files click on the + below&nbsp;the Media List</span></div>
+<div>
+<div><br>
+</div>
+2.&nbsp;<span>add chapter points to each media clip -select clip in the&nbsp;</span><span>Media List</span><span>, click the green "go" button below</span></div>
+<div>&nbsp; &nbsp; &nbsp;zoom in once or twice on the time-line</span></div>
+<div>&nbsp;&nbsp; &nbsp;&nbsp;search for the place to add a chapter and&nbsp;click the little marker button to the left to add a chapter&nbsp;(left/right keys seek frames)</span></div>
+<div>&nbsp;&nbsp; &nbsp;&nbsp;you can drag the chapter points to relocate them on the time-line</div>
+<div>&nbsp;&nbsp; &nbsp;&nbsp;delete a chapter point with right-click or all with right-click over time-line</div>
+<div>&nbsp;&nbsp; &nbsp;&nbsp;or set chapter points at time intervals with right-click over the time-line also</div>
+<div><br>
+</div>
+<div>3. save the project&nbsp;</div>
+<div><br>
+</div>
+<div>4.&nbsp;make a menu (click on "+" and "tick" buttons), right-click in the menu preview to right and set its poster to a chapter from a clip&nbsp;</span></div>
+<div><span>&nbsp; &nbsp; set the button style (I prefer the blue or red box)</span></div>
+<div>&nbsp; &nbsp; add an item from the Media List by dragging or click on "+" next to the font chooser&nbsp;</span></div>
+<div><b>NOTE: the first item added will be BUTTON 1 and will be highlighted first on the TV screen.</b></span></div>
+<div><span>&nbsp;&nbsp; &nbsp;set the item's poster with right-click</span></div>
+<div><span>&nbsp; &nbsp; right-click on the menu at top left, and in Options you can set a motion menu, and in the second tab set the highlight colours<br>
+</span></div>
+<div>&nbsp; &nbsp; right-click on the items in the Media List and set End Action to Next Video, if you want all clips to play right through before returning to the menu (or try Play All) - this can be a pain with many clips. <b>If just one clip is not changed from default to "next video", when the Dvd is played it it will return to menu and stop the following clips from playing!</b></div>
+<div>&nbsp; &nbsp; if you split media between menus it will be different, like items 1-5 on&nbsp;menu1</span>&nbsp;play through and return to menu1, items 6-10, on&nbsp;menu2</span><span>&nbsp;play through and return to menu2,&nbsp;</span>menu1 and&nbsp;</span>menu2 have buttons to each other, or reached by menu0</span></div>
+<div><br>
+</div>
+<div>5. Output: change the dvd build directory:&nbsp;<span>select output folder -be sure to go through Other and create a new dir, as bombono will wipe a dir that has files</span></div>
+<div><span><br>
+</span></div>
+<div>&nbsp;6. or make a symlink in /home/.cache for "bombono-dvd-video" dir and direct it to a new dir (of that name?) on another partition or external drive, otherwise you will have bombono create 2 to 4 Gigs of vob files in your /home dir!<br>
+&nbsp;&nbsp;&nbsp; if you build the dvd folder on another disk it will be easy to move the dvd files to a new dir for burning at a later stage.</div>
+<div><br>
+</div>
+<div>
+
+<h2 id="2" class="tag">DVD styler</h2>
+
+<div>I used to use it all the time, when it worked faster for me, but now it even remultiplexes VOB compliant video made with Kdenlive, taking ages for a 4GB DVD. &nbsp;So I use bombono now, for the essential work of producing a DVD that plays my films.</div>
+<div><br>
+</div>
+<div>double click on a background for the menu</div>
+<div>file browser tab &gt;drag a file onto the empty tray below</div>
+<div>it should appear on the menu too</div>
+<div>drag it from the content tray to the menu preview</div>
+<div><span style="white-space:pre"> </span>double click on the title button to set the highlight and selected outline colours -I use bright red to highlight, darker for selected, the next added titles will follow suite</div>
+<div>repeat until all your content is added</div>
+<div>setting it right: double click the file (now a title) in content tray</div>
+<div><span style="white-space:pre"> </span>change post command to "jump title #" ie to the next title number</div>
+<div><span style="white-space:pre"> </span>DVD menu &gt;Options -set DVD format PAL or NTSC and aspect ratio 4:3 or 16:9, and First Play Command to "jump title 1"</div>
+<div><span style="white-space:pre"> </span>when first menu is too full, RMB on it ti content strip and Add menu, give it a background and add titles to it</div>
+<div><span style="white-space:pre"> </span>add Arrow buttons to each menu to point to the next menu -Buttons tab, drag one over, double click it to set the action and&nbsp;also rotate it to the logical direction -ie for menu 2 pointing to menu 1 to the left</div>
+<div>to delete titles, delete from the last one in the tray so that dvd styler doesn't need to take so long reorganising</div>
+<div>save the project!!</div>
+<div><br>
+</div>
+<div>sub-menus are also possible -you can read about it in the manual</div>
+<div><br>
+</div>
+<div>Note: adding large pixel dimension mpeg2 (eg HD 1920p) will cause dvd styler to take a long time remuxing to 720p size for DVD</div>
+<div><br>
+</div>
+<div>click on the burn DVD button at top</div>
+<div>select temp dir for the DVD to be built in -if you want to save the DVD files to external storage, get it built there then relocate them!</div>
+<div>click just generate if you want to save the files -just move them all from VIDEO_TS in the temp location to a new dir</div>
+<div>or else click "create iso image" which may take longer to write</div>
+<div><br>
+</div>
+<div>burn with k3b: open a new DVD project, select the VIDEO_TS dir in the project, then select drag all the files you made through DVD Styler down to the right hand side&nbsp;</div>
+<div>insert the DVD and burn</div>
+<div><br>
+</div>
+<div>if you made an iso image, you can burn image with k3b or with the command, <span class="cmd">growisofs -dvd-compat -Z /dev/dvd=<i>foo.iso</i></span> </div> (and 'dvd' might become dvd1 or dvd2 incase of a secondary burner)
+<div><br>
+</div>
+<div><b>make a template for next time</b></div>
+<div>after saving a project with two menus, or with sub-menus and say, ten titles, do Save as and rename it to "x ten titles" for a ten title template.</div>
+<div>get the title buttons how you want them -stretch the size, set border colours, position them neatly</div>
+<div>delete all the titles in the tray -which will leave empty boxes on the menus</div>
+<div>save it and you have a template to open next time</div>
+<div>when you open the template to make a new project, IMMEDIATELY do Save as, to project name, so you don't spoil the template</div>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>
+
+<h2 id="3" class="tag">Cutting with Avidemux</h2>
+<div>open mpeg2 file</div>
+<div>seek for cut beginning with the <span style="background-color:rgb(246,178,107)">Next Keyframe</span> button, click the <span style="background-color:rgb(111,168,220)">Selection:start</span> button, and then seek for the cut end and use the&nbsp;<span style="background-color:rgb(111,168,220)">Selection:end</span>&nbsp;button.</span></div>
+<div>CTRL-X</span></div>
+<div>If cuttong off the end of a movie, just seek fro the cut beginning.</span></div>
+<div>If cutting off the biggining of a movie, just seek for the cut end.</span></div>
+<div>Set Video and Audio to "same", and audio shift: +30-40ms&nbsp;</span></div>
+<div>Format: MPEG-PS for DVD compliant mpeg2 file, or convert to another format</span></div>
+<div>click save</span></div>
+</div>
+<div>
+</span></div>
+<div>to avoid smearing of the joins which are made when a piece of a film is cut out, <b>ALWAYS</b> make your cuts at <b>KEYFRAMES</b>, not on next single frames. &nbsp;The result will be clean if you remember to never use the single frame cue buttons. &nbsp;</span></div>
+<div><br>
+</span></div>
+<div>Easily remaster a DVD by opening the first VOB file of a DVD in Avidemux (the rest are appended) and make your edits. &nbsp;Save it as mentioned above. &nbsp;Open the new mpeg file in Bombono and make the DVD how you like.</span></div>
+<div><br>
+</span></div>
+
+</div>

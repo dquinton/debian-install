@@ -1,0 +1,69 @@
+---
+layout: default
+description: Installing solar simulators - including Stellarium and Celestia - by D Quinton
+title: Solar system sims
+id: tutor
+---
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+<div dir="ltr">
+<div><br>
+</div>
+<font size="3">1.&nbsp;<b>Solar System 3D Gravitator</b>&nbsp;- by far the simplest</font></div>
+<div dir="ltr"><font size="3"><a href="http://arnholm.org/astro/software/ssg/index.htm">http://arnholm.org/astro/software/ssg/index.htm</a></font></div>
+<div dir="ltr"><font size="3"><font color="#b45f06">sudo dpkg -i solsysgrav...</font><br>
+increase the days step to 30 and watch the planets fly off their orbit into space!! &nbsp;Find out what speed you need to send the earth off! &nbsp;:)<br>
+<br>
+<br>
+The following may not be suitable for netbooks or low-speed cpu's/graphics cards. &nbsp;I can use Celestia and Stellarium on my Lenovo S200 OK, but they stagger a bit with low cpu capacity on the Acer Aspire One.<br>
+<br>
+2.&nbsp;<b>Openuniverse</b>&nbsp;</font></div>
+<div dir="ltr"><font size="3"><a href="http://www.openuniverse.org/">http://www.openuniverse.org/</a><br>
+download the tar.gz file, unpack it and install (after checking required dep's) with ./configure, make, make install</font></div>
+<div dir="ltr"><font size="3">depends </font><span style="font-size:medium">GL library (Mesa is recommended&nbsp;</span><a href="http://www.mesa3d.org/download.html" style="font-size:medium">http://www.mesa3d.org/,,,</a>),&nbsp;</div>
+<div dir="ltr"><span style="font-size:medium">GLUT (or not if get Mesa demo)&nbsp;</span><font size="3">freeglut3 and</font><span style="font-size:medium">&nbsp;</span><font size="3">freeglut3-dev are in Debian repos.</font></div>
+<div dir="ltr"><span style="font-size:medium">GLUI&nbsp;</span><font size="3"><a href="http://glui.sourceforge.net/#download">http://glui.sourceforge.net/...</a>&nbsp;also&nbsp;</font><span style="font-size:medium">libglui2c2 and&nbsp;</span><span style="font-size:medium">libglui-dev are in Debian repos, but I'm not sure yet if they are what's needed.</span></div>
+<div dir="ltr"><font size="3">I needed to install flex as well</font></div>
+<div dir="ltr"><span style="color:rgb(204,0,0);font-size:medium">sudo apt-get install flex&nbsp;</span><font color="#cc0000" size="3">xutils-dev&nbsp;libglui2c2 libglui-dev</font></div>
+(installs: freeglut3 freeglut3-dev libegl1-mesa libegl1-mesa-drivers libgl1-mesa-dev&nbsp;libgl1-mesa-glx libglapi-mesa libglu1-mesa libglu1-mesa-dev libxt-dev<br>
+  mesa-common-dev)
+<div>I am hitting an error building Mesa (no glproto) and without that i.e. GL libraries I can't install Openuniverse... and no time at the moment!
+<div dir="ltr"><font size="3"><br>
+</font></div>
+<div dir="ltr"><font size="3">3.&nbsp;<b>Stellarium</b>&nbsp;</font></div>
+<div dir="ltr"><font size="3"><a href="http://www.stellarium.org/">http://www.stellarium.org/</a></font></div>
+<div dir="ltr"><font color="#cc0000" size="3">sudo apt-get install stellarium</font></div>
+<div dir="ltr"><span style="font-size:medium">installs&nbsp;</span><font size="3">stellarium and stellarium-data&nbsp;</font></div>
+<div dir="ltr"><font size="3"><br>
+</font></div>
+<div dir="ltr"><span style="font-size:medium">You can stand on any place on earth or on any planet and zoom in on other planets and stars, even satellites. &nbsp;Just click on an object and press / to zoom in. &nbsp;Press \ to zoom back out. &nbsp;Great for learning where all the constellations are.</span></div>
+<div dir="ltr"><font size="3">user guide&nbsp;<a href="http://stellarium.org/wiki/index.php/Stellarium_User_Guide">http://stellarium.org/wiki/...</a><br>
+<br>
+<br>
+4.&nbsp;<b>Celestia-GTK&nbsp;</b></font></div>
+<div dir="ltr">
+<div dir="ltr"><font size="3"><a href="http://pat.suwalski.net/celestia/">http://pat.suwalski.net/celestia/</a></font></div>
+<div dir="ltr"><font size="3"><font color="#cc0000">sudo apt-get install celestia</font><br>
+</font><span style="font-size:medium">installs celestia celestia-common celestia-gnome libgtkglext1</span></div>
+<div dir="ltr"><span style="font-size:medium"><br>
+</span></div>
+</div>
+<div dir="ltr"><font size="3">With this one you can select any star or solar system object and go to it, but things will look better with the addons installed. &nbsp;If you get lost in space you can return to Sol and look for close objects (i.e. our planets) while zooming in/out a little. &nbsp;Click on any object and hit <b>G </b>to go there (that will definitely help you get lost in space if you just keep going out and out!)</font></div>
+<div dir="ltr"><font size="3">Go to earth with "<b>H3G</b>" and then press<b> L</b> a few times till you see time speeded up and earth rotating (<b>K</b> will slow down time and <b>J</b> will reverse time). &nbsp;Press <b>Shift-]</b> and <b>[</b> to bring on the earth's shadow and <b>Shift-Left/Right </b>to move around the earth, <b>Shift-Up/Down</b> to adjust position on the axis and Y to sync to orbit. &nbsp;Press<b> F</b> to cancel sync orbit. &nbsp;Press <b>I</b> to turn off cloud. &nbsp;Press and hold <b>End</b> to move out from Earth, and <b>Home</b> to come back -or G if you've gone a long way out.</font></div>
+<div dir="ltr"><font size="3">Press <b>HFC </b>to center on the Sun and <b>P</b> to turn on planet names, <b>O</b> to toggle orbit lines, and speed up things to watch the planets orbiting the sun. &nbsp;<b>Shift-Up</b> to make their orbits more circular. &nbsp;Press any <b>number</b> to focus on a planet (<b>G</b> to go to it).</font></div>
+<div dir="ltr"><font size="3"><b>Cursor</b> keys adjust your orientation -as does drag with the mouse. &nbsp;Press <b>Enter</b> to type a target, any first letter and Tab to select from a list, then Enter again and G.</font></div>
+<div dir="ltr"><br>
+</div>
+<div dir="ltr"><span style="font-size:medium">ducumentation&nbsp;</span><font size="3"><a href="http://www.shatters.net/celestia/documentation.html">http://www.shatters.net/...</a></font></div>
+<div dir="ltr">introduction&nbsp;<a href="http://en.wikibooks.org/wiki/Celestia/Getting_Started">http://en.wikibooks.org/...</a></div>
+<div dir="ltr"><span style="font-size:medium">addons&nbsp;</span><font size="3"><a href="http://celestia.sourceforge.net/">http://celestia.sourceforge.net/</a></font></div>
+<div dir="ltr"><br>
+</div>
+<div dir="ltr"><br>
+</div>
+</div>
+
+</div>

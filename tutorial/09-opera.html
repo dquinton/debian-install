@@ -1,0 +1,160 @@
+---
+layout: default
+description: Using Opera web browser, contigure UI and skins - by D Quinton
+title: Opera
+id: tutor
+---
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+<div>Here's a very good web-browser... &nbsp;except that web page coding has quite advanced beyond it's engine's power, so they are rebuilding it with something like Chrome's browser engine. &nbsp;Because of that, the latest version, 16, is still without lots of the normal features, after they had to rebuild from scratch, and that's not even released for Linux yet.</div>
+<div><br>
+</div>
+<div>
+<div>Problems with 12.16</div>
+<div>
+<div>. lots of Google pages elements don't load properly, eg Picasaweb uploading, G+ albums some buttons, also&nbsp;yahoo news headlines (dynamic content) doesn't load on page (white space!)</div>
+<div><br>
+</div>
+</div>
+</div>
+<div>Already, Opera can save your session (menu &gt; Tabs &gt; Sessions) and work offline (menu &gt; Settings &gt;), it can also be your email manager, if you need it. &nbsp;You can open a panels tab and there you can easily switch between bookmarks, notes, downloads, history, page links and page info. Also mail, contacts and chat if you set them up. &nbsp;</div>
+<div><br>
+</div>
+<div>Open the bookmarks in the panels tab with<b>&nbsp;Ctrl-B</b>, or history with&nbsp;<b>Ctrl-H</b>&nbsp;</div>
+<div>Ctrl-J opens downloads in another tab not in panels. :(</div>
+<div><br>
+</div>
+<div>Editing bookmarks can be done in the panels tab (to import/export bookmark file,&nbsp;right click anywhere and File &gt; ), or the Manage Bookmarks tab opened from Opera menu (<b >Ctrl-Shift-B</b>).</div>
+<div><br>
+</div>
+<div>
+<div>to add the bookmarks button to address bar&nbsp;(after you import html bookmark file from chrome/firefox):</div>
+<div>
+<ul><li>hit Alt for Opera menu &gt; Appearance (or&nbsp;<b>Shift-f12</b>) &gt; Buttons tab &gt; Browser</li>
+<li>drag items to the address bar where you'd like them</li>
+<li>you can drag any to a new position but&nbsp;to remove any you don't drag them off the bar, you right click and remove each one</li></ul>
+</div>
+<div>I add the recently closed tabs&nbsp;button&nbsp;too.</div>
+</div>
+<div><br>
+</div>
+<div>Speed dial thumbs on a new tab page can be set to whatever pages and how many you want, and at what size you want. &nbsp;</div>
+<div><br>
+</div>
+<div>Ways to save memory&nbsp;<a href="http://operawiki.info/operaperformance" >http://operawiki.info/operaperformance</a></div>
+<div>
+<ul><li>turn off special effects,&nbsp;<b>Shift-f12</b></li>
+<li>disable animated images,&nbsp;<b>Ctrl-f12</b>&nbsp;&gt; Content</li>
+<li>disable remamber content on visited pages, Ctrl-f12 &gt; History</li>
+<li>set memory cache lower, and empty disk cache on exit,&nbsp;Ctrl-f12 &gt; History</li>
+<li>I got Opera down to 270mb, but it returned to 563mb with youtube (flash player plugin) plus 48mb operapluginwrapper. &nbsp;Normal mem usage with about four tabs open can be 140 - 330mb, which is normal for a web browser -and it depends on how much content you open.</li></ul>
+</div>
+<div><br>
+</div>
+<div>Some reasons why Opera is a better browser</div>
+<div>
+<div>
+<ul><li>turbo (<b>f12</b>) -designed for tablets, cuts out loading everything as each page gets filtered through opera-mini server -speeds up page loading on a slow connection (can't download from some pages with turbo on)</li>
+<li>history is organised by website, not straight time-line</li>
+<li>speed dial with shortcuts to web pages, customizable b-gd</li>
+<li>mouse gestures (right click and hold for tips.. follow directions eg r-c down and up opens the page in background, ie duplicates it. &nbsp;Keep moving before release right button and gesture is canceled.</li>
+<li>inspect web page elements with dragonfly</li>
+<li>highlight text and "copy to note"</li></ul>
+</div>
+</div>
+<div><br>
+</div>
+<div><b>Opera skins from here&nbsp;</b></div>
+<div>and here&nbsp;<a href="http://mashable.com/2007/08/30/opera-skins/" rel="noreferrer" >http://mashable.com/2007/08/30/opera-skins/</a></div>
+<div><br>
+</div>
+<div>note: Beta uses themes&nbsp;<a href="https://addons.opera.com/en/themes">https://addons.opera.com/en/themes</a></div>
+<div>so how to change borders?</div>
+<div><br>
+</div>
+<div><b>Adapting the UI looks</b></div>
+<div>1. There are two high-contrast options under Menu &gt; Page &gt; Style &gt; , which are B/W and W/B</div>
+<div>
+<ul><li>both these styles are easily configurable, as they sit in ~/.opera/styles/user/ - the files are contrastbw.css and contrastwb.css</li>
+<li>the 1st "color:" and "background:" refer to the overall page (e.g. I set mine to black and grey)</li>
+<li>the 3rd part is for links color and background (e/g I set mine to blue and silver)</li>
+<li>this method destroys text colours from web sites however!</li></ul>
+<br>
+2. Set webpage colours the better way.<br>
+<ol><li>Ctrl-f12 to open Preferences, go to Webpages tab and select background and font colours.</li>
+<li>Then go to Advance tab and select Content and Style Options.</li>
+<li>under Presentation Modes tab, uncheck "Page style sheet" and "Page fonts and colours" from both Author mode and User mode.</li>
+<li>make sure "My style sheet" and "My font and colors" is checked under both.</li>
+<li>But, without "Page style sheet" checked webpages look naff!</li>
+</ol>
+<div><br>
+</div>
+<div>3. There's a setting you can play with called Dialog Toolkit -I don't really know what it does, but helpful if you can't read the font in the address bar. &nbsp;Go to <a href="javascript:void(0);">opera:config#FileSelector|DialogToolkit</a> Try setting to 3 or 4, save and restart. &nbsp;see here&nbsp;<a href="http://help.opera.com/operaconfig/versions/Windows/11.50/en/index.html">http://help.opera.com/operaconfig/</a></div>
+</div>
+<ul><li>0 = Autodetect toolkit to use for file selector</li>
+<li>1 = Use Qt for file selector (deprecated, will fall back to KDE)</li>
+<li>2 = Use GTK for file selector</li>
+<li>3 = Use KDE for file selector</li>
+<li>4 = Use X11 for file selector</li></ul>
+<div>Problem is I prefer GTK, but at the mo the address bar is unreadable.... (because my GTK font color is light and the text field in Opera is fixed light as well)
+<br><br>
+<div><b>tips</b></div>
+<div>
+<ul><li>drag any web page tab into the panels and place it at the side to keep it in panels... perhaps news or something.</li></ul>
+<br>
+<br>
+<b>skinning</b>&nbsp;</div>
+<div><a href="http://dev.opera.com/articles/view/operas-lightweight-themes/" >http://dev.opera.com/articles/view/operas-lightweight-themes/</a></div>
+<div><br>
+</div>
+<div>
+<div>1. work from existing skin in ~/.opera/skin/</div>
+<div>2. unzip the skin</div>
+<div>3. open the skin.ini file</div>
+<div>4. search for attribute to edit (attribute help here <a href="http://dev.opera.com/articles/view/opera-skinning-part-4-skin-ini-element/">/opera-skinning-part-4-skin-ini-element/</a>)</div>
+<div>5. can use another skin with design you like, to help you</div>
+<div><br>
+</div>
+<div>I found address field was in</div>
+<div><font color="#38761d">[Edit Skin]</div></font>
+<div>I added colors but can't make it change!</div>
+<div><font color="#38761d">Text Color= #383838</font>&nbsp;</div>
+<div><br>
+</div>
+<div>Notes text field is in</div>
+<div><font color="#38761d">[MultilineEdit Skin]</div></font>
+<div>I added colors with success!</div>
+<div><font color="#38761d">Color= #323232 </font></div>
+<div><font color="#38761d">Text Color= #9BA3A4</font>	&nbsp;</div>
+<div><br>
+</div>
+<div>6. change name of skin at top of file and save it&nbsp;</div>
+<div>7. select all the contents and repackage to skin-name-edited.zip</div>
+<div>8. move the new zip archive to the skin/ dir</div>
+<div>9. restart Opera and select your skin from menu &gt; Appearance</div>
+</div>
+</div>
+<div><br>
+</div>
+<div><b>Opera Beta (or 25)</b></div>
+<div>get the addon called Control freak and in the CSS tab paste this, for ALL</div>
+<div><br>
+</div>
+<div><font color="#38761d">body { background: #AFAFAF !important; }</div>
+<div><font color="#38761d">#body { background: #8F6C6C !important; }</div>
+<div><font color="#38761d">h1 {background-color:#6495ed;}</div>
+<div><font color="#38761d">p {background-color:#afafaf;}</div>
+<div><font color="#38761d">div {background-color:#afafaf;}</div>
+<div><font color="#38761d">a:link &nbsp; &nbsp;{ color: #274DC5; } &nbsp;/* unvisited links */</div>
+<div><font color="#38761d">a:visited { color: #B04684; } &nbsp;/* visited links &nbsp; */</div>
+<div><font color="#38761d">a:hover &nbsp; { color: #B02562; } &nbsp;/* user hovers &nbsp; &nbsp; */</div>
+<div><font color="#38761d">a:active &nbsp;{ color: #763652; } &nbsp;/* active links &nbsp; &nbsp;*/</div>
+<div><br>
+</div>
+<div><br>
+</div>
+
+</div>

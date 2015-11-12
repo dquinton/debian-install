@@ -1,0 +1,57 @@
+---
+layout: default
+description: A very handy gui files sync/backup tool - by D Quinton
+title: Lucky backup
+id: tutor
+---
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+<div><font size="3">A gui for rsync</font></div>
+<div><font size="3">recursively backs up or sync's directories/files -its colourful but its fast!&nbsp;</font></div>
+<div>
+<div style="line-height:27px;font-size:medium">it's saving me hours of careful copying of files to backup directories. &nbsp;Just need to set it up carefully and run the dry tests until it goes right.</div>
+</div>
+<div><br>
+</div>
+<div><a href="http://luckybackup.sourceforge.net/manual.html#OperationAdvancedOnlyInclude"><font size="3">http://luckybackup.sourceforge.net/...</font></a></div>
+<div><font size="3"><br>
+</font></div>
+<div><b><font size="4">how to backup system directories</font></b></div>
+<div><font size="3">using "only include" and typing the dir name e.g. "/.config/" didn't send any files to backup (external drive), so I don't know what I did wrong.&nbsp;</font><span style="color:rgb(11,83,148);font-size:medium;line-height:27px">Ok, to use "Only include" the dir's need to have *** after them to include their contents, e.g. </span><span style="font-size:medium;line-height:27px"><font color="#b45f06">/dir/***</font></span><span style="color:rgb(11,83,148);font-size:medium;line-height:27px">&nbsp;</span></div>
+<div><span style="color:rgb(11,83,148);font-size:medium;line-height:27px"><br>
+</span></div>
+<div><font size="3">what I chose to do was to backup my /home/username/ and exclude directories (Exclude &gt; user defined tab) such as /Downloads/ /ffmpeg/ /local/share/icons/ /.wine/ /.thumnails/ and check Trash and Cache folders on the Exclude Templates tab.</font></div>
+<div>
+<div style="line-height:27px;font-size:medium"><br>
+</div>
+</div>
+<div>
+<div>
+<div style="line-height:27px;font-size:medium">I was quite baffled at why luckyb wanted to delete dir's from the backup source -those which were excluded from the backup. &nbsp;I had "delete files on the destination"&nbsp;checked&nbsp;<span style="line-height:27px">(files not present in source are deleted from destination) so as to keep the backup tidy. &nbsp;</span></div>
+<div style="line-height:27px;font-size:medium">Maybe they too needed /*** but the man page states that the <font color="#38761d">--delete-excluded</font> option is automatic when exclude is used with delete at destination checked -so why?</div>
+</div>
+</div>
+<div style="line-height:27px;font-size:medium">It's working properly now.</div>
+<div><span style="line-height:27px"><br>
+</span></div>
+<div><font size="3">Check "Dry" and click Run to see how it will work.</font></div>
+<div><b style="color:rgb(11,83,148);line-height:27px;font-size:medium">!!imperitive: dry run to check what and if anything vital on destination side will be deleted by a task!!</b></div>
+<div><b style="color:rgb(11,83,148);line-height:27px;font-size:medium"><br>
+</b></div>
+<div><font size="3">setting a schedule is straight forward too.</font></div>
+<div><font size="3">can save the profile, but the profile selector is awkward to use, so can just multi-task on one profile.</font></div>
+<div><font size="3">might want to turn off notify by email</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">
+<div><br>
+</div>
+<div><font color="#0b5394"><b><br>
+</b></font></div>
+</font></div>
+<div><br>
+</div>
+

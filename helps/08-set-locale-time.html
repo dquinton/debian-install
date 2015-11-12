@@ -1,0 +1,81 @@
+---
+layout: default
+description: How to set the locale, and correct time - by D Quinton
+title: Set locale time
+id: help
+---
+
+<div class="parent"><a href="../helps.html">Helps</a> ></div>
+
+<div class="cont">
+
+<div><b><font size="4">set new default locale</font></b></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">run</font></div>
+<div><font color="#b45f06" size="3">su</font></div>
+<div><font color="#b45f06" size="3">dpkg-reconfigure locales</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">find the locale to add -usually you want UTF-8 -listed here&nbsp;<span style="line-height:27px"><a href="http://www.science.co.il/language/locale-codes.asp" rel="noreferrer">http://www.science.co.il/...</a></span></font></div>
+<div><font size="3">hit Space bar and Enter</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">or manually,&nbsp;</font></div>
+<div><font color="#b45f06" size="3">sudo nano&nbsp;<span style="line-height:27px">/etc/locale.gen</span></font></div>
+<div><font size="3"><span style="line-height:27px">and uncomment the languages you need (delete #), then Ctrl-X, y enter</span></font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">or</font></div>
+<div><font color="#b45f06" size="3">sudo locale-gen&nbsp;<span style="line-height:27px">xx_YY.UTF-8</span></font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">to set your default language</font></div>
+<div><font color="#b45f06" size="3">sudo nano /etc/default/locale</font></div>
+<div><font size="3">change content to&nbsp;</font></div>
+<div><font size="3"><font color="#38761d">LANG=xx_YY.UTF-8</font>&nbsp;</font></div>
+<div><font size="3">and save (replace x and Y with your language to be default for system)</font></div>
+<div><font size="3">or try <font color="#b45f06">sudo update-locale xx_YY.UTF-8</font></font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">after any changes you must run</font></div>
+<div><font color="#b45f06" size="3">locale-gen</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">then log out and back in</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><b><font size="4">UTC time and Debian's clock</font></b></div>
+<div><font size="3">
+<div>If the BIOS clock is local time, and debian's clock is shifted to what it thinks is local time, because it thinks that hardware clock is set to UTC.</div>
+<div>The method to edit /etc/default/rcS, with "UTC=no" hasn't ever worked for me. &nbsp;Following Debian Wiki, we must edit /etc/adjtime,</div>
+<div><br>
+</div>
+<div><font color="#b45f06">sudo nano /etc/adjtime</font></div>
+<div>change "UTC" to "LOCAL"</div>
+<div>Ctrl-X, y enter</div>
+<div><br>
+</div>
+<div>does it work ??</div>
+<div>failing that, enter your BIOS and adjust the time back/forward to UTC time, so that Debian adds hours for your time-zone and the displayed time will be correct</div>
+<div><br>
+</div>
+<div>You can set your time-zone with</div>
+<div><font color="#b45f06">sudo dpkg-reconfigure tzdata</font></div>
+</font>
+<div><br>
+</div>
+<div><br>
+</div>
+<b><font size="4">update the time with ntp</font></b><br>
+you can have the system time updated by a network time protocol by installing ntp<font size="3">
+<div><font color="#b45f06">sudo apt-get install ntp</font></div>
+</font><br>
+the ntp daemon will update you Debian clock constantly, if there is a constant internet conection.<br>
+If the connection is not constant, you can run<br>
+<font color="#b45f06">ntpd -b</font><br>
+to update the clock once you have internet</div>
+
+</div>

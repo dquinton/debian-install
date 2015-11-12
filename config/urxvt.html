@@ -1,0 +1,199 @@
+---
+layout: default
+description: Configuring Rxvt-unicode terminal - by D Quinton
+title: Rxvt-unicode
+id: config
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Install it</a></li>
+                <li><a href="#2">Configuration</a></li>
+                <li><a href="#3">full-screen at start-up</a></li>
+                <li><a href="#4">Tab controls</a></li>
+                <li><a href="#5">Copy-Paste</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Install it</a><br>
+   <a href="#2">Configuration</a><br>
+   <a href="#3">full-screen at start-up</a><br>
+   <a href="#4">Tab controls</a><br>
+   <a href="#5">Copy-Paste</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../configure.html">Configure</a> ></div>
+
+
+<div class="cont">
+
+
+<br>
+Here's a very good terminal for Linux that builds on Xterm.  It supports tabs, transparency or background image, true type fonts, all kinds of colours and heaps of possible settings.  I like it very much because it allows inline image previews with Ranger file browser (some other terminals don't, such as LXterminal).
+
+<br><br>
+
+<h2 id="1" class="tag">Install it</h2>
+
+<form><textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install rxvt-unicode</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+or download from the website <a href="http://software.schmorp.de/pkg/rxvt-unicode.html">/rxvt-unicode.html</a>
+<br><br>
+documentation at <a href="http://linux.die.net/man/1/urxvt">http://linux.die.net/man/1/urxvt</a><br>
+-----<br>
+<a href="https://wiki.archlinux.org/index.php/rxvt-unicode">https://wiki.archlinux.org/index.php/rxvt-unicode</a><br>
+<a href="http://wiki.afterstep.org/index.php?title=Rxvt-Unicode_Configuration_Tutorial">http://wiki.afterstep.org/index.php...</a>
+<br><br>
+
+For configuration, you'll need to make or add to the file ~/.Xresourses, as mentioned on my <a href="xterm.html">Xterm page</a>
+<br><br>
+<br><br>
+
+<h2 id="2" class="tag">Configuration</h2>
+Here are my config's (see above links for more, especially the man page).  comments are escaped with '!'
+<br><br>
+
+<form><textarea name="T" id="file" rows="35" cols="120">
+! URxvt -----------------------------------------------------------------
+
+! enable native transparency - so that inline image preview is possible with w3mimagedisplay in Ranger
+URxvt*.transparent: true
+! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
+URxvt*.shading: 26
+
+URxvt.scrollBar: false
+! scrollbar style (if above line set to true) - rxvt (default), plain (most compact), next, or xterm
+URxvt.scrollstyle: plain
+URxvt.scrollBar_right: true
+URxvt.scrollBar_floating: true
+URxvt.scrollColor: gray
+
+!stop scroll to bottom with output
+URxvt.scrollTtyOutput: false
+!reduce the amount of refreshes in case of rapid output
+URxvt.skipScroll: true
+!scroll to bottom with non-special key press
+URxvt.scrollTtyKeypress: true
+URxvt.saveLines: 500
+
+!ttfont use no antialias to speed up rxvt -less mem intensive
+URxvt.font: xft:monaco:size=10:antialias=false
+!compensate for wide letter spacing on true type font
+URxvt.letterSpace: -4
+
+! add tabs
+URxvt.perl-ext-common:  default,tabbed
+
+! taskbar icon
+URxvt.iconFile:    /usr/share/icons/Tango/scalable/apps/terminal.svg
+
+URxvt.cursorColor: light blue
+URxvt.underlineColor: blue</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+<b>true transparency</b> (instead of native) can be enabled with:
+
+<form><textarea name="T" id="file" rows="2" cols="50">
+URxvt.depth: 32
+URxvt.background: rgba:0000/0000/0000/bbbb</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+This type uses a compositor and open windows behind the terminal will be seen, whereas the native kind steals the desktop image and windows behind the terminal can't be seen.
+<br><br>
+Tip: to define the colors see here for help <a href="http://user.it.uu.se/~embe8573/conf/.Xresources">http://user.it.uu.se/~embe8573/conf/.Xresources</a>
+<br><br><br>
+
+When you've made changes, run this command and then re-start rxvt:
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+xrdb -merge ~/.Xresources</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+Note, when you change a value, removing it and running xrdb -merge will not be enough to make a change, you need to make a value false if it was true before and run xrdb -merge.
+<br>
+
+<h3>running .Xresources at boot</h3>
+With startx, you can put that <span class="blue">xrdb -merge</span> line above in your ~/.xinitrc file.<br>
+But I start up with a script and so I put that line in ~/.openbox/autostart, somewhere early on, followed by an &, and that works fine.
+
+<br><br>
+<br><br>
+
+<h2 id="3" class="tag">Open full-screen at start-up</h2>
+Add Rxvt to the openbox rc.xml file or LXDE's lxde-rc.xml file, in applications section at the end, with this
+
+<form><textarea name="T" id="file" rows="8" cols="50">
+<application name="rxvt" class="URxvt">
+      <decor>no</decor>
+      <desktop>2</desktop>
+      <layer>normal</layer>
+      <skip_pager>yes</skip_pager>
+      <skip_taskbar>no</skip_taskbar>
+      <maximized>true</maximized>
+    </application></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+ 
+Change desktop 2 to whatever you like.  Opens with no window title bar like this (decor=no).  Also make sure you have rxvt in ~/.openbox/autostart so it launches at start up.
+
+<br><br>
+<br><br>
+
+<h2 id="4" class="tag">Tab controls</h2>
+<table><tr><td width="120">Shift-Down</td>           <td>new tab</td></tr>
+<tr><td>Shift-Left</td>             <td>go to left tab</td></tr>
+<tr><td>Shift-Right</td>            <td>go to right tab</td></tr>
+<tr><td>Ctrl-Left</td>               <td>move tab to the left</td></tr>
+<tr><td>Ctrl-Right</td>             <td>move tab to the right</td></tr>
+<tr><td>Ctrl-D </td>                 <td>close tab</td></tr></table>
+
+<br>
+<b>Scrolling</b><br>
+Shift-PgUp and Shift-PgDn
+
+<br><br>
+<br><br>
+
+<h2 id="5" class="tag">Copy-Paste</h2>
+Some methods are...<br><br>
+
+<div class="numb"><ol><li>Select text with the mouse and middle click in terminal or in external window.</li>
+<li>Left click at a point to start selection, Alt-Shift Left-click and drag to make selection area in terminal window - excluded area will not be copied/pasted - which is highly useful for copying just start of lines etc.</li>
+<li>Set up some openbox keybinds to copy the primary X selection (what the mouse highlights) to clipboard and to paste from clipboard into a terminal (or anywhere):</li></ol></div>
+<br>
+<table><tr><td width="400"><span class="blue">sh -c 'xsel | xsel -ib'</span> </td>   <td>copy the X selection to clipboard</td></tr>
+<tr><td><span class="blue">sh -c 'xsel -b | xvkbd -delay 4 -xsendevent -file -'</span></td>   <td>paste from clipboard</td></tr>
+<tr><td><span class="blue">sh -c 'xsel | xvkbd -delay 4 -xsendevent -file -'</span> </td>     <td>paste the primary X selection (=Shift-Insert in Rxvt)</td></tr></table> 
+<br>
+note: the -delay option will save characters from getting muddled up, and the window from freezing.
+<br><br>
+You need to have xsel and xvkbd installed!
+
+<br>
+<br><br><br>
+<b>Next page: </b>
+<br><br>
+<h3><b><a href="ranger.html">Ranger</a> - the Terminal based file manager</h3>
+<br><br>
+</div>

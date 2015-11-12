@@ -1,0 +1,128 @@
+---
+layout: default
+description: Fundamental commands of the Unix/Linux system - by D Quinton
+title: Unix commands
+id: cli
+---
+
+<div class="parent"><a href="../../cli.html">CLI</a> ></div>
+
+<div class="cont">
+
+
+<table style="background-color:transparent">
+<tr><td><b>man</b> [command] 	</td>	<td>shows man page</td></tr>
+<tr><td><b>apropos</b> [command] 	</td>	<td>shows command description (greps the descrip lines for given string) = man -k [command]</td></tr>
+<tr><td><b>w</b> 			</td>		<td>find users logged in and their sctivity</td></tr>
+<tr><td><b>cal</b> 		</td>			<td>show simple calendar</td></tr>
+<tr><td><b>cal</b> [year]</td> <td>get full year calendar</td></tr>
+<tr><td><b>cal</b> 10 2005 </td>			<td>shows Oct, 2005</td></tr>
+<tr><td><b>ls</b>    </td>  <td>lists dir contents</td></tr>
+<tr><td> &nbsp;&nbsp;-s   </td> <td>list total files and no. files in sub dirs</td></tr>
+<tr><td>&nbsp;&nbsp; -sd </td>   <td>lists total no of files only</td></tr>
+<tr><td>&nbsp;&nbsp; -s [dir] </td> 			  <td>lists contents of [dir] and the no of files in its sub dirs</td></tr>
+<tr><td> &nbsp;&nbsp;-t  </td> <td>list most recently accessed files first</td></tr>
+ <tr><td>&nbsp;&nbsp;-R </td> <td>lists files recursively</td></tr>
+<tr><td> &nbsp;&nbsp;-l </td>  <td>long list files in a dir</td></tr>
+<tr><td> &nbsp;&nbsp;-m </td> <td>list comma separated</td></tr>
+<tr><td> &nbsp;&nbsp;-x  </td><td>list by rows</td></tr>
+<tr><td>&nbsp;&nbsp; -r  </td> <td>list in reverse order</td></tr>
+<tr><td> &nbsp;&nbsp;--color=auto --group-directories-first   </td>      <td>list dir/files horizontally</td></tr>
+<tr><td> &nbsp;&nbsp;-lh --color=auto --group-directories-first   </td>   <td>shows dir/file list with permissions, owner, file size, date modified</td></tr>
+<tr><td> &nbsp;&nbsp;-alhrt   </td>	     	<td>shows dir/file list sorted recently modified first</td></tr>
+<tr><td> &nbsp;&nbsp;-alh    </td>	     	<td>shows dir/file list including hidden</td></tr>
+<tr><td> &nbsp;&nbsp;-d .* --color=auto </td>     <td>shows only hidden files</td></tr>
+<tr><td> &nbsp;&nbsp;-lhd .* --color=auto</td><td></td>  </tr>
+ <tr><td>&nbsp;&nbsp;-Rh             </td>   <td>shows files recursively</td></tr>
+<tr><td><b>cp</b> {file} {newfile}</td>		<td>copies file with new name</td></tr>
+<tr><td> &nbsp;&nbsp; -u </td><td>update switch copies only if source file newer than dest file</td></tr>
+<tr><td><b>mv</b> {file} {dir}/			<td>moves file to another dir</td></tr>
+<tr><td><b>mv</b> {file} {newfile}		<td>changes the file's name (moves to new file, deletes old)</td></tr>
+<tr><td><b>mkdir</b> -p <td>creates dir with necessary parent dir's</td></tr>
+<tr><td><b>du</b>    <td>disk usage of all dir below location</td></tr>
+<tr><td> &nbsp;&nbsp; -s 	</td>		 	  <td>total disk usage only</td></tr>
+<tr><td> &nbsp;&nbsp; -a <td>include size of all files</td></tr>
+<tr><td><b>df</b> 	</td>				<td>disk free space on system</td></tr>
+<tr><td><b>touch</b> {file} </td>			<td>creates the file, or modifies date-time to current on file</td></tr>
+<tr><td><b>compress</b> {file} </td>		<td>compresses file to .z</td></tr>
+<tr><td><b>uncompress</b> {file.z} </td>		<td>uncompresses file.z</td></tr>
+<tr><td><b>rm</b> -i [file] 	</td>		<td>interactive remove</td></tr>
+<tr><td> &nbsp;&nbsp; -r [dir] 		</td>	  <td>recursive removal of a dir</td></tr>
+<tr><td> &nbsp;&nbsp; -v [file]	</td>		<td>verbose -explains what is being done</td></tr>
+<tr><td><b>file</b> [file] [dir] </td>			<td>shows what type a file or dir is</td></tr>
+<tr><td><b>head</b> -10 [file] 		</td>		<td>view 1st 10 lines of file</td></tr>
+<tr><td><b>head</b> -5 [file] [file] </td>			<td>show for multiple files</td></tr>
+<tr><td><b>tail</b> -10 [file] 		</td>		<td>show last 10 lines of file</td></tr>
+<tr><td><b>head</b> -50 [file] | tail -10 </td>		<td>shows the lines 41-50 of file (using a pipe)</td></tr>
+<tr><td><b>cat</b> [file]</td>	 <td>displays file content (entire)</td></tr>
+<tr><td><b>more</b> [file] </td>				<td>displays file content part-by-part</td></tr>
+<tr><td> &nbsp;&nbsp;  -cs [file] </td>				<td>-c display clears screen each new page and -s
+          suppresses blank lines</td></tr>
+<tr><td><b>more</b> +20 [file] </td>			  <td>displays from line 20</td></tr>
+<tr><td><b>more</b> +/[text] [file]</td>	 		<td>displays from certain text in file</td></tr>
+  <tr><td>&nbsp;&nbsp;	{n}Enter </td>		<td>scroll n lines down	</td></tr>
+<tr><td>&nbsp;&nbsp;	d	</td>		<td>scroll down half a page</td></tr>
+<tr><td>&nbsp;&nbsp;	b	</td>		<td>scroll back half page</td></tr>
+<tr><td>&nbsp;&nbsp;	h	</td>		<td>list commands in more program</td></tr>
+<tr><td>&lt; 		</td>				<td>use this to pass input file to the command</td></tr>
+<tr><td>&gt;	</td>					<td>use to send output of command to a file</td></tr>
+<tr><td>&gt;&gt;	</td>					<td>use to append output to a file</td></tr>
+<tr><td><b>wc</b> [file]</td>	<td>shows no. of lines, words, characters in a file</td></tr>
+<tr><td><b>wc</b> -l		</td>				<td>counts only lines...</td></tr>
+<tr><td>[command] | wc -l</td>			<td>now wc counts the lines output from the command 
+            and gives youa number (command e.g. ls, who)</td></tr>
+<tr><td><b>cat</b> -n [file]	</td>			<td>shows file with line numbers</td></tr>
+<tr><td><b>nl</b> [file]</td>	<td>does the same</td></tr>
+<tr><td> &nbsp;&nbsp; -ba [file]</td>				<td>numbers blank lines</td></tr>
+<tr><td> &nbsp;&nbsp; -s', ' [file]</td>				<td>changes default tab after number to comma and space</td></tr>
+<tr><td><b>echo</b> boo</td><td>writes "boo" to screen</td></tr>
+<tr><td><b>echo</b> boo &gt;&gt; [file]	</td>	<td>appends "boo" to a file</td></tr>
+<tr><td><b>echo</b> *</td><td>list all files in the dir</td></tr>
+<tr><td><b>echo</b> b*</td><td>list all the file in dir beginning with b</td></tr>
+<tr><td>&nbsp;&nbsp;?			</td>		<td>single character wildcard (* can be any length of characters)</td></tr>
+<tr><td><b>ls</b> [a-z]* </td>       <td>lists all file/dir beginning with a letter</td></tr>
+<tr><td><b>grep</b> [word] [file]</td>		<td>display lines from a file with a certain word or text</td></tr>
+<tr><td><b>grep</b> 'ho*' [file]	</td>		<td>displays lines containing "ho" in any word</td></tr>
+<tr><td>	&nbsp;&nbsp;-i	</td>	<td>ignores case of search criterea</td></tr>
+<tr><td>	&nbsp;&nbsp;-n	</td>	<td>numbers the lines that are matched</td></tr>
+<tr><td>	&nbsp;&nbsp;-c	</td>	<td>count of matching lines</td></tr>
+<tr><td>	&nbsp;&nbsp;-l	</td>	<td>lists files with matching lines</td></tr>
+<tr><td><b>sed</b> -e 's/cap/hat/g' [file] </td>  <td>  sed substitutes cap with hat in a file...</td></tr>
+<tr><td><b>grep</b> 'cap' [file] | sed -e 's/cap/hat/g'</td> <td>	(g tells it to doevery ocurrance)</td></tr>
+<tr><td><b>sed</b> -e 's/cap/hat/g;s/cat/rat/g'</td>    <td>  sed carries out 2 substitutions</td></tr>
+</table>
+<br><br><br>
+
+<h3>UNIX in 24 hours</h3>- byDave Taylor. James C. Armstrong, Jr.<br>
+I recommend going through this book if you are new to Linux, or perhaps not so new but haven't read up properly about the basic functions of the UNIX OS.<br>
+<a href="http://distro.ibiblio.org/pcos/">download the pdf here</a>
+<br>
+
+<br><br>
+
+
+<span style="line-height:27px"><h3>Some more technical stuff</h3>
+
+
+move files found in a list of file names (files.list)<br>
+<span class="cmd">while read file ; do mv "$file" /dir/dir/moved/ ; done &lt; files.list</span>
+<br><br>
+
+replace all text occurring in all files under the current dir<br>
+<span class="cmd">find /abc/abc -type f | xargs perl -pi -e '/xyz/xyz'</span>
+<br>
+(note, I replaced a directory path found in the files)
+<br><br>
+
+in a specific file<br>
+<span class="cmd">sed -i 's#old#new#gi' **/*.suffix</span>
+<br><br>
+
+change file names<br>
+<span class="cmd">sfind . -depth -name "* *" -execdir prename -n 'y/oldname/newname/' {} +</span>
+
+<br><br>
+
+
+
+</div>

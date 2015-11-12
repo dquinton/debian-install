@@ -1,0 +1,118 @@
+---
+layout: default
+description: Installing Debian from the Netinstall CD with LXDE - fast method - by D Quinton
+title: LXDE fast install
+id: net
+---
+
+<div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
+
+<div class="cont">
+
+<h2>Overview of the install</h2>
+It looks like this for the Netinstall CD..
+<div class="numb"><ol><li>Run the Netinstall CD</li>
+<li>Restart and login to root</li>
+<li>add norecommends file</li>
+<li>install the desktop:</li></ol></div>
+
+<form>
+<textarea name="T" id="install" rows="3" cols="80">
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils alsamixergui wicd chromium tango-icon-theme openbox-themes xcursor-themes moblin-cursor-theme rxvt-unicode</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+add if you like: <span class="inst">synaptic apt-xapian-index gdebi firestarter</span>
+<br><br>
+I go without lxde and lightdm now, and add here: <span class="inst">openbox lxpanel lxtask leafpad</span>
+<br><br><br>
+
+<b>5.</b>&nbsp;&nbsp; Install the full programme suite:
+
+<form>
+<textarea name="T" id="install" rows="8" cols="100">
+apt-get install zip unzip bzip2 p7zip-full bluetooth blueman ntfs-3g blktool dosfstools mtools command-not-found bash-completion openjdk-7-jre icedtea-7-plugin mplayer gnome-mplayer mencoder vlc gstreamer-0.10 audacious handbrake-gtk avidemux bombono-dvd ardour audacity lame qjackctl gimp pinta imagemagick bashburn furiousisomount xpdf x11-apps clipit pidgin uget transmission pyrenamer easytag catfish xfce4-notes-plugin gdmap gparted testdisk unetbootin qshutdown ksnapshot kcharselect luckybackup feh cheese meld regexxer bleachbit htop yelp xiphos fonts-sil-ezra gtk2-engines gtk2-engines-xfce gnome-color-chooser systemsettings rkhunter chkrootkit xsel w3m w3m-img less atool mediainfo jhead locate git</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+no longer with me, but could be useful:<br>
+<span class="inst">thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra xdg-user-dirs k3b libk3b6-extracodecs normalize-audio k9copy dvdrip marble etherape</span>
+<br><br>
+Just add/remove what you like to/from this.
+<br><br>
+I install ffmpeg and x264 from source before kdenlive or other video editors -although Kdenlive installs ffmpeg from repositories anyhow. <br> If video editing is not a priority then apt-get this line:
+
+<form>
+<textarea name="T" id="install" rows="1" cols="100">
+apt-get install ffmpeg x264 kdenlive frei0r-plugins dvgrab recordmydesktop dvdauthor genisoimage </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+ 
+<br><br>
+<b>6. </b>&nbsp;&nbsp;Install the build dependencies (as on the Netinstall page) 
+<br><br>
+
+with a fast connection you can get this done in an hour, but then setting up takes time - of course, days!<br>
+You can always cancel apt downloading of packages and resume it later on, just use Ctrl-C to cancel.  Press up arrow and Enter in the terminal to hit the same apt-get command again and apt will continue with downloading.
+<br><br>
+
+<b>7.</b> &nbsp;&nbsp;add user to sudoer file, setup fstab and configure wireless
+<br><br>
+<b>8.</b>&nbsp;&nbsp; boot into the system and..set up firestarter, chromium and desktop deco
+<br><br><br>
+
+
+Which leaves <span class="blue">ffmpeg, Kdenlive, Libre Office, ClamTK, XnViewMP, Ranger, compton, obmenu, Viking, Google Earth, Skype, Refractasnapshot </span> ......to install from downloaded packages.
+
+
+<br><br><br>
+<h3>Last set up things</h3>
+power options in Xfce-power-manager
+<br><br>
+edit ~/.config/user-dirs.dirs to change which dir's get the "Documents", "Music", "Video" icons in Thunar, if installed.
+<br><br>
+
+If you install Synaptic and you want a launcher: copy the .desktop file from /usr/share/app's to ~/.local/share/applications/ and change "Exec=synaptic" to: <span style="color:#076b00">Exec=gksu /usr/sbin/synaptic</span>, or use the command in openbox menu (see configuring lxde)
+<br><br>
+For gparted, use <span style="color:#076b00">gksu /usr/sbin/gparted</span>
+
+<br><br><br>
+<h3>Polkit error message on start-up</h3>
+After a fresh install this May '13 I had this report pop up on start-up:<br>
+
+<span style="color:#800080;">GDBus.Error:org.freedesktop.PolicyKit1.Error.Failed: An authentication agent already exists for the given subject </span>
+<br>
+-which is the gnome polkit trying to run when LXDE has its own polkit running already. 
+
+<br><br>
+So we fix this with editing the polkit .desktop file in autostart, like so:
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo nano /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and paste this line at the end, Ctrl-X,y,Enter:
+<form>
+<textarea name="T" id="file" rows="1" cols="30">
+NotShowIn=LXDE</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+<br>
+<b>Next page: </b>
+<br><br>
+<h3><b><a href="upgrade.html">Upgrading Debian</a></b> - package updating, release upgrade, kernel upgrade</h3>
+<br><br>
+
+<br>
+</div>

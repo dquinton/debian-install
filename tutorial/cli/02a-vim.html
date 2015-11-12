@@ -1,0 +1,151 @@
+---
+layout: default
+description: Using vim text editor - by D Quinton
+title: Vim
+id: cli
+---
+
+<div class="parent"><a href="../../cli.html">CLI</a> ></div>
+
+<div class="cont">
+
+Vim is the improved vi editor. <a href="http://vim.wikia.com/wiki/Vim_documentation">Documentation</a> and  <a href="http://vimhelp.appspot.com/vim_faq.txt.html">FAQ</a><br>
+It can be expanded with <a href="http://vim.wikia.com/wiki/Category:Lists_of_scripts">scripts</a> and plugins.
+<br>
+<form><textarea name="T" id="install" rows="1" cols="30">
+sudo apt-get install vim</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>you can run vim in the terminal, or use the <b>gvim</b> gui with its menus/toolbar - and first thing to do, Edit > Color scheme
+<br><br>
+There's <a href="http://cream.sourceforge.net/features.html">cream</a> - gui editor based on vim
+<br><br><br><br>
+
+<h2>Vim keys</h2>
+<br>
+<table style="background-color:transparent">
+<tr><td><b>Moving about</b></td>    <td></td>  </tr>
+<tr><td w idth="150">cursors, home, end, <br>pg up, pg dn</td> <td>move about</td>  </tr> 
+<tr><td>..or h,j,k,l, 0, $, Ctrl-b, Ctrl-f</td>  </tr> 
+<tr><td>Space </td>    <td>move right </td>  </tr> 
+<tr><td>Bkspace </td>    <td>moves left </td>  </tr> 
+<tr><td>return </td>    <td>go to start of next line</td>  </tr> 
+  <tr><td>Ctrl-d</td>    <td width="520">move down half page</td>  </tr>  
+  <tr><td>Ctrl-u</td>    <td>move up half page</td>  </tr>
+  <tr><td>G</td>    <td>move to file end</td>  </tr>
+  <tr><td>n G</td>    <td>move to line n</td>  </tr>
+  <tr><td>H</td>    <td>move to file begin</td>  </tr>
+  <tr><td></td>    <td></td>  </tr>
+  <tr><td>10w</td>    <td>move along 10 words</td>  </tr>
+  <tr><td>8 enter</td>    <td>move down 8 lines</td>  </tr>
+  <tr><td></td>    <td></td>  </tr>
+  <tr><td>( and )</td>    <td>move to next sentence start (new para, or punct mark and two space defined)</td>  </tr>
+
+
+  <tr><td style="padding-top: 16px;"><b>Enter edit modes with</b></td>    <td></td>  </tr>
+  <tr><td>a</td>    <td>app mode -at after cursor</td>  </tr>
+  <tr><td>I</td>    <td>ins mode -at bef cursor</td>  </tr>
+  <tr><td>s</td>    <td>ins replace char</td>  </tr>
+  <tr><td>S or cc</td>    <td>replace line</td>  </tr>
+  <tr><td>R</td>    <td>type over line</td>  </tr>
+  <tr><td>o</td>    <td>ins new line</td>  </tr>
+  <tr><td>O</td>    <td>ins new line above</td>  </tr>
+  <tr><td></td>    <td></td>  </tr>
+  <tr><td>3i</td>    <td>enter insert mode, type, escape then entered text repeated 3 times</td>  </tr>
+ 
+  <tr><td>delete</td>    <td>remove char but not lines</td>  </tr>
+  <tr><td>U</td>    <td>restore line</td>  </tr>
+  <tr><td></td>    <td></td>  </tr>
+  <tr><td>esc</td>    <td>to return to command mode</td>  </tr>
+  <tr><td></td>    <td></td>  </tr>
+  <tr><td>cw</td>    <td>change word - enter new text, escape</td>  </tr>
+ 
+  
+  <tr><td style="padding-top: 16px;"><b>In command mode</b></td>    <td></td>  </tr>
+  <tr><td>x</td>    <td>to delete char</td>  </tr>
+  <tr><td>Ctrl-D</td>    <td>to delete to end of line</td>  </tr>
+  <tr><td>dd</td>    <td>to cut line, u to undo/redo</td>  </tr>
+  <tr><td>yy</td>    <td>to copy the line, p to paste in</td>  </tr>
+  <tr><td></td>    <td></td>  </tr>
+  <tr><td>w</td>    <td>moves by word, W moves by space delimited word</td>  </tr>
+  <tr><td>dw</td>    <td>deletes word</td>  </tr>
+  <tr><td>70dw</td>    <td>deletes 70 words (a way to last lines of file)</td>  </tr>
+  <tr><td></td>    <td></td>  </tr>
+  <tr><td>s/old/new/</td>    <td>replaces 'old' with 'new' on current line, add g on end to replace all</td>  </tr>
+  <tr><td>1,$ s/old/new/g</td>    <td>replaces every occurance, from line 1 to last line</td>  </tr>
+  
+  <tr><td style="padding-top: 16px;"><b>Select text</b></td>    <td></td>  </tr>
+  <tr><td>V</td>    <td>start select by line</td>  </tr>
+  <tr><td>cursors</td>    <td>add to selected</td>  </tr>
+  <tr><td>d</td>    <td>cuts selected</td>  </tr>
+  <tr><td>y</td>    <td>yanks selected</td>  </tr>
+  <tr><td>p</td>    <td>inserts cut/yanked</td>  </tr>
+  <tr><td>Ctrl-V</td>    <td>start select (geometric)</td>  </tr>
+  <tr><td>d</td>    <td>then removes selected (geometric) -but leaves the lines</td>  </tr>
+  <tr><td>D</td>    <td>removes all text on selected lines -but leaves the lines</td>  </tr>
+  <tr><td>y</td>    <td>yanks</td>  </tr> 
+   <tr><td>p</td>    <td>inserts the cut text </td>  </tr>
+
+  <tr><td colspan="2">(my Ctrl-[ and Ctrl-] work to copy and paste selection too, using xsel - see my <a href="/config/urxvt.html#5">Urxvt page</a>)</td>    </tr>  
+ <tr><td style="padding-top: 16px;"><b>Search</b></td>    <td></td>  </tr>
+  <tr><td>/ pattern</td>    <td>search fwd</td>  </tr>
+  <tr><td>? pattern</td>    <td>search backwd</td>  </tr>
+  <tr><td>n</td>    <td>search next fwd</td>  </tr>
+  <tr><td>N</td>    <td>search next backwd</td>  </tr>
+   
+  <tr><td style="padding-top: 16px;"><b>Opening files</b></td>    <td></td>  </tr> 
+   <tr><td>vi -R file</td>    <td>read only mode</td>  </tr>
+  <tr><td>vi +s file</td>    <td>open at file end</td>  </tr>
+  <tr><td>vi +12 file</td>    <td>open at line 12</td>  </tr>
+  <tr><td>vi +/book</td>    <td>open file at pattern "book"</td>  </tr>
+  
+  <tr><td style="padding-top: 16px;"><b>Controls</b></td>    <td></td>  </tr>
+    <tr><td>:r filename</td>    <td>insert file</td>  </tr>
+  <tr><td>:e filename</td>    <td>Stop editing the current file and edit the specified file.</td>  </tr>
+  <tr><td>:n</td>    <td>Stop editing the current file and edit the next file specified on the command line</td>  </tr>
+  <tr><td>:q</td>    <td>Quit (can't if changed file)</td>  </tr>
+  <tr><td>:q!</td>    <td>Quit no write out</td>  </tr>
+  <tr><td>:w</td>    <td>write the file to disk (can't if file yet unnamed)</td>  </tr>
+  <tr><td>:wq</td>    <td>write and quit</td>  </tr>
+  <tr><td>:w filename</td>    <td> Save the file with new filename</td>  </tr>
+  <tr><td>:wa</td>    <td>write all files to disk</td>  </tr>
+    <tr><td>:abbreviate teh the  enter</td>    <td>abbreviate a miss-spelling</td>  </tr>
+  <tr><td>:map Ctrl-v &lt;new key&gt; &lt;vi key&gt; enter</td>    <td>add mapping</td>  </tr>
+  <tr><td>:map enter</td>    <td>show key mapping</td>  </tr>
+  <tr><td>:unmap Ctrl-v &lt;map key&gt; enter</td>    <td>remove a mapping</td>  </tr>
+  <tr><td></td>    <td></td>  </tr>
+  <tr><td>:!</td>    <td>enter bash prompt</td>  </tr>
+  <tr><td>!! &lt;unix command&gt;</td>    <td>bash output added to file</td>  </tr>
+  <tr><td>Ctrl-S</td>    <td>freeze file</td>  </tr>
+  <tr><td>Ctrl-Q</td>    <td>resume edit</td>  </tr>
+ <tr><td>Ctrl-G</td>    <td>file info</td>  </tr>
+   
+    <tr><td style="padding-top: 16px;"><b>During a process</b></td>    <td></td>  </tr>
+  <tr><td>Ctrl-z</td>    <td>to stop (send to bg) -same as &amp; on end of bash command</td>  </tr>
+  <tr><td>fg</td>    <td>to bring to foregr.</td>  </tr>
+  <tr><td>bg</td>    <td>to list bg jobs</td>  </tr>  <tr>
+    <td>fg %n</td>    <td>bring to foregr. job n</td>  </tr>
+  <tr><td>jobs</td>    <td>to list all active bash progs?</td>  </tr>
+  <tr><td>ps -g|-x|-u (etc)</td>    <td>to list active processes</td>  </tr>
+  <tr><td>kill %n</td>    <td>kill job n</td>  </tr>
+  <tr><td>kill (PID)</td>    <td>kill process of PID no.</td>  </tr>
+</table>
+
+<br><br><br>
+Turn on syntax colourisation for recognised file types
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+sudo vim /etc/vim/vimrc</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+and uncomment the syntax line - Down, i, delete, escape, :wq
+
+<br><br><br>
+<b>using vi</b><br>
+<a href="http://www.cs.colostate.edu/helpdocs/vi.html">http://www.cs.colostate.edu...</a>
+<br><br>
+<b>advanced vi</b><br>
+<a href="http://www.yolinux.com/TUTORIALS/LinuxTutorialAdvanced_vi.html">http://www.yolinux.com/TUTORIALS/LinuxTutorialAdvanced_vi.html</a>
+<br>
+
+
+</div>

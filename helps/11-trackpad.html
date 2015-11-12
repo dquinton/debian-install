@@ -1,0 +1,94 @@
+---
+layout: default
+description: Trackpad tapping - by D Quinton
+title: Trackpad
+id: help
+---
+
+<div class="parent"><a href="../helps.html">Helps</a> ></div>
+
+<div class="cont">
+
+To get tapping working with your touchpad/trackpad, you can try the following methods:
+<div><br>
+</div>
+<div>
+<div><font size="5">1. xorg.conf.d&nbsp;</font></div>
+<div>from Arch wiki&nbsp;<a href="https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Xorg_method" rel="noreferrer">https://wiki.archlinux....</a></div>
+<div><font color="#b45f06">sudo leafpad /usr/share/X11/xorg.conf.d/50-synaptics.conf</font></div>
+<div><br>
+</div>
+<div>add:</div>
+<div><br>
+</div>
+<div><font color="#38761d">Section "InputClass"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Identifier "touchpad catchall"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Driver "synaptics"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MatchIsTouchpad "on"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "TapButton" "1"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "TapButton" "2"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "TapButton" "3"</font></div>
+<div><font color="#38761d"><span style="white-space:pre">	</span> &nbsp;Option "VertEdgeScroll" "on"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "VertTwoFingerScroll" "on"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "HorizEdgeScroll" "on"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "HorizTwoFingerScroll" "on"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "CircularScrolling" "on"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "CircScrollTrigger" "0"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "EmulateTwoFingerMinZ" "40"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "EmulateTwoFingerMinW" "8"</font></div>
+<div><font color="#38761d">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Option "CoastingSpeed" "0"</font></div>
+<div><font color="#38761d">EndSection</font></div>
+<div><br>
+</div>
+<div><font size="5">2. synclient</font>&nbsp;</div>
+<div>But that didn't do much for my Compaq CQ40's touchpad, so I put this in a Terminal</div>
+<div><font color="#b45f06">synclient TapButton1=1</font></div>
+<div><span style="font-size:16px;line-height:1.6">and tried tapping, good result</span></div>
+<div><br>
+</div>
+<div>added it to autostart</div>
+<div><font color="#b45f06">sudo nano /etc/xdg/lxsession/LXDE/autostart</font></div>
+<div><br>
+</div>
+<div>@synclient TapButton1=1 </div>
+<div>or</div>
+<div>@synclient TapButton1=1 TapButton2=2 TapButton3=3</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><font size="5">3. script&nbsp;</font></div>
+<div><font size="3">adapted&nbsp;from&nbsp;<a href="http://forums.debian.net/viewtopic.php?p=347944" rel="noreferrer">http://forums.debian.net/viewtopic.php?p=347944</a></font></div>
+<div>@sh /usr/bin/synstart</div>
+<div><br>
+</div>
+<div>(synstart)</div>
+<div><font color="#38761d">#!/bin/bash</font></div>
+<div><font color="#38761d">synclient TapButton1=1 TapButton2=2 TapButton3=3 VertEdgeScroll=1 VertScrollDelta=45 HorizEdgeScroll=1 HorizScrollDelta=45</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d"># Set multi-touch emulation parameters</font></div>
+<div><font color="#38761d">xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Pressure" 32 10</font></div>
+<div><font color="#38761d">xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Width" 32 8</font></div>
+<div><font color="#38761d">xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Two-Finger Scrolling" 8 1</font></div>
+<div><font color="#38761d">xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Scrolling" 8 1 1</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d"># Disable edge scrolling</font></div>
+<div><font color="#38761d">xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Synaptics Edge Scrolling" 8 0 0 0&nbsp;</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d"># This will make cursor not to jump if you have two fingers on the touchpad and you lift one</font></div>
+<div><font color="#38761d"># (which you usually do after two-finger scrolling)</font></div>
+<div><font color="#38761d">xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Synaptics Jumpy Cursor Threshold" 32 110</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d"># Set 1 2 and 3 finger taps</font></div>
+<div><font color="#38761d">xinput set-int-prop "SynPS/2 Synaptics TouchPad" "Synaptics Tap Action" 8 0 0 0 0 1 3 2</font></div>
+</div>
+<div><br>
+</div>
+
+</div>

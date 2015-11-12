@@ -1,0 +1,338 @@
+---
+layout: default
+description: Installing Debian with the Netinstall CD - Step 3 of 4 - by D Quinton
+title: Debian install - Step 3
+id: net
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Media players, encoders</a></li>
+                <li><a href="#2">Media rippers</a></li>
+                <li><a href="#3">Desktop apps</a></li>
+                <li><a href="#4">ClamTK virus scanner</a></li>
+                <li><a href="#5">Anti rootkit</a></li>
+                <li><a href="#6">Hosts file</a></li>
+                <li><a href="#7">optional installs</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Media players, encoders</a><br>
+   <a href="#2">Media rippers</a><br>
+   <a href="#3">Desktop apps</a><br>
+   <a href="#4">ClamTK virus scanner</a><br>
+   <a href="#5">Anti rootkit</a><br>
+   <a href="#6">Hosts file</a><br>
+   <a href="#7">optional installs</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
+
+<div class="cont">
+
+<h2 id="1" class="tag">Media players and encoders</h2> 
+
+
+<form>
+<textarea name="T" id="install" rows="3" cols="80">
+sudo apt-get update
+sudo apt-get install mplayer gnome-mplayer mencoder vlc audacious handbrake-gtk avidemux bombono-dvd gimp pinta feh imagemagick bashburn</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+that's two video players that can handle all you need, a winamp-style music player, video encoder, video cutter, dvd creator, image editor and basic paint, a command line image viewer, an image manipulation tool and a terminal based disc burner.
+
+
+<br><br><br><br>
+<h3>Audacious Qt</h3><br>
+download the latest stable from <a href="http://audacious-media-player.org/download">http://audacious-media-player.org/download</a>
+<br><br>
+get the dependencies
+<form>
+<textarea name="T" id="install" rows="2" cols="80">
+sudo apt-get install qt5-default vorbis-tools libvorbis-dev libflac-dev libfaad-dev libneon27-dev libcdio-dev</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+unpack the player, and run 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+./configure --enable-qt --disable-gtk</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+or you can have both qt/gtk if you like<br>
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+make
+sudo make install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+with the plugins, just <span style="color:#994900">./configure, make, sudo make install</span>
+<br><br><br><br>
+
+<h3>Audio editors</h3>
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install ardour audacity qjackctl</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+that's a quality sound recorder and audio editor.  To record with ardour you'll need to open a line with Jack
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="2" class="tag">Media rippers</h2>
+<h3>for audio CD</h3>
+<br>
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install sound-juicer gvfs-backends lame</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+I find that sound juicer was hard to configure, with no option to reduce bit quality from 320 or something. 
+<br> 
+You can use K3b for ripping to ogg or mp3, though it's big and clumsy.  
+<br>Other CD rippers are around too: rubyripper, ripperx, abcde (command line but simple), and grip which you have to build from source (download <a href="http://sourceforge.net/projects/grip/?source=dlp">sourceforge.net</a>)  Likely, they'll all need lame installed for mp3 encoding.
+<br><br>
+Then there's the CLI way, using cdparanoia to rip the audio cd and lame or oggenc (vorbis-tools) to encode -see <a href="http://www.cyberciti.biz/faq/linux-ripping-and-encoding-audio-files/">linux-ripping-and-encoding-audio-files</a>
+<br><br>
+Bashburn works very well, to rip an audio cd and for converting wav files to ogg or mp3.
+<br><br><br>
+
+<h3>for movie DVD</h3>
+
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install k9copy dvdrip dvdbackup libdvdcss2</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>k9copy and dvdrip are both graphical, and you can select which title to rip. <br>
+dvdbackup is command-line, and it rips the DVD to hdd in its entirety. <br>
+With <b>libdvdcss2</b> installed you can play and possibly rip a DVD encrypted with CSS (Content Scramble System), e.g. Handbrake can rip to mp4, but there is still other encrypion it can't deal with.
+<br><br>
+To rip with dvdbackup, cd to the dir to store the dvd and run <span class="cmd">dvdbackup -i /dev/dvd -M -o movie</span>
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="3" class="tag">Desktop apps</h2>
+
+<form>
+<textarea name="T" id="install" rows="4" cols="80">
+sudo apt-get install xpdf x11-apps cheese pidgin clipit uget clamtk pyrenamer easytag catfish gdmap gparted testdisk unetbootin qshutdown ksnapshot kcharselect luckybackup meld regexxer bleachbit htop etherape transmission yelp gnome-color-chooser systemsettings xsel xvkbd </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+that gets you... a light-weight a pdf viewer, basic x11 tools, gnome webcam app, xchat client, clipboard manager, download manager, virus scanner, batch file renamer, id3 tag writer, file search, graphical disk map, gnome partition manager, disk rescue, USB live OS installer, shutdown timer, kde screenshot taker, character map, files backup utility, file/directory comparison app, file text search/replace, system cleanup app, system processes monitor, network monitor, torrent downloader, help agent, Gnome's desktop colours editor, KDE's control panel, x-selecion tools
+<br><br><br>
+
+for a fully functional DVD burner, there's k3b (unless you'd prefer an easy command-line tool like bashburn)
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install k3b libk3b6-extracodecs normalize-audio</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+the last two packages there are to enable conversion of wav to mp3 or mp3 to wav (and other formats) -ie ripping an audio cd or making an audio cd in K3b...
+<br><br>
+
+Xfce stuff and panel plugins 
+<form>
+<textarea name="T" id="install" rows="4" cols="80">
+sudo apt-get install xfce4-taskmanager xfprint4 xfce4-notes-plugin xfce4-screenshooter xfce4-dict x-tile xarchiver gstreamer-0.10 xfce4-cpugraph-plugin xfce4-netload-plugin xfce4-wavelan-plugin xfce4-systemload-plugin xfce4-mount-plugin xfce4-places-plugin xfce4-timer-plugin xfce4-volumed</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+xfce plugins <a href="http://goodies.xfce.org/projects/panel-plugins/start">http://goodies.xfce.org/...</a>
+recommends for xfce <a href="http://wiki.xfce.org/recommendedapps">http://wiki.xfce.org/...</a>
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="4" class="tag">ClamTK virus scanner</h2>
+<a href="http://clamtk.sourceforge.net/help/faq-clamtk.html">FAQ page</a>
+A GUI frontend for Clamav - mainly it's used for scanning potentially infected files received from Windows machines to prevent sending on infected files etc.
+<br><br>
+Latest version can be installed from .deb file from <a href="http://clamtk.sourceforge.net/">clamtk website</a> - from repository it may report out-dated GUI and virus definitions.
+<br><br>
+depends: libnet-dns-perl
+<br><br><br>
+
+To update clamav virus definitions, run<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo freshclam</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+It's possible to update multiple machines remotely if you download the main.cvd and daily.cvd file (from the Upgading links at <a href="http://www.clamav.net/downloads#collapseCVD">http://www.clamav.net/...</a>) and copy it to  /var/lib/clamav
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo rsync -a daily.cvd /var/lib/clamav</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+Note: you must select options in Preferences in order to scan anything!
+
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="5" class="tag">Anti rootkit </h2>
+
+these are Linux-specific anti-trojan programs
+
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install rkhunter chkrootkit</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+To run them use these commands as root:
+
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+rkhunter --propupd
+rkhunter --checkall</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+run an update with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+rkhunter --update</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo chkrootkit -x | less</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+I'm not exactly sure what this shows!
+<br><br>
+
+<a href="http://www.cyberciti.biz/faq/">http://www.cyberciti.biz/faq/</a>
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="6" class="tag">Hosts file</h2>
+add web sites to the /etc/hosts file to block them - literally to drop any request that looks them up
+
+<br><br> 
+<a href="http://someonewhocares.org/hosts/">http://someonewhocares.org/hosts/</a>
+<br>and here <a href="http://winhelp2002.mvps.org/hosts.txt">http://winhelp2002.mvps.org/hosts.txt</a>
+<br><br><br>
+
+<form>
+<textarea name="T" id="cmd" rows="2" cols="50">
+sudo cp /etc/hosts /etc/hosts.bak 
+sudo leafpad /etc/hosts</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+when done adding to the list of blocked sites, run
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo service networking restart</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+or you can try hostsblock <a href="http://gaenserich.github.io/hostsblock/">http://gaenserich.github.io/hostsblock/</a>
+
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="7" class="tag">optional</h2> 
+
+<form>
+<textarea name="T" id="install" rows="2" cols="80">
+sudo apt-get install gconf-editor gnome-system-tools kdemultimedia-kio-plugins gnome-font-viewer ttf-mscorefonts-installer</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+gnome configuration editor - sets things in gnome app's<br>
+gnome system tools - enables user management<br>
+kdemultimedia-kio-plugins - enables reading and conversion of audio from CD's in KDE app's<br>
+mscorefonts - includes Times, Tahoma, Verdana, Ariel etc.<br>
+<br><br>
+<b>Tips:</b><br>
+to enable transparency of the Xfce roxterm terminal emulator, check "enable display compositing" in Xfce Settings manager > Windows Tweaks.
+<br><br>
+<b>clipit:</b> set automatic paste
+<br><br><br>
+<b>problems:</b> <br>
+<span style="color:#800080">gnome mplayer resizes to full size on every play (bad for HD video on a low res screen)</span> <br>
+-enable playlist, or try in Pref's >Interface >only allow one instance, >remember window location and size, >uncheck "resize window when new video is loaded" and Alt-F8 drag smaller on the first video.
+<br><br>
+<span style="color:#800080">bluetooth mouse doesn't get detected or doesn't pair</span> <br>
+note: connecting via bluetooth manager (i.e. the system's own bluetooth adapter) might be more tricky, but not impossible, while using the mouse's own USB adapter will be sweet and instant.<br>
+-replace mouse battery! click on pair (not set up) in bluetooth manager and enter 0000, and if it doesn't connect switch off the mouse for a minute or two and back on, e voila, it's connected.
+<br><br>
+<span style="color:#800080">network manager gives this message: "system policy prevents modification of network settings" and asks for root key to logon to network</span>
+<br><br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo leafpad /usr/share/polkit-1/actions/org.freedesktop.NetworkManager.policy</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+search for <span style="color:#0F4F0B">org.freedesktop.NetworkManager.settings.modify.system</span>
+<br><br>
+at the end of that section change <span style="color:#0F4F0B"><keysym><</keysym>allow_active>auth_admin_keep<keysym><</keysym>/allow_active></span><br>
+to <span style="color:#0F4F0B"><keysym><</keysym>allow_active>yes<keysym><</keysym>/allow_active></span>
+<br>
+
+<br><br>
+<br>
+<b>Next page: </b>
+<br><br>
+<h3><b><a href="step4.html">Step4</a></b> - web browsers, GPG, Bible, GPS, Skype</h3>
+<br><br>
+</div>

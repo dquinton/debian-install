@@ -1,0 +1,438 @@
+---
+layout: default
+description: Building a website with Jekyll and hosting it at Github - by D Quinton
+title: Github how-to
+id: tutor
+---
+
+<div class="onpage" id="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">1. Make a Github web site</a></li>
+                <li><a href="#2">2. Get Jekyll</a></li>
+                <li><a href="#3">3. Using Jekyll</a></li>
+                <li><a href="#4">4. Set the base URL</a></li>
+                <li><a href="#5">5. Serving up with Jekyll</a></li>
+                <li><a href="#6">6. Commit to Github</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">1. Make a Github web site</a><br>
+   <a href="#2">2. Get Jekyll</a><br>
+   <a href="#3">3. Using Jekyll</a><br>
+   <a href="#4">4. Set the base URL</a><br>
+   <a href="#5">5. Serving up with Jekyll</a><br>
+   <a href="#6">6. Commit to Github</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+
+
+<br>
+<h2 id="1" class="tag">1. Make a Github web site using project pages</h2>
+
+<div class="bullet"><ul><li>
+Sign up with github and make a new project</li>
+
+<li>make a new branch called "gh-pages" (click on branch and enter name, click create)</li>
+
+<li>click the '+' and make a page called index.html and enter some text, commit it</li>
+
+<li>test the site at <b>http://username.github.io/project-name/</b></li>
+</ul></div>
+<br><br><br>
+
+
+
+<h2 id="2" class="tag">2. Get Jekyll</h2>
+
+Github doesn't support php client files, for web security reasons - so that means you can't use php includes in your pages (a standard means to insert a navbar or banner site-wide). So how do you include header, navigation bar or footer in plain html on every page and also be able to change them site-wide later on?
+<br><br>
+This is jekyll's work - you use "fluid includes" in your site build pages, jekyll reads them, and inserts what you specified in them for each page, thus producing all pages in plain html.  There's no need for php includes. Then you just need to commit the built site to Github.
+<br><br>
+The <a href="http://jekyllrb.com/docs/home/">jekyll website</a> is certainly colourful, but it didn't help me understand what its really about, so here's how to use it...
+<br><br><br>
+Install jekyll with ruby
+<form>
+<textarea name="T" id="install" rows="2" cols="50">
+sudo apt-get install ruby ruby-dev
+sudo gem install jekyll</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+You will need to have a java environment installed too (openjdk isn't suitable either, the list of runtimes are here <a href="https://github.com/rails/execjs">https://github.com/rails/execjs</a>)
+
+<form><textarea name="T" id="install" rows="1" cols="50">
+sudo gem install therubyracer</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+To create your website build, make a dir, cd there and run
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+jekyll new .
+jekyll serve</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and browse <a href="http://localhost:4000">http://localhost:4000</a> to see what the site (which is only a default index page so far) looks like
+
+<br><br>
+When you are working on the website and you want to view it as you make changes to pages, you need to make jekyll watch your build, and it will rebuild the site with every file save.  But before we do that, let's see how we build...
+
+<br><br>
+<br><br>
+
+
+<h2 id="3" class="tag">3. Using Jekyll to build a pure html site</h2>
+
+Important components..
+<br><br>
+<table cellpadding="4" cellspacing="2" border="1" style="border-collapse:collapse;border-color:rgb(136,136,136)">
+	<tr><td>Component</td><td>Location</td><td>Function</td></tr>
+	<tr><td>include</td><td>_includes</td><td style="width:660px">will be called by the web page - can be the header with css files, footer section, navigation bar, banner, whatever you need included that you can make changes to later on and it will affect the whole site</td></tr>
+	<tr><td>layout</td><td>_layouts</td><td>decides what includes to insert and in what order to fit them on a page</td></tr>
+	<tr><td>site page</td><td>top level or a sub-dir of build</td><td>calls a layout - so the layout then determines what includes to insert on the page</td></tr>
+</table>
+<br><br><br>
+
+<h3>The necessary include files...</h3>
+
+<br>
+
+header.html<br>
+===========
+
+<form>
+<textarea name="T" id="file" rows="17" cols="120">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <link rel="stylesheet" href="/css/1.css" media="all" type="text/css">
+     <link rel="stylesheet" href="/css/mob.css" media="only screen and (max-device-width: 600px)" type="text/css">
+   <link rel="stylesheet" href="/css/nav.css">
+    <meta charset="UTF-8">
+    <meta name="description" content="&#123;&#123;page.description}}" />
+    <meta http-equiv="date" content="&#123;&#123;page.date |date: '%A, %d  %Y %H:%M:%S GMT'}}" />
+    <meta name="robots" content="&#123;&#123;page.index}}INDEX,{{page.follow}}FOLLOW" />
+    <title>&#123;&#123; page.title }}</title>
+</head>
+
+<div class="ban"> </div>
+
+<body id="&#123;&#123; page.id }}"></textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+Note: I added the "id" include to the &#60;body> tag, so that I can set the body id on each html page as I like - see the page field setter below
+The class "ban" div sets the banner image using css, e.g. background-image: url(...); width: 100%; height: ...px; background-size: cover;
+<br><br>
+
+
+footer.html<br>
+===========
+
+<form>
+<textarea name="T" id="file" rows="2" cols="30">
+&#60;/body>
+&#60;/html></textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+
+navbar.html<br>
+===========
+
+<form>
+<textarea name="T" id="file" rows="15" cols="50">
+<div class="nav">
+<nav>
+  <ul>
+    <li><a href="/index.html" id="intro">Home</a></li>
+    <li><a href="/about.html" id="abt">About</a></li>
+
+..etc..
+
+  </ul>
+  </nav>
+</div>
+</html></textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+Note: the navbar will be included on each page, so the links have to point to the top level, with `/`.<br>
+Also, the<b> &#60;nav></b> and <b>&#60;/nav></b> tags are necessary for the css to be applied!<br>
+I added "id" to each link so that the buttons can be highlighted by the corresponding body id using css. 
+<br><br><br>
+
+
+<h3>The layout file..</h3> 
+<br>
+default.html<br>
+============
+
+<form>
+<textarea name="T" id="file" rows="8" cols="50">
+&#123;% include header.html %}
+&#123;% include navbar.html %}
+
+    <h1>&#123;&#123; page.title }}</h1>
+
+    &#123;&#123; content }}
+
+&#123;% include footer.html %}</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+
+<h3>Web page html files..</h3> 
+something like this is placed at the top, to call layout, and set certain fields in the head and on the page:
+
+<form>
+<textarea name="T" id="file" rows="6" cols="50">
+---
+layout: default
+description: blah blah
+title: home
+id: home
+---</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+Note: keywords are deprecated - search engine robots ignore them because of abuse, such as inserting false words for better search ranking.
+<br><br>
+<br><br>
+
+These three important elements are in unique div sections, i.e. navbar, banner and content..
+<br><br>
+<b>&#60;div class="nav"> &#60;/div></b> wraps the lines in navbar.html
+<br><br>
+<b>&#60;div class="ban"> &#60;/div></b> wraps the banner in header.html<br>
+<br><br>
+and content on each page is wrapped in another <div..> marker, i.e.
+<br><br>
+<b>&#60;div class="cont"> &#60;/div></b>
+<br><br>
+Just so that the navbar can sit right across the page width (100%), but the content have margins and padding that won't effect the navbar, and also the banner image stay behind the navbar - possible because different styles will be applied to each div element, as determined by its "class" - or "id".
+
+<br><br>
+You can use the <b>z-index</b> tag in the style for any div class, to determine which div element will be on top when other elements are displayed in the same region. 
+e.g. a drop-down menu button that needs to be seen over a banner image, not hidden under it.
+<br><br>
+The z-index, e.g. "<b>z-index: 10;</b>", simply uses a number and the highest number has priority - this is html5. 
+<br><br><br>
+
+I didn't change anything in the _config file - especially, you need to leave the baseurl alone if you are just working locally.<br>
+<a href="http://jekyllrb.com/docs/configuration/">http://jekyllrb.com/docs/configuration/</a>
+<br><br><br>
+
+You can make a template so that its easy to make new pages - I use bluefish html editor
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+nano ~/.bluefish/templates/normal</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<form>
+<textarea name="T" id="file" rows="11" cols="50">
+---
+layout: default
+description: blah blah
+title: home
+id: home
+---
+
+&#60;div class="cont">
+
+
+</div></textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br><br>
+
+
+<h2 id="4" class="tag">4. Set the site's base URL</h2>
+
+Github uses the user url as the root directory, not the project name, hence if your links are "/css/main.css"
+then Github will serve the css file to "http://user.github.io/css/main.css," which is not helpful, because they are pushed to http://user.github.io/project-pages/css/main.css.
+<br><br>
+So the site won't work at all.
+<br><br><br>
+
+<h3>Solutions</h3>
+
+<b>1.</b> set the base url in the jekyll  <b>_config.yml</b> file
+<form>
+<textarea name="T" id="file" rows="1" cols="30">
+baseurl: '/project-name'</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+then in all your links, use {{site.baseurl}}/css/styles.css etc
+<br><br>
+and to serve locally, use 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+jekyll serve --baseurl ''</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+so that the base url is not added on the pages - but you will need to run `jekyll serve' to generate pages for Github!
+<br><br><br><br>
+
+<b>2.</b> add the base url to all your links, such as, my-project/css/styles.css
+<br><br>
+then to serve locally, use 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+jekyll --serve --baseurl /my-project/</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+this way will generate Github-ready pages, because it tells the localhost:4000 to look at the right place
+
+<br><br><br><br>
+<b>3.</b> set the base url in the html header, with &#60;base href="/project-name/"> and leave all your links as they are.
+<br><br>
+Just need to test this one. Bear in mind this affects ALL uri's, even # links and queries, so you need to test it works. 
+
+
+<br><br><br><br>
+
+
+<h2 id="5" class="tag">5. Serving up with Jekyll..</h2>
+
+to make jekyll convert the site setup files into real html files for serving, you run this in your site dir:
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+jekyll serve --watch</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+You can see the resulting html files inside the _site dir (and these are the ones you need for commiting to Github).
+<br><br>
+Then preview the site (index.html) by browsing localhost:4000
+<br><br>
+because of the --watch option, jekyll will rebuild the site every time a file is saved, and all you need to do is hit refresh in the browser and your changes will be seen.
+
+<br><br><br><br>
+
+
+<h2 id="6" class="tag">6. Commit files to Github</h2>
+
+Firstly, setup your git user config..
+
+<form>
+<textarea name="T" id="cmd" rows="3" cols="50">
+git config --global user.name "USERNAME"
+git config --global user.email "EMAIL"
+git config --global credential.helper cache</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+Normally, you'd create a dir to clone your git repo into, cd there and run
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+git clone https://github.com/user/repository.git</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+But as you are working with Jekyll, you should just run the `git add .' command to "stage" the files before commiting them to Github
+<br>
+then switch to gh-pages (because the website will be served from the gh-pages branch)
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+git checkout --orphan gh-pages</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+<b>Or, what you can do,</b> if its purely a website you are aiming to host on Github and you don't have other branches, you can make gh-pages the master branch, and then remove "master" - via Github online (Settings > Branches > Default branch).  After that you will not need the "checkout --orphan" command to reach gh-pages.
+<br><br>
+
+Stage your files with,
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+git add .</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+note: you can add by file names too
+<br><br>
+Then prepare your pages/files (commit) to the next Git push (upload) with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+git commit -a -m "Adding pages"</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+the -m option submits the reason for the commit to git.
+<br><br>
+Note: if you don't add new files to tracking, you will get this kind of message: "nothing added to commit but untracked files present" with a list of local files that can't be commited becuse they are not tracked by Git yet.
+<br><br>
+
+to push all the new files or updated ones to Github,
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+git push</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+and you'll be promted for username and password.
+<br><br>
+
+to update your local repository to the newest commit, incase there are commits from elsewhere, execute 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+git pull</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+You can check status of your local clone with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+git status</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+check commit history with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+git log</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+
+</div>

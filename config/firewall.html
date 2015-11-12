@@ -1,0 +1,226 @@
+---
+layout: default
+description: Setting up a simple firewall using iptables, and allowing nfs - by D Quinton
+title: Firewall
+id: config
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">IP tables</a></li>
+                <li><a href="#2">nfs through firewall  </a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">IP tables</a><br>
+   <a href="#2">nfs through firewall   </a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../configure.html">Configure</a> ></div>
+
+<div class="cont">
+
+
+<h2 id="1" class="tag">IP tables</h2>
+
+I finally got a little tired of Firestarter - although it did a good job most of the time, it annoyed me when I was trying to share my connection or connect to another box with a simple network.
+<br><br>
+Actually, all it's doing is acting as a manager of the system's ports, accepting and rejecting traffic, by writing iptables. So that's why its possible to ditch your GUI firewall because you can configure your own iptables and have complete control with them, like allow any unusual ports which a GUI firewall might just block. 
+<br><br>
+I still don't know a lot about IP tables, with hardly any time to learn, but they can be used extensively... I got a firewall set up using the iptables file on the Debian Wiki here <a href="https://wiki.debian.org/iptables">https://wiki.debian.org/iptables</a>
+
+<br><br>
+With just a few easy steps...
+<br><br>
+1. &nbsp;&nbsp;&nbsp;make a test iptables file, as root, 
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+nano /etc/iptables.test.rules </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+2. &nbsp;&nbsp;&nbsp;fill that with the Debian Wiki example (including a new line at end after "COMMIT") and save it
+<br><br>
+3. &nbsp;&nbsp;&nbsp;stop firestarter
+<br><br>
+4. &nbsp;&nbsp;&nbsp;run 
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+iptables-restore < /etc/iptables.test.rules</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+5. &nbsp;&nbsp;&nbsp;see how it's running with 
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+iptables -L</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+
+6. &nbsp;&nbsp;&nbsp;save the configuration to the master iptables file with  
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+iptables-save > /etc/iptables.up.rules</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+
+7. &nbsp;&nbsp;&nbsp;to have the rules run at start-up, 
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+nano /etc/network/if-pre-up.d/iptables</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+
+fill with this script 
+
+<form><textarea name="T" id="file" rows="2" cols="50">
+#!/bin/sh
+ /sbin/iptables-restore < /etc/iptables.up.rules</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+make the script executable with 
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+chmod +x /etc/network/if-pre-up.d/iptables</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br><br>
+
+<h3>Allowing another linux box to share your internet connection</h3>
+This is called masquerading -but I didn't need a MASQUERADE iptables rule to make it work.
+<br><br>
+add this rule to the "test.rules" and test it out (your out interface may be different)...
+
+<form><textarea name="T" id="file" rows="1" cols="30">
+-A FORWARD -i wlan0 -j ACCEPT</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+and enable routing
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+echo 1 > /proc/sys/net/ipv4/ip_forward</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+This works with Network manager - server side as "Share" and client side as "Automatic"
+<br><br>
+<a href="https://www.debian-administration.org/article/23/Setting_up_a_simple_Debian_gateway">Setting_up_a_simple_Debian_gateway</a>
+<br><br>
+<br><br>
+
+<h2 id="2" class="tag">nfs through a firewall via static ports</h2>
+
+With nfs (see my <a href="../tutorial/20-networking-with-nfs.html">nfs page</a>) choosing random ports to send/receive on, how is it going to get through the firewall at all unless those ports it's using are made static and added to the firewall rules?  Let's do that then...
+<br><br>
+there are some 4 files to edit - basically we have to sync some port numbers, and you could use others than these..
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+nano /etc/default/nfs-kernel-server</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+RPCMOUNTDOPTS="--manage-gids --port <b>892</b>"
+
+<br><br>
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+nano /etc/default/nfs-common</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+STATDOPTS="--port <b>32765</b> --outgoing-port <b>32766</b>"
+<br><br>
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+nano /etc/modprobe.d/local.conf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+options lockd nlm_udpport=<b>32769</b> nlm_tcpport=<b>32803</b>
+
+<br><br>
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+nano /etc/services</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<form><textarea name="T" id="file" rows="12" cols="80">
+# NFS ports
+rpc.nfsd        2049/tcp            # RPC nfsd
+rpc.nfsd        2049/udp            # RPC nfsd
+rpc.statd-bc    32765/tcp           # RPC statd broadcast
+rpc.statd-bc    32765/udp           # RPC statd broadcast
+rpc.statd       32766/tcp           # RPC statd listen
+rpc.statd       32766/udp           # RPC statd listen
+rpc.mountd      892/tcp             # RPC mountd
+rpc.mountd      892/udp             # RPC mountd
+rpc.lockd       32803/tcp           # RPC lockd/nlockmgr
+rpc.lockd       32769/udp           # RPC lockd/nlockmgr</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+restart nfs
+<form><textarea name="T" id="cmd" rows="2" cols="50">
+sudo /etc/init.d/nfs-kernel-server restart
+rpcinfo -p</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+iptable rules to add (to the test.rules file)
+
+<form><textarea name="T" id="file" rows="2" cols="100">
+-I INPUT -m state --state NEW -p tcp -m multiport --dport 111,892,2049,32803 -s 10.0.0.2 -j ACCEPT
+-I INPUT -m state --state NEW -p udp -m multiport --dport 111,892,2049,32769 -s 10.0.0.2 -j ACCEPT</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+of course &nbsp;&nbsp;-s 192.168.0.0<b>/24 </b>&nbsp;&nbsp; or&nbsp;&nbsp; -s 10.0.0.0<b>/24</b>&nbsp;&nbsp; would allow a lot more IP addresses, and omitted will allow any
+<br><br>
+
+then run 
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+iptables-restore < /etc/iptables.test.rules</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+and when you're happy
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+iptables-save > /etc/iptables.up.rules</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+lastly, on the client, check for exported shares from server,
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+showmount -e 10.0.0.1</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+and after that you should be mounting the shares OK<br>
+(just don't mount the server's home dir in the client's home dir! 8P)
+
+
+</div>

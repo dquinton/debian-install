@@ -1,0 +1,89 @@
+---
+layout: default
+description: Install tips for Canon E510 printer - by D Quinton
+title: Canon E510
+id: help
+---
+
+<div class="parent"><a href="../helps.html">Helps</a> > <a href="13-printers.html">Printers</a> ></div>
+
+<div class="cont">
+
+This printer worked first time round, it was almost too easy!
+<div><br>
+</div>
+<div>1. Get the drivers for printer and scangear&nbsp;<a href="http://support-in.canon-asia.com/P/search?model=PIXMA+E510&amp;menu=download&amp;filter=0&amp;tagname=g_os&amp;g_os=Linux" rel="noreferrer">http://support-in.canon-asia.com...</a></div>
+<div><br>
+</div>
+<div>2. Set up the printer and power on, and connect the USB</div>
+<div><br>
+</div>
+<div>3. Unpack the tar.gz driver archives and open a Terminal in the printer driver directory first (cnijfilter), then run</div>
+<div><br>
+</div>
+<div><font color="#b45f06">sudo ./install.sh</font></div>
+<div><br>
+</div>
+<div>answer the questions and it should complete. &nbsp;Print something.</div>
+<div><br>
+</div>
+<div>If the printer doesn't register, see here&nbsp;<a href="http://linux.wikia.com/wiki/Getting_Canon_PIXMA_to_work_on_Linux" rel="noreferrer">http://linux.wikia.com/...</a></div>
+<div><br>
+</div>
+<div>cngpijmone510 is the status monitor (also shows ink levels)</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>
+<div>[Desktop Entry]</div>
+<div>Name=scangear</div>
+<div>Comment=scan a document</div>
+<div>Exec=scangearmp</div>
+<div>Icon=scanner</div>
+<div>Terminal=false</div>
+<div>Encoding=UTF-8</div>
+<div>Type=Application</div>
+<div>Categories=Graphics;</div>
+</div>
+<div><br>
+</div>
+<div>
+<div>[Desktop Entry]</div>
+<div>Name=E510Status</div>
+<div>Comment=printer status</div>
+<div>Exec=chromium http://localhost:631/printers/E510</div>
+<div>Icon=printer</div>
+<div>Terminal=false</div>
+<div>Encoding=UTF-8</div>
+<div>Type=Application</div>
+<div>Categories=Settings;</div>
+</div>
+<div><br>
+</div>
+<div>I tried for hours to get the Status Monitor up with printer info, but to no avail, so I can only check print jobs etc through CUPS in a web browser.</div>
+<div>According to the Canon documentation, one calls up the monitor with</div>
+<div><font color="#b45f06">cngpijmone510 &lt;printer_name&gt;</font></div>
+<div>but with&nbsp;<font color="#b45f06">cngpijmone510 E510</font>&nbsp;(or plain&nbsp;<span style="color:rgb(180,95,6);font-size:16px;line-height:1.6">cngpijmone510</span>)<span style="font-size:16px;line-height:1.6">&nbsp;the monitor reports "Printer not responding"</span></div>
+<div><br>
+</div>
+<div>
+<div>an old thread mentioned, to get it working for IP, MP series, the printer URI in the file /etc/cups/printers.conf needs editing,&nbsp;</div>
+<div>from usb://dev/usb/&lt;whatever&gt;</div>
+<div>to cnij_usb:/dev/usb/&lt;whatever&gt;</div>
+<div><a href="http://forums.opensuse.org/english/get-technical-help-here/hardware/423057-canon-printer-drivers-ip-mp-series-status-ink-monitor.html" rel="noreferrer">http://forums.opensuse.org/...</a></div>
+<div><br>
+</div>
+<div>but the e510 URI is usb://Canon/E510%20series?serial=&lt;number&gt;</div>
+<div>if I change this URI (after stopping cups) to cnij_usb:/Canon... or even &nbsp;cnij_usb:/dev/usb/Canon...&nbsp;</div>
+<div>the status monitor reports "Unknown printer"</div>
+<div>cups printers reports that cnij_usb backend does not exist</div>
+</div>
+<div>
+<div><font color="#b45f06">sudo /etc/init.d/cups stop</font></div>
+<div><font color="#b45f06">sudo /etc/init.d/cups restart</font></div>
+</div>
+<br>
+more info seems hard to come by on this one!
+
+</div>

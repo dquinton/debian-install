@@ -1,0 +1,115 @@
+---
+layout: default
+description: Tips on installing a few printers and CUPS - by D Quinton
+title: Printers
+id: help
+---
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1"> CUPS admin</a></li>
+                <li><a href="#2">Enable a user to resume</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+  <a href="#1">CUPS admin </a><br>
+   <a href="#2">Enable a user to resume</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../helps.html">Helps</a> ></div>
+
+<div class="cont">
+
+Here are the few printers I've got working so far with Debian...
+<div><br>
+</div>
+<div><a href="13-1-hp1102.html">HP printers and P1102</a></div>
+<div><br>
+</div>
+<div><a href="13-2-canon-ip1900.html">Canon IP1900</a></div>
+<div><br>
+</div>
+<div><a href="13-3-canon-e510.html">Canon Pixma E510</a></div>
+<div><br>
+</div>
+<div><a href="13-4-brother-j315w.html">Brother DCP-J315W</a></div>
+<div><br>
+</div>
+<div><br>
+</div>
+
+<h2 id="1" class="tag">CUPS admin</h2>
+
+<div><br>
+</div>
+<div><b>Error:&nbsp;<span style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:rgb(204,204,204)">Request entity too large</span></b></div>
+<div>Can't get into the CUPS admin pages</div>
+<div><br>
+</div>
+<div>http://localhost:631/admin pages can't be reached and the error log shows "unable to create directory /var/spool/cups/tmp"
+<div>so the spool directory likely needs creating!</div>
+<div>
+<div><font color="#b45f06">sudo mkdir /var/spool/cups</font></div>
+<div><font color="#b45f06">sudo mkdir /var/spool/cups/tmp&nbsp;</font></div>
+<div>if those are present already then they might need to belong to the lp group</div>
+<div><font color="#b45f06">sudo chown -R root:lp /var/spool/cups</font></div>
+<div>and your user needs to be added to the lp/lpadmin group</div>
+<div>
+<div><font color="#b45f06">sudo adduser &lt;user&gt; lp</font></div>
+<div><font color="#b45f06">sudo adduser &lt;user&gt; lpadmin</font></div>
+</div>
+<div>the other error that will occur if your user is not added to the lp/lpadmin group is that logging into the admin page with your user name will return a failed&nbsp;unauthorized&nbsp;page.</div>
+</div>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<h2 id="2" class="tag">Enable a user to resume a printer</h2>
+
+<div>To prevent CUPS asking for authentication of a user when using resume or pause printer in Cups Admin...<br>
+<ol><li>Open cups&nbsp;<a href="http://localhost:631/admin/">http://localhost:631/admin/</a></li>
+<li>click on Edit Configuration File</li>
+<li>under the printer you need to give access to and the sections with "Resume-Printer Enable-Printer Disable-Printer..." either:</li>
+</ol>
+<ul><li><span style="line-height:1.6;background-color:transparent">remove the authorisation, e.g. under</span> "AuthType Default" remove the line,</li></ul>
+<div><font color="#38761d">&nbsp; &nbsp; Require user @OWNER @SYSTEM</font></div>
+</div>
+<div>
+<ul><li><span style="line-height:1.6;background-color:transparent">Or, if that fails, just remove the items from that limit list which you don't need to login to do</span></li></ul>
+</div>
+<div>Then save the file.</div>
+<div><br>
+</div>
+<div>If you'd like a desktop shortcut button to do it, then you can use,</div>
+<div>
+<div><font color="#38761d">[Desktop Entry]</font></div>
+<div><font color="#38761d">Name=</font><font color="#38761d" style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent">r</font><span style="font-size:16px;line-height:1.6;color:rgb(56,118,29);background-color:transparent">esume-printer-name</span></div>
+<div><font color="#38761d">Comment=Enable printer</font></div>
+<div><font color="#38761d">Exec=sudo cupsenable<i>&nbsp;</i></font><i style="line-height:28.4444465637207px;font-size:15.5555562973022px;background-color:transparent"><font color="#0b5394">printer-name</font></i></div>
+<div><font color="#38761d">Icon=printer</font></div>
+<div><font color="#38761d">Terminal=false</font></div>
+<div><font color="#38761d">Encoding=UTF-8</font></div>
+<div><font color="#38761d">Categories=System;</font></div>
+<div><br>
+</div>
+</div>
+<div>Or, Openbox menu item&nbsp;</div>
+<div><font color="#38761d" style="font-size:15.5555562973022px;line-height:28.4444465637207px">sudo cupsenable&nbsp;</font><span style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent"><i><font color="#0b5394">printer-name</font></i></span></div>
+<div><br>
+</div>
+<div>and edit the /etc/sudoers file</div>
+<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#b45f06">sudo visudo</font></span></div>
+<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px">add the line:</span></div>
+<div><font color="#38761d">&lt;user&gt; ALL=(ALL) NOPASSWD: /usr/sbin/cupsenable</font></div>
+<div>(and any other specific cups command -need other desktop file too)</div>
+<div><br>
+</div>
+
+</div>

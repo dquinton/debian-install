@@ -1,0 +1,591 @@
+---
+layout: default
+description: Installing Debian with custom software and user config in places without the internet, using Simple-CDD and Live-Helper - by D Quinton
+title: Remote install
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Cloning the apt-cache!</a></li>
+                <li><a href="#2">Simple-CDD  </a></li>
+                <li><a href="#3">Live-Helper </a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Cloning the apt-cache!</a><br>
+   <a href="#2">Simple-CDD  </a><br>
+   <a href="#3">Live-Helper </a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">A year ago, in Aug 2012, I was trying everything to get a customised Live CD put together so that I could start installing Debian on other PC's (my friends' not any odd person's). &nbsp;I spent a long time learning how to use Live Helper, and tweaked it so that I could get a Live CD to install with about 95% of the apps and config I wanted. &nbsp;But then how about updating the Live CD? &nbsp;Another build process over the internet that can take hours. &nbsp;</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">More recently I've had success with refractasnapshot (system backup page), which makes a Live CD from an installed system. &nbsp;So from the system installed with my Live Helper-made Live CD, which I upgraded and dist-upgraded, and tweaked with all the config I wanted, I made a snapshot of it and now I have a grand "2nd generation" Live CD.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">So, if you were to use Live Helper, you probably shouldn't spend so much time getting the config files into it, but try to build a basic Live Debian to install on a test-bed partition. &nbsp;Then boot into that and make all the fine tuning you need. &nbsp;Finally build your 2nd and better Live CD with refractasnapshot.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><br>
+</font></div>
+
+<h2 id="1" class="tag">Cloning the apt-cache!</h2>
+
+<div><font size="3">I've been pondering on the task of installing Linux (Debian wheezy LXDE) to remote laptops (zero internet connectivity), but having a connected laptop at base.</font></div>
+<div><font size="3">
+<div></div>
+<br>
+</font></div>
+<div><font size="3">Obviously, a customised Live CD would be the ideal option of installing the system with all the app's needed.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">Otherwise, I could "clone" my install on the connected laptop by using the same Live CD on the remote PC's and copying the apt index and apt cache onto them. &nbsp;But would it work?</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">On connected laptop (a)</font></div>
+<div>
+<ol><li><span style="font-size:medium">Install&nbsp;Live CD X (preferred Debian Wheezy</span><span style="font-size:medium">)</span></li>
+<li><span style="font-size:medium">Remove/install apps and make apt-get remove line Y, install line Z</span></li>
+<li><font size="3">Copy&nbsp;</font><font color="#3d85c6" style="line-height:27px;font-size:medium">/var/lib/apt/lists/</font><span style="line-height:27px;font-size:medium">&nbsp;(Apt-L),</span><span style="font-size:medium">&nbsp;</span><font color="#3d85c6" style="font-size:medium">/var/cache/apt/</font><span style="font-size:medium"> (Apt-C),</span><span style="font-size:medium">&nbsp;plus config files (CF), /etc/apt/sources.list (SL), libflashplayer.so from /usr/lib/chromium/plugins to a USB stick</span></li>
+</ol>
+</div>
+<div><span style="font-size:medium;line-height:27px">on remote laptop (b)</span></div>
+<div>
+<ol><li><span style="font-size:medium">Install X &nbsp;</span></li>
+<li><font size="3">Fine details: add user to sudoer,&nbsp;</font><span style="font-size:medium;line-height:26px">"no recommends" file, edit fstab</span></li>
+<li><span style="font-size:medium">copy over&nbsp;<span style="line-height:26.981481552124023px">Apt-</span>L and&nbsp;<span style="line-height:26.981481552124023px">Apt-</span>C</span></li>
+<li><span style="font-size:medium">Execute apt-get lines Y and Z</span></li>
+<li><span style="font-size:medium">Copy over config files and CTRL-ALT F2, reboot</span></li>
+<li><span style="font-size:medium">Install other apps from deb's</span></li>
+<li><font size="3">C</font><span style="font-size:medium;line-height:25px">opy over SL to (b) (in case of internet connectivity later) and attempt wireless driver install on (b) to make internet-ready</span></li>
+<li><span style="font-size:medium;line-height:25px">Copy over libflashplayer.so&nbsp;</span></li>
+</ol>
+</div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">Future update of laptop (b) should be possible too.</font></div>
+<div>
+<ol><li><span style="font-size:medium">on (a) apt-get clean &amp; apt-get update &amp; apt-get upgrade</span></li>
+<li><span style="font-size:medium">copy&nbsp;<span style="line-height:26.981481552124023px">Apt-L</span>&nbsp;and&nbsp;<span style="line-height:26.981481552124023px">Apt-C&nbsp;</span>from (a)</span></li>
+<li><font size="3">delete and replace&nbsp;<span style="line-height:26.981481552124023px">Apt-</span>L and&nbsp;<span style="line-height:26.981481552124023px">Apt-</span>C on (b) with those</font><span style="font-size:medium">&nbsp;new from (a)</span></li>
+<li><span style="font-size:medium">on (b) run apt-get upgrade</span></li>
+</ol>
+</div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">This page here&nbsp;<span style="line-height:27px"><a href="http://gnuser.wordpress.com/2007/11/20/installing-packages-on-debian-computers-without-internet-connection/">http://gnuser.wordpress.com...</a>&nbsp;is very helpful method for installing packages on a PC with no internet connection. &nbsp;If it is an unknown Debian install, or it's out of date, or out of sync with the connected machine (a), then it would be necessary to find out which packages are needed as there may well be many more needed than the base PC (a) needs.</span></font></div>
+<div><font size="3"><br>
+</font></div>
+<div><br>
+</div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="4"><b>Methods&nbsp;<span style="line-height:27.77777862548828px">to test</span>&nbsp;for remote Debian installs</b></font></div>
+<div><font size="3"><span style="line-height:27px"><br>
+</span></font></div>
+<div><span style="font-size:medium;line-height:27px">
+<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-top-color:rgb(136,136,136);border-right-color:rgb(136,136,136);border-bottom-color:rgb(136,136,136);border-left-color:rgb(136,136,136);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px">
+<tbody>
+<tr>
+<td style="width:260px;height:34px">Method</td>
+<td style="width:288px;height:34px">Status</td>
+<td style="width:338px;height:34px">Remark</td>
+</tr>
+<tr>
+<td style="width:260px;height:26px"><b style="line-height:27px">Simple-cdd&nbsp;</b><span style="line-height:27px">(see below)</span><b style="line-height:27px">&nbsp;</b></td>
+<td style="width:288px;height:26px">&nbsp;No success so far</td>
+<td style="width:338px;height:26px">&nbsp;No time.</td>
+</tr>
+<tr>
+<td style="width:260px;height:26px"><b style="line-height:27px">Live-helper&nbsp;</b><span style="line-height:27px">(see below)</span><b style="line-height:27px">&nbsp;</b></td>
+<td style="width:288px;height:26px">&nbsp;Successfully made a Live CD and installed the system as per my packages.</td>
+<td style="width:338px;height:26px">&nbsp;Installed a breeze. &nbsp;(but with a few hiccups)</td>
+</tr>
+<tr>
+<td style="width:260px;height:26px"><b style="line-height:27px">Remastersys<br>
+</b><br>
+</td>
+<td style="width:288px;height:26px">&nbsp;No success with Wheezy - and it's now discontinued (a fork is happening?)</td>
+<td style="width:338px;height:26px">&nbsp;Display manager woes. With Slim, ISO boots to blank screen. With Lightdm login screen with no known login/password.</td>
+</tr>
+<tr>
+<td style="width:260px;height:26px"><b style="line-height:27px">Refracta&nbsp;</b><a href="16-system-backup.html">SystemBackup</a>&nbsp;page<b style="line-height:27px">&nbsp;</b></td>
+<td style="width:288px;height:26px">&nbsp;Successfully&nbsp;made snapshots of two systems and installed to another partition</td>
+<td style="width:338px;height:26px">&nbsp;Fast and easy to use</td>
+</tr>
+</tbody>
+</table>
+<br>
+</span></div>
+<div><font size="3"><span style="line-height:26px"><br>
+</span></font></div>
+<div><font size="3"><br>
+</font></div>
+
+
+<h2 id="2" class="tag">Simple-CDD</h2>
+<div><a href="http://wiki.debian.org/Simple-CDD/Howto" style="line-height:26px;font-size:medium">http://wiki.debian.org/...</a></div>
+<div><br>
+</div>
+<div><font size="3">
+<div><font color="#cc0000">sudo apt-get install simple-cdd approx</font></div>
+<div>make a build directory, my-simple-cdd, cd there</div>
+<div><br>
+</div>
+<div>make a working directory where you've got some space</div>
+<div><font color="#b45f06">mkdir my-simple-cdd</font></div>
+<div><font color="#b45f06">cd /my-simple-cdd</font></div>
+<div><br>
+</div>
+<div>this is the basic build command:</div>
+<div><font color="#b45f06">build-simple-cdd --dist wheezy --debian-mirror http://cdn.debian.net/debian --profiles NAME</font></div>
+<div><br>
+</div>
+<div>fill in your own preferred mirror!</div>
+<div><br>
+</div>
+<div>to make the profiles file (with package names), in my-simple-cdd dir:</div>
+<div><font color="#b45f06">mkdir profiles</font></div>
+<div><font color="#b45f06">for p in &lt;packages to include&gt; ; do echo $p &gt;&gt; profiles/NAME.packages ; done</font></div>
+<div><font color="#b45f06"><br>
+</font></div>
+<div>
+<div style="font-size:13px;line-height:23px"><font size="3"><span style="line-height:27px">simple-cdd defaults to just using main.</span></font></div>
+<div style="font-size:13px;line-height:23px"><span style="line-height:27px;font-size:medium">so to also use contrib and non-free, in profiles/default.conf:</span></div>
+<div style="font-size:13px;line-height:23px"><span style="line-height:27px;font-size:medium">&nbsp;&nbsp;<font color="#38761d">mirror_components="main contrib non-free"</font></span></div>
+</div>
+</font></div>
+<div><span style="line-height:31px"><font size="3"><br>
+</font></span></div>
+<div><span style="line-height:31px"><font size="3">----------------------------------------------------------------------------------------------------</font></span></div>
+<div><font size="3"><span style="line-height:31px">set up <b>approx</b> to cache packages&nbsp;</span><span style="line-height:30px"><a href="http://www.debianadmin.com/upgrade-multiple-debian-systems-with-approx.html">http://www.debianadmin.com/...</a></span></font></div>
+<div><font size="3"><a href="http://www.debianadmin.com/upgrade-multiple-debian-systems-with-approx.html">http://www.debianadmin.com/...</a>&nbsp;</font></div>
+<div><font size="3">I still can't get this to work.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">set the mirror and un-comment the lines<font color="#b45f06">&nbsp;</font></font></div>
+<div><font size="3"><font color="#b45f06">sudo nano /etc/approx/approx.conf</font></font></div>
+<div><font size="3">e.g.</font></div>
+<div><font size="3">
+<div><font color="#38761d">debian &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;http://cdn.debian.net/debian</font></div>
+<div><font color="#38761d">security &nbsp; &nbsp; &nbsp; &nbsp;http://security.debian.org</font></div>
+<div><font color="#38761d">deb-multimedia &nbsp;http://www.deb-multimedia.org</font></div>
+<div style="color:rgb(180,95,6)"><br>
+</div>
+</font></div>
+<div><font size="3"><span style="line-height:27px"><br>
+</span></font></div>
+<div><font size="3"><span style="line-height:27px">import the apt cache into approx cache (only if deb files are recent)</span></font></div>
+<div><font color="#b45f06" size="3"><span style="line-height:26px">sudo approx-import /var/cache/apt/archives/*.deb</span></font></div>
+<div><font color="#b45f06" size="3"><span style="line-height:26px">sudo service networking restart</span></font></div>
+<div><font color="#b45f06" size="3"><span style="line-height:25px">sudo service openbsd-inetd restart&nbsp;</span></font></div>
+<div><font size="3"><span style="line-height:27px"><br>
+</span></font></div>
+<div><font size="3"><span style="line-height:27px">invoke simple-cdd to pull from approx cache</span></font><br>
+<font color="#b45f06" style="line-height:27px;font-size:medium">build-simple-cdd --dist wheezy&nbsp;</font><font color="#b45f06" size="3">--debian-mirror http://localhost:9999/debian<font style="line-height:27px">&nbsp;--profiles NAME</font></font></div>
+<div><span style="font-size:medium;line-height:30.98958396911621px">----------------------------------------------------------------------------------------------------</span></div>
+<div><span style="font-size:medium;line-height:30.98958396911621px"><br>
+</span></div>
+<div><span style="font-size:medium;line-height:30.98958396911621px"><br>
+</span></div>
+<div><span style="line-height:26px"><font size="4"><b><br>
+</b></font></span></div>
+
+
+
+<h2 id="3" class="tag">Live-helper</h2>
+
+<div><a href="http://live-systems.org/manual/current/html/live-manual/toc.en.html" style="font-size:16px;line-height:1.6">http://live-systems.org/manual/current/html/live-manual/toc.en.html</a></div>
+<div><br>
+</div>
+<div>useful read:</div>
+<div><a href="http://live-systems.org/manual/current/html/live-manual/customization-overview.en.html#334">live-manual/customization-overview....</a></div>
+<div><br>
+</div>
+<div>
+<hr>
+</div>
+<div><b><font size="4">1. install</font></b></div>
+<div><font size="3">add sid snapshots to sources list</font></div>
+<font color="#b45f06" size="3">su</font>
+<div><font color="#b45f06" size="3">sh -c 'echo "deb http://live.debian.net/debian/ sid-snapshots main contrib non-free" &gt;&gt; /etc/apt/sources.list'</font></div>
+<div><font color="#b45f06">wget http://live.debian.net/debian/project/keys/archive-key.asc -O - | apt-key add -</font>
+<div><span style="color:rgb(204,0,0);font-size:medium">apt-get update</span></div>
+<div><font color="#cc0000" size="3">apt-get install live-helper</font></div>
+<div><font size="3"><span style="line-height:25px"><br>
+</span></font></div>
+<div><font size="3"><span style="line-height:25px">now find some space on a partition where all the live-build work will take place&nbsp;</span></font></div>
+<div><font color="#b45f06" size="3">mk dir my-livecd</font></div>
+<div><font color="#b45f06" size="3">cd my-livecd</font></div>
+<div><font color="#b45f06" size="3">lh config</font></div>
+<div><font size="3">(that will build the basic config tree)</font></div>
+<div><font size="3"><br>
+</font></div>
+<div>
+<hr>
+</div>
+<div><b><font size="4">2. Congfiguring how the live cd will be built</font></b></div>
+<div><span style="color:rgb(0,0,0);font-family:inconsolata,andale mono,courier new,courier,monospace;font-size:14px;line-height:20px">example</span><font size="3">.1</font></div>
+<div><font color="#b45f06" size="3">lh config --architecture i386 -d wheezy -p lxde --archive-areas "main contrib non-free" </font><font color="#b45f06" size="3">--debian-installer live</font></div>
+<font size="3"><br>
+</font><span style="color:rgb(0,0,0);font-family:inconsolata,andale mono,courier new,courier,monospace;font-size:14px;line-height:20px">example</span><font size="3">.2<br>
+<font color="#b45f06">lh config -d squeeze -p xfce --archive-areas "main contrib non-free" --debian-installer live --linux-flavours 686</font><br>
+<br>
+</font><span style="color:rgb(0,0,0);font-family:inconsolata,andale mono,courier new,courier,monospace;font-size:14px;line-height:20px">example</span><font size="3">.3</font>
+<div><font color="#b45f06" size="3" style="color:rgb(180,95,6);line-height:25px;font-size:medium">lh config --mirror-bootstrap "http://cdn.debian.net/debian/"&nbsp;</font><span style="color:rgb(180,95,6);font-size:medium;line-height:24px">--mirror-chroot "http://cdn.debian.net/debian/"&nbsp;</span><span style="color:rgb(180,95,6);font-size:medium;line-height:24px">--mirror-chroot-security "http://security.debian.org/debian/"&nbsp;</span><font color="#b45f06" size="3" style="color:rgb(180,95,6);line-height:25px;font-size:medium">--apt-recommends disabled&nbsp;</font><span style="color:rgb(180,95,6);font-size:medium;line-height:27px">--architecture i386&nbsp;</span><font color="#b45f06" size="3" style="color:rgb(180,95,6);line-height:26px;font-size:medium">--linux-flavours 486 --archive-areas "main contrib non-free" -d wheezy&nbsp;</font><span style="color:rgb(180,95,6);line-height:26px;font-size:medium">--debian-installer live&nbsp;</span><span style="color:rgb(180,95,6);font-size:medium;line-height:26px">--apt aptitude</span></div>
+<div><font color="#b45f06" size="3"><br>
+</font></div>
+<div><span style="font-size:medium;line-height:27px">You can keep using "lh config" with different parameters to set up the configuration before building -but note that you can't override one that's been set unless you do a "lh clean" -it is better to use an auto script (see below). &nbsp;The "chroot" mirror is where packages will come from and the "binary" is what the Live CD will be set to (chroot mirror should default to --mirror-bootstrap). &nbsp;See&nbsp;</span><font size="3"><span style="line-height:26px"><a href="http://manpages.ubuntu.com/manpages/oneiric/lb_config.1..html">http://manpages.ubuntu.com/</a></span></font></div>
+<div><span style="font-size:medium;line-height:27px">The 486 flavour with i386 architecture, or 686 with amd64, is essential for the live installer to work, or else you will just have a Live CD, so the man page says.</span></div>
+<div><span style="font-size:medium;line-height:27px"><br>
+</span></div>
+<div><span style="font-size:medium;line-height:27px"><b>-Use an auto script</b></span></div>
+<div><span style="font-size:medium;line-height:27px">All config options can be put into an auto script so that one only needs to run "lh config" and the options are set from the script.</span></div>
+<div><font size="3"><a href="http://live-systems.org/manual/current/html/live-manual/managing-a-configuration.en.html#309">http://live-systems.org/manual/...</a></font></div>
+<div><font size="3"><br>
+</font></div>
+<div><span style="color:rgb(180,95,6);font-size:16px;line-height:1.6">cp /usr/share/doc/live-build/examples/auto/* auto/</span></div>
+<div><br>
+</div>
+<div><font size="3">edit auto/config to look something like this -adapt to your preference, with amd64/686 or whatever. &nbsp;Here's how it looks with my example 3,</font></div>
+<font color="#38761d" size="3">#!/bin/sh<br>
+lb config noauto \<br>
+     <span>&nbsp;&nbsp; &nbsp;</span>--architectures <span style="background-color:rgb(249,203,156)">i386</span> \<br>
+     <span>&nbsp;&nbsp; &nbsp;</span>--linux-flavours <span style="background-color:rgb(249,203,156)">486</span> \<br>
+     <span>&nbsp;&nbsp; &nbsp;</span>--mirror-bootstrap http://<span style="background-color:rgb(249,203,156)">ftp.uk.debian.org</span>/debian/ \</font>
+<div><font color="#38761d" size="3">&nbsp; &nbsp;&nbsp;--mirror-chroot http://</font><span style="color:rgb(56,118,29);font-size:medium;background-color:rgb(249,203,156)">ftp.uk.debian.org</span><font color="#38761d" size="3">/debian/ \<br>
+     <span>&nbsp;&nbsp; &nbsp;</span>--mirror-binary http://</font><span style="color:rgb(56,118,29);font-size:medium;background-color:rgb(249,203,156)">ftp.uk.debian.org</span><font color="#38761d" size="3">/debian/ \<br>
+     <span>&nbsp;&nbsp; &nbsp;</span>--mirror-chroot-security http://security.debian.org/ \<br>
+          <span>&nbsp;&nbsp; &nbsp;</span>--archive-areas "main contrib non-free" \</font>
+<div><font color="#38761d" size="3"><span style="line-height:27px">&nbsp; &nbsp;&nbsp;</span></font><span style="color:rgb(56,118,29);line-height:27px;font-size:medium">--apt-recommends disabled \</span><font color="#38761d" size="3"><span style="line-height:27px"><br>
+</span></font>
+<div><font color="#38761d"><font size="3">&nbsp; &nbsp;&nbsp;</font><span style="line-height:26px;font-size:medium">--apt aptitude \</span></font><font color="#38761d" size="3"><br>
+           <span>&nbsp;&nbsp; &nbsp;</span>-d <span style="background-color:rgb(249,203,156)">wheezy</span> \<br>
+           <span>&nbsp;&nbsp; &nbsp;</span>--debian-installer live \<br>
+     "${@}"</font>
+<div><span style="font-size:medium"><br>
+</span></div>
+<div><font size="3"><span style="line-height:27px">The script is read when lh build is run.</span></font></div>
+<div><font size="3"><span style="line-height:27px">Note: in the file <font color="#0b5394">config/bootstrap</font> there is also&nbsp;</span><span style="line-height:26.99652862548828px">LB_PARENT_MIRROR_BOOTSTRAP...&nbsp;</span></font><span style="line-height:26.99652862548828px;font-size:medium">LB_PARENT_MIRROR_CHROOT...&nbsp;</span>which seem to override the&nbsp;<span style="font-size:medium;line-height:1.6;color:rgb(56,118,29)">&nbsp;</span><span style="font-size:medium;line-height:1.6;color:rgb(56,118,29)">--mirror-bootstrap&nbsp;</span>and<span style="font-size:medium;line-height:1.6;color:rgb(56,118,29)">&nbsp;</span><span style="color:rgb(56,118,29);font-size:medium;line-height:1.6">&nbsp;--mirror-chroot</span><span style="color:rgb(56,118,29);font-size:medium;line-height:1.6">&nbsp;</span>parameters so that during the build packages are retrieved from ftp.debian.org, not from your prefered mirror.</div>
+<div><br>
+</div>
+<div>
+<hr>
+</div>
+<div><b><font size="4">3. Add package lists before the build</font></b></div>
+<div>
+<div>
+<div></div>
+<font size="3">su to root and run these in the build directory:</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><span style="font-size:medium;line-height:26.981481552124023px">needed for successful build as they are possibly excluded by the "no-recommends" option.</span></div>
+<div>
+<div style="overflow:auto;width:850px;height:50px;background-color:#99f">for p in<font color="#cc0000">
+eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup</font> grub ;do echo $p &gt;&gt; config/package-lists/needed.list.chroot ;done
+</div>
+<div><br>
+</div>
+<div><span style="line-height:27px"><font size="3">minimal LXDE install</font></span></div>
+<div style="overflow:auto;width:850px;height:160px;background-color:#99f">for p in xorg lxde lightdm lxtask xfce4-power-manager locales pm-utils hdparm cpufrequtils alsa-utils wicd chromium zip unzip bzip2 p7zip-full imagemagick openjdk-7-jre icedtea-7-plugin bluetooth blueman ntfs-3g blktool dosfstools mtools testdisk unetbootin bash-completion tango-icon-theme openbox-themes xcursor-themes moblin-cursor-theme gtk2-engines gtk2-engines-xfce gtk2-engines-murrine gtk3-engines-xfce debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done
+</div>
+<div><br>
+</div>
+<div><span style="line-height:27px"><font size="3">optional</font></span></div>
+<div style="overflow:auto;width:850px;height:50px;background-color:#99f">for p in firestarter thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra k3b libk3b6-extracodecs normalize-audio dvdrip marble ;do echo $p &gt;&gt; config/package-lists/optional.list.chroot ;done
+</div>
+
+<div><font size="3">apps (copy to a text editor and omit/add what you like)</font></div>
+<div></div>
+<div style="overflow:auto;width:850px;height:170px;background-color:#99f">for p in ffmpeg x264 mplayer gnome-mplayer vlc avidemux handbrake-gtk bombono-dvd audacious ardour audacity lame qjackctl feh gimp pinta  gcalctool clipit clamav clamtk catfish pidgin uget transmission xfce4-notes-plugin gdmap gparted qshutdown ksnapshot kcharselect luckybackup cheese meld regexxer furiousisomount bleachbit easytag viking libcurl4-openssl-dev gnome-doc-utils celestia stellarium htop yelp xiphos fonts-sil-ezra gnome-color-chooser systemsettings rkhunter chkrootkit xsel w3m w3m-img less atool mediainfo jhead locate git ;do echo $p &gt;&gt; config/package-lists/my.list.chroot ;done
+</div>
+</div>
+<div><br>
+</div>
+<div><font size="3">build essential</font></div>
+<div></div>
+<div style="overflow:auto;width:850px;height:90px;background-color:#99f">for p in build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev x11-xserver-utils libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake checkinstall ;do echo $p &gt;&gt; config/package-lists/build.list.chroot ;done
+</div>
+</div>
+<div><br>
+</div>
+<div><span style="font-size:16px;line-height:1.6"><a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html#373">http://live-systems.org/manual/...</a></span></div>
+<div><br>
+</div>
+<div></div>
+<div>
+<hr>
+</div>
+<div>
+<div><font size="4"><b>4. Add other/customised packages</b>&nbsp;</font></div>
+<div>Put their .deb archives in <span style="font-size:medium;line-height:25.98958396911621px">config/packages.chroot -for example, <span style="background-color:rgb(162,196,201)">most recent Libre Office, XnviewMP, refractasnapshot</span> etc.&nbsp;</span></div>
+<div><span style="font-size:medium;line-height:25.98958396911621px">! Check the packages names with running </span><font color="#b45f06" style="font-size:medium;line-height:25.98958396911621px">dpkg-name *.deb</font><span style="font-size:medium;line-height:25.98958396911621px"> in the dir as they must comply to be included.</span></div>
+<div><a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html">http://live-systems.org/manual/...</a></div>
+</div>
+<div><br>
+</div>
+<div>
+<div><span style="font-size:medium;line-height:25.98958396911621px">Note with thunar: the latest is found in <a href="http://packages.debian.org/experimental/thunar">experimental</a>, but it has so many dependencies it failed to install for me using packages.</span></div>
+</div>
+<div>Therefore it is wiser to pin it to the experimental repository, with all other packages defaulting to the config repository, like this</div>
+<div>
+<div><font color="#b45f06">echo "deb http://</font><font color="#0b5394">ftp.uk.debian.org</font><font color="#b45f06">/debian/ experimental main" &gt; config/archives/experimental.list.chroot</font></div>
+<div><br>
+</div>
+<div><font color="#b45f06">sudo leafpad config/archives/experimental.pref.chroot</font></div>
+</div>
+<div><br>
+</div>
+<div>add</div>
+<div>
+<div><font color="#38761d">Package: thunar&nbsp;libexo-1-0 libxfce4ui-1-0 libxfce4util6 thunar-data&nbsp;libxfce4ui-1-dev libthunarx-2-0 exo-utils&nbsp;libxfce4util-dev libxfconf-0-dev&nbsp;libxfconf-0-2</font></div>
+<div><font color="#38761d">Pin: release n=experimental</font></div>
+<div><font color="#38761d">Pin-Priority: 600</font></div>
+<div><font color="#38761d"><br>
+</font></div>
+<div><font color="#38761d">Package: *</font></div>
+<div><font color="#38761d">Pin: release n=</font><span style="color:rgb(56,118,29);font-size:16px;line-height:1.6">experimental</span></div>
+<div><font color="#38761d">Pin-Priority: 1</font></div>
+</div>
+<div><span style="font-size:16px;line-height:1.6">&nbsp;</span></div>
+<div><br>
+</div>
+<div><b>Omit a package from the build&nbsp;</b></div>
+<div>-say, if it is a recommended package or installed by a metapackage, you give it a negative Pin-Priority in config/apt/preferences,</div>
+<div><font color="#b45f06">sudo leafpad&nbsp;config/apt/preferences</font></div>
+<div>
+<div><font color="#38761d">Package: iceweasel</font></div>
+<div><font color="#38761d">Pin: version *</font></div>
+<div><font color="#38761d">Pin-Priority: -1</font></div>
+</div>
+<div><br>
+</div>
+<div>see:&nbsp;<span style="font-size:16px;line-height:1.6"><a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html#466">.../customizing-package-installation.en.html#466</a></span></div>
+<div><br>
+</div>
+<div>
+<hr>
+</div>
+<div><b style="font-size:large;line-height:31px">5. add the multimedia repo</b></div>
+<div><font size="3">add the multimedia repository (or any repo you like, same method), in my-livecd dir:</font></div>
+<div>
+<div><font size="3" style="color:rgb(180,95,6);font-size:16px;line-height:1.6"><span style="line-height:24px">echo "deb http://www.</span></font><span style="color:rgb(180,95,6);font-size:medium;line-height:1.6">deb-multimedia.org testing main non-free</span><font size="3" style="color:rgb(180,95,6);font-size:16px;line-height:1.6"><span style="line-height:24px">" &gt;&nbsp;</span></font><span style="color:rgb(180,95,6);font-size:medium;line-height:1.6">config/archives/deb-multimedia.list.chroot</span></div>
+<font color="#b45f06">
+</font>
+<div><font color="#b45f06" size="3"><span style="line-height:24px"><br>
+</span></font></div>
+<div><font size="3"><span style="line-height:24px">copy<font color="#b45f06"> </font>/usr/share/keyrings/deb-multimedia-keyring.gpg to&nbsp;</span></font><span style="line-height:24px;font-size:medium">config/archives/deb-multimedia.key.chroot</span></div>
+</div>
+<div><font color="#b45f06" size="3"><span style="line-height:23px">cp /usr/share/keyrings/deb-multimedia-keyring.gpg config/archives/deb-multimedia.key.chroot</span>
+</font></div>
+<div>
+<div style="line-height:26px;font-size:medium;color:rgb(180,95,6)"><br>
+</div>
+<div style="line-height:26px;font-size:medium;color:rgb(180,95,6)">
+<hr>
+</div>
+<b style="font-size:large">6. live-initramfs </b><span style="background-color:rgb(162,196,201)"><font size="3">(this is not in the recent debian live manual -try without first)</font></span></div>
+<div><font size="3">Enable live-helper to use the latest snapshot of live-initramfs with a sources list entry (run in my-livecd dir)</font></div>
+<div><font size="3"><font color="#b45f06">mkdir&nbsp;config/chroot_sources</font><br>
+<font color="#b45f06">sh -c 'echo "deb http://live.debian.net/ sid-snapshots main contrib non-free" &gt; config/chroot_sources/debian-live_sid-snapshots.chroot'</font><br>
+and at binary stage with<br>
+<font color="#b45f06">cp config/chroot_sources/debian-live_sid-snapshots.chroot config/chroot_sources/debian-live_sid-snapshots.binary<br>
+</font></font></div>
+<div><font size="3"><font color="#b45f06"><br>
+</font></font></div>
+<div><font size="3">get the gpg key:<br>
+<font color="#b45f06">wget http://live.debian.net/debian/project/keys/archive-key.asc -O config/chroot_sources/debian-live_sid-snapshots.chroot.gpg<br>
+</font></font><span style="line-height:27px;font-size:medium">copy it to the binary</span></div>
+<div><font size="3"><font color="#b45f06">cp config/chroot_sources/debian-live_sid-snapshots.chroot.gpg config/chroot_sources/debian-live_sid-snapshots.binary.gpg</font><br>
+</font>
+<div><font color="#b45f06" size="3"><span style="line-height:25px"><a href="http://live.debian.net/manual/1.x/html/ch02s02.html">http://live.debian.net/manual/1.x/html/ch02s02.html</a></span></font></div>
+<div><font color="#b45f06" size="3"><a href="http://live.debian.net/debian/project/keys/">http://live.debian.net/debian/project/keys/</a></font></div>
+<div style="line-height:26px;font-size:medium;color:rgb(180,95,6)"><br>
+</div>
+<div>
+<div style="color:rgb(8,8,8);font-size:15.555556297302246px;line-height:27.77777862548828px"><font size="3">or get the&nbsp;</font><a href="http://packages.debian.org/wheezy/live-boot-initramfs-tools">live-boot-initramfs-tools</a>&nbsp;<span style="font-size:medium;line-height:1.6">deb file and put it in config/packages.chroot&nbsp;</span></div>
+<div style="color:rgb(180,95,6);font-size:medium;line-height:26px"><span style="font-size:medium;line-height:1.6"><br>
+</span></div>
+<div style="color:rgb(180,95,6);font-size:medium;line-height:26px">
+<hr>
+</div>
+<font size="4"><b>7. Add files to be included in the Live cd</b></font><br>
+If you'd like to customize the Live cd environment, with autostart, no recommends files etc, you simply add the files to <font color="#0b5394">config/includes.chroot</font> directory with the same dir tree as they need in a real file system.</div>
+<div>
+<ul><li><span style="font-size:16px;line-height:1.6">put the LXDE autostart file in&nbsp;</span><span style="font-size:16px;line-height:1.6;background-color:rgb(208,224,227)">config/includes.chroot/etc/xdg/lxsession/LXDE/</span><span style="font-size:16px;line-height:1.6">&nbsp;</span></li></ul>
+</div>
+<div>
+<div>Add config files to&nbsp;<span style="background-color:rgb(208,224,227);font-size:16px;line-height:1.6">config/includes.chroot/etc/skel/</span>&nbsp;so that they will be used to create the live user's home directory... and the installed user's?</div>
+</div>
+<div><a href="http://live-systems.org/manual/current/html/live-manual/customizing-contents.en.html#479" style="font-size:16px;line-height:1.6">http://live-systems.org/manual/...</a></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div>
+<div><b>Set groups for the Live user</b></div>
+<div>make a file</div>
+<div><font color="#b45f06">leafpad config/includes.chroot/etc/live/config/user-setup.conf</font></div>
+</div>
+<div>and fill with [include whatever groups you require]</div>
+<div><font color="#38761d">LIVE_USER_DEFAULT_GROUPS="plugdev netdev powerdev dialout lpadmin admin clamav"</font></div>
+<div><br>
+</div>
+<div><br>
+<div style="color:rgb(180,95,6);font-size:medium;line-height:26px">
+<hr>
+</div>
+</div>
+<div style="line-height:26px"><font size="4"><b>8. Building the live cd</b></font></div>
+</div>
+to run live build cd to my-livecd and enter&nbsp;<span style="font-size:medium;line-height:26.99652862548828px">(sudo or as root)</span>
+<div><font color="#b45f06" size="3">lh build</font></div>
+<div><span style="font-size:medium;line-height:1.6">debian live manual now uses lb build (same thing?)</span></div>
+<div><font size="3"><br>
+</font></div>
+<div><span style="line-height:27px;font-size:medium">to cleanup the working directory to build again&nbsp;</span><br style="line-height:27px;font-size:medium">
+<font color="#b45f06" style="line-height:27px;font-size:medium">lh clean --binary</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">to build again with changes to config (this cleans chroot so all the packages will need unpacking again with the next build)<br>
+<font color="#b45f06">lh clean</font></font></div>
+<div><font color="#b45f06" size="3">..</font></div>
+<div><font color="#b45f06" size="3">lh build</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">to build with interactive options</font></div>
+<div>
+<div><font color="#b45f06" size="3">lh clean</font></div>
+<div><font color="#b45f06" size="3">lh config --interactive shell</font></div>
+<div><font color="#b45f06" size="3">lh build</font></div>
+</div>
+<div><br>
+</div>
+The iso file will be created (if successful) in the "my-livecd" directory, which just needs (renaming and) burning to disk or sending to a usb stick.
+<div><font color="#b45f06" size="3"><br>
+</font></div>
+You can make a live build from your installed system with (haven't tested it myself)
+<div><font color="#b45f06" size="3">lh config --bootstrap copy --debian installer live</font></div>
+<div><font color="#b45f06" size="3">lh build</font></div>
+<div><font color="#b45f06" size="3"><br>
+</font></div>
+<div>
+<hr>
+</div>
+<div><font color="#3d85c6" size="4"><b>Notes</b></font></div>
+<div>
+<ul><li><span style="font-size:medium">if a build has been interrupted, lh build might fail, if so do</span></li></ul>
+</div>
+<div><font color="#b45f06" size="3"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>lh clean --purge &amp;&amp; lh build</font></div>
+<div><font size="3"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>but it will clean out the cache! &nbsp;</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp; Example, the build fails with an error:&nbsp;</span></span></font></div>
+<div>
+<div><font size="3">&nbsp;<span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<span style="background-color:rgb(217,210,233)"> </span></span></font><span style="font-size:16px;line-height:1.6;background-color:rgb(217,210,233)"><font color="#134f5c">P: Configuring file /etc/debian_chroot</font></span></div>
+<div><font color="#134f5c" style="background-color:rgb(217,210,233)">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;/usr/share/live/build/scripts/build/lb_chroot_debianchroot: 50: /usr/share/live/build/scripts/build/lb_chroot_debianchroot: cannot create&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;chroot/etc/debian_chroot: Directory nonexistent</font></div>
+<div><font color="#134f5c" style="background-color:rgb(217,210,233)">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;P: Begin unmounting filesystems...</font></div>
+<div><font color="#134f5c" style="background-color:rgb(217,210,233)">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;P: Saving caches...</font></div>
+<div><font color="#134f5c" style="background-color:rgb(217,210,233)">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;chroot: failed to run command `/usr/bin/env': No such file or directory</font></div>
+</div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp; Another one would be:</span></span></font></div>
+<div><font size="3">&nbsp;&nbsp; &nbsp;&nbsp; <font color="#134f5c">&nbsp;<span style="background-color:rgb(217,210,233)">&nbsp;</span></font><font color="#134f5c" style="background-color:rgb(217,210,233)">P: Begin install linux-image... cp: cannot stat `chroot/boot/vmlinuz-*': No such file or directory&nbsp;</font></font></div>
+<div><font size="3"><font color="#134f5c" style="background-color:rgb(217,210,233)"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>P: Begin unmounting filesystems</font></font></div>
+<div><font size="3"><font color="#134f5c"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp;</span></span></font></font> And this error would require unmounting the file system where the build was in process in order to build successfully.&nbsp;<a href="http://www.mail-archive.com/debian-live-devel@lists.alioth.debian.org/msg03522.html" style="font-size:16px;line-height:1.6">mail-archive...</a></div>
+<div><br>
+</div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp; Another error I had was aptitude failing to download packages and reporting:</span></span><br>
+</div>
+<div><span><span><span>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<font color="#073763">&nbsp;</font></span></span></span><font color="#073763" style="background-color:rgb(204,204,204)">E: Cannot get debconf version. Is debconf installed?</font></div>
+        
+<div>
+<font size="3"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp;&nbsp;</span></span></font><span style="font-size:medium;line-height:1.6">try fixing this with</span></div>
+<div><font size="3"><span><span><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span><font color="#b45f06">cd&nbsp;</font></span></span><font color="#b45f06">&nbsp;chroot/var/lib/dpkg/</font></font></div>
+<div><font size="3"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp;&nbsp;</span></span></font><span style="font-size:medium;line-height:1.6">#<font color="#b45f06">cp available-old available &amp;&amp; cp diversions-old diversions &amp;&amp; cp status-old status</font></span></div>
+<div><font size="3"><br>
+</font>
+<ul><li><font size="3">I also found out that build will terminate prematurely if the filesystem is mounted with "noexec" or "nodev" (which are set by "user" or "users" in fstab!) So what I did was edit /etc/fstab for the partition I'm using for backups and live-helper, remove "users" from the line, then </font><font color="#b45f06" style="font-size:medium">sudo umount /dev/sda8&nbsp;</font>(unmounted it) followe<font size="3">d by </font><font color="#b45f06" style="font-size:medium">sudo mount /dev/sda8 /media/BKP&nbsp;</font>(remounted it to a dir in /media) <span style="background-color:rgb(255,217,102)">-because of this running live build on a separate partition to any system/data partition is probably essential.</span>&nbsp;Then use <font color="#b45f06">sudo chown -R &lt;user&gt; /media/{abc}/my-livecd</font> to allow write access to the live build directory, which is more useful.</li>
+<li><span style="font-size:medium">the build may also terminate if APT is specified and there is a package not&nbsp;found. You can switch to Aptitude so that the build won't terminate on these, with:&nbsp;</span><span style="line-height:27px;color:rgb(180,95,6);font-size:medium">lh config --apt aptitude</span></li></ul>
+</div>
+<div>
+<ul><li><font size="3">there's a catch to turning off package recommends as there are some needed recommends (to make the live cd work) and these will need to be added to the package lists (list made above), see&nbsp;</font><font size="3"><a href="http://live.debian.net/manual/html/live-manual/customizing-package-installation.en.html#449">customizing-package-installation</a></font></li>
+<ul><li><span style="font-size:medium;line-height:27px">recommends for </span><font size="3" style="font-size:16px;line-height:1.6"><span style="line-height:25px"><a href="http://packages.debian.org/wheezy/live-boot">live-boot</a>&nbsp;and&nbsp;</span><span style="line-height:24px"><a href="http://packages.debian.org/wheezy/live-config">live-config</a>&nbsp;</span><span style="line-height:26px">include: <font color="#cc0000">eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup</font></span></font></li></ul></ul>
+</div>
+<div>
+<ul>
+<li><font size="3"><span style="line-height:26px">my build couldn't find "linux-firmware" even with "contrib non-free" set in the config so I got the deb files&nbsp;and put them config/packages.chroot, which were:<b><font color="#0b5394">&nbsp;</font></b></span></font><b><font color="#0b5394"><span style="line-height:26px;font-size:medium">firmware-linux&nbsp;</span><span style="line-height:26px;font-size:medium">firmware-linux-free&nbsp;</span></font></b><span style="line-height:26px;font-size:medium"><b><font color="#0b5394">firmware-linux-nonfree</font></b> from&nbsp;</span><font size="3"><span style="line-height:25px"><a href="http://packages.debian.org/wheezy/firmware-linux">http://packages.debian.org</a></span></font></li>
+<li><font size="3">I also downloaded and put&nbsp;<span style="line-height:27px"><b><font color="#0b5394">debian-installer-launcher </font></b>in&nbsp;</span><span style="line-height:26px">config/packages.chroot to make sure it was added.</span></font></li>
+<li><font size="3"><span style="line-height:26px">the first time I got stuck with&nbsp;</span></font><span style="line-height:25px;font-size:medium">multiarch-support&nbsp;</span><span style="line-height:25px;font-size:medium">libgcc1</span><span style="line-height:25px;font-size:medium">&nbsp;libc6 pre-depends circle! &nbsp;But that may have been fixed now as a bug.</span></li>
+<li><font size="3"><span style="line-height:25px">Second time the Live CD built successfully! But I had no live-installer because my lh config flag was <font color="#38761d">--debian-installer=true</font> (incorrect) and not&nbsp;</span><span style="line-height:24px">&nbsp;<font color="#38761d">--debian-installer live</font></span></font></li>
+<li><font size="3">Third time and "LiveInstaller" was found in the Other sub-menu (it is also found in System &gt;Install Debian Sid).  It complained about the kernel version that I needed to boot the 486 kernel, but I just <span style="line-height:26px">continued and it allowed me to install. &nbsp;</span></font></li>
+<li><font size="3"><span style="line-height:25.981481552124023px">Xfce4-power-manager and catfish were the only two app's that couldn't run on the new install. &nbsp;Running apt-get build-dep I found quite a lot of dependencies were missing. &nbsp;I guess these could be added to a package list to get them added to the build. &nbsp;Run these commands in the build directory:</span></font></li></ul>
+<font size="3"><span style="line-height:25.962963104248047px">catfish</span></font>
+</div>
+<div style="overflow:auto;width:750px;height:60px;background-color:#ffccff">
+ for p in binutils build-essential debhelper dpatch dpkg-dev g++ g++-4.7 gcc gcc-4.7
+  gettext gettext-base html2text intltool-debian libasprintf0c2 libc-dev-bin
+  libc6-dev libdpkg-perl libgettextpo0 libitm1 libstdc++6-4.7-dev
+  linux-libc-dev make patch po-debconf ;do echo $p &gt;&gt; config/package-lists/catfishdep.list.chroot ;done
+</div>
+<div><br>
+</div>
+<font size="3">xfce4-power-manager</font><br>
+<div style="overflow:auto;width:750px;height:60px;background-color:#ffccff">
+ for p inautoconf automake autotools-dev binutils build-essential debhelper dpkg-dev
+  g++ g++-4.7 gcc gcc-4.7 gettext gettext-base gir1.2-notify-0.7
+  gir1.2-polkit-1.0 html2text intltool intltool-debian libasprintf0c2
+  libatk1.0-dev libc-dev-bin libc6-dev libcairo-script-interpreter2
+  libcairo2-dev libdbus-1-dev libdbus-glib-1-dev libdpkg-perl libexpat1-dev
+  libfontconfig1-dev libfreetype6-dev libgdk-pixbuf2.0-dev libgettextpo0
+  libglib2.0-bin libglib2.0-dev libgtk2.0-dev libice-dev libitm1 libnotify-dev
+  libpango1.0-dev libpcre3-dev libpixman-1-dev libpng12-dev
+  libpolkit-gobject-1-dev libpthread-stubs0 libpthread-stubs0-dev libsm-dev
+  libstdc++6-4.7-dev libx11-dev libxau-dev libxcb-render0-dev libxcb-shm0-dev
+  libxcb1-dev libxcomposite-dev libxcursor-dev libxdamage-dev libxdmcp-dev
+  libxext-dev libxfce4ui-1-dev libxfce4util-dev libxfconf-0-dev libxfixes-dev
+  libxft-dev libxi-dev libxinerama-dev libxrandr-dev libxrender-dev
+  linux-libc-dev m4 make patch pkg-config po-debconf x11proto-composite-dev
+  x11proto-core-dev x11proto-damage-dev x11proto-fixes-dev x11proto-input-dev
+  x11proto-kb-dev x11proto-randr-dev x11proto-render-dev x11proto-xext-dev
+  x11proto-xinerama-dev xfce4-panel-dev xorg-sgml-doctools xtrans-dev
+  zlib1g-dev ;do echo $p &gt;&gt; config/package-lists/xfce4-pman-dep.list.chroot ;done
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<div><br>
+</div>
+<br>
+<div><font color="#3d85c6" size="4"><b>Install problems</b></font></div>
+<div>
+<ul><li><font size="3">No ext3 or ext4 partitioning option! &nbsp;So I had to select "Use free space automatically". &nbsp;this made ext4 partitions for / and /home and a swap of 4Gb. &nbsp;Later, with Gparted, I removed the /home and swap partitons and made new ones (smaller). &nbsp;After booting the system, and logging in as root, /etc/fstab needed making and /dev/sda? mounting to /home. &nbsp;Then I could log in as my user.</font></li>
+<li><font size="3">with one install I still couldn't log-in the user, so logged in a root, deleted that user with <font color="#b45f06">deluser bob</font> and then added it again with <font color="#b45f06">adduser bob</font>, and bob was then added to /home and I could log-in</font></li>
+<li><font size="3">GRUB did not install and, as I was installing to a Win7 machine and needed it to dual-boot, I used Super Grub (Rescatux) to boot the new OS, then I ran</font></li></ul>
+<font color="#b45f06" size="3"><span style="line-height:27px">
+<div><font color="#b45f06" size="3"><span style="line-height:27px">sudo apt-get install grub</span></font></div>
+sudo grub-install /dev/sda</span></font></div>
+<div>
+<ul><li><font size="3"><span style="line-height:24px">Grub Recover CD does a good job too, automatically searches for OS and installs GRUB with options -see my <a href="../helps/02-grub.html">GRUB page</a></span></font></li>
+<li><font size="3"><span style="line-height:24px">In fact, if I attempted GRUB install the installer terminated early without finishing (set up users and passwords etc) so I found I had to use the "Go back" button at Configure Mirrors stage in order to select "Continue without installing GRUB".</span></font></li></ul>
+</div>
+
+</div>

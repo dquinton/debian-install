@@ -1,0 +1,188 @@
+---
+layout: default
+description: Methods for repairing or editing GRUB - by D Quinton
+title: Grub
+id: help
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Super Grub2</a></li>
+                <li><a href="#2">Grub Customizer</a></li>
+                <li><a href="#3">Boot Repair Disk</a></li>
+                <li><a href="#4">Chroot </a></li>
+                <li><a href="#5">Rescue Mode </a></li>
+                <li><a href="#6">custom entry </a></li>
+              </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Super Grub2</a><br>
+   <a href="#2">Grub Customizer</a><br>
+   <a href="#3">Boot Repair Disk</a><br>
+   <a href="#4">Chroot </a><br>
+   <a href="#5">Rescue Mode </a><br>
+   <a href="#6">custom entry</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../helps.html">Helps</a> ></div>
+
+<div class="cont">
+
+<div><font size="4"><b>Some options for installing GRUB to disk, adding a new OS to GRUB, or updating GRUB</b></font></div>
+<div><font size="3"><span style="line-height:27px">(there are other ways, such as writing to a custom and adding using the OS prober)</span></font></div>
+<div><font size="3"><span style="line-height:27px"><br>
+</span></font></div>
+
+<h2 id="1" class="tag">1 ....Boot a new OS with Super Grub2 on a thumb drive</h2>
+<div><font size="3">then enter in the terminal in the booted OS:</font></div>
+<div><font color="#cc0000" size="3">sudo apt-get install grub</font></div>
+<div><font color="#b45f06" size="3">sudo grub-install /dev/sda</font></div>
+<div><font size="3">(where "sda" is the root of the hard disk you want to install GRUB on)</font></div>
+<div><font size="3"><br>
+</font></div>
+<div>
+<div style="line-height:27px;font-size:medium">super grub2 (boots into a OS with no GRUB yet installed on the machine)</div>
+<div style="line-height:27px;font-size:medium"><a href="http://www.supergrubdisk.org/" rel="noreferrer">http://www.supergrubdisk.org/</a></div>
+</div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><br>
+</font></div>
+
+<h2 id="2" class="tag">2 ....Add OS to the GRUB menu and set a splash screen with Grub Customizer</h2>
+<div><font size="3">this is easy if there is already an OS on the machine with this programme installed - it tends to work fine detecting other Linux installs, but it may fail detecting Win7 or Win8 OS, Android etc.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3"><b>deb</b></font></div>
+<div><font size="3">get from Ubuntu page here&nbsp;</font><span style="background-color:transparent"><font size="3"><a href="https://launchpad.net/~danielrichter2007/+archive/ubuntu/grub-customizer/+packages">https://launchpad.net/~</a>&nbsp;and run apt-get install -f if there are needed dependencies</font></span></div>
+<div><span style="background-color:transparent"><font size="3"><br>
+</font></span></div>
+<div><span style="background-color:transparent"><font size="3"><b>source</b></font></span></div>
+<div><font size="3"><a href="https://answers.launchpad.net/grub-customizer/+faq/1397" rel="noreferrer">https://answers.launchpad.net...</a>&nbsp;</font><span style="font-size:medium">(v 3.0.1 or higher)</span></div>
+<div><font size="3">make sure you have installed dependencies</font></div>
+<div><font color="#cc0000" size="3">sudo apt-get install cmake libgtkmm-3.0-dev libssl-dev libarchive-dev</font></div>
+<div><font size="3">(check the list on the site page)</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">unpack it and&nbsp;</font><span style="font-size:medium;line-height:27px">build with (note the "dot" after "cmake")</span></div>
+<div><span style="line-height:27px;font-size:medium"><font color="#b45f06">cmake .</font></span></div>
+<div><span style="line-height:27px;font-size:medium"><font color="#b45f06">make</font></span></div>
+<div><span style="line-height:27px;font-size:medium"><font color="#b45f06">sudo make install</font></span></div>
+<div><font size="3"><span style="line-height:26px"><br>
+</span></font></div>
+<div><span style="font-size:medium">how to use&nbsp;</span><a href="http://www.howtogeek.com/howto/43471/how-to-configure-the-linux-grub2-boot-menu-the-easy-way/" rel="noreferrer" style="font-size:medium">http://www.howtogeek.com...</a></div>
+<div>
+<ol><li><span style="font-size:medium;line-height:26px;background-color:transparent">On running it searches for</span><span style="font-size:medium;line-height:26px;background-color:transparent">&nbsp;OS's. Then you can edit the names to alter how they will appear on the GRUB menu at boot. &nbsp;</span></li>
+<li><span style="font-size:medium;line-height:26px;background-color:transparent">Change any particulars, like the time out for GRUB screen.&nbsp;</span></li>
+<li><font style="background-color:transparent;font-size:16px;line-height:1.6"><span style="line-height:26px"><font size="3">click save and then</font></span></font><span style="background-color:transparent;font-size:medium;line-height:27px">&nbsp;&gt;File &gt;write to MBR for GRUB to be updated (File &gt;save only saves settings in Grub Customizer).</span></li>
+</ol>
+</div>
+<div><span style="font-size:medium;line-height:27px"><br>
+</span></div>
+<div><span style="font-size:medium;line-height:27px"><br>
+</span></div>
+
+<h2 id="3" class="tag">3 ....Boot Repair Disk </h2>
+<div><font size="3"><a href="http://sourceforge.net/projects/boot-repair-cd/" rel="noreferrer">http://sourceforge.net/projects/boot-repair-cd/</a><br>
+Run this Live CD and the Recovery app automatically searches for OS's. &nbsp;Open the Advanced options to choose location to install GRUB (set it to the root of your main harddisk, e.g. sda) and any other particulars.&nbsp;</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><font size="3">You can install Boot repair to your system as well, but to detect and repair GRUB it must be run during a live session.</font></div>
+<div><font size="3"><br>
+</font></div>
+<div><span style="font-size:medium;line-height:1.6;background-color:transparent"><span>&nbsp;&nbsp; &nbsp;</span>1. get packages boot-repair and boot-sav ..&nbsp;</span><br>
+<span style="font-size:medium;line-height:1.6;background-color:transparent">download from <a href="https://launchpad.net/~yannubuntu/+archive/ubuntu/boot-repair/+sourcepub/3748536/+listing-archive-extra">https://launchpad.net/</a>&nbsp;or</span><span style="font-size:medium;line-height:1.6;background-color:transparent">&nbsp;</span><span style="font-size:medium;line-height:1.6;background-color:transparent"><a href="https://launchpad.net/~yannubuntu/+archive/ubuntu/boot-repair/+packages">https://launchpad.net/...</a></span><br>
+<div><font size="3"><span>&nbsp; &nbsp; 2.&nbsp;</span>install glad2script - download and install the .deb package from&nbsp;</font><span style="font-size:medium;line-height:1.6;background-color:transparent"><a href="https://launchpad.net/glade2script">https://launchpad.net/glade2script</a></span></div>
+</div>
+<div><span style="font-size:medium;line-height:1.6;background-color:transparent"><font color="#cc0000">sudo dpkg glad</font>&lt;tab&gt;</span></div>
+<div><font style="font-size:16px;line-height:1.6;background-color:transparent">&nbsp; &nbsp; 3. get and&nbsp;install parted -&nbsp;</font><span style="font-size:medium;line-height:1.6;background-color:transparent"><a href="https://packages.debian.org/wheezy/parted">https://packages.debian.org/...</a></span></div>
+<div><span style="font-size:medium;line-height:1.6;background-color:transparent"><span>&nbsp; &nbsp; 4.&nbsp;</span>then install the boot-sav package with dpkg</span></div>
+<div><span style="font-size:medium;line-height:1.6;background-color:transparent"><span>&nbsp; &nbsp; 5.&nbsp;</span></span><span style="font-size:medium;line-height:1.6;background-color:transparent">finally install boot-repair package with dpkg</span></div>
+<div><font size="3"><br>
+</font></div>
+<div><br>
+</div>
+<div>
+<h2 id="4" class="tag">4 ...Chroot from a Live environment into the new OS's partiton and install GRUB </h2>
+<div>
+<div style="font-size:medium"><font color="#b45f06">mount /dev/sda2 /mnt</font></div>
+<div style="font-size:medium"><font color="#b45f06">mount -t proc proc /mnt/proc</font></div>
+<div style="font-size:medium"><font color="#b45f06">mount -o bind /dev /mnt/dev</font></div>
+<div style="font-size:medium"><font color="#b45f06">mount&nbsp;</font><span style="color:rgb(180,95,6);line-height:28.4444465637207px">-t sysfs</span><font color="#b45f06">&nbsp;/sys /mnt/sys</font></div>
+<div style="font-size:medium"><font color="#b45f06">chroot /mnt</font></div>
+<div style="font-size:medium"><font color="#b45f06">grub-install /dev/sda</font></div>
+<div style="font-size:medium"><font color="#b45f06">update-grub</font></div>
+<div style="font-size:medium"><font color="#b45f06">exit</font></div>
+<div style="font-size:medium"><font color="#b45f06">
+<div>umount /mnt/{proc,sys,dev}</div>
+<div>umount /mnt</div>
+</font></div>
+<div style="font-size:medium"><br>
+</div>
+</div>
+<div style="font-size:medium">see my chroot page under help</div>
+<div style="font-size:medium"><br>
+</div>
+<div style="font-size:medium"><br>
+</div>
+
+<h2 id="5" class="tag">5 ....Using Rescue Mode of a net install CD </h2>
+<div style="font-size:medium"><a href="http://www.debian.org/releases/stable/i386/ch08s07.html.en" rel="noreferrer">http://www.debian.org/...</a></div>
+<div style="font-size:medium">type "rescue" at boot prompt ? or select Advanced &gt; Graphical Rescue Mode</div>
+<div style="font-size:medium">when it arrives at rescue mode, select the mount point for the OS partition e.g. sda5</div>
+<div style="font-size:medium">test the internet connection</div>
+<div style="font-size:medium"><font color="#b45f06">ping debian.org</font></div>
+<div style="font-size:medium">edit /etc/apt/sources.list if necessary</div>
+<div style="font-size:medium">
+<div style="font-size:13px;line-height:23px"><span style="color:rgb(204,0,0);font-size:medium">apt-get update</span></div>
+<div style="font-size:13px;line-height:23px"><font color="#cc0000" size="3">apt-get install grub</font></div>
+<div style="font-size:13px;line-height:23px"><font color="#b45f06" size="3">grub-install /dev/sda</font></div>
+</div>
+<div style="font-size:13px;line-height:23px"><font color="#b45f06" size="3">reboot</font></div>
+<div style="font-size:13px;line-height:23px"><font color="#b45f06" size="3"><br>
+</font></div>
+<div style="font-size:13px;line-height:23px"><font color="#b45f06" size="3"><br>
+</font></div>
+<h2>6 ....Using a custom entry</h2>
+<div><span style="line-height:28.444446563720703px">which is really what Grub Customizer (above) does for you - but it might not pick up the OS! &nbsp;It didn't pick up a Windows 7 OS on a laptop I installed Debian on recently, so I had to use this manual approach.<br>
+</span>
+<div><font size="3"><span style="line-height:28.444446563720703px"><u><a href="https://wiki.archlinux.org/index.php/GRUB#Automatically_generating_using_.2Fetc.2Fgrub.d.2F40_custom_and_grub-mkconfig" rel="noreferrer">https://wiki.archlinux.org/</a></u></span></font></div>
+<div>
+<ol><li><span style="line-height:28.444446563720703px;font-size:medium;background-color:transparent">edit the file /etc/grub.d/40_custom with an entry for the OS to be added (see examples on the Arch Wiki page)</span></li>
+<li><span style="line-height:28.444446563720703px;font-size:medium;background-color:transparent">then run: <font color="#b45f06">sudo update-grub&nbsp;</font></span>- OS prober will look for the OS in the custom entries file and add it to GRUB</li>
+</ol>
+</div>
+<div style="font-size:medium;line-height:28.44444465637207px"><br>
+</div>
+</div>
+<br>
+Read up here<br>
+<div>
+<div style="font-size:15.555556297302246px;line-height:28.44444465637207px"><span style="font-size:medium"><a href="http://wiki.debian.org/GrubRecover" rel="noreferrer">http://wiki.debian.org/GrubRecover</a></span></div>
+<div style="font-size:15.555556297302246px;line-height:28.44444465637207px">
+<div style="font-size:medium"><a href="http://www.av8n.com/computer/htm/grub-reinstall.htm" rel="noreferrer">http://www.av8n.com/</a></div>
+<div style="font-size:medium"><a href="http://giantdorks.org/alain/easy-enough-recovery-from-debian-testing-installers-failure-to-install-grub-during-setup/" rel="noreferrer">easy-enough-recovery-from-debian-testing-installers-failure-to-install-grub-during-setup/</a></div>
+</div>
+</div>
+<div style="font-size:medium"><br>
+</div>
+<div style="font-size:medium"><br>
+</div>
+<div><font size="4"><b>Removing a non-present OS from the GRUB menu</b></font></div>
+<div style="font-size:medium">from a booted OS run:</div>
+<div style="font-size:medium"><font color="#b45f06">sudo update-grub</font></div>
+<div style="font-size:medium"><br>
+</div>
+<div style="font-size:medium">Read up on Grub&nbsp;<font size="3"><span style="line-height:26px"><a href="http://www.dedoimedo.com/computers/grub-2.html" rel="noreferrer">dedoimedo.com/</a></span></font></div>
+<div style="font-size:medium"><br>
+</div>
+</div>
+
+</div>

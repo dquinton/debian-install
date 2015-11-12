@@ -1,0 +1,1168 @@
+---
+layout: default
+description: Configuring LXDE and Openbox - by D Quinton
+title: Configure LXDE/Openbox
+id: config
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Auto-start apps</a></li>
+                <li><a href="#2">PCManFM</a></li>
+                <li><a href="#3">Desktop Background</a></li>
+                <li><a href="#4">Themes</a></li>
+                <li><a href="#5">GTK-3</a></li>
+                <li><a href="#6">Colours</a></li>
+                <li><a href="#7">GTK-3 css hacking</a></li>
+                <li><a href="#8">Compositing</a></li>
+                <li><a href="#9">Panels</a></li>
+                <li><a href="#10">LXDE menu</a></li>
+                <li><a href="#11">Openbox menu</a></li>
+                <li><a href="#11b">2nd OB menu</a></li>
+                <li><a href="#12">Key bindings </a></li>
+                <li><a href="#13">GTK Accel's </a></li>
+                <li><a href="#14">Terminal Emulator </a></li>
+                <li><a href="#15">notification daemon</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+  <a href="#1">Auto-start apps</a><br>
+   <a href="#2">PCManFM</a><br>
+   <a href="#3">Desktop Background</a><br>
+   <a href="#4">Themes</a><br>
+   <a href="#5">GTK-3</a><br>
+   <a href="#6">Colours</a><br>
+   <a href="#7">GTK-3 css hacking</a><br>
+   <a href="#8">Compositing</a><br>
+   <a href="#9">Panels</a><br>
+   <a href="#10">LXDE menu</a><br>
+   <a href="#11">Openbox menu</a><br>
+   <a href="#11b">2nd OB menu</a><br>
+   <a href="#12">Key bindings </a><br>
+   <a href="#13">GTK Accel's </a><br>
+   <a href="#14">Terminal Emulator </a><br>
+   <a href="#15">stop notification daemon</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../configure.html">Configure</a> ></div>
+
+
+<div class="cont">
+
+
+<h2 id="1" class="tag">Auto-start apps</h2>
+
+copy the autostart file to the home dir like this
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+rsync /etc/xdg/lxsession/LXDE/autostart ~/.config/lxsession/LXDE/</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+and edit it 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+nano ~/.config/lxsession/LXDE/autostart</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+add the app command as a line preceded by '@'<br>
+e.g. the line needed for Xfce4-power-manager to start up with every log-in would be:
+<form>
+<textarea name="T" id="file" rows="1" cols="30">
+@xfce4-power-manager</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+obviously, if you edit the file in /etc/xdg/lxsession/ it will be set globally for all users.
+And note that anything in the /etc/xdg/ autostart that's not in the home autostart will be run, e.g. the screensaver.
+<br><br>
+
+
+There're another two ways to go about it...<br>
+1. add .desktop files for apps into ~/.config/autostart<br>
+2. run: lxsession-edit - a gui for autostarting by check/uncheck (Desktop Session Settings on the Menu).
+
+<br><br>
+<br><br>
+
+<h2 id="2" class="tag">PCmanFM</h2>
+<span style="color:#800080;">The LXDE file manager does not sort directories/files alphabetically?</span><br>
+look in ~/.config/pcmanfm/LXDE/pcmanfm.conf and change sort_by value to 2<br>
+for detailed list, change view_mode to 4?
+<br><br>
+I would use Thunar any way, if a gui file browser is required, with its very adaptable custom right-click menu actions (see my <a href="thunar.html">Thunar page</a>).
+<br><br>
+The one problem with prefering Thunar, however, is that PCmanFM in LXDE controls the desktop, i.e. the desktop is a folder, so that it can hold shortcuts. So when you open a folder shortcut from the desktop it opens in PCmanFM (unless you make a .desktop file with a `Thunar /dir/` command). If you change things about so that Thunar has the desktop, the right-click menu normal for clicking on folders shows when you click on the desktop which is not optimum, especially if you have a ton of commands on it.
+
+<br><br>
+<br><br>
+
+<h2 id="3" class="tag">Desktop Background</h2>
+Right click on the desktop > Desktop Preferences and choose an image.
+If you've checked the box, "Show menus provided by windows managers when desktop is clicked" in Advanced, you can get back to the Wallpaper dialogue with Alt-F2 (run) pcmanfm --desktop-pref 
+<br><br>
+or make a .desktop file in ~/.local.share/applications, with
+
+<form>
+<textarea name="T" id="file" rows="9" cols="50">
+[Desktop Entry]
+Name=Desktop-Pref
+Comment=lxde set wallpaper
+Exec=pcmanfm --desktop-pref
+Icon=display
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Settings; </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(LXDE in Jessie now has a menu entry for Desktop preferences)
+<br><br>
+
+Or, add it to the OpenBox menu (along with Customise Appearance {lxappearance}, Window Management {obconf} etc) which pops up with right-click on desktop (or at extreme edge of screen when a window is maximised) - once you have told PCmanfm to use the OB menu, "Show menus provided by windows managers.." - See below for setting up the OB menu.
+<br><br>
+Without LXDE and pcmanfm installed, just openbox, you'll need to set up the desktop bg with feh or similar - see my page <a href="config/plain-openbox.html">plain openbox</a>.
+<br><br>
+
+<br><br>
+
+<h2 id="4" class="tag">Themes</h2>
+openbox-themes (installed on the LXDE page) will give a lot of themes to choose from<br>
+here's some more http://customize.org/...
+and here http://box-look.org/...
+<br><br>
+how to install? easy as unpack the zipped file and place the resulting directory into ~/.themes (create it if it's not there).  And you'll find it in Obconf > themes 
+<br><br>
+-themes will only change window borders, not areas inside windows like buttons, which widgets do.
+<br><br>
+In LXAppearance you have widgets, color chooser, cursor, icon themes (need install)<br>
+Window borders and fonts do the same as in Obconf... it's a tad confusing, there's no central config editor to do it all in one go! <br> Obconf does what Openbox needs to do, window borders.  Lxappearance does what lxde wants to do, buttons and fields.
+<br><br>
+To enable better-looking widgets you need gtk2-engines installed..
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install gtk2-engines</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and install the engines with the themes that you want e.g. 
+<form>
+<textarea name="T" id="install" rows="1" cols="100">
+gtk2-engines-xfce gtk2-engines-murrine gtk2-engines-cleanice gtk2-engines-aurora</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+<h3>Mouse cursor themes</h3>
+<form>
+<textarea name="T" id="install" rows="1" cols="100">
+sudo apt-get install dmz-cursor-theme xcursor-themes chameleon-cursor-theme moblin-cursor-theme</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(I've decided I don't like chameleon!)
+
+<br><br>
+<br><br>
+
+<h2 id="5" class="tag">GTK-3</h2>
+Gtk3 is here and quite a few programs use it for their interface, so now you need to install some gtk3 engines - or gtk-3 themes from the web.
+<br><br>
+Install any (e.g. gtk3-engines-xfce) and copy the your-theme/gtk-3.0 folder from /usr/share/themes/your-theme to ~/.themes
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+cp -r theme-name ~/.themes</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+Rename the theme if you still want to have the original to revert to (in /usr/share/) and enter its name in the ~/.config/gtk-3.0 config file. Then see below about setting colours.
+<br><br>
+So now gtk2 themes work with gtk2 apps, and gtk3 themes with gtk3 apps....
+And if all apps are heading for gtk-3, you need to prepare for it - audacious has gone gtk-3 and will revert to gtk-2 and soon will port to Qt.
+<br><br>
+gtk-2.0 themes have a "gtkrc" file with all its settings and can be copied to ~/.themes/theme-name/gtk-2.0 and edited there.<br>
+gtk-3.0 themes have a "gtk.css " file that goes in ~/.themes/theme-name/gtk-3.0<br>
+<a href="http://worldofgnome.org/">http://worldofgnome.org/</a>
+<br><br>
+There is no GUI that can give us total control of our gtk-3 themes, so we have to edit the css files by hand.  These Gnome people are forcing us to do a whole lot of work, just so we get our desktop colours right!  And how will PC learners cope with that?  I hope there will be a GUI in the future.
+
+<br><br>
+<br><br>
+
+<h2 id="6" class="tag">Colours..</h2> 
+The LXAppearance colors don't enable too much control - for example, scroll bars get painted with the highlight color.  So I used gnome-color-chooser, copied its config dir over from a backup, ran it and just clicked apply -and got back to my normal colours. <br>
+The files holding the colour settings are ~/.gtkrc-2.0-gnome-color-chooser and ~/.gnome-color-chooser/config.xml
+<br><br>
+For KDE app's, adjust the appearance settings with KDE's "System Settings" 
+Remember to save your new KDE colour scheme as a profile, so you don't lose all your changes later on by some strange KDE reset to default!
+<br><br>
+Gnome-color-chooser has no affect on Gtk-3 apps eg. Gnome mplayer, zenity dialogues, audacious... 
+<br><br>
+I got a little tired of my root user applications in their near-white colour theme, so I tweaked root's colours with Gnome-color-chooser too.  But to make it easier than starting from scratch, I first saved my normal user's colour theme, with the necessary extension .gnomecc.  
+<br><br>
+Then I ran GnomeCC as root with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+gksu gnome-color-chooser</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+opened the saved theme file and then made changes to Default normal (foregrd/backgrd) and Entry fields normal (foregrd/backgrd), to make the theme a little lighter than normal user's.  Saved that as well to a theme file and clicked Apply.
+<br><br>
+
+<div style="text-align:center">
+<img src="../zimages/debian-6panel1.jpeg" width="400" height="250" alt="my Debian desktop with panels showing">&nbsp;&nbsp;<img src="../zimages/debian-6panel1.jpeg" width="400" height="250" alt="my Debian desktop with panels showing"></div>
+
+<p class="ctr">Above: my thunar, 1. as normal user and 2. as root user</p>
+<br>
+
+So that's.... <br>
+<b>Gnome color chooser</b> for GTK-2 apps<br>
+<b>KDE settings</b> for KDE and Qt apps<br>
+<b>css file hacking</b> for GTK-3 apps<br>
+and there's one more, which you can learn about on my xterm page, the <b>Xresources file</b> for xterm, urxvt, xpdf <br>
+make that two more, the terminal text colours can be set using the <b>bashrc file</b>
+
+<br><br>
+<br><br>
+
+<h2 id="7" class="tag">GTK-3 css hacking</h2>
+I installed the xfce gtk-3 engine and copied a theme that already had a dark appearance - Xfce-dusk - to ~/.themes.<br>
+Then I got experimenting with the different colors at top of file - and note that capital letters are not permitted.
+
+<form>
+<textarea name="T" id="file" rows="20" cols="50">
+window body
+@define-color bg_normal #232323;
+
+menu bar text
+@define-color fg_normal #ffd600;
+
+field bg 
+@define-color base_normal #323232;
+
+field text
+@define-color text_normal #ffd600;
+
+field selected text
+@define-color text_selected #ffd600;
+
+selected text bg 
+@define-color base_selected #7e3357;
+
+hover bg
+@define-color base_prelight #7d2852;</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+Once you make a colour change, save the file, and open a GTK-3 app, such as audacious or g-mplayer.<br>
+This got back my colours, something similar to my GTK-2 config, but still it's not perfect - audacious tab text is not altered and also the theme itself needs some work as all the tabs and buttons are practically without any spacing, crowded up.
+<br><br>
+
+<h3>ObTheme</h3>
+download from here under src link <a href="http://xyne.archlinux.ca/projects/obtheme/">http://xyne.archlinux.ca/projects/obtheme/</a>
+<br><br>
+Well, it looks full of details, perhaps way too much, and with no preview of any styles applied.  Needs development.<br>
+To make the python script run I had to remove parts of it!  line 27: delete "From Fuse.." , line 2654: delete "Stat)", line 2668: delete whole part referring to Fuse.
+
+<br><br>
+<br><br>
+
+<h2 id="8" class="tag">Compositing</h2> 
+LXDE uses Openbox WM and does not support composition natively (of its own) as it is a light-weight system and things like transparency and shadows, fading etc take up resources.  Other window managers do that, such as Metacity, XFWM4 or Compiz.  The LXTerminal uses seudo-transparency (fake) as it steals the desktop background and displays it in the window and doesn't show other open windows behind it (aha, that's before compton comes in, because it does display proper alpha with this running).  That's probably only useful when its kept permanently on the desktop -see below.
+<br><br>
+For compositing with openbox, look no further than this clever man, Christopher Jeffrey's program called compton, which builds on xcompmgr.<br>
+<a href="https://github.com/chjj/compton/">https://github.com/chjj/compton/</a>
+<br><br>
+get dependencies for the latest version to install -compton-master:
+
+<form>
+<textarea name="T" id="install" rows="1" cols="100">
+sudo apt-get install libconfig-dev asciidoc libdrm-dev libgl1-mesa-glx libgl1-mesa-dev</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+download the zip file and extract (need unzip)<br>
+open terminal in the extracted dir and do<br>
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+make
+sudo make install</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+if you want to run checkinstall instead (which will create a deb archive and a simple means to uninstall compton later) you need to select 3 when checkinstall gives options, and change the version number as checkinstall won't succeed if the version no. begins with a character (not a digit).
+<br><br>
+kill xcompmgr if running, or any other compositor with killall <compositor-name>
+
+run in terminal 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+compton -cC -i 0.8 -e 0.8 -m 0.8 -r 4 -l -4 -t -4</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+where 0.8 is the opacity factor between 0.1 and 1.0, -i is the inactive window opacity, -e is window frame opacity, -m is drop-down and pop-up menus.  I prefer 0.8. 
+<br><br>
+the -r 4 -l -4 -t -4 is the shadow position: where -r is the shadow radius, -l is the left offset and -t is the top offset and value is pixels (default is -15)
+<br><br>
+add the command with most suitable options to the autostart i.e. as above but with an '@' before the line.
+<br><br>
+
+
+Very nice for my openbox desktop!  Thank you sir.
+<br><br>
+<a href="https://github.com/chjj/compton/blob/master/man/compton.1.asciidoc">man page</a> - <a href="https://wiki.archlinux.org/index.php/Compton">Arch page</a>
+<br><br>
+The Arch page is very helpful as it gives us a config file to use with compton (latest git version: compton-master) which has much more versitality.  <br>
+Copy it and save to file .compton.conf in your home dir.  Here's my <a href="/files/comptonconf.html">.compton.conf</a>
+<br><br>
+Edit it to your liking and try it out with,
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+compton --config ~/.compton.conf</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and that can go in the autostart list.
+
+
+<br><br>
+<br><br>
+
+<h2 id="9" class="tag">Panels</h2> 
+You can have four panels with LXDE.  The options are very adequate for setting the geometry and launcher content.  A wide panel with small icons will result in a double layer.
+
+If you have panels from another LXDE desktop which you'd like to migrate, you can copy the files found in ~/.config/lxpanel/LXDE/panels/ over to the new install, and then you can restart the panels with a command like:
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+killall lxpanel && lxpanel -p LXDE &</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+where the -p sets the panel profile (it might work without it)
+<br><br>
+For those who would like to try something other/more capable than lxpanel, take a look at <a href="http://fbpanel.sourceforge.net/">fbpanel</a> or <a href="https://code.google.com/p/tint2/">tint2</a>
+<br>
+<h3>Clock format</h3>
+
+right-lick on the clock on the panel and set your macros: <br>
+
+<b>%c</b> full time n date,  <b>%x</b> date, <b>%X </b>local time 12hr,<br>
+<b>%R</b> hour n minute, <b>%H</b> hour, <b>%M</b> minute, <b>%S</b> seconds, <b> %s</b> seconds of the day! <br>
+<b>%A</b> wk day, <b>%d</b> day of month, <br>
+<b>%m</b> month numeral, <b>%h</b> month name, <b>%g</b> year numeral  <br>
+<br><br>
+e.g. <b>%R:%S %d.%h</b> gets you "23:01:22 11.Oct"
+
+
+<br><br>
+<br><br>
+
+<h2 id="10" class="tag">Edit the LXDE menu</h2> 
+The gui menu editors are generally all useless - so a hack is needed like with Xfce.  
+<br><br>
+You can move apps around to other sub-menus quite easily by copying their .desktop file from /usr/share/applications to ~/.local/share/applications and editing their Category.  The Menu updates pretty fast.
+<br><br>
+To omit a program from the menu entirely, open its .desktop file and add the line <span style="color:#076b00">NoDisplay=true</span>
+<br><br>
+To launch Gparted from the main menu I had to change the line in its .desktop file from Exec=gparted-pkexec to Exec=gksu gparted
+with the original exec command my desktop completely froze.
+<br><br>
+<span class="ht">[hint: to escape a desktop freeze, press Ctrl-Alt-F2 to switch to console 2, then login, and type 'killall openbox' followed by 'startx']</span>
+<br><br>
+<br>
+<h3>Add/remove menu categories</h3>
+
+1. Make a .directory file (which allocates the category name and icon)
+e.g.
+<form>
+<textarea name="T" id="cmd" rows="2" cols="50">
+cd /usr/share/desktop-directories
+sudo nano dvd.directory</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+paste this content, or similar, with Shift-insert or middle mouse button:
+
+<form>
+<textarea name="T" id="file" rows="5" cols="30">
+[Desktop Entry]
+Encoding=UTF-8
+Type=Directory
+Name=Dvd
+Icon=cdrom_unmount</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(you can find icons in your icon set in, e.g. /usr/share/icons/tango/16x16/devices/ )
+<br><br>
+
+2. Edit the menu file and add a new category
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo leafpad /etc/xdg/menus/lxde-applications.menu</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form>
+<textarea name="T" id="file" rows="11" cols="80">
+	<!-- dvd -->
+	<Menu>
+		<Name>Dvd</Name>
+		<Directory>dvd.directory</Directory>
+		<Include>
+			<And>
+				<Category>DVD</Category>
+			</And>
+			</Include>
+	</Menu> 
+	<!-- End dvd --></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+3. change categories in any .desktop files (see above) so that they are added to the new menu category.
+<br><br>
+<span style="color:#800080;"><b>The "Other" category sits on the main menu with just about every executable on it from /usr/bin.</b></span><br>
+To solve that problem, edit the /etc/xdg/menus/lxde-applications.menu file and remove the "other" entry entirely.
+
+<br><br>
+<br><br>
+
+<h2 id="11" class="tag">Openbox menu</h2> 
+To use the OB menu (right-click on desktop) make sure "Show menus provided by windows managers..." is checked in Desktop Preferences >Advanced (pcmanfm --desktop-pref)
+<br><br>
+move the config files for editing
+
+<form>
+<textarea name="T" id="cmd" rows="2" cols="50">
+mkdir -p ~/.config/openbox
+cp -p /etc/xdg/openbox/* ~/.config/openbox</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+install openbox menu editor "OBmenu", download <a href="http://obmenu.sourceforge.net/download.html">http://obmenu.sourceforge.net/download.html</a> or apt-get,
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install obmenu</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+how to configure the OB menu <a href="http://urukrama.wordpress.com/openbox-guide/#Menus">http://urukrama...</a>
+pipe menus <a href="http://openbox.org/wiki/Openbox:Pipemenus">openbox.org/wiki</a>
+Arch wiki <a href="https://wiki.archlinux.org/index.php/Openbox">Openbox</a>
+<br><br>
+<img src="../zimages/obmenu.jpeg" width="188" height="510" alt="my OB menu" align="right">
+
+I haven't got around to making any pipe menus (I am not a <i>follow-a-chevron-to-sub-menu-at-right-or-sometimes-left</i> fan), nor have I got debian menu onto my ob menu anyway...
+<br><br><br>
+
+<h3>My example OB menu</h3>
+My menu (right) is rather dark-coloured, which is due to my selected window border theme (Mire_v2_blue).
+<br><br>
+
+To use my OB menu first backup your own,
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+mv ~/.config/openbox/menu.xml ~/.config/openbox/menu.xml.bak</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+Create a new menu file
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+nano ~/.config/openbox/menu.xml</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+and copy the contents of my <a href="/files/obmenu.html">menu.xml</a> to it. Then Ctrl-X,y, Enter to save it.
+<br><br>
+right-click on the desktop or far edge of screen and click on Reconfigure.  Right click again to see the new menu.
+<br><br>
+Click on "OpenBox Menu" in "Settings" on the new OB menu to start making changes (install obmenu first).
+
+Notes:
+I added the panel reset command, as each time the PC wakes up from suspend, an extra blank space appears on the top panel.. 
+<br><br>
+Under "Files" I have "Config files".. a zenity dialogue pops up with a list of regular files to choose from.  This is a script and is easily set to a key bind.
+
+
+<form>
+<textarea name="T" id="file" rows="14" cols="100">
+#!/bin/bash
+
+file=$(zenity --width=360 --height=320 --list --title "Config files" --text "Select file to open"  --column File "sources.list" "fstab" "lightdm.conf" "autostart" "lxde-rc.xml")
+
+if [ "$file" = "sources.list" ]; then gksu leafpad /etc/apt/sources.list
+elif [ "$file" = "fstab" ]; then gksu leafpad /etc/fstab
+elif [ "$file" = "lightdm.conf" ]; then gksu leafpad /etc/lightdm/lightdm.conf
+elif [ "$file" = "autostart" ]; then leafpad ~/.config/lxsession/LXDE/autostart
+elif [ "$file" = "lxde-rc.xml" ]; then leafpad ~/.config/openbox/lxde-rc.xml
+
+else
+    exit 0
+fi</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+To use yad, which looks nicer than zenity, use this line in the script:
+
+<form>
+<textarea name="T" id="file" rows="2" cols="120">
+file=$(yad --width=300 --height=400 --list --undecorated --text "Select file to open"  --column File sources.list fstab autostart rc.xml menu.xml menu-utility.xml 'ranger rc.conf' --separator='')</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+You will also need to install yad (improved zenity)... from <a href="https://code.google.com/p/yad/downloads/list">../yad/downloads/list</a>
+(download, unpack and install with <span style="color:#994900;">./configure, make, sudo make install</span> )
+<br><br><br>
+
+<h3>Menu Icons</h3>
+To get icons on your ob menu you need to put &#60;showIcons>yes&#60;/showIcons> in the &#60;menu> section near the end of your lxde-rc.xml file.
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+leafpad ~/.config/openbox/lxde-rc.xml</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and then every menu entry in your menu.xml file needs an icon location added (some work), e.g.
+
+<form>
+<textarea name="T" id="file" rows="4" cols="80">
+<item label="Email" icon="~/.config/openbox/icons/icedove.png">
+			<action name="Execute">
+				<execute>icedove</execute>
+			</action></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+copy icons from wherever you can find them in /usr/share/icons/hicolor/48x48/apps/ etc. into somewhere convenient, such as openbox/icons/<br>
+this page might help <a href="http://lxlinux.com/openbox.html">http://lxlinux.com/openbox.html</a>
+<br><br><br><img src="../zimages/obmenu-utility.jpeg" width="150" height="379" alt="my OB menu" align="right">
+
+
+
+<h2 id="11b" class="tag">Make a second menu for utility apps</h2>
+I used to have a panel at desktop right covered with utility apps, but it obstructed the page scroll bar all the time so I scrapped it and made a new ob menu that shows with Super-mouse scroll up.  
+<br><br>
+You can use my menu..
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+nano ~/.config/openbox/menu-utility.xml</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+and copy the contents of my <a href="menu-utlity.html">menu-utlity.xml</a> to it. Then Ctrl-X,y, Enter to save it.
+<br><br>
+right-click on the desktop or far edge of screen and click on Reconfigure. 
+
+<br><br><br>
+Here's how to make a menu - and you could have as many as you liked...
+<div class Here's how it's done...="bullet">
+  <ul><li>Make a new menu with OBmenu</li>
+  <li>Highlight the top line and change the ID in "Id" field below to your liking (the id will be called by the lxde-rc file)</li>
+  <li>Save it (e.g. menu-utility.xml)</li>
+  <li>I just copied the utility and system apps from my menu.xml file into the new menu file</li>
+  <li>Open ~/.config/openbox/lxde-rc.xml</li>
+  <li>In the <b>menu section near the end</b> before applications section, add your new menu file's location, e.g. <span style="color:#076b00">&#60;file>~/.config/openbox/menu-utility.xml&#60;/file></span></li>
+  <li>Go to either keybindings or mouse section in lxde-rc.xml and make an action for the new menu,</li></ul></div>
+
+<form>
+<textarea name="T" id="file" rows="10" cols="50">
+  <keybind key="W-Up">
+    <action name="ShowMenu">
+	   <menu>menu-utility</menu>
+	 </action>
+  </keybind>
+  <mousebind button="W-Up" action="Click">
+    <action name="ShowMenu">
+	   <menu>menu-utility</menu>
+	 </action>
+  </mousebind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+where &#60;menu>menu-utility&#60;/menu> is the menu ID
+<br><br>
+and to get the utility menu up when only the Desktop is seen, add this to the section called &#60;context name="Root">
+<form>
+<textarea name="T" id="file" rows="5" cols="50">
+  <mousebind button="W-Up" action="Press">
+    <action name="ShowMenu">
+       <menu>menu-utility</menu>
+    </action>
+  </mousebind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+Save the file, then reconfigure OB - run 'openbox --reconfigure' or right-click on the desktop and click reconfigure
+<br><br>
+Add icons to your heart's content. (If you can find them -and that's where xfce wins cos of its launcher icon finder).
+<br><br>
+<span class="caut">(note: always duplicate your lxde-rc.xml file while it's working, so that you can rename the duplicate back to lxde-rc.xml when your file gets a syntax error and you can't find what's gone wrong, or can't undo your changes! - but normally you might leave out a closing /keybind or /mousebind that makes OB choke).</span>
+
+<br><br>
+<br><br>
+
+<h2 id="12" class="tag">Key bindings</h2>  
+Openbox allows you to bind nearly any key combination to a command (openbox, bash or script) and the keybinds are made in an easy to edit xml file.  You can edit OB keybinds with graphical help if you like...
+<br><br>
+Obkey is a python script gui for setting up keybindings - download it <a href="https://code.google.com/p/obkey/">here</a><br>
+unpack it, then move it wherever (e.g. ~/.obkey-master)
+<br><br>
+then simply run it with (specifying the lxde config file) 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+~/.obkey-master/obkey ~/.config/openbox/lxde-rc.xml</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+To set keybindings by hand, which is easy but you need to take care and always double check the syntax is correct,
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+leafpad ~/.config/openbox/lxde-rc.xml</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+Once you're done, save the file and then run 'openbox --reconfigure' or right-click on the desktop and click reconfigure.
+<br><br>
+for setting up brightness control keys, see my page <a href="helps/09-screen-brightness.html">screen brightness</a>
+<br><br>
+Below are my typical key bindings, which of course will need some alterations to brightness, volume control for different laptops...
+<br><br>
+more info here <a href="http://openbox.org/wiki/Help:Actions">http://openbox.org/wiki/Help:Actions</a><br>
+urukrama has blogged about it here <a href="http://urukrama.wordpress.com/openbox-guide/#Key_mouse">http://urukrama.wordpress.com...</a> and here <a href="http://urukrama.wordpress.com/2008/07/22/my-openbox-keybindings/">http://urukrama...</a>
+<br><br><br>
+
+W= Super key, C= CTRL, S= Shift, A= Alt
+<br><br>
+
+<form>
+<textarea name="T" id="file" rows="16" cols="80">
+<!-- Keybindings for applications -->
+    <keybind key="W-1">
+      <action name="Execute">
+	     <execute>leafpad</execute>
+      </action>
+    </keybind>
+    <keybind key="W-2">
+      <action name="Execute">
+	     <execute>chromium</execute>
+      </action>
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute">
+        <command>thunar</command>
+      </action>
+    </keybind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+    
+<form>
+<textarea name="T" id="file" rows="6" cols="80">
+<!-- change this to urxvt or whichever terminal you prefer -->
+ <keybind key="W-T">
+    <action name="Execute">
+	 <execute>lxterminal</execute>
+	</action>
+  </keybind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>    
+
+
+<form>
+<textarea name="T" id="file" rows="5" cols="80">
+<!-- keybind to open file with leafpad  -->
+   <keybind key="W-O">
+      <action name="Execute">
+        <execute>sh ~/scripts/open-leafpad</execute>
+      </action>
+    </keybind>      </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form>
+<textarea name="T" id="file" rows="23" cols="80">
+<!-- Super-] paste primary - same as middle click - install xsel and xvkbd - now I add the -delay option to stop characters getting muddled up! -->
+    <keybind key="W-bracketright">
+      <action name="Execute">
+        <command>sh -c 'xsel | xvkbd -delay 4 -xsendevent -file -'</command>
+      </action>
+    </keybind>
+
+<!-- Ctrl-[ copy primary X selection to clipboard (selection even in terminal, then can Ctrl-V in other app) -->
+    <keybind key="C-bracketleft">
+      <action name="Execute">
+        <command>sh -c 'xsel | xsel -ob'</command>
+      </action>
+    </keybind>
+
+<!-- Ctrl-] paste from clipboard (even in terminal) -->
+    <keybind key="C-bracketright">
+      <action name="Execute">
+        <command>sh -c 'xsel -b | xvkbd -delay 4 -xsendevent -file -'</command>
+      </action>
+    </keybind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+ 
+<form>
+<textarea name="T" id="file" rows="23" cols="80">
+<!-- Launch ksnapshot when Print screen key (prt sc) is pressed -->
+  <keybind key="Print">
+    <action name="Execute">
+	<command>ksnapshot</command>
+    </action>
+  </keybind>
+
+<!--keybindings for LXPanel -->
+     <keybind key="W-R">
+      <action name="Execute">
+        <command>lxpanelctl run</command>
+      </action>
+    </keybind>
+ <keybind key="W-U">
+      <action name="Execute">
+        <command>lxde-logout</command>
+      </action>
+    </keybind>
+ <keybind key="W-Escape">
+   <action name="Execute">
+	 <execute>lxtask</execute>
+	</action>
+  </keybind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form>
+<textarea name="T" id="file" rows="6" cols="80">
+<!-- Eject the laptop internal cdrom -->
+    <keybind key="W-J">
+      <action name="Execute">
+        <command>sh -c eject /dev/sr0</command>
+      </action>
+    </keybind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form>
+<textarea name="T" id="file" rows="16" cols="80">
+<!-- Show OB menu -->
+  <keybind key="W-Down">
+   <action name="ShowMenu">
+	  <menu>root-menu</menu>
+	</action>
+  </keybind>
+ <keybind key="W-Up">
+   <action name="ShowMenu">
+	  <menu>menu-utility</menu>
+	</action>
+  </keybind>
+  <mousebind button="W-Middle" action="Press">
+    <action name="ShowMenu">
+     <menu>client-list-combined-menu</menu>
+    </action>
+  </mousebind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form>
+<textarea name="T" id="file" rows="13" cols="80">
+<!--keybindings for Brightness 
+(if you have trouble with your laptop function keys just set your own brightness keys with a script -see my screen brightness page)
+obviously you need to find your own keys-->
+  <keybind key="Insert">
+     <action name="Execute">
+	   <execute>~/.scripts/br-up</execute>
+	  </action>
+  </keybind>
+  <keybind key="F12">
+    <action name="Execute">
+	  <execute>~/.scripts/br-dn</execute>
+    </action>
+  </keybind>    </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form>
+<textarea name="T" id="file" rows="16" cols="80">
+<!-- Keybindings for volume control --> 
+  <keybind key="XF86AudioMute">
+    <action name="Execute">
+      <command>amixer sset Master toggle</command>
+    </action>
+  </keybind>
+  <keybind key="XF86AudioRaiseVolume">
+    <action name="Execute">
+      <command>amixer sset Master 5%+</command>
+    </action>
+  </keybind>
+  <keybind key="XF86AudioLowerVolume">
+    <action name="Execute">
+      <command>amixer sset Master 5%-</command>
+    </action>
+  </keybind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form>
+<textarea name="T" id="file" rows="37" cols="80">
+ <!-- Keybindings for sending windows to different desktops -->
+    <keybind key="W-S-F1">
+      <action name="SendToDesktop">
+        <desktop>1</desktop>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-F2">
+      <action name="SendToDesktop">
+        <desktop>2</desktop>
+        <follow>no</follow>
+      </action>
+    </keybind>
+    <keybind key="W-S-F3">
+      <action name="SendToDesktop">
+        <desktop>3</desktop>
+        <follow>no</follow>
+      </action>
+    </keybind>  
+  <keybind key="W-S-F4">
+      <action name="SendToDesktop">
+        <desktop>4</desktop>
+        <follow>no</follow>
+      </action>
+    </keybind> 
+  <keybind key="W-S-F5">
+      <action name="SendToDesktop">
+        <desktop>5</desktop>
+        <follow>no</follow>
+      </action>
+    </keybind> 
+  <keybind key="A-S-c">
+	  <action name="MoveToCenter"/>
+        </keybind>
+   <keybind key="S-A-z">
+        <action name="Close"/>
+      </keybind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form>
+<textarea name="T" id="file" rows="12" cols="80">
+<!-- Show OB menu with Super key and mouse scroll button - inside the <context name="Frame"> section-->
+<mousebind button="W-Down" action="Click">
+        <action name="ShowMenu">
+	 <menu>root-menu</menu>
+	</action>
+      </mousebind>
+<mousebind button="W-Up" action="Click">
+        <action name="ShowMenu">
+	 <menu>menu-utility</menu>
+	</action>
+      </mousebind></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form>
+<textarea name="T" id="file" rows="17" cols="80">
+ <!-- mousebindings for maximising-minimising windows -->
+      <mousebind button="W-S-Left" action="Click">
+        <action name="Maximize">
+	     </action>
+      </mousebind>
+      <mousebind button="W-S-Right" action="Click">
+        <action name="Unmaximize">
+	     </action>
+      </mousebind>
+      <mousebind button="W-Right" action="Click">
+        <action name="Lower">
+	     </action>
+      </mousebind>
+     <mousebind button="A-Right" action="Click">
+        <action name="Iconify">
+	     </action>
+      </mousebind>
+      <mousebind button="S-A-Right" action="Click">
+         <action name="Close"/>
+      </mousebind>      </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<form>
+<textarea name="T" id="file" rows="8" cols="80">
+<!--  inside the <context name="Root"> section - to show the utility menu when desktop is shown-->
+ <mousebind button="W-Up" action="Press">
+        <action name="ShowMenu">
+          <menu>menu-utility</menu>
+        </action>
+      </mousebind>
+</context></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+script for the above keybind to open a file with leafpad:
+
+<form>
+<textarea name="T" id="file" rows="2" cols="80">
+#!/bin/bash
+leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+<br><br>
+
+<h2 id="13" class="tag">GTK menu accelerators</h2>
+Enable changing menu accelerators in any GTK window so that you can hover a menu item and press a new (available) key-combo for it...
+<br>
+add a line to your ~/.gtkrc-2.0 file,
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+nano ~/.gtkrc-2.0</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<form>
+<textarea name="T" id="file" rows="1" cols="30">
+gtk-can-change-accels=1</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+ 
+
+
+<br><br>
+<br><br>
+
+<h2 id="14" class="tag">Terminal Emulator</h2>  
+
+<img src="../zimages/lxterm_alpha.jpeg" width="502" height="314" alt="lxterminal in half alpha full screen" align="right">
+
+To make Lxterminal open on my desktop no.2, half alpha, and full screen, (with Workspaces set in obconf and lxterminal alpha set with right click in the terminal > Preferences)
+<br><br>
+I add an application to lxde-rc.xml, at the end of the file, 
+
+<form>
+<textarea name="T" id="file" rows="8" cols="50">
+<application name="lxterminal" class="Lxterminal">
+    <decor>no</decor>
+    <desktop>2</desktop>
+    <layer>normal</layer>
+    <skip_pager>yes</skip_pager>
+    <skip_taskbar>no</skip_taskbar>
+    <maximized>true</maximized>
+</application></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+if "skip_taskbar" is set to "yes" then switching desktop you can't type in the terminal without clicking on it.
+<br><br>
+save it and reconfigure OB
+<br><br> 
+To get the terminal sticking to that desktop from startup, just add @lxterminal to autostart (see above).
+<br><br>
+If you maximise some apps that have info/confirm dialogues, the dialogue windows will pop up maximised too!  So best not to do it that way, just maximise the window when open and then close, and hopefully next time it will open maximised.
+
+To get an app opening at a particular position, you add this, changing x, y, and desktop or monitor values,
+
+<form>
+<textarea name="T" id="file" rows="5" cols="50">
+ <position>
+    <x>50</x>
+    <y>200</y>
+      <desktop>1</desktop>
+ </position></textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+To get an app to open with a particular size, you need to add geometry to whatever controls its launch...
+
+<div class="bullet"><ul><li>.desktop file for applications menu e.g. </li></ul></div>
+<span style="color:#076b00">
+Exec=xf write --geometry=100x50</span>
+
+<div class="bullet"><ul><li>keybinding...</li></ul></div>
+<span style="color:#076b00">
+<keybind key="W-T">
+      <action name="Execute">
+        <command>lxterminal --geometry=?x?</command>
+      </action></span>
+
+<div class="bullet"><ul><li>autostart...</li></ul></div>
+<span style="color:#076b00">
+@lxterminal --geometry=?x?</span>
+
+<br><br>
+But if you want to open a terminal for a quick task and don't want to switch desktop, what can we do?  Get used to the terminal on only one desktop and switch to it with Alt-mouse scroll (which is fast).  Or employ another terminal app for opening anywhere.
+<br><br>
+<b>Lxterminal Shortcuts</b>
+
+<table cellpadding="2">
+<tr>
+	<td style="color: #2D46CF; " width="140">Shift-Ctrl T<br>
+	Shift-Ctrl W<br>
+Alt-1,2,3,4..<br>
+Shift-insert<br>
+Ctrl-L</td>
+	<td>new tab<br>
+close tab<br>
+move to tab<br>
+paste (usually)<br>
+clear the terminal</td>
+</tr>
+</table>
+ 
+<br><br>
+<b>Setting the preferred Terminal Emulator</b>
+Run 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+pcmanfm --show-pref=4</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+enter <b>lxterminal -e %s</b> (or your choice)
+<br><br>
+or for Thunar:
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+nano ~/.config/xfce4/helpers.rc</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and change <i>xterm</i> etc for whatever X-terminal you like.
+<br><br>
+terminals to try: 
+rxvt-unicode (in repository) about: <a href="http://www.linuxized.com/2010/08/urxvt-the-unbeatable-terminal/">linuxized.com/...</a>
+lilyterm <a href="http://lilyterm.luna.com.tw/html/download.html">lilyterm.luna.com.tw/...</a>
+
+<br><br>
+Setting terminal prompt style and colours - see my <a href="config/bashrc.html">bashrc page</a>
+
+<br><br>
+<br><br>
+
+<h2 id="15" class="tag">Stop the notification daemon</h2>
+Try this if you don't feel you need to see the many pop-up notifications, like every time you connect to a network or start a video encode:
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo chmod 000 /usr/lib/notification-daemon/notification-daemon</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+to restore it again
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo chmod 755 /usr/lib/notification-daemon/notification-daemon</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+even knock out knotify (a dependency of nearly any KDE app)
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo chmod -x /usr/bin/knotify4</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+restore it again with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo chmod +x /usr/bin/knotify4</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+<b>Next page: </b>
+<br><br>
+<h3><b><a href="plain-openbox.html">Plain Openbox</a></b> - how to run Openbox without LXDE or a display manager</h3>
+<br><br>
+</div>

@@ -1,0 +1,55 @@
+---
+layout: default
+description: How to move your Debian over to the Devuan fork, which is Debian without systemd - by D Quinton
+title: Go Devuan
+id: net
+---
+
+<div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
+
+<div class="cont">
+<a name="1"></a>
+<br>
+I run Debian Jessie without systemd, just because I don't need to go that way - sysvinit boots my system just fine.  But it was getting increasingly difficult to install some packages, and I needed to install bluefish.  This cool html editor however, is dependent on gvfs-backends which depends on libpam-systemd, which depends on the big one, systemd.
+<br><br>
+Enter Devuan.  It looks like they've come a long way developing their Debian fork.  They pretty much repackage anything that depends on systemd and keep anything else as-is - and it must be a massive job to be doing.
+<br><br>
+To migrate to Devuan, at the moment you just need to change your package sources, update, and upgrade and that's all.
+<br><br>
+<div class="bullet"><ul><li>backup the debian sources.list file</li></div>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo cp /etc/apt/sources.list /etc/apt/sources.list-debian</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<div class="bullet"><ul><li>Download <span class="inst">devuan-baseconf</span> from their site <a href="http://packages.devuan.org/">http://packages.devuan.org/</a></li>
+
+<li>Then install it with dpkg -i ... </li>
+
+<li>enter "jessie" as Devuan suite when asked as it's of course the easiest to migrate to from Jessie</li>
+
+<li>Hit enter with "main"</li>
+
+<li>install the devuan keyring and run an upgrade</li></div>
+<br>
+<textarea name="T" id="install" rows="3" cols="50">
+su
+apt-get update && apt-get install devuan-keyring
+aptitude full-upgrade </textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br><br>
+(this upgraded 35 packages and retrieved 4Mb - for a recently updated Jessie install)
+<br><br>
+Now go ahead and install bluefish or whatever, without any systemd dependency issues!
+<br><br>
+<br><br></div><b>Next page: </b>
+<br><br>
+<h3><a href="../configure.html">Configure Debian</a></h3>
+<br><br>
+
+</div>

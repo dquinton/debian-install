@@ -1,0 +1,137 @@
+---
+layout: default
+description: Transferring files between two Debian boxes via a cross-over cable using nfs - by D Quinton
+title: Networking with nfs
+id: tutor
+---
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+All I've got round to in the world of networking computers is the two-box senario!
+<div>I use a patch Cat6 cable which I happened to buy in the store and connect this to the LAN ports of my DT and laptop - and they can see each other with it. &nbsp;</div>
+<div><br>
+</div>
+<h2>Cross-over cable?</h2>
+<div>It's not at all necessary to find a "cross-over" cable these days (which wires the send to receive and receive to send) as modern Ethernet adapters have the&nbsp;MDI/MDIX function which can detect the send/receive wires. see here&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent"><a href="http://askubuntu.com/questions/59906/how-do-i-connect-my-desktop-and-my-laptop-using-an-ethernet-cable-to-transfer-fi" rel="noreferrer">http://askubuntu.com/questions/59906/...</a>&nbsp;</span><a href="http://forums.speedguide.net/showthread.php?279146-PC-to-PC-communication-using-straight-cable-Cat6" rel="noreferrer" style="font-size:16px;line-height:1.6;background-color:transparent">http://forums.speedguide.net/...</a>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="5">Sharing the internet connection from one box to another</font></b></div>
+<div>If you use that pesty&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">firestarter, you'll need to configure it slightly!</span></div>
+<div><span style="font-size:16px;line-height:1.6;background-color:transparent">On the internet-able box, A:</span></div>
+<div>
+<div>---&gt;Network settings: Local network connected device: Ethernet eth0</div>
+<div>-----&gt;check enable internet sharing</div>
+<div>-----&gt;uncheck the DHCP</div>
+<div>On the shared-to box, B: turn off the firewall</div>
+<div><br>
+</div>
+<div>Then it's easy as using Network Manager (or Wicd, which I think is better)..</div>
+<div>
+<ul><li><span style="font-size:16px;line-height:1.6;background-color:transparent">box A: make a new wired connection and in Edit &gt; IPv4 select "Shared to other computers"</span></li>
+<li><span style="font-size:16px;line-height:1.6;background-color:transparent">plugin the patch cable on both</span></li>
+<li><span style="font-size:16px;line-height:1.6;background-color:transparent">box B: select the wired connection and Edit &gt; IPv4 select "Automatic (DHCP)"</span></li></ul>
+And you might need to stop firewall (in firestarter) and restart it after box B is connected to box A!</div>
+</div>
+<div><br>
+</div>
+</div>
+<div><br>
+</div>
+<div><b><font size="5">Sharing files with nfs</font></b></div>
+<div>Nfs is a fast networking agent that uses less resources and could give faster data transfer rates than samba (so I hear). &nbsp;It's also easy to configure.</div>
+<div>first install what you need with</div>
+<div><font color="#cc0000">sudo apt-get install nfs-kernel-server nfs-common&nbsp;</font></div>
+<div><br>
+</div>
+<div>First of all, each box will need new wired connections made, and using Network manager is pretty easy.</div>
+<div>
+<ul><li>box A - IPv4 - select manual and add new: address 10.0.0.1, netmask 255.255.255.0, gateway leave blank</li>
+<li><span style="font-size:16px;line-height:1.6;background-color:transparent">box B - IPv4 - select manual and add new: address 10.0.0.2, netmask 255.255.255.0, gateway leave blank</span></li></ul>
+<span style="font-size:16px;line-height:1.6;background-color:transparent">This case, box A is the server and B is the client that will access files on A. &nbsp;(use 192.168.0.x if you like)</span><br>
+For the connection to work I had to disconnect A from the internet, and at times, stop firestarter until B could mount the files on A.</div>
+<div><br>
+</div>
+<div>Test that B is connected to A with</div>
+<div><font color="#b45f06">ping 10.0.0.2</font></div>
+<div>and you should start getting replies if connected</div>
+<div><br>
+</div>
+<div>Now box A, the server, must export those directories that it will share with its clients - specifying directories, clients who can access what and with what restrictions.</div>
+<div>this is done by adding a line for each file system to export in box A's /etc/exports file, e.g.</div>
+<div><font color="#38761d">/home/jim 10.0.0.2(rw,sync,no_subtree_check)</font></div>
+<div><font color="#38761d">/media/pics 10.0.0.2(rw,sync,no_subtree_check)</font></div>
+<div><br>
+</div>
+<div>So box A will share /home/jim and /media/pics with the client of IP address 10.0.0.2, with read-write permissions and some other options.</div>
+<div>No spaces allowed after the clint IP and (rw) !</div>
+<div><br>
+</div>
+<div>After those lines have been made and eye-balled for accuracy, nfs is started (or restarted if those export lines were changed) with:</div>
+<div><font color="#b45f06">sudo&nbsp;</font><span style="color:rgb(180,95,6);font-size:16px;line-height:1.6;background-color:transparent">/etc/init.d/nfs-kernel-server restart</span></div>
+<div><br>
+</div>
+<div>then on the client box, B, you must mount the exported directories from the server - either all together or any individually, like</div>
+<div><font color="#b45f06">sudo mount 10.0.0.1:/ ~/Shared</font></div>
+<div>
+<div>or</div>
+<div><font color="#b45f06">sudo mount host-name:/ ~/Shared</font></div>
+</div>
+<div>will mount all exported dir's here</div>
+<div><br>
+</div>
+<div>this will mount only exported /home/jim</div>
+<div><font color="#b45f06">sudo mount 10.0.0.1:/home/jim ~/Shared</font></div>
+<div><br>
+</div>
+<div><span style="font-size:16px;line-height:1.6;background-color:transparent">After that, if the mount was successful (watch out for firestarter) you can browse and copy over files with total ease.</span></div>
+<div>Male sure to unmount the shares before disconnecting the network! &nbsp;In my case, when the network was disconnected before unmount 10.0.0.1:/ was issued, ranger froze itself.</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">Other options in /etc/export</font></b></div>
+<div>squash_root -&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">this prevents a client having root access on server (this is default)</span></div>
+<div>no_squash_root allows root permissions to a client, eg for backing-up of root files</div>
+<div>see&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent"><a href="http://www.linkedin.com/groups/What-is-use-rootsquah-norootsquash-49301.S.192942962">..What-is-rootsquah-norootsquash</a></span></div>
+<div><br>
+</div>
+<div>options: <a href="http://www.troubleshooters.com/linux/nfs.htm">http://www.troubleshooters.com/linux/nfs.htm</a></div>
+<div><a href="https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-nfs-server-config-exports.html">https://www.centos.org/docs/...</a></div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">fstab entries</font></b></div>
+<div>to make these server exports permanent every time the box is turned on, they need entries in /etc/fstab, like</div>
+<div>
+<div><font color="#38761d">10.0.0.1:/home/jim</font><font color="#38761d">&nbsp; &nbsp; ~/Shared/jim</font><font color="#38761d">&nbsp; &nbsp; nfs rw</font><font color="#38761d">&nbsp; &nbsp; 0 &nbsp; &nbsp;0</font></div>
+<div><font color="#38761d">10.0.0.1:/media/pics</font><font color="#38761d">&nbsp; &nbsp; ~/Shared/jim-pics</font><font color="#38761d">&nbsp; &nbsp; nfs rw</font><font color="#38761d">&nbsp; &nbsp; 0 &nbsp; &nbsp;0</font></div>
+</div>
+<div><br>
+</div>
+<div>then, if you mount 10.0.0.1:/ the mount point will be used from fstab, along with options - unless options are given on the command line which can over-ride those in fstab.</div>
+<div><font color="#b45f06">mount&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">10.0.0.1:/</span></font></div>
+<div><font color="#b45f06">mount 10.0.0.1:/ -o ro</font></div>
+<div>overrides the rw option in fstab</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">exporting symlinks?</font></b></div>
+<div>if a file system with links is exported, but the file system containing the target files of those links is not, then the client will see the links but will not be able to navigate to the referred directories and files!</div>
+<div>Then those links will be relevant to (point to files on) the client's file system, unless the files system with referred files was exported.</div>
+<div>It would be nice to symlink lots of directories on the server box into a single exported location, but all the links become useless without their referred files exported as well, and may even cause confusion if the client has similar files that the links will point to!</div>
+<div><br>
+</div>
+<div><br>
+</div>
+<div><b><font size="4">nfs through a firewall</font></b></div>
+<div>as nfs creates random ports it is hard for a firewall to allow the right ones - until they are made static.</div>
+<div>see my page on firewall</div>
+</div>

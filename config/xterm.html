@@ -1,0 +1,170 @@
+---
+layout: default
+description: Configuring the colors for Xterminal, Xpdf and others - by D Quinton
+title: Xterm
+id: config
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Set the X colours</a></li>
+                <li><a href="#2">Xpdf</a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+    <a href="#1">Set the X colours</a><br>
+   <a href="#2">Xpdf</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../configure.html">Configure</a> ></div>
+
+
+<div class="cont">
+
+
+My xterm suddenly went white b-g with black text f-g.  Not that I use xterm by choice, but sometimes it pops up (actually it would pop up when using Ranger in LXterminal and initiating a bash process -it doesn't any more since switching to rxvt-unicode).
+<br><br>
+
+<h2 id="1" class="tag">Set the X colours</h2>
+
+You will need to make or edit the file <span class="bblue">~/.Xresources</span>, 
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+leafpad ~/.Xresources</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and add this content
+
+<form><textarea name="T" id="file" rows="54" cols="80">
+! X colors ------------------------------------------------------------
+
+! tangoesque scheme
+*background: #111111
+*foreground: #babdb6
+! Black (not tango) + DarkGrey
+*color0:  #000000
+*color8:  #555753
+! DarkRed + Red
+*color1:  #ff6565
+*color9:  #ff8d8d
+! DarkGreen + Green
+*color2:  #93d44f
+*color10: #c8e7a8
+! DarkYellow + Yellow
+*color3:  #eab93d
+*color11: #ffc123
+! DarkBlue + Blue
+*color4:  #204a87
+*color12: #3465a4
+! DarkMagenta + Magenta
+*color5:  #ce5c00
+*color13: #f57900
+!DarkCyan + Cyan (both not tango)
+*color6:  #89b6e2
+*color14: #46a4ff
+! LightGrey + White
+*color7:  #cccccc
+*color15: #ffffff
+
+! xterm --------------------------------------------------------------------
+
+xterm*VT100.geometry:     80x25
+xterm*faceName:           Terminus:style=Regular:size=10
+!xterm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
+xterm*dynamicColors:      true
+xterm*utf8:               2
+xterm*eightBitInput:      true
+xterm*saveLines:          1012
+xterm*scrollKey:          true
+xterm*scrollTtyOutput:    false
+xterm*scrollBar:          true
+xterm*rightScrollBar:     true
+xterm*jumpScroll:         true
+xterm*multiScroll:        true
+xterm*toolBar:            false
+
+! xpdf ---------------------------------------------------------------------
+
+xpdf*enableFreetype:    yes
+xpdf*antialias:         yes
+xpdf*foreground:        black
+xpdf*background:        white
+xpdf*urlCommand:        chromium %s</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+When you've made any changes you want to make, run this command and then re-start Xterm:
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+xrdb -merge ~/.Xresources</textarea>
+&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+and that command can go in the LXDE or OB autostart
+<br><br>
+Tips:
+The xterm scroll bar is a little different to usual - left click on it to go down and right click on it to go up.
+
+<br><br>
+<br><br>
+
+
+<h2 id="2" class="tag">Xpdf</h2>
+Here's a nice pdf viewer.  If you set the X colors as above, or with what changes you like, Xpdf follows suite (which is a good thing on my dark themed desktop).
+<br><br>
+<b>Tips:</b>click and drag to select a region, then right-click and zoom to selection.
+<br><br>
+Some keys from the man page:<br>
+
+
+      <table cellpadding="4"> <tr><td width="60">n</td>      <td>Move to the next page.  Scrolls to the top of the page, unless scroll lock is turned on.</td></tr>
+
+       <tr><td>p</td>      <td>Move to the previous page.  Scrolls to the top of the page, unless scroll lock is turned on.</td></tr>
+
+       <tr><td>&#60;Space> or &#60;PageDown> or &#60;Next></td>
+              <td>Scroll down on the current page; if already at bottom, move to next page.</td></tr>
+
+       <tr><td>&#60;Backspace> or &#60;Delete> or &#60;PageUp> <br>or &#60;Previous></td>
+              <td>Scroll up on the current page; if already at top, move to previous page.</td></tr>
+
+       <tr><td>g</td>      <td>Activate the page number text field ("goto page").</td></tr>
+
+       <tr><td>0</td>      <td>Set the zoom factor to 125% (ready for increment and decrement).</td></tr>
+
+       <tr><td>+</td>      <td>Zoom in (increment the zoom factor by 1).</td></tr>
+
+       <tr><td>-</td>      <td>Zoom out (decrement the zoom factor by 1).</td></tr>
+
+       <tr><td>z</td>     <td>Set the zoom factor to 'page' (fit page to window).</td></tr>
+
+       <tr><td>w</td>      <td>Set the zoom factor to 'width' (fit page width to window).</td></tr>
+
+       <tr><td>h</td>      <td>Set the zoom factor to 'height' (fit page height to window).</td></tr></table>
+<br><br>
+<h3>Printing</h3>
+The default print command is <b>lpr</b>
+<br><br>
+It needs to have your printer name to print to, e.g <span style="color:#994900;"><b>lpr -P HP_P1102</b></span>
+<br><br>
+Also you could use <span style="color:#994900;"><b>lp -d HP_P1102</b></span>
+<br><br>
+Note that these are simply bash commands, `<b>lp</b>' (linux print) and `<b>lpr</b>' (linux print request).  <br>
+The `<b>-P</b>' or `<b>-d</b>' sets the destination printer.. I couldn't find anything about print quality or greyscale! - `<b>man lp</b>' and `<b>man lpr</b>' for man pages.
+<br><br><br><br>
+<b>Next page: </b>
+<br><br>
+<h3><b><a href="urxvt.html">Rxvt-unicode</a> - the Terminal that beats others</h3>
+<br><br>
+</div>
