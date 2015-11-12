@@ -963,11 +963,14 @@ map ,nu shell -r umount %f</textarea>
 
 <br><br>
 <h3>map J for Jekyll and Github commands</h3>
-<form><textarea name="T" id="file" rows="5" cols="80">
+<form><textarea name="T" id="file" rows="8" cols="80">
 ##### Github-jekyll ##########
 
-map Js shell -ft jekyll serve --watch
-map Jc console shell -ft git commit -a -m "updating pages"</textarea>
+map Js shell -ft jekyll serve --watch --baseurl 
+map Jc console shell -ft git commit -a -m "updating pages"
+map Ja console chain shell -ft git add . ; shell git commit -a -m "updating pages"
+map Jf console shell -ft git add %%s
+map Jp console shell -ft git push</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
