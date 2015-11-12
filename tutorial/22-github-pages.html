@@ -315,7 +315,9 @@ this way will generate Github-ready pages, because it tells the localhost:4000 t
 <br><br><br><br>
 <b>3.</b> set the base url in the html header, with &#60;base href="/project-name/"> and leave all your links as they are.
 <br><br>
-Just need to test this one. Bear in mind this affects ALL uri's, even # links and queries, so you need to test it works. 
+Just need to test this one. Bear in mind this affects ALL url's, even # links and queries, so you need to test it works. 
+
+If your links are preceded with "/" to make them point to the root normally, then only the root of the base url in the base tag will be referenced, so you need to remove the "/".
 
 
 <br><br><br><br>
