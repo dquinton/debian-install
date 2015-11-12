@@ -275,9 +275,9 @@ then Github will serve the css file to "http://user.github.io/css/main.css," whi
 So the site won't work at all.
 <br><br><br>
 
-<h3>Solutions</h3>
+<h3>Solution</h3>
 
-<b>1.</b> set the base url in the jekyll  <b>_config.yml</b> file
+set base url in the jekyll <b>_config.yml</b> file
 <form>
 <textarea name="T" id="file" rows="2" cols="30">
 baseurl: /project-name
@@ -288,9 +288,11 @@ url: http://username.github.io/</textarea>&nbsp;
 <br><br>
 
 
-then insert  <b>&#123;&#123;site.baseurl}} </b>before all your internal links - <i>possibly</i> only navbar and sub-pages' links.. certainly any link that a sub-page will see 
+then insert  <b>&#123;&#123;site.baseurl}}/ </b>before all your internal links - <i>possibly</i> only navbar and sub-pages' links.. certainly any link that a sub-page will see 
 <br><br>
 e.g. &#123;&#123;site.baseurl}}/css/styles.css etc - I use bluetish's powerful search-replace tool to make a fast work, using my navbar.html page to get all the links
+<br><br>
+top-level pages can just remove the "/" before the url so that they point relative to pages on same or a level down, and not to root github.
 <br><br>
 
 images: change<b> href="../</b> ---> <b>href="&#123;&#123;ssite.baseurl}}/ </b>
