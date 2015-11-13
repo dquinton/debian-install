@@ -469,24 +469,24 @@ map fr    console rename
 map fb    bulkrename %s
 map fp   shell -f pyrenamer %d                            #GUI renamer, or another, `Thunar -B %d'
 map fg   console shell -p grep -nT ? %%s                      #grep (search) pattern in files
-map f?   console shell perl -pi -e 's/?/@/g' %%s            #replace string in files
-map fc   shell -f meld %s 	                                #compare two files in meld
+map f?   console shell perl -pi -e 's/?/@/g' %%s                  #replace string in files
+map fc   shell -f meld %s 	                                           #compare two files in meld
 map ff   console shell find . -name "*?*" -type f -print | less       #find files and print paths to pager
-map f\   shell -f catfish --path=%d                          #find files with catfish
-map f1   console shell -s cp "$f" "$f"_1                    #duplicate selected file
-map f2   console shell -s sh ~/scripts/duplicate %f
-map fW   console shell touch tmpfile; mv tmpfile %%f           #wipe a file clean (overwrite with blank)</textarea>
+map f\   shell -f catfish --path=%d                                        #find files with catfish
+map f1   console shell -s for file in %%s ;do cp "$file" "$file"_1 ;done           #duplicate selected files adding _1
+map f2   console shell -s sh ~/scripts/duplicate %%s                         #duplicate selected files infix _1
+map fW   console shell touch tmpfile; mv tmpfile %%f                        #wipe a file clean (overwrite with blank)</textarea>
 &nbsp;
+
+<br>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-fd2 script, puts suffix inside the file extension:
-<form><textarea name="T" id="file" rows="6" cols="80">
+f2 script, duplicates file, puts suffix inside the file extension:
+<form><textarea name="T" id="file" rows="4" cols="80">
 #!/bin/bash
- name=${1%.*} 
- extension=${1##*.}      
- infix="${2:-_1}" 
- cp -v "$1" "${name}${infix}.${extension}"              
+for f in $@; do  cp "$f" "${f/\.*/_1\.${f##*.}}" ;done
+              
 #            (can change _1 to date-time etc)</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">

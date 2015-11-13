@@ -33,9 +33,9 @@ id: config
 <div class="cont">
 
 
-For those who haven't yet progressed from using a graphical interface file manager, and for learner PC users, I recommend Thunar, as it's light-weight, fast and expandable with all kinds of right-click actions you can make yourself.
+For those who haven't yet progressed from using a graphical interface file manager, and for learner PC users, I recommend Thunar, as it's light-weight, fast and expandable with all kinds of right-click actions you can make yourself to make work a lot faster.
 <br>
-<br>
+<br><br><br>
 
 
 <h2 id="1" class="tag">Some tips</h2>
@@ -45,7 +45,7 @@ For those who haven't yet progressed from using a graphical interface file manag
 <li> if hover-over select set to longer delay, or double click opens files, just click and drag</li>
 <li> To select multiple files with the keyboard, hold Ctrl and use up/down and hit Space, just Down without Ctrl to deselect all</li></ul></div>
 
-<br>
+<br><br>
 <h3>To move files</h3>
 <div class="bullet"><ul><li>Click on a file once (with Ctrl if single click opens) and then click and drag.</li>
 <li>Dragging a file onto the location buttons will open the location and the file can be dropped there or hovered over a directory there and dropped into it (can use Space to drop too).</li>
@@ -54,12 +54,12 @@ For those who haven't yet progressed from using a graphical interface file manag
 <li>Ctrl+Shift+Drag = make link</li>
 <li>The mouse pointer changes for each operation</li></ul></div>
 
-<br>
+<br><br>
 <h3>Navigate</h3>
 Alt-left go back in the directory history<br>
 Alt-right go forwards
 
-<br><br>
+<br><br><br>
 
 <h3>Tabs</h3>
 Thunar 1.6 has a Tabs feature, which makes it easier for moving files to locations all in one window and without going back and forwards in the directory browse history.  You can select and drag files to the <b>tab header</b> and then drop them at that location.
@@ -67,7 +67,7 @@ Thunar 1.6 has a Tabs feature, which makes it easier for moving files to locatio
 My tabs shortcuts are Crtl-Space and Shift-Space to add or close tabs.  But there's no easy shortcut to switch from one tab to the next!!
 <br><br>
 There's a "Skip All" button in the Copy/Move dialogue so that you can copy a whole dir of files over and skip all the identical files, but if you want to copy over updated files you'll still have to click on Replace one-by-one, checking the time-stamps. For updating you need to make a custom action that will `rsync -u` the selected files to the next tab.
-<br><br>
+<br><br><br>
 
 <h3>Shortcut panel</h3>
 
@@ -139,9 +139,17 @@ Note that all my custom actions here are included in my Ranger keybinds which is
 <a href="http://salinelinux.proboards.com/index.cgi?board=software&action=print&thread=98">http://salinelinux...</a><br>
 <a href="http://forums.debian.net/viewtopic.php?p=285354">http://forums.debian.net/...</a><br>
 
-  <br><br>
+ 
 
+<table cellspacing="4" align="center" style="border-collapse: collapse; background-color: transparent;">
+<tr>
+<td style="text-align: center;width:450px;"><a href="{{site.baseurl}}/zimages/thunar-custom-actions.jpeg"  imageanchor="1"><img src="{{site.baseurl}}/zimages/thunar-custom-actions-sm.jpeg" width="400" height="256" alt="" border="0"></a></td>
+<td style="text-align: center;width:450px;">&nbsp;<a href="{{site.baseurl}}/zimages/thunar-custom-actions-im.jpeg"  imageanchor="1"><img src="{{site.baseurl}}/zimages/thunar-custom-actions-im-sm.jpeg" width="400" height="256" alt="" border="0"></a></td>
+</tr>
+<tr><td style="text-align: center; "><b>Custom actions shown after a righ-click on a folder</b></td><td style="text-align: center; "><b>..and on a file</b></td></tr>
+</table>
 
+<br><br><br><br>
 <h3>Here are the best custom actions I've found/used so far</h3>
 
 
@@ -204,43 +212,49 @@ Note that all my custom actions here are included in my Ranger keybinds which is
 <td>&nbsp;</td>
 </tr>
 <tr>
-<td>duplicate file (with suffix)</td>
-<td style="background-color: #A3E3A8; ">cp %n %n_1</td>
+<td>duplicate files (with suffix)</td>
+<td style="background-color: #A3E3A8; ">for file in %F ;do cp "$file" "$file"_1 ;done</td>
 <td>all</td>
 </tr>
 <tr>
+<td>duplicate files (with infix _1)</td>
+<td style="background-color: #C5F2C9; ">for f in %F; do  cp "$f" "${f/\.*/_1\.${f##*.}}" ;done</td>
+<td>all</td>
+</tr>
+<tr>
+<tr>
 <td>send to &#60;cloud sync> folder</td>
-<td style="background-color: #C5F2C9; ">cp %n /home/username/&#60;sync_folder>/%n</td>
+<td style="background-color: #A3E3A8; ">cp %n /home/username/&#60;sync_folder>/%n</td>
 <td>text files</td>
 </tr>
 <tr>
 <td>move to</td>
-<td  style="background-color: #A3E3A8; ">mv %F "`yad --file --directory --height=400 --width=500`"</td>
+<td  style="background-color: #C5F2C9; ">mv %F "`yad --file --directory --height=400 --width=500`"</td>
 <td>all</td>
 </tr>
 <tr>
 <td>copy to</td>
-<td style="background-color: #C5F2C9; ">cp %F "`yad --file --directory --height=400 --width=500`"</td>
+<td style="background-color: #A3E3A8; ">cp %F "`yad --file --directory --height=400 --width=500`"</td>
 <td>all</td>
 </tr>
 <tr>
 <td>sync files/dirs to</td>
-<td style="background-color: #A3E3A8; ">rsync -a %F "`yad --file --directory --height=400 --width=500`"</td>
+<td style="background-color: #C5F2C9; ">rsync -a %F "`yad --file --directory --height=400 --width=500`"</td>
 <td>directories, text files</td>
 </tr>
 <tr>
 <td>make a symlink (select directory)</td>
-<td style="background-color: #C5F2C9; ">ln -s "`yad --file --directory --height=400 --width=500 --title=Choose\ Directory\ to\ Link\ to!`"</td>
+<td style="background-color: #A3E3A8; ">ln -s "`yad --file --directory --height=400 --width=500 --title=Choose\ Directory\ to\ Link\ to!`"</td>
 <td>directories</td>
 </tr>
 <tr>
 <td>create a bookmark to a directory</td>
-<td style="background-color: #A3E3A8; ">ln -s %f ~/Bookmarks/%n</td>
+<td style="background-color: #C5F2C9; ">ln -s %f ~/Bookmarks/%n</td>
 <td>directories</td>
 </tr>
 <tr>
 <td>compare</td>
-<td style="background-color: #C5F2C9; ">meld %F</td>
+<td style="background-color: #A3E3A8; ">meld %F</td>
 <td>text, other, directories</td>
 </tr>
 <tr>
@@ -381,24 +395,25 @@ Plus my custom actions with ffmpeg commands on my HD Video page
 
 <h2 id="4" class="tag">Custom actions to backup files (using scripts)</h2>
 
-duplicate file (with infix "_1")
-<form><textarea name="T" id="file" rows="5" cols="50">
+duplicate with infix
+<form><textarea name="T" id="file" rows="3" cols="80">
 #!/bin/bash
-name=${1%.*}
-extension=${1##*.}
-infix="${2:-_1}"
-cp -v "$1" "${name}${infix}.${extension}"</textarea>
+
+for f in $@; do  cp "$f" "${f/\.*/_1\.${f##*.}}" ;done</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-Thunar command:	<b>~/duplicate.sh %f</b>	<br>
+
+<br>
+
+Thunar command:	<b>~/scripts/duplicate %f</b>	<br>
 conditions: any
 <br><br>
 copy to backup (1st make the dir)
 <form><textarea name="T" id="file" rows="2" cols="50">
 #!/bin/bash
-cp $1 ~/backups/$1_$(date +"%y%m%d")</textarea>
+for f in $@ ;do cp $f ~/backups/$f_$(date +"%y%m%d")</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
