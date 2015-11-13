@@ -32,11 +32,11 @@ id: tutor
 <div dir="ltr"><span style="font-size:medium">sign up&nbsp;</span></div>
 <div dir="ltr"><font size="3">
 <div dir="ltr">make source file</div>
-<div dir="ltr"><font color="#b45f06">sudo leafpad /etc/apt/sources.list.d/owncloud2012.list</font></div>
+<div dir="ltr"><font color="#6A3200">sudo leafpad /etc/apt/sources.list.d/owncloud2012.list</font></div>
 <div dir="ltr">And paste this line into it:</div>
-<div dir="ltr"><font color="#38761d">deb http://download.opensuse.org/repositories/isv:ownCloud:ownCloud2012/Debian_6.0/ /</font></div>
-<div dir="ltr"><font color="#cc0000">sudo apt-get update</font></div>
-<div dir="ltr"><font color="#cc0000">sudo apt-get install owncloud-client</font></div>
+<div dir="ltr"><font color="#0F4F0B">deb http://download.opensuse.org/repositories/isv:ownCloud:ownCloud2012/Debian_6.0/ /</font></div>
+<div dir="ltr"><font color="#7C2020">sudo apt-get update</font></div>
+<div dir="ltr"><font color="#7C2020">sudo apt-get install owncloud-client</font></div>
 <div dir="ltr">the rest is up to you -I couldn't connect to it recently</div>
 <div dir="ltr"><br>
 </div>
@@ -86,7 +86,7 @@ Any directory can be shared also.</div>
 </font></div>
 <div><font size="3">Download the tar file from&nbsp;</font><span style="background-color:transparent"><font size="3"><a href="https://copy.com?r=1x4aT3">copy.com</a></font></span></div>
 <div><span style="background-color:transparent">unpack it and cd to eithr 32 or 64 bit dir</span></div>
-<div><span style="background-color:transparent">run <font color="#b45f06">./CopyAgent</font></span></div>
+<div><span style="background-color:transparent">run <font color="#6A3200">./CopyAgent</font></span></div>
 <div style="font-size:medium">
 <ul><li><span style="line-height:1.6;background-color:transparent">a nice clean web interface and easy to use - click on a folder and it expands the contents to the right, click a file and it shows a preview to the right - and revision history&nbsp;(click info button)&nbsp;if different versions have been uploaded;&nbsp;</span></li>
 <li><span style="line-height:1.6;background-color:transparent">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; click on a title to the left to close the furthest panel at right.</span></li>
@@ -99,9 +99,9 @@ Any directory can be shared also.</div>
 <div>
 <ul><li><font size="3">the copy agent has command-line tools!&nbsp;</font></li>
 <li><font size="3">you will need to cd to the&nbsp;</font><span style="font-size:medium">/x86_64/CopyAgent&nbsp;or&nbsp;</span><span style="font-size:medium">/x86/CopyAgent&nbsp;dir first as they didn't package the app into a deb archive, it runs stand-alone</span></li>
-<li><font size="3">to connect with your account you'll first need to enter user/pw with&nbsp;</font><span style="color:rgb(180,95,6);font-size:medium">./CopyCmd -username={email} -password=xxxxx</span></li>
-<li><font size="3">then command use is&nbsp;</font><span style="color:rgb(180,95,6);font-size:medium">./CopyCmd {Module} {options}</span></li>
-<li><font size="3"><span style="color:rgb(180,95,6)">./CopyCmd Cloud get [cloud path] [local path]&nbsp;</span></font>gets a file</li></ul>
+<li><font size="3">to connect with your account you'll first need to enter user/pw with&nbsp;</font><span style="color:#6A3200;font-size:medium">./CopyCmd -username={email} -password=xxxxx</span></li>
+<li><font size="3">then command use is&nbsp;</font><span style="color:#6A3200;font-size:medium">./CopyCmd {Module} {options}</span></li>
+<li><font size="3"><span style="color:#6A3200">./CopyCmd Cloud get [cloud path] [local path]&nbsp;</span></font>gets a file</li></ul>
 <span style="font-size:medium;line-height:1.6;background-color:transparent">put &nbsp;[local path] [cloud path] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uploads a file</span></div>
 <div><span style="font-size:medium;line-height:1.6;background-color:transparent">ls [path1] [path2] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; lists files on server, -r recursive</span></div>
 <div><span style="font-size:medium;line-height:1.6;background-color:transparent">mkdir [path] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;makes folder</span></div>
@@ -109,7 +109,7 @@ Any directory can be shared also.</div>
 <div><span style="font-size:medium;line-height:1.6;background-color:transparent">undelete [path] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; restores</span></div>
 <div style="font-size:medium"><span style="line-height:1.6;background-color:transparent"><br>
 </span></div>
-<div><span style="font-size:medium;line-height:1.6;background-color:transparent">make a command (e.g. Openbox menu entry) to run the QT app with&nbsp;</span><span style="background-color:transparent"><font size="3"><font color="#b45f06">~/Downloads/copy/x86_64/CopyAgent </font>etc</font></span></div>
+<div><span style="font-size:medium;line-height:1.6;background-color:transparent">make a command (e.g. Openbox menu entry) to run the QT app with&nbsp;</span><span style="background-color:transparent"><font size="3"><font color="#6A3200">~/Downloads/copy/x86_64/CopyAgent </font>etc</font></span></div>
 <div style="font-size:medium">You can&nbsp;<span style="line-height:1.6;background-color:transparent">see what's happening with the files sync&nbsp;</span>with right click on<span style="line-height:1.6;background-color:transparent">&nbsp;the panel icon, no. of files to upload and data speed - but detail could be better, its just about impossible to know which files are currently being processed or are queued.</span></div>
 <div><span style="background-color:transparent"><font size="3">in Preferences you can set what folders to sync to local from online, and sharing permissions on any.</font></span></div>
 <div style="font-size:medium"><br>
@@ -132,7 +132,7 @@ Any directory can be shared also.</div>
 <div>
 <ul><li><span style="font-size:medium;line-height:1.6;background-color:transparent">then install zohodocs</span></li></ul>
 </div>
-<div><span style="color:rgb(180,95,6);font-size:medium;line-height:1.6;background-color:transparent">dpkg -is zohodocs_x64.deb</span></div>
+<div><span style="color:#6A3200;font-size:medium;line-height:1.6;background-color:transparent">dpkg -is zohodocs_x64.deb</span></div>
 </div>
 <div>
 <ul><li>when you run it, you set up where to sync files to on your box - and note that the folder "<b>Zoho Docs</b>" will be made at the dir you set, so that is the <b>actual</b> sync dir</li>

@@ -67,7 +67,7 @@ id: cli
 <div style="font-family:Arial,Verdana,sans-serif">
 <div style="font-family:Droid Sans Mono,sans-serif"><font size="3" style="font-family:Arial,Verdana,sans-serif"><span style="line-height:25px"><br>
 </span></font></div>
-<div style="font-family:Droid Sans Mono,sans-serif"><font size="3" style="font-family:Arial,Verdana,sans-serif"><span style="line-height:25px">I made the script in home dir, named "convert.sh", chmod +x, and made a Thunar custom action with the name "Convert MTS", &nbsp;command&nbsp;<span style="background-color:rgb(182,215,168)"><font color="#38761d">/home/username/convert.sh %F</font>&nbsp;</span>and Appearance conditions set to&nbsp;<span style="background-color:rgb(182,215,168)">&nbsp;</span></span></font><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px"><font color="#38761d" style="background-color:rgb(182,215,168)">*.MTS;*.mts</font>&nbsp;and check video files. &nbsp;So I just click on an MTS file and hit Convert MTS and all files in the dir are converted. &nbsp;Can easily make a custom action for any particular video format to encode to.</span></font></div>
+<div style="font-family:Droid Sans Mono,sans-serif"><font size="3" style="font-family:Arial,Verdana,sans-serif"><span style="line-height:25px">I made the script in home dir, named "convert.sh", chmod +x, and made a Thunar custom action with the name "Convert MTS", &nbsp;command&nbsp;<span style="background-color:rgb(182,215,168)"><font color="#0F4F0B">/home/username/convert.sh %F</font>&nbsp;</span>and Appearance conditions set to&nbsp;<span style="background-color:rgb(182,215,168)">&nbsp;</span></span></font><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px"><font color="#0F4F0B" style="background-color:rgb(182,215,168)">*.MTS;*.mts</font>&nbsp;and check video files. &nbsp;So I just click on an MTS file and hit Convert MTS and all files in the dir are converted. &nbsp;Can easily make a custom action for any particular video format to encode to.</span></font></div>
 <div><font size="3"><br>
 </font></div>
 </div>
@@ -77,10 +77,10 @@ id: cli
 </span></div>
 <div style="font-family:Arial,Verdana,sans-serif"><font size="3"><span style="line-height:24px"><b><span style="background-color:rgb(255,229,153)">lossless mpeg2</span>&nbsp;</b>using intra-coded frames (makes files&nbsp;<b>13-20x&nbsp;</b>orig. file size), use</span></font></div>
 <div><font color="#f3f3f3" face="Arial, Verdana, sans-serif" size="3" style="background-color:rgb(7,55,99)">for file in *.MTS; do ffmpeg -i $file -vcodec mpeg2video -qscale 1 -qmin 1 -intra -an $file.m2v;done</font></div>
-<div><font color="#38761d" face="Arial, Verdana, sans-serif" size="3"><br>
+<div><font color="#0F4F0B" face="Arial, Verdana, sans-serif" size="3"><br>
 </font></div>
 <div><font face="Arial, Verdana, sans-serif" size="3">rendering result: smooth joins, high quality</font></div>
-<div><font color="#38761d" face="Arial, Verdana, sans-serif" size="3"><br>
+<div><font color="#0F4F0B" face="Arial, Verdana, sans-serif" size="3"><br>
 </font></div>
 <div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:27px"><b style="background-color:rgb(255,229,153)">DNxHD</b>&nbsp;(makes files&nbsp;<b>17x&nbsp;</b>orig. file size), use</span></font></div>
 <div><font color="#f3f3f3" face="Arial, Verdana, sans-serif" size="3" style="background-color:rgb(7,55,99)">for file in *.MTS; do ffmpeg -i $file -vcodec dnxhd -b 120M -an $file.mov;done</font></div>
@@ -113,7 +113,7 @@ id: cli
 <div><font face="Arial, Verdana, sans-serif" size="3"><br>
 </font></div>
 <div><font face="Arial, Verdana, sans-serif" size="3">Here's a batch script to remux all MTS files in a directory into a matroska container (.mkv). &nbsp;I put this in a Thunar custom action and just right-click in the directory.</font></div>
-<font face="arial, sans-serif" size="3"><font color="#38761d">#!/bin/bash</font><br>
+<font face="arial, sans-serif" size="3"><font color="#0F4F0B">#!/bin/bash</font><br>
 <font color="#f3f3f3" style="background-color:rgb(7,55,99)">for file in *.MTS; do mkvmerge $file -o $file.mkv;done</font></font></div>
 <div>
 <div style="font-family:Arial,Verdana,sans-serif"><font size="3"><span style="line-height:26px"><b><br>

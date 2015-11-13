@@ -20,7 +20,7 @@ Systemd (a suite of system management daemons) replaces the init scripts of Debi
 <div><br>
 </div>
 <div>install the SysV init packages and remove systemd-sysv</span></div>
-<font color="#cc0000">sudo apt-get install sysvinit-core sysvinit systemd-sysv-</font>
+<font color="#7C2020">sudo apt-get install sysvinit-core sysvinit systemd-sysv-</font>
 <div><br>
 </div>
 <div>systemd-sysv with a - after it means it will uninstall</div>
@@ -31,7 +31,7 @@ Systemd (a suite of system management daemons) replaces the init scripts of Debi
 <div><br>
 </div>
 <div>Prevent apt from installing systemd packages in the future.</span></div>
-<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent"><font color="#b45f06">sudo nano /etc/apt/preferences.d/systemd</font></span></div>
+<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent"><font color="#6A3200">sudo nano /etc/apt/preferences.d/systemd</font></span></div>
 <div><br>
 </div>
 <div><font color="#274e13">Package: systemd</font></div>
@@ -67,13 +67,13 @@ Systemd (a suite of system management daemons) replaces the init scripts of Debi
 </div>
 <div><br>
 </div>
-<div><font color="#b45f06">su</font></div>
-<div><font color="#b45f06">cd /</font></div>
-<div><font color="#b45f06">mount -t ext3 /dev/sdb1 /mnt</font></div>
-<div><font color="#b45f06">mount -t proc proc /mnt/proc</font></div>
-<div><font color="#b45f06">mount -t sysfs sys /mnt/sys</font></div>
-<div><font color="#b45f06">mount -o bind /dev /mnt/dev</font></div>
-<div><font color="#b45f06">mount -t ext3 /dev/sda7 /mnt/var</font></div>
+<div><font color="#6A3200">su</font></div>
+<div><font color="#6A3200">cd /</font></div>
+<div><font color="#6A3200">mount -t ext3 /dev/sdb1 /mnt</font></div>
+<div><font color="#6A3200">mount -t proc proc /mnt/proc</font></div>
+<div><font color="#6A3200">mount -t sysfs sys /mnt/sys</font></div>
+<div><font color="#6A3200">mount -o bind /dev /mnt/dev</font></div>
+<div><font color="#6A3200">mount -t ext3 /dev/sda7 /mnt/var</font></div>
 <div><br>
 </div>
 <div><br>
@@ -92,16 +92,16 @@ Systemd (a suite of system management daemons) replaces the init scripts of Debi
 <div><br>
 </div>
 <div>then change to the root of that system to run commands in it</div>
-<div><font color="#b45f06">chroot /mnt /bin/bash</font></span></div>
+<div><font color="#6A3200">chroot /mnt /bin/bash</font></span></div>
 <div><br>
 </div>
 <div>(in the case of re-installing svinit, run the install/remove commands above at this point)</div>
 <div><br>
 </div>
 <div>when finished,</div>
-<div><font color="#b45f06">exit</font></span></div>
-<div><font color="#b45f06">umount /mnt/{proc,sys,dev,var}</font></div>
-<div><font color="#b45f06">umount /mnt</font></div>
+<div><font color="#6A3200">exit</font></span></div>
+<div><font color="#6A3200">umount /mnt/{proc,sys,dev,var}</font></div>
+<div><font color="#6A3200">umount /mnt</font></div>
 <div><br>
 </div>
 

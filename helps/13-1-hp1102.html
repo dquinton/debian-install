@@ -45,7 +45,7 @@ id: help
 <div><font size="3">(and run the WIzard on the link at left to check what version you need to install - I'm not sure if one "does them all").</font></div>
 <div>
 <div style="line-height:28.4444465637207px"><font size="3">then cd to download directory, and run the script with,</font></div>
-<div style="line-height:28.4444465637207px"><font color="#b45f06" size="3">sh hplip*.run</font></div>
+<div style="line-height:28.4444465637207px"><font color="#6A3200" size="3">sh hplip*.run</font></div>
 <div style="line-height:28.4444465637207px">and follow the instructions</div>
 </div>
 <div style="line-height:28.4444465637207px"><br>
@@ -54,7 +54,7 @@ id: help
 <div>
 <ul><li>connect the printer and turn it on</li>
 <li>for hp printers (and others?) simply run&nbsp;</li></ul>
-<font color="#b45f06">hp-setup</font><br>
+<font color="#6A3200">hp-setup</font><br>
 <ul><li>this will locate your printer, download a tool to disable "smart-start" if necessary, and download any plugin required</li></ul>
 <br>
 <ul><li>For other printers, using CUPS, go to&nbsp;<a href="http://localhost:631/admin" style="font-size:medium;line-height:1.6">localhost:631/admin</a><span style="font-size:medium;line-height:1.6">&nbsp;in a web browser</span></li>
@@ -86,11 +86,11 @@ Sanjay Kumar (sanjay-kumar14) said on <a href="https://answers.launchpad.net/hpl
 <h2 id="3" class="tag">Trouble-shoot a hp printer that's not printing</h2>
 
 <div>run this command to check for errors, or needed dependencies:</span></div>
-<div><font color="#b45f06">hp-check -r</font></div>
+<div><font color="#6A3200">hp-check -r</font></div>
 <div><br>
 </div>
 <div>To sort out errors you can run</div>
-<div><font color="#b45f06">hp-doctor</font></div>
+<div><font color="#6A3200">hp-doctor</font></div>
 <div><br>
 </div>
 <div><br>
@@ -100,10 +100,10 @@ Sanjay Kumar (sanjay-kumar14) said on <a href="https://answers.launchpad.net/hpl
 
 <div>First of all, I installed the p1102 with CUPS and tried a test page<br>
 no print, reports:&nbsp;<br>
-<font color="#38761d">stopped <br>
+<font color="#0F4F0B">stopped <br>
 "/usr/lib/cups/filter/hpcups failed"</font></div>
 <div>error log:<br>
-<font color="#38761d">printer-state-reasons=hplip.plugin-error</font><br>
+<font color="#0F4F0B">printer-state-reasons=hplip.plugin-error</font><br>
 </div>
 <div>installed the 3.12.6 plugin and still get error</div>
 <div><br>
@@ -111,7 +111,7 @@ no print, reports:&nbsp;<br>
 <div>
 <ul><li><span style="font-size:16px;line-height:1.6">So I ran hp-setup in a terminal, with this</span></li></ul>
 </div>
-<div><font color="#b45f06">hp-setup</font></div>
+<div><font color="#6A3200">hp-setup</font></div>
 <div>
 <ul><li><span style="font-size:16px;line-height:1.6">selected USB connection</span></li>
 <li><span style="font-size:16px;line-height:1.6">smart-stast detected - downloads a fix</span></li>
@@ -122,15 +122,15 @@ no print, reports:&nbsp;<br>
 </div>
 <div>Make a panel launcher with</div>
 <div>
-<div><font color="#38761d">[Desktop Entry]</font></div>
-<div><font color="#38761d">Name=P1102 Status</font></div>
-<div><font color="#38761d">Comment=printer status</font></div>
-<div><font color="#38761d">Exec=chromium http://localhost:631/printers/HP_P1102</font></div>
-<div><font color="#38761d">Icon=printer</font></div>
-<div><font color="#38761d">Terminal=false</font></div>
-<div><font color="#38761d">Encoding=UTF-8</font></div>
-<div><font color="#38761d">Type=Application</font></div>
-<div><font color="#38761d">Categories=Settings;</font></div>
+<div><font color="#0F4F0B">[Desktop Entry]</font></div>
+<div><font color="#0F4F0B">Name=P1102 Status</font></div>
+<div><font color="#0F4F0B">Comment=printer status</font></div>
+<div><font color="#0F4F0B">Exec=chromium http://localhost:631/printers/HP_P1102</font></div>
+<div><font color="#0F4F0B">Icon=printer</font></div>
+<div><font color="#0F4F0B">Terminal=false</font></div>
+<div><font color="#0F4F0B">Encoding=UTF-8</font></div>
+<div><font color="#0F4F0B">Type=Application</font></div>
+<div><font color="#0F4F0B">Categories=Settings;</font></div>
 <div><br>
 </div>
 </div>
@@ -146,10 +146,10 @@ no print, reports:&nbsp;<br>
 <font color="#0b5394">http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-x.yy.z-plugin.run</font><br>
  there are other versions here at sourceforge <a href="http://hplip.sourceforge.net/plugin.conf" rel="noreferrer">http://hplip.sourceforge.net/plugin.conf</a></li>
 <li>actually, hp-setup will try to download it and it gives you the URL<br>
-can also use command line to install plugin<font><font size="3"><span style="line-height:normal;white-space:pre-wrap">:</span></font></font><span style="font-size:medium">&nbsp;</span><font style="font-size:medium"><font color="#b45f06">sudo hp-plugin -i -g</font><br>
-then</font><font color="#b45f06" style="font-size:medium">&nbsp;</font><span style="font-size:medium">specify the path of the plugin .run file<span style="line-height:26px"><br>
+can also use command line to install plugin<font><font size="3"><span style="line-height:normal;white-space:pre-wrap">:</span></font></font><span style="font-size:medium">&nbsp;</span><font style="font-size:medium"><font color="#6A3200">sudo hp-plugin -i -g</font><br>
+then</font><font color="#6A3200" style="font-size:medium">&nbsp;</font><span style="font-size:medium">specify the path of the plugin .run file<span style="line-height:26px"><br>
 </span></span><span style="font-size:medium">but downloading the digital signature might fail -</span><span style="font-size:medium">install anyway&nbsp;</span></li>
-<li><font size="3">must add the user to the lpadmin group with&nbsp;<font color="#b45f06">sudo adduser &lt;user&gt; lpadmin</font></font></li>
+<li><font size="3">must add the user to the lpadmin group with&nbsp;<font color="#6A3200">sudo adduser &lt;user&gt; lpadmin</font></font></li>
 </ol>
 <font size="3"><br>
 <br>
@@ -162,7 +162,7 @@ then</font><font color="#b45f06" style="font-size:medium">&nbsp;</font><span sty
 <div><font size="3">Some new HP printers (WITH P1102 DEFINITELY) have smart install on their memory chip so that they can install onto a Windows machine (for ease of process) so on Linux the printer shows up as a usb CD Rom, and CUPS can't get it to print.</font></div>
 </div>
 <div><font size="3">Eventually&nbsp;I found a ticket on Launchpad with a solution&nbsp;<span style="line-height:26px"><a href="https://bugs.launchpad.net/hplip/+bug/672134" rel="noreferrer">https://bugs.launchpad.net/hplip/+bug/672134</a>&nbsp;</span></font><span style="font-size:medium">using&nbsp;<b>usb_modeswitch&nbsp;</b></span></div>
-<div><font color="#cc0000" size="3">sudo apt-get install usb-modeswitch</font></div>
+<div><font color="#7C2020" size="3">sudo apt-get install usb-modeswitch</font></div>
 <div><font size="3">then I ran the code that Dudinea posted,</font></div>
 <div><font size="3"><br>
 </font></div>

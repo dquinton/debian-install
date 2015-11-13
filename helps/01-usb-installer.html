@@ -30,7 +30,7 @@ id: help
 </span></font></div>
 <div><span style="line-height:27px"><b style="font-size:large">UNetbootin&nbsp;</b></span></div>
 <div><span style="line-height:27px"><font size="3">-can install only one .ISO file at a time to usb stick</font></span></div>
-<div><span style="line-height:27px"><font size="3">install from packages with <font color="#cc0000">sudo apt-get install unetbootin</font></font></span></div>
+<div><span style="line-height:27px"><font size="3">install from packages with <font color="#7C2020">sudo apt-get install unetbootin</font></font></span></div>
 <div><span style="line-height:27px"><font size="3"><br>
 </font></span></div>
 <div><span style="line-height:27px;font-size:medium">use Gparted to make a Primary partition (FAT32) big enough for your ISO file + (optional) a small partition (FAT32) for any extra files.</span></div>
@@ -46,7 +46,7 @@ id: help
 <div><span style="line-height:27px;font-size:medium">Note: for installing debian on a machine with only wireless available, it would be nice to have the driver files ready on the same usb drive.</span></div>
 <div><span style="line-height:27px;font-size:medium">So go back to Gparted, format some free space on the usb stick (FAT32) and use that for those firmware files</span></div>
 <div><span style="font-size:medium;line-height:27px">Note: if you need to resize a FAT32 formatted drive, you need to install</span><font size="3"><span style="line-height:27px">&nbsp;</span>FAT32 file support</font></div>
-<div><font color="#cc0000" size="3">sudo apt-get install dosfstools mtools</font></div>
+<div><font color="#7C2020" size="3">sudo apt-get install dosfstools mtools</font></div>
 <div><font size="3">but likely you just need to wipe the partitions and make new ones.</font></div>
 <div><font size="3"><br>
 </font></div>
@@ -58,8 +58,8 @@ id: help
 <div>
 <div><font size="4"><b>Multicd.sh</b></font></div>
 <div><font size="3">this script from their web-page&nbsp;</font><a href="http://multicd.tuxfamily.org/" style="line-height:26px;font-size:medium">http://multicd.tuxfamily.org/</a>&nbsp;<span style="font-size:medium">makes one .iso file of multiple LiveCD or utility .iso's which can then be put on a USB stick with UNetbootin, Remastersys USB tool, or the commands:&nbsp;</span></div>
-<font color="#b45f06" size="3">isohybrid multicd.iso<br>
-dd if=multicd.iso of=/dev/</font><font color="#0b5394" size="3">sb1</font><font color="#b45f06" size="3"> bs=1M&nbsp;</font><font size="3">(eg only -<span style="background-color:rgb(255,229,153)">find your usb device name!</span> <font color="#b45f06">sudo fdisk -l</font>)</font>
+<font color="#6A3200" size="3">isohybrid multicd.iso<br>
+dd if=multicd.iso of=/dev/</font><font color="#0b5394" size="3">sb1</font><font color="#6A3200" size="3"> bs=1M&nbsp;</font><font size="3">(eg only -<span style="background-color:rgb(255,229,153)">find your usb device name!</span> <font color="#6A3200">sudo fdisk -l</font>)</font>
 <div><font size="3">but what is the .iso file size limit?? &nbsp;and can it deal with multiple .iso's of the same Linux distro such as those made with Remastersys, or different downloaded versions?</font></div>
 </div>
 <div><br>
@@ -72,8 +72,8 @@ dd if=multicd.iso of=/dev/</font><font color="#0b5394" size="3">sb1</font><font 
 <div><font size="3"><span style="line-height:27px"><br>
 </span></font></div>
 <div><span style="font-size:medium">I hacked the install script they give on the site which basically adds the source and repo key</span></div>
-<font color="#b45f06" size="3">
-<div><font color="#b45f06" size="3"><br>
+<font color="#6A3200" size="3">
+<div><font color="#6A3200" size="3"><br>
 </font></div>
 sudo sh -c 'echo "deb http://liveusb.info/multisystem/depot all main" &gt;&gt; /etc/apt/sources.list'</font>
 <div><font size="3"><span style="line-height:27px">can comment out with # after install -sudo nano /etc/apt/sources.list</span></font></div>
@@ -81,8 +81,8 @@ sudo sh -c 'echo "deb http://liveusb.info/multisystem/depot all main" &gt;&gt; /
 </span></font></div>
 <div><font size="3">install the key</font></div>
 <div><span style="color:rgb(180,95,6);font-size:medium">su</span></div>
-<div><font color="#b45f06" size="3">wget -q http://liveusb.info/multisystem/depot/multisystem.asc -O- | apt-key add -</font></div>
-<font color="#cc0000">apt-get update &amp;&amp; apt-get install multisystem</font></div>
+<div><font color="#6A3200" size="3">wget -q http://liveusb.info/multisystem/depot/multisystem.asc -O- | apt-key add -</font></div>
+<font color="#7C2020">apt-get update &amp;&amp; apt-get install multisystem</font></div>
 <div>
 <div>
 <div><br>

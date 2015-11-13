@@ -25,7 +25,7 @@ This might not be the nicest way of uploading pics to Picasaweb, but it's simple
 </div>
 <div>the first is a .deb archive, so install the usual way, sudo dpkg -i googlecl*.deb</div>
 <div>the second one is a tar.gz archive, so unpack it and cd to its dir, set up with</div>
-<div><font color="#b45f06">sudo python setup.py install</font></div>
+<div><font color="#6A3200">sudo python setup.py install</font></div>
 <div><br>
 </div>
 <div>and you are ready to use Google services from command line.</div>
@@ -34,15 +34,15 @@ This might not be the nicest way of uploading pics to Picasaweb, but it's simple
 <ul><li><span style="font-size:16px;line-height:1.6">copy some pics to a test dir</span></li>
 <li>cd to the dir or navigate there with Ranger</li>
 <li>then run this command</li></ul>
-<font color="#b45f06">google picasa create "Test Album" *.JPG</font></div>
+<font color="#6A3200">google picasa create "Test Album" *.JPG</font></div>
 <div>
 <ul><li>`create` will make a new album, with the title set by the next value</li>
 <li>the last value is the pics to be uploaded -so individual files, or wildcard, or /path/to/pics/*</li>
 <li>before you can connect to the Google service, you must allow access, which is pretty simple stuff (a browser opens and you enter user/passwd for google)</li>
 <li>you won't get any indication of % uploaded, save for the file names of current and done files -so you can work out how far by looking at the file list.</li>
 <li>you can post pics or videos to an exiting album with something like</li></ul>
-<span style="color:rgb(180,95,6)">google picasa post "Big Spiders" tarantula21.JPG</span></div>
-<ul><li><span style="font-size:16px;line-height:1.6">also,<font color="#b45f06"> list-albums</font> and <font color="#b45f06">delete "Bad album"</font> could be useful -</span><span style="font-size:16px;line-height:1.6"> see the google cl page here </span><a href="https://code.google.com/p/googlecl/wiki/ExampleScripts#create" style="font-size:16px;line-height:1.6">https://code.google.com/p/googlecl/wiki/</a></li>
+<span style="color:#6A3200">google picasa post "Big Spiders" tarantula21.JPG</span></div>
+<ul><li><span style="font-size:16px;line-height:1.6">also,<font color="#6A3200"> list-albums</font> and <font color="#6A3200">delete "Bad album"</font> could be useful -</span><span style="font-size:16px;line-height:1.6"> see the google cl page here </span><a href="https://code.google.com/p/googlecl/wiki/ExampleScripts#create" style="font-size:16px;line-height:1.6">https://code.google.com/p/googlecl/wiki/</a></li>
 <li>using ranger, you can use %s instead of file names and that way upload only the selected files (see my key mapping on image files, on my Ranger page)</li>
 <li>Thunar custom action? well it would work but without a terminal opened there would be no progress indication whatsoever.</li></ul>
 <div><br>

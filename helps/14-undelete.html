@@ -55,16 +55,16 @@ This might save your life one day (or the life of some files you removed bypassi
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">[get device i.e. sdb1 etc]</font></div>
-<div><font color="#b45f06" size="3">sudo fdisk -l</font></div>
+<div><font color="#6A3200" size="3">sudo fdisk -l</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">[unmount drive]</font></div>
-<div><font color="#b45f06" size="3">sudo umount /media/VIDEO</font></div>
+<div><font color="#6A3200" size="3">sudo umount /media/VIDEO</font></div>
 <div><font size="3">or click on eject in a file browser</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">[list files available for undelete, might need&nbsp;</font><span style="font-size:medium;line-height:27px">force option -f</span><span style="font-size:medium">]&nbsp;</span></div>
-<div><font color="#b45f06" size="3">sudo ntfsundelete /dev/sdb1 -f</font></div>
+<div><font color="#6A3200" size="3">sudo ntfsundelete /dev/sdb1 -f</font></div>
 <div><span style="font-size:medium">adjust the scroll lines of the Terminal to a few thousand to show long lists.</span></div>
 <div><font size="3">
 <div><br>
@@ -74,31 +74,31 @@ This might save your life one day (or the life of some files you removed bypassi
 <div style="color:rgb(180,95,6)"><br>
 </div>
 <div>[list files with something in the filename, available for undelete]&nbsp;</div>
-<div><font color="#b45f06">sudo ntfsundelete /dev/sdb1 -m something\* -f</font></div>
-<div><font color="#b45f06"><br>
+<div><font color="#6A3200">sudo ntfsundelete /dev/sdb1 -m something\* -f</font></div>
+<div><font color="#6A3200"><br>
 </font></div>
 <div>
 <div>[combine the above two]&nbsp;</div>
-<div><font color="#b45f06">sudo ntfsundelete /dev/sdb1 -m something\*MTS -f</font></div>
+<div><font color="#6A3200">sudo ntfsundelete /dev/sdb1 -m something\*MTS -f</font></div>
 </div>
 </font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">[undelete with file name]</font></div>
-<div><font color="#b45f06" size="3">sudo ntfsundelete /dev/sdb1 -u -m 0032.MTS -f</font></div>
+<div><font color="#6A3200" size="3">sudo ntfsundelete /dev/sdb1 -u -m 0032.MTS -f</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">[undelete with wildcard extension (will recover ALL files with the ex.), to a destination dir with -d switch]</font></div>
-<div><font color="#b45f06" size="3">sudo ntfsundelete /dev/sdb1 -u -m *.MTS -d /media/VIDEO</font></div>
-<div><font color="#b45f06" size="3">sudo ntfsundelete /dev/sdb1 -u -m&nbsp;<span style="line-height:27px">something\</span></font><span style="color:rgb(180,95,6);font-size:medium">*.MTS -d /media/VIDEO</span></div>
-<div><font color="#b45f06" size="3"><span style="line-height:27px"><br>
+<div><font color="#6A3200" size="3">sudo ntfsundelete /dev/sdb1 -u -m *.MTS -d /media/VIDEO</font></div>
+<div><font color="#6A3200" size="3">sudo ntfsundelete /dev/sdb1 -u -m&nbsp;<span style="line-height:27px">something\</span></font><span style="color:rgb(180,95,6);font-size:medium">*.MTS -d /media/VIDEO</span></div>
+<div><font color="#6A3200" size="3"><span style="line-height:27px"><br>
 </span></font></div>
 <div><font size="3">[undelete with inode range, to a destination dir]</font></div>
-<div><font color="#b45f06" size="3">sudo ntfsundelete /dev/sdb1 -u -i 7245-7275 -d /media/VIDEO -f</font></div>
+<div><font color="#6A3200" size="3">sudo ntfsundelete /dev/sdb1 -u -i 7245-7275 -d /media/VIDEO -f</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">[change permissions to user for undeleted files if necessary]</font></div>
-<div><font color="#b45f06" size="3">sudo chown <i>username</i> *.MTS</font></div>
+<div><font color="#6A3200" size="3">sudo chown <i>username</i> *.MTS</font></div>
 </div>
 </div>
 <div><font size="3"><br>
@@ -138,10 +138,10 @@ This might save your life one day (or the life of some files you removed bypassi
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">
-<div><font color="#cc0000">&nbsp;sudo apt-get install testdisk</font></div>
+<div><font color="#7C2020">&nbsp;sudo apt-get install testdisk</font></div>
 <div><br>
 </div>
-<div><font color="#b45f06">&nbsp;sudo photorec</font></div>
+<div><font color="#6A3200">&nbsp;sudo photorec</font></div>
 <div><br>
 </div>
 <div>1. choose disk to rescue files from</div>
@@ -159,7 +159,7 @@ This might save your life one day (or the life of some files you removed bypassi
 <div>using <b>Testdisk</b> is just as easy, it will list the deleted files and it works on NTFS, FAT (SD cards etc) and ext2&nbsp;<a href="http://www.cgsecurity.org/wiki/TestDisk" rel="noreferrer">http://www.cgsecurity.org/wiki/TestDisk</a></div>
 <div><br>
 </div>
-<div><font color="#b45f06">&nbsp;sudo testdisk</font></div>
+<div><font color="#6A3200">&nbsp;sudo testdisk</font></div>
 <div>1. choose log option</div>
 <div>2. choose disk to rescue files from</div>
 </font>
@@ -190,7 +190,7 @@ This might save your life one day (or the life of some files you removed bypassi
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">then</font></div>
-<div><font size="3"><font color="#b45f06">&nbsp;photorec</font>&nbsp;</font><span style="color:rgb(180,95,6);font-size:medium;line-height:27px">/media/FILES/RECOV/disk.img</span></div>
+<div><font size="3"><font color="#6A3200">&nbsp;photorec</font>&nbsp;</font><span style="color:rgb(180,95,6);font-size:medium;line-height:27px">/media/FILES/RECOV/disk.img</span></div>
 <div><span style="color:rgb(180,95,6);font-size:medium;line-height:27px"><br>
 </span></div>
 <div><span style="font-size:medium;line-height:27px">but alas, no files were found either! &nbsp;duh, the card had been formatted.</span></div>
@@ -199,7 +199,7 @@ This might save your life one day (or the life of some files you removed bypassi
 <div><span style="font-size:medium;line-height:27px"><br>
 </span></div>
 <div><span style="line-height:27px"><b><font size="4">Then there's extundelete</font></b></span></div>
-<div><font color="#cc0000"><font size="3"><span style="line-height:27px">sudo apt-get install&nbsp;</span></font><span style="background-color:transparent;line-height:27px"><font size="3">extundelete</font></span></font></div>
+<div><font color="#7C2020"><font size="3"><span style="line-height:27px">sudo apt-get install&nbsp;</span></font><span style="background-color:transparent;line-height:27px"><font size="3">extundelete</font></span></font></div>
 <div><font size="3"><span style="line-height:27px"><br>
 </span></font></div>
 <div><font size="3"><span style="line-height:27px">see here&nbsp;</span></font><span style="background-color:transparent;line-height:27px"><font size="3"><a href="http://www.gnutoolbox.com/extundelete/" rel="noreferrer">http://www.gnutoolbox.com/extundelete/</a></font></span></div>

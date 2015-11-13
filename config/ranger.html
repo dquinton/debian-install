@@ -80,9 +80,8 @@ I was looking for a tidy way to navigate directories in a bash shell, so that I 
 
 
 <br><br>
-a name="1"></a><br>
 
-<h2 id="1">Install</h2>
+<h2 id="1" class="tag">Install</h2>
 download ranger from <a href="http://ranger.nongnu.org/download.html">http://ranger.nongnu.org/download.html</a>
 unpack, and run sudo make install
 
@@ -128,8 +127,9 @@ To get started, two commands needed..
 <tr><td>S</td>			   <td>in Ranger, drops to a shell at current dir (from where Ctrl-D or `exit' returns to Ranger)</td></tr></table>
 
 <br>
-<a name="2"></a><br>
-<h2>Features</h2>
+
+<h2 id="2" class="tag">Features</h2>
+
 <div class="bullet"><ul><li> displays two columns: active directory level at center, upper dir level at left; and a preview pane at the right</li>
 <li>navigate with cursor keys: right/left move across the columns of dir levels (i.e. down/up the directory tree), and down/up moves the highlight down/up the file list in active level column</li>
 <li>mouse roller also moves up/down the file list</li>
@@ -163,11 +163,11 @@ To get started, two commands needed..
 And that's just the basics!  There are endless possibilities with Ranger because it incorporates the bash shell.
 
 <br><br>
-<a name="3"></a><br>
+
 
 <br><br><table cellpadding="4" border="1" width="15%" style="border-collapse: collapse; position: absolute; left: 700px; "><tr><td><span style="font-size: 18px; ">Get my <a href="{{site.baseurl}}/files/ranger-keybinds_quinton.pdf">key mapping sheet!</a></span></td></tr></table>
 
-<h2>Default key-bindings</h2>
+<h2 id="3" class="tag">Default key-bindings</h2>
 
     
 <h3>navigation</h3>
@@ -261,23 +261,25 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>u d      </td><td>clears copy/cut buffer, also uy (<b>I change this to uu as it seems faster</b>)</td></tr>
 
-<tr><td>c w    </td><td>rename (<b>I make this fr</b> -see below)</td></tr>
+<tr><td>c w    </td><td>rename/bulk rename (<b>I make this fr</b> -see below)</td></tr>
 
-<tr><td>A			</td><td>append/edit name</td></tr>
+<tr><td>A			</td><td>edit name (append)</td></tr>
 
-<tr><td>I			</td><td>prepend/edit name</td></tr>
+<tr><td>I			</td><td>edit name (prepend)</td></tr>
 
-<tr><td>E			</td><td>edit file with nano (<b>I change this to fe</b>)</td></tr>
+<tr><td>E			</td><td>edit file with bash editor (<b>I change this to fe</b> - there is F4 as well - see how to set nano as editor below)</td></tr>
 
-<tr><td>insert		</td><td>touch (enter name of new file) (<b>I make this ft</b>)</td></tr>
+<tr><td>insert		</td><td>touch (create new file) (<b>I add ft</b>)</td></tr>
 
-<tr><td>delete      </td><td>deletes file (no confirm single files by default -can change in conf.rc)</td></tr>
+<tr><td>delete      </td><td>deletes file (no confirm for single files by default -can change in conf.rc)</td></tr>
 
-<tr><td>r      </td><td>open file with program</td></tr>
+<tr><td>r      </td><td>open file with program on rifle list</td></tr>
 
 <tr><td>r 1     </td><td>unpacks selected archive (need to install <b>atool</b>) -actually hits the 1st option with rifle (you can just type 1 Enter)</td></tr>
 
-<tr><td>+ / -   </td><td>chmod commands, e.g. 6</td></tr></table>
+<tr><td>+ / -   </td><td>chmod commands</td></tr>
+
+<tr><td>{octal no} =  </td><td>change permissions, e.g. 744 =, set permissions to -rwxr--r--</td></tr></table>
 
 <br>
 <h3>marking</h3>
@@ -363,9 +365,9 @@ typing '@-rf leafpad' will open a file with sudo (writes `shell -rf leafpad %s` 
 Check the rc.conf file
 
 <br><br>
-<a name="4"></a><br>
 
-<h2>My keybindings</h2>  
+
+<h2 id="4" class="tag">My keybindings</h2>  
 
 <h3 style="color: #2D46CF; ">keybinds I changed from the default..</h3>
 
@@ -414,34 +416,34 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 <h3 style="color: #2D46CF; ">then all those I added..</h3>
 <table><tr><td style="padding-right: 20px; " valign="top">
 <table cellpadding="2">
-<tr><td style="color: #2D46CF; font-weight: bold;" width="100">f</td><td> <a href="#fi">files</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> O</td><td> <a href="#op">open files</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> y,d,p</td><td> <a href="#yk">yanking</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> P</td><td> <a href="#su">super user</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> X,x</td><td> <a href="#del">delete</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> dot-number</td><td> <a href="#con">config files</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> ';</td><td> <a href="#cdcon">cd config dir's</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> comma-k </td><td><a href="#bk">backup</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> comma-l</td><td> <a href="#sym">symlinks</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> comma-d</td><td>  <a href="#dir">directories</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> comma-a</td><td>   <a href="ar">archives</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> comma-i</td><td>   <a href="#iso">iso</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> comma-s</td><td>   <a href="#src">source files</a></td></tr></table>
+<tr><td style="color: #2D46CF; font-weight: bold;" width="100">f</td><td> <a href="#fi" class="tag">files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> O</td><td> <a href="#op" class="tag">open files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> y,d,p</td><td> <a href="#yk" class="tag">yanking</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> P</td><td> <a href="#su" class="tag">super user</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> X,x</td><td> <a href="#del" class="tag">delete</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> dot-number</td><td> <a href="#con" class="tag">config files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> ';</td><td> <a href="#cdcon" class="tag">cd config dir's</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-k </td><td><a href="#bk" class="tag">backup</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-l</td><td> <a href="#sym" class="tag">symlinks</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-d</td><td>  <a href="#dir" class="tag">directories</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-a</td><td>   <a href="ar" class="tag">archives</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-i</td><td>   <a href="#iso" class="tag">iso</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-s</td><td>   <a href="#src" class="tag">source files</a></td></tr></table>
 </td>
 <td>
 <table cellpadding="2">
-<tr><td style="color: #2D46CF; font-weight: bold; " width="100"> fi </td><td> <a href="#img">image files</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> F</td><td>  <a href="#feh">feh</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> fim</td><td>  <a href="#mog">mogrify</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> E</td><td>  <a href="#exif">exiftool</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> fa</td><td>   <a href="#aud">audio files</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> fv</td><td>    <a href="#vid">video files</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold;">  comma-m</td><td> <a href="#mt">mounting</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> comma-n</td><td> <a href="#nfs">nfs</a> </td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; " width="100"> fi </td><td> <a href="#img" class="tag">image files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> F</td><td>  <a href="#feh" class="tag">feh</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> fim</td><td>  <a href="#mog" class="tag">mogrify</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> E</td><td>  <a href="#exif" class="tag">exiftool</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> fa</td><td>   <a href="#aud" class="tag">audio files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> fv</td><td>    <a href="#vid" class="tag">video files</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold;">  comma-m</td><td> <a href="#mt" class="tag">mounting</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-n</td><td> <a href="#nfs" class="tag">nfs</a> </td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> J</td><td> <a href="#git">Github</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> comma-z</td><td>    <a href="#brn">bashburn</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> G</td><td>   <a href="#gpg">gpg encryption</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold; "> R</td><td>   <a href="#batch">batch renaming</a></td></tr></table>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-z</td><td>    <a href="#brn" class="tag">bashburn</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> G</td><td>   <a href="#gpg" class="tag">gpg encryption</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> R</td><td>   <a href="#batch" class="tag">batch renaming</a></td></tr></table>
 </td></tr>
 </table>
 <br><br>
@@ -1149,10 +1151,9 @@ exiftool '-filename<${DateTimeOriginal}.%e' -d %y%m%d-%H%M%S $@</textarea>
 One problem is, however, with so many key-bindings, is the lack of sort-by-key in the command visual.  They are sorted alphabetically by command, and so finding the one you want........ I split the renaming up so as to not fill up R with a huge mix up of commands.
 
 <br><br>
-<a name="5"></a><br>
 
 
-<h2>Notes on mapping keys</h2>
+<h2 id="5" class="tag">Notes on mapping keys</h2>
 <div class="bullet"><ul><li> `console` is used to run ranger specific commands where typing input is necessary, such as pattern or new file name </li>
 <li>`console shell` is used to run bash commands, where typing is needed (can use ranger macros and the shell flags)</li>
 <li>`chain` allows multiple commands to be run consecutively, each separated by `;`</li>
@@ -1163,10 +1164,9 @@ examples
 <table><tr><td width="200"><b>map a enter_bookmark a </b>  </td>                 <td>will map key a to go to bookmark a (same as using the ' with its list of bookmarks)</td></tr></table>
 
 <br><br>
-<a name="6"></a><br>
 
 
-<h2>Useful native commands</h2> 
+<h2 id="6" class="tag">Useful native commands</h2> 
 <br>
 <span style="font-size: 20; ">search_inc</span>
 <table><tr><td width="320"><b>map / console search_inc</b> (space after)</td><td>which searches as you type, but no filtering like scout</td></tr></table>
@@ -1229,18 +1229,16 @@ export EDITOR=nano</textarea>
 
 
 <br><br>
-<a name="7"></a><br>
 
-<h2>In-line preview of images</h2> 
+<h2 id="7" class="tag">In-line preview of images</h2> 
 To have images showing in the pager at right of file list, first install <span class="inst">w3m w3m-img</span>
 then enable image preview "set preview_images true" in conf.rc
 <br><br>
 This only works with rxvt, rxvt-unicode, and xterm terminals - so I advise switching to URxvt.  See my <a href="urxvt.html">Rxvt-unicode</a> page
 
 <br><br>
-<a name="8"></a><br>
 
-<h2>Refine the info displayed for image files</h2>
+<h2 id="8" class="tag">Refine the info displayed for image files</h2>
 To refine the info shown in pager for image files (because otherwise there's way too much info there and it runs off the screen and you don't want to hit `i` every time you need a useful exif data), add this line to <b>scope.sh</b> in ~/.config/ranger, for image mimetype:
 
 <form><textarea name="T" id="file" rows="3" cols="120">
@@ -1251,9 +1249,8 @@ try exiftool -f -filename -filesize -datetimeoriginal -modifydate -imagesize -ap
 
 
 <br><br>
-<a name="9"></a><br>
 
-<h2>Refine the info displayed for video/audio files</h2>
+<h2 id="9" class="tag">Refine the info displayed for video/audio files</h2>
 I have mediainfo commands that can go in scope.sh file as well, and if you want to add more tags to the commands, you need to run 
 
 <form><textarea name="T" id="cmd" rows="1" cols="50">
@@ -1309,9 +1306,8 @@ esac</textarea>
 
 
 <br><br>
-<a name="10"></a><br>
 
-<h2>Integrate system trash with bash</h2>
+<h2 id="10" class="tag">Integrate system trash with bash</h2>
 download the zipped file from git (on the right of page) <a href="https://github.com/andreafrancia/trash-cli">https://github.com/andreafrancia/trash-cli</a>
 <br><br>
 unzip it, enter the dir and run
@@ -1340,9 +1336,8 @@ or you could map keys to the trash places for each disk partition, use `shell cd
 then to restore a file, select and yank with yy, then hit h (I change history key to lower case h from H) to return to the dir you just deleted the file, and pp to drop the file back and restore it there.
 
 <br><br>
-<a name="10"></a><br>
 
-<h2>UI enhancements!</h2>
+<h2 id="11" class="tag">UI enhancements!</h2>
 <h3>1. Remove "user@host" from the title bar</h3>
 <div class="bullet"><ul><li>in ranger type `g R`</li>
 <li>navigate to gui/widgets/ and highlight titlebar.py</li>

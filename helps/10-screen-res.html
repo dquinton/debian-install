@@ -16,10 +16,10 @@ I've never needed to find out this info, as I seem to always be installing Debia
 <div><br>
 </div>
 <div>What we need to do is edit the "Monitor" and "Screen" sections of Xorg.conf - and I read that if there is no Xorg.conf file around (in /etc/X11 - and its not there any more by default as X loads up device settings as it sees them during boot) it can be generated with</div>
-<div><font color="#b45f06">cd /etc/X11</font></div>
-<div><font color="#b45f06">X11 -configure&nbsp;</font></div>
+<div><font color="#6A3200">cd /etc/X11</font></div>
+<div><font color="#6A3200">X11 -configure&nbsp;</font></div>
 <div>or&nbsp;</div>
-<div><font color="#b45f06">X :1 -configure</font></div>
+<div><font color="#6A3200">X :1 -configure</font></div>
 <div>(and that's when outside of any display manager - I exit Openbox first)</div>
 <div><br>
 </div>
@@ -27,40 +27,40 @@ I've never needed to find out this info, as I seem to always be installing Debia
 <div><br>
 </div>
 <div>The next option is to create a file in /etc/X11/xorg.conf.d/ with just the Sections that we want Xorg to make the settings for,</div>
-<div><font color="#b45f06">sudo mkdir&nbsp;/etc/X11/xorg.conf.d</span></font></div>
-<div><font color="#b45f06">sudo leafpad&nbsp;</span>/etc/X11/xorg.conf.d/10-monitor.conf</span></font></div>
+<div><font color="#6A3200">sudo mkdir&nbsp;/etc/X11/xorg.conf.d</span></font></div>
+<div><font color="#6A3200">sudo leafpad&nbsp;</span>/etc/X11/xorg.conf.d/10-monitor.conf</span></font></div>
 <div><br>
 </span></div>
 <div>For my resolution requirement I put these lines in the file:</span></div>
-<div><font color="#38761d">Section "Monitor"</font></span></div>
-<div><font color="#38761d">Identifier &nbsp; "Monitor0"</font></span></div>
-<div><font color="#38761d">HorizSync &nbsp; &nbsp;30.0 - 86.0</font></span></div>
-<div><font color="#38761d">VertRefresh &nbsp;56.0 - 76.0</font></span></div>
-<div><font color="#38761d">Modeline &nbsp; &nbsp; "1920x1080" &nbsp;173.00 &nbsp;1920 2048 2248 2576 &nbsp;1080 1083 1088 1120 -hsync +vsync</font></span></div>
-<div><font color="#38761d">Option &nbsp; &nbsp;"PreferredMode" "1920x1080"</font></span></div>
-<div><font color="#38761d">EndSection</font></span></div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B">Section "Monitor"</font></span></div>
+<div><font color="#0F4F0B">Identifier &nbsp; "Monitor0"</font></span></div>
+<div><font color="#0F4F0B">HorizSync &nbsp; &nbsp;30.0 - 86.0</font></span></div>
+<div><font color="#0F4F0B">VertRefresh &nbsp;56.0 - 76.0</font></span></div>
+<div><font color="#0F4F0B">Modeline &nbsp; &nbsp; "1920x1080" &nbsp;173.00 &nbsp;1920 2048 2248 2576 &nbsp;1080 1083 1088 1120 -hsync +vsync</font></span></div>
+<div><font color="#0F4F0B">Option &nbsp; &nbsp;"PreferredMode" "1920x1080"</font></span></div>
+<div><font color="#0F4F0B">EndSection</font></span></div>
+<div><font color="#0F4F0B"><br>
 </font></span></div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B"><br>
 </font></span></div>
-<div><font color="#38761d">Section "Screen"</font></span></div>
-<div><font color="#38761d">Identifier "Screen0"</font></span></div>
-<div><font color="#38761d">Device &nbsp; &nbsp; "Device0"</font></span></div>
-<div><font color="#38761d">Monitor &nbsp; &nbsp;"Monitor0"</font></span></div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B">Section "Screen"</font></span></div>
+<div><font color="#0F4F0B">Identifier "Screen0"</font></span></div>
+<div><font color="#0F4F0B">Device &nbsp; &nbsp; "Device0"</font></span></div>
+<div><font color="#0F4F0B">Monitor &nbsp; &nbsp;"Monitor0"</font></span></div>
+<div><font color="#0F4F0B"><br>
 </font></span></div>
-<div><font color="#38761d">SubSection "Display"</font></span></div>
-<div><font color="#38761d">Depth &nbsp; &nbsp; 24</font></span></div>
-<div><font color="#38761d">Modes &nbsp; &nbsp;"1920x1080"</font></span></div>
-<div><font color="#38761d">EndSubSection</font></span></div>
-<div><font color="#38761d">EndSection</font></span></div>
+<div><font color="#0F4F0B">SubSection "Display"</font></span></div>
+<div><font color="#0F4F0B">Depth &nbsp; &nbsp; 24</font></span></div>
+<div><font color="#0F4F0B">Modes &nbsp; &nbsp;"1920x1080"</font></span></div>
+<div><font color="#0F4F0B">EndSubSection</font></span></div>
+<div><font color="#0F4F0B">EndSection</font></span></div>
 <div><br>
 </span></div>
 <div>you can add modelines to Monitor section and modes to Screen section, as you need.</span></div>
 <div><br>
 </span></div>
 <div>You get the modeline by this command</div>
-<div><font color="#b45f06">cvt 1920 1080 60</font></div>
+<div><font color="#6A3200">cvt 1920 1080 60</font></div>
 <div>ie cvt &lt;width&gt; &lt;height&gt; &lt;refresh-rate&gt;</div>
 <div><br>
 </div>
@@ -69,10 +69,10 @@ I've never needed to find out this info, as I seem to always be installing Debia
 <div><br>
 </div>
 <div>If you are using a specific graphics card, then that might need adding too, with</div>
-<div><font color="#38761d">Section "Device"</font></div>
-<div><font color="#38761d">&nbsp; &nbsp; Identifier &nbsp; &nbsp;"Device0"</font></div>
-<div><font color="#38761d">&nbsp; &nbsp; Driver &nbsp; &nbsp; &nbsp; &nbsp;"driver-name" #Choose the driver used for this monitor</font></div>
-<div><font color="#38761d">EndSection</font></div>
+<div><font color="#0F4F0B">Section "Device"</font></div>
+<div><font color="#0F4F0B">&nbsp; &nbsp; Identifier &nbsp; &nbsp;"Device0"</font></div>
+<div><font color="#0F4F0B">&nbsp; &nbsp; Driver &nbsp; &nbsp; &nbsp; &nbsp;"driver-name" #Choose the driver used for this monitor</font></div>
+<div><font color="#0F4F0B">EndSection</font></div>
 <div><br>
 </div>
 <div><br>

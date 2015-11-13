@@ -20,18 +20,18 @@ id: help
 </font></div>
 <div><b><font size="4">1. GRUB</font></b></div>
 <div>
-<div><font color="#b45f06" size="3">sudo leafpad /etc/default/grub</font></div>
+<div><font color="#6A3200" size="3">sudo leafpad /etc/default/grub</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">Change this line</font></div>
-<div><font color="#38761d" size="3">GRUB_CMLINE_LINUX_DEFAULT="quiet splash"</font></div>
+<div><font color="#0F4F0B" size="3">GRUB_CMLINE_LINUX_DEFAULT="quiet splash"</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">to&nbsp;</font></div>
-<div><font color="#38761d" size="3">GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_backlight=vendor"</font></div>
+<div><font color="#0F4F0B" size="3">GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_backlight=vendor"</font></div>
 <div><font size="3"><br>
 </font></div>
-<div><font size="3"><font color="#b45f06">sudo update-grub</font> and reboot</font></div>
+<div><font size="3"><font color="#6A3200">sudo update-grub</font> and reboot</font></div>
 <div><br>
 </div>
 <div><b><font size="4">2. xrandr</font></b></div>
@@ -39,8 +39,8 @@ id: help
 <div><font size="3"><br>
 </font></div>
 <div><b><font size="4">3. xbacklight</font></b></div>
-<div><font color="#cc0000" size="3">sudo apt-get install xbacklight</font></div>
-<div><font color="#b45f06" size="3">sudo xbacklight -10</font></div>
+<div><font color="#7C2020" size="3">sudo apt-get install xbacklight</font></div>
+<div><font color="#6A3200" size="3">sudo xbacklight -10</font></div>
 <div><font size="3">get error: No outputs have backlight property</font></div>
 <div><font size="3">&nbsp;</font></div>
 <div><b><font size="4">4. setpci</font></b></div>
@@ -158,11 +158,11 @@ id: help
 <ul><li>put in home, or your scripts dir and make executable with right-click &gt;Properties, chmod +x or thunar right-click custom action</li>
 <li>edit sudoers file so as to not need to enter sudo password for setpci&nbsp;<span style="color:rgb(180,95,6)">sudo leafpad /etc/sudoers</span></li>
 <li>add the line</li></ul>
-<font color="#38761d">ALL ALL=(ALL) NOPASSWD: setpci</font></div>
+<font color="#0F4F0B">ALL ALL=(ALL) NOPASSWD: setpci</font></div>
 <div>
-<ul><li>map keys to the scripts <font color="#38761d">~/br-up</font> and <font color="#38761d">~/br-dn&nbsp;</font>-with Openbox-LXDE this is done in the file ~/.config/openbox/lxde-rc.xml&nbsp;</li></ul>
+<ul><li>map keys to the scripts <font color="#0F4F0B">~/br-up</font> and <font color="#0F4F0B">~/br-dn&nbsp;</font>-with Openbox-LXDE this is done in the file ~/.config/openbox/lxde-rc.xml&nbsp;</li></ul>
 e.g.&nbsp;<br>
-<font color="#38761d">&lt;!--keybindings for Brightness --&gt;<br>
+<font color="#0F4F0B">&lt;!--keybindings for Brightness --&gt;<br>
 &nbsp;&lt;keybind key="W-Up"&gt;<br>
 &nbsp; &nbsp; &lt;action name="Execute"&gt;<br>
 <span style="white-space:pre">	</span> &lt;execute&gt;~/br-up&lt;/execute&gt;<br>
@@ -174,8 +174,8 @@ e.g.&nbsp;<br>
 <span style="white-space:pre">	</span>&lt;/action&gt;<br>
 &nbsp; &lt;/keybind&gt;</font><br>
 <ul><li>I map the Up/Down keys to brightness as I use Super-Q and Super-A for volume control, through Audacious hot keys.</li>
-<li>then set the new keybindings with&nbsp;<font color="#b45f06">openbox --reconfigure</font></li>
-<li>set the brightness level at start-up with e.g. <font color="#38761d">@sudo setpci -s 00:02.0 F4.B=CC</font>&nbsp;in /etc/xdg/lxsession/LXDE/autostart</li>
+<li>then set the new keybindings with&nbsp;<font color="#6A3200">openbox --reconfigure</font></li>
+<li>set the brightness level at start-up with e.g. <font color="#0F4F0B">@sudo setpci -s 00:02.0 F4.B=CC</font>&nbsp;in /etc/xdg/lxsession/LXDE/autostart</li>
 <li>or, make .desktop files in ~/.local/share/applications with the same script commands, name them, set icons and add them to a panel as launchers</li></ul>
 </div>
 <div><br>

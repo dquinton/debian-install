@@ -18,23 +18,23 @@ I found the solution to installing the canon driver for this printer at Ubuntu f
 <li>extract</li>
 <li>repackage the common .deb.&nbsp;</li></ul>
 </div>
-<div><font color="#b45f06">dpkg-deb -x cnijfilter-common_3.00-1_i386.deb common</font></div>
-<div><font color="#b45f06">dpkg-deb --control cnijfilter-common_3.00-1_i386.deb</font></div>
+<div><font color="#6A3200">dpkg-deb -x cnijfilter-common_3.00-1_i386.deb common</font></div>
+<div><font color="#6A3200">dpkg-deb --control cnijfilter-common_3.00-1_i386.deb</font></div>
 <div>
 <ul><li>now you see two new folders - common and DEBIAN. now to change the file control in DEBIAN to reflect libcups2.</li></ul>
 </div>
-<div><font color="#b45f06">cd DEBIAN</font></div>
-<div><font color="#b45f06">leafpad control</font></div>
+<div><font color="#6A3200">cd DEBIAN</font></div>
+<div><font color="#6A3200">leafpad control</font></div>
 <div>
 <ul><li>look for the line</li></ul>
-<font color="#38761d">Depends: libc6 (&gt;= 2.3.4-1), libcupsys2 (&gt;= 1.2.1), libpopt0 (&gt;= 1.7)</font></div>
+<font color="#0F4F0B">Depends: libc6 (&gt;= 2.3.4-1), libcupsys2 (&gt;= 1.2.1), libpopt0 (&gt;= 1.7)</font></div>
 <div><br>
 </div>
 <div>
 <ul><li>and change libcupsys2 to libcups2. Save the file.</li>
 <li>Now, copy the entire DEBIAN folder into common. then repackage these into a .deb.&nbsp;</li></ul>
 </div>
-<div><font color="#b45f06">dpkg -b common cnijfilter-common_3.00-1_i386.deb</font></div>
+<div><font color="#6A3200">dpkg -b common cnijfilter-common_3.00-1_i386.deb</font></div>
 <div>
 <ul><li>install that .deb file</li></ul>
 </div>
@@ -42,8 +42,8 @@ I found the solution to installing the canon driver for this printer at Ubuntu f
 <ul><li>Repeat for <font color="#0b5394">cnijfilter-ip1900series_3.00-1_i386.deb</font></li></ul>
 </div>
 <div>
-<div><font color="#b45f06">dpkg-deb -x cnijfilter-ip1900series_3.00-1_i386.deb common</font></div>
-<div><font color="#b45f06">dpkg-deb --control cnijfilter-</font><span style="color:rgb(180,95,6)">ip1900series</span><font color="#b45f06">_3.00-1_i386.deb</font></div>
+<div><font color="#6A3200">dpkg-deb -x cnijfilter-ip1900series_3.00-1_i386.deb common</font></div>
+<div><font color="#6A3200">dpkg-deb --control cnijfilter-</font><span style="color:rgb(180,95,6)">ip1900series</span><font color="#6A3200">_3.00-1_i386.deb</font></div>
 </div>
 <div>edit the control file as before (change libcupsys2 to libcups2)</div>
 copy the DEBIAN folder into common, then

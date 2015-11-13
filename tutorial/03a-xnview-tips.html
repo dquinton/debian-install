@@ -105,35 +105,35 @@ id: tutor
 <div>Here's how:</div>
 <div>
 <ul><li>Select your files in Xnviewmp that you want to find the Originals for and then copy their file names to clipboard (Edit &gt; Copy to Clipboard &gt; Selected file names)</span></li>
-<li><font color="#b45f06" style="font-size:16px;line-height:1.6">leafpad /</font><font color="#0b5394" style="font-size:16px;line-height:1.6">directory</font><font color="#b45f06" style="font-size:16px;line-height:1.6">/my pictures/copylist</font> paste that list into the file </span>and save it</span></li>
-<li>make the script</span><font color="#b45f06" style="font-size:16px;line-height:1.6"> leafpad ~/scripts/findcopypics&nbsp;</font>with this content</li></ul>
+<li><font color="#6A3200" style="font-size:16px;line-height:1.6">leafpad /</font><font color="#0b5394" style="font-size:16px;line-height:1.6">directory</font><font color="#6A3200" style="font-size:16px;line-height:1.6">/my pictures/copylist</font> paste that list into the file </span>and save it</span></li>
+<li>make the script</span><font color="#6A3200" style="font-size:16px;line-height:1.6"> leafpad ~/scripts/findcopypics&nbsp;</font>with this content</li></ul>
 </div>
 <div>
-<div><font color="#38761d">#!/bin/bash</font></div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B">#!/bin/bash</font></div>
+<div><font color="#0F4F0B"><br>
 </font></div>
-<div><font color="#38761d">dir=somewhere/to/search/</font></div>
-<div><font color="#38761d">dest=somewhere/to/copy/to/</font></div>
-<div><font color="#38761d">toCopyList=</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/</font><font color="#0b5394" style="font-size:16px;line-height:1.6">directory</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/my pictures/copylist</font><span style="color:rgb(56,118,29);font-size:16px;line-height:1.6">&nbsp;</span></div>
-<div><font color="#38761d">notCopied=</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/</font><font color="#0b5394" style="font-size:16px;line-height:1.6">directory</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/my pictures/missed</font></div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B">dir=somewhere/to/search/</font></div>
+<div><font color="#0F4F0B">dest=somewhere/to/copy/to/</font></div>
+<div><font color="#0F4F0B">toCopyList=</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/</font><font color="#0b5394" style="font-size:16px;line-height:1.6">directory</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/my pictures/copylist</font><span style="color:rgb(56,118,29);font-size:16px;line-height:1.6">&nbsp;</span></div>
+<div><font color="#0F4F0B">notCopied=</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/</font><font color="#0b5394" style="font-size:16px;line-height:1.6">directory</font><font style="color:rgb(56,118,29);font-size:16px;line-height:1.6">/my pictures/missed</font></div>
+<div><font color="#0F4F0B"><br>
 </font></div>
-<div><font color="#38761d">while read line; do</font></div>
-<div><font color="#38761d">&nbsp; &nbsp;find "$dir" -name "$line" -exec cp '{}' $dest \; -printf "%f\n" &nbsp; &nbsp;</font></div>
-<div><font color="#38761d">done &lt; "$toCopyList" &gt; cpList</font></div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B">while read line; do</font></div>
+<div><font color="#0F4F0B">&nbsp; &nbsp;find "$dir" -name "$line" -exec cp '{}' $dest \; -printf "%f\n" &nbsp; &nbsp;</font></div>
+<div><font color="#0F4F0B">done &lt; "$toCopyList" &gt; cpList</font></div>
+<div><font color="#0F4F0B"><br>
 </font></div>
-<div><font color="#38761d">&nbsp;cat cpList "$toCopyList" | sort | uniq -c | sed -nr '/^ +1/s/^ +1 +(.*)/\1/p' \</font></div>
-<div><font color="#38761d">&nbsp; &nbsp; &gt; "$notCopied"</font></div>
+<div><font color="#0F4F0B">&nbsp;cat cpList "$toCopyList" | sort | uniq -c | sed -nr '/^ +1/s/^ +1 +(.*)/\1/p' \</font></div>
+<div><font color="#0F4F0B">&nbsp; &nbsp; &gt; "$notCopied"</font></div>
 <div style="font-size:16px;line-height:1.6"><br>
 </div>
 </div>
 <div>
-<ul><li>save that file and make it executable <font color="#b45f06">chmod +x&nbsp;~/</font><span style="color:rgb(180,95,6)">scripts/findcopypics</span></li>
-<li>plug in the back-up media if it's external and run the script with<font color="#b45f06">&nbsp;sh&nbsp;~/</font><span style="color:rgb(180,95,6)">scripts/findcopypics</span></li>
+<ul><li>save that file and make it executable <font color="#6A3200">chmod +x&nbsp;~/</font><span style="color:#6A3200">scripts/findcopypics</span></li>
+<li>plug in the back-up media if it's external and run the script with<font color="#6A3200">&nbsp;sh&nbsp;~/</font><span style="color:#6A3200">scripts/findcopypics</span></li>
 <li><font color="#0b5394">thanks to Navaneeth Krishnan for his help with the script</font></li></ul>
-<div><font color="#b45f06"><br>
+<div><font color="#6A3200"><br>
 </font></div>
-<div><font color="#b45f06"><br>
+<div><font color="#6A3200"><br>
 </font></div>
 </div>

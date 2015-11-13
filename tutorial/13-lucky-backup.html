@@ -20,7 +20,7 @@ id: tutor
 <div><font size="3"><br>
 </font></div>
 <div><b><font size="4">how to backup system directories</font></b></div>
-<div><font size="3">using "only include" and typing the dir name e.g. "/.config/" didn't send any files to backup (external drive), so I don't know what I did wrong.&nbsp;</font><span style="color:rgb(11,83,148);font-size:medium;line-height:27px">Ok, to use "Only include" the dir's need to have *** after them to include their contents, e.g. </span><span style="font-size:medium;line-height:27px"><font color="#b45f06">/dir/***</font></span><span style="color:rgb(11,83,148);font-size:medium;line-height:27px">&nbsp;</span></div>
+<div><font size="3">using "only include" and typing the dir name e.g. "/.config/" didn't send any files to backup (external drive), so I don't know what I did wrong.&nbsp;</font><span style="color:rgb(11,83,148);font-size:medium;line-height:27px">Ok, to use "Only include" the dir's need to have *** after them to include their contents, e.g. </span><span style="font-size:medium;line-height:27px"><font color="#6A3200">/dir/***</font></span><span style="color:rgb(11,83,148);font-size:medium;line-height:27px">&nbsp;</span></div>
 <div><span style="color:rgb(11,83,148);font-size:medium;line-height:27px"><br>
 </span></div>
 <div><font size="3">what I chose to do was to backup my /home/username/ and exclude directories (Exclude &gt; user defined tab) such as /Downloads/ /ffmpeg/ /local/share/icons/ /.wine/ /.thumnails/ and check Trash and Cache folders on the Exclude Templates tab.</font></div>
@@ -31,7 +31,7 @@ id: tutor
 <div>
 <div>
 <div style="line-height:27px;font-size:medium">I was quite baffled at why luckyb wanted to delete dir's from the backup source -those which were excluded from the backup. &nbsp;I had "delete files on the destination"&nbsp;checked&nbsp;<span style="line-height:27px">(files not present in source are deleted from destination) so as to keep the backup tidy. &nbsp;</span></div>
-<div style="line-height:27px;font-size:medium">Maybe they too needed /*** but the man page states that the <font color="#38761d">--delete-excluded</font> option is automatic when exclude is used with delete at destination checked -so why?</div>
+<div style="line-height:27px;font-size:medium">Maybe they too needed /*** but the man page states that the <font color="#0F4F0B">--delete-excluded</font> option is automatic when exclude is used with delete at destination checked -so why?</div>
 </div>
 </div>
 <div style="line-height:27px;font-size:medium">It's working properly now.</div>

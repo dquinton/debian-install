@@ -17,11 +17,11 @@ Changing the root directory is useful when you need to repair a Debian install f
 </div>
 <div><span style="color:rgb(180,95,6);font-size:16px;line-height:1.6;background-color:transparent">su</span></div>
 <div>
-<div><font color="#b45f06">mount -t ext4 /dev/sda5 /mnt</font></div>
-<div><font color="#b45f06">mount -t proc /proc /mnt/proc</font></div>
-<div><font color="#b45f06">mount -t sysfs /sys /mnt/sys</font></div>
-<div><font color="#b45f06">mount -o bind /dev /mnt/dev</font></div>
-<div><font color="#b45f06">cp /etc/resolv.conf /mnt/etc/resolv.conf</font></div>
+<div><font color="#6A3200">mount -t ext4 /dev/sda5 /mnt</font></div>
+<div><font color="#6A3200">mount -t proc /proc /mnt/proc</font></div>
+<div><font color="#6A3200">mount -t sysfs /sys /mnt/sys</font></div>
+<div><font color="#6A3200">mount -o bind /dev /mnt/dev</font></div>
+<div><font color="#6A3200">cp /etc/resolv.conf /mnt/etc/resolv.conf</font></div>
 <div><br>
 </div>
 <div>
@@ -30,18 +30,18 @@ Changing the root directory is useful when you need to repair a Debian install f
 <div><br>
 </div>
 <div>plus if /var is on another partition, you will need to mount it</div>
-<div><font color="#b45f06">mount -t ext3 /dev/sda7 /mnt/var</font></div>
+<div><font color="#6A3200">mount -t ext3 /dev/sda7 /mnt/var</font></div>
 <div><br>
 </div>
 <div>
 <div>check mounts with</div>
-<div><font color="#b45f06">mount</font></span></div>
+<div><font color="#6A3200">mount</font></span></div>
 </div>
 <div><br>
 </div>
 <div>
 <div>then change to the root of that system to run commands in it</div>
-<div><font color="#b45f06">chroot /mnt /bin/bash</font></span></div>
+<div><font color="#6A3200">chroot /mnt /bin/bash</font></span></div>
 </div>
 <div><br>
 </div>
@@ -49,18 +49,18 @@ Changing the root directory is useful when you need to repair a Debian install f
 <div><br>
 </div>
 <div>To finish, you exit the chroot environment with</div>
-<div><font color="#b45f06">exit</font></div>
+<div><font color="#6A3200">exit</font></div>
 <div><br>
 </div>
 <div>then unmount the filesystems with</div>
 <div>
-<div><font color="#b45f06">umount /mnt/{proc,sys,dev,var}</font></div>
-<div><font color="#b45f06">umount /mnt</font></div>
+<div><font color="#6A3200">umount /mnt/{proc,sys,dev,var}</font></div>
+<div><font color="#6A3200">umount /mnt</font></div>
 </div>
 <div><br>
 </div>
 <div>To use aptitude, and the error occurs "Could not open lock file /var/lock/aptitude No such file or directory", do</div>
-<div><font color="#b45f06">mkdir /run/lock</font></div>
+<div><font color="#6A3200">mkdir /run/lock</font></div>
 <div><br>
 </div>
 <div><br>
@@ -69,30 +69,30 @@ Changing the root directory is useful when you need to repair a Debian install f
 <div><br>
 </div>
 <div>
-<div><font color="#38761d">#!/bin/bash</font></div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B">#!/bin/bash</font></div>
+<div><font color="#0F4F0B"><br>
 </font></div>
-<div><font color="#38761d">chroot_os=$(find /dev -mindepth 1 -maxdepth 1 &nbsp;-name "*[sh]d[a-z][1-9]*" \</font></div>
-<div><font color="#38761d">&nbsp; | sort | awk '{print "\n" $0 }' \</font></div>
-<div><font color="#38761d">&nbsp; | yad --list --title=$"Partitions" --text=$"Choose the partition to chroot into." \</font></div>
-<div><font color="#38761d">&nbsp; &nbsp; --separator="" --column ' ' --column $'Partitions' --height 380 --width 150 --button="OK":0)</font></div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B">chroot_os=$(find /dev -mindepth 1 -maxdepth 1 &nbsp;-name "*[sh]d[a-z][1-9]*" \</font></div>
+<div><font color="#0F4F0B">&nbsp; | sort | awk '{print "\n" $0 }' \</font></div>
+<div><font color="#0F4F0B">&nbsp; | yad --list --title=$"Partitions" --text=$"Choose the partition to chroot into." \</font></div>
+<div><font color="#0F4F0B">&nbsp; &nbsp; --separator="" --column ' ' --column $'Partitions' --height 380 --width 150 --button="OK":0)</font></div>
+<div><font color="#0F4F0B"><br>
 </font></div>
-<div><font color="#38761d">mount -t ext4 $chroot_os /mnt</font></div>
-<div><font color="#38761d">mount -t proc proc /mnt/proc</font></div>
-<div><font color="#38761d">mount -t sysfs sys /mnt/sys</font></div>
-<div><font color="#38761d">mount -o bind /dev /mnt/dev</font></div>
-<div><font color="#38761d">cp /etc/resolv.conf /mnt/etc/resolv.conf</font></div>
-<div><font color="#38761d">chroot /mnt /bin/bash</font></div>
+<div><font color="#0F4F0B">mount -t ext4 $chroot_os /mnt</font></div>
+<div><font color="#0F4F0B">mount -t proc proc /mnt/proc</font></div>
+<div><font color="#0F4F0B">mount -t sysfs sys /mnt/sys</font></div>
+<div><font color="#0F4F0B">mount -o bind /dev /mnt/dev</font></div>
+<div><font color="#0F4F0B">cp /etc/resolv.conf /mnt/etc/resolv.conf</font></div>
+<div><font color="#0F4F0B">chroot /mnt /bin/bash</font></div>
 </div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B"><br>
 </font></div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B"><br>
 </font></div>
 <div>
-<div><font color="#38761d">#!/bin/bash</font></div>
-<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#38761d">umount /mnt/proc /mnt/sys /mnt/dev</font></span></div>
-<div><font color="#38761d">umount /mnt</font></div>
+<div><font color="#0F4F0B">#!/bin/bash</font></div>
+<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#0F4F0B">umount /mnt/proc /mnt/sys /mnt/dev</font></span></div>
+<div><font color="#0F4F0B">umount /mnt</font></div>
 <div><br>
 </div>
 <div><br>

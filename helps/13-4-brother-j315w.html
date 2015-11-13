@@ -23,7 +23,7 @@ Simple. &nbsp;Followed the instructions here&nbsp;<a href="http://welcome.soluti
 <ul><li><span style="font-size:16px;line-height:1.6">1. Turn on the printer and connect the USB cable.</span></li>
 <li><span style="font-size:16px;line-height:1.6">2. </span><span style="font-size:16px;line-height:1.6">Install LPR driver.</span></li></ul></ul>
 </div>
-<div><span style="font-size:16px;line-height:1.6"><font color="#b45f06"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>sudo dpkg &nbsp;-i &nbsp;--force-all &nbsp;&lt;lpr-drivername&gt;</font></span></div>
+<div><span style="font-size:16px;line-height:1.6"><font color="#6A3200"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>sudo dpkg &nbsp;-i &nbsp;--force-all &nbsp;&lt;lpr-drivername&gt;</font></span></div>
 <div><br>
 </div>
 <div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>I needed to sudo mkdir for a lot of non existing dir's (on a new laptop)</div>
@@ -41,7 +41,7 @@ Simple. &nbsp;Followed the instructions here&nbsp;<a href="http://welcome.soluti
 <div><span style="font-size:16px;line-height:1.6"><span>&nbsp;&nbsp; &nbsp;</span>3. Install cupswrapper driver.</span></div>
 <div><br>
 </div>
-<div><font color="#b45f06"><span><span>&nbsp;&nbsp; &nbsp;</span>&nbsp;&nbsp; &nbsp;</span>sudo dpkg &nbsp;-i &nbsp;--force-all &nbsp;&lt;cupswrapper-drivername&gt;</font></div>
+<div><font color="#6A3200"><span><span>&nbsp;&nbsp; &nbsp;</span>&nbsp;&nbsp; &nbsp;</span>sudo dpkg &nbsp;-i &nbsp;--force-all &nbsp;&lt;cupswrapper-drivername&gt;</font></div>
 <div><br>
 </div>
 <div><span>&nbsp;&nbsp;<span>&nbsp;&nbsp; &nbsp;</span> &nbsp;</span>/var/tmp</div>
@@ -58,22 +58,22 @@ Simple. &nbsp;Followed the instructions here&nbsp;<a href="http://welcome.soluti
 <div><br>
 </div>
 <div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span><font color="#b45f06">sudo leafpad /lib/udev/rules.d/60-libsane.rules</font></div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span><font color="#6A3200">sudo leafpad /lib/udev/rules.d/60-libsane.rules</font></div>
 <div><br>
 </div>
 <div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>Add the following two lines to the end of the device list. (Before the line "# The following rule will disable ..."):</div>
 <div><br>
 </div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span><font color="#38761d"># Brother scanner</font></div>
-<div><font color="#38761d"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>ATTRS{idVendor}=="04f9", MODE="0664", GROUP="scanner", ENV{libsane_matched}="yes"</font></div>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span><font color="#0F4F0B"># Brother scanner</font></div>
+<div><font color="#0F4F0B"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>ATTRS{idVendor}=="04f9", MODE="0664", GROUP="scanner", ENV{libsane_matched}="yes"</font></div>
 <div><br>
 </div>
 <div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;7.&nbsp;</span></span>add user to scanner group</div>
-<div><span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <font color="#b45f06">&nbsp;</font></span><font color="#b45f06">sudo adduser &lt;username&gt; scanner</font></div>
+<div><span>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <font color="#6A3200">&nbsp;</font></span><font color="#6A3200">sudo adduser &lt;username&gt; scanner</font></div>
 <div><br>
 </div>
-<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;8. To let the scan-key-tool operate it must be started with command&nbsp;</span></span><font color="#b45f06">brscan-skey</font></div>
-<div><font color="#b45f06"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp;&nbsp;</span></span></font>Then Scan can be pressed on the machine. &nbsp;<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_scn3.html">scn3...</a><br>
+<div><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;8. To let the scan-key-tool operate it must be started with command&nbsp;</span></span><font color="#6A3200">brscan-skey</font></div>
+<div><font color="#6A3200"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp; &nbsp;&nbsp;</span></span></font>Then Scan can be pressed on the machine. &nbsp;<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_scn3.html">scn3...</a><br>
 <span style="font-size:16px;line-height:1.6"><span>&nbsp;&nbsp; &nbsp;<span>&nbsp;&nbsp; &nbsp;</span></span>add it to Xfce autostart apps or&nbsp;</span>/etc/xdg/lxsession/<span style="font-size:16px;line-height:1.6">LXDE/autostart with @brscan-skey</span></div>
 <div><span style="font-size:16px;line-height:1.6"><br>
 </span></div>

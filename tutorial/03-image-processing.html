@@ -411,7 +411,7 @@ Example: convert stills from HD video for showing/uploading (6Mb .png files in /
 <div><span style="line-height:26px;font-size:medium">Whilst that is very handy, what if you save pics from the web which are full of useless tags? &nbsp;It will be tiring to delete all the tags you don't need from those web pics and your Tags list (one by one!). &nbsp;So I wouldn't save web pics into a Collection album. &nbsp;Save them elsewhere, then you can remove all their tags before moving to an album.</span></div>
 <div><span style="line-height:25px"><br>
 </span></font><span style="line-height:26px;font-size:medium">Remove exif/iptc data with Imagemagick:&nbsp;</span><br>
-<ul><li>make a Thunar custom action with,</span><span style="color:rgb(180,95,6);line-height:24px">&nbsp;</span>for<font color="#b45f06">&nbsp;</font></font>just the iptc data (keywords etc.):<font color="#b45f06">&nbsp;</font></span></font><span style="background-color:rgb(103,78,167);color:rgb(238,238,238);font-size:medium">ls | xargs&nbsp;mogrify +profile iptc</span></li>
+<ul><li>make a Thunar custom action with,</span><span style="color:#6A3200;line-height:24px">&nbsp;</span>for<font color="#6A3200">&nbsp;</font></font>just the iptc data (keywords etc.):<font color="#6A3200">&nbsp;</font></span></font><span style="background-color:rgb(103,78,167);color:rgb(238,238,238);font-size:medium">ls | xargs&nbsp;mogrify +profile iptc</span></li>
 <li>for all exif data:&nbsp;</font><span style="font-size:medium;background-color:rgb(116,27,71)"><font color="#ffd966">ls | xargs mogrify -strip</font></span></li>
 <li><span style="font-size:medium"><font color="#0b5394">Warning! the ls function will apply the command to all files in the directory!</font></span></li>
 <li><span style="font-size:medium">for applying only to the selected files use<font color="#0b5394">&nbsp;</font></span><span style="background-color:rgb(103,78,167)"><font color="#eeeeee"><span style="line-height:27px;font-size:medium">mogrify +profile iptc&nbsp;</span><span style="line-height:27px;font-size:medium">%F</span></font></span></li>
@@ -427,12 +427,12 @@ Example: convert stills from HD video for showing/uploading (6Mb .png files in /
 <div>
 <div><b><font size="4">dump picasa and windows files from photo directories!!!</font></b></div>
 <div>warning: all Picasa directory specific files will be permanently lost!</font></div>
-<font color="#b45f06">find /media/FILES/&nbsp;</font><span style="color:rgb(180,95,6)">-type f</span><font color="#b45f06">&nbsp;-name ".picasa.ini" -print0 | xargs</font><span style="color:rgb(180,95,6)">&nbsp;</span><span style="color:rgb(180,95,6)">-0</span><span style="color:rgb(180,95,6)">&nbsp;rm</span></div>
-<div><font color="#b45f06">find /media/FILES/&nbsp;</font><span style="color:rgb(180,95,6)">-type f</span><font color="#b45f06">&nbsp;-name "Picasa.ini" -print0 | xargs</font><span style="color:rgb(180,95,6)">&nbsp;</span><span style="color:rgb(180,95,6)">-0</span><span style="color:rgb(180,95,6)">&nbsp;rm</span></div>
-<div><font color="#b45f06">find /media/FILES/&nbsp;</font><span style="color:rgb(180,95,6)">-type f</span><font color="#b45f06">&nbsp;-name "Thumbs.db" -print0 | xargs</font><span style="color:rgb(180,95,6)">&nbsp;</span><span style="color:rgb(180,95,6)">-0</span><span style="color:rgb(180,95,6)">&nbsp;rm</span></div>
-<div><span style="color:rgb(180,95,6)"><br>
+<font color="#6A3200">find /media/FILES/&nbsp;</font><span style="color:#6A3200">-type f</span><font color="#6A3200">&nbsp;-name ".picasa.ini" -print0 | xargs</font><span style="color:#6A3200">&nbsp;</span><span style="color:#6A3200">-0</span><span style="color:#6A3200">&nbsp;rm</span></div>
+<div><font color="#6A3200">find /media/FILES/&nbsp;</font><span style="color:#6A3200">-type f</span><font color="#6A3200">&nbsp;-name "Picasa.ini" -print0 | xargs</font><span style="color:#6A3200">&nbsp;</span><span style="color:#6A3200">-0</span><span style="color:#6A3200">&nbsp;rm</span></div>
+<div><font color="#6A3200">find /media/FILES/&nbsp;</font><span style="color:#6A3200">-type f</span><font color="#6A3200">&nbsp;-name "Thumbs.db" -print0 | xargs</font><span style="color:#6A3200">&nbsp;</span><span style="color:#6A3200">-0</span><span style="color:#6A3200">&nbsp;rm</span></div>
+<div><span style="color:#6A3200"><br>
 </span></div>
-<div><span style="color:rgb(180,95,6)"><br>
+<div><span style="color:#6A3200"><br>
 </span></div>
 
 
@@ -448,7 +448,7 @@ Example: convert stills from HD video for showing/uploading (6Mb .png files in /
 <div><span style="font-size:medium;background-color:rgb(159,197,232)"><b>let's make some Thunar custom actions!</b></span><br>
 <ul><li>Edit &gt;Configure custom actions &gt;click + to make a new action, name it "convert all png to jpeg", with&nbsp;this next line as&nbsp;the command:</font></li>
 <li><font color="#eeeeee" size="3" style="background-color:rgb(19,79,92)">mogrify -format jpg -quality 100 *.png</font></li>
-<li>in Appearance Conditions tab, enter </font><font color="#38761d" size="3"><span style="background-color:rgb(213,166,189)">*.png;*.PNG</span> [corrected!]&nbsp;</span></font>and check "Image files"</font></li>
+<li>in Appearance Conditions tab, enter </font><font color="#0F4F0B" size="3"><span style="background-color:rgb(213,166,189)">*.png;*.PNG</span> [corrected!]&nbsp;</span></font>and check "Image files"</font></li>
 <li><span style="font-size:medium">also choose an icon for the action</span></li></ul>
 <span style="font-size:medium">try it out: click on a PNG file in thunar and execute... wham! Jpegs are made at 100% quality from all the PNG files in the directory and put beside them -or above them if sort by type.</span></div>
 <div><br>
@@ -465,7 +465,7 @@ Let's do one that produces files with a suffix to the filename (it doesn't over-
 And how about with in infix, which will produce a new file "image_name.sm.jpg", like this</font></div>
 <div>
 <ul><li><span style="color:rgb(238,238,238);line-height:25px;background-color:rgb(103,78,167)">mogrify -resize '800x800&gt;' -quality 96 -format "sm.jpg" %F</span></span></font></li></ul>
-<span style="line-height:25px"><font color="#0b5394">There are some very useful scripts which open up a Zenity window in which you can choose several options like format to convert to and resize parameters -see here and search "image-ca"</font><font color="#b45f06">&nbsp;</font></span><span style="color:rgb(180,95,6);line-height:24px"><a href="http://salinelinux.proboards.com/index.cgi?board=software&amp;action=print&amp;thread=98">http://salinelinux...</a></span></font></div>
+<span style="line-height:25px"><font color="#0b5394">There are some very useful scripts which open up a Zenity window in which you can choose several options like format to convert to and resize parameters -see here and search "image-ca"</font><font color="#6A3200">&nbsp;</font></span><span style="color:#6A3200;line-height:24px"><a href="http://salinelinux.proboards.com/index.cgi?board=software&amp;action=print&amp;thread=98">http://salinelinux...</a></span></font></div>
 
 <div>and here</font><span style="line-height:27px;font-size:medium">&nbsp;</span><a href="http://www.cesareriva.com/archives/722" style="line-height:27px;font-size:medium">http://www.cesareriva...</a></div>
 <div><br>

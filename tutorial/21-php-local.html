@@ -15,14 +15,14 @@ id: tutor
 <div>
 <ul><li><span style="background-color:transparent;color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6">Install Apache2</span></li></ul>
 </div>
-<div><span style="background-color:transparent;font-family:PT Sans,sans-serif;line-height:1.6"><font color="#cc0000">sudo apt-get install apache2 php5</font></span></div>
+<div><span style="background-color:transparent;font-family:PT Sans,sans-serif;line-height:1.6"><font color="#7C2020">sudo apt-get install apache2 php5</font></span></div>
 <div><br>
 </div>
 <div>
 <div>
 <ul><li><span style="background-color:transparent;color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6">to test apache to see if it's running, get your ip address at eg eth1</span></li></ul>
 </div>
-<div><font color="#b45f06">ifconfig</font></div>
+<div><font color="#6A3200">ifconfig</font></div>
 <div><br>
 </div>
 <div>
@@ -35,7 +35,7 @@ id: tutor
 <div>
 <ul><li><span style="background-color:transparent;color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6">open the apache conf file</span></li></ul>
 </div>
-<div><span style="background-color:transparent;font-family:PT Sans,sans-serif;line-height:1.6"><font color="#b45f06">sudo leafpad /etc/apache2/apache2.conf</font></span></div>
+<div><span style="background-color:transparent;font-family:PT Sans,sans-serif;line-height:1.6"><font color="#6A3200">sudo leafpad /etc/apache2/apache2.conf</font></span></div>
 <div><br>
 </div>
 <div>
@@ -45,11 +45,11 @@ id: tutor
 <div><br>
 </div>
 <div>-----------------------------</div>
-<div><font color="#38761d">&lt;Directory /home/-user-/-webdir-&gt;</font></div>
-<div><font color="#38761d"><span style="white-space:pre">	</span>Options Indexes FollowSymLinks</font></div>
-<div><font color="#38761d"><span style="white-space:pre">	</span>AllowOverride None</font></div>
-<div><font color="#38761d"><span style="white-space:pre">	</span>Require all granted</font></div>
-<div><font color="#38761d">&lt;/Directory&gt;</font></div>
+<div><font color="#0F4F0B">&lt;Directory /home/-user-/-webdir-&gt;</font></div>
+<div><font color="#0F4F0B"><span style="white-space:pre">	</span>Options Indexes FollowSymLinks</font></div>
+<div><font color="#0F4F0B"><span style="white-space:pre">	</span>AllowOverride None</font></div>
+<div><font color="#0F4F0B"><span style="white-space:pre">	</span>Require all granted</font></div>
+<div><font color="#0F4F0B">&lt;/Directory&gt;</font></div>
 <div>------------------------------</div>
 <div><br>
 </div>
@@ -61,8 +61,8 @@ id: tutor
 </div>
 <div><br>
 </div>
-<div><font color="#b45f06">sudo leafpad /etc/apache2/sites-available/000-default.conf</font></div>
-<div><font color="#b45f06">sudo leafpad /etc/apache2/sites-available/default-ssl.conf</font></div>
+<div><font color="#6A3200">sudo leafpad /etc/apache2/sites-available/000-default.conf</font></div>
+<div><font color="#6A3200">sudo leafpad /etc/apache2/sites-available/default-ssl.conf</font></div>
 <div><br>
 </div>
 <div><br>
@@ -76,7 +76,7 @@ id: tutor
 <div><span style="color:rgb(8,8,8);font-family:PT Sans,sans-serif;line-height:1.6;background-color:transparent">restart apache</span></div>
 <div><br>
 </div>
-<div><font color="#b45f06">sudo service apache2 restart</font></div>
+<div><font color="#6A3200">sudo service apache2 restart</font></div>
 <div><br>
 </div>
 <div>and note any errors that occur!</div>
@@ -101,7 +101,7 @@ id: tutor
 <div>But if you need to set up a server you most likely will need mysql as well, like so...</div>
 <div><br>
 </div>
-<div><font color="#cc0000">sudo apt-get install mysql-server&nbsp;</font><span style="background-color:transparent"><font color="#cc0000">php-pear php5-mysql</font></span></div>
+<div><font color="#7C2020">sudo apt-get install mysql-server&nbsp;</font><span style="background-color:transparent"><font color="#7C2020">php-pear php5-mysql</font></span></div>
 <div><br>
 </div>
 <div>you will set upa mysql p/w during the install</div>
@@ -109,13 +109,13 @@ id: tutor
 </div>
 <div>
 <div>then setup mysql by running:</div>
-<div><font color="#b45f06">mysql_secure_installation</font></div>
+<div><font color="#6A3200">mysql_secure_installation</font></div>
 <div><br>
 </div>
 <div>enter your p/w then answer Y to all (not to change p/w)</div>
 <div><br>
 </div>
-<div><font color="#b45f06">service apache2 restart</font></div>
+<div><font color="#6A3200">service apache2 restart</font></div>
 </div>
 
 </div>

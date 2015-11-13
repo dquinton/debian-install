@@ -17,14 +17,14 @@ id: tutor
 </font></div>
 <div><font size="4"><b>1. using dd&nbsp;</b></font></div>
 <div><font size="3">-copies <i>blocks</i> of data -need to unmount partitions, execute from LiveCD</font></div>
-<div><font color="#b45f06" size="3">sudo dd if=/dev/sda5 of=/dev/sda9 bs=4096 conv=notrunc,noerror</font></div>
+<div><font color="#6A3200" size="3">sudo dd if=/dev/sda5 of=/dev/sda9 bs=4096 conv=notrunc,noerror</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3" style="background-color:rgb(255,242,204)"><i>if</i> means input file, <i>of</i> means output file -so always make sure you get the right partition on 'of' or you could destroy what you wanted to copy!</font></div>
 <div><font size="3">get the process pid with:</font></div>
-<div><font color="#b45f06" size="3">ps -a | grep dd</font></div>
+<div><font color="#6A3200" size="3">ps -a | grep dd</font></div>
 <div><font size="3">to watch the process,&nbsp;</font></div>
-<div><font color="#b45f06" size="3">watch -n kill -USR1 &lt;put pid here&gt;</font></div>
+<div><font color="#6A3200" size="3">watch -n kill -USR1 &lt;put pid here&gt;</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">dd of small partition to a larger one: the extra space on the destination will not be usable or visible, but you can shrink the partition in gparted.</font></div>
@@ -32,26 +32,26 @@ id: tutor
 </font></div>
 <div><font size="4"><b>2. ddrescue</b></font></div>
 <div><font size="3"><span style="line-height:27px">shows progress, and lots is possible for recovering data from partition with errors -see manpage&nbsp;</span><span style="line-height:26px"><a href="http://www.gnu.org/software/ddrescue/manual/ddrescue_manual.html">http://www.gnu.org/...</a></span></font></div>
-<div><font color="#b45f06" size="3">sudo ddrescue -v /dev/sda5 /dev/sda9</font></div>
+<div><font color="#6A3200" size="3">sudo ddrescue -v /dev/sda5 /dev/sda9</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="4"><b>3. cp&nbsp;</b></font></div>
 <div><font size="3">-copies <i>files</i> and leaves extra space on destination usable, while new partiton will be nicely defragmented too. <a href="https://wiki.archlinux.org/index.php/Disk_Cloning">https://wiki.archlinux.org...</a></font></div>
 <div><font size="3">mount both source and destination</font></div>
-<div><font color="#b45f06" size="3">mount -t ext3 /dev/sda5 /mnt/source</font></div>
-<div><font color="#b45f06" size="3">mount -t ext3 /dev/sda9 /mnt/destin</font></div>
-<div><font color="#b45f06" size="3">cp -a /mnt/source/* /mnt/destin</font></div>
+<div><font color="#6A3200" size="3">mount -t ext3 /dev/sda5 /mnt/source</font></div>
+<div><font color="#6A3200" size="3">mount -t ext3 /dev/sda9 /mnt/destin</font></div>
+<div><font color="#6A3200" size="3">cp -a /mnt/source/* /mnt/destin</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="4"><b>4. rsync</b></font><font size="3">&nbsp;</font></div>
 <div><font size="3">works very nicely, and&nbsp;<span style="line-height:26px">executes</span><span style="line-height:27px">&nbsp;from the running system</span></font><span style="font-size:medium">&nbsp;&nbsp;</span><a href="https://wiki.archlinux.org/index.php/Full_System_Backup_with_rsync" style="font-size:medium">https://wiki.archlinux.org/...</a></div>
-<div><span style="color:rgb(180,95,6);font-size:medium">sudo rsync -aAXv /* /mnt/destin --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/mnt/*,/media/*,/lost+found,/home/*}</span></div>
+<div><span style="color:#6A3200;font-size:medium">sudo rsync -aAXv /* /mnt/destin --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/mnt/*,/media/*,/lost+found,/home/*}</span></div>
 <div><font size="3"><span style="line-height:25px"><br>
 </span></font></div>
 <div><font size="3">AFTER THAT</font></div>
 <div><font size="3">edit the fstab of the new partition, replace the UUID (which is copied from source partition),</font></div>
 <div><span style="font-size:medium">create a random UUID for the new partition, in terminal:</span></div>
-<div><font color="#b45f06" size="3">tune2fs -U random /dev/sda9</font></div>
+<div><font color="#6A3200" size="3">tune2fs -U random /dev/sda9</font></div>
 <div>
 <div><font size="3">make an entry on the Grub list to boot the new partition -I used Grub Customizer</font></div>
 </div>
@@ -68,7 +68,7 @@ id: tutor
 <div><font size="3"><span style="line-height:27px"><br>
 </span></font></div>
 <div><font size="3">once booted up into Debian on sda9 run&nbsp;</font></div>
-<div><font color="#b45f06" size="3">sudo update-grub</font></div>
+<div><font color="#6A3200" size="3">sudo update-grub</font></div>
 <div><font color="#a64d79" size="3"><span style="line-height:26px"><br>
 </span></font></div>
 

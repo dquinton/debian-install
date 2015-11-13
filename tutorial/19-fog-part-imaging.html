@@ -41,14 +41,14 @@ LXDE desktop from a Live CD and&nbsp;<span style="background-color:transparent;l
 	the PCI card slot of the PC to become the server.</span></p>
 <p style="margin-bottom:0cm"><b style="background-color:transparent;line-height:1.6">2.</b><span style="background-color:transparent;line-height:1.6">  Set up the interfaces file, but check that the Gigabit card is actually eth0
 with:</span></p>
-<font color="#b45f06"><br>
+<font color="#6A3200"><br>
 /sbin/ifconfig -a<br>
 ip link show</font>
 <p style="margin-bottom:0cm">will show which adapter is UP â ie
 the one plugged in to a cable</p>
 <p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">/etc/network/interfaces will look like:</span></p>
 <br>
-<font color="#38761d"># The loopback network interface<br>
+<font color="#0F4F0B"># The loopback network interface<br>
 auto lo <br>
 iface lo inet loopback <br>
 <br>
@@ -75,15 +75,15 @@ installs at the end.</p>
 (the FOG install script will download them anyway, but it will not
 show you the download progress, so it's helpful to have them
 pre-installed)</span></p>
-<font color="#cc0000">sudo apt-get install apache2 php5 php5-json php5-gd php5-cli php5-mysql php5-curl mysql-server tftpd-hpa tftp-hpa nfs-kernel-server vsftpd net-tools wget xinetd sysv-rc-conf tar gzip build-essential cpp gcc g++ m4 htmldoc lftp openssh-server php-gettext clamav-freshclam</font>
+<font color="#7C2020">sudo apt-get install apache2 php5 php5-json php5-gd php5-cli php5-mysql php5-curl mysql-server tftpd-hpa tftp-hpa nfs-kernel-server vsftpd net-tools wget xinetd sysv-rc-conf tar gzip build-essential cpp gcc g++ m4 htmldoc lftp openssh-server php-gettext clamav-freshclam</font>
 <p style="margin-bottom:0cm"><br>
 </p>
 <p style="margin-bottom:0cm"><b style="background-color:transparent;line-height:1.6">3.&nbsp;</b><span style="background-color:transparent">mysql will not start for some crazy reason...</span></p>
 <p style="margin-bottom:0cm">and the packages (mysql-server-5.5) will not be configured when running the FOG install - fix with:</p>
-<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6"><font color="#b45f06">sudo nano /etc/mysql/my.cnf</font></span></p>
+<p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6"><font color="#6A3200">sudo nano /etc/mysql/my.cnf</font></span></p>
 <p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">put a comment â#â in front of the line "bind-address" and save the file with Ctrl-X, y, Enter</span></p>
 <p style="margin-bottom:0cm">then reconfigure with</p>
-<p style="margin-bottom:0cm"><span style="white-space:pre">	</span><font color="#cc0000">sudo aptitude install mysql-server</font></p>
+<p style="margin-bottom:0cm"><span style="white-space:pre">	</span><font color="#7C2020">sudo aptitude install mysql-server</font></p>
 <p style="margin-bottom:0cm"><br>
 </p>
 <p style="margin-bottom:0cm"><font face="Liberation Serif, serif"><font size="3" style="font-size:12pt"><b>5.
@@ -93,7 +93,7 @@ do</font></font>wnload FOG from <a href="http://www.fogproject.org/">www.fogproj
 with Ranger, just highlight, press 1 and Enter)</span></p>
 <p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">&gt; enter the Fog folder, then to the
 bin/ folder, and run install tool with</span></p>
-<p style="margin-bottom:0cm"><span style="color:rgb(180,95,6);background-color:transparent;line-height:1.6">sudo ./installfog.sh</span></p>
+<p style="margin-bottom:0cm"><span style="color:#6A3200;background-color:transparent;line-height:1.6">sudo ./installfog.sh</span></p>
 <p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">Answer the questions:</span></p>
 <br>
 <br>
@@ -118,7 +118,7 @@ updated
 </p>
 <p style="margin-bottom:0cm"><b>6. </b> To enable the image storage,
 possibly need to run</p>
-<font color="#b45f06">sudo chown -R fog:root /images</font>
+<font color="#6A3200">sudo chown -R fog:root /images</font>
 <p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">and check in the file
 /etc/default/tftpd-hpa there is:</span></p>
 <p style="margin-bottom:0cm"><span style="background-color:transparent;line-height:1.6">TFTP_DIRECTORY="/tftpboot"</span></p>
@@ -128,9 +128,9 @@ possibly need to run</p>
 </p>
 <p style="margin-bottom:0cm"><b>7.</b>  the desktop shortcut can be
 made made with</p>
-<font color="#b45f06">nano ~/.local/share/applications/fog.desktop</font>
+<font color="#6A3200">nano ~/.local/share/applications/fog.desktop</font>
 <p style="margin-bottom:0cm"><span style="color:rgb(56,118,29);background-color:transparent;line-height:1.6">[Desktop Entry]&nbsp;</span></p>
-<font color="#38761d">Version=1.0 <br>
+<font color="#0F4F0B">Version=1.0 <br>
 Name=FOG Server <br>
 Exec=chromium http://192.168.1.1/fog/management/ <br>
 Terminal=false <br>

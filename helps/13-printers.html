@@ -55,14 +55,14 @@ Here are the few printers I've got working so far with Debian...
 <div>http://localhost:631/admin pages can't be reached and the error log shows "unable to create directory /var/spool/cups/tmp"
 <div>so the spool directory likely needs creating!</div>
 <div>
-<div><font color="#b45f06">sudo mkdir /var/spool/cups</font></div>
-<div><font color="#b45f06">sudo mkdir /var/spool/cups/tmp&nbsp;</font></div>
+<div><font color="#6A3200">sudo mkdir /var/spool/cups</font></div>
+<div><font color="#6A3200">sudo mkdir /var/spool/cups/tmp&nbsp;</font></div>
 <div>if those are present already then they might need to belong to the lp group</div>
-<div><font color="#b45f06">sudo chown -R root:lp /var/spool/cups</font></div>
+<div><font color="#6A3200">sudo chown -R root:lp /var/spool/cups</font></div>
 <div>and your user needs to be added to the lp/lpadmin group</div>
 <div>
-<div><font color="#b45f06">sudo adduser &lt;user&gt; lp</font></div>
-<div><font color="#b45f06">sudo adduser &lt;user&gt; lpadmin</font></div>
+<div><font color="#6A3200">sudo adduser &lt;user&gt; lp</font></div>
+<div><font color="#6A3200">sudo adduser &lt;user&gt; lpadmin</font></div>
 </div>
 <div>the other error that will occur if your user is not added to the lp/lpadmin group is that logging into the admin page with your user name will return a failed&nbsp;unauthorized&nbsp;page.</div>
 </div>
@@ -79,7 +79,7 @@ Here are the few printers I've got working so far with Debian...
 <li>under the printer you need to give access to and the sections with "Resume-Printer Enable-Printer Disable-Printer..." either:</li>
 </ol>
 <ul><li><span style="line-height:1.6;background-color:transparent">remove the authorisation, e.g. under</span> "AuthType Default" remove the line,</li></ul>
-<div><font color="#38761d">&nbsp; &nbsp; Require user @OWNER @SYSTEM</font></div>
+<div><font color="#0F4F0B">&nbsp; &nbsp; Require user @OWNER @SYSTEM</font></div>
 </div>
 <div>
 <ul><li><span style="line-height:1.6;background-color:transparent">Or, if that fails, just remove the items from that limit list which you don't need to login to do</span></li></ul>
@@ -89,25 +89,25 @@ Here are the few printers I've got working so far with Debian...
 </div>
 <div>If you'd like a desktop shortcut button to do it, then you can use,</div>
 <div>
-<div><font color="#38761d">[Desktop Entry]</font></div>
-<div><font color="#38761d">Name=</font><font color="#38761d" style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent">r</font><span style="font-size:16px;line-height:1.6;color:rgb(56,118,29);background-color:transparent">esume-printer-name</span></div>
-<div><font color="#38761d">Comment=Enable printer</font></div>
-<div><font color="#38761d">Exec=sudo cupsenable<i>&nbsp;</i></font><i style="line-height:28.4444465637207px;font-size:15.5555562973022px;background-color:transparent"><font color="#0b5394">printer-name</font></i></div>
-<div><font color="#38761d">Icon=printer</font></div>
-<div><font color="#38761d">Terminal=false</font></div>
-<div><font color="#38761d">Encoding=UTF-8</font></div>
-<div><font color="#38761d">Categories=System;</font></div>
+<div><font color="#0F4F0B">[Desktop Entry]</font></div>
+<div><font color="#0F4F0B">Name=</font><font color="#0F4F0B" style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent">r</font><span style="font-size:16px;line-height:1.6;color:rgb(56,118,29);background-color:transparent">esume-printer-name</span></div>
+<div><font color="#0F4F0B">Comment=Enable printer</font></div>
+<div><font color="#0F4F0B">Exec=sudo cupsenable<i>&nbsp;</i></font><i style="line-height:28.4444465637207px;font-size:15.5555562973022px;background-color:transparent"><font color="#0b5394">printer-name</font></i></div>
+<div><font color="#0F4F0B">Icon=printer</font></div>
+<div><font color="#0F4F0B">Terminal=false</font></div>
+<div><font color="#0F4F0B">Encoding=UTF-8</font></div>
+<div><font color="#0F4F0B">Categories=System;</font></div>
 <div><br>
 </div>
 </div>
 <div>Or, Openbox menu item&nbsp;</div>
-<div><font color="#38761d" style="font-size:15.5555562973022px;line-height:28.4444465637207px">sudo cupsenable&nbsp;</font><span style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent"><i><font color="#0b5394">printer-name</font></i></span></div>
+<div><font color="#0F4F0B" style="font-size:15.5555562973022px;line-height:28.4444465637207px">sudo cupsenable&nbsp;</font><span style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent"><i><font color="#0b5394">printer-name</font></i></span></div>
 <div><br>
 </div>
 <div>and edit the /etc/sudoers file</div>
-<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#b45f06">sudo visudo</font></span></div>
+<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#6A3200">sudo visudo</font></span></div>
 <div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px">add the line:</span></div>
-<div><font color="#38761d">&lt;user&gt; ALL=(ALL) NOPASSWD: /usr/sbin/cupsenable</font></div>
+<div><font color="#0F4F0B">&lt;user&gt; ALL=(ALL) NOPASSWD: /usr/sbin/cupsenable</font></div>
 <div>(and any other specific cups command -need other desktop file too)</div>
 <div><br>
 </div>

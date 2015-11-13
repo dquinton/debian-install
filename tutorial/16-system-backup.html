@@ -44,7 +44,7 @@ id: tutor
 <div><font size="3">it's easy to make a tar file of all system and user files with something like</font></div>
 <div><font size="3">sudu tar {tar options} {location for tar file} {options, excludes} {dir to backup}</font></div>
 <div><font size="3">e.g.</font></div>
-<div><font color="#b45f06" size="3">sudo tar cvzpf /home/Backup_1207.tgz --same-owner --exclude=/home/Backup_1207.tgz --exclude=/home/error.log --exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* --exclude=$HOME/Downloads/* /&nbsp;</font></div>
+<div><font color="#6A3200" size="3">sudo tar cvzpf /home/Backup_1207.tgz --same-owner --exclude=/home/Backup_1207.tgz --exclude=/home/error.log --exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* --exclude=$HOME/Downloads/* /&nbsp;</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">which I adapted from&nbsp;<a href="http://linuxclues.blogspot.com/2007/07/backup-your-system-using-tar.html" rel="noreferrer">http://linuxclues.blogspot.com/2...</a>&nbsp;</font></div>
@@ -59,11 +59,11 @@ id: tutor
 </font></div>
 <div><font size="3">Adding the swi</font>tch --one-file-system will exclude files from other partitions, e.g. for backup of system only:</div>
 <div>
-<div><font color="#b45f06" size="3">sudo tar cvzpf /home/Backup_1207.tgz --same-owner&nbsp;</font><font color="#b45f06"><span style="font-size:16px;line-height:1.6">--one-file-system&nbsp;</span></font><span style="color:rgb(180,95,6);font-size:medium;line-height:1.6">--exclude=/dev/* --exclude=/mnt/*&nbsp;</span><font color="#b45f06" size="3">--exclude=/media/*</font><span style="color:rgb(180,95,6);font-size:medium;line-height:1.6">&nbsp;</span><span style="color:rgb(180,95,6);font-size:medium;line-height:1.6">--exclude=/proc/*</span><span style="color:rgb(180,95,6);font-size:medium;line-height:1.6">&nbsp;</span><span style="color:rgb(180,95,6);font-size:medium;line-height:1.6">--exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* /</span></div>
+<div><font color="#6A3200" size="3">sudo tar cvzpf /home/Backup_1207.tgz --same-owner&nbsp;</font><font color="#6A3200"><span style="font-size:16px;line-height:1.6">--one-file-system&nbsp;</span></font><span style="color:#6A3200;font-size:medium;line-height:1.6">--exclude=/dev/* --exclude=/mnt/*&nbsp;</span><font color="#6A3200" size="3">--exclude=/media/*</font><span style="color:#6A3200;font-size:medium;line-height:1.6">&nbsp;</span><span style="color:#6A3200;font-size:medium;line-height:1.6">--exclude=/proc/*</span><span style="color:#6A3200;font-size:medium;line-height:1.6">&nbsp;</span><span style="color:#6A3200;font-size:medium;line-height:1.6">--exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* /</span></div>
 </div>
-<div><span style="color:rgb(180,95,6);font-size:medium;line-height:1.6"><br>
+<div><span style="color:#6A3200;font-size:medium;line-height:1.6"><br>
 </span></div>
-<div><font color="#b45f06" size="3"><br>
+<div><font color="#6A3200" size="3"><br>
 </font></div>
 <div>
 <div><b><font size="4">Using scripts</font></b></div>
@@ -72,7 +72,7 @@ id: tutor
 </span></div>
 <div><span style="font-size:medium">
 <div style="color:rgb(56,118,29)">#!/bin/bash</div>
-<div><font color="#38761d">sudo tar cvzpf /</font><font color="#3d85c6">your_backup_location</font><font color="#38761d">/Backupsys_$(date +"%y%m%d").tgz --same-owner&nbsp;</font><span style="font-size:16px;line-height:1.6"><font color="#38761d">--one-file-system</font></span><span style="color:rgb(56,118,29);line-height:1.6">&nbsp;--exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* /</span></div>
+<div><font color="#0F4F0B">sudo tar cvzpf /</font><font color="#3d85c6">your_backup_location</font><font color="#0F4F0B">/Backupsys_$(date +"%y%m%d").tgz --same-owner&nbsp;</font><span style="font-size:16px;line-height:1.6"><font color="#0F4F0B">--one-file-system</font></span><span style="color:rgb(56,118,29);line-height:1.6">&nbsp;--exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* /</span></div>
 </span></div>
 <div><span style="font-size:medium"><br>
 </span></div>
@@ -80,12 +80,12 @@ id: tutor
 <div><span style="font-size:medium"><br>
 </span></div>
 <div>
-<div style="font-size:medium"><font color="#38761d">#!/bin/bash</font></div>
-<div style="font-size:medium"><font color="#38761d">tar cvzpf /</font><font color="#3d85c6">your_backup_location</font><font color="#38761d">/Backuphome_$(date +"%y%m%d").tgz --same-owner &nbsp;--exclude=$HOME</font><font color="#38761d">/Downloads/* $HOME</font></div>
-<div style="font-size:medium"><font color="#38761d"><br>
+<div style="font-size:medium"><font color="#0F4F0B">#!/bin/bash</font></div>
+<div style="font-size:medium"><font color="#0F4F0B">tar cvzpf /</font><font color="#3d85c6">your_backup_location</font><font color="#0F4F0B">/Backuphome_$(date +"%y%m%d").tgz --same-owner &nbsp;--exclude=$HOME</font><font color="#0F4F0B">/Downloads/* $HOME</font></div>
+<div style="font-size:medium"><font color="#0F4F0B"><br>
 </font></div>
 Here's my more precise one:
-<div><font color="#38761d" size="3">
+<div><font color="#0F4F0B" size="3">
 <div>#!/bin/bash</div>
 <div>tar cvzpf /media/BKP/zsysbkp/Backuphome_$(date +"%y%m%d").tgz --same-owner &nbsp;--exclude=$HOME/Downloads/* --exclude=$HOME/.thumbnails/* --exclude=$HOME/.local/share/Trash/* --exclude=$HOME/.local/share/marble/maps/* --exclude=$HOME/Projects/kdenlive/.backup/*&nbsp;<span style="line-height:1.6">--exclude=$HOME/Projects/kdenlive/proxy/*&nbsp;</span><span style="line-height:1.6">--exclude=$HOME/Projects/kdenlive/thumbs/* $HOME</span></div>
 </font></div>
@@ -99,7 +99,7 @@ Here's my more precise one:
 <div style="font-size:medium"><br>
 </div>
 <div style="font-size:medium">test the tar ball integrity with:</div>
-<div><span style="font-size:medium;line-height:1.6;background-color:transparent"><font color="#38761d">gunzip -c B....tgz | tar t &gt; /dev/null</font></span></div>
+<div><span style="font-size:medium;line-height:1.6;background-color:transparent"><font color="#0F4F0B">gunzip -c B....tgz | tar t &gt; /dev/null</font></span></div>
 <div style="font-size:medium">a good archive will give no errors</div>
 <div style="font-size:medium"><br>
 </div>
@@ -107,8 +107,8 @@ Here's my more precise one:
 </div>
 <div><b><font size="4">Update option</font></b></div>
 <div style="font-size:medium">If you leave out the date-time parameter so that the file name is the same with each run of the script, and you add the update option 'u', then you'll be able to keep a copy of the system in a tar archive, and just keep updating it. &nbsp;Then you compress it and rename it with the time stamp. &nbsp;</div>
-<div><font color="#38761d" style="font-size:medium;line-height:1.6;background-color:transparent">tar cvupf&nbsp;</font><font color="#38761d" style="font-size:medium;line-height:28.4444465637207px;background-color:transparent">/</font><font color="#0b5394" style="font-size:medium;line-height:28.4444465637207px;background-color:transparent">your_backup_location</font><font color="#38761d" style="font-size:medium;line-height:28.4444465637207px;background-color:transparent">/</font><font color="#38761d" style="font-size:medium;line-height:1.6;background-color:transparent">Backupsys.tar&nbsp;</font><span style="background-color:transparent"><font color="#38761d" size="3">--same-owner --one-file-system --exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* / \</font></span></div>
-<div><font color="#38761d" size="3">| gzip &gt;Backupsys</font><span style="color:rgb(56,118,29);font-size:medium;line-height:1.6;background-color:transparent">_$(date +"%y%m%d").tgz</span></div>
+<div><font color="#0F4F0B" style="font-size:medium;line-height:1.6;background-color:transparent">tar cvupf&nbsp;</font><font color="#0F4F0B" style="font-size:medium;line-height:28.4444465637207px;background-color:transparent">/</font><font color="#0b5394" style="font-size:medium;line-height:28.4444465637207px;background-color:transparent">your_backup_location</font><font color="#0F4F0B" style="font-size:medium;line-height:28.4444465637207px;background-color:transparent">/</font><font color="#0F4F0B" style="font-size:medium;line-height:1.6;background-color:transparent">Backupsys.tar&nbsp;</font><span style="background-color:transparent"><font color="#0F4F0B" size="3">--same-owner --one-file-system --exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* / \</font></span></div>
+<div><font color="#0F4F0B" size="3">| gzip &gt;Backupsys</font><span style="color:rgb(56,118,29);font-size:medium;line-height:1.6;background-color:transparent">_$(date +"%y%m%d").tgz</span></div>
 <div style="font-size:medium"><br>
 </div>
 <div style="font-size:medium">Note that tar will append files to the archive, not replace them inline. &nbsp;So it may be better to create a new archive each time.</div>
@@ -117,7 +117,7 @@ Here's my more precise one:
 <div><font size="3"><br>
 </font></div>
 <div><b><font size="4">Restoring the system from the backup tar file</font></b></div>
-<div><font size="3">use&nbsp;<font color="#b45f06">sudo tar xvzf /home/Backup_1207.tgz -C </font><font color="#3d85c6">/location-of-new-system</font></font></div>
+<div><font size="3">use&nbsp;<font color="#6A3200">sudo tar xvzf /home/Backup_1207.tgz -C </font><font color="#3d85c6">/location-of-new-system</font></font></div>
 <div><br>
 </div>
 <div><font color="#0c343d" size="3"><span style="background-color:rgb(241,194,50)">WARNING ! this command will overwrite every file on specified target with the files from the backup tar file!</span></font></div>
@@ -125,21 +125,21 @@ Here's my more precise one:
 <div>
 <ul><li><span style="line-height:1.6">in a Live CD environment (or another running system) copy the tgz archives to a partition&nbsp;</span>(e.g. sda1)</li>
 <li><span style="line-height:1.6">make the system partition&nbsp;(e.g. sda5), home (e.g. sda6) and swap (if there's no other Linux system installed)</span></li></ul>
-<span style="line-height:1.6"><font color="#b45f06">su</font></span></div>
-<div><font color="#b45f06">umount /dev/sda1</font></div>
-<div><font color="#b45f06">umount /dev/sda5</font></div>
-<div><font color="#b45f06">mkdir /mnt/newsys</font></div>
-<div><font color="#b45f06">mkdir /mnt/temp</font></div>
-<div><font color="#b45f06">mount /dev/sda1 /mnt/temp</font></div>
-<div><font color="#b45f06">mount /dev/sda5 /mnt/newsys</font></div>
-<div><font color="#b45f06"><br>
+<span style="line-height:1.6"><font color="#6A3200">su</font></span></div>
+<div><font color="#6A3200">umount /dev/sda1</font></div>
+<div><font color="#6A3200">umount /dev/sda5</font></div>
+<div><font color="#6A3200">mkdir /mnt/newsys</font></div>
+<div><font color="#6A3200">mkdir /mnt/temp</font></div>
+<div><font color="#6A3200">mount /dev/sda1 /mnt/temp</font></div>
+<div><font color="#6A3200">mount /dev/sda5 /mnt/newsys</font></div>
+<div><font color="#6A3200"><br>
 </font></div>
-<div><font color="#b45f06">mkdir /mnt/home</font></div>
+<div><font color="#6A3200">mkdir /mnt/home</font></div>
 </font><font size="3">
-<div><font color="#b45f06"><span style="line-height:1.6">mount&nbsp;</span>/dev/sda6 /mnt/home</font></div>
+<div><font color="#6A3200"><span style="line-height:1.6">mount&nbsp;</span>/dev/sda6 /mnt/home</font></div>
 <div>
-<ul><li><span style="line-height:1.6"><font color="#b45f06">tar xvzf /mnt/temp/Backupsys_130212.tgz -C /mnt/newsys/</font></span></li>
-<li><span style="line-height:1.6"><font color="#b45f06">tar xvzf /mnt/temp/Backuphome_130212.tgz -C /mnt/home/</font></span></li>
+<ul><li><span style="line-height:1.6"><font color="#6A3200">tar xvzf /mnt/temp/Backupsys_130212.tgz -C /mnt/newsys/</font></span></li>
+<li><span style="line-height:1.6"><font color="#6A3200">tar xvzf /mnt/temp/Backuphome_130212.tgz -C /mnt/home/</font></span></li>
 <li>update GRUB to include the new system</li></ul>
 </div>
 </font></div>
@@ -162,12 +162,12 @@ Here's my more precise one:
 <div style="line-height:28.4444465637207px"><font style="line-height:23px"><br>
 </font></div>
 <div>
-<div style="line-height:28.4444465637207px"><span style="line-height:23px"><font color="#b45f06">rsync -auv --"exclude=/home/*" --"exclude=/proc/*" --"exclude=/lost+found/*" --"exclude=/dev/*" --"exclude=/mnt/*" --"exclude=/media/*" --"exclude=/sys/*" --"exclude=/tmp/*" --"exclude=/etc/fstab*" &nbsp; &nbsp;/ &nbsp; /media/backupos&nbsp;</font></span></div>
+<div style="line-height:28.4444465637207px"><span style="line-height:23px"><font color="#6A3200">rsync -auv --"exclude=/home/*" --"exclude=/proc/*" --"exclude=/lost+found/*" --"exclude=/dev/*" --"exclude=/mnt/*" --"exclude=/media/*" --"exclude=/sys/*" --"exclude=/tmp/*" --"exclude=/etc/fstab*" &nbsp; &nbsp;/ &nbsp; /media/backupos&nbsp;</font></span></div>
 </div>
 </div>
-<div><span style="line-height:23px"><font color="#b45f06"><br>
+<div><span style="line-height:23px"><font color="#6A3200"><br>
 </font></span></div>
-<div><span style="line-height:23px"><font color="#b45f06"><br>
+<div><span style="line-height:23px"><font color="#6A3200"><br>
 </font></span></div>
 <div><br>
 <a name="3"></a>
@@ -186,15 +186,15 @@ Here's my more precise one:
 </div>
 <div><br>
 </div>
-<div><font color="#cc0000">sudo apt-get install partclone</font></div>
+<div><font color="#7C2020">sudo apt-get install partclone</font></div>
 <div><br>
 </div>
 <div>to clone a partition with compression:</div>
-<div><font color="#b45f06">sudo partclone.ext4 -c -s /</font><font color="#0b5394">dev/sd--</font><font color="#b45f06"> | gzip -c &gt; /</font><font color="#0b5394">backup-dir/image-name</font><font color="#b45f06">_$(date +"%y%m%d").pcl.gz</font></div>
+<div><font color="#6A3200">sudo partclone.ext4 -c -s /</font><font color="#0b5394">dev/sd--</font><font color="#6A3200"> | gzip -c &gt; /</font><font color="#0b5394">backup-dir/image-name</font><font color="#6A3200">_$(date +"%y%m%d").pcl.gz</font></div>
 <div><br>
 </div>
 <div>to restore the image to a partition (with great care!):</div>
-<div><font color="#b45f06">zcat&nbsp;</font><font color="#b45f06" style="line-height:28.4444465637207px;background-color:transparent">/</font><font color="#0b5394" style="line-height:28.4444465637207px;background-color:transparent">backup-dir/</font><font color="#0b5394" style="line-height:1.6;background-color:transparent">image_....</font><font color="#b45f06" style="line-height:1.6;background-color:transparent">pcl.gz | sudo partclone.ext4 -r -o /</font><font color="#0b5394" style="line-height:1.6;background-color:transparent">dev/sd--</font></div>
+<div><font color="#6A3200">zcat&nbsp;</font><font color="#6A3200" style="line-height:28.4444465637207px;background-color:transparent">/</font><font color="#0b5394" style="line-height:28.4444465637207px;background-color:transparent">backup-dir/</font><font color="#0b5394" style="line-height:1.6;background-color:transparent">image_....</font><font color="#6A3200" style="line-height:1.6;background-color:transparent">pcl.gz | sudo partclone.ext4 -r -o /</font><font color="#0b5394" style="line-height:1.6;background-color:transparent">dev/sd--</font></div>
 <div><br>
 </div>
 <div>As this tool images whole partitions, without any excludes, you better tidy up the disk especially in user home.</div>
@@ -252,12 +252,12 @@ Here's my more precise one:
 <div><br>
 </div>
 <div>or use the zip file with a command like:</div>
-<div><font color="#b45f06">unzip image.zip -d /media/usb/</font></div>
+<div><font color="#6A3200">unzip image.zip -d /media/usb/</font></div>
 <div><br>
 </div>
 <div>and make it bootable with:</div>
-<div><font color="#b45f06">cd /media/usb/utils/linux</font></div>
-<div><font color="#b45f06">bash makeboot.sh /dev/sd..</font></div>
+<div><font color="#6A3200">cd /media/usb/utils/linux</font></div>
+<div><font color="#6A3200">bash makeboot.sh /dev/sd..</font></div>
 </div>
 <div><br>
 </div>
@@ -285,10 +285,10 @@ Here's my more precise one:
 </font></div>
 <div><font size="3" style="line-height:23px;font-size:16px">download <font color="#0b5394">refractasnapshot</font> and <font color="#0b5394">refractainstaller</font> (base and gui if needed) from&nbsp;</font><span style="line-height:22.986112594604492px"><a href="http://sourceforge.net/projects/refracta/files/tools/">http://sourceforge.net/</a></span></div>
 <div style="line-height:23px"><span style="line-height:23px;font-size:16px">cd to download dir</span></div>
-<div style="line-height:23px"><font color="#b45f06">sudo dpkg -i refracta*</font></div>
+<div style="line-height:23px"><font color="#6A3200">sudo dpkg -i refracta*</font></div>
 <div style="line-height:23px"><br>
 </div>
-<div style="line-height:23px">If there are unmet dependencies, sort it out with <font color="#cc0000">sudo apt-get install -f</font></div>
+<div style="line-height:23px">If there are unmet dependencies, sort it out with <font color="#7C2020">sudo apt-get install -f</font></div>
 <div>
 <div><span style="line-height:22.986112594604492px">for a new system I found</span></div>
 <div><span style="line-height:22.986112594604492px;background-color:transparent;font-size:16px">refractasnapshot-base needed <font color="#0b5394">squashfs-tools live-boot live-config live-boot-initramfs-tools live-config-sysvinit&nbsp;</font></span></div>
@@ -307,9 +307,9 @@ Also install a newer version yad (21.0), necessary for the snapshot installer to
 </div>
 <div style="line-height:23px"><b><font size="4">1a.&nbsp;</font></b><b style="font-size:15.5555562973022px;background-color:transparent"><font size="4">&nbsp;Config file</font></b></div>
 <div style="font-size:15.5555562973022px;line-height:23px"><font size="3">change the refracta working directory out of /home (to another partition), using the&nbsp;</font><span style="font-size:medium">config file:</span></div>
-<div style="font-size:13px;line-height:23px"><font size="3"><font color="#b45f06">sudo leafpad&nbsp;</font><span style="line-height:27px"><font color="#b45f06">/etc/refractasnapshot.conf</font>&nbsp;</span></font></div>
+<div style="font-size:13px;line-height:23px"><font size="3"><font color="#6A3200">sudo leafpad&nbsp;</font><span style="line-height:27px"><font color="#6A3200">/etc/refractasnapshot.conf</font>&nbsp;</span></font></div>
 <div style="font-size:13px;line-height:23px"><span style="font-size:medium;line-height:26px">edit the exclude list (to reduce the final iso size)</span></div>
-<div style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#b45f06" size="3"><span style="line-height:25.9895839691162px">sudo leafpad /usr/lib/refractasnapshot/snapshot_exclude.list</span></font></div>
+<div style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#6A3200" size="3"><span style="line-height:25.9895839691162px">sudo leafpad /usr/lib/refractasnapshot/snapshot_exclude.list</span></font></div>
 <div style="font-size:13px;line-height:23px"><span style="font-size:medium;line-height:26px">I added&nbsp;</span></div>
 <div style="font-size:15.5555562973022px;line-height:28.4444465637207px">
 <div><font size="3"><span style="line-height:25.9895839691162px">- /home/*/Downloads/*</span></font></div>
@@ -358,7 +358,7 @@ these run after the install and before the unmount and reboot.</div>
 <div style="line-height:23px">I highly recommend running Bleachbit as root to clean up the system before running a snapshot back-up. &nbsp;</div>
 <div>
 <ul><li><span style="line-height:22.986112594604492px">Get the latest bleachbit from&nbsp;<a href="http://bleachbit.sourceforge.net/download/linux" rel="noreferrer">http://bleachbit.blogspot.com/</a></span></li>
-<li>install a dependency: <font color="#cc0000">sudo apt-get install&nbsp;<span style="font-size:16px;line-height:1.6">python-simplejson</span></font></li>
+<li>install a dependency: <font color="#7C2020">sudo apt-get install&nbsp;<span style="font-size:16px;line-height:1.6">python-simplejson</span></font></li>
 <li>install the bleachbit deb</li>
 <li>run sudo bleachbit</li>
 <li>select some things like apt cache clean and Localization (unwanted languages - all those LC_MESSAGES files -set which ones to keep in preferences)</li>
@@ -374,24 +374,24 @@ these run after the install and before the unmount and reboot.</div>
 <div style="font-size:13px;line-height:23px"><span style="font-size:medium;line-height:26px">To make a snapshot of the installed system, either to backup or clone it to another PC, run in terminal:</span></div>
 </div>
 <div>
-<div><font color="#b45f06" size="3"><span style="line-height:25.98958396911621px">sudo refractasnapshot</span></font></div>
+<div><font color="#6A3200" size="3"><span style="line-height:25.98958396911621px">sudo refractasnapshot</span></font></div>
 <div style="font-size:medium;line-height:26px"><br>
 </div>
 </div>
 <div style="font-size:medium;line-height:26px">running it with the gui seems pointless to me, really</div>
 <div style="font-size:13px;line-height:23px"><span style="line-height:26px;font-size:medium">needed disk space = disk size used by the system files + room for the iso file (in my case with the proper excludes, 5.5Gb + 1.9Gb)</span></div>
 <div style="font-size:13px;line-height:23px"><span style="line-height:26px;font-size:medium">you can enable xz compression in the conf file, but it<b> takes longer</b> to make it then. just un-comment the line:</span></div>
-<div><font color="#38761d" size="3"><span style="line-height:25.98958396911621px">#mksq_opt="-comp xz"</span></font></div>
-<div><font color="#38761d" size="3"><span style="line-height:25.98958396911621px"><br>
+<div><font color="#0F4F0B" size="3"><span style="line-height:25.98958396911621px">#mksq_opt="-comp xz"</span></font></div>
+<div><font color="#0F4F0B" size="3"><span style="line-height:25.98958396911621px"><br>
 </span></font></div>
 <div><span style="font-size:medium;line-height:26px">details&nbsp;</span><font size="3"><span style="line-height:25.98958396911621px"><a href="http://distro.ibiblio.org/refracta/files/documentation/" rel="noreferrer">http://distro.ibiblio.org/refracta/files/documentation/</a></span></font></div>
 <div style="font-size:13px;line-height:23px"><span style="line-height:26px;font-size:medium"><br>
 </span></div>
 <div style="font-size:13px;line-height:23px"><span style="line-height:26px;font-size:medium">Tip: to get the installer icon on the desktop when you boot the Live ISO on another machine, but not present on the desktop on a new install....</span></div>
 <div>
-<ol><li style="font-size:13px;line-height:23px"><span style="font-size:medium;line-height:26px;background-color:transparent">copy the .desktop file to the desktop i.e. <font color="#b45f06">cp /usr/share/applications/refractainstaller.desktop ~/Desktop/</font></span></li>
-<li style="font-size:13px;line-height:23px"><span style="background-color:transparent;font-size:16px;line-height:1.6"><font color="#b45f06">sudo leafpad /usr/lib/refractainstaller/installer_exclude.list</font></span></li>
-<li style="font-size:13px;line-height:23px"><span style="font-size:medium;background-color:transparent;line-height:26px">add the exclusion&nbsp;</span><font color="#38761d"><span style="font-size:medium;background-color:transparent;line-height:25.98958396911621px">- /home/*/Desktop/</span><span style="font-size:medium;background-color:transparent;line-height:26px">refractainstaller.desktop</span></font></li>
+<ol><li style="font-size:13px;line-height:23px"><span style="font-size:medium;line-height:26px;background-color:transparent">copy the .desktop file to the desktop i.e. <font color="#6A3200">cp /usr/share/applications/refractainstaller.desktop ~/Desktop/</font></span></li>
+<li style="font-size:13px;line-height:23px"><span style="background-color:transparent;font-size:16px;line-height:1.6"><font color="#6A3200">sudo leafpad /usr/lib/refractainstaller/installer_exclude.list</font></span></li>
+<li style="font-size:13px;line-height:23px"><span style="font-size:medium;background-color:transparent;line-height:26px">add the exclusion&nbsp;</span><font color="#0F4F0B"><span style="font-size:medium;background-color:transparent;line-height:25.98958396911621px">- /home/*/Desktop/</span><span style="font-size:medium;background-color:transparent;line-height:26px">refractainstaller.desktop</span></font></li>
 <li style="font-size:13px;line-height:23px"><span style="background-color:transparent;font-size:medium;line-height:26px">thus when the installer copies the file system to the target machine, the install icon will be excluded (so it only appears in the Live environment)</span></li>
 </ol>
 </div>
@@ -401,15 +401,15 @@ these run after the install and before the unmount and reboot.</div>
 <div>
 <div style="font-size:15.555556297302246px;line-height:23px">to install the package, get from <a href="http://sourceforge.net/projects/refracta/files/tools/">http://sourceforge.net/</a></div>
 <div style="font-size:15.555556297302246px;line-height:23px">install the dependencies</div>
-<font color="#cc0000">sudo apt-get install fuseiso hwinfo libhd16 pmount live-boot live-config mtools</font></div>
+<font color="#7C2020">sudo apt-get install fuseiso hwinfo libhd16 pmount live-boot live-config mtools</font></div>
 <div><span style="line-height:22.986112594604492px"><br>
 </span></div>
 <div><font size="3"><span style="line-height:25.98958396911621px">This allows installing a Live system to USB from a Live CD iso or from a running <i>live</i> session, and can also update the file-system on USB stick later with a newer one. (Unetbootin can be used if preferred)</span></font></div>
 <div><font size="3"><span style="line-height:25.98958396911621px"><a href="http://distro.ibiblio.org/refracta/files/documentation/readme.refracta2usb.txt" rel="noreferrer">http://distro.ibiblio.org/refracta/...</a></span></font></div>
 <div><font size="3"><span style="line-height:25.98958396911621px">refracta2usb complains if the usb is mounted (and Unetbootin complains if its not mounted!)</span></font></div>
 <div><font size="3"><span style="line-height:25.98958396911621px">Don't eject the device, unmount with&nbsp;</span></font></div>
-<div><font color="#b45f06"><font size="3"><span style="line-height:25.98958396911621px">pumount /dev/sdb1&nbsp;</span></font></font></div>
-<div><font color="#b45f06"><span style="font-size:medium;line-height:25.98958396911621px">pumount</span><font size="3"><span style="line-height:25.98958396911621px">&nbsp;/dev/sdb2&nbsp;</span></font></font></div>
+<div><font color="#6A3200"><font size="3"><span style="line-height:25.98958396911621px">pumount /dev/sdb1&nbsp;</span></font></font></div>
+<div><font color="#6A3200"><span style="font-size:medium;line-height:25.98958396911621px">pumount</span><font size="3"><span style="line-height:25.98958396911621px">&nbsp;/dev/sdb2&nbsp;</span></font></font></div>
 <div><font size="3"><span style="line-height:25.98958396911621px">etc</span></font></div>
 <div><font size="3"><span style="line-height:25.98958396911621px"><br>
 </span></font></div>

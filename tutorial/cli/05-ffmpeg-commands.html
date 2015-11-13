@@ -77,7 +77,7 @@ id: cli
 <li><span style="font-size:16px;line-height:1.6;background-color:transparent">copy and insert the start/duration on the ffmpeg line, e.g.</span></li>
 </ol>
 </div>
-<div><font color="#b45f06">ffmpeg -ss 34 -t 572 -i file -acodec copy output-file</font></div>
+<div><font color="#6A3200">ffmpeg -ss 34 -t 572 -i file -acodec copy output-file</font></div>
 <div><br>
 </div>
 <div>I'm using ranger as well, so I have a mapped key with the ffmpeg line, like this</div>
@@ -115,13 +115,13 @@ id: cli
 <div><br>
 </div>
 <div>a script makes the results tidier, without the need to search/replace "flac.ogg" everywhere</div>
-<div><font color="#38761d">#!/bin/bash</font></div>
-<div><font color="#38761d">for a in *.flac; do</font></div>
-<div><font color="#38761d">&nbsp;&lt;/dev/null ffmpeg&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">-i "$a" -c:a libvorbis -q:a 7 "${a%.*}.ogg&nbsp;</span></font></div>
-<div><span style="font-size:16px;line-height:1.6;background-color:transparent"><font color="#38761d">done</font></span></div>
+<div><font color="#0F4F0B">#!/bin/bash</font></div>
+<div><font color="#0F4F0B">for a in *.flac; do</font></div>
+<div><font color="#0F4F0B">&nbsp;&lt;/dev/null ffmpeg&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">-i "$a" -c:a libvorbis -q:a 7 "${a%.*}.ogg&nbsp;</span></font></div>
+<div><span style="font-size:16px;line-height:1.6;background-color:transparent"><font color="#0F4F0B">done</font></span></div>
 <div><br>
 </div>
-<div>this searches in the current directory. &nbsp;to make it recursive you can try double globbing: <font color="#38761d">for a in ./**/*.flac; do</font></div>
+<div>this searches in the current directory. &nbsp;to make it recursive you can try double globbing: <font color="#0F4F0B">for a in ./**/*.flac; do</font></div>
 <div><br>
 </div>
 <div>there is also oggenc</div>
@@ -140,9 +140,9 @@ id: cli
 </div>
 <div>or a script,</div>
 <div>
-<div><font color="#38761d">for a in *.flac; do</font></div>
-<div><font color="#38761d">&nbsp;&lt;/dev/null ffmpeg&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">-i "$a" -c:a libmp3lame -q:a 0 "${a%.*}.mp3&nbsp;</span></font></div>
-<div><span style="font-size:16px;line-height:1.6;background-color:transparent"><font color="#38761d">done</font></span></div>
+<div><font color="#0F4F0B">for a in *.flac; do</font></div>
+<div><font color="#0F4F0B">&nbsp;&lt;/dev/null ffmpeg&nbsp;<span style="font-size:16px;line-height:1.6;background-color:transparent">-i "$a" -c:a libmp3lame -q:a 0 "${a%.*}.mp3&nbsp;</span></font></div>
+<div><span style="font-size:16px;line-height:1.6;background-color:transparent"><font color="#0F4F0B">done</font></span></div>
 </div>
 <div><br>
 </div>
@@ -162,29 +162,29 @@ id: cli
 <div><br>
 </div>
 <div>copy the script (bottom of page) and save to file ogg2mp3 in your scripts</div>
-<div><span style="color:rgb(180,95,6);font-size:16px;line-height:1.6;background-color:transparent">chmod +x ogg2mp3</span></div>
+<div><span style="color:#6A3200;font-size:16px;line-height:1.6;background-color:transparent">chmod +x ogg2mp3</span></div>
 <div><br>
 </div>
 <div>make a bash alias</div>
-<div><font color="#38761d">alias ogg2mp3='ogg2mp3 -B 256 --vbr-new -V 0 *.ogg'</font></div>
+<div><font color="#0F4F0B">alias ogg2mp3='ogg2mp3 -B 256 --vbr-new -V 0 *.ogg'</font></div>
 </div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B"><br>
 </font></div>
-<div><font color="#38761d"><br>
+<div><font color="#0F4F0B"><br>
 </font></div>
 <div><font size="5"><b>Split audio from a video</b></font></div>
 <div>get audio metadata with</div>
-<div><font color="#b45f06">ffmpeg -i video.avi </font>etc</div>
+<div><font color="#6A3200">ffmpeg -i video.avi </font>etc</div>
 <div><br>
 </div>
 <div>examples</div>
-<div><font color="#b45f06">ffmpeg -i input.mpg -c copy audio.m4a </font>&nbsp; &nbsp; - AAC</div>
-<div><font color="#b45f06">ffmpeg -i input.flv -c copy audio.mp3 </font>&nbsp; &nbsp; &nbsp; - MP3</div>
-<div><font color="#b45f06">ffmpeg -i input.mpeg -c copy audio.ac3</font> &nbsp; &nbsp;- AC3</div>
+<div><font color="#6A3200">ffmpeg -i input.mpg -c copy audio.m4a </font>&nbsp; &nbsp; - AAC</div>
+<div><font color="#6A3200">ffmpeg -i input.flv -c copy audio.mp3 </font>&nbsp; &nbsp; &nbsp; - MP3</div>
+<div><font color="#6A3200">ffmpeg -i input.mpeg -c copy audio.ac3</font> &nbsp; &nbsp;- AC3</div>
 <div><br>
 </div>
 <div>or you can specify quality/codec</div>
-<div><font color="#b45f06">ffmpeg -i video.flv -vn -ar 44100 -ac 2 -ab 192k -f mp3 output.mp3</font></div>
+<div><font color="#6A3200">ffmpeg -i video.flv -vn -ar 44100 -ac 2 -ab 192k -f mp3 output.mp3</font></div>
 <div><br>
 </div>
 <div><br>
