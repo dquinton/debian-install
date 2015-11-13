@@ -448,11 +448,9 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 </table>
 <br><br>
 
-<a name="fi"></a>
-
 <br><br>
 
-<h3>map f for files</h3>
+<h3 id="fi" class="tag">map f for files</h3>
 <form><textarea name="T" id="file" rows="25" cols="120">
 ################## My keyinds ######################
 
@@ -494,10 +492,9 @@ fd2 script, puts suffix inside the file extension:
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<a name="op"></a><br>
 
 <br><br>
-<h3>map O to open files</h3>
+<h3 id="op" class="tag">map O to open files</h3>
 <form><textarea name="T" id="file" rows="9" cols="120">
 ##### open file ##########
 
@@ -509,11 +506,10 @@ map Ot shell -f rxvt -cd %d              #open current dir in new terminal</text
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
-<a name="yk"></a><br>
+<br>
 
 <br><br>
-<h3>map y,d,p for yank, cut and paste commands</h3>
+<h3 id="yk" class="tag">map y,d,p for yank, cut and paste commands</h3>
 <form><textarea name="T" id="file" rows="27" cols="150">
 ##### yanking ##########
 
@@ -544,11 +540,10 @@ map p\c shell mkdir copied; cp -t copied `xsel -b -o`         #copy files via li
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="su"></a><br>
+<br>
 
 <br><br>
-<h3>map P for commands with super user privelege</h3>
+<h3 id="su" class="tag">map P for commands with super user privelege</h3>
 <form><textarea name="T" id="file" rows="13" cols="120">
 ##### Super-user ##########
 
@@ -566,11 +561,10 @@ map Pyt shell -r rsync -u %s %D                   #sync selected to next tab</te
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="del"></a><br>
+<br>
 
 <br><br>
-<h3>map X for delete commands</h3>
+<h3 id="del" class="tag">map X for delete commands</h3>
 <form><textarea name="T" id="file" rows="10" cols="120">
 ##### delete ##########
 
@@ -585,11 +579,10 @@ map xx3 cd /media/VIDEO/.Trash-1000/files</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="con"></a><br>
+<br>
 
 <br><br>
-<h3>map dot for finding config files</h3>
+<h3 id="con" class="tag">map dot for finding config files</h3>
 <form><textarea name="T" id="file" rows="9" cols="80">
 ####### Edit config files ##########
 
@@ -603,11 +596,10 @@ map .6 shell nano ~/.config/openbox/autostart</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="cdcon"></a><br>
+<br>
 
 <br><br>
-<h3>map '; for cd to config dir's</h3>
+<h3 id="cdcon" class="tag">map '; for cd to config dir's</h3>
 <form><textarea name="T" id="file" rows="12" cols="80">
 ##### cd to config dir's ##########
 
@@ -624,11 +616,10 @@ map ';au cd ~/QuickLink/applications-usr</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="bk"></a><br>
+<br>
 
 <br><br>
-<h3>map comma-k for backup commands/scripts</h3>
+<h3 id="bk" class="tag">map comma-k for backup commands/scripts</h3>
 <form><textarea name="T" id="file" rows="7" cols="120">
 ##### backup ##########
 
@@ -649,11 +640,10 @@ cp "$1" ~/backups/"$1"_$(date +"%y%m%d")</textarea>
 </form>
 
 (the k3 and k4 scripts are simple rsync commands)
-
-<a name="sym"></a><br>
+<br>
 
 <br><br><br>
-<h3>map comma-l for symlink commands</h3>
+<h3 id="sym" class="tag">map comma-l for symlink commands</h3>
 <form><textarea name="T" id="file" rows="7" cols="150">
 ##### symlinks ##########
 
@@ -665,11 +655,10 @@ map ,lr shell -s ln -fsT "`yad --title="Re-link To" --file --height=400 --width=
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="dir"></a><br>
+<br>
 
 <br><br>
-<h3>map comma-d for directory commands</h3>
+<h3 id="dir" class="tag">map comma-d for directory commands</h3>
 <form><textarea name="T" id="file" rows="9" cols="150">
 ##### directory ##########
 
@@ -683,11 +672,10 @@ map ,dx console shell -f find . -type d -maxdepth 1 -empty -delete       #remove
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="ar"></a><br>
+<br>
 
 <br><br>
-<h3>map comma-a for archive commands</h3>
+<h3 id="ar" class="tag">map comma-a for archive commands</h3>
 <form><textarea name="T" id="file" rows="11" cols="120">
 ##### archive ##########
 
@@ -702,11 +690,10 @@ map ,a4 console shell -f tar cvzpf ?.tgz %%s
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
-<a name="iso"></a><br>
+<br>
 
 <br><br>
-<h3>map comma-i for iso/dvd commands</h3>
+<h3 id="iso" class="tag">map comma-i for iso/dvd commands</h3>
 <form><textarea name="T" id="file" rows="9" cols="150">
 ##### iso/dvd ##########
 
@@ -720,10 +707,9 @@ map ,cdej console shell -s eject /dev/sr0              #eject laptop CDROM</text
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="src"></a><br>
+<br>
 <br><br>
-<h3>map comma-s for source file commands (though dropping to shell might be more advisable)</h3>
+<h3 id="src" class="tag">map comma-s for source file commands (though dropping to shell might be more advisable)</h3>
 <form><textarea name="T" id="file" rows="6" cols="50">
 ##### source archives ##########
 
@@ -734,11 +720,10 @@ map ,s3 shell -pw sudo make install</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="img"></a><br>
+<br>
 
 <br><br>
-<h3>map fi for image file commands</h3>
+<h3 id="img" class="tag">map fi for image file commands</h3>
 <form><textarea name="T" id="file" rows="9" cols="150">
 ##### image files ##########
 
@@ -752,11 +737,10 @@ map fipx console shell -ft google picasa delete ""                    #delete al
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="feh"></a><br>
+<br>
 
 <br><br>
-<h3>map F for feh image viewer commands</h3>
+<h3 id="feh" class="tag">map F for feh image viewer commands</h3>
 <form><textarea name="T" id="file" rows="13" cols="150">
 ##### feh commands ##########
 
@@ -774,11 +758,10 @@ map Fb chain shell -f feh --bg-scale %f; shell cp %f ~/wallpapers; sed -i '7s/.*
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="mog"></a><br>
+<br>
 
 <br><br>
-<h3>map fim for mogrify commands</h3>
+<h3 id="mog" class="tag">map fim for mogrify commands</h3>
 <form><textarea name="T" id="file" rows="13" cols="150">
 ##### mogrify commands ##########
 
@@ -796,11 +779,10 @@ map fixx shell -f jhead -di %s                           #remove iptc keywords f
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-            
-<a name="exif"></a><br>
+<br>
 
 <br><br>
-<h3>map E for exiftool and jhead commands</h3>
+<h3 id="exif" class="tag">map E for exiftool and jhead commands</h3>
 <form><textarea name="T" id="file" rows="42" cols="150">
 ##### exiftool commands ##########
 
@@ -858,11 +840,10 @@ for i in  *; do DAT=$(date -r $i +%y-%m-%d); mkdir -p $DAT; mv $i $DAT ; done</t
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="vid"></a><br>
+<br>
 
 <br><br>
-<h3>map fv for video file commands</h3>
+<h3 id="vid" class="tag">map fv for video file commands</h3>
 <form><textarea name="T" id="file" rows="15" cols="120">
 ##### video files ##########
 
@@ -899,10 +880,11 @@ for a in *.flac; do
  < /dev/null ffmpeg -i "$a" -q:a 0 "${a%.*}.mp3"
 done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>       
-<a name="aud"></a><br>
+</form>    
+
+   <br>
 <br><br>
-<h3>map fa for audio edit commands</h3>
+<h3 id="aud" class="tag">map fa for audio edit commands</h3>
 <form><textarea name="T" id="file" rows="8" cols="120">
 ##### audio files ##########
 
@@ -916,11 +898,10 @@ map fa3 shell -ft ogg2mp3 -B 256 --vbr-new -V 0 *.ogg %s        #convert ogg to 
 </form>
 
 
-
-<a name="mt"></a><br>
+<br>
 
 <br><br>
-<h3>map comma-m and comma-u for mounting/unmouning drives</h3>
+<h3 id="mt" class="tag">map comma-m and comma-u for mounting/unmouning drives</h3>
 <form><textarea name="T" id="file" rows="17" cols="120">
 ##### mounting ##########
 
@@ -942,11 +923,10 @@ map ,d2 shell -pwr blkid            #list partitions with UUID</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="nfs"></a><br>
+<br>
 
 <br><br>
-<h3>map comma-n for mounting nfs</h3>
+<h3 id="nfs" class="tag">map comma-n for mounting nfs</h3>
 <form><textarea name="T" id="file" rows="9" cols="80">
 ##### nfs ##########
 
@@ -960,11 +940,10 @@ map ,nu shell -r umount %f</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="git"></a><br>
+<br>
 
 <br><br>
-<h3>map J for Jekyll and Github commands</h3>
+<h3 id="git" class="tag">map J for Jekyll and Github commands</h3>
 <form><textarea name="T" id="file" rows="10" cols="80">
 ##### Github-jekyll ##########
 
@@ -979,11 +958,10 @@ map J2 shell git log --name-only | less</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="brn"></a><br>
+<br>
 
 <br><br>
-<h3>map comma-z for bashburn commands</h3>
+<h3 id="brn" class="tag">map comma-z for bashburn commands</h3>
 <form><textarea name="T" id="file" rows="11" cols="150">
 ##### bashburn ##########
 
@@ -1013,11 +991,10 @@ sudo mv ~/Projects/bashburn/burn/* ~/Projects/bashburn/"$1"/
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="gpg"></a><br>
+<br>
 
 <br><br>
-<h3>map G for GPG encryption commands</h3>
+<h3 id="gpg" class="tag">map G for GPG encryption commands</h3>
 <form><textarea name="T" id="file" rows="8" cols="100">
 ##### encrypt ##########
 
@@ -1030,10 +1007,10 @@ map Gcd shell -ft xsel -b -o | gpg2 -d | xsel --clipboard</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<a name="batch"></a><br>
+<br>
 <br><br>
-<h3>map R for file renaming commands</h3>
+
+<h3 id="batch" class="tag">map R for file renaming commands</h3>
 
 <span class="bblue">Rr</span>: replace, <span class="bblue">Rs</span>: find spaces, <span class="bblue">Ru</span>: change case, <span class="bblue">Rp</span>: prepend, <span class="bblue">Ra</span>: append, <span class="bblue">Re</span>: exif date, <span class="bblue">Rn</span>: numbering, <span class="bblue">Rc</span>: cut
 <br><br>
