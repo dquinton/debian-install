@@ -47,6 +47,7 @@ GRUB 2
 <a href="https://help.ubuntu.com/community/Grub2">https://help.ubuntu.com/...</a>
 
 <h2 id="1" class="tag">1 ....Boot a new OS with Super Grub2 on a thumb drive</h2>
+
 <div><font size="3">then enter in the terminal in the booted OS:</font></div>
 <div><font color="#7C2020" size="3">sudo apt-get install grub</font></div>
 <div><font color="#6A3200" size="3">sudo grub-install /dev/sda</font></div>
@@ -63,6 +64,7 @@ GRUB 2
 </font></div>
 
 <h2 id="2" class="tag">2 ....Add OS to the GRUB menu and set a splash screen with Grub Customizer</h2>
+
 <div><font size="3">this is easy if there is already an OS on the machine with this programme installed - it tends to work fine detecting other Linux installs, but it may fail detecting Win7 or Win8 OS, Android etc.</font></div>
 <div><font size="3"><br>
 </font></div>
@@ -96,6 +98,7 @@ GRUB 2
 </span></div>
 
 <h2 id="3" class="tag">3 ....Boot Repair Disk </h2>
+
 <div><font size="3"><a href="http://sourceforge.net/projects/boot-repair-cd/" rel="noreferrer">http://sourceforge.net/projects/boot-repair-cd/</a><br>
 Run this Live CD and the Recovery app automatically searches for OS's. &nbsp;Open the Advanced options to choose location to install GRUB (set it to the root of your main harddisk, e.g. sda) and any other particulars.&nbsp;</font></div>
 <div><font size="3"><br>
@@ -116,8 +119,10 @@ Run this Live CD and the Recovery app automatically searches for OS's. &nbsp;Ope
 <div><br>
 </div>
 <div>
+
 <h2 id="4" class="tag">4 ...Chroot from a Live environment into the new OS's partiton and install GRUB </h2>
 <div>
+
 <div style="font-size:medium"><font color="#6A3200">mount /dev/sda2 /mnt</font></div>
 <div style="font-size:medium"><font color="#6A3200">mount -t proc proc /mnt/proc</font></div>
 <div style="font-size:medium"><font color="#6A3200">mount -o bind /dev /mnt/dev</font></div>
@@ -156,7 +161,9 @@ Run this Live CD and the Recovery app automatically searches for OS's. &nbsp;Ope
 </font></div>
 <div style="font-size:13px;line-height:23px"><font color="#6A3200" size="3"><br>
 </font></div>
-<h2>6 ....Using a custom entry</h2>
+
+<h2 id="6" class="tag">6 ....Using a custom entry</h2>
+
 <div><span style="line-height:28.444446563720703px">which is really what Grub Customizer (above) does for you - but it might not pick up the OS! &nbsp;It didn't pick up a Windows 7 OS on a laptop I installed Debian on recently, so I had to use this manual approach.<br>
 </span>
 <div><font size="3"><span style="line-height:28.444446563720703px"><u><a href="https://wiki.archlinux.org/index.php/GRUB#Automatically_generating_using_.2Fetc.2Fgrub.d.2F40_custom_and_grub-mkconfig" rel="noreferrer">https://wiki.archlinux.org/</a></u></span></font></div>
