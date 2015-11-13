@@ -290,7 +290,7 @@ url: http://username.github.io/</textarea>&nbsp;
 
 then insert  <b>&#123;&#123;site.baseurl}}/ </b>before all your internal links - <i>possibly</i> only navbar and sub-pages' links.. certainly any link that a sub-page will see 
 <br><br>
-e.g. &#123;&#123;site.baseurl}}/css/styles.css etc - I use bluetish's powerful search-replace tool to make a fast work, using my navbar.html page to get all the links
+and in the header, e.g. &#123;&#123;site.baseurl}}/css/styles.css etc - I use bluetish's powerful search-replace tool to make a fast work, using my navbar.html page to get all the links
 <br><br>
 top-level pages can just remove the "/" before the url so that they point relative to pages on same or a level down, and not to root github.
 <br><br>
@@ -299,7 +299,7 @@ images: change<b> href="../</b> ---> <b>href="&#123;&#123;ssite.baseurl}}/ </b>
 <br><br>
 and also <b>src="../ </b>---> <b>src="&#123;&#123;ssite.baseurl}}/</b>
 <br><br>
-Also, the css links in your header, as well as links in css files, such as, background-image: url(&#123;&#123;ssite.baseurl}}/zimages/banner1.gif);
+Also,  links in css files, such as, "background-image: url(&#123;&#123;ssite.baseurl}}/zimages/banner1.gif);"
 
 <br><br><br><br>
 
