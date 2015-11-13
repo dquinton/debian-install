@@ -11,6 +11,7 @@ id: tutor
         On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
              <ul>
                 <li><a href="#1">Cloning the apt-cache!</a></li>
+                <li><a href="#1a">Keryx </a></li>
                 <li><a href="#2">Simple-CDD  </a></li>
                 <li><a href="#3">Live-Helper </a></li>
              </ul>
@@ -21,6 +22,7 @@ id: tutor
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
    <a href="#1">Cloning the apt-cache!</a><br>
+   <a href="#1a">Keryx  </a><br>
    <a href="#2">Simple-CDD  </a><br>
    <a href="#3">Live-Helper </a><br>
 </td></tr></table></div>
@@ -32,13 +34,13 @@ id: tutor
 
 <div><font size="3"><br>
 </font></div>
-<div><font size="3">A year ago, in Aug 2012, I was trying everything to get a customised Live CD put together so that I could start installing Debian on other PC's (my friends' not any odd person's). &nbsp;I spent a long time learning how to use Live Helper, and tweaked it so that I could get a Live CD to install with about 95% of the apps and config I wanted. &nbsp;But then how about updating the Live CD? &nbsp;Another build process over the internet that can take hours. &nbsp;</font></div>
+<div><font size="3">Back in 2012, I was trying everything I could do to get a customised Live CD put together so that I could start installing Debian on other PC's. &nbsp;I spent a long time learning how to use Live Helper, and tweaked it so that I could get a Live CD to install with about 95% of the apps and config I wanted. &nbsp;But then how about updating the Live CD? &nbsp;Another build process over the internet that can take hours. &nbsp;</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">More recently I've had success with refractasnapshot (system backup page), which makes a Live CD from an installed system. &nbsp;So from the system installed with my Live Helper-made Live CD, which I upgraded and dist-upgraded, and tweaked with all the config I wanted, I made a snapshot of it and now I have a grand "2nd generation" Live CD.</font></div>
 <div><font size="3"><br>
 </font></div>
-<div><font size="3">So, if you were to use Live Helper, you probably shouldn't spend so much time getting the config files into it, but try to build a basic Live Debian to install on a test-bed partition. &nbsp;Then boot into that and make all the fine tuning you need. &nbsp;Finally build your 2nd and better Live CD with refractasnapshot.</font></div>
+<div><font size="3">So, if you were to use Live Helper, you probably shouldn't spend so much time getting the config files into it, but try to build just a <i>basic</i> Live Debian to install on a test-bed partition. &nbsp;Then boot into that and make all the fine tuning you need. &nbsp;Finally build your 2nd and better Live CD with refractasnapshot, or even partclone (see my <a href="16-system-backup.html">system backup</a> page for those two).</font></div>
 <div><font size="3"><br>
 </font></div>
 <div><font size="3"><br>
@@ -89,53 +91,17 @@ id: tutor
 <div><font size="3"><br>
 </font></div>
 <div><font size="3">This page here&nbsp;<span style="line-height:27px"><a href="http://gnuser.wordpress.com/2007/11/20/installing-packages-on-debian-computers-without-internet-connection/">http://gnuser.wordpress.com...</a>&nbsp;is very helpful method for installing packages on a PC with no internet connection. &nbsp;If it is an unknown Debian install, or it's out of date, or out of sync with the connected machine (a), then it would be necessary to find out which packages are needed as there may well be many more needed than the base PC (a) needs.</span></font></div>
-<div><font size="3"><br>
-</font></div>
-<div><br>
-</div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="4"><b>Methods&nbsp;<span style="line-height:27.77777862548828px">to test</span>&nbsp;for remote Debian installs</b></font></div>
-<div><font size="3"><span style="line-height:27px"><br>
-</span></font></div>
-<div><span style="font-size:medium;line-height:27px">
-<table border="1" bordercolor="#888" cellspacing="0" style="border-collapse:collapse;border-top-color:rgb(136,136,136);border-right-color:rgb(136,136,136);border-bottom-color:rgb(136,136,136);border-left-color:rgb(136,136,136);border-top-width:1px;border-right-width:1px;border-bottom-width:1px;border-left-width:1px">
-<tbody>
-<tr>
-<td style="width:260px;height:34px">Method</td>
-<td style="width:288px;height:34px">Status</td>
-<td style="width:338px;height:34px">Remark</td>
-</tr>
-<tr>
-<td style="width:260px;height:26px"><b style="line-height:27px">Simple-cdd&nbsp;</b><span style="line-height:27px">(see below)</span><b style="line-height:27px">&nbsp;</b></td>
-<td style="width:288px;height:26px">&nbsp;No success so far</td>
-<td style="width:338px;height:26px">&nbsp;No time.</td>
-</tr>
-<tr>
-<td style="width:260px;height:26px"><b style="line-height:27px">Live-helper&nbsp;</b><span style="line-height:27px">(see below)</span><b style="line-height:27px">&nbsp;</b></td>
-<td style="width:288px;height:26px">&nbsp;Successfully made a Live CD and installed the system as per my packages.</td>
-<td style="width:338px;height:26px">&nbsp;Installed a breeze. &nbsp;(but with a few hiccups)</td>
-</tr>
-<tr>
-<td style="width:260px;height:26px"><b style="line-height:27px">Remastersys<br>
-</b><br>
-</td>
-<td style="width:288px;height:26px">&nbsp;No success with Wheezy - and it's now discontinued (a fork is happening?)</td>
-<td style="width:338px;height:26px">&nbsp;Display manager woes. With Slim, ISO boots to blank screen. With Lightdm login screen with no known login/password.</td>
-</tr>
-<tr>
-<td style="width:260px;height:26px"><b style="line-height:27px">Refracta&nbsp;</b><a href="16-system-backup.html">SystemBackup</a>&nbsp;page<b style="line-height:27px">&nbsp;</b></td>
-<td style="width:288px;height:26px">&nbsp;Successfully&nbsp;made snapshots of two systems and installed to another partition</td>
-<td style="width:338px;height:26px">&nbsp;Fast and easy to use</td>
-</tr>
-</tbody>
-</table>
-<br>
-</span></div>
-<div><font size="3"><span style="line-height:26px"><br>
-</span></font></div>
-<div><font size="3"><br>
-</font></div>
+<br><br>
+
+
+<h2 id="1a" class="tag">The right tool</h2>
+
+Well, now I found there's a tool that's just right for this... <b>Keryx</b>.  It makes a database for a target box and uses an online box to retrieve what it needs to update the target - all via a USB stick.  
+<br><br>
+<a href="http://opensourceforu.efytimes.com/2010/09/offline-package-install-linux-made-easy-keryx/">see about...</a>  Get it here <a href="https://launchpad.net/keryx">https://launchpad.net/keryx</a>
+
+
+<br><br><br><br>
 
 
 <h2 id="2" class="tag">Simple-CDD</h2>
@@ -306,10 +272,11 @@ eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user
 </div>
 <div><br>
 </div>
+<br>
 <div><span style="line-height:27px"><font size="3">optional</font></span></div>
 <div style="overflow:auto;width:850px;height:50px;background-color:#99f">for p in firestarter thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra k3b libk3b6-extracodecs normalize-audio dvdrip marble ;do echo $p &gt;&gt; config/package-lists/optional.list.chroot ;done
 </div>
-
+<br>
 <div><font size="3">apps (copy to a text editor and omit/add what you like)</font></div>
 <div></div>
 <div style="overflow:auto;width:850px;height:170px;background-color:#99f">for p in ffmpeg x264 mplayer gnome-mplayer vlc avidemux handbrake-gtk bombono-dvd audacious ardour audacity lame qjackctl feh gimp pinta  gcalctool clipit clamav clamtk catfish pidgin uget transmission xfce4-notes-plugin gdmap gparted qshutdown ksnapshot kcharselect luckybackup cheese meld regexxer furiousisomount bleachbit easytag viking libcurl4-openssl-dev gnome-doc-utils celestia stellarium htop yelp xiphos fonts-sil-ezra gnome-color-chooser systemsettings rkhunter chkrootkit xsel w3m w3m-img less atool mediainfo jhead locate git ;do echo $p &gt;&gt; config/package-lists/my.list.chroot ;done
