@@ -470,11 +470,11 @@ map fb    bulkrename %s
 map fp   shell -f pyrenamer %d                            #GUI renamer, or another, `Thunar -B %d'
 map fg   console shell -p grep -nT ? %%s                      #grep (search) pattern in files
 map f?   console shell perl -pi -e 's/?/@/g' %%s            #replace string in files
-map f2   shell -f meld %s 	                                #compare two files in meld
+map fc   shell -f meld %s 	                                #compare two files in meld
 map ff   console shell find . -name "*?*" -type f -print | less       #find files and print paths to pager
 map f\   shell -f catfish --path=%d                          #find files with catfish
-map fd1   console shell -s cp "$f" "$f"_1                    #duplicate selected file
-map fd2   shell -s sh ~/scripts/duplicate %f
+map f1   console shell -s cp "$f" "$f"_1                    #duplicate selected file
+map f2   console shell -s sh ~/scripts/duplicate %f
 map fW   console shell touch tmpfile; mv tmpfile %%f           #wipe a file clean (overwrite with blank)</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
