@@ -1,9 +1,34 @@
-<div>If anyone wants to offer a suggestion or note a correction that I need to make on the site, please send me a message, thanks.</div>
-<div><br>
-</div>
-<div>
-<div><img src="https://www.google.com/chart?chc=sites&amp;cht=d&amp;chdp=sites&amp;chl=%5B%5BSpreadsheet+form'%3D20'f%5Cv'a%5C%3D0'10'%3D599'0'dim'%5Cbox1'b%5CF6F6F6'fC%5CF6F6F6'eC%5C0'sk'%5C%5B%22debian+ins+notes%22'%5D'a%5CV%5C%3D12'f%5C%5DV%5Cta%5C%3D10'%3D0'%3D600'%3D597'dim'%5C%3D10'%3D10'%3D600'%3D597'vdim'%5Cbox1'b%5Cva%5CF6F6F6'fC%5CC8C8C8'eC%5C'a%5C%5Do%5CLauto'f%5C&amp;sig=Yb1X7n2jFGj7oDQSHVlTZqB7VEw" data-origsrc="0Agr2f6nq1tMsdGFsUzZzZUlEc3JNVTUyaFVaQTZBbFE" data-type="spreadsheet-form" data-props="align:left;borderTitle:debian ins notes;height:600;objectTitle:debian ins notes;showBorder:true;showBorderTitle:false;width:600;" width="600" height="600" style="display:block;text-align:left;margin-right:auto;"></div>
-<br>
-</div>
-<br>
+---
+layout: default
+description: Comment page - send me a suggestion or note a correction
+title: Comment
+id: cont
+---
 
+<div class="parent"><a href="content.html">Content</a> ></div>
+
+<div class="cont">
+
+If you'd like to offer a suggestion or note a correction that I need to make on the site, or perhaps say how fhese pages helped you, please send me a message, thanks!
+<br><br>
+
+<form action="/my-handling-form-page" method="post">
+    <div>
+        <label for="name">Your name...</label>
+        <input type="text" id="name" name="user_name" />
+    </div>
+    <div>
+        <label for="mail">Your E-mail (if you like)...</label>
+        <input type="email" id="mail" name="user_email" />
+    </div>
+    <div>
+        <label for="msg">Your comment...</label>
+        <textarea id="msg" name="user_message"></textarea>
+    </div>
+    
+    <div class="button">
+        <button type="submit">Send comment</button>
+    </div>
+</form>
+
+</div>
