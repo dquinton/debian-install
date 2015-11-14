@@ -101,6 +101,12 @@ h4 {
   margin-right: -10px;
 }
 
+::selection {
+  background: #93ACEF; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #93ACEF; /* Gecko Browsers */
+}
 
 .blue {
   color:#2D46CF;
