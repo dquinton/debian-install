@@ -944,14 +944,14 @@ map ,nu shell -r umount %f</textarea>
 
 <br><br>
 <h3 id="git" class="tag">map J for Jekyll and Github commands</h3>
-<form><textarea name="T" id="file" rows="10" cols="80">
+<form><textarea name="T" id="file" rows="10" cols="100">
 ##### Github-jekyll ##########
 
 map Js shell -ft jekyll serve --watch --baseurl 
 map Jc console shell -ft git commit -a -m "updating pages"
 map Ja console chain shell -ft git add . ; shell git commit -a -m "updating pages"
 map Jf console shell -ft git add %%s
-map Jp console shell -ft git push
+map Jp chain shell -ft  git config --global credential.helper cache; shell -ft git push
 map J1 shell git status | less
 map J2 shell git log --name-only | less</textarea>
 &nbsp;
