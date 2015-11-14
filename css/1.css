@@ -191,8 +191,9 @@ table {
 	background-color: transparent; 
 	font-size: 1.1em;
 } 
-.tabl{
+.tabl{                             /* yes tabl not table */
 	background-color: transparent; 
+	font-size: .9em;
 	} 
 
 .inst {  color:#7C2020;}
