@@ -306,7 +306,7 @@ Also,  links in css files, such as, "background-image: url(&#123;&#123;ssite.bas
 
 <h2 id="5" class="tag">5. Serving up with Jekyll..</h2>
 
-to make jekyll convert the site setup files into real html files for serving, you run this in your site dir:
+to let jekyll do its work and convert your site files into real html, and serve it up to localhost for testing, you run this in your site dir:
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
@@ -322,12 +322,14 @@ jekyll serve --watch --baseurl /project-name/</textarea>&nbsp;
 </form>
 
 <br>
-You can see the resulting html files inside the _site dir (and these are the ones you need for commiting to Github).
+The resulting html files are inside the _site dir - but these are purely for serving to localhost, because you upload from the build directory to Github and Jekyll does its work at there too.
 <br><br>
 Then preview the site (index.html) by browsing localhost:4000
 <br><br>
 because of the --watch option, jekyll will rebuild the site every time a file is saved, and all you need to do is hit refresh in the browser and your changes will be seen.
+<br><br>
 
+I do recommend you do some site testing betore you push the site to Github and then go off on a holiday.. there are going to be page link errors or 404's to external sites which you didn't know about.. Once its up, run your site through <a href="http://validator.w3.org/">http://validator.w3.org/</a> which will show you what you need to fix (and check "Check linked documents recursively")
 <br><br><br><br>
 
 
