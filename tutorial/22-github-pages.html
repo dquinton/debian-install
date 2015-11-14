@@ -16,6 +16,7 @@ id: tutor
                 <li><a href="#4">4. Set the base URL</a></li>
                 <li><a href="#5">5. Serving up with Jekyll</a></li>
                 <li><a href="#6">6. Commit to Github</a></li>
+                <li><a href="#7">7. Testing</a></li>
              </ul>
     </li>
   </ul>
@@ -29,6 +30,7 @@ id: tutor
    <a href="#4">4. Set the base URL</a><br>
    <a href="#5">5. Serving up with Jekyll</a><br>
    <a href="#6">6. Commit to Github</a><br>
+   <a href="#7">7. Testing</a><br>
 </td></tr></table></div>
 
 <div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
@@ -328,9 +330,7 @@ Then preview the site (index.html) by browsing localhost:4000
 <br><br>
 because of the --watch option, jekyll will rebuild the site every time a file is saved, and all you need to do is hit refresh in the browser and your changes will be seen.
 <br><br>
-
-I do recommend you do some site testing betore you push the site to Github and then go off on a holiday.. there are going to be page link errors or 404's to external sites which you didn't know about.. Once its up, run your site through <a href="http://validator.w3.org/">http://validator.w3.org/</a> which will show you what you need to fix (and check "Check linked documents recursively") - best if you bookmark that site and check your links (which often go down or 404) regularly
-<br><br><br><br>
+<br><br>
 
 
 <h2 id="6" class="tag">6. Commit files to Github</h2>
@@ -452,6 +452,21 @@ To enable Git to store your username/pw (15min default) run
 git config --global credential.helper cache</textarea>&nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+
+<br><br><br>
+
+<h2 id="7" class="tag">7. Testing and indexing</h2>
+I recommend that once you've pushed your site you do some rigorous testing - before you go off on a holiday and leave a ton of page link errors or 404's to external sites which you didn't know about.. 
+<br><br>
+<div class="bullet"><ul><li>run your site through <a href="http://validator.w3.org/">http://validator.w3.org/</a> which will show you what you need to fix (and check "Check linked documents recursively") - best if you bookmark that site and check your links (which often go down or 404) regularly</li>
+
+<li>you can index your site at <a href="https://www.google.com/webmasters/tools/home?hl=en">Google webmasters tools</a> - you'll need to add tracking, like a tracking file or analytics key in the site header, which you get from <a href="https://analytics.google.com/analytics/web/#management/Settings">G Analytics Admin</a> > Accounts > New Account </li>
+<li>and submit a site map which you can make with <a href="https://www.xml-sitemaps.com/">xml-sitemaps.com</a></li>
+
+<li>or submit your site url at<a href="http://www.bing.com/toolbox/submit-site-url"> Bing</a> - er, M$.. which Yahoo and Duckduckgo scan from</ul></div>
+<br><br>
+
+
 
 
 
