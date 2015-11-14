@@ -451,7 +451,7 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 <br><br>
 
 <h3 id="fi" class="tag">map f for files</h3>
-<form><textarea name="T" id="file" rows="25" cols="120">
+<form><textarea name="T" id="file" rows="26" cols="120">
 ################## My keyinds ######################
 
 map ga cd /etc/apt
@@ -473,6 +473,7 @@ map f?   console shell perl -pi -e 's/?/@/g' %%s                  #replace strin
 map fc   shell -f meld %s 	                                           #compare two files in meld
 map ff   console shell find . -name "*?*" -type f -print | less       #find files and print paths to pager
 map f\   shell -f catfish --path=%d                                        #find files with catfish
+map fx   shell -f regexxer %d                                            #run string replace tool
 map f1   console shell -s for file in %%s ;do cp "$file" "$file"_1 ;done           #duplicate selected files adding _1
 map f2   console shell -s sh ~/scripts/duplicate %%s                         #duplicate selected files infix _1
 map fW   console shell touch tmpfile; mv tmpfile %%f                        #wipe a file clean (overwrite with blank)</textarea>

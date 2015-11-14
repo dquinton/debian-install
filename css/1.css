@@ -67,7 +67,7 @@ a,
 a:link { color: #1A4FA5; text-decoration: none;}
 a:focus,
 a:hover {color: #154DA7; text-decoration: underline;  }
-a:visited {color: #7F2961; }
+a:visited {color: #63204C; }
 a:active  { color: #80244D; } 
 
 h1 { 
@@ -191,6 +191,9 @@ table {
 	background-color: transparent; 
 	font-size: 1.1em;
 } 
+.tabl{
+	background-color: transparent; 
+	} 
 
 .inst {  color:#7C2020;}
 .cmd {   color:#6A3200;}
