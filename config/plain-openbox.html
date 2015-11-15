@@ -347,9 +347,9 @@ can use options like
 <h2 id="6" class="tag">Auto mounting solutions </h2>
 Drives do not mount when hot-plugged - but half of my problem might be I use a script to start OB which bypasses .Xinitrc and thus dbus is not started.
 <br><br>
-1. try using pcmanfm or thunar/thunar-volman
+<b>1.</b> try using pcmanfm or thunar/thunar-volman
 <br><br>
-2. method using pmount and udev<br>
+<b>2.</b> method using <b>pmount and udev</b><br>
 didn't work very well for me - takes 20sec for device to show in /media, device often doesn't disappear when removed, can't eject it, mounts with files -rw-rw-rw- .......
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
@@ -357,9 +357,9 @@ sudo leafpad /etc/udev/rules.d/automount.rules</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 add the lines given at linked page <a href="http://www.monperrus.net/martin/automounting+usb+flash+drives+on+linux+with+udev+and+pmount">http://www.monperrus.net/martin/</a>  <a href="http://debiania.in.ua/posts/2013-03-24-automounting-with-udev-and-pmount.html">http://debiania.in.ua/</a>
-
+<br>
 restart udev with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
@@ -367,11 +367,11 @@ udevadm control --reload-rules</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 then plug in a removable drive, and wait for it to appear in /media...
 <br><br>
-
-3. Using udevil - this works fine, taking arounf 5 or 6 sec to mount a USB drive, instantly with an SD card
+<br>
+<b>3.</b> Using <b>udevil</b> - this works fine, taking around 5 or 6 sec to mount a USB drive, instantly with an SD card
 download and install the .deb from here <a href="http://ignorantguru.github.io/udevil/#installer">http://ignorantguru.github.io/udevil/#installer</a><br>
 then enable kernel polling as per instructions on the page above:
 
@@ -407,7 +407,7 @@ echo 2000 > /sys/module/block/parameters/events_dfl_poll_msecs</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 also add 'devmon &' to autostart as udevil cannot mount anything without it running
 
 

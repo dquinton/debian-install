@@ -112,7 +112,7 @@ to "Size=0"
 <div>12.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;File system is inaccessible with error:</b><span style=""><b style="font-size:medium;color:rgb(11,83,148);line-height:26px">&nbsp;</b><font color="#0b5394" size="3"><span style="line-height:25.98958396911621px"><b>Transport endpoint is not connected.</b></span></font></span><b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">&nbsp;</b></div>
 <div>This error can possibly come up for lots of reasons. &nbsp;A disk partition becomes inaccessible while an app is reading/writing to it. &nbsp;In my case it seems to be ntfs-3g dropping the fs. &nbsp;I found how to remedy it (but not fix it for good) with umount and mount operations. &nbsp;The mount point had disappeared too.</div>
 <div>
-<div><font color="#6A3200">sudo fdisk -l</font></div>
+<div><font color="#6A3200">lsblk</font></div>
 <div>
 <div><font color="#6A3200">sudo umount /dev/sda2</font></div>
 </div>
@@ -159,9 +159,19 @@ if this returns&nbsp;empty&nbsp;or something other than /usr/lib/pkgconfig, then
 </div>
 <div><font color="#7C2020" face="Arial, Verdana, sans-serif"><br>
 </font></div>
-<div>16.<b style=""><font color="#0b5394" size="3"><span style="line-height:26px">&nbsp;Error "</span><span style="line-height:25.98958396911621px">unprivileged user cannot mount ntfs block devices"</span><span style="line-height:26px">&nbsp;</span></font></b><br>
+<div>16.<b style=""><font color="#0b5394" size="3"><span style="line-height:26px">&nbsp;Error "unprivileged user cannot mount ntfs block devices"</span></font></b><br>
 can't mount an inserted USB drive and get above error message...</div>
 <div>there's bound to be a /dev/sdb1 entry in your /etc/fstab file</div>
 <div>have a look and if it's there remove that line and save the file, and that's all it is.</div>
+<br><br>
+<div>17.<b style=""><font color="#0b5394" size="3"><span style="line-height:26px">&nbsp;Gnome mplayer can't start</span></font></b><br>
 
+
+error: "gnome-mplayer: error while loading shared libraries: /usr/lib/libgda-5.0.so.4: unexpected PLT reloc type 0x00"
+<br><br>
+
+<form><textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install libgda-5.0-4 --reinstall</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 </div>

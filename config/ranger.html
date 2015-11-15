@@ -82,11 +82,11 @@ I was looking for a tidy way to navigate directories in a bash shell, so that I 
 <br><br>
 
 <h2 id="1" class="tag">Install</h2>
-download ranger from <a href="http://ranger.nongnu.org/download.html">http://ranger.nongnu.org/download.html</a>
-unpack, and run sudo make install
-
+download ranger (zip file) from <a href="http://ranger.nongnu.org/download.html">http://ranger.nongnu.org/download.html</a><br>
+unpack, and run `sudo make install'
+<br><br>
 or clone from git for latest version see changes (need git installed)
-
+<br>
 <form><textarea name="T" id="cmd" rows="2" cols="80">
 mkdir ~/Downloads/ranger-git && cd ~/Downloads/ranger-git
 git clone git://git.sv.gnu.org/ranger.git</textarea>
@@ -105,8 +105,7 @@ sudo apt-get install w3m w3m-img less xsel atool mediainfo jhead</textarea>
 
 w3m and w3m-image are responsible for in-line preview of images (only with rxvt, urxvt and xterm)
 
-<br><br>
-read the man page with 'man ranger'
+
 <br><br>
 After installing, copy over the config files so that you can make modifications
 <form><textarea name="T" id="cmd" rows="1" cols="30">
@@ -114,10 +113,14 @@ ranger --copy-config=all</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
- 
-<b>Note</b>, the config files may be incompatible with new versions of ranger.<br>
-<br>
-The Ranger Q&A forum site has been removed.  There is an Arch Wiki page to help us out here <a href="http://wiki.archlinux.org/index.php/Ranger">http://wiki.archlinux.org/index.php/Ranger</a>
+ <br>
+<b>Note</b>, the config files may be incompatible with new versions of ranger. run 'man ranger' for details<br>
+
+Check out the <a href="https://github.com/hut/ranger/wiki"><b>ranger Wiki</b></a> to see how to update ranger. 
+<br><br>
+What you can do is copy your original config files, install a newer ranger, run the above command and compare new and old contig files with meld
+<br><br>
+<a href="http://wiki.archlinux.org/index.php/Ranger"><b>Arch Wiki page</b></a>
 
 <br><br><br>
 
@@ -126,6 +129,7 @@ To get started, two commands needed..
 <table><tr><td width="120">ranger</td>		<td>launches ranger from the current dir in shell (I make a bash alias <span class="bblue">rr</span>)</td></tr>
 <tr><td>S</td>			   <td>in Ranger, drops to a shell at current dir (from where Ctrl-D or `exit' returns to Ranger)</td></tr></table>
 
+<br><br>
 <br>
 
 <h2 id="2" class="tag">Features</h2>
@@ -305,6 +309,8 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>Ctrl-H, z h        </td><td>toggle hidden files</td></tr>
 
+<tr><td>:flat 1    </td><td>puts all files of sub-dir's (1 level deep) in the main column </td></tr>
+
 <tr><td>z                      </td><td>toggle settings</td></tr>
 
 <tr><td>:, ;                     </td><td>open console to enter commands</td></tr>
@@ -335,7 +341,10 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>%t   			</td><td>all tagged files in the current directory</td></tr>
 
-<tr><td>%c   			</td><td>the full paths of the currently copied/cut files</td></tr></table>
+<tr><td>%c   			</td><td>the full paths of the currently copied/cut files</td>
+
+<tr><td>%p   			</td><td>the full paths of the selected files</td>
+</tr></table>
 <br><br>
 
 <h3>Flags used with open_with and shell commands</h3>
@@ -371,6 +380,9 @@ Check the rc.conf file
 
 <h3 style="color: #2D46CF; ">keybinds I changed from the default..</h3>
 
+<br>
+Note: with Ranger 1.7 it seems that key mapping with Alt is fixed, e.g. &#60;a-r>, which opens up a huge area for new keys!
+<br><br>
 <form><textarea name="T" id="file" rows="46" cols="100">
 map k  move down=4
 map j  move up=4
@@ -450,13 +462,17 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 
 <br><br>
 
+
 <h3 id="fi" class="tag">map f for files</h3>
-<form><textarea name="T" id="file" rows="26" cols="120">
+<form><textarea name="T" id="file" rows="28" cols="120">
 ################## My keyinds ######################
 
 map ga cd /etc/apt
 map M chain tab_new; cd /media
 map zx toggle_option preview_images
+map <F12> console :flat 1
+map &#60;a-h> toggle_option show_hidden
+
 
 ##### files ##########
 
@@ -477,10 +493,7 @@ map fx   shell -f regexxer %d                                            #run st
 map f1   console shell -s for file in %%s ;do cp "$file" "$file"_1 ;done           #duplicate selected files adding _1
 map f2   console shell -s sh ~/scripts/duplicate %%s                         #duplicate selected files infix _1
 map fW   console shell touch tmpfile; mv tmpfile %%f                        #wipe a file clean (overwrite with blank)</textarea>
-&nbsp;
-
-<br>
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 f2 script, duplicates file, puts suffix inside the file extension:
@@ -903,12 +916,12 @@ map fa3 shell -ft ogg2mp3 -B 256 --vbr-new -V 0 *.ogg %s        #convert ogg to 
 
 <br><br>
 <h3 id="mt" class="tag">map comma-m and comma-u for mounting/unmouning drives</h3>
-<form><textarea name="T" id="file" rows="17" cols="120">
+<form><textarea name="T" id="file" rows="18" cols="120">
 ##### mounting ##########
 
 map ,mm console shell -s pmount /dev/sdb1         
                         #use pmount to mount devices if sys does not auto-mount
-map ,uu console shell -s pumount %f
+map ,uu shell -s pumount %f
 map ,m1 shell -s pmount /dev/sdc1
 map ,m2 shell -s pmount /dev/sdc2
 map ,m5 shell -s pmount /dev/mmcblk0p1                  #mount SD card
@@ -918,14 +931,17 @@ map ,u2 shell -s pumount /dev/sdc2
 map ,u5 shell -s pumount /dev/mmcblk0p1
 map ,u6 shell -r umount %f
 map ej	shell -s eject %s             #eject selected external volumes (safely remove)
-map ,d1 shell -pwr fdisk -l       #list partitions
-map ,d2 shell -pwr blkid            #list partitions with UUID</textarea>
+map ,d1 shell -pw lsblk       #list partitions +mounts
+map ,d2 shell -pwr blkid            #list partitions with UUID
+map ,d0 shell -pwr fdisk -l       #list partitions
+</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
-
+There's a pmount plugin <a href="https://github.com/Vifon/ranger/commit/6e8f001cd21558fcadc5e15cbb0b1155b0dab9c0">written by vifon</a> which uses Alt-m {x} {n} to mount, but my pumount %f has got to be faster for unmounting
+<br><br>
 <br><br>
 <h3 id="nfs" class="tag">map comma-n for mounting nfs</h3>
 <form><textarea name="T" id="file" rows="9" cols="80">
@@ -952,9 +968,9 @@ map Js shell -ft jekyll serve --watch --baseurl
 map Jc console shell -ft git commit -a -m "updating pages"
 map Ja console chain shell -ft git add . ; shell git commit -a -m "updating pages"
 map Jf console shell -ft git add %%s
-map Jp chain shell -ft  git config --global credential.helper cache; shell -ft git push
-map J1 shell git status | less
-map J2 shell git log --name-only | less</textarea>
+map Jp chain shell git config --global credential.helper cache; shell -ft git push
+map J1 shell -p git status
+map J2 shell -p git log --name-only</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>

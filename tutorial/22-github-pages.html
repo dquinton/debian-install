@@ -452,8 +452,19 @@ To enable Git to store your username/pw (15min default) run
 git config --global credential.helper cache</textarea>&nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
 
-<br><br><br>
+Ranger tips..<br>
+<div class="bullet"><ul><li>see my ranger key mapping for <a href="{{site.baseurl}}/config/ranger.html#git">Jekyll/Git</a></li>
+<li>add this line to the top section ot ranger's rc.conf, to show the Git status ot files in the margin (up-to-date or new version) for only your Git repo directory..</li>
+<br>
+<form>
+<textarea name="T" id="file" rows="1" cols="50">
+setlocal path=~/Website/your-repo-dir vcs_aware true</textarea>&nbsp;
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
 
 <h2 id="7" class="tag">7. Testing and indexing</h2>
 I recommend that once you've pushed your site you do some rigorous testing - before you go off on a holiday and leave a ton of page link errors or 404's to external sites which you didn't know about.. 
