@@ -97,7 +97,7 @@ git clone git://git.sv.gnu.org/ranger.git</textarea>
 
 optional installs for Ranger:
 <form><textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install w3m w3m-img less xsel atool mediainfo jhead</textarea>
+sudo apt-get install w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -114,8 +114,10 @@ ranger --copy-config=all</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
  <br>
-<b>Note</b>, the config files may be incompatible with new versions of ranger. run 'man ranger' for details<br>
-
+<b>Note</b>, the config files may be incompatible with new versions of ranger. Run 'man ranger' for details<br>
+<br><br>
+Ranger is installed to /usr/local/lib/python2.7/dist-packages/ranger so on new installs you could copy, say, only the scope.sh file over, which is always being upgraded
+<br><br>
 Check out the <a href="https://github.com/hut/ranger/wiki"><b>ranger Wiki</b></a> to see how to update ranger. 
 <br><br>
 What you can do is copy your original config files, install a newer ranger, run the above command and compare new and old contig files with meld
@@ -383,11 +385,13 @@ Check the rc.conf file
 <br>
 Note: with Ranger 1.7 it seems that key mapping with Alt is fixed, e.g. &#60;a-r>, which opens up a huge area for new keys!
 <br><br>
-<form><textarea name="T" id="file" rows="46" cols="100">
+<form><textarea name="T" id="file" rows="48" cols="100">
 map k  move down=4
 map j  move up=4
 map h     history_go -1
 map l     history_go 1
+copymap h &#60;a-left>
+copymap l &#60;a-right>
 
      #move up/down parent dir by 5 -a messy hack as `move_parent up=20` dunna work! nonetheless, this is very useful for navigation
 map {	 chain move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1
@@ -1259,7 +1263,7 @@ mediainfo --inform="<span style="color: #2D46CF; "><b>group</b></span>;%<span st
 <br><br>
 
 
-mediainfo commands will print any extra characters placed outside the `%<i>tag</i>%` in the output, so I add some to denote tabs (>) and line breaks (^) and pipe to sed to convert them to real tab spaces and line breaks before sending to output, so that the info that mediainfo returns from a file will be displayed nicely.. now that's clever :^)
+mediainfo commands will print any extra characters placed outside the `%<i>tag</i>%` in the output, so I add some to denote tabs (>) and line breaks (^) and pipe the output to sed which converts them to real tab spaces and line breaks before sending to pager, so that the info that mediainfo returns from a file will be displayed nicely.. now that's clever :^)
 <br><br>
 
 <form><textarea name="T" id="file" rows="23" cols="150">
@@ -1284,7 +1288,7 @@ try mediainfo --inform="Audio;^Audio^-------------------------------------------
 Note that "File_Modified_Date_Local" shows the date in local time, but "File_Modified_Date" shows it in UTC (GMT).
 <br><br><br>
 
-If .ogg files don't show any info (they should because ogg is a mimetype, but they don't for me), you need to add this as a new case section:
+If .ogg files don't show any info (they should because ogg is a mimetype - perhaps it was a ranger 1.6 issue, with 1.7 no need for this), you need to add this as a new case section:
 
 <form><textarea name="T" id="file" rows="12" cols="150">
 case "$extension" in
