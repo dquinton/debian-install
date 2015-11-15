@@ -1232,7 +1232,7 @@ export EDITOR=nano</textarea>
 To have images showing in the pager at right of file list, first install <span class="inst">w3m w3m-img</span>
 then enable image preview "set preview_images true" in conf.rc
 <br><br>
-To show image preview for videos, you need to uncomment the two lines starting "###video/*)" in scope.sh (and make sure you copy the Ranger 1.7 scope file to ranger config dir)
+To show image preview for videos, you must first install <span class="inst">ffmpegthumbnailer</span> and you need to uncomment the two lines starting "###video/*)" in scope.sh (and make sure you copy the Ranger 1.7 scope file to ranger config dir)
 <br><br>
 This only works with rxvt, rxvt-unicode, and xterm terminals - so I advise switching to URxvt.  See my <a href="urxvt.html">Rxvt-unicode</a> page
 
@@ -1304,8 +1304,11 @@ esac</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
+<br><br>
+then you hit 'zx' (my toggle preview_images key) to switch from preview to details - though you need to refresh the dir with Ctrl-r
 
-<br><br><br>
+
+<br><br><br><br>
 
 <h2 id="10" class="tag">Integrate system trash with bash</h2>
 download the zipped file from git (on the right of page) <a href="https://github.com/andreafrancia/trash-cli">https://github.com/andreafrancia/trash-cli</a>
