@@ -15,7 +15,7 @@ id: config
                 <li><a href="#2">Features</a></li>
                 <li><a href="#3">Default key-bindings</a></li>
                 <li><a href="#4">My keybindings</a></li>
-                <li><a href="#5">Note on mapping keys</a></li>
+                <li><a href="#5">Notes on mapping keys</a></li>
                 <li><a href="#6">Useful native commands</a></li>
                 <li><a href="#7">inline image preview</a></li>
                 <li><a href="#8">Refine info for images</a></li>
@@ -37,7 +37,7 @@ id: config
                 <li><a href="#2">Features</a></li>
                 <li><a href="#3">Default key-bindings</a></li>
                 <li><a href="#4">My keybindings</a></li>
-                <li><a href="#5">Note on mapping keys</a></li>
+                <li><a href="#5">Notes on mapping keys</a></li>
                 <li><a href="#6">Useful native commands</a></li>
                 <li><a href="#7">inline image preview</a></li>
                 <li><a href="#8">Refine info for images</a></li>
@@ -79,7 +79,7 @@ I was looking for a tidy way to navigate directories in a bash shell, so that I 
 
 
 
-<br><br>
+<br><br><br>
 
 <h2 id="1" class="tag">Install</h2>
 download ranger (zip file) from <a href="http://ranger.nongnu.org/download.html">http://ranger.nongnu.org/download.html</a><br>
@@ -375,7 +375,7 @@ typing '@-rf leafpad' will open a file with sudo (writes `shell -rf leafpad %s` 
 
 Check the rc.conf file
 
-<br><br>
+<br><br><br><br>
 
 
 <h2 id="4" class="tag">My keybindings</h2>  
@@ -464,7 +464,7 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 </table>
 <br><br>
 
-<br><br>
+<br>
 
 
 <h3 id="fi" class="tag">map f for files</h3>
@@ -524,7 +524,7 @@ map Ot shell -f rxvt -cd %d              #open current dir in new terminal</text
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
+
 
 <br><br>
 <h3 id="yk" class="tag">map y,d,p for yank, cut and paste commands</h3>
@@ -558,7 +558,7 @@ map p\c shell mkdir copied; cp -t copied `xsel -b -o`         #copy files via li
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="su" class="tag">map P for commands with super user privelege</h3>
@@ -579,7 +579,7 @@ map Pyt shell -r rsync -u %s %D                   #sync selected to next tab</te
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="del" class="tag">map X for delete commands</h3>
@@ -597,7 +597,7 @@ map xx3 cd /media/VIDEO/.Trash-1000/files</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="con" class="tag">map dot for finding config files</h3>
@@ -614,7 +614,7 @@ map .6 shell nano ~/.config/openbox/autostart</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="cdcon" class="tag">map '; for cd to config dir's</h3>
@@ -634,7 +634,7 @@ map ';au cd ~/QuickLink/applications-usr</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="bk" class="tag">map comma-k for backup commands/scripts</h3>
@@ -656,7 +656,7 @@ cp "$1" ~/backups/"$1"_$(date +"%y%m%d")</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 (the k3 and k4 scripts are simple rsync commands)
 <br>
 
@@ -673,7 +673,6 @@ map ,lr shell -s ln -fsT "`yad --title="Re-link To" --file --height=400 --width=
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
 
 <br><br>
 <h3 id="dir" class="tag">map comma-d for directory commands</h3>
@@ -690,7 +689,7 @@ map ,dx console shell -f find . -type d -maxdepth 1 -empty -delete       #remove
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="ar" class="tag">map comma-a for archive commands</h3>
@@ -708,7 +707,7 @@ map ,a4 console shell -f tar cvzpf ?.tgz %%s
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
+
 
 <br><br>
 <h3 id="iso" class="tag">map comma-i for iso/dvd commands</h3>
@@ -725,7 +724,7 @@ map ,cdej console shell -s eject /dev/sr0              #eject laptop CDROM</text
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 <br><br>
 <h3 id="src" class="tag">map comma-s for source file commands (though dropping to shell might be more advisable)</h3>
 <form><textarea name="T" id="file" rows="6" cols="50">
@@ -738,7 +737,7 @@ map ,s3 shell -pw sudo make install</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="img" class="tag">map fi for image file commands</h3>
@@ -755,7 +754,7 @@ map fipx console shell -ft google picasa delete ""                    #delete al
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="feh" class="tag">map F for feh image viewer commands</h3>
@@ -776,7 +775,7 @@ map Fb chain shell -f feh --bg-scale %f; shell cp %f ~/wallpapers; sed -i '7s/.*
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="mog" class="tag">map fim for mogrify commands</h3>
@@ -797,7 +796,6 @@ map fixx shell -f jhead -di %s                           #remove iptc keywords f
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
 
 <br><br>
 <h3 id="exif" class="tag">map E for exiftool and jhead commands</h3>
@@ -858,7 +856,7 @@ for i in  *; do DAT=$(date -r $i +%y-%m-%d); mkdir -p $DAT; mv $i $DAT ; done</t
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="vid" class="tag">map fv for video file commands</h3>
@@ -900,7 +898,7 @@ done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>    
 
-   <br>
+   
 <br><br>
 <h3 id="aud" class="tag">map fa for audio edit commands</h3>
 <form><textarea name="T" id="file" rows="8" cols="120">
@@ -916,7 +914,7 @@ map fa3 shell -ft ogg2mp3 -B 256 --vbr-new -V 0 *.ogg %s        #convert ogg to 
 </form>
 
 
-<br>
+
 
 <br><br>
 <h3 id="mt" class="tag">map comma-m and comma-u for mounting/unmouning drives</h3>
@@ -945,7 +943,9 @@ map ,d0 shell -pwr fdisk -l       #list partitions
 
 <br>
 There's a pmount plugin <a href="https://github.com/Vifon/ranger/commit/6e8f001cd21558fcadc5e15cbb0b1155b0dab9c0">written by vifon</a> which uses Alt-m {x} {n} to mount, but my pumount %f has got to be faster for unmounting
-<br><br>
+
+
+<br>
 <br><br>
 <h3 id="nfs" class="tag">map comma-n for mounting nfs</h3>
 <form><textarea name="T" id="file" rows="9" cols="80">
@@ -961,7 +961,7 @@ map ,nu shell -r umount %f</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="git" class="tag">map J for Jekyll and Github commands</h3>
@@ -979,7 +979,7 @@ map J2 shell -p git log --name-only</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="brn" class="tag">map comma-z for bashburn commands</h3>
@@ -1012,7 +1012,7 @@ sudo mv ~/Projects/bashburn/burn/* ~/Projects/bashburn/"$1"/
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 
 <br><br>
 <h3 id="gpg" class="tag">map G for GPG encryption commands</h3>
@@ -1028,7 +1028,7 @@ map Gcd shell -ft xsel -b -o | gpg2 -d | xsel --clipboard</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+
 <br><br>
 
 <h3 id="batch" class="tag">map R for file renaming commands</h3>
@@ -1148,7 +1148,7 @@ exiftool '-filename<${DateTimeOriginal}.%e' -d %y%m%d-%H%M%S $@</textarea>
 <br><br><br>
 One problem is, however, with so many key-bindings, is the lack of sort-by-key in the command visual.  They are sorted alphabetically by command, and so finding the one you want........ I split the renaming up so as to not fill up R with a huge mix up of commands.
 
-<br><br>
+<br><br><br><br>
 
 
 <h2 id="5" class="tag">Notes on mapping keys</h2>
@@ -1226,15 +1226,17 @@ export EDITOR=nano</textarea>
 
 
 
-<br><br>
+<br><br><br>
 
 <h2 id="7" class="tag">In-line preview of images</h2> 
 To have images showing in the pager at right of file list, first install <span class="inst">w3m w3m-img</span>
 then enable image preview "set preview_images true" in conf.rc
 <br><br>
+To show image preview for videos, you need to uncomment the two lines starting "###video/*)" in scope.sh (and make sure you copy the Ranger 1.7 scope file to ranger config dir)
+<br><br>
 This only works with rxvt, rxvt-unicode, and xterm terminals - so I advise switching to URxvt.  See my <a href="urxvt.html">Rxvt-unicode</a> page
 
-<br><br>
+<br><br><br><br>
 
 <h2 id="8" class="tag">Refine the info displayed for image files</h2>
 To refine the info shown in pager for image files (because otherwise there's way too much info there and it runs off the screen and you don't want to hit `i` every time you need a useful exif data), add this line to <b>scope.sh</b> in ~/.config/ranger, for image mimetype:
@@ -1246,7 +1248,7 @@ try exiftool -f -filename -filesize -datetimeoriginal -modifydate -imagesize -ap
 </form>
 
 
-<br><br>
+<br><br><br>
 
 <h2 id="9" class="tag">Refine the info displayed for video/audio files</h2>
 I have mediainfo commands that can go in scope.sh file as well, and if you want to add more tags to the commands, you need to run 
@@ -1303,7 +1305,7 @@ esac</textarea>
 </form>
 
 
-<br><br>
+<br><br><br>
 
 <h2 id="10" class="tag">Integrate system trash with bash</h2>
 download the zipped file from git (on the right of page) <a href="https://github.com/andreafrancia/trash-cli">https://github.com/andreafrancia/trash-cli</a>
@@ -1314,7 +1316,7 @@ sudo python setup.py install</textarea>
 &nbsp;
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 <h3>trash-cli commands</h3>
 
 <table cellpadding="2"><tr><td width="120">trash-put                     </td><td>trashes files and directories</td></tr>
@@ -1333,7 +1335,7 @@ or you could map keys to the trash places for each disk partition, use `shell cd
 <br><br>
 then to restore a file, select and yank with yy, then hit h (I change history key to lower case h from H) to return to the dir you just deleted the file, and pp to drop the file back and restore it there.
 
-<br><br>
+<br><br><br><br>
 
 <h2 id="11" class="tag">UI enhancements!</h2>
 <h3>1. Remove "user@host" from the title bar</h3>
@@ -1375,7 +1377,7 @@ then to restore a file, select and yank with yy, then hit h (I change history ke
 </form>
 
 
-indent must be exact
+indent must be exact<br>
 change white in tab??
 <br><br><br><br>
 
