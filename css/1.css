@@ -189,8 +189,11 @@ table {
 .index {
 	margin-left: 60px; 
 	background-color: transparent; 
-	font-size: 1.1em;
+	font-size: 1em;
 } 
+.index a:link, .tabl a:link { color: #00326A; text-decoration: none;}  
+.index a:hover, .tabl a:hover {color: #154DA7; text-decoration: underline;  }
+
 .tabl{                             /* yes tabl not table */
 	background-color: transparent; 
 	font-size: .9em;
