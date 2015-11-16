@@ -662,12 +662,12 @@ W= Super key, C= CTRL, S= Shift, A= Alt
 <!-- Keybindings for applications -->
     <keybind key="W-1">
       <action name="Execute">
-	     <execute>leafpad</execute>
+        <execute>leafpad</execute>
       </action>
     </keybind>
     <keybind key="W-2">
       <action name="Execute">
-	     <execute>chromium</execute>
+        <execute>chromium</execute>
       </action>
     </keybind>
     <keybind key="W-e">
@@ -682,19 +682,19 @@ W= Super key, C= CTRL, S= Shift, A= Alt
 <form>
 <textarea name="T" id="file" rows="6" cols="80">
 <!-- change this to urxvt or whichever terminal you prefer -->
- <keybind key="W-T">
-    <action name="Execute">
-	 <execute>lxterminal</execute>
-	</action>
-  </keybind></textarea>
+    <keybind key="W-T">
+      <action name="Execute">
+        <execute>lxterminal</execute>
+    	</action>
+    </keybind></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>    
 
 
 <form>
-<textarea name="T" id="file" rows="5" cols="80">
-<!-- keybind to open file with leafpad  -->
-   <keybind key="W-O">
+<textarea name="T" id="file" rows="6" cols="80">
+<!-- keybind to script open file with leafpad  -->
+    <keybind key="W-O">
       <action name="Execute">
         <execute>sh ~/scripts/open-leafpad</execute>
       </action>
@@ -732,28 +732,28 @@ W= Super key, C= CTRL, S= Shift, A= Alt
 <form>
 <textarea name="T" id="file" rows="23" cols="80">
 <!-- Launch ksnapshot when Print screen key (prt sc) is pressed -->
-  <keybind key="Print">
-    <action name="Execute">
-	<command>ksnapshot</command>
-    </action>
-  </keybind>
+    <keybind key="Print">
+      <action name="Execute">
+        <command>ksnapshot</command>
+      </action>
+    </keybind>
 
 <!--keybindings for LXPanel -->
-     <keybind key="W-R">
+    <keybind key="W-R">
       <action name="Execute">
         <command>lxpanelctl run</command>
       </action>
     </keybind>
- <keybind key="W-U">
+    <keybind key="W-U">
       <action name="Execute">
         <command>lxde-logout</command>
       </action>
     </keybind>
- <keybind key="W-Escape">
-   <action name="Execute">
-	 <execute>lxtask</execute>
-	</action>
-  </keybind></textarea>
+    <keybind key="W-Escape">
+      <action name="Execute">
+        <execute>lxtask</execute>
+      </action>
+    </keybind></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -773,40 +773,40 @@ W= Super key, C= CTRL, S= Shift, A= Alt
 <form>
 <textarea name="T" id="file" rows="16" cols="80">
 <!-- Show OB menu -->
-  <keybind key="W-Down">
-   <action name="ShowMenu">
-	  <menu>root-menu</menu>
-	</action>
-  </keybind>
- <keybind key="W-Up">
-   <action name="ShowMenu">
-	  <menu>menu-utility</menu>
-	</action>
-  </keybind>
-  <mousebind button="W-Middle" action="Press">
-    <action name="ShowMenu">
-     <menu>client-list-combined-menu</menu>
-    </action>
-  </mousebind></textarea>
+    <keybind key="W-Down">
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
+      </action>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="ShowMenu">
+        <menu>menu-utility</menu>
+    	</action>
+    </keybind>
+    <mousebind button="W-Middle" action="Press">
+      <action name="ShowMenu">
+        <menu>client-list-combined-menu</menu>
+      </action>
+    </mousebind></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
 <form>
-<textarea name="T" id="file" rows="13" cols="80">
+<textarea name="T" id="file" rows="14" cols="80">
 <!--keybindings for Brightness 
 (if you have trouble with your laptop function keys just set your own brightness keys with a script -see my screen brightness page)
 obviously you need to find your own keys-->
-  <keybind key="Insert">
-     <action name="Execute">
-	   <execute>~/.scripts/br-up</execute>
-	  </action>
-  </keybind>
-  <keybind key="F12">
-    <action name="Execute">
-	  <execute>~/.scripts/br-dn</execute>
-    </action>
-  </keybind>    </textarea>
+    <keybind key="Insert">
+      <action name="Execute">
+        <execute>~/.scripts/br-up</execute>
+      </action>
+    </keybind>
+    <keybind key="F12">
+      <action name="Execute">
+        <execute>~/.scripts/br-dn</execute>
+      </action>
+    </keybind>    </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -814,21 +814,21 @@ obviously you need to find your own keys-->
 <form>
 <textarea name="T" id="file" rows="16" cols="80">
 <!-- Keybindings for volume control --> 
-  <keybind key="XF86AudioMute">
-    <action name="Execute">
-      <command>amixer sset Master toggle</command>
-    </action>
-  </keybind>
-  <keybind key="XF86AudioRaiseVolume">
-    <action name="Execute">
-      <command>amixer sset Master 5%+</command>
-    </action>
-  </keybind>
-  <keybind key="XF86AudioLowerVolume">
-    <action name="Execute">
-      <command>amixer sset Master 5%-</command>
-    </action>
-  </keybind></textarea>
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>amixer sset Master toggle</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>amixer sset Master 5%+</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>amixer sset Master 5%-</command>
+      </action>
+    </keybind></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -854,24 +854,24 @@ obviously you need to find your own keys-->
         <follow>no</follow>
       </action>
     </keybind>  
-  <keybind key="W-S-F4">
+    <keybind key="W-S-F4">
       <action name="SendToDesktop">
         <desktop>4</desktop>
         <follow>no</follow>
       </action>
     </keybind> 
-  <keybind key="W-S-F5">
+    <keybind key="W-S-F5">
       <action name="SendToDesktop">
         <desktop>5</desktop>
         <follow>no</follow>
       </action>
     </keybind> 
-  <keybind key="A-S-c">
-	  <action name="MoveToCenter"/>
-        </keybind>
-   <keybind key="S-A-z">
-        <action name="Close"/>
-      </keybind></textarea>
+    <keybind key="A-S-c">
+      <action name="MoveToCenter"/>
+    </keybind>
+    <keybind key="S-A-z">
+      <action name="Close"/>
+    </keybind></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -879,53 +879,53 @@ obviously you need to find your own keys-->
 <form>
 <textarea name="T" id="file" rows="12" cols="80">
 <!-- Show OB menu with Super key and mouse scroll button - inside the <context name="Frame"> section-->
-<mousebind button="W-Down" action="Click">
-        <action name="ShowMenu">
-	 <menu>root-menu</menu>
-	</action>
-      </mousebind>
-<mousebind button="W-Up" action="Click">
-        <action name="ShowMenu">
-	 <menu>menu-utility</menu>
-	</action>
-      </mousebind></textarea>
+    <mousebind button="W-Down" action="Click">
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
+	   </action>
+    </mousebind>
+    <mousebind button="W-Up" action="Click">
+      <action name="ShowMenu">
+        <menu>menu-utility</menu>
+	   </action>
+    </mousebind></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
 <form>
-<textarea name="T" id="file" rows="17" cols="80">
+<textarea name="T" id="file" rows="20" cols="80">
  <!-- mousebindings for maximising-minimising windows -->
-      <mousebind button="W-S-Left" action="Click">
-        <action name="Maximize">
-	     </action>
-      </mousebind>
-      <mousebind button="W-S-Right" action="Click">
-        <action name="Unmaximize">
-	     </action>
-      </mousebind>
-      <mousebind button="W-Right" action="Click">
-        <action name="Lower">
-	     </action>
-      </mousebind>
-     <mousebind button="A-Right" action="Click">
-        <action name="Iconify">
-	     </action>
-      </mousebind>
-      <mousebind button="S-A-Right" action="Click">
-         <action name="Close"/>
-      </mousebind>      </textarea>
+    <mousebind button="W-S-Left" action="Click">
+      <action name="Maximize">
+      </action>
+    </mousebind>
+    <mousebind button="W-S-Right" action="Click">
+      <action name="Unmaximize">
+      </action>
+    </mousebind>
+    <mousebind button="W-Right" action="Click">
+      <action name="Lower">
+      </action>
+    </mousebind>
+    <mousebind button="A-Right" action="Click">
+      <action name="Iconify">
+      </action>
+    </mousebind>
+    <mousebind button="S-A-Right" action="Click">
+       <action name="Close"/>
+    </mousebind>      </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <form>
 <textarea name="T" id="file" rows="8" cols="80">
 <!--  inside the <context name="Root"> section - to show the utility menu when desktop is shown-->
- <mousebind button="W-Up" action="Press">
-        <action name="ShowMenu">
-          <menu>menu-utility</menu>
-        </action>
-      </mousebind>
+    <mousebind button="W-Up" action="Press">
+      <action name="ShowMenu">
+        <menu>menu-utility</menu>
+      </action>
+    </mousebind>
 </context></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
