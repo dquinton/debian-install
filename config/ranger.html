@@ -516,14 +516,15 @@ for f in $@; do  cp "$f" "${f/\.*/_1\.${f##*.}}" ;done
 
 <br><br>
 <h3 id="op" class="tag">map O to open files</h3>
-<form><textarea name="T" id="file" rows="9" cols="120">
+<form><textarea name="T" id="file" rows="10" cols="120">
 ##### open file ##########
 
 map Op    shell -f leafpad %f                #open with leafpad
 map Ow   shell -f libreoffice4.4 %s        #will open any open doc format file, or other compatible, with libre office (change version)
 map On  shell -f rxvt -e nano %f        #open file forked in nano
 map Ol  shell -f rxvt -e less %f         #open forked to view
-map Ot shell -f rxvt -cd %d              #open current dir in new terminal</textarea>
+map Ot shell -f rxvt -cd %d              #open current dir in new terminal
+map <F2> shell -f gnome-mplayer %s</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -589,7 +590,7 @@ map Pyt shell -r rsync -u %s %D                   #sync selected to next tab</te
 map &#60;S-DELETE> console delete
 map X    console delete
 map PX console shell -r rm %%s               #delete files with super-user priveleges
-map fX console shell -tf shred -uv %d/%s           #shred files
+map xX console shell -tf shred -uv %d/%s           #shred files
 map xx1 cd ~/.local/share/Trash/files
 map xx2 cd /media/FILES/.Trash-1000/files
 map xx3 cd /media/VIDEO/.Trash-1000/files</textarea>
@@ -704,7 +705,7 @@ map ,a4 console shell -f tar cvzpf ?.tgz %%s
 
 <br><br>
 <h3 id="iso" class="tag">map comma-i for iso/dvd commands</h3>
-<form><textarea name="T" id="file" rows="9" cols="150">
+<form><textarea name="T" id="file" rows="10" cols="150">
 ##### iso/dvd ##########
 
 map ,i1 chain shell gksu 'mount -o loop -t iso9660 %f /mnt/mounted'; cd /mnt/mounted     #mount iso - mkdir /mnt/mounted first!!
@@ -712,7 +713,8 @@ map ,i2 shell -s gksu umount /mnt/mounted                                #unmoun
 map ,i3 shell -ft growisofs -dvd-compat -Z /dev/dvd1=%f            #burn iso to dvd (`dvd1' etc is usb dvd writer, `dvd' is internal)
 map ,xx console shell -s mkfs -t vfat /dev/sdX                 #format a usb stick (repair it), change X
 map ,cdc console shell -ft gksu cdrdao copy		#copy audio cd, see my page cd copy
-map ,cdej console shell -s eject /dev/sr0              #eject laptop CDROM</textarea>
+map ,cdej console shell -s eject /dev/sr0              #eject laptop CDROM
+copymap ,cdej ,cd<F8></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -902,7 +904,7 @@ map fa3 shell -ft ogg2mp3 -B 256 --vbr-new -V 0 *.ogg %s        #convert ogg to 
 
 <br><br>
 <h3 id="mt" class="tag">map comma-m and comma-u for mounting/unmouning drives</h3>
-<form><textarea name="T" id="file" rows="18" cols="120">
+<form><textarea name="T" id="file" rows="19" cols="120">
 ##### mounting ##########
 
 map ,mm console shell -s pmount /dev/sdb1         
@@ -917,6 +919,7 @@ map ,u2 shell -s pumount /dev/sdc2
 map ,u5 shell -s pumount /dev/mmcblk0p1
 map ,u6 shell -r umount %f
 map ej	shell -s eject %s             #eject selected external volumes (safely remove)
+copymap ej <F8>
 map ,d1 shell -pw lsblk       #list partitions +mounts
 map ,d2 shell -pwr blkid            #list partitions with UUID
 map ,d0 shell -pwr fdisk -l       #list partitions
@@ -1125,15 +1128,14 @@ One problem is, however, with so many key-bindings, is the lack of sort-by-key i
 
 
 <h2 id="5" class="tag">Notes on mapping keys</h2>
-<div class="bullet"><ul><li> `console` is used to run ranger specific commands where typing input is necessary, such as pattern or new file name </li>
-<li>`console shell` is used to run bash commands, where typing is needed (can use ranger macros and the shell flags)</li>
-<li>`chain` allows multiple commands to be run consecutively, each separated by `;`</li>
+<div class="bullet"><ul><li> `<b>console</b>` is used to run ranger specific commands where typing input is necessary, such as pattern or new file name </li>
+<li>`<b>console shell</b>` is used to run bash commands, where typing is needed (can use ranger macros and the shell flags)</li>
+<li>`<b>chain</b>` allows multiple commands to be run consecutively, each separated by `;`</li>
 <li>without `console` a key-mapped command will execute immediately, without needing confirmation (in some cases it could be dangerous!)</li>
-<li>`%s`in the mapping expands to the file names in the console, so to avoid sending a continuous line of file names to the shell, which it can't use, we need to use `%%s`  which remains `%s` on the console, and shell can act on each file</li>
+<li>`<b>%s</b>`in the mapping expands to the file names in the console, so to avoid sending a continuous line of file names to the shell, which it can't use, we need to use `%%s`  which remains "%s" on the console, and then shell can act on each file</li>
 </ul></div>
-examples
-<table><tr><td width="200"><b>map a enter_bookmark a </b>  </td>                 <td>will map key a to go to bookmark a (same as using the ' with its list of bookmarks)</td></tr></table>
 
+<br>
 <br><br>
 
 
@@ -1179,14 +1181,18 @@ examples
 <table><tr><td width="320"><b>map \[ travel</b> (space after)</td> <td>pretty much does `scout -efklt` -will navigate into the dir filtered when Enter is pressed, and the console is kept open to search for the next dir to enter</td></tr></table>
 <br><br>
 
+<span style="font-size: 20; ">enter_bookmark</span>
+<table><tr><td width="320"><b>map &#60;a-a> enter_bookmark a </b>  </td>                 <td>will map Alt-a to go to bookmark a (same as using the ' with its list of bookmarks but more permanent)</td></tr></table>
 
+<br><br><br>
 
 <h3>find tagged files</h3>
-<div class="bullet"><ul><li> quickly go to tagged files in dir with `ct` and `n`</li>
+<div class="bullet"><ul><li> quickly go to tagged files in dir with <b>ct</b> and <b>n</b></li>
 <li>use the %t macro to execute a command on all tagged files in dir</li>
-<li>show the tagged file with, e.g.</li>
+<li>show the "tagged" file with, e.g.</li>
 </ul></div>
-<table> <tr> <td width="60">map f"console shell less ~/.config/ranger/tagged</td></tr></table>
+<br>
+<table> <tr> <td >map f" shell -p less ~/.config/ranger/tagged</td></tr></table>
 
 <br><br>
 <h3>set nano as editor</h3>
