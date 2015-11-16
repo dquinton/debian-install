@@ -19,8 +19,7 @@ It looks like this for the Netinstall CD..
 <form>
 <textarea name="T" id="install" rows="3" cols="80">
 apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils alsamixergui wicd chromium tango-icon-theme openbox-themes xcursor-themes moblin-cursor-theme rxvt-unicode</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -34,8 +33,7 @@ I go without lxde and lightdm now, and add here: <span class="inst">openbox lxpa
 <form>
 <textarea name="T" id="install" rows="8" cols="100">
 apt-get install zip unzip bzip2 p7zip-full bluetooth blueman ntfs-3g blktool dosfstools mtools command-not-found bash-completion openjdk-7-jre icedtea-7-plugin mplayer gnome-mplayer mencoder vlc gstreamer-0.10 audacious handbrake-gtk avidemux bombono-dvd ardour audacity lame qjackctl gimp pinta imagemagick bashburn furiousisomount xpdf x11-apps clipit pidgin uget transmission pyrenamer easytag catfish xfce4-notes-plugin gdmap gparted testdisk unetbootin qshutdown ksnapshot kcharselect luckybackup feh cheese meld regexxer bleachbit htop yelp xiphos fonts-sil-ezra gtk2-engines gtk2-engines-xfce gnome-color-chooser systemsettings rkhunter chkrootkit xsel w3m w3m-img less atool mediainfo jhead ffmpegthumbnailer locate git</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -49,8 +47,7 @@ I install ffmpeg and x264 from source before kdenlive or other video editors -al
 <form>
 <textarea name="T" id="install" rows="1" cols="100">
 apt-get install ffmpeg x264 kdenlive frei0r-plugins dvgrab recordmydesktop dvdauthor genisoimage </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
  
 <br><br>
@@ -95,16 +92,14 @@ So we fix this with editing the polkit .desktop file in autostart, like so:
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 sudo nano /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and paste this line at the end, Ctrl-X,y,Enter:
 <form>
 <textarea name="T" id="file" rows="1" cols="30">
 NotShowIn=LXDE</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>

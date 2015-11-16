@@ -63,16 +63,14 @@ copy the autostart file to the home dir like this
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 rsync /etc/xdg/lxsession/LXDE/autostart ~/.config/lxsession/LXDE/</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 and edit it 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 nano ~/.config/lxsession/LXDE/autostart</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 add the app command as a line preceded by '@'<br>
@@ -80,8 +78,7 @@ e.g. the line needed for Xfce4-power-manager to start up with every log-in would
 <form>
 <textarea name="T" id="file" rows="1" cols="30">
 @xfce4-power-manager</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -126,8 +123,7 @@ Terminal=false
 Encoding=UTF-8
 Type=Application
 Categories=Settings; </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 (LXDE in Jessie now has a menu entry for Desktop preferences)
@@ -156,16 +152,14 @@ To enable better-looking widgets you need gtk2-engines installed..
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get install gtk2-engines</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and install the engines with the themes that you want e.g. 
 <form>
 <textarea name="T" id="install" rows="1" cols="100">
 gtk2-engines-xfce gtk2-engines-murrine gtk2-engines-cleanice gtk2-engines-aurora</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -174,8 +168,7 @@ gtk2-engines-xfce gtk2-engines-murrine gtk2-engines-cleanice gtk2-engines-aurora
 <form>
 <textarea name="T" id="install" rows="1" cols="100">
 sudo apt-get install dmz-cursor-theme xcursor-themes chameleon-cursor-theme moblin-cursor-theme</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 (I've decided I don't like chameleon!)
@@ -190,8 +183,7 @@ Install any (e.g. gtk3-engines-xfce) and copy the your-theme/gtk-3.0 folder from
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 cp -r theme-name ~/.themes</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 Rename the theme if you still want to have the original to revert to (in /usr/share/) and enter its name in the ~/.config/gtk-3.0 config file. Then see below about setting colours.
@@ -223,8 +215,7 @@ Then I ran GnomeCC as root with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 gksu gnome-color-chooser</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 opened the saved theme file and then made changes to Default normal (foregrd/backgrd) and Entry fields normal (foregrd/backgrd), to make the theme a little lighter than normal user's.  Saved that as well to a theme file and clicked Apply.
@@ -272,8 +263,7 @@ selected text bg
 
 hover bg
 @define-color base_prelight #7d2852;</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -301,8 +291,7 @@ get dependencies for the latest version to install -compton-master:
 <form>
 <textarea name="T" id="install" rows="1" cols="100">
 sudo apt-get install libconfig-dev asciidoc libdrm-dev libgl1-mesa-glx libgl1-mesa-dev</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 download the zip file and extract (need unzip)<br>
@@ -311,8 +300,7 @@ open terminal in the extracted dir and do<br>
 <textarea name="T" id="cmd" rows="2" cols="30">
 make
 sudo make install</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -324,8 +312,7 @@ run in terminal
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 compton -cC -i 0.8 -e 0.8 -m 0.8 -r 4 -l -4 -t -4</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -349,8 +336,7 @@ Edit it to your liking and try it out with,
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 compton --config ~/.compton.conf</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and that can go in the autostart list.
@@ -366,8 +352,7 @@ If you have panels from another LXDE desktop which you'd like to migrate, you ca
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 killall lxpanel && lxpanel -p LXDE &</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 where the -p sets the panel profile (it might work without it)
 <br><br>
@@ -409,8 +394,7 @@ e.g.
 <textarea name="T" id="cmd" rows="2" cols="50">
 cd /usr/share/desktop-directories
 sudo nano dvd.directory</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 paste this content, or similar, with Shift-insert or middle mouse button:
@@ -422,8 +406,7 @@ Encoding=UTF-8
 Type=Directory
 Name=Dvd
 Icon=cdrom_unmount</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 (you can find icons in your icon set in, e.g. /usr/share/icons/tango/16x16/devices/ )
@@ -434,8 +417,7 @@ Icon=cdrom_unmount</textarea>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 sudo leafpad /etc/xdg/menus/lxde-applications.menu</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -452,8 +434,7 @@ sudo leafpad /etc/xdg/menus/lxde-applications.menu</textarea>
 			</Include>
 	</Menu> 
 	<!-- End dvd --></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -474,8 +455,7 @@ move the config files for editing
 <textarea name="T" id="cmd" rows="2" cols="50">
 mkdir -p ~/.config/openbox
 cp -p /etc/xdg/openbox/* ~/.config/openbox</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -484,8 +464,7 @@ install openbox menu editor "OBmenu", download <a href="http://obmenu.sourceforg
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo apt-get install obmenu</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -506,15 +485,13 @@ To use my OB menu first backup your own,
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 mv ~/.config/openbox/menu.xml ~/.config/openbox/menu.xml.bak</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 Create a new menu file
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 nano ~/.config/openbox/menu.xml</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 and copy the contents of my <a href="{{site.baseurl}}/files/obmenu.html">menu.xml</a> to it. Then Ctrl-X,y, Enter to save it.
 <br><br>
@@ -543,8 +520,7 @@ elif [ "$file" = "lxde-rc.xml" ]; then leafpad ~/.config/openbox/lxde-rc.xml
 else
     exit 0
 fi</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 To use yad, which looks nicer than zenity, use this line in the script:
@@ -552,8 +528,7 @@ To use yad, which looks nicer than zenity, use this line in the script:
 <form>
 <textarea name="T" id="file" rows="2" cols="120">
 file=$(yad --width=300 --height=400 --list --undecorated --text "Select file to open"  --column File sources.list fstab autostart rc.xml menu.xml menu-utility.xml 'ranger rc.conf' --separator='')</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 You will also need to install yad (improved zenity)... from <a href="https://code.google.com/p/yad/downloads/list">../yad/downloads/list</a>
 (download, unpack and install with <span style="color:#994900;">./configure, make, sudo make install</span> )
@@ -564,8 +539,7 @@ To get icons on your ob menu you need to put &#60;showIcons>yes&#60;/showIcons> 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 leafpad ~/.config/openbox/lxde-rc.xml</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and then every menu entry in your menu.xml file needs an icon location added (some work), e.g.
@@ -576,8 +550,7 @@ and then every menu entry in your menu.xml file needs an icon location added (so
 			<action name="Execute">
 				<execute>icedove</execute>
 			</action></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -594,8 +567,7 @@ You can use my menu..
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 nano ~/.config/openbox/menu-utility.xml</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 and copy the contents of my <a href="{{site.baseurl}}/files/menu-utility.html">menu-utility.xml</a> to it. Then Ctrl-X,y, Enter to save it.
 <br><br>
@@ -624,8 +596,7 @@ Here's how to make a menu - and you could have as many as you liked...
 	   <menu>menu-utility</menu>
 	 </action>
   </mousebind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 where &#60;menu>menu-utility&#60;/menu> is the menu ID
@@ -638,8 +609,7 @@ and to get the utility menu up when only the Desktop is seen, add this to the se
        <menu>menu-utility</menu>
     </action>
   </mousebind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -662,8 +632,7 @@ then simply run it with (specifying the lxde config file)
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 ~/.obkey-master/obkey ~/.config/openbox/lxde-rc.xml</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 To set keybindings by hand, which is easy but you need to take care and always double check the syntax is correct,
@@ -671,8 +640,7 @@ To set keybindings by hand, which is easy but you need to take care and always d
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 leafpad ~/.config/openbox/lxde-rc.xml</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -707,8 +675,7 @@ W= Super key, C= CTRL, S= Shift, A= Alt
         <command>thunar</command>
       </action>
     </keybind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
     
@@ -720,8 +687,7 @@ W= Super key, C= CTRL, S= Shift, A= Alt
 	 <execute>lxterminal</execute>
 	</action>
   </keybind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>    
 
 
@@ -733,8 +699,7 @@ W= Super key, C= CTRL, S= Shift, A= Alt
         <execute>sh ~/scripts/open-leafpad</execute>
       </action>
     </keybind>      </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -760,8 +725,7 @@ W= Super key, C= CTRL, S= Shift, A= Alt
         <command>sh -c 'xsel -b | xvkbd -delay 4 -xsendevent -file -'</command>
       </action>
     </keybind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
  
@@ -790,8 +754,7 @@ W= Super key, C= CTRL, S= Shift, A= Alt
 	 <execute>lxtask</execute>
 	</action>
   </keybind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -803,8 +766,7 @@ W= Super key, C= CTRL, S= Shift, A= Alt
         <command>sh -c eject /dev/sr0</command>
       </action>
     </keybind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -826,8 +788,7 @@ W= Super key, C= CTRL, S= Shift, A= Alt
      <menu>client-list-combined-menu</menu>
     </action>
   </mousebind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -846,8 +807,7 @@ obviously you need to find your own keys-->
 	  <execute>~/.scripts/br-dn</execute>
     </action>
   </keybind>    </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -869,8 +829,7 @@ obviously you need to find your own keys-->
       <command>amixer sset Master 5%-</command>
     </action>
   </keybind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -913,8 +872,7 @@ obviously you need to find your own keys-->
    <keybind key="S-A-z">
         <action name="Close"/>
       </keybind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -931,8 +889,7 @@ obviously you need to find your own keys-->
 	 <menu>menu-utility</menu>
 	</action>
       </mousebind></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -958,8 +915,7 @@ obviously you need to find your own keys-->
       <mousebind button="S-A-Right" action="Click">
          <action name="Close"/>
       </mousebind>      </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <form>
@@ -971,8 +927,7 @@ obviously you need to find your own keys-->
         </action>
       </mousebind>
 </context></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -983,8 +938,7 @@ script for the above keybind to open a file with leafpad:
 <textarea name="T" id="file" rows="2" cols="80">
 #!/bin/bash
 leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -996,14 +950,12 @@ Enable changing menu accelerators in any GTK window so that you can hover a menu
 add a line to your ~/.gtkrc-2.0 file,
 <form><textarea name="T" id="cmd" rows="1" cols="30">
 nano ~/.gtkrc-2.0</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <form>
 <textarea name="T" id="file" rows="1" cols="30">
 gtk-can-change-accels=1</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
  
 
@@ -1029,8 +981,7 @@ I add an application to lxde-rc.xml, at the end of the file,
     <skip_taskbar>no</skip_taskbar>
     <maximized>true</maximized>
 </application></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 if "skip_taskbar" is set to "yes" then switching desktop you can't type in the terminal without clicking on it.
@@ -1050,8 +1001,7 @@ To get an app opening at a particular position, you add this, changing x, y, and
     <y>200</y>
       <desktop>1</desktop>
  </position></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -1098,8 +1048,7 @@ Run
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 pcmanfm --show-pref=4</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 enter <b>lxterminal -e %s</b> (or your choice)
@@ -1108,8 +1057,7 @@ or for Thunar:
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 nano ~/.config/xfce4/helpers.rc</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and change <i>xterm</i> etc for whatever X-terminal you like.
@@ -1130,16 +1078,14 @@ Try this if you don't feel you need to see the many pop-up notifications, like e
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 sudo chmod 000 /usr/lib/notification-daemon/notification-daemon</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 to restore it again
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 sudo chmod 755 /usr/lib/notification-daemon/notification-daemon</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 even knock out knotify (a dependency of nearly any KDE app)
@@ -1147,8 +1093,7 @@ even knock out knotify (a dependency of nearly any KDE app)
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 sudo chmod -x /usr/bin/knotify4</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -1156,8 +1101,7 @@ restore it again with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 sudo chmod +x /usr/bin/knotify4</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>

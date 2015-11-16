@@ -48,8 +48,7 @@ Set up the multimedia repository first -see Step1 at the end.
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
 sudo apt-get install ffmpeg x264 libmp3lame0 libquicktime2 kdenlive frei0r-plugins dvgrab recordmydesktop dvdauthor genisoimage</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -71,16 +70,14 @@ add the testing repository first, <br>
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 deb http://http.debian.net/debian testing main</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 apt-get update, then...<br>
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo apt-get -t testing install libc6</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -105,8 +102,7 @@ migrate config files if you previously used Kdenlive
 cp ~/.kde/share/config/kdenliverc ~/kdenlive/.kde/share/config/
 cp ~/.kde/share/config/kdeglobals ~/kdenlive/.kde/share/config/
 cp ~/.kde/share/apps/kdenlive/kdenliveui.rc ~/kdenlive/share/apps/kdenlive/</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -114,8 +110,7 @@ But make sure the environmentals point to the bin files in the new kdenlive dire
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 leafpad ~/kdenlive/.kde/share/config/kdenliverc</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 <form>
@@ -126,8 +121,7 @@ ffmpegpath[$e]=$HOME/kdenlive/bin/ffmpeg
 ffplaypath[$e]=$HOME/kdenlive/bin/ffplay
 mltpath[$e]=$HOME/kdenlive/share/mlt/profiles/
 rendererpath[$e]=$HOME/kdenlive/bin/melt</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -138,8 +132,7 @@ edit the kdenlive .desktop file with
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 Exec=/home/your-user-name/kdenlive/start-kdenlive</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -154,8 +147,7 @@ next get the build dependencies:<br>
 <textarea name="T" id="install" rows="7" cols="80">
 sudo apt-get update
 sudo apt-get install cmake build-essential yasm libqt4-dev kdelibs5-dev libsdl1.2-dev libsdl-image1.2-dev libxml2-dev libx264-dev libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libschroedinger-dev libmp3lame-dev libfaac-dev libfaad-dev libgsm1-dev libopencore-amrnb-dev libopencore-amrwb-dev libsamplerate0-dev libjack-dev libsox-dev ladspa-sdk swh-plugins libmad0-dev libpango1.0-dev</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
@@ -165,8 +157,7 @@ Then open a terminal in the ffmpeg dir, and run ./configure with the compilation
 <form>
 <textarea name="T" id="cmd" rows="5" cols="80">
 ./configure --prefix=/usr --enable-shared --enable-libmp3lame --enable-gpl --enable-libfaac --enable-libvorbis --enable-pthreads --enable-libfaac --enable-libxvid --enable-x11grab --enable-libgsm --enable-libx264 --enable-libtheora --enable-nonfree --disable-stripping --enable-avfilter --enable-libschroedinger --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-version3</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 followed by 
@@ -174,8 +165,7 @@ followed by
 <textarea name="T" id="cmd" rows="2" cols="30">
 make -j3
 sudo make install</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -188,8 +178,7 @@ get mlt build dependencies
 <form>
 <textarea name="T" id="install" rows="3" cols="80">
 sudo apt-get install libavdevice-dev libswscale-dev libvorbis-dev libsox-dev libsamplerate-dev frei0r-plugins-dev libdv-dev libavformat-dev libquicktime-dev libxml2-dev libsdl-dev libsdl-image1.2-dev</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -197,8 +186,7 @@ if you previously had mlt installed, remove it with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 sudo dpkg --remove --force-depends libmlt2 libmlt++3 libmlt-data melt</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -210,8 +198,7 @@ cd to the mlt directory and run:
 make clean
 make
 sudo make install</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 Install KDE's system settings manager to enable changes to appearance in Kdenlive or any other KDE app.<br>
@@ -219,8 +206,7 @@ Install KDE's system settings manager to enable changes to appearance in Kdenliv
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo apt-get install systemsettings</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -234,8 +220,7 @@ Download the binary archive (.deb) and install it with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo dpkg -i flowblade</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 (hit Tab to complete package name)
 <br><br>
@@ -244,8 +229,7 @@ then sort out dependencies with:
 <form>
 <textarea name="T" id="install" rows="1" cols="30">
 sudo apt-get install -f</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 There's pitivi. .................
@@ -276,8 +260,7 @@ You need a Java Runtime Environment for running macros, such as openjdk:
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get install openjdk-7-jre</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>(version number changes here, it now has "7" in the name)
 <br><br>
@@ -289,8 +272,7 @@ To remove an older version (because installing a newer version will leave the pr
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get remove libreoffice*</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
@@ -300,8 +282,7 @@ extract from the downloaded tar file and cd to the dir and into the DEBS dir, an
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo dpkg -i *.deb</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
@@ -317,8 +298,7 @@ ln -s /opt/libreoffice4.4/share/xdg/impress.desktop libreoffice4.4-impress.deskt
 ln -s /opt/libreoffice4.4/share/xdg/math.desktop libreoffice4.4-math.desktop
 ln -s /opt/libreoffice4.4/share/xdg/startcenter.desktop libreoffice4.4-startcenter.desktop
 ln -s /opt/libreoffice4.4/share/xdg/writer.desktop libreoffice4.4-writer.desktop</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 Tip: to change the toolbar icons to small, and tango for example, go to Tools > Options > LibreOffice > View
@@ -337,8 +317,7 @@ Enable multiarch if you run amd64 machine!
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 sudo dpkg --add-architecture i386 && sudo apt-get update</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 cd to Downloads and install G-earth
@@ -346,8 +325,7 @@ cd to Downloads and install G-earth
 <form>
 <textarea name="T" id="install" rows="1" cols="30">
 sudo dpkg -i googleearth*.deb</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -360,8 +338,7 @@ Sort it out with:
 <form>
 <textarea name="T" id="install" rows="1" cols="30">
 sudo apt-get -f install</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 The following NEW packages will be installed:
@@ -381,8 +358,7 @@ or set the preference for your architecture with editing the apt.conf file
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo leafpad /etc/apt/apt.conf</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -391,8 +367,7 @@ and add a line like this
 <form>
 <textarea name="T" id="file" rows="1" cols="30">
 APT::Architecture="amd64";</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -403,8 +378,7 @@ if you need to be done with i386, or any other arch:
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 sudo dpkg --remove-architecture i386</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>

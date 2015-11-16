@@ -38,8 +38,7 @@ id: config
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 leafpad ~/.bashrc</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 find and uncomment the line: "<span style="color:#0F4F0B">force_color_prompt=yes</span>"
@@ -50,8 +49,7 @@ edit the 'PS1' line to read:
 <form>
 <textarea name="T" id="file" rows="2" cols="80">
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\u\[\033[0;35m\]>\[\033[01;34m\]\t\[\033[0;35m\]:\[\033[0;37m\]\w\[\033[01;34m\]\$\[\033[00m\] '</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 with a space at the end before the closing quote mark.
 <br><br>
@@ -62,8 +60,7 @@ with a space at the end before the closing quote mark.
 su to root, then open root's bashrc file,
 <form><textarea name="T" id="cmd" rows="1" cols="30">
 leafpad ~/.bashrc</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 (first I needed to copy everything from "force....." to the line "unset...." in my user .bashrc to the root .bashrc)
@@ -72,8 +69,7 @@ edit 'PS1' line (I use light green user and time, dk gray >, light gray working 
     
 <form><textarea name="T" id="file" rows="2" cols="80">
 PS1='${debian_chroot:+($debian_chroot)}\[\033[1;32m\]\u\[\033[1;30m\]>\[\033[1;32m\]\t\[\033[1;30m\]:\[\033[0;37m\]\w\[\033[0;36m\]\# '</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -87,15 +83,13 @@ With a bash alias we can issue shortcuts at the prompt that trigger commands.
 make a new file for aliases:
 <form><textarea name="T" id="cmd" rows="1" cols="30">
 nano ~/.bash_aliases</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 add this and save, 
 <form><textarea name="T" id="file" rows="1" cols="30">
 alias e='exit'</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 then open a new terminal and type "e" and Enter - and the terminal closes.
@@ -180,8 +174,7 @@ alias addgrp='sudo groupadd'                #type group name after
 alias bkp-s='sudo sh ~/scripts/bkpsys'     #these two scripts are tar backups found on my system backup page
 alias bkp-h='sh ~/scripts/bkphome'
 alias frac='sudo refractasnapshot'</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -189,15 +182,13 @@ alias frac='sudo refractasnapshot'</textarea>
 find10m script line
 <form><textarea name="T" id="file" rows="1" cols="120">
 find . -type f -size +10000k -exec ls -lh {} \; | awk '{ print $6$7" "$8" "$9 $10$11$12 ": " $5 }'</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 find100m script line 
 <form><textarea name="T" id="file" rows="1" cols="120">
 find . -type f -size +100000k -exec ls -lh {} \; | awk '{ print $6$7" "$8" "$9 $10$11$12 ": " $5 }'</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -208,8 +199,7 @@ add this to your .bashrc file to make "cs" cd to a dir and list all files there
 function cs {
 	builtin cd "$@" && ls -F
 }</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 <br><br>
@@ -221,8 +211,7 @@ You may want to make a simpler bash alias file and save it in /root so that when
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 the ~/ will not point to you home dir, but it will point to /root as it is opened by root user.<br>
@@ -236,8 +225,7 @@ And here's a nice way to open config files, using a number selection<br>
 add this to .bash_aliases:
 <form><textarea name="T" id="file" rows="1" cols="50">
 alias b1='sh ~/scripts/bashfileoption'</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 which calls this script:
@@ -274,8 +262,7 @@ case $n in
     33) leafpad ~/scripts/bashcommands &;;    
     *) invalid option;;
 esac</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 With plain OB, you need ~/.config/openbox/autostart and ~/.config/openbox/rc.xml
 
@@ -304,15 +291,13 @@ case $n in
     5) ;;
     *) invalid option;;
 esac</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 add to bash_aliases something like,
 <form><textarea name="T" id="file" rows="1" cols="80">
 alias b2='sh ~/scripts/bashcommands'</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -327,16 +312,14 @@ Tired of using cd coupled with tab auto-completion of file names? Is there a way
 <textarea name="T" id="file" rows="2" cols="80">
 alias cdz='cd `zenity --file-selection --directory`'
 alias csz='cs `zenity --file-selection --directory`' </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <form>
 <textarea name="T" id="file" rows="2" cols="80">
 alias cdz='cd `yad --file --directory --height=400 --width=500`'
 alias csz='cs `yad --file --directory --height=400 --width=500`'</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 

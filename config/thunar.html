@@ -78,8 +78,7 @@ You can set the directory location of these icons by editing the ~/.config/user-
 <form>
 <textarea name="T" id="file" rows="1" cols="30">
 XDG_MUSIC_DIR="$HOME/Music"</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 just edit the path to your music dir, and restart the file manager if it's opened.
 <br><br><br>
@@ -99,15 +98,13 @@ Another massive improvement with 1.6 is the ejecting of media... with 1.4 there 
 Set up GTK accels
 <form><textarea name="T" id="cmd" rows="1" cols="30">
 nano ~/.gtkrc-2.0</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 add the line
 <form><textarea name="T" id="file" rows="1" cols="30">
 gtk-can-change-accels=1</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and restart Thunar. Then mouse over a menu item and type a new shortcut key (works with any GTK drop-down menus).
@@ -399,8 +396,7 @@ duplicate with infix
 #!/bin/bash
 
 for f in $@; do cp "$f" "${f/\.*/_1\.${f##*.}}" ;done</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -413,8 +409,7 @@ copy to backup (1st make the dir)
 <form><textarea name="T" id="file" rows="2" cols="50">
 #!/bin/bash
 for f in $@ ;do cp $f ~/backups/$f_$(date +"%y%m%d")</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 Thunar command: <b>~/backup.sh %n</b>	<br>
 conditions: text, other files

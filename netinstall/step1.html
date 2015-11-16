@@ -252,8 +252,7 @@ At the command prompt, login as root, with "root" as username and the root passw
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 nano /etc/apt/sources.list </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 (and hit Enter at end)
@@ -271,8 +270,7 @@ example of lines needed:
 <textarea name="T" id="file" rows="2" cols="80">
 deb http://ftp.uk.debian.org/debian/ wheezy main contrib non-free
 deb-src http://ftp.uk.debian.org/debian/ wheezy main contrib non-free</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and for security updates:
@@ -281,8 +279,7 @@ and for security updates:
 <textarea name="T" id="file" rows="2" cols="80">
 deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
 deb http://security.debian.org/ wheezy/updates main contrib non-free</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 (but your sources file may already have these lines, or similar, made during the install process)
@@ -293,8 +290,7 @@ Or you can use "http.debian.net" which will automatically retrieve from your mos
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 deb http://http.debian.net/debian wheezy main contrib non-free</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 see <a href="http://http.debian.net/">http://http.debian.net/</a>
@@ -303,8 +299,7 @@ also you can add the multimedia repository to the sources file, which has many u
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 deb http://www.deb-multimedia.org testing main non-free</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
@@ -323,8 +318,7 @@ deb http://security.debian.org/ jessie/updates main contrib non-free
 
 #multimedia
 deb http://www.deb-multimedia.org jessie main non-free</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>Then save the file, either with Ctrl-X (close file), y (yes) and Enter, or else, Ctrl-O (write out file), Enter and Ctrl-X.
@@ -336,8 +330,7 @@ Run the update with (while still as root)
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 apt-get update</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -345,8 +338,7 @@ then, if you added the multimedia repository, you need to add the repository key
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 apt-get install deb-multimedia-keyring && apt-get update</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -355,8 +347,7 @@ you can make a system upgrade now as well if you like, to make sure all is up to
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 apt-get upgrade && apt-get dist-upgrade</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -371,8 +362,7 @@ still as root, type
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 nano /etc/apt/apt.conf</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 fill the file with:
@@ -380,8 +370,7 @@ fill the file with:
 <textarea name="T" id="file" rows="2" cols="80">
 APT::Install-Recommends "false";
 APT::Install-Suggests "false";</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -390,8 +379,7 @@ Also you can knock out the downloading of language packs with every apt-get upda
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 Acquire::Languages { "en"; "none"; };</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>and add whatever language you need to be downloaded before the "none"
 <br>then save the file, Ctrl-X, y, Enter
@@ -414,8 +402,7 @@ then run:
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 sudo apt-get install $(< desktop)</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 where "desktop" is the name of a file with package names.
@@ -428,8 +415,7 @@ So, as root, type
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
 apt-get install xorg xfce4 lightdm network-manager-gnome pm-utils hdparm cpufrequtils xfce4-power-manager chromium leafpad xfce4-power-manager xfce4-notifyd tango-icon-theme firestarter dmz-cursor-theme xcursor-themes rxvt-unicode</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
@@ -449,8 +435,7 @@ lightdm is your best choice of display manager.  Gnome's gdm3 comes with bloat o
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
 apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils network-manager-gnome chromium tango-icon-theme openbox-themes firestarter dmz-cursor-theme xcursor-themes moblin-cursor-theme rxvt-unicode</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
@@ -481,8 +466,7 @@ But for those bored of GUI mouse-clicking browsers there's Ranger (which takes u
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
 apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra thunar-media-tags-plugin zip unzip bzip2 p7zip-full xdg-user-dirs</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -490,8 +474,7 @@ apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugi
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
 apt-get install bluetooth blueman command-not-found bash-completion ntfs-3g blktool dosfstools mtools openjdk-7-jre icedtea-7-plugin</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 (note that, the opensource java, openjdk and icedtea actually change their name with each new version - I suppose it will be 8 next)
 
@@ -500,8 +483,7 @@ apt-get install bluetooth blueman command-not-found bash-completion ntfs-3g blkt
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
 apt-get install locate less git </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -526,8 +508,7 @@ and then, either add this line after the root's line:
 <form>
 <textarea name="T" id="file" rows="1" cols="50">
 yourusername     ALL=(ALL:ALL) ALL</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>    
@@ -535,8 +516,7 @@ or, add the sudo group to sudoers, which is the more recommended practice:
     <form>
 <textarea name="T" id="file" rows="1" cols="50">
 %sudo     ALL=(ALL:ALL) ALL</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 write to file by Ctrl-X, y, Enter, and if you switched to root then type '<i>exit</i>' and Enter to return to normal user.
@@ -546,8 +526,7 @@ and if you added the sudo group to sudoers, now add your user(s) to the sudo gro
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 adduser <username> sudo</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -561,8 +540,7 @@ If you don't have the wireless firmware installed yet, first identify the wirele
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 lspci -nn | grep Network</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 Then go to the Debian Wi-Fi page (and you'll need to reboot into the Desktop to get to the internet) <a href="https://wiki.debian.org/WiFi#PCI_Devices">https://wiki.debian.org/WiFi#PCI_Devices</a> and find the correct firmware for your device.  
 <br><br>If the firmware is included in the kernel, but wireless still doesn't work, check the interfaces file below, and check that your wireless interface is wlan0 or wlan1 (with wicd you need to set this in Preferences).
@@ -571,8 +549,7 @@ Then go to the Debian Wi-Fi page (and you'll need to reboot into the Desktop to 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 sudo nano /etc/network/interfaces</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -581,8 +558,7 @@ comment out everything but the lines (I mean insert a '#' before each line to co
 <textarea name="T" id="file" rows="2" cols="30">
 auto lo
 iface lo inet loopback</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -590,8 +566,7 @@ check if user is added to netdev group with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 groups <youruser></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -599,16 +574,14 @@ and add your user to that group if it wasn't listed with above command
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 adduser <username> netdev</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 and if you already rebooted, restart networking with:
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 sudo /etc/init.d/network-manager restart</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -624,16 +597,14 @@ to add user to a new group, e.g.
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo groupadd dialout</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 then,
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 adduser <username> dialout</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 and just use the 'up' key on the command line to get the last command and change the group name until you've added all you need.
@@ -652,8 +623,7 @@ Find the disks and their sizes on system to note their device names (e.g. sda2)
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 lsblk</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -661,16 +631,14 @@ List the uuid's of disks
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo blkid</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 You need to add an fstab entry for each harddisk partition that wants mounting at boot. So open the <b>fstab</b> file with:
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo leafpad /etc/fstab</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 First of all, you can omit the USB or DVD device lines that might have been added during the install. 
@@ -680,16 +648,14 @@ example of line for NTFS partition
 <form>
 <textarea name="T" id="file" rows="1" cols="100">
 UUID="B04C39A04C3961F0" /media/FILES ntfs-3g defaults,nls=utf8,uid=1000,umask=000 0 0</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 example of a data partition with ext3 format
 <form>
 <textarea name="T" id="file" rows="1" cols="100">
 UUID=a482820a-ca98-4d19-albe-d2dd53b49b06 /media/Data    ext3    users,defaults    0  2</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -697,8 +663,7 @@ create mounts for any partitions you added that are mounted in /media, e.g.
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo mkdir /media/D1</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -707,8 +672,7 @@ and mount the partitions to the mount points (or you can reboot)
 <textarea name="T" id="cmd" rows="2" cols="50">
 sudo mount –t ntfs-3g /dev/sda2 /media/D1
 sudo mount /dev/sda6 /media/Data</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 (my examples)
@@ -717,8 +681,7 @@ check the partitions are mounted with:
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 df -hT</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -726,8 +689,7 @@ If you can't write to the partition (it's read-only):
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 sudo chown -R <youruser> /media/D1</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
  
@@ -745,8 +707,7 @@ UUID=cc3bca0d-aee4-4b9c-95c2-57212cc36d4d    /               ext3    defaults,no
 UUID=ab67d8fe-d76b-4e21-abbe-e10d162e1d27    /home           ext3    defaults        0       2
 # sda7 
 UUID=a7db1e95-4acd-4754-a043-a8d27405c316    none            swap    sw              0       0</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -754,8 +715,7 @@ currently, I put /var on its own partition as the contents change quite a lot (e
 <form>
 <textarea name="T" id="file" rows="1" cols="100">
 UUID=5d327347-dd0a-4540-9a2e-9e86a05db5c6    /var    ext3    defaults,noatime    0    2</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -790,8 +750,7 @@ Check that your user is in the audio group with `groups &#60;user>`
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 sudo leafpad /etc/lightdm/lightdm.conf</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 and edit&nbsp;&nbsp; 'user-session=lightdm-xsession'&nbsp;  --> &nbsp; 'user-session=xfce'
 <br>
@@ -806,16 +765,14 @@ add the debian multimedia repository if you haven't already
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 nano /etc/apt/sources.list</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 add the line
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 deb http://www.deb-multimedia.org testing main non-free</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -825,8 +782,7 @@ then
 sudo apt-get update 
 sudo apt-get install deb-multimedia-keyring 
 sudo apt-get update</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 <br>
@@ -836,8 +792,7 @@ Get dependencies needed for building software from source (you could leave this 
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
 sudo apt-get install build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev x11-xserver-utils libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake checkinstall</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>

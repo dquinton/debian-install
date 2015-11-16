@@ -68,8 +68,7 @@ Install jekyll with ruby
 <textarea name="T" id="install" rows="2" cols="50">
 sudo apt-get install ruby ruby-dev
 sudo gem install jekyll</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 You will need to have a java environment installed too (openjdk isn't suitable either, the list of runtimes are here <a href="https://github.com/rails/execjs">https://github.com/rails/execjs</a>)
@@ -85,8 +84,7 @@ To create your website build, make a dir, cd there and run
 <textarea name="T" id="cmd" rows="2" cols="30">
 jekyll new .
 jekyll serve</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and browse <a href="http://localhost:4000">http://localhost:4000</a> to see what the site (which is only a default index page so far) looks like
@@ -135,8 +133,7 @@ header.html<br>
 
 <div class="ban"> </div>
 
-<body id="&#123;&#123; page.id }}"></textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<body id="&#123;&#123; page.id }}"></textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 Note: I added the "id" include to the &#60;body> tag, so that I can set the body id on each html page as I like - see the page field setter below
@@ -150,8 +147,7 @@ footer.html<br>
 <form>
 <textarea name="T" id="file" rows="2" cols="30">
 &#60;/body>
-&#60;/html></textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&#60;/html></textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -173,8 +169,7 @@ navbar.html<br>
   </ul>
   </nav>
 </div>
-</html></textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</html></textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 Note: the navbar will be included on each page, so the links have to point to the top level, with `/`.<br>
@@ -197,8 +192,7 @@ default.html<br>
 
     &#123;&#123; content }}
 
-&#123;% include footer.html %}</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&#123;% include footer.html %}</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -214,8 +208,7 @@ layout: default
 description: blah blah
 title: home
 id: home
----</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+---</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 Note: keywords are deprecated - search engine robots ignore them because of abuse, such as inserting false words for better search ranking.
@@ -246,8 +239,7 @@ The z-index, e.g. "<b>z-index: 10;</b>", simply uses a number and the highest nu
 You can make a template so that its easy to make new pages - I use bluefish html editor
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-nano ~/.bluefish/templates/normal</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+nano ~/.bluefish/templates/normal</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <form>
@@ -262,8 +254,7 @@ id: home
 &#60;div class="cont">
 
 
-</div></textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</div></textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br><br>
@@ -283,8 +274,7 @@ set base url in the jekyll <b>_config.yml</b> file
 <form>
 <textarea name="T" id="file" rows="2" cols="30">
 baseurl: /project-name
-url: http://username.github.io/</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+url: http://username.github.io/</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <a href="http://jekyllrb.com/docs/configuration/">http://jekyllrb.com/docs/configuration/</a>
 <br><br>
@@ -312,15 +302,13 @@ to let jekyll do its work and convert your site files into real html, and serve 
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
-jekyll serve --watch</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+jekyll serve --watch</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 or, if you are setting the base url, you need to serve the site at that url
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-jekyll serve --watch --baseurl /project-name/</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+jekyll serve --watch --baseurl /project-name/</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -341,8 +329,7 @@ Firstly, setup your git user config..
 <textarea name="T" id="cmd" rows="3" cols="50">
 git config --global user.name "USERNAME"
 git config --global user.email "EMAIL"
-git config --global credential.helper cache</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git config --global credential.helper cache</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -351,15 +338,13 @@ Normally, you'd create a dir to clone your git repo into, cd there and run
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-git clone https://github.com/user/repository.git</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git clone https://github.com/user/repository.git</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 or, without cloning, run
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
-git remote add origin git@github.com:username/reponame.git</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git remote add origin git@github.com:username/reponame.git</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 <a href="http://stackoverflow.com/questions/10573957/pushing-from-local-repository-to-github-hosted-remote">..pushing-from-local-repository-to-github-hosted-remote</a>
@@ -369,8 +354,7 @@ then switch to gh-pages (because the website will be served from the gh-pages br
 <br>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-git checkout --orphan gh-pages</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git checkout --orphan gh-pages</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -380,8 +364,7 @@ git checkout --orphan gh-pages</textarea>&nbsp;
 Stage your files with,
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
-git add .</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git add .</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 note: you can add by file names too, also, `git add .' adds files only in this path, whereas `git add -A' adds from all paths in local repo.  `git add -u' adds only updated, not new files.
@@ -389,8 +372,7 @@ note: you can add by file names too, also, `git add .' adds files only in this p
 Then prepare your pages/files (commit) to the next Git push (upload) with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-git commit -a -m "Adding pages"</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git commit -a -m "Adding pages"</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 the -m option submits the reason for the commit to git.
@@ -401,8 +383,7 @@ Note: if you don't stage new files (add to tracking), you will get this kind of 
 to push all the new files or updated ones to Github,
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
-git push</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git push</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 and you'll be promted for username and password.
@@ -411,8 +392,7 @@ though, if you set gh-pages as the default branch, you may get this error: "fata
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-git push --set-upstream origin gh-pages</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git push --set-upstream origin gh-pages</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -425,32 +405,28 @@ so you can use `git push origin master' or `git push -f' to force ovewrite of fi
 to update your local repository to the newest commit, incase there are commits from elsewhere, execute 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
-git pull</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git pull</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
 You can check status of your local clone with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
-git status</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git status</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
 check commit history with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
-git log</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git log</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
 To enable Git to store your username/pw (15min default) run
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-git config --global credential.helper cache</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+git config --global credential.helper cache</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -460,8 +436,7 @@ Ranger tips..<br>
 <br>
 <form>
 <textarea name="T" id="file" rows="1" cols="50">
-setlocal path=~/Website/your-repo-dir vcs_aware true</textarea>&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+setlocal path=~/Website/your-repo-dir vcs_aware true</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>

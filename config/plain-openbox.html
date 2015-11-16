@@ -52,8 +52,7 @@ copy content of lxde-rc.xml in ~/.config/openbox (if you have used LXDE-openbox)
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 cp ~/.config/openbox/lxde-rc.xml ~/.config/openbox/rc.xml </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 Before you make changes to rc.xml, make a backup so that you can revert to it if the file breaks!  
@@ -74,8 +73,7 @@ lxterminal &
 nm-applet &
 blueman-applet &
 clipit</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -86,8 +84,7 @@ clipit</textarea>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 rsync ~/.config/lxpanel/LXDE/panels/* ~/.config/lxpanel/OB/panels/</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -108,8 +105,7 @@ Once you've got ready to switch over, particularly, you've set up your openbox c
 <textarea name="T" id="install" rows="2" cols="80">
 sudo apt-get remove lxde pcmanfm lxmusic
 sudo apt-get install lxpanel lxtask openbox leafpad </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -126,24 +122,21 @@ Without a DM you will find yourself at the bash prompt after booting up. Then yo
 <form>
 <textarea name="T" id="file" rows="1" cols="30">
 exec openbox-session</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 But the problem with this line is that suspend will not be triggered by a close/open of laptop lid.  So if you need that function, you must use:
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 exec ck-launch-session dbus-launch openbox-session</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>  
 <br><br>
 or you can start-up OB with a direct command, e.g. in a script,
 <form>
 <textarea name="T" id="file" rows="1" cols="50">
 xinit /usr/bin/openbox-session</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
     
     
@@ -157,22 +150,19 @@ for ease, you can make a script in /usr/bin/ named "xs", make it executable. so 
 <textarea name="T" id="file" rows="1" cols="30">
 sudo nano /usr/bin/xs
 </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <form>
 <textarea name="T" id="file" rows="2" cols="30">
 #! /bin/bash
 startx</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo chmod +x /usr/bin/xs</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 (or put the xinit command in there - but it will by-pass the .xinitrc file and so suspend with lid-close will not function)
 <br><br><br>
@@ -182,8 +172,7 @@ If you want to test that the start up works without a DM, just rename your DM ex
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 sudo mv /usr/sbin/lightdm /usr/sbin/lightdm-1</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and you can rename it back if things don't work out!  But start-up should work flawlessly.
@@ -203,14 +192,12 @@ You can make the shutdown/reboot commands not ask for password, if you modify th
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo visudo</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 <user> ALL=NOPASSWD: /sbin/shutdown, /sbin/reboot, /usr/sbin/pm-suspend</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -218,8 +205,7 @@ sudo visudo</textarea>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 sudo adduser <your-user> admin</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -236,8 +222,7 @@ So for my logout dialogue I have..
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 nano ~/scripts/powerfoff</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <form>
 <textarea name="T" id="file" rows="10" cols="100">
@@ -250,8 +235,7 @@ case $? in
  2) sudo pm-suspend;;
  3) ;;
  esac</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 Simple and it does exactly what's needed.
@@ -267,8 +251,7 @@ case $? in
  0) sudo pm-suspend;;
  1) ;;
  esac</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -277,8 +260,7 @@ You can execute the script from the Logout launcher icon on the top panel - just
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 Exec=sh /home/<em>user</em>/scripts/poweroff</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 How about the entry on the Main menu?  At the momet it reports that logout is not set.  So open the panel
@@ -286,8 +268,7 @@ How about the entry on the Main menu?  At the momet it reports that logout is no
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 nano ~/.lxpanel/OB/panels/panel</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and look for the logout command near top of the file, under 'Plugin { type = menu' and change
@@ -295,16 +276,14 @@ and look for the logout command near top of the file, under 'Plugin { type = men
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 action=sh /home/user/scripts/poweroff</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 then run 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 killall lxpanel && lxpanel -p OB &</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -321,16 +300,14 @@ Auto-mounting inserted media was no longer, after removing lightdm, pcmanfm, thu
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 pmount /dev/sdb1 500</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 -this will mount the device in a dir "500" in /media -with no label specified, the device will mount in /media/device-name (sdb1)
 <br>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 pumount /dev/sdb1</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 -this unmounts the device
 <br><br>
@@ -354,8 +331,7 @@ didn't work very well for me - takes 20sec for device to show in /media, device 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 sudo leafpad /etc/udev/rules.d/automount.rules</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 add the lines given at linked page <a href="http://www.monperrus.net/martin/automounting+usb+flash+drives+on+linux+with+udev+and+pmount">http://www.monperrus.net/martin/</a>  <a href="http://debiania.in.ua/posts/2013-03-24-automounting-with-udev-and-pmount.html">http://debiania.in.ua/</a>
@@ -364,8 +340,7 @@ restart udev with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 udevadm control --reload-rules</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 then plug in a removable drive, and wait for it to appear in /media...
@@ -378,16 +353,14 @@ then enable kernel polling as per instructions on the page above:
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
 sudo bash -c 'echo 2000 > /sys/block/sr0/events_poll_msecs'</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and start devmon with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 devmon &</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 then plug in a USB drive
@@ -398,14 +371,12 @@ add this line to /etc/rc.local, before "exit 0"
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo nano /etc/rc.local</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <form>
 <textarea name="T" id="file" rows="1" cols="100">
 echo 2000 > /sys/module/block/parameters/events_dfl_poll_msecs</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 also add 'devmon &' to autostart as udevil cannot mount anything without it running
@@ -427,8 +398,7 @@ My GTK color entry in settings.ini file is like so (all one line):
 <form>
 <textarea name="T" id="file" rows="3" cols="120">
 gtk-color-scheme=tooltip_fg_color:#ef67ef439acc\nbase_color:#323232323232\nselected_fg_color:#fffff7f74747\ntext_color:#9b9ba3a3a4a4\nbg_color:#252925292529\ntooltip_bg_color:#30ca38da5e1e\nselected_bg_color:#7e7e33335757\nfg_color:#ffffd6d60000\n</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -438,8 +408,7 @@ Somehow I lost the line from my ~/.gtkrc.2.0 file which enables changing the win
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 gtk-can-change-accels=1</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br><br>

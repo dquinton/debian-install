@@ -53,16 +53,14 @@ To make changes to how your menu looks, either the menu root entries or sub-menu
 
 <form><textarea name="T" id="cmd" rows="1" cols="80">
 cp /etc/xdg/menus/xfce-applications.menu ~/.config/menus</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 Then, to put items under the right sub-menus the .desktop file for each item needs to be copied over to /home as well, which you could do one-by-one or all in one go,
 
 <form><textarea name="T" id="cmd" rows="1" cols="80">
 cp /user/share/applications/* ~/.local/share/applications/</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -79,8 +77,7 @@ e.g. web browser, about xfce, help
     <li>then you must add a <b>.directory file</b> for the new sub-menu in ~/.local/share/desktop-directories with the content, for example:</li></ul>
     <form><textarea name="T" id="cmd" rows="1" cols="80">
 nano ~/.local/share/desktop-directories/gps.directory</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <form><textarea name="T" id="file" rows="6" cols="30">
@@ -90,8 +87,7 @@ Type=Directory
 Icon=viking
 Name=GPS
 Comment=GPS apps</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
    <ul><li>the name must be the same as for the sub-menu and the sub-menu entry must point to the .directory file name to locate it.</li>
@@ -126,8 +122,7 @@ On the panel add the clock applet, select digital display and Custom Format, the
 With the clock applet, use a span around the macros to change the colour/font, e.g. 
 <form><textarea name="T" id="file" rows="1" cols="80">
 <span color="#D5AE18" font="Webdings 10">%R:%S %d.%h</span></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 With Orage clock it's easy enough to set colour n font ("foreground" refers to the clock digits).

@@ -43,16 +43,14 @@ id: net
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get update && sudo apt-get upgrade </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 But the safest way to upgrade, that will handle any dependency problems, would be to use:
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
 sudo aptitude upgrade --full-resolver </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
@@ -61,8 +59,7 @@ if your sources list is correct (on the debian release you are following) you ca
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get dist-upgrade </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br><br>
@@ -77,8 +74,7 @@ deb-src http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
 
 deb http://security.debian.org/ wheezy/updates main contrib non-free
 deb-src http://security.debian.org/ wheezy/updates main contrib non-free</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 and run the first line above to update package lists and upgrade packages
@@ -90,8 +86,7 @@ First change your sources list to point to the release you want to upgrade to
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo nano /etc/apt/sources.list</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -102,8 +97,7 @@ mine didn't after using netinstall CD.  If it does remove that line or change it
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo nano /etc/apt/apt.conf</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -112,8 +106,7 @@ developers recommend
 <textarea name="T" id="install" rows="2" cols="80">
 sudo apt-get update
 sudo apt-get dist-upgrade</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -125,8 +118,7 @@ You could first download all the packages needed for the upgrade with
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo apt-get update && sudo apt-get --download-only dist-upgrade</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 then boot into recovery mode and run dist-upgrade
@@ -136,8 +128,7 @@ Aptitude can be used with
 <form>
 <textarea name="T" id="install" rows="1" cols="30">
 sudo aptitude full-upgrade</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 -this command replaces "aptitude dist-upgrade" - it will present solutions to conflicts, and ask confirmation before downloading
@@ -146,16 +137,14 @@ It can be simulated first with
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo aptitude --simulate full-upgrade</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 or
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo aptitude --simulate full-upgrade > ~/upgrade.txt</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 (to put the result into a text file in home)
 <br><br>
@@ -181,8 +170,7 @@ su to root then make this apt conf file with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="100">
 echo -e 'Package: systemd\nPin: origin ""\nPin-Priority: -100' > /etc/apt/preferences.d/systemd</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
@@ -190,8 +178,7 @@ You may also need to deny "upstart" (ubuntu's startup daemon) from installing as
 <form>
 <textarea name="T" id="cmd" rows="1" cols="100">
 echo -e '\nPackage: upstart\nPin: origin ""\nPin-Priority: -100' >> /etc/apt/preferences.d/systemd</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 then run a dist upgrade with the simulate option to check what will install - and aptitude should be used
@@ -215,8 +202,7 @@ The backports sources list entry looks like
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 deb http://ftp.debian.org/debian/ wheezy-backports main</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 (depending on the Debian stable code name)
 <br><br>
@@ -226,8 +212,7 @@ update apt cache and then install a package from backports with
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo apt-get -t wheezy-backports install <package></textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br><br>
@@ -242,8 +227,7 @@ search for available kernels with
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 apt-cache search linux-image </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 install the pae kernel
@@ -256,8 +240,7 @@ find its package name with
  <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 dpkg --list | grep linux</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
@@ -266,8 +249,7 @@ add the backports to sources with the line
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 deb http://ftp.debian.org/debian/ wheezy-backports main non-free contrib</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 update APT and search for available kernels with apt-cache search linux-image 
@@ -285,8 +267,7 @@ reinstall initramfs-tools from testing,
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo apt-get install -t testing initramfs-tools </textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
  -as without doing this a looping problem is caused with linux-image
 <br><br>
@@ -298,8 +279,7 @@ reboot and the new kernel will load automatically
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 apt-cache search linux-image</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -310,8 +290,7 @@ install in this order: gcc-4.8-base, gcc-4.8
 <textarea name="T" id="install" rows="2" cols="80">
 apt-get install linux-headers-3.16-amd64
 apt-get install linux-image-3.16-amd64</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -335,8 +314,7 @@ as root<br>
 <textarea name="T" id="cmd" rows="2" cols="80">
 cd /usr/lib/x86_64-linux-gnu
 ln -s libdvdnav.so.4.1.2 libdvdnavmini.so.4</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -347,8 +325,7 @@ ln -s libdvdnav.so.4.1.2 libdvdnavmini.so.4</textarea>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 sudo nano /etc/lightdm/lightdm.conf</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 change <span style="color:#076b00">user-session=lightdm-xsession</span> to <span style="color:#076b00">user-session=xfce</span>
 <br><br>
@@ -363,8 +340,7 @@ highlight this line here and middle mouse button in the terminal to paste it:
 <form>
 <textarea name="T" id="file" rows="1" cols="100">
  Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"</textarea>
-&nbsp;
-<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 then CTRL-X, y and Enter<br><br>
