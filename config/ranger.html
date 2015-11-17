@@ -393,11 +393,11 @@ map &#60;a-right>     history_go 1     #replaced L
 
 map g/ cd /
 
-map /  console search
+map /   console search
 map \]  console find
 map \[  console travel
 map \\  console mark
-map |  console filter
+map |   console filter
  
 alias filter     scout -iprt
 alias find       scout -aet
@@ -407,11 +407,11 @@ alias search     scout -rts
 alias travel     scout -aefikst
 
 map fe  edit
-map du shell -p du -ch -d 1 | sort -rh
-map dz shell -p du -ch -d 1 | sort -k 2b
+map du  shell -p du -ch -d 1 | sort -rh
+map dz  shell -p du -ch -d 1 | sort -k 2b
  
-map uu uncut
-map <C-n>     tab_new %d
+map uu   uncut
+map <C-n>  tab_new %d
 map <F5> reset          #refresh screen - easier than ctrl-r
 map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
@@ -472,9 +472,9 @@ map <F9>     chain move_parent -1; move_parent -1; move_parent -1; move_parent -
 
 map <F10>    chain move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1
 
-map ga cd /etc/apt
-map M chain tab_new; cd /media
-map zx toggle_option preview_images     #foggle inline preview/media info
+map ga  cd /etc/apt
+map M   chain tab_new; cd /media
+map zx  toggle_option preview_images     #foggle inline preview/media info
 map <F12> console :flat 1             #show files of sub-dir's, 1 level deep, all in main column
 map &#60;a-h> toggle_option show_hidden</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
@@ -487,13 +487,13 @@ map &#60;a-h> toggle_option show_hidden</textarea>
 
 ##### files ##########
 
-map fl less %f                 #view file with less. q to quit (ranger i doesn't show full file)
-map fm    console mkdir             #(space after) create dir
-map ft    console touch             #(space after) create file
-map f+    shell -s chmod +x %f                     #make a file executable
+map fl   less %f                 #view file with less. q to quit (ranger i doesn't show full file)
+map fm   console mkdir             #(space after) create dir
+map ft   console touch             #(space after) create file
+map f+   shell -s chmod +x %f                     #make a file executable
 map f=   console shell -s chmod 664 %%s                #chmod operations
-map fr    console rename
-map fb    bulkrename %s
+map fr   console rename
+map fb   bulkrename %s
 map fp   shell -f pyrenamer %d                            #GUI renamer, or another, `Thunar -B %d'
 map fg   console shell -p grep -nT ? %%s                      #grep (search) pattern in files
 map f?   console shell perl -pi -e 's/?/@/g' %%s                  #replace string in files
@@ -533,11 +533,11 @@ mv $1 "${2%.*}.${1##*.}"</textarea>
 <form><textarea name="T" id="file" rows="10" cols="120">
 ##### open file ##########
 
-map Op    shell -f leafpad %f                #open with leafpad
+map Op   shell -f leafpad %f                #open with leafpad
 map Ow   shell -f libreoffice4.4 %s        #will open any open doc format file, or other compatible, with libre office (change version)
-map On  shell -f rxvt -e nano %f        #open file forked in nano
-map Ol  shell -f rxvt -e less %f         #open forked to view
-map Ot shell -f rxvt -cd %d              #open current dir in new terminal
+map On   shell -f rxvt -e nano %f        #open file forked in nano
+map Ol   shell -f rxvt -e less %f         #open forked to view
+map Ot   shell -f rxvt -cd %d              #open current dir in new terminal
 map <F2> shell -f gnome-mplayer %s</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -548,29 +548,29 @@ map <F2> shell -f gnome-mplayer %s</textarea>
 <form><textarea name="T" id="file" rows="27" cols="150">
 ##### yanking ##########
 
-map y2    shell -s cp %s "`yad --title="Copy To" --file --directory --height=400 --width=500`"
-map d2    shell -s mv %s "`yad --title="Move To" --file --directory --height=400 --width=500`"
-map ys chain save_copy_buffer; shell less ~/.config/ranger/copy_buffer                    #saves copy buffer to file and then shows the file in pager
-map yb chain save_copy_buffer; shell less ~/.config/ranger/copy_buffer | xsel --clipboard     #copy buffer to clipbd
-map yp shell echo -n %d/%f | xsel --clipboard   #copy filename and path
-map yn shell echo -n %s | xsel --clipboard      #copy filenames
-map yd shell echo -n %d | xsel --clipboard      #copy directory name
-map pc shell -f rsync -ru %s %d/%f/                        #copy the selected files into highlighted dir
-map pm shell -f mv -u %s %d/%f                            #move the selected files into highlighted dir
-map pdc shell -f rsync -ru %c %d/%f/                         #copy buff'd into dir
-map pdm shell -f mv -u %c %d/%f                              #move buff'd into dir
-map ps shell -f rsync -rul %c %d                        #sync buffer'd files into curr dir  :links as links
-map pr shell -f rsync -ruL %c %d                      #sync buffer'd files into curr dir  :inc link-referred files
-map pds shell -f rsync -rul %c %d/%f/              #copy buff into h'd dir
-map pdm shell -f mv -u %c %d/%f                  #move buff into h'd dir
-map ytt shell -f rsync -rul %s %D                      #sync sel'd into dir on next tab  :links as links
-map yff shell -f rsync -rul %S %d                    #sync sel'd from dir on next tab  :links as links
-map ytr shell -f rsync -ruL %s %D                  #sync sel'd into dir on next tab  :inc link-referred files
-map yfr shell -f rsync -ruL %S %d                 #sync sel'd from dir on next tab  :inc link-referred files
-map dtt shell -f mv %s %D                            #move sel'd into dir on next tab
-map dff shell -f mv %S %d                             #move sel'd from dir on next tab
-map p\x shell mkdir moved; mv -t moved `xsel -b -o`           #remove files via list on clipbd (collected with yn)
-map p\c shell mkdir copied; cp -t copied `xsel -b -o`         #copy files via list (yn)</textarea>
+map y2   shell -s cp %s "`yad --title="Copy To" --file --directory --height=400 --width=500`"
+map d2   shell -s mv %s "`yad --title="Move To" --file --directory --height=400 --width=500`"
+map ys   chain save_copy_buffer; shell less ~/.config/ranger/copy_buffer                    #saves copy buffer to file and then shows the file in pager
+map yb   chain save_copy_buffer; shell less ~/.config/ranger/copy_buffer | xsel --clipboard     #copy buffer to clipbd
+map yp   shell echo -n %d/%f | xsel --clipboard   #copy filename and path
+map yn   shell echo -n %s | xsel --clipboard      #copy filenames
+map yd   shell echo -n %d | xsel --clipboard      #copy directory name
+map pc   shell -f rsync -ru %s %d/%f/                        #copy the selected files into highlighted dir
+map pm   shell -f mv -u %s %d/%f                            #move the selected files into highlighted dir
+map pdc  shell -f rsync -ru %c %d/%f/                         #copy buff'd into dir
+map pdm  shell -f mv -u %c %d/%f                              #move buff'd into dir
+map ps   shell -f rsync -rul %c %d                        #sync buffer'd files into curr dir  :links as links
+map pr   shell -f rsync -ruL %c %d                      #sync buffer'd files into curr dir  :inc link-referred files
+map pds  shell -f rsync -rul %c %d/%f/              #copy buff into h'd dir
+map pdm  shell -f mv -u %c %d/%f                  #move buff into h'd dir
+map ytt  shell -f rsync -rul %s %D                      #sync sel'd into dir on next tab  :links as links
+map yff  shell -f rsync -rul %S %d                    #sync sel'd from dir on next tab  :links as links
+map ytr  shell -f rsync -ruL %s %D                  #sync sel'd into dir on next tab  :inc link-referred files
+map yfr  shell -f rsync -ruL %S %d                 #sync sel'd from dir on next tab  :inc link-referred files
+map dtt  shell -f mv %s %D                            #move sel'd into dir on next tab
+map dff  shell -f mv %S %d                             #move sel'd from dir on next tab
+map p\x  shell mkdir moved; mv -t moved `xsel -b -o`           #remove files via list on clipbd (collected with yn)
+map p\c  shell mkdir copied; cp -t copied `xsel -b -o`         #copy files via list (yn)</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -581,15 +581,15 @@ map p\c shell mkdir copied; cp -t copied `xsel -b -o`         #copy files via li
 <form><textarea name="T" id="file" rows="13" cols="120">
 ##### Super-user ##########
 
-map Pm console shell -r mkdir 
-map Pt   console shell -r touch 
-map Pn console shell -r nano 
-map Pe   shell -r nano %f                    #edit file with nano
-map Pp    shell -f gksu leafpad %f             #open with leafpad
-map Pr console shell -r mv %%f               #(type new name after) rename file
-map P+   shell -rs chmod +x %f                           #make a file executable
-map Pw console shell -r chown -R $USER:$USER %%s            #change ownership of sel'd files
-map Ps shell -r rsync -u %c %d                #sync buffered to dir
+map Pm  console shell -r mkdir 
+map Pt  console shell -r touch 
+map Pn  console shell -r nano 
+map Pe  shell -r nano %f                    #edit file with nano
+map Pp  shell -f gksu leafpad %f             #open with leafpad
+map Pr  console shell -r mv %%f               #(type new name after) rename file
+map P+  shell -rs chmod +x %f                           #make a file executable
+map Pw  console shell -r chown -R $USER:$USER %%s            #change ownership of sel'd files
+map Ps  shell -r rsync -u %c %d                #sync buffered to dir
 map Pyt shell -r rsync -u %s %D                   #sync selected to next tab</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -601,13 +601,13 @@ map Pyt shell -r rsync -u %s %D                   #sync selected to next tab</te
 <form><textarea name="T" id="file" rows="10" cols="120">
 ##### delete ##########
 
-map &#60;S-DELETE> console delete
+map &#60;S-DELETE>  console delete
 map X    console delete
-map PX console shell -r rm %%s               #delete files with super-user priveleges
-map xX console shell -tf shred -uv %d/%s           #shred files
-map xx1 cd ~/.local/share/Trash/files
-map xx2 cd /media/FILES/.Trash-1000/files
-map xx3 cd /media/VIDEO/.Trash-1000/files</textarea>
+map PX   console shell -r rm %%s               #delete files with super-user priveleges
+map xX   console shell -tf shred -uv %d/%s           #shred files
+map xx1  cd ~/.local/share/Trash/files
+map xx2  cd /media/FILES/.Trash-1000/files
+map xx3  cd /media/VIDEO/.Trash-1000/files</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -618,12 +618,12 @@ map xx3 cd /media/VIDEO/.Trash-1000/files</textarea>
 <form><textarea name="T" id="file" rows="9" cols="80">
 ####### Edit config files ##########
 
-map .1 shell -f leafpad ~/.config/ranger/rc.conf
-map .2 shell -fr rxvt -e nano /etc/apt/sources.list
-map .3 shell -fr rxvt -e nano /etc/fstab
-map .4 shell -f leafpad ~/.config/openbox/rc.xml
-map .5 shell -f leafpad ~/.config/openbox/menu.xml
-map .6 shell nano ~/.config/openbox/autostart</textarea>
+map .1  shell -f leafpad ~/.config/ranger/rc.conf
+map .2  shell -fr rxvt -e nano /etc/apt/sources.list
+map .3  shell -fr rxvt -e nano /etc/fstab
+map .4  shell -f leafpad ~/.config/openbox/rc.xml
+map .5  shell -f leafpad ~/.config/openbox/menu.xml
+map .6  shell nano ~/.config/openbox/autostart</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -634,15 +634,15 @@ map .6 shell nano ~/.config/openbox/autostart</textarea>
 <form><textarea name="T" id="file" rows="12" cols="80">
 ##### cd to config dir's ##########
 
-map ';x cd ~/.xnviewmp
-map ';l cd ~/.local/share
-map ';u1 cd ~/.config/uzbl
-map ';u2 cd ~/.local/share/uzbl
-map ';o cd ~/.config/openbox
-map ';r cd ~/.config/ranger
-map ';s cd ~/QuickLink/Settings
-map ';ac cd ~/QuickLink/applications-config
-map ';au cd ~/QuickLink/applications-usr</textarea>
+map ';x   cd ~/.xnviewmp
+map ';l   cd ~/.local/share
+map ';u1  cd ~/.config/uzbl
+map ';u2  cd ~/.local/share/uzbl
+map ';o   cd ~/.config/openbox
+map ';r   cd ~/.config/ranger
+map ';s   cd ~/QuickLink/Settings
+map ';ac  cd ~/QuickLink/applications-config
+map ';au  cd ~/QuickLink/applications-usr</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -676,10 +676,10 @@ cp "$1" ~/backups/"$1"_$(date +"%y%m%d")</textarea>
 <form><textarea name="T" id="file" rows="7" cols="150">
 ##### symlinks ##########
 
-map ,ll shell ln -s %d/%f ~/Links/           #make a symlink to selected dir/file in ~/Links
-map ,ld shell ln -s %d/%f ~/Desktop/           #make a symlink to selected dir/file in ~/Desktop (i.e a desktop shortcut)
-map ,lL shell -s ln -s "`yad --title="Make a Symlink To" --file --height=400 --width=500`" %d            #make a symlink in current dir
-map ,lr shell -s ln -fsT "`yad --title="Re-link To" --file --height=400 --width=500`" %f         #change the target of a symlink</textarea>
+map ,ll  shell ln -s %d/%f ~/Links/           #make a symlink to selected dir/file in ~/Links
+map ,ld  shell ln -s %d/%f ~/Desktop/           #make a symlink to selected dir/file in ~/Desktop (i.e a desktop shortcut)
+map ,lL  shell -s ln -s "`yad --title="Make a Symlink To" --file --height=400 --width=500`" %d            #make a symlink in current dir
+map ,lr  shell -s ln -fsT "`yad --title="Re-link To" --file --height=400 --width=500`" %f         #change the target of a symlink</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -689,12 +689,12 @@ map ,lr shell -s ln -fsT "`yad --title="Re-link To" --file --height=400 --width=
 <form><textarea name="T" id="file" rows="9" cols="150">
 ##### directory ##########
 
-map ,ds shell -w rsync -a --update --progress %d/ "`yad --title='Sync with directory' --file --height=400 --width=500 --directory`"
+map ,ds  shell -w rsync -a --update --progress %d/ "`yad --title='Sync with directory' --file --height=400 --width=500 --directory`"
                 #sync contents of current dir with another dir, shows progress
-map ,dc shell -s find . -type d -exec mkdir -p -- ../tree_clone/{} \;             
+map ,dc  shell -s find . -type d -exec mkdir -p -- ../tree_clone/{} \;             
                         #clone the dir tree of current dir down -creates empty dir's in new dir 1 level up
-map ,do shell -rs chown -R $USER %f                 #change ownership of dir to user (recursively)
-map ,dx console shell -f find . -type d -maxdepth 1 -empty -delete       #remove empty directories in current dir</textarea>
+map ,do  shell -rs chown -R $USER %f                 #change ownership of dir to user (recursively)
+map ,dx  console shell -f find . -type d -maxdepth 1 -empty -delete       #remove empty directories in current dir</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -705,13 +705,13 @@ map ,dx console shell -f find . -type d -maxdepth 1 -empty -delete       #remove
 <form><textarea name="T" id="file" rows="11" cols="120">
 ##### archive ##########
 
-map ,a1 console shell zip -r ?.zip %%s
+map ,a1  console shell zip -r ?.zip %%s
                            #make zip archive from selected files, replace ? with archive name
-map ,a2 console shell -f 7z a -t7z ?.7z %%s
+map ,a2  console shell -f 7z a -t7z ?.7z %%s
                            #make 7z archive from selected
-map ,a3 console shell -f tar cvpf ?.tar %%s
+map ,a3  console shell -f tar cvpf ?.tar %%s
                            #make tar archive from selected
-map ,a4 console shell -f tar cvzpf ?.tgz %%s
+map ,a4  console shell -f tar cvzpf ?.tgz %%s
                            #make tar zip archive from selected</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -722,11 +722,11 @@ map ,a4 console shell -f tar cvzpf ?.tgz %%s
 <form><textarea name="T" id="file" rows="10" cols="150">
 ##### iso/dvd ##########
 
-map ,i1 chain shell gksu 'mount -o loop -t iso9660 %f /mnt/mounted'; cd /mnt/mounted     #mount iso - mkdir /mnt/mounted first!!
-map ,i2 shell -s gksu umount /mnt/mounted                                #unmount the mounted iso
-map ,i3 shell -ft growisofs -dvd-compat -Z /dev/dvd1=%f            #burn iso to dvd (`dvd1' etc is usb dvd writer, `dvd' is internal)
-map ,xx console shell -s mkfs -t vfat /dev/sdX                 #format a usb stick (repair it), change X
-map ,cdc console shell -ft gksu cdrdao copy		#copy audio cd, see my page cd copy
+map ,i1   chain shell gksu 'mount -o loop -t iso9660 %f /mnt/mounted'; cd /mnt/mounted     #mount iso - mkdir /mnt/mounted first!!
+map ,i2   shell -s gksu umount /mnt/mounted                                #unmount the mounted iso
+map ,i3   shell -ft growisofs -dvd-compat -Z /dev/dvd1=%f            #burn iso to dvd (`dvd1' etc is usb dvd writer, `dvd' is internal)
+map ,xx   console shell -s mkfs -t vfat /dev/sdX                 #format a usb stick (repair it), change X
+map ,cdc  console shell -ft gksu cdrdao copy		#copy audio cd, see my page cd copy
 map ,cdej console shell -s eject /dev/sr0              #eject laptop CDROM
 copymap ,cdej ,cd<F8></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
@@ -739,8 +739,8 @@ copymap ,cdej ,cd<F8></textarea>
 ##### source archives ##########
 
 map ,s1	console shell -ft ./configure
-map ,s2 shell -ft make
-map ,s3 shell -pw sudo make install</textarea>
+map ,s2  shell -ft make
+map ,s3  shell -pw sudo make install</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -751,12 +751,12 @@ map ,s3 shell -pw sudo make install</textarea>
 <form><textarea name="T" id="file" rows="9" cols="150">
 ##### image files ##########
 
-map fiv shell /usr/sbin/xnview %f                                #edit image with XnViewMP
-map fip1 console shell -ft google picasa create "" %%s            
+map fiv   shell /usr/sbin/xnview %f                                #edit image with XnViewMP
+map fip1  console shell -ft google picasa create "" %%s            
                 #googlecl command upload selected pics to new Picasa album -enter album name in "", use * to upload all files
-map fip2 console shell -ft google picasa post "" %%s                #upload to existing album
-map fip3 console shell -pw google picasa list-albums                #list albums
-map fipx console shell -ft google picasa delete ""                    #delete album -name ""</textarea>
+map fip2  console shell -ft google picasa post "" %%s                #upload to existing album
+map fip3  console shell -pw google picasa list-albums                #list albums
+map fipx  console shell -ft google picasa delete ""                    #delete album -name ""</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -767,15 +767,15 @@ map fipx console shell -ft google picasa delete ""                    #delete al
 <form><textarea name="T" id="file" rows="13" cols="150">
 ##### feh commands ##########
 
-map Fs shell ls | xarg ;feh -dFZ  -D4 -Sfilename             #start feh slideshow in dir of images, escape to quit
-map Fc shell feh -dFZ -D4 -Sfilename --start-at %f *      #start slideshow from current file
-map Fr shell feh -rdFZ -D4 -Sfilename %f                    #start slideshow from selected dir -recursive
+map Fs  shell ls | xarg ;feh -dFZ  -D4 -Sfilename             #start feh slideshow in dir of images, escape to quit
+map Fc  shell feh -dFZ -D4 -Sfilename --start-at %f *      #start slideshow from current file
+map Fr  shell feh -rdFZ -D4 -Sfilename %f                    #start slideshow from selected dir -recursive
 
 ###  Openbox! To set the desktop bg image and copy to autostart, use this: 
 ### (this method builds a collection - it copies the pic to a folder "~/wallpapers"... then the 'sed' command replaces a line in the autostart file, to look up the image you chose at startup -my line is no.7)
 ###  You could just do '11,12,13, or 14, Enter' in Ranger to set feh bg and use a line in autostart:  sh ~/.fehbg & (without making a collection)
 
-map Fb chain shell -f feh --bg-scale %f; shell cp %f ~/wallpapers; sed -i '7s/.*/feh --bg-scale ~\/wallpapers\/%f \&/' ~/.config/openbox/autostart
+map Fb  chain shell -f feh --bg-scale %f; shell cp %f ~/wallpapers; sed -i '7s/.*/feh --bg-scale ~\/wallpapers\/%f \&/' ~/.config/openbox/autostart
 </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -787,16 +787,16 @@ map Fb chain shell -f feh --bg-scale %f; shell cp %f ~/wallpapers; sed -i '7s/.*
 <form><textarea name="T" id="file" rows="13" cols="150">
 ##### mogrify commands ##########
 
-map fim1 shell -f mogrify -format jpg -quality 100 *.png      #convert png to jpeg -progress will be noted by green temp file moving down list
-map fim2 shell -f mkdir "../${PWD##*/}_a"; mogrify -path "../${PWD##*/}_a" -resize '1200x1200>' -quality 90 *.jpg *.JPG            
+map fim1  shell -f mogrify -format jpg -quality 100 *.png      #convert png to jpeg -progress will be noted by green temp file moving down list
+map fim2  shell -f mkdir "../${PWD##*/}_a"; mogrify -path "../${PWD##*/}_a" -resize '1200x1200>' -quality 90 *.jpg *.JPG            
                                     #reduce jpegs in current dir and place new images in dir_a 1 level up
-map fim3 console shell -f mogrify -resize '1200x1200>' -quality 90 *{.jpg|.JPG}
+map fim3  console shell -f mogrify -resize '1200x1200>' -quality 90 *{.jpg|.JPG}
                                                         #reduce jpegs in current dir, OVERWRITE files, 1200pix, 90%
-map fim4 console shell -f find . -type f -iname "*.jpg" -print0 | xargs -0 mogrify -resize '1024x1024>' -quality 84 {} \;
+map fim4  console shell -f find . -type f -iname "*.jpg" -print0 | xargs -0 mogrify -resize '1024x1024>' -quality 84 {} \;
                                                         #reduce jpegs RECURSIVELY, start from current dir, OVERWRITE files, 1024pix, 84%
-map fim5 shell -f sh ~/scripts/image-resize.sh %f           #see image processing page for these 2 scripts
-map fim6 shell -f sh ~/scripts/image-convert.sh %f
-map fixx shell -f jhead -di %s                           #remove iptc keywords from selected images</textarea>
+map fim5  shell -f sh ~/scripts/image-resize.sh %f           #see image processing page for these 2 scripts
+map fim6  shell -f sh ~/scripts/image-convert.sh %f
+map fixx  shell -f jhead -di %s                           #remove iptc keywords from selected images</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -808,39 +808,39 @@ map fixx shell -f jhead -di %s                           #remove iptc keywords f
 
 ### To adjust EXIF date use - or +, then yy:mm:dd, e.g. +=:04:05 0 to add on 4 months and 5 days and no time change; or -=0 03:20:15 to subtract 3 hrs, 20min, 15sec and no date change
 
-map Ed1 console chain shell -p exiftool -m -overwrite_original -alldates-+=':: 0' %%s
-map Ed2 console shell jhead -ds:: %%s 
+map Ed1  console chain shell -p exiftool -m -overwrite_original -alldates-+=':: 0' %%s
+map Ed2  console shell jhead -ds:: %%s 
             #yyyy:mm:dd or yyyy:mm or yyyy / use -dt to set date-time i.e. -dtyyyy:mm:dd-hh:mm:ss  (no space after -ds or -dt)
-map Ed3 console shell exiftool -overwrite_original "-filemodifydate>alldates" %%s 
+map Ed3  console shell exiftool -overwrite_original "-filemodifydate>alldates" %%s 
             #this creates exif dates on files that have no EXIF data (e.g. stills cut from video)
 
 ###add keywords or rating:
-map Es shell -f exiftool -m -overwrite_original -xmp:subject+="`yad --entry --button='Write keywords':0 --undecorated --width=400 --height=50`" %s
-map Er console shell -f exiftool -m -overwrite_original -xmp:rating=2 %%s
-map Eb1 shell -f exiftool -m -overwrite_original -xmp:label=red %%s           #add color label
-map Eb2 shell -f exiftool -m -overwrite_original -xmp:label=yellow %%s
-map Eb3 shell -f exiftool -m -overwrite_original -xmp:label=green %%s
-map Eb4 shell -f exiftool -m -overwrite_original -xmp:label=blue %%s
-map Eb5 shell -f exiftool -m -overwrite_original -xmp:label=purple %%s
+map Es   shell -f exiftool -m -overwrite_original -xmp:subject+="`yad --entry --button='Write keywords':0 --undecorated --width=400 --height=50`" %s
+map Er   console shell -f exiftool -m -overwrite_original -xmp:rating=2 %%s
+map Eb1  shell -f exiftool -m -overwrite_original -xmp:label=red %%s           #add color label
+map Eb2  shell -f exiftool -m -overwrite_original -xmp:label=yellow %%s
+map Eb3  shell -f exiftool -m -overwrite_original -xmp:label=green %%s
+map Eb4  shell -f exiftool -m -overwrite_original -xmp:label=blue %%s
+map Eb5  shell -f exiftool -m -overwrite_original -xmp:label=purple %%s
  
 ###add comment (crude! it replaces existing comment and blank or cancel also replaces!  I need to work on it)
-map Ec shell -f exiftool -m -overwrite_original -comment="`yad --form --button='Write comment':0 --field=:TXT --undecorated --width=400 --height=200`" %s
+map Ec  shell -f exiftool -m -overwrite_original -comment="`yad --form --button='Write comment':0 --field=:TXT --undecorated --width=400 --height=200`" %s
  
 ###remove keywords and rating:
-map Ex1 console shell -f exiftool -m -overwrite_original -xmp:subject= %%s      #remove keywords
-map Ex2 console shell -f exiftool -m -overwrite_original -xmp:rating= %%s      #remove rating
-map Ex2 console shell -f exiftool -m -overwrite_original -xmp:label= %%s       #remove label
+map Ex1  console shell -f exiftool -m -overwrite_original -xmp:subject= %%s      #remove keywords
+map Ex2  console shell -f exiftool -m -overwrite_original -xmp:rating= %%s      #remove rating
+map Ex2  console shell -f exiftool -m -overwrite_original -xmp:label= %%s       #remove label
  
 ###subject/rating/label from list of file names on the clipboard
-map Els console shell -f xsel -b -o | xargs exiftool -m -overwrite_original -xmp:subject+="`yad --entry --button='Write keywords':0 --undecorated --width=400 --height=50`"
-map Elr console shell -f xsel -b -o | xargs exiftool -m -overwrite_original -xmp:rating=2
-map Elb console shell -f xsel -b -o | xargs exiftool -m -overwrite_original -xmp:label=`yad --list --undecorated --width=100 --height=200 --column red yellow green blue purple --separator=''`
+map Els  console shell -f xsel -b -o | xargs exiftool -m -overwrite_original -xmp:subject+="`yad --entry --button='Write keywords':0 --undecorated --width=400 --height=50`"
+map Elr  console shell -f xsel -b -o | xargs exiftool -m -overwrite_original -xmp:rating=2
+map Elb  console shell -f xsel -b -o | xargs exiftool -m -overwrite_original -xmp:label=`yad --list --undecorated --width=100 --height=200 --column red yellow green blue purple --separator=''`
  
 #sort image files into folders by date (this is a very handy tool to use after an import of files from SD card)
-map Ef console shell -fs sh ~/scripts/exif-sort
+map Ef  console shell -fs sh ~/scripts/exif-sort
 
 #sort files into folders by modified date -replace * for $@ to hit only selected files
-map fD console shell -fs sh ~/scripts/sort-files</textarea>
+map fD  console shell -fs sh ~/scripts/sort-files</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -865,17 +865,17 @@ for i in  *; do DAT=$(date -r $i +%y-%m-%d); mkdir -p $DAT; mv $i $DAT ; done</t
 <form><textarea name="T" id="file" rows="15" cols="120">
 ##### video files ##########
 
-map fvg shell -f gnome-mplayer %s
-map fvv shell -f vlc %s
-#map fvf..	{my ffmpeg commands...}
+map fvg  shell -f gnome-mplayer %s
+map fvv  shell -f vlc %s
+
 
 ##### ffmpeg commands ##########
 
-map fvf1 console shell -ft ffmpeg -i %f -vn -acodec libvorbis -ac 2 -ab 256k -ar 44100 %f.ogg     #extract audio from video (ogg)
-map fvf2 console shell -ft ffmpeg -i %f -vn -ar 44100 -c:a 2 -q:a 0 -f mp3 %f.mp3                            # (mp3)
-map fvf3 console shell -f ffmpeg -i %f -target pal-dvd out.vob
-map fvf4 console shell -ft flac-ogg %%s        #convert flac to ogg
-map fvf5 console shell -ft flac-mp3 %%s        #convert flac to mp3</textarea>
+map fvf1  console shell -ft ffmpeg -i %f -vn -acodec libvorbis -ac 2 -ab 256k -ar 44100 %f.ogg     #extract audio from video (ogg)
+map fvf2  console shell -ft ffmpeg -i %f -vn -ar 44100 -c:a 2 -q:a 0 -f mp3 %f.mp3                            # (mp3)
+map fvf3  console shell -f ffmpeg -i %f -target pal-dvd out.vob
+map fvf4  console shell -ft flac-ogg %%s        #convert flac to ogg
+map fvf5  console shell -ft flac-mp3 %%s        #convert flac to mp3</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -905,11 +905,11 @@ done</textarea>
 <form><textarea name="T" id="file" rows="8" cols="120">
 ##### audio files ##########
 
-map fae shell -f easytag %d
-map faa shell -f audacity %s
-map fa1 shell -ft oggenc %s -q 7     #convert flac or other raw format to ogg
-map fa2 console shell -ft find . -type f -name "*flac" -exec oggenc -q 7 {} \;   #convert all flac to ogg
-map fa3 shell -ft ogg2mp3 -B 256 --vbr-new -V 0 *.ogg %s        #convert ogg to mp3 (how horrible) need vorbis-tools</textarea>
+map fae  shell -f easytag %d
+map faa  shell -f audacity %s
+map fa1  shell -ft oggenc %s -q 7     #convert flac or other raw format to ogg
+map fa2  console shell -ft find . -type f -name "*flac" -exec oggenc -q 7 {} \;   #convert all flac to ogg
+map fa3  shell -ft ogg2mp3 -B 256 --vbr-new -V 0 *.ogg %s        #convert ogg to mp3 (how horrible) need vorbis-tools</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -921,22 +921,22 @@ map fa3 shell -ft ogg2mp3 -B 256 --vbr-new -V 0 *.ogg %s        #convert ogg to 
 <form><textarea name="T" id="file" rows="19" cols="120">
 ##### mounting ##########
 
-map ,mm console shell -s pmount /dev/sdb1         
+map ,mm  console shell -s pmount /dev/sdb1         
                         #use pmount to mount devices if sys does not auto-mount
-map ,uu shell -s pumount %f
-map ,m1 shell -s pmount /dev/sdc1
-map ,m2 shell -s pmount /dev/sdc2
-map ,m5 shell -s pmount /dev/mmcblk0p1                  #mount SD card
-map ,m6 console shell -r mount /dev/sda4 %%f
-map ,u1 shell -s pumount /dev/sdc1
-map ,u2 shell -s pumount /dev/sdc2
-map ,u5 shell -s pumount /dev/mmcblk0p1
-map ,u6 shell -r umount %f
+map ,uu  shell -s pumount %f
+map ,m1  shell -s pmount /dev/sdc1
+map ,m2  shell -s pmount /dev/sdc2
+map ,m5  shell -s pmount /dev/mmcblk0p1                  #mount SD card
+map ,m6  console shell -r mount /dev/sda4 %%f
+map ,u1  shell -s pumount /dev/sdc1
+map ,u2  shell -s pumount /dev/sdc2
+map ,u5  shell -s pumount /dev/mmcblk0p1
+map ,u6  shell -r umount %f
 map ej	shell -s eject %s             #eject selected external volumes (safely remove)
 copymap ej <F8>
-map ,d1 shell -pw lsblk       #list partitions +mounts
-map ,d2 shell -pwr blkid            #list partitions with UUID
-map ,d0 shell -pwr fdisk -l       #list partitions
+map ,d1  shell -pw lsblk       #list partitions +mounts
+map ,d2  shell -pwr blkid            #list partitions with UUID
+map ,d0  shell -pwr fdisk -l       #list partitions
 </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -951,12 +951,12 @@ There's a pmount plugin <a href="https://github.com/Vifon/ranger/commit/6e8f001c
 <form><textarea name="T" id="file" rows="9" cols="80">
 ##### nfs ##########
 
-map ,nr shell -ftr /etc/init.d/nfs-kernel-server restart
-map ,nm shell -r mount 10.0.0.1:/ ~/Shared
-map ,n1 console shell -r mount 10.0.0.1:/home/? ~/Shared
-map ,n2 shell -r mount 10.0.0.1:/media/D1 ~/Shared
-map ,n3 shell -r mount 10.0.0.1:/media/D2 ~/Shared
-map ,nu shell -r umount %f</textarea>
+map ,nr  shell -ftr /etc/init.d/nfs-kernel-server restart
+map ,nm  shell -r mount 10.0.0.1:/ ~/Shared
+map ,n1  console shell -r mount 10.0.0.1:/home/? ~/Shared
+map ,n2  shell -r mount 10.0.0.1:/media/D1 ~/Shared
+map ,n3  shell -r mount 10.0.0.1:/media/D2 ~/Shared
+map ,nu  shell -r umount %f</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -967,13 +967,13 @@ map ,nu shell -r umount %f</textarea>
 <form><textarea name="T" id="file" rows="10" cols="100">
 ##### Github-jekyll ##########
 
-map Js shell -ft jekyll serve --watch --baseurl 
-map Jc console shell -ft git commit -a -m "updating pages"
-map Ja console chain shell -ft git add . ; shell git commit -a -m "updating pages"
-map Jf console shell -ft git add %%s
-map Jp chain shell git config --global credential.helper cache; shell -ft git push
-map J1 shell -p git status
-map J2 shell -p git log --name-only</textarea>
+map Js  shell -ft jekyll serve --watch --baseurl 
+map Jc  console shell -ft git commit -a -m "updating pages"
+map Ja  console chain shell -ft git add . ; shell git commit -a -m "updating pages"
+map Jf  console shell -ft git add %%s
+map Jp  chain shell git config --global credential.helper cache; shell -ft git push
+map J1  shell -p git status
+map J2  shell -p git log --name-only</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -984,14 +984,14 @@ map J2 shell -p git log --name-only</textarea>
 <form><textarea name="T" id="file" rows="11" cols="150">
 ##### bashburn ##########
 
-map ,z1 shell ln -s %d/%f ~/Projects/bashburn/burn/           #make a symlink to selected dir/file in bashburn dir
-map ,z2 shell ln -s %d/* ~/Projects/bashburn/burn/  	 	#make a symlinks to all files/dirs (%s doesn't work with ln command)
-map ,z2 cd /tmp/burn                                    #cd to the bashburn temp dir
-map ,z3 console shell -r sh ~/scripts/bashburn-links ?      
+map ,z1  shell ln -s %d/%f ~/Projects/bashburn/burn/           #make a symlink to selected dir/file in bashburn dir
+map ,z2  shell ln -s %d/* ~/Projects/bashburn/burn/  	 	#make a symlinks to all files/dirs (%s doesn't work with ln command)
+map ,z2  cd /tmp/burn                                    #cd to the bashburn temp dir
+map ,z3  console shell -r sh ~/scripts/bashburn-links ?      
             #move links in bashburn temp to a session dir (replace ? with a dir name)  
-map ,zX console shell rm -r ~/Projects/bashburn/burn/*           #delete contents from bashburn temp
-map ,z4 cd ~/Projects/bashburn                    #cd to the bashburn sessions dir (not present by default)
-map ,z5 shell -r cp %s ~/Projects/bashburn/burn/             #add links from a session to bashburn tmp dir</textarea>
+map ,zX  console shell rm -r ~/Projects/bashburn/burn/*           #delete contents from bashburn temp
+map ,z4  cd ~/Projects/bashburn                    #cd to the bashburn sessions dir (not present by default)
+map ,z5  shell -r cp %s ~/Projects/bashburn/burn/             #add links from a session to bashburn tmp dir</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -1016,10 +1016,10 @@ sudo mv ~/Projects/bashburn/burn/* ~/Projects/bashburn/"$1"/
 ##### encrypt ##########
 
 #if not encrypting to default recipient (set in gpg config file) must add -r name or email
-map Ge shell -ft gpg2 -es %f
-map Gd shell -ft gpg2 -d %f
-map Gce shell -ft xsel -b -o | gpg2 -es | xsel --clipboard
-map Gcd shell -ft xsel -b -o | gpg2 -d | xsel --clipboard</textarea>
+map Ge   shell -ft gpg2 -es %f
+map Gd   shell -ft gpg2 -d %f
+map Gce  shell -ft xsel -b -o | gpg2 -es | xsel --clipboard
+map Gcd  shell -ft xsel -b -o | gpg2 -d | xsel --clipboard</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -1044,59 +1044,59 @@ You might want to have these printed on a sheet because some commands are too lo
 map Rr1 console shell -fs rename 's/?/@/g' %%s         
 #replace string - ?=old @=new, \ looks in extension ie 's/\?/\@/',  mode: file-?ame.ext > file-@ame.ext
 
-map Rr2 console shell find . -depth -name "* *" -execdir prename -n 'y/?/@/' {} +  
+map Rr2  console shell find . -depth -name "* *" -execdir prename -n 'y/?/@/' {} +  
                 #replace recurs - ?=old @=new
 
-map Rs1 console shell -fs rename 's/ /_/g' %s    
+map Rs1  console shell -fs rename 's/ /_/g' %s    
                 # replace spaces with _ in selected file names
 
-map Rs2 console shell -fs find . -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;     
+map Rs2  console shell -fs find . -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;     
                  # replace spaces with _ recursively from current location  
 
-map Ru1 shell rename 'y/a-z/A-Z/' %%s                #change lower case letters to upper case
+map Ru1  shell rename 'y/a-z/A-Z/' %%s                #change lower case letters to upper case
  
-map Ru2 shell rename 'y/A-Z/a-z/' %%s                 #change upper case letters to lower case
+map Ru2  shell rename 'y/A-Z/a-z/' %%s                 #change upper case letters to lower case
 
 #prepending
-map Rp1 console shell -fs rename 's/^/P/' %%s		
+map Rp1  console shell -fs rename 's/^/P/' %%s		
                   #Prepend to file names -change P, mode: file-name.ext > Pfile-name.ext
 
-map Rp2 console shell -fs i=0; for file in %%s; do mv "$file" $(printf "%0.2d$file" $i); i=$((i+1)); done		
+map Rp2  console shell -fs i=0; for file in %%s; do mv "$file" $(printf "%0.2d$file" $i); i=$((i+1)); done		
                   #prepend numbering: 0=start from, 2=digits, +1=step, mode: file-name1.ext > 00file-name1.ext file-name2.ext > 01file-name2.ext
 
 #appending
-map Ra1 console shell -fs rename 's/\.(.*)/A.$1/' %%s
+map Ra1  console shell -fs rename 's/\.(.*)/A.$1/' %%s
                   #Append to file names inside the ext -change A, mode: file-name.ext > file-nameA.ext
 
-map Ra2 console shell -fs rename 's/$/A/' %%s	
+map Ra2  console shell -fs rename 's/$/A/' %%s	
                   #Append to file names without ext, or after ext -change A, mode: file-name > file-nameA
 
-map Ra3 shell -fs sh ~/scripts/append-date                   
+map Ra3  shell -fs sh ~/scripts/append-date                   
                   #append modified date to all file names in dir (script below), mode: file-name.ext > file-name_130825-1520.ext  
 
-map Ra4 console shell -fs i=0; for file in %%s; do mv "$file" $(printf "${file%.*}_%0.2d.${file##*.}" $i); i=$((i+1)); done		
+map Ra4  console shell -fs i=0; for file in %%s; do mv "$file" $(printf "${file%.*}_%0.2d.${file##*.}" $i); i=$((i+1)); done		
                   #append numbering: i=0 start from, 2=digits, +1=step, mode: file-name.ext > file-name_00.ext, file-name_01.ext
 
 #exif date
-map Re1 shell -fs sh ~/scripts/exif-date-prepend	
+map Re1  shell -fs sh ~/scripts/exif-date-prepend	
                   #Prepend exif date to file name  - need exiftool, mode: file-name.ext > 120806-1134_file-name.ext
 
-map Re2 shell -fs ~/scripts/exif-date-append
+map Re2  shell -fs ~/scripts/exif-date-append
                   #Append exif date to file names inside ext, mode: file-name.ext > file-name_120806-1134.ext
 
-map Re3 shell -fs sh ~/scripts/exifdate-name %%s       
+map Re3  shell -fs sh ~/scripts/exifdate-name %%s       
                 #Rename files from exif date, mode: DSC_4322.JPG > 150812-163544.JPG
 
 #sequential numbering
-map Rn console shell -fs i=0; for file in %%s; do mv "$file" $(printf "NAME_%0.3d.${file##*.}" $i); i=$((i+1)); done		
+map Rn  console shell -fs i=0; for file in %%s; do mv "$file" $(printf "NAME_%0.3d.${file##*.}" $i); i=$((i+1)); done		
                   #sequential numbering: i=0 =start from, 3 =digits, +1 =step, mode: file-name.ext > new-name_000.ext, new-name_001.ext
                   # WARNING: if numbering digits are not correct (e.g. only 1 digit for 12 files) some files will be LOST (overwritten with others)!
 
 #cutting characters
-map Rc1 console shell -fs for file in %%s; do mv "$file" "`echo $file | cut -c2-`"; done		
+map Rc1  console shell -fs for file in %%s; do mv "$file" "`echo $file | cut -c2-`"; done		
                   #cut until char 2 of selected file names (ie cut one char only) -change 2,  mode: file-name.ext > ile-name.ext
 
-map Rc2 console shell -fs for file in *; do mv "$file" "$(echo $file | sed -e 's/\(.*\)[0-9a-zA-Z]\{2\}\.\([^.]*\)/\1.\2/')"; done 			
+map Rc2  console shell -fs for file in *; do mv "$file" "$(echo $file | sed -e 's/\(.*\)[0-9a-zA-Z]\{2\}\.\([^.]*\)/\1.\2/')"; done 			
                   #cut any characters from back of selected file names -change {2,  mode: file-name.ext > file-na.ext</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
