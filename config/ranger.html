@@ -1035,7 +1035,7 @@ Here's my complete Ranger renaming tool that just might take care of all your ne
 You might want to have these printed on a sheet because some commands are too long and a #comment after it disables ability to edit the line when shown in console.  You should also run some tests on dummy files - don't assume that they all work perfectly!!!
 <br><br>
 
-<form><textarea name="T" id="file" rows="62" cols="155">
+<form><textarea name="T" id="file" rows="64" cols="155">
 ###################################
 ##### batch renaming ##########
 
@@ -1108,7 +1108,8 @@ script for append file modified date (Ra3)
 for file in $@; do mv "$file" "${file%.*}_$( date -r "$file" +%y%m%d-%H%M ).${file##*.}"; done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-note the use of the <b>parameter $@</b> which will hit all the files passed to bash script, not all the files in dir
+<br>
+note the use of the parameter <b>$@</b> which will hit all the files passed to bash script, not all the files in dir
 <br><br><br>
 
 script for image date prepend (Re1)
@@ -1142,11 +1143,11 @@ One problem is, however, with so many key-bindings, is the lack of sort-by-key i
 
 
 <h2 id="5" class="tag">Notes on mapping keys</h2>
-<div class="bullet"><ul><li> `<b>console</b>` is used to run ranger specific commands where typing input is necessary, such as pattern or new file name </li>
-<li>`<b>console shell</b>` is used to run bash commands, where typing is needed (can use ranger macros and the shell flags)</li>
-<li>`<b>chain</b>` allows multiple commands to be run consecutively, each separated by `;`</li>
-<li>without `console` a key-mapped command will execute immediately, without needing confirmation (in some cases it could be dangerous!)</li>
-<li>`<b>%s</b>`in the mapping expands to the file names in the console, so to avoid sending a continuous line of file names to the shell, which it can't use, we need to use `%%s`  which remains "%s" on the console, and then shell can act on each file</li>
+<div class="bullet"><ul><li> <b>console</b> is used when typing input is necessary, or the mapped command can be altered, such as a pattern or new file name </li>
+<li><b>shell</b> must be used in order to run bash commands, and <b>console shell</b> where typing is needed (can use ranger macros and the shell flags)</li>
+<li><b>chain</b> allows multiple commands to be run consecutively, each separated by `;`</li>
+<li>without using 'console' a key-mapped command will execute immediately, without needing confirmation (in some cases it could be dangerous!)</li>
+<li>using <b>%s</b> in the mapping may not be a good idea in some cases, i.e. when the console is opened before executing, because it will expand to all the selected file names, and that would 1. render the console full and impossible to type in, and 2. send utter garbage to a shell command - so we need to use <b>%%s</b>  which remains "%s" on the console, and shell commands can act on every file</li>
 </ul></div>
 
 <br>
