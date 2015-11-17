@@ -68,13 +68,13 @@ I was looking for a tidy way to navigate directories in a bash shell, so that I 
 <td><a href="{{site.baseurl}}/zimages/ranger-03-video-media-info.jpeg"><img src="{{site.baseurl}}/zimages/ranger-03-video-media-info-sm.jpeg" width="320" height="200" alt="ranger with video info"></a></td>
 <td>&nbsp;<a href="{{site.baseurl}}/zimages/ranger-04-audio-media-info.jpeg"><img src="{{site.baseurl}}/zimages/ranger-04-audio-media-info-sm.jpeg" width="320" height="200" alt="ranger with audio file info"></a></td>
 <td>&nbsp;<a href="{{site.baseurl}}/zimages/ranger-06-archive-pager.jpeg"><img src="{{site.baseurl}}/zimages/ranger-06-archive-pager-sm.jpeg" width="320" height="200" alt="ranger with archive content"></a></td>
-<td>&nbsp;<a href="{{site.baseurl}}/zimages/ranger-09-vcs.jpeg"><img src="{{site.baseurl}}/zimages/ranger-09-vcs-sm.jpeg" width="320" height="200" alt="ranger with audio file info"></a></td>
+<td>&nbsp;<a href="{{site.baseurl}}/zimages/ranger-09-vcs.jpeg"><img src="{{site.baseurl}}/zimages/ranger-09-vcs-sm.jpeg" width="320" height="200" alt="ranger with version control turned on for github repo"></a></td>
 </tr>
 <tr>
 <td width="50" align="center" valign="top">media info shown for a video file</td>
 <td width="50" align="center" valign="top">media info shown for an audio file</td>
 <td width="50" align="center" valign="top">content shown for an archive</td>
-<td width="50" align="center" valign="top">version control turned on for github repo</td>
+<td width="50" align="center" valign="top">version control aware for github repo</td>
 </tr>
 <tr><td></td><td></td><td></td></tr>
 </table>
@@ -263,7 +263,11 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>p p   </td><td>paste</td></tr>
 
+<tr><td>p P   </td><td>paste (add to queue)</td></tr>
+
 <tr><td>p o     </td><td>paste with over-write</td></tr>
+
+<tr><td>p O     </td><td>paste with over-write (add to queue)</td></tr>
 
 <tr><td>u d      </td><td>clears copy/cut buffer, also uy (<b>I change this to uu as it seems faster</b>)</td></tr>
 
@@ -285,6 +289,8 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>r 1     </td><td>unpacks selected archive (need to install <b>atool</b>) -actually hits the 1st option with rifle (you can just type 1 Enter)</td></tr>
 
+<tr><td>11,12,13,14 Enter    </td><td>(on image file) set image as desktop background with feh (11=scale, 12=tile, 13-center, 14=fill)</td></tr>
+
 <tr><td>+ / -   </td><td>chmod commands</td></tr>
 
 <tr><td>{octal no} =  </td><td>change permissions, e.g. 744 =, set permissions to -rwxr--r--</td></tr></table>
@@ -305,13 +311,18 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>T                     </td><td>remove any tags of selected files</td></tr>
 
-<tr><td>"{x}                  </td><td>custom tag </td></tr></table>
+<tr><td>"{x}                  </td><td>custom tag </td></tr>
+</table>
 
 <br>
 <h3>operation</h3>
 <table width="900"><tr><td style="width: 140px;">Ctrl-R               </td><td>reload</td></tr>
 
-<tr><td>Ctrl-H, z h        </td><td>toggle hidden files</td></tr>
+<tr><td>Ctrl-h, z h        </td><td>toggle hidden files</td></tr>
+
+<tr><td>Ctrl-c        </td><td>cancel an operation</td></tr>
+
+<tr><td>Ctrl-s        </td><td>freeze ranger! Ctrl-c to continue</td></tr>
 
 <tr><td>:flat 1    </td><td>puts all files of sub-dir's (1 level deep) in the main column </td></tr>
 
@@ -332,8 +343,7 @@ And that's just the basics!  There are endless possibilities with Ranger because
 <tr><td>W                     </td><td>message log</td></tr>
 
 <tr><td>w                     </td><td>job queue</td></tr>
-
-<tr><td>11,12,13,14 Enter    </td><td>(on image file) set image as desktop background with feh (11=scale, 12=tile, 13-center, 14=fill)</td></tr></table>
+</table>
 <br><br>
 
 <h3>Macros used in console and shell</h3>
@@ -459,26 +469,23 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 
 
 <h3 id="fi" class="tag">moving around</h3>
-<form><textarea name="T" id="file" rows="25" cols="120">
+<form><textarea name="T" id="file" rows="17" cols="120">
 ################## My keyinds ######################
 
 map &#60;a-PAGEDOWN> move down=0.5   pages=True
 map &#60;a-PAGEUP>   move up=0.5   pages=True
    
-     #move up/down parent dir by 5 -a messy hack as `move_parent up=20` dunna work! nonetheless, this is qt useful for navigation
-map {	 chain move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1
-map }	 chain move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1
-
-     #move up/down parent dir by 20 -you might want to scrub the Midnight Commander F keys mapping in rc.conf
-map <F9>     chain move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1; move_parent -1
-
-map <F10>    chain move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1; move_parent 1
+     #move up/down parent dir by 5 or 20, this is v useful for navigation
+map {	  move_parent n=-5
+map }	  move_parent n=5
+map <F9>  move_parent n=-20
+map <F10> move_parent n=20
 
 map ga  cd /etc/apt
 map M   chain tab_new; cd /media
 map zx  toggle_option preview_images     #foggle inline preview/media info
 map <F12> console :flat 1             #show files of sub-dir's, 1 level deep, all in main column
-map &#60;a-h> toggle_option show_hidden</textarea>
+map &#60;F2> toggle_option show_hidden</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -500,7 +507,7 @@ map fp   shell -f pyrenamer %d                            #GUI renamer, or anoth
 map fg   console shell -p grep -nT ? %%s                      #grep (search) pattern in files
 map f?   console shell perl -pi -e 's/?/@/g' %%s                  #replace string in files
 map fc   shell -f meld %s 	                                           #compare two files in meld
-map ff   console shell find . -name "*?*" -type f -print | less       #find files and print paths to pager
+map ff   console shell -p find . -name "*?*" -type f -print            #find files and print paths to pager
 map f\   shell -f catfish --path=%d                                        #find files with catfish
 map fx   shell -f regexxer %d                                            #run string replace tool
 map f1   console shell -s for file in %%s ;do cp "$file" "$file"_1 ;done           #duplicate selected files adding _1
@@ -540,7 +547,7 @@ map Ow   shell -f libreoffice4.4 %s        #will open any open doc format file, 
 map On   shell -f rxvt -e nano %f        #open file forked in nano
 map Ol   shell -f rxvt -e less %f         #open forked to view
 map Ot   shell -f rxvt -cd %d              #open current dir in new terminal
-map <F2> shell -f gnome-mplayer %s</textarea>
+map &#60;a-v> shell -f gnome-mplayer %s</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
