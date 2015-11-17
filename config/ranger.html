@@ -158,9 +158,10 @@ To get started, two commands needed..
 <li>file transfer progress bar</li>
 <li>file permissions easily changed on selected files by typing an octal number followed by '='</li>
 <li>almost limitless key mapping for easy commands in current dir, first key displays choices, second (or third..) key executes command or brings up console withwhich to modify the command, such as for renaming, replacing, or confirming with Enter</li>
-<li>can run ranger python commands in "console" or normal shell commands (while using ranger's macros which can insert file name or path into the shell command)</li>
+<li>run native ranger commands in "console" or normal shell commands (though not all) while using ranger's macros which can insert file name or path into the commands</li>
 <li>press Up in the console to cycle the commands history</li>
 <li>supports multple tabs and transferring files to next tab is also possible</li>
+<li>supports version control systems, for any specific dir, showing up-to-date with remote or modified status of files</li>
 </ul></div>
 <br>
 And that's just the basics!  There are endless possibilities with Ranger because it incorporates the bash shell.
@@ -266,9 +267,11 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>c w    </td><td>rename/bulk rename (<b>I make this fr</b> -see below)</td></tr>
 
-<tr><td>A			</td><td>edit name (append)</td></tr>
+<tr><td>A			</td><td>edit name, cursor at end</td></tr>
 
-<tr><td>I			</td><td>edit name (prepend)</td></tr>
+<tr><td>I			</td><td>edit name, cursor at front</td></tr>
+
+<tr><td>a			</td><td>edit name, cursor inside extension</td></tr>
 
 <tr><td>E			</td><td>edit file with bash editor (<b>I change this to fe</b> - there is F4 as well - see how to set nano as editor below)</td></tr>
 
@@ -480,7 +483,7 @@ map &#60;a-h> toggle_option show_hidden</textarea>
 <br><br>
 
 <h3 id="fi" class="tag">map f for files</h3>
-<form><textarea name="T" id="file" rows="21" cols="120">
+<form><textarea name="T" id="file" rows="22" cols="120">
 
 ##### files ##########
 
@@ -500,16 +503,27 @@ map f\   shell -f catfish --path=%d                                        #find
 map fx   shell -f regexxer %d                                            #run string replace tool
 map f1   console shell -s for file in %%s ;do cp "$file" "$file"_1 ;done           #duplicate selected files adding _1
 map f2   console shell -s sh ~/scripts/duplicate %%s                         #duplicate selected files infix _1
+map f3   console shell -s rename-with-selected %f %s                  #rename highlighted file with selected file's name
 map fW   console shell touch tmpfile; mv tmpfile %%f                        #wipe a file clean (overwrite with blank)</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
+<br><br>
+
 f2 script, duplicates file, puts suffix inside the file extension:
 <form><textarea name="T" id="file" rows="4" cols="80">
 #!/bin/bash
 for f in $@; do  cp "$f" "${f/\.*/_1\.${f##*.}}" ;done
               
 #            (can change _1 to date-time etc)</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+f3 script, to rename the highlighted file with the selected file's name, keeping original extension
+
+<form><textarea name="T" id="file" rows="2" cols="30">
+#!/bin/bash
+mv $1 "${2%.*}.${1##*.}"</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
