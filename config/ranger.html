@@ -17,7 +17,8 @@ id: config
                 <li><a href="#4">My keybindings</a></li>
                 <li><a href="#5">Notes on mapping keys</a></li>
                 <li><a href="#6">Useful native commands</a></li>
-                <li><a href="#7">inline image preview</a></li>
+                <li><a href="#6a">Adjusting rifle</a></li>
+                <li><a href="#7">Inline image preview</a></li>
                 <li><a href="#8">Refine info for images</a></li>
                 <li><a href="#9">Refine info for audio/video</a></li>
                 <li><a href="#10">Integrate system trash</a></li>
@@ -39,7 +40,8 @@ id: config
                 <li><a href="#4">My keybindings</a></li>
                 <li><a href="#5">Notes on mapping keys</a></li>
                 <li><a href="#6">Useful native commands</a></li>
-                <li><a href="#7">inline image preview</a></li>
+                <li><a href="#6a">Adjusting rifle</a></li>
+                <li><a href="#7">Inline image preview</a></li>
                 <li><a href="#8">Refine info for images</a></li>
                 <li><a href="#9">Refine info for audio/video</a></li>
                 <li><a href="#10">Integrate system trash</a></li>
@@ -148,22 +150,23 @@ To get started, two commands needed..
 <li>able to search for string in file names, search and auto-enter dir or auto-open file, search and filter the files displayed as you type, or search and select files with string</li>
 <li>by default all text files, pdf, html and other recognised file types can be previewed in the right-hand pane</li>
 <li>mediainfo shows details of any audio/video file while exiftool does for image files</li>
-<li>Ranger's file type executor "Rifle" opens files with a choice of programs, just hit 'r' and choose, or the Rifle number and Enter</li>
-<li>audio is played through shell (mplayer), image/video opened with respective program</li>
-<li>any dir can be bookmarked with a character and easily navigated to</li>
+<li>any dir can be bookmarked with a character and easily reached with 'find tag' and 'next' keys</li>
 <li>files can be tagged with any character</li>
-<li>files with no recognised ext are green</li>
 <li>last active file in directory is remembered if returning to dir visited before</li>
-<li>dir shows no. of files it contains, or disk usage with 'dc', then selected files disk usage shown at lower right</li>
+<li>dir shows no. of files it contains, or disk usage with key press 'dc', and disk usage of selected files shown at lower right</li>
 <li>file permissions, owner, group and modified date displayed at lower left</li>
 <li>disk free space shown at lower right</li>
 <li>file transfer progress bar</li>
 <li>file permissions easily changed on selected files by typing an octal number followed by '='</li>
+<li>Ranger's file type executor "Rifle" opens files with a choice of programs, just hit 'r' and choose, or the Rifle number and Enter</li>
+<li>audio and video played with mplayer, images with feh</li>
+<li>scripts and make files can be run with Enter, thanks to rifle</li>
 <li>almost limitless key mapping for easy commands in current dir, first key displays choices, second (or third..) key executes command or brings up console withwhich to modify the command, such as for renaming, replacing, or confirming with Enter</li>
-<li>run native ranger commands in "console" or normal shell commands (though not all) while using ranger's macros which can insert file name or path into the commands</li>
+<li>run native ranger commands in "console" or normal shell commands (though not all are possible) while using ranger's macros which can insert file name or path into the commands</li>
 <li>press Up in the console to cycle the commands history</li>
 <li>supports multple tabs and transferring files to next tab is also possible</li>
 <li>supports version control systems, for any specific dir, showing up-to-date with remote or modified status of files</li>
+<li>attach metadata to files, such as title, author, and sort files by their metadata</li>
 </ul></div>
 <br>
 And that's just the basics!  There are endless possibilities with Ranger because it incorporates the bash shell.
@@ -183,7 +186,7 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>k, {n} k     </td><td>move down 10 lines, or move down 10 lines {n} times</td></tr>
 
-<tr><td>g {letter}     </td><td>quick go to (system level dir's)</td></tr>
+<tr><td>g {letter}     </td><td>quick go to (system level dir's) - gR go to ranger dir</td></tr>
 
 <tr><td>g n     </td><td>new tab made at home</td></tr>
 
@@ -271,7 +274,7 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>u d      </td><td>clears copy/cut buffer, also uy (<b>I change this to uu as it seems faster</b>)</td></tr>
 
-<tr><td>c w    </td><td>rename/bulk rename (<b>I make this fr</b> -see below)</td></tr>
+<tr><td>c w    </td><td>rename/bulk rename</td></tr>
 
 <tr><td>A			</td><td>edit name, cursor at end</td></tr>
 
@@ -312,13 +315,18 @@ And that's just the basics!  There are endless possibilities with Ranger because
 <tr><td>T                     </td><td>remove any tags of selected files</td></tr>
 
 <tr><td>"{x}                  </td><td>custom tag </td></tr>
+
+
+
+<tr><td>M..        </td><td>linemode select (<b>I change this to Alt-m</b>)</td></tr>
+
 </table>
 
 <br>
 <h3>operation</h3>
 <table width="900"><tr><td style="width: 140px;">Ctrl-R               </td><td>reload</td></tr>
 
-<tr><td>Ctrl-h, z h        </td><td>toggle hidden files</td></tr>
+<tr><td>Ctrl-h, z h        </td><td>toggle hidden files (<b>I change this to F2</b>)</td></tr>
 
 <tr><td>Ctrl-c        </td><td>cancel an operation</td></tr>
 
@@ -338,7 +346,7 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>3?                    </td><td>Ranger settings</td></tr>
 
-<tr><td>?, F1                </td><td>man page</td></tr>
+<tr><td>?, F1                </td><td>man page, key bindings or settings</td></tr>
 
 <tr><td>W                     </td><td>message log</td></tr>
 
@@ -397,13 +405,18 @@ Check the rc.conf file
 <br>
 Note: with Ranger 1.7 it seems that key mapping with Alt is fixed, e.g. &#60;a-r>, which opens up a huge area for new keys!
 <br><br>
-<form><textarea name="T" id="file" rows="28" cols="100">
+<form><textarea name="T" id="file" rows="35" cols="100">
 map &#60;a-down>  move down=4     #replaced k
 map &#60;a-up>    move up=4       #replaced j
-map &#60;a-left>      history_go -1    #replaced H
-map &#60;a-right>     history_go 1     #replaced L
+map h      history_go -1    #replaced H
+map l      history_go 1     #replaced L
+copymap h  &#60;a-left>     #enable Alt-left
+copymap l  &#60;a-right>    #enable Alt-right 
 
-map g/ cd /
+map &#60;a-m>f linemode filename
+map &#60;a-m>i linemode fileinfo
+map &#60;a-m>p linemode permissions
+map &#60;a-m>t linemode metatitle
 
 map /   console search
 map \]  console find
@@ -433,6 +446,7 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 <br>
 <table width="50%" style="background-color:transparent"><tr><td style="padding-right: 20px; " valign="top">
 <table width="80%" style="background-color:transparent"  cellpadding="2">
+<tr><td style="color: #2D46CF; font-weight: bold; "> Alt-m</td><td> <a href="#met" class="tag">metadata</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold;" width="100">f</td><td width="100"> <a href="#fi" class="tag">files</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> O</td><td> <a href="#op" class="tag">open files</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> y,d,p</td><td> <a href="#yk" class="tag">yanking</a></td></tr>
@@ -455,7 +469,8 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 <tr><td style="color: #2D46CF; font-weight: bold; "> E</td><td>  <a href="#exif" class="tag">exiftool</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> fa</td><td>   <a href="#aud" class="tag">audio files</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> fv</td><td>    <a href="#vid" class="tag">video files</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold;">  comma-m</td><td> <a href="#mt" class="tag">mounting</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> fG</td><td> <a href="#gps" class="tag">GPS Babel conversion</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold; "> comma-n</td><td> <a href="#nfs" class="tag">nfs</a> </td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> comma-n</td><td> <a href="#nfs" class="tag">nfs</a> </td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> J</td><td> <a href="#git">Github</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> comma-z</td><td>    <a href="#brn" class="tag">bashburn</a></td></tr>
@@ -468,8 +483,8 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 <br>
 
 
-<h3 id="fi" class="tag">moving around</h3>
-<form><textarea name="T" id="file" rows="17" cols="120">
+<h3 id="mov" class="tag">moving around</h3>
+<form><textarea name="T" id="file" rows="22" cols="120">
 ################## My keyinds ######################
 
 map &#60;a-PAGEDOWN> move down=0.5   pages=True
@@ -482,17 +497,33 @@ map <F9>  move_parent n=-20
 map <F10> move_parent n=20
 
 map ga  cd /etc/apt
-map M   chain tab_new; cd /media
+map M   chain tab_new; cd /media         #note, this over-rides ranger default for metadata modeline select, which I make Alt-m
 map zx  toggle_option preview_images     #foggle inline preview/media info
 map <F12> console :flat 1             #show files of sub-dir's, 1 level deep, all in main column
-map &#60;F2> toggle_option show_hidden</textarea>
+map &#60;F2> toggle_option show_hidden
+
+######### Set the keyboard   ##########
+map %1 shell setxkbmap us -variant colemak
+map %2 shell setxkbmap us
+map %3 shell -r nano /etc/default/keyboard</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+<h3 id="met" class="tag">map Alt-m for metadata</h3>
+<form><textarea name="T" id="file" rows="6" cols="120">
+##### Meta data ##########
+
+map f&#60;a-m> console -p11 meta title%space  %%s       #add meta title to sel'd files
+map &#60;a-f> linemode filename               #linemode: filename (normal)
+map &#60;a-t> linemode metatitle              #linemode: titles </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
 
 <h3 id="fi" class="tag">map f for files</h3>
-<form><textarea name="T" id="file" rows="22" cols="120">
+<form><textarea name="T" id="file" rows="23" cols="120">
 
 ##### files ##########
 
@@ -500,17 +531,17 @@ map fl   less %f                 #view file with less. q to quit (ranger i doesn
 map fm   console mkdir             #(space after) create dir
 map ft   console touch             #(space after) create file
 map f+   shell -s chmod +x %f                     #make a file executable
-map f=   console shell -s chmod 664 %%s                #chmod operations
+map f=   console shell -s chmod 664 %%s                #chmod operations - or type 664=
 map fr   console rename
 map fb   bulkrename %s
 map fp   shell -f pyrenamer %d                            #GUI renamer, or another, `Thunar -B %d'
-map fg   console shell -p grep -nT ? %%s                      #grep (search) pattern in files
-map f?   console shell perl -pi -e 's/?/@/g' %%s                  #replace string in files
+map fg   console -p22 shell -p grep -nT -r ?* %%s            #grep (search) pattern in files or highl'd dir
+map f?   console -p22 shell perl -pi -e 's/?/@/g' %%s                  #replace string in files
 map fc   shell -f meld %s 	                                           #compare two files in meld
-map ff   console shell -p find . -name "*?*" -type f -print            #find files and print paths to pager
+map ff   console -p25 shell -p find . -name "*?*" -type f -print            #find files and print paths to pager
 map f\   shell -f catfish --path=%d                                        #find files with catfish
 map fx   shell -f regexxer %d                                            #run string replace tool
-map f1   console shell -s for file in %%s ;do cp "$file" "$file"_1 ;done           #duplicate selected files adding _1
+map f1   console -p49 shell -s for file in %%s ;do cp "$file" "$file"_1 ;done           #duplicate selected files adding _1
 map f2   console shell -s sh ~/scripts/duplicate %%s                         #duplicate selected files infix _1
 map f3   console shell -s rename-with-selected %f %s                  #rename highlighted file with selected file's name
 map fW   console shell touch tmpfile; mv tmpfile %%f                        #wipe a file clean (overwrite with blank)</textarea>
@@ -535,6 +566,7 @@ f3 script, to rename the highlighted file with the selected file's name, keeping
 mv $1 "${2%.*}.${1##*.}"</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+
 
 
 <br><br>
@@ -874,7 +906,7 @@ for i in  *; do DAT=$(date -r $i +%y-%m-%d); mkdir -p $DAT; mv $i $DAT ; done</t
 <form><textarea name="T" id="file" rows="15" cols="120">
 ##### video files ##########
 
-map fvg  shell -f gnome-mplayer %s
+map f<F2>  shell -f gnome-mplayer %s
 map fvv  shell -f vlc %s
 
 
@@ -922,12 +954,22 @@ map fa3  shell -ft ogg2mp3 -B 256 --vbr-new -V 0 *.ogg %s        #convert ogg to
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
+   
+<br><br>
+<h3 id="gps" class="tag">map fG for GPS Babel conversion</h3>
+<form><textarea name="T" id="file" rows="5" cols="120">
+##### GPS Babel conversion ##########
+
+#### gpx to Garmin tab delimited
+map fG1   shell -s for fi in %%s; do gpsbabel -w -i gpx -f "$fi" -x track,fix=pps -o garmin_txt -F "$fi".tab ;done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 
 
 <br><br>
 <h3 id="mt" class="tag">map comma-m and comma-u for mounting/unmouning drives</h3>
-<form><textarea name="T" id="file" rows="19" cols="120">
+<form><textarea name="T" id="file" rows="19" cols="100">
 ##### mounting ##########
 
 map ,mm  console shell -s pmount /dev/sdb1         
@@ -1041,7 +1083,7 @@ map Gcd  shell -ft xsel -b -o | gpg2 -d | xsel --clipboard</textarea>
 <br><br>
 Here's my complete Ranger renaming tool that just might take care of all your needs for naming files! 
 <br><br>
-You might want to have these printed on a sheet because some commands are too long and a #comment after it disables ability to edit the line when shown in console.  You should also run some tests on dummy files - don't assume that they all work perfectly!!!
+You might want to have these printed on a sheet because some commands are too long and a #comment will not be seen.  You should also run some tests on dummy files - don't assume that they all work perfectly!!!
 <br><br>
 
 <form><textarea name="T" id="file" rows="64" cols="155">
@@ -1157,6 +1199,8 @@ One problem is, however, with so many key-bindings, is the lack of sort-by-key i
 <li><b>chain</b> allows multiple commands to be run consecutively, each separated by `;`</li>
 <li>without using 'console' a key-mapped command will execute immediately, without needing confirmation (in some cases it could be dangerous!)</li>
 <li>using <b>%s</b> in the mapping may not be a good idea in some cases, i.e. when the console is opened before executing, because it will expand to all the selected file names, and that would 1. render the console full and impossible to type in, and 2. send utter garbage to a shell command - so we need to use <b>%%s</b>  which remains "%s" on the console, and shell commands can act on every file</li>
+<li><b>console -p{n}</b> will set the cursor at the nth character in the console, to make it convenient to edit a command, i.e. 'console -p22' will set the cursor at char 22</li>
+
 </ul></div>
 
 <br>
@@ -1208,6 +1252,7 @@ One problem is, however, with so many key-bindings, is the lack of sort-by-key i
 <span style="font-size: 20; ">enter_bookmark</span>
 <table><tr><td width="320"><b>map &#60;a-a> enter_bookmark a </b>  </td>                 <td>will map Alt-a to go to bookmark a (same as using the ' with its list of bookmarks but more permanent)</td></tr></table>
 
+
 <br><br><br>
 
 <h3>find tagged files</h3>
@@ -1225,6 +1270,33 @@ add this line to the end of your ~/.bashrc file<br>
 export EDITOR=nano</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+
+<br><br><br>
+
+<h2 id="6a" class="tag">Adjusting rifle</h2>
+
+To change how different files types are opened (or the numbered choices when you hit 'r') you need to look in Ranger's <b>rifle.conf</b> file
+<br><br>
+Open images in feh, fullscreen, slideshow with progress to next, change the line to this,
+<form><textarea name="T" id="file" rows="1" cols="80">
+mime ^image, has feh,    X, flag f = feh -dFZ --start-at "$(basename "$1")" *</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+Change how audio files open, in a new terminal window
+
+<form><textarea name="T" id="file" rows="1" cols="80">
+mime ^audio,  has mplayer, X, flag f  = urxvt -e mplayer -fs -- "$@"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+Opening office docs, set the version you are using, e.g. 
+<form><textarea name="T" id="file" rows="1" cols="100">
+ext od[dfgpst]|docx?|sxc|xlsx?|xlt|xlw|gnm|gnumeric, has libreoffice4.4, X, flag f = libreoffice4.4 "$@"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
 
 
 
