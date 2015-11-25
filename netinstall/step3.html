@@ -99,20 +99,21 @@ that's a quality sound recorder and audio editor.  To record with ardour you'll 
 <br>
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install sound-juicer gvfs-backends lame</textarea>
+sudo apt-get install abcde eyed3 lame</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-
-I find that sound juicer was hard to configure, with no option to reduce bit quality from 320 or something. 
+The CLI way, using cdparanoia to rip the audio cd and lame or oggenc (vorbis-tools) to encode -see <a href="http://www.cyberciti.biz/faq/linux-ripping-and-encoding-audio-files/">linux-ripping-and-encoding-audio-files</a>
+<br><br>
+<b>Bashburn</b> is straight forward, it uses cdparanoia to rip wav files, converts ogg or mp3 (although adding track info might be tedious).  <br>
+<b>Abcde</b> is much simpler to use (just hit the command `abcde` after you've made a conf file for the type of rip you want to do - see <a href="http://www.andrews-corner.org/abcde.html">this guide</a>).
+<br>
 <br> 
-You can use K3b for ripping to ogg or mp3, though it's big and clumsy.  
-<br>Other CD rippers are around too: rubyripper, ripperx, abcde (command line but simple), and grip which you have to build from source (download <a href="http://sourceforge.net/projects/grip/?source=dlp">sourceforge.net</a>)  Likely, they'll all need lame installed for mp3 encoding.
-<br><br>
-Then there's the CLI way, using cdparanoia to rip the audio cd and lame or oggenc (vorbis-tools) to encode -see <a href="http://www.cyberciti.biz/faq/linux-ripping-and-encoding-audio-files/">linux-ripping-and-encoding-audio-files</a>
-<br><br>
-Bashburn works very well, to rip an audio cd and for converting wav files to ogg or mp3.
+GUI ripping: there's K3b, which is big and clumsy, sound juicer (need gvfs-backends) or asunder, which rip and convert on the fly, without first making error-reduced wav files.<br>
+<br>Others: rubyripper, ripperx, and grip which you have to build from source (download <a href="http://sourceforge.net/projects/grip/?source=dlp">sourceforge.net</a>)  <br>
+lame is needed for mp3 encoding.
 <br><br><br>
+
 
 <h3>for movie DVD</h3>
 
