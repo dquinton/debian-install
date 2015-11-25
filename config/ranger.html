@@ -1033,7 +1033,7 @@ map J2  shell -p git log --name-only</textarea>
 
 <br><br>
 <h3 id="brn" class="tag">map comma-z for bashburn commands</h3>
-<form><textarea name="T" id="file" rows="12" cols="150">
+<form><textarea name="T" id="file" rows="16" cols="150">
 ##### bashburn & abcde ##########
 
 map ,z1  shell ln -s %d/%f ~/Projects/bashburn/burn/           #make a symlink to selected dir/file in bashburn dir
@@ -1044,7 +1044,11 @@ map ,z3  console shell -r sh ~/scripts/bashburn-links ?
 map ,zX  console shell rm -r ~/Projects/bashburn/burn/*           #delete contents from bashburn temp
 map ,z4  cd ~/Projects/bashburn                    #cd to the bashburn sessions dir (not present by default)
 map ,z5  shell -r cp %s ~/Projects/bashburn/burn/             #add links from a session to bashburn tmp dir
-map ,za shell -ft abcde</textarea>
+map ,zb shell -ft bashburn
+
+map ,za shell -ft abcde
+map ,zA1 shell cp ~/.abcde/conf-ogg ~/.abcde.conf
+map ,zA2 shell cp ~/.abcde/conf-mp3 ~/.abcde.conf</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
