@@ -484,7 +484,7 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 
 
 <h3 id="mov" class="tag">moving around</h3>
-<form><textarea name="T" id="file" rows="22" cols="120">
+<form><textarea name="T" id="file" rows="23" cols="120">
 ################## My keyinds ######################
 
 map &#60;a-PAGEDOWN> move down=0.5   pages=True
@@ -501,6 +501,7 @@ map M   chain tab_new; cd /media         #note, this over-rides ranger default f
 map zx  toggle_option preview_images     #foggle inline preview/media info
 map <F12> console :flat 1             #show files of sub-dir's, 1 level deep, all in main column
 map &#60;F2> toggle_option show_hidden
+copymap S &#60;a-s>                   #open Shell with Alt-s
 
 ######### Set the keyboard   ##########
 map %1 shell setxkbmap us -variant colemak
@@ -695,21 +696,21 @@ map ';au  cd ~/QuickLink/applications-usr</textarea>
 ##### backup ##########
 
 map ,k1   shell -s cp ~/.config/ranger/* ~/Settings/ranger/    #backup the ranger config dir
-map ,k2   shell -s sh ~/scripts/backup %s                             
-map ,k3   shell -s sh ~/scripts/backup-config-files
-map ,k4   shell -s gksu sh ~/scripts/backup-sys-files</textarea>
+map ,k2   shell -s sh ~/scripts/backup-config-files
+map ,kp   shell -s sh ~/scripts/backup %%s                             
+map ,k9   shell -s gksu sh ~/scripts/backup-sys-files</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
-script for ,k2 (as Ranger chokes on the date-time macros thinking they are its own)
-<form><textarea name="T" id="file" rows="2" cols="50">
+script for ,kp (as Ranger chokes on the date-time macros thinking they are its own)
+<form><textarea name="T" id="file" rows="2" cols="80">
 #!/bin/bash
-cp "$1" ~/backups/"$1"_$(date +"%y%m%d")</textarea>
+for f in $@ ;do cp "$f" /dir/backups/"$f"_$(date +"%y%m%d") ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-(the k3 and k4 scripts are simple rsync commands)
+(the k2 and k9 scripts are simple rsync commands - see my <a href="{{site.baseurl}}/tutorial/15-config-migrate.html">config migrate page</a>)
 <br>
 
 <br><br><br>

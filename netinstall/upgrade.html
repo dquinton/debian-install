@@ -66,6 +66,12 @@ sudo apt-get dist-upgrade </textarea>
 
 <h2 id="2" class="tag">Debian stable security releases</h2>
 If you want to keep your debian system up to date with security patches (released as updated packages) make sure you have these lines in your /etc/apt/sources.list
+<br><br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo nano /etc/apt/sources.list</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <form>
 <textarea name="T" id="file" rows="5" cols="80">
@@ -76,24 +82,20 @@ deb http://security.debian.org/ wheezy/updates main contrib non-free
 deb-src http://security.debian.org/ wheezy/updates main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 and run the first line above to update package lists and upgrade packages
 
 <br><br><br><br>
 
 <h2 id="3" class="tag">Update to a new debian release</h2>
-First change your sources list to point to the release you want to upgrade to
-<form>
-<textarea name="T" id="cmd" rows="1" cols="30">
-sudo nano /etc/apt/sources.list</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
+First change your sources list to point to the release you want to upgrade to, e.g. change all "wheezy" to "jessie", or "stable" to "testing"
 
-Check your apt.conf file isn't pointing to your current release, for example it might say
-APT::Default-Release "wheezy";
 <br><br>
-mine didn't after using netinstall CD.  If it does remove that line or change it.. 
+
+Check your apt.conf file isn't pointing to your current release, for example it might say,<br>
+<span class="file">APT::Default-Release "wheezy";</span>
+<br><br>
+If it does remove that line or change it.. 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 sudo nano /etc/apt/apt.conf</textarea>
@@ -197,8 +199,8 @@ See my <a href="go-devuan.html">Devuan page</a>!
 If you follow the current Stable but want some better updates you can give backports a go, which is a way of adding updated packages to your stable debian. <br>
 See <a href="http://wiki.debian.org/DebianSoftware">http://wiki.debian.org/DebianSoftware</a><br>
 and <a href="http://backports.debian.org/">http://backports.debian.org/</a>
-
-The backports sources list entry looks like 
+<br><br>
+The backports sources list entry looks like <br>
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
 deb http://ftp.debian.org/debian/ wheezy-backports main</textarea>
@@ -308,7 +310,7 @@ with APT... audacious audacious-plugins icedtea-7-plugin lxpanel blueman<br>
 manual .... googleearth multisystem <br>
 (ge needs ia32-libs which are obsoleted in Jessie - install a dummy package from <a href="http://forums.debian.net/viewtopic.php?f=10&t=111898">/viewtopic.php?f=10&t=111898</a>)
 <br><br>
-<span style="color:#800080">mplayer fails to play files - mplayer error while loading shared libraries: libdvdnavmini.so.4: cannot open shared object file</span><br>
+<span class="prob">mplayer fails to play files - mplayer error while loading shared libraries: libdvdnavmini.so.4: cannot open shared object file</span><br>
 as root<br>
 <form>
 <textarea name="T" id="cmd" rows="2" cols="80">
@@ -320,7 +322,7 @@ ln -s libdvdnav.so.4.1.2 libdvdnavmini.so.4</textarea>
 <br><br>
 
 <h3>Squeeze to Wheezy</h3><br>
-<span style="color:#800080">on login, the default session shows Xsession, not Xfce</span><br>
+<span class="prob">on login, the default session shows Xsession, not Xfce</span><br>
 -in 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
@@ -330,7 +332,7 @@ sudo nano /etc/lightdm/lightdm.conf</textarea>
 change <span style="color:#076b00">user-session=lightdm-xsession</span> to <span style="color:#076b00">user-session=xfce</span>
 <br><br>
 
-<span style="color:#800080">Broken apt-get after update?</span><br>
+<span class="prob">Broken apt-get after update?</span><br>
 If you choose to keep the original sudoers file, you won't be able to apt-get or aptitude later,
 so you need to terminal: su, root p/w, visudo
 <br><br>

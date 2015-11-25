@@ -59,7 +59,7 @@ id: help
 <div><br>
 </div>
 <div>does it work ??</div>
-<div>failing that, enter your BIOS and adjust the time back/forward to UTC time, so that Debian adds hours for your time-zone and the displayed time will be correct</div>
+<div>failing that, you should try <b>ntp</b> (see below) or you can 'fix' your BIOS clock and adjust the time back/forward to UTC time, so that Debian adds hours for your time-zone and the displayed time will be correct</div>
 <div><br>
 </div>
 <div>You can set your time-zone with</div>
@@ -73,7 +73,7 @@ id: help
 you can have the system time updated by a network time protocol by installing ntp<font size="3">
 <div><font color="#6A3200">sudo apt-get install ntp</font></div>
 </font><br>
-the ntp daemon will update you Debian clock constantly, if there is a constant internet conection.<br>
+the ntp daemon will update your Debian clock constantly, if there is a constant internet conection.<br>
 If the connection is not constant, you can run<br>
 <font color="#6A3200">ntpd -b</font><br>
 to update the clock once you have internet</div>
