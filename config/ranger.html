@@ -496,6 +496,8 @@ map }	  move_parent n=5
 map <F9>  move_parent n=-20
 map <F10> move_parent n=20
 
+copymap ct &#60;a-c>  #search next tag
+
 map ga  cd /etc/apt
 map M   chain tab_new; cd /media         #note, this over-rides ranger default for metadata modeline select, which I make Alt-m
 map zx  toggle_option preview_images     #foggle inline preview/media info
@@ -1036,8 +1038,7 @@ map J2  shell -p git log --name-only</textarea>
 <form><textarea name="T" id="file" rows="16" cols="150">
 ##### bashburn & abcde ##########
 
-map ,z1  shell ln -s %d/%f ~/Projects/bashburn/burn/           #make a symlink to selected dir/file in bashburn dir
-map ,z2  shell ln -s %d/* ~/Projects/bashburn/burn/  	 	#make a symlinks to all files/dirs (%s doesn't work with ln command)
+map ,z1  shell ln -s %p ~/Projects/bashburn/burn/           #make a symlink to selected dirs/files in bashburn dir
 map ,z2  cd /tmp/burn                                    #cd to the bashburn temp dir
 map ,z3  console shell -r sh ~/scripts/bashburn-links ?      
             #move links in bashburn temp to a session dir (replace ? with a dir name)  
@@ -1061,7 +1062,7 @@ script for ,z3 "bashburn-links"
 mkdir -p ~/Projects/bashburn/"$1" 
 sudo mv ~/Projects/bashburn/burn/* ~/Projects/bashburn/"$1"/ 
  
-# (edit bashburn temp dir to dir in home then no need for sudo to move these links)</textarea>
+# (1st in bashburn, change temp dir to your project dir)</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
