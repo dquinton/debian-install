@@ -1039,12 +1039,11 @@ map J2  shell -p git log --name-only</textarea>
 ##### bashburn & abcde ##########
 
 map ,z1  shell ln -s %p ~/Projects/bashburn/burn/           #make a symlink to selected dirs/files in bashburn dir
-map ,z2  cd /tmp/burn                                    #cd to the bashburn temp dir
+map ,z2  cd ~/Projects/bashburn/burn                         #cd to the bashburn work dir (I changed it from /tmp/burn)
 map ,z3  console shell -r sh ~/scripts/bashburn-links ?      
             #move links in bashburn temp to a session dir (replace ? with a dir name)  
 map ,zX  console shell rm -r ~/Projects/bashburn/burn/*           #delete contents from bashburn temp
-map ,z4  cd ~/Projects/bashburn                    #cd to the bashburn sessions dir (not present by default)
-map ,z5  shell -r cp %s ~/Projects/bashburn/burn/             #add links from a session to bashburn tmp dir
+map ,z4  shell -r cp %s ~/Projects/bashburn/burn/             #add links from a session to bashburn tmp dir
 map ,zb shell -ft bashburn
 
 map ,za shell -ft abcde
