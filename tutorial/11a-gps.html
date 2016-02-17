@@ -89,7 +89,7 @@ and also "<b>Memory Layer Saver</b>" plugin so that your labels will be saved in
 <div class="bullet"><ul><li>select a layer</li>
 <li>click on the "Easy" button to genrate a layer for labels - then choose what label field to use -select name</li>
 <li>all waypoint labels get redrawn! (then you don't need to draw them with layer properties)</li>
-<li>click click the move button, click on and drag a label</li></ul></div>
+<li>click the move button, click on and drag a label</li></ul></div>
 
 <br><br>
 Add Lat-Lon grid: View menu > Decorations > Grid - set "Interval X" and "Y" to 0.05, check "annotations"<br>
@@ -97,7 +97,11 @@ Add scale bar : View menu > Decorations > Scale<br>
 (note that these will not be present in the print window - need to make others there)
 
 <br><br><br>
-<h3>Calculate an area</h3> - the polygonize algorithm requires shapely module
+<h3>Calculate an area</h3> 
+
+If you draw an area then you'll have a polygon layer to work with.. click on New shape file, check on polygon and OK, and save it.. then start drawing
+<br><br>
+If you want to convert a boundary line to a polygon, the polygonize algorithm requires shapely module
 
 <form><textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get install python-shapely </textarea>
@@ -110,7 +114,17 @@ then navigate to: QGIS Geoalgorithms > Vector geometry tools > polygonize
 I didn't succeed with this yet, as my lines were either broken, or needed specitically two ends, not multiple.  <br>
 You can also run error checking with Vector geometry tools > <b>Check validity</b> to see where there are faults in the lines, e.g. loops or crossing.
 <br><br>
-Or, Vector menu > Geometry tools > Liner to polygons (but this is not area)
+Or, Vector menu > Geometry tools > Lines to polygons (but this is not area)
+<br><br>
+then, with your polygon layer...
+<div class="bullet"><ul><li>select the layer</li>
+<li>open the Attribute table with toolbar button at top</li>
+<li>click on the Field calculator button</li>
+<li>Enter a new field name, i.e. "area" </li>
+<li>Select decimal number </li>
+<li>then expand "Geometry" and double click on $area</li>
+<li>you may need to add /1000 to the expression</li>
+<li>you should get a new column with area of each polygon</ul></div>
 
 <br><br><br>
 
@@ -118,16 +132,25 @@ Or, Vector menu > Geometry tools > Liner to polygons (but this is not area)
  Toolbar > New Print Composer, name it, OK.. 
  
 <div class="bullet"><ul><li>set the paper size first, A3 if you need it</li>
-<li>click on "Add new map" buttin then drag a rectangle over the tile.</li>
+<li>click on "Add new map" button then drag a rectangle over the tile.</li>
 <li>click "Move item content" button, and drag map to center, zoom once with scroll button</li>
 <li>Item properties tab to right > Main properties ..set best scale in </li>
-<li>Item properties > Grid ..Click the Add + button, set X,Y intervals to 0.05 or whatever, check "Draw coordinates" </li>
+<li>Item properties > Grid ..Click the Add + button, set X,Y intervals to 0.05 or whatever (depends on the map scale?), check "Draw coordinates" </li>
 <li>scale bar - find the button on left toolbar - you need to play around with the "map units per bar unit" - I set it to 0.01, the units to meters and label "km"</li>
 <li>make a title with "Add new label" (text box)</li>
 <li>Legend - add with the button to left, can set auto update or manual if you want to remove some layers from it</ul></div>
 
+<br><br><br>
+<h3>Background maps</h3>
 
-
-
+<div class="bullet"><ul><li>Install OpenLayers plugin</li>
+<li>then select a map Web > OpenLayers plugin > OpenStreet/Google/Bing...</li>
+<br><br>
+To keep the map for offline use, turn off other layers and then Project > Save as Image<br>
+- then later you can add the map (provided the zoom level is still what you want) with Add Raster Layer 
+<br><br>
+--> note that the coodinate ref system for this raster layer is EPSG:3857 - WGS 84/ Pseudo Mercator, and this will rather alter how the grid is displayed in the print manager (showing ref's such as 11304000 instead of 101.550 which shows for EPSG:4326 - WGS 84 for gpx data layers) and the units will need changing to intervals of 3000 or so. 
+<br><br>
+Or, probably better, install the QuickMapServices plugin, which offers transparency in the layer properties dialogue.
 
 </div>
