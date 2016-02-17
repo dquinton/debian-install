@@ -133,12 +133,15 @@ then, with your polygon layer...
  
 <div class="bullet"><ul><li>set the paper size first, A3 if you need it</li>
 <li>click on "Add new map" button then drag a rectangle over the tile.</li>
-<li>click "Move item content" button, and drag map to center, zoom once with scroll button</li>
-<li>Item properties tab to right > Main properties ..set best scale in </li>
-<li>Item properties > Grid ..Click the Add + button, set X,Y intervals to 0.05 or whatever (depends on the map scale?), check "Draw coordinates" </li>
-<li>scale bar - find the button on left toolbar - you need to play around with the "map units per bar unit" - I set it to 0.01, the units to meters and label "km"</li>
-<li>make a title with "Add new label" (text box)</li>
-<li>Legend - add with the button to left, can set auto update or manual if you want to remove some layers from it</ul></div>
+<li>click "Move item content" button, and drag map to center, zoom if needed with scroll button</li>
+<li>Item properties tab to right > Main properties ..set best scale to fit what detail you need</li>
+<li>Item properties > Grid ..Click the Add + button, set X,Y intervals to 0.05 or whatever (depends on the map scale?), check "Draw coordinates" and set whether they will appear above or below the border and how far from border</li>
+<li>uncheck "background" - this will be really helpful, especially if your map layer is transparent</li>
+<li>scale bar - find the button on left toolbar - you need to play around with the "map units per bar unit" - I set it to 0.01, or 0.02, the units to meters and label "km"</li>
+<li>make a title with "Add new label" (text box) and you can give it a frame, and white background with 50% transparency in case your map is a full page of terrain detail</li>
+<li>Legend - add with the button to left, can set auto update or manual if you want to remove some layers from it</ul>
+<li>to move objects around you need to select the move tool at left</li>
+</div>
 
 <br><br><br>
 <h3>Background maps</h3>
@@ -149,10 +152,8 @@ then, with your polygon layer...
 To keep the map for offline use, turn off other layers and then Project > Save as Image<br>
 - then later you can add the map (provided the zoom level is still what you want) with Add Raster Layer 
 <br><br>
---> note that the coodinate ref system for this raster layer is EPSG:3857 - WGS 84/ Pseudo Mercator, and this will rather alter how the grid is displayed in the print manager (showing ref's such as 11304000 instead of 101.550 which shows for EPSG:4326 - WGS 84 for gpx data layers) and the units will need changing to intervals of 3000 or so. 
+--> note that the coodinate ref system (CRS) for map raster layer is <b>EPSG:3857 - WGS 84/ Pseudo Mercator</b>, and this will rather alter how the grid is displayed in the print manager (showing ref's such as 11304000 instead of 101.550 which shows for <b>EPSG:4326 - WGS 84</b>, gpx vector layers) and the units will need changing to intervals of 3000 or so - but its easier to change the CRS back to <b>EPSG:4326</b> so that coodinate format reads better, and you won't need to keep changing the unit intervals.
 <br><br>
-The CRS of a grid can be changed back to EPSG:4326 to read better coodinate format.
-<br><br>
-2. much better, install the <b>QuickMapServices</b> plugin, which offers transparency in the layer properties dialogue, and also, when you go offline the map data stays happy in the print composer (the above plugin prints blank grey squares if the connection is lost!)
+2. much better, install the <b>QuickMapServices</b> plugin, which offers transparency in the layer properties dialogue, and also, when you go offline the map data stays happy in the print composer (the above plugin prints blank squares if the connection is lost!)
 
 </div>
