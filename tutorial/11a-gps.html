@@ -143,7 +143,7 @@ then, with your polygon layer...
 <br><br><br>
 <h3>Background maps</h3>
 
-<div class="bullet"><ul><li>Install OpenLayers plugin</li>
+<div class="bullet"><ul><li>1. <b>OpenLayers</b> plugin</li>
 <li>then select a map Web > OpenLayers plugin > OpenStreet/Google/Bing...</li>
 <br><br>
 To keep the map for offline use, turn off other layers and then Project > Save as Image<br>
@@ -151,6 +151,8 @@ To keep the map for offline use, turn off other layers and then Project > Save a
 <br><br>
 --> note that the coodinate ref system for this raster layer is EPSG:3857 - WGS 84/ Pseudo Mercator, and this will rather alter how the grid is displayed in the print manager (showing ref's such as 11304000 instead of 101.550 which shows for EPSG:4326 - WGS 84 for gpx data layers) and the units will need changing to intervals of 3000 or so. 
 <br><br>
-Or, probably better, install the QuickMapServices plugin, which offers transparency in the layer properties dialogue.
+The CRS of a grid can be changed back to EPSG:4326 to read better coodinate format.
+<br><br>
+2. much better, install the <b>QuickMapServices</b> plugin, which offers transparency in the layer properties dialogue, and also, when you go offline the map data stays happy in the print composer (the above plugin prints blank grey squares if the connection is lost!)
 
 </div>
