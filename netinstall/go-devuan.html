@@ -10,9 +10,9 @@ id: net
 <div class="cont">
 <a name="1"></a>
 <br>
-I run Debian Jessie without systemd, just because I don't need to go that way - sysvinit boots my system just fine.  But it was getting increasingly difficult to install some packages, and I needed to install bluefish.  This cool html editor however, is dependent on gvfs-backends which depends on libpam-systemd, which depends on the big one, systemd.
+I run Debian Jessie without systemd, just because I don't need to go that way - sysvinit boots my system just fine.  But it was getting increasingly difficult to install some packages because they depended on systemd, and I needed to install bluefish.  This cool html editor however, is dependent on gvfs-backends which depends on libpam-systemd, which depends on the big one, systemd.
 <br><br>
-Enter Devuan.  It looks like they've come a long way developing their Debian fork.  They pretty much repackage anything that depends on systemd and keep anything else as-is - and it must be a massive job to be doing.
+Enter Devuan.  It looks like they've come a long way developing their Debian fork.  They fork anything that depends on systemd to remove the dependency and mirror anything else from the debian repositories - quite a job to be doing.
 <br><br>
 To migrate to Devuan, at the moment you just need to change your package sources, update, and upgrade and that's all.
 <br><br>
@@ -28,7 +28,7 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list-debian</textarea>
 
 <li>Then install it with dpkg -i ... </li>
 
-<li>enter "jessie" as Devuan suite when asked as it's of course the easiest to migrate to from Jessie</li>
+<li>enter "jessie" as Devuan suite when asked as it's of course the easiest to migrate to from Jessie (or wheezy)</li>
 
 <li>Hit enter with "main"</li>
 
@@ -44,6 +44,10 @@ aptitude full-upgrade </textarea>
 (this upgraded 35 packages and retrieved 4Mb - for a recently updated Jessie install)
 <br><br>
 Now go ahead and install bluefish or whatever, without any systemd dependency issues!
+<br><br>
+
+Download a Devuan iso from their site at <a href="https://files.devuan.org/devuan_jessie_beta/" target="https://files.devuan.org/devuan_jessie_beta/">https://files.devuan.org/devuan_jessie_beta/</a>
+
 <br><br>
 <br><br></div><b>Next page: </b>
 <br><br>

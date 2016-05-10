@@ -130,7 +130,9 @@ then, with your polygon layer...
 
 <h3>Printing</h3>
  Toolbar > New Print Composer, name it, OK.. 
- 
+ <br><br>
+ or,  Toolbar > Composer Manager, select a saved composer, click Show
+ <br><br>
 <div class="bullet"><ul><li>set the paper size first, A3 if you need it</li>
 <li>click on "Add new map" button then drag a rectangle over the tile.</li>
 <li>click "Move item content" button, and drag map to center, zoom if needed with scroll button</li>
@@ -155,5 +157,6 @@ To keep the map for offline use, turn off other layers and then Project > Save a
 --> note that the coodinate ref system (CRS) for map raster layer is <b>EPSG:3857 - WGS 84/ Pseudo Mercator</b>, and this will rather alter how the grid is displayed in the print manager (showing ref's such as 11304000 instead of 101.550 which shows for <b>EPSG:4326 - WGS 84</b>, gpx vector layers) and the units will need changing to intervals of 3000 or so - but its easier to change the CRS back to <b>EPSG:4326</b> so that coodinate format reads better, and you won't need to keep changing the unit intervals.
 <br><br>
 2. much better, install the <b>QuickMapServices</b> plugin, which offers transparency in the layer properties dialogue, and also, when you go offline the map data stays happy in the print composer (the above plugin prints blank squares if the connection is lost!)
-
+<br><br>
+<span class="ht">Note! Unless the map fills the entire page in the print composer, when printing, your map layers will become mis-aligned with the background map, which is unaccepable and worthless.  So when you prepare to print, stretch the map to snap to the edges of the page - this is the only way to prevent mis-alignment.</span> 
 </div>
