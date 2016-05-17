@@ -29,21 +29,21 @@ id: tutor
 
 <h2 id="1" class="tag">Viking</h2>
 
-
-<h3>Use Viking to import data from a GPS unit:</h3>
+<br>
+<h3>Using Viking to import data from a GPS unit</h3>
 Only some Garmin units can transfer through USB to viking (see the list <a href="http://www.gpsbabel.org/htmldoc-1.5.0/fmt_garmin.html">here</a> - works using a Garmin 60csx, but not a 62s)
 <br>
 <div class="bullet"><ul><li>In Viking, go through File > Acquire > From GPS</li>
 <li>/dev/ttyUSB0 will be shown as the serial port </li>
-<li>select tracks and/or waypoints and hit OK and the data will import to the program</li></ul></div>
+<li>select tracks and/or waypoints and hit OK</li></ul></div>
 <br><br>
 
 For a Garmin 62s (and many others on the list) hook up the device to a USB port and read the gpx and waypoint files through a file browser, search in the Garmin/gpx and Garmin/gpx/archived dir's.
 <br><br>
 Viking supports layers including map backgrounds, colour-coding of tracks, waypoint symbols, and a lot of track and waypoints editing tools.  
-You can also geotag photos by correlating them against a track that was made at the time of shooting photos.  Your camera's clock should first be synced to the gps unit's clock, to the second - but, just incase it wasn't, there is an offset option so that if the camera's clock was different to the GPS unit's clock at the time of shooting, Viking will add/subtract so many seconds to/from the pictures's timestamps (without altering the image timestamp data), so that the pics are correlated to the right points on the track.
+You can also geotag photos by correlating them against a track that was made at the time of shooting photos.  Your camera's clock should first be synced to the gps unit's clock, to the second - but, just incase it wasn't, there is an offset option so that if the camera's clock was different to the GPS unit's clock at the time of shooting, Viking will add/subtract so many seconds to/from the pictures' timestamps (without altering the image timestamp data), so that the pics are correlated to the right points on the track.
 <br><br>
-Also, you can write geo-coordinate data to multiple photos from any waypoint.  Geotagged photos can be imported to the map too.
+Also, you can write geo-coordinate data to multiple photos from any waypoint.  Photos with geo info can be imported to the map too.
 <br><br>
 What's limited is the ability to print decent maps as only the screen is sent to the print dialogue, which makes it impossible to print large scale of areas off the screen.<br>
 Other limitations are lack of drawing or labeling tools, and that waypoint titles can get crowded and overlapped.  But then, this is purely a data compiler, not so much a map production suite (aka GIS).
@@ -53,7 +53,7 @@ Other limitations are lack of drawing or labeling tools, and that waypoint title
 
 
 <h2 id="2" class="tag">QGIS</h2>
-
+<br>
 Once you have collated your GPS data and tidied up tracks, renumbered the points etc, its time to make it presentable, with labels that don't overlap, area shading, and quality PNG detail for printing.
 <br><br>
 What we need is Geo Info System software, and for that we have QGIS (Quantum GIS).

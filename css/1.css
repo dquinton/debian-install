@@ -158,12 +158,12 @@ ul li {
 
 .numb ol {
   margin-left: 0px;
-  padding: 6px 0 0;
+  padding: 6px 0px 0px;
 }  
   
 .numb ol li {
   margin-left: 0px;
-  padding: 0 0 0 0;
+  padding: 6px 6px 0;
    line-height: 140%;
   list-style-type: none;
   counter-increment: item;
@@ -172,7 +172,7 @@ ul li {
   display: inline-block;
   width: 1em;
   padding-right: 0.5em;
-  font-weight: bold;
+  #font-weight: bold;
   content: counter(item) ".";
 }
 
@@ -236,6 +236,7 @@ input.submitLink {
   text-decoration: underline;
   font-size: 0.7em;
   vertical-align: super;
+  text-align: right;
   border: none;
   padding: 0px 0px 0px;
   color: #153597;

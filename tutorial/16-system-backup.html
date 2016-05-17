@@ -13,7 +13,7 @@ id: tutor
                 <li><a href="#1">Tar </a></li>
                 <li><a href="#2">Rsync  </a></li>
                 <li><a href="#3">Partclone  </a></li>
-                <li><a href="#3a"> Clonezilla</a></li>
+                <li><a href="#3a">Clonezilla</a></li>
                 <li><a href="#4">Refracta Snapshot </a></li>
                 <li><a href="#5">FSArchiver</a></li>
              </ul>
@@ -38,416 +38,508 @@ id: tutor
 
 
 <div>
-<b><font size="5"></font></b><br>
+
 <h2 id="1" class="tag">Tar command</h2>
 
 
-<div><font size="3">There are several good ways to backup a Linux system, and I'll start with the first one I ever heard of, compression to archive using tar.</font></div>
-<div><font size="3"><span style="line-height:27px"><br>
-</span></font></div>
-<div><font size="3">it's easy to make a tar file of all system and user files with something like</font></div>
-<div><font size="3">sudu tar {tar options} {location for tar file} {options, excludes} {dir to backup}</font></div>
-<div><font size="3">e.g.</font></div>
-<div><font color="#6A3200" size="3">sudo tar cvzpf /home/Backup_1207.tgz --same-owner --exclude=/home/Backup_1207.tgz --exclude=/home/error.log --exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* --exclude=$HOME/Downloads/* /&nbsp;</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">which I adapted from&nbsp;<a href="http://linuxclues.blogspot.com/2007/07/backup-your-system-using-tar.html" rel="noreferrer">http://linuxclues.blogspot.com/2...</a>&nbsp;</font></div>
-<div><font size="3">I added the excludes for /var/cache/apt/archives/ and&nbsp;</font>$HOME/Downloa<font size="3">ds</font></div>
-<div><font size="3">Also it's a good idea to exclude&nbsp;</font>$HOME<font size="3">/.cache or clean chromium's or firefox's cache before backup (e.g with bleachbit).</font></div>
-<div><font size="3">May want to make the backup on another partition too.</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><span style="font-size:medium;line-height:28.4444465637207px">The 'z' option adds gzip to the command so that the tar file is compressed (tar alone just makes one file of everything).</span></div>
-<div><span style="font-size:medium;line-height:28.4444465637207px">another option is 'u' which updates the tar file, making changes, not sending everything all over again.</span></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">Adding the swi</font>tch --one-file-system will exclude files from other partitions, e.g. for backup of system only:</div>
-<div>
-<div><font color="#6A3200" size="3">sudo tar cvzpf /home/Backup_1207.tgz --same-owner&nbsp;</font><font color="#6A3200"><span style="font-size:16px;line-height:1.6">--one-file-system&nbsp;</span></font><span style="color:#6A3200;font-size:medium;line-height:1.6">--exclude=/dev/* --exclude=/mnt/*&nbsp;</span><font color="#6A3200" size="3">--exclude=/media/*</font><span style="color:#6A3200;font-size:medium;line-height:1.6">&nbsp;</span><span style="color:#6A3200;font-size:medium;line-height:1.6">--exclude=/proc/*</span><span style="color:#6A3200;font-size:medium;line-height:1.6">&nbsp;</span><span style="color:#6A3200;font-size:medium;line-height:1.6">--exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* /</span></div>
-</div>
-<div><span style="color:#6A3200;font-size:medium;line-height:1.6"><br>
-</span></div>
-<div><font color="#6A3200" size="3"><br>
-</font></div>
-<div>
-<div><b><font size="4">Using scripts</font></b></div>
-<div><span style="font-size:medium">1. backup system (name it bkpsys for example)</span></div>
-<div><span style="font-size:medium"><br>
-</span></div>
-<div><span style="font-size:medium">
-<div style="color:rgb(56,118,29)">#!/bin/bash</div>
-<div><font color="#0F4F0B">sudo tar cvzpf /</font><font color="#3d85c6">your_backup_location</font><font color="#0F4F0B">/Backupsys_$(date +"%y%m%d").tgz --same-owner&nbsp;</font><span style="font-size:16px;line-height:1.6"><font color="#0F4F0B">--one-file-system</font></span><span style="color:rgb(56,118,29);line-height:1.6">&nbsp;--exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* /</span></div>
-</span></div>
-<div><span style="font-size:medium"><br>
-</span></div>
-<div><span style="font-size:medium">2. backup home&nbsp;</span><span style="font-size:medium;line-height:27px">(name it bkphome for example)</span></div>
-<div><span style="font-size:medium"><br>
-</span></div>
-<div>
-<div style="font-size:medium"><font color="#0F4F0B">#!/bin/bash</font></div>
-<div style="font-size:medium"><font color="#0F4F0B">tar cvzpf /</font><font color="#3d85c6">your_backup_location</font><font color="#0F4F0B">/Backuphome_$(date +"%y%m%d").tgz --same-owner &nbsp;--exclude=$HOME</font><font color="#0F4F0B">/Downloads/* $HOME</font></div>
-<div style="font-size:medium"><font color="#0F4F0B"><br>
-</font></div>
+There are several good ways to backup a Linux system, and I'll start with the first one I ever heard of, compression to an archive using tar command.
+<br><br>
+it's easy to make a tar file of all system and user files with something like
+<br>
+<i>sudu tar {tar options} {location for tar file} {options, excludes} {dir to backup}</i>
+<br><br>
+e.g.
+
+<form><textarea name="T" id="cmd" rows="5" cols="80">
+sudo tar cvzpf /home/Backup_1207.tgz --same-owner --exclude=/home/Backup_1207.tgz --exclude=/home/error.log --exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* --exclude=$HOME/Downloads/* /</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+which I adapted from&nbsp;<a href="http://linuxclues.blogspot.com/2007/07/backup-your-system-using-tar.html" rel="noreferrer">http://linuxclues.blogspot.com/2...</a>
+
+<br><br>
+I added the exclude for /var/cache/apt/archives/
+
+<br><br>
+Also it's a good idea to exclude $HOME/.cache or clean chromium's or firefox's cache before backup (e.g with bleachbit).
+<br>
+You may want to make the backup on another partition too.
+
+<br><br>
+The 'z' option adds gzip to the command so that the tar file is compressed (tar alone just makes one file of everything).
+<br>
+another option is 'u' which updates the tar file, making changes, not sending everything all over again.
+<br>
+Adding the switch --one-file-system will exclude files from other partitions, e.g. for backup of system only:
+
+<br><br>
+<form><textarea name="T" id="cmd" rows="4" cols="80">
+sudo tar cvzpf /home/Backup_1207.tgz --same-owner --one-file-system --exclude=/dev/* --exclude=/mnt/* --exclude=/media/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* /</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+<h3>Using scripts</h3>
+
+<br>
+<b>1. backup system</b> <br>
+(name it bkpsys for example)
+
+<form><textarea name="T" id="file" rows="5" cols="80">
+#!/bin/bash
+sudo tar cvzpf /your_backup_location/Backupsys_$(date +"%y%m%d").tgz --same-owner --one-file-system --exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* /</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+<b>2. backup home</b><br>
+(name it bkphome for example)</span
+<br>
+<form><textarea name="T" id="file" rows="3" cols="80">
+#!/bin/bash
+tar cvzpf /your_backup_location/Backuphome_$(date +"%y%m%d").tgz --same-owner --exclude=$HOME/Downloads/* $HOME</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
 Here's my more precise one:
-<div><font color="#0F4F0B" size="3">
-<div>#!/bin/bash</div>
-<div>tar cvzpf /media/BKP/zsysbkp/Backuphome_$(date +"%y%m%d").tgz --same-owner &nbsp;--exclude=$HOME/Downloads/* --exclude=$HOME/.thumbnails/* --exclude=$HOME/.local/share/Trash/* --exclude=$HOME/.local/share/marble/maps/* --exclude=$HOME/Projects/kdenlive/.backup/*&nbsp;<span style="line-height:1.6">--exclude=$HOME/Projects/kdenlive/proxy/*&nbsp;</span><span style="line-height:1.6">--exclude=$HOME/Projects/kdenlive/thumbs/* $HOME</span></div>
-</font></div>
-<div style="font-size:medium"><br>
-</div>
-<div style="font-size:medium">Using "$HOME" will backup the logged-in user, whereas "/home" will backup all users. &nbsp;Omit "sudo" here so as not to backup the root $HOME!</div>
-<div style="font-size:medium">the resulting tar file will be time-stamped with the day's date. &nbsp;</div>
-<div style="font-size:medium"><span style="line-height:1.6">set up a cron job to run them automatically.</span></div>
-</div>
-</div>
-<div style="font-size:medium"><br>
-</div>
-<div style="font-size:medium">test the tar ball integrity with:</div>
-<div><span style="font-size:medium;line-height:1.6;background-color:transparent"><font color="#0F4F0B">gunzip -c B....tgz | tar t &gt; /dev/null</font></span></div>
-<div style="font-size:medium">a good archive will give no errors</div>
-<div style="font-size:medium"><br>
-</div>
-<div style="font-size:medium"><br>
-</div>
-<div><b><font size="4">Update option</font></b></div>
-<div style="font-size:medium">If you leave out the date-time parameter so that the file name is the same with each run of the script, and you add the update option 'u', then you'll be able to keep a copy of the system in a tar archive, and just keep updating it. &nbsp;Then you compress it and rename it with the time stamp. &nbsp;</div>
-<div><font color="#0F4F0B" style="font-size:medium;line-height:1.6;background-color:transparent">tar cvupf&nbsp;</font><font color="#0F4F0B" style="font-size:medium;line-height:28.4444465637207px;background-color:transparent">/</font><font color="#0b5394" style="font-size:medium;line-height:28.4444465637207px;background-color:transparent">your_backup_location</font><font color="#0F4F0B" style="font-size:medium;line-height:28.4444465637207px;background-color:transparent">/</font><font color="#0F4F0B" style="font-size:medium;line-height:1.6;background-color:transparent">Backupsys.tar&nbsp;</font><span style="background-color:transparent"><font color="#0F4F0B" size="3">--same-owner --one-file-system --exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* / \</font></span></div>
-<div><font color="#0F4F0B" size="3">| gzip &gt;Backupsys</font><span style="color:rgb(56,118,29);font-size:medium;line-height:1.6;background-color:transparent">_$(date +"%y%m%d").tgz</span></div>
-<div style="font-size:medium"><br>
-</div>
-<div style="font-size:medium">Note that tar will append files to the archive, not replace them inline. &nbsp;So it may be better to create a new archive each time.</div>
-<div style="font-size:medium"><br>
-</div>
-<div><font size="3"><br>
-</font></div>
-<div><b><font size="4">Restoring the system from the backup tar file</font></b></div>
-<div><font size="3">use&nbsp;<font color="#6A3200">sudo tar xvzf /home/Backup_1207.tgz -C </font><font color="#3d85c6">/location-of-new-system</font></font></div>
-<div><br>
-</div>
-<div><font color="#0c343d" size="3"><span style="background-color:rgb(241,194,50)">WARNING ! this command will overwrite every file on specified target with the files from the backup tar file!</span></font></div>
-<div><font size="3">
-<div>
-<ul><li><span style="line-height:1.6">in a Live CD environment (or another running system) copy the tgz archives to a partition&nbsp;</span>(e.g. sda1)</li>
-<li><span style="line-height:1.6">make the system partition&nbsp;(e.g. sda5), home (e.g. sda6) and swap (if there's no other Linux system installed)</span></li></ul>
-<span style="line-height:1.6"><font color="#6A3200">su</font></span></div>
-<div><font color="#6A3200">umount /dev/sda1</font></div>
-<div><font color="#6A3200">umount /dev/sda5</font></div>
-<div><font color="#6A3200">mkdir /mnt/newsys</font></div>
-<div><font color="#6A3200">mkdir /mnt/temp</font></div>
-<div><font color="#6A3200">mount /dev/sda1 /mnt/temp</font></div>
-<div><font color="#6A3200">mount /dev/sda5 /mnt/newsys</font></div>
-<div><font color="#6A3200"><br>
-</font></div>
-<div><font color="#6A3200">mkdir /mnt/home</font></div>
-</font><font size="3">
-<div><font color="#6A3200"><span style="line-height:1.6">mount&nbsp;</span>/dev/sda6 /mnt/home</font></div>
-<div>
-<ul><li><span style="line-height:1.6"><font color="#6A3200">tar xvzf /mnt/temp/Backupsys_130212.tgz -C /mnt/newsys/</font></span></li>
-<li><span style="line-height:1.6"><font color="#6A3200">tar xvzf /mnt/temp/Backuphome_130212.tgz -C /mnt/home/</font></span></li>
-<li>update GRUB to include the new system</li></ul>
-</div>
-</font></div>
-<div><font size="3" style="background-color:rgb(159,197,232)"><b>Note</b>:&nbsp;if restoring to a different machine, you'd need to&nbsp;amend&nbsp;the fstab file, so that the system finds its disks, and chroot into the system and run update-grub (or use Boot restore disk).</font></div>
-<div><br>
-</div>
-<div><br>
-</div>
-<div>
-<div style="line-height:23px"><b><font size="5"><br>
-</font></b></div>
+
+<form><textarea name="T" id="file" rows="7" cols="80">
+#!/bin/bash
+tar cvzpf /media/BKP/zsysbkp/Backuphome_$(date +"%y%m%d").tgz --same-owner --exclude=$HOME/Downloads/* --exclude=$HOME/.thumbnails/* --exclude=$HOME/.local/share/Trash/* --exclude=$HOME/.local/share/marble/maps/* --exclude=$HOME/Projects/kdenlive/.backup/* --exclude=$HOME/Projects/kdenlive/proxy/* --exclude=$HOME/Projects/kdenlive/thumbs/* $HOME</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+
+Using "$HOME" will backup the logged-in user, whereas "/home" will backup all users. Omit "sudo" here so as not to backup the root $HOME!
+<br><br>
+the resulting tar file will be time-stamped with the day's date. 
+<br><br>
+set up a cron job to run them automatically.
+<br><br>
+test the tar ball integrity with:
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+gunzip -c B....tgz | tar t > /dev/null</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+a good archive will give no errors
+
+<br><br><br>
+<h3>Update option</h3>
+
+If you leave out the date-time parameter so that the file name is the same with each run of the script, and you add the update option 'u', then you'll be able to keep a copy of the system in a tar archive, and just keep updating it.  After that you compress it and rename it with the time stamp. 
+
+
+<form><textarea name="T" id="cmd" rows="4" cols="80">
+tar cvupf /your_backup_location/Backupsys.tar --same-owner --one-file-system --exclude=/proc/* --exclude=/media/* --exclude=/dev/* --exclude=/mnt/* --exclude=/sys/* --exclude=/tmp/* --exclude=/var/cache/apt/archives/* / \ | gzip Backupsys_$(date +"%y%m%d").tgz</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+Note that tar will <i><b>append</b></i> files to the archive, not replace them inline. So it's probably better to create a new archive each time.
+<br><br><br>
+
+<h3>Restoring the system from the backup tar file</h3>
+
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+sudo tar xvzf /home/Backup_1207.tgz -C /location-of-new-system</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+WARNING ! this command will overwrite every file on specified target with the files from the backup tar file!
+<br><br>
+
+<div class="bullet"><ul><li>in a Live CD environment (or another running system) copy the tgz archives to a partition (e.g. sda1)</li>
+<li>make the system partition (e.g. sda5), home (e.g. sda6) and swap (if there's no other Linux system installed)</li></ul>
+
+
+<form><textarea name="T" id="cmd" rows="8" cols="50">
+umount /dev/sda1
+umount /dev/sda5
+mkdir /mnt/newsys
+mkdir /mnt/temp
+mount /dev/sda1 /mnt/temp
+mount /dev/sda5 /mnt/newsys
+mkdir /mnt/home
+mount /dev/sda6 /mnt/home</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<form><textarea name="T" id="cmd" rows="2" cols="80">
+tar xvzf /mnt/temp/Backupsys_130212.tgz -C /mnt/newsys/
+tar xvzf /mnt/temp/Backuphome_130212.tgz -C /mnt/home/</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+Then update GRUB to include the new system
+<br><br>
+<b>Note</b>:&nbsp;if restoring to a different machine, you'd need to&nbsp;amend&nbsp;the fstab file, so that the system finds its disks, and chroot into the system and run update-grub (or use Boot restore disk).
+
+<br><br>
+<br><br>
+
 
 <h2 id="2" class="tag">Rsync</h2>
 
 
-
-<div style="line-height:23px"><font size="3"><br>
-</font></div>
-<div style="line-height:28.4444465637207px"><font style="line-height:23px">Using this command could be very useful, as it has an update option, -u, which means that you can run it frequently and subsequent runs will send less data to the target file system than the initial sync. &nbsp;It won't compress though, but you just need to afford some space for the backup.</font></div>
-<div style="line-height:28.4444465637207px"><font style="line-height:23px"><br>
-</font></div>
-<div>
-<div style="line-height:28.4444465637207px"><span style="line-height:23px"><font color="#6A3200">rsync -auv --"exclude=/home/*" --"exclude=/proc/*" --"exclude=/lost+found/*" --"exclude=/dev/*" --"exclude=/mnt/*" --"exclude=/media/*" --"exclude=/sys/*" --"exclude=/tmp/*" --"exclude=/etc/fstab*" &nbsp; &nbsp;/ &nbsp; /media/backupos&nbsp;</font></span></div>
-</div>
-</div>
-<div><span style="line-height:23px"><font color="#6A3200"><br>
-</font></span></div>
-<div><span style="line-height:23px"><font color="#6A3200"><br>
-</font></span></div>
-<div><br>
-<a name="3"></a>
-</div>
-<div><font size="5"><b></b></font></div>
+Using this command could be very useful, as it has an update option, -u, which means that you can run it frequently and subsequent runs will send less data to the target file system than the initial sync. It won't compress though, but you just need to afford some space for the backup.
 
 
+<form><textarea name="T" id="cmd" rows="3" cols="80">
+rsync -auv --"exclude=/home/*" --"exclude=/proc/*" --"exclude=/lost+found/*" --"exclude=/dev/*" --"exclude=/mnt/*" --"exclude=/media/*" --"exclude=/sys/*" --"exclude=/tmp/*" --"exclude=/etc/fstab*"  / /media/backupos</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+<br>
 
 <h2 id="3" class="tag">Partclone</h2>
 
 
 
-<div>use this to image any disk, and restore the image to another box. &nbsp;You need to use this tool from a live CD (e.g. <a href="http://sourceforge.net/projects/gparted/files/gparted-live-stable/0.23.0-1/">gparted</a> or your own with partclone installed).</div>
-<div><span style="line-height:23px">see here&nbsp;</span><a href="https://wiki.debian.org/Backup/Clone">https://wiki.debian.org/Backup/Clone</a></div>
-<div>and here&nbsp;<a href="https://wiki.archlinux.org/index.php/Partclone" rel="noreferrer">https://wiki.archlinux.org/index.php/Partclone</a>
-</div>
-<div><br>
-</div>
-<div><font color="#7C2020">sudo apt-get install partclone</font></div>
-<div><br>
-</div>
-<div>to clone a partition with compression:</div>
-<div><font color="#6A3200">sudo partclone.ext4 -c -s /</font><font color="#0b5394">dev/sd--</font><font color="#6A3200"> | gzip -c &gt; /</font><font color="#0b5394">backup-dir/image-name</font><font color="#6A3200">_$(date +"%y%m%d").pcl.gz</font></div>
-<div><br>
-</div>
-<div>to restore the image to a partition (with great care!):</div>
-<div><font color="#6A3200">zcat&nbsp;</font><font color="#6A3200" style="line-height:28.4444465637207px;background-color:transparent">/</font><font color="#0b5394" style="line-height:28.4444465637207px;background-color:transparent">backup-dir/</font><font color="#0b5394" style="line-height:1.6;background-color:transparent">image_....</font><font color="#6A3200" style="line-height:1.6;background-color:transparent">pcl.gz | sudo partclone.ext4 -r -o /</font><font color="#0b5394" style="line-height:1.6;background-color:transparent">dev/sd--</font></div>
-<div><br>
-</div>
-<div>As this tool images whole partitions, without any excludes, you better tidy up the disk especially in user home.</div>
-<span style="background-color:rgb(159,197,232)">Note: the image can only be restored to a part equal or larger than the source part. &nbsp;I tried the option -C to skip checking part space (used if we know that all the data could fit) but the result was a fail.</span>
-<div><br>
-</div>
-<div><br>
-</div>
-<div><br>
+Use this to image any disk, and restore the image to another box. &nbsp;You need to use this tool from a live CD (e.g. <a href="http://sourceforge.net/projects/gparted/files/gparted-live-stable/0.23.0-1/">gparted</a> or your own with partclone installed).
+
+<br><br>
+see here <a href="https://wiki.debian.org/Backup/Clone">https://wiki.debian.org/Backup/Clone</a></div>
+<br>
+and here <a href="https://wiki.archlinux.org/index.php/Partclone" rel="noreferrer">https://wiki.archlinux.org/index.php/Partclone</a>
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+sudo apt-get install partclone</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+to clone a partition with compression:
+
+<form><textarea name="T" id="cmd" rows="2" cols="80">
+sudo partclone.ext4 -c -s /dev/sdxx | gzip -c /backup-dir/image-name_$(date +"%y%m%d").pcl.gz</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+to restore the image to a partition (with great care!):
+
+<form><textarea name="T" id="cmd" rows="2" cols="80">
+zcat /backup-dir/image_....pcl.gz | sudo partclone.ext4 -r -o /dev/sdxx</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+As this tool images whole partitions, without any excludes, you better tidy up the disk especially in user home.
+
+<br><br>
+<b>Note:</b> the image can only be restored to a partition equal or larger than the source partition. I tried the option -C to skip checking part space (used if we know that all the data could fit) but the result was a fail.
+
+<br><br><br><br>
 
 <h2 id="3a" class="tag">Clonezilla </h2>
-<a href="http://clonezilla.org/">http://clonezilla.org/</a></div>
-<div style="line-height:28.4444465637207px">This is the GUI partclone tool. &nbsp;see&nbsp;<a href="http://www.geekyprojects.com/cloning/how-to-use-clonezilla-tutorial/" rel="noreferrer">/how-to-use-clonezilla-tutorial/</a></div>
-<div style="line-height:28.4444465637207px">They recommend&nbsp;<a href="http://tuxboot.org/" rel="noreferrer" style="line-height:28.4444465637207px;background-color:transparent">tuxboot</a><span style="line-height:28.4444465637207px;background-color:transparent">&nbsp;(find the .deb</span><span style="line-height:28.4444465637207px;background-color:transparent">&nbsp;</span><a href="http://sourceforge.net/projects/tuxboot/files/0.8/Linux/" style="line-height:28.4444465637207px;background-color:transparent">here</a><span style="line-height:28.4444465637207px;background-color:transparent">) to install the iso to USB-</span><span style="line-height:28.4444465637207px;background-color:transparent">&nbsp;</span><a href="http://sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/2.4.2-32/" style="line-height:28.4444465637207px;background-color:transparent">clonezilla iso</a></div>
-<div><br>
-</div>
-<div style="line-height:28.4444465637207px"><b style="font-size:large;line-height:1.6;background-color:transparent">Making an image</b></div>
-<div>
-<ul><li><span style="line-height:1.6;background-color:transparent">1st screen hit enter</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select lang, keybd, and start CZ</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select <b>device-image</b></span></li>
-<li><span style="line-height:1.6;background-color:transparent">select type of image dest - <b>local-dev</b> for a disk or USB device</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select disk (to mount on CZ's /home/partimag/)</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select dir of image</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select beginner/expert</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select <b>savedisk/saveparts</b></span></li>
-<li><span style="line-height:1.6;background-color:transparent">enter image name</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select source (disk/parts) to image</span></li>
-<li><span style="line-height:1.6;background-color:transparent">check and run</span></li></ul>
-</div>
-<div><span style="line-height:1.6;background-color:transparent"><b><font size="4">Restore Image</font></b></span></div>
-<div>
-<ul><li><span style="line-height:1.6;background-color:transparent">Go through like above, select image location as before</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select <b>restoredisk/restoreparts</b></span></li>
-<li><span style="line-height:1.6;background-color:transparent">select image to use</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select the target disk/parts</span></li>
-<li><span style="line-height:1.6;background-color:transparent">check and run</span></li></ul>
-</div>
-<div><span style="line-height:1.6;background-color:transparent">note: restoring an image from e.g. a 20Gb hdd source onto a 50Gb target, might render the target as a 20Gb disk - gparted will be needed in that case to expand the part to fill the 50Gb.</span></div>
-<div><br>
-</div>
-<div><span style="line-height:1.6;background-color:transparent"><b><font size="4">Make a Live USB</font></b></span></div>
-<div><span style="line-height:28.4444465637207px">Clonezilla can make a Live CD iso of your cloned image, see&nbsp;</span><a href="http://clonezilla.org/fine-print-live-doc.php?path=./clonezilla-live/doc/04_Create_Recovery_Clonezilla/05-start-clonezilla-or-cmd.doc#05-start-clonezilla-or-cmd.doc" style="line-height:28.4444465637207px">here</a></div>
-<div>
-<span style="line-height:1.6;background-color:transparent">you need an image already</span><br>
-<ul><li><span style="line-height:1.6;background-color:transparent">go through the steps above to restore an image, but after select beginner,&nbsp;</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select <b>recovery-iso-zip</b></span></li>
-<li><span style="line-height:1.6;background-color:transparent">select image</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select target for restoring from the iso! - change to "<b>ask_user</b>"</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select lang, keymap,&nbsp;</span></li>
-<li><span style="line-height:1.6;background-color:transparent">select iso or zip</span></li></ul>
-</div>
-<div><br>
-</div>
-<div><b><font size="4">Burn the USB</font></b></div>
-<div>try unetbootin or tuxboot with iso file</div>
-<div><br>
-</div>
-<div>or use the zip file with a command like:</div>
-<div><font color="#6A3200">unzip image.zip -d /media/usb/</font></div>
-<div><br>
-</div>
-<div>and make it bootable with:</div>
-<div><font color="#6A3200">cd /media/usb/utils/linux</font></div>
-<div><font color="#6A3200">bash makeboot.sh /dev/sd..</font></div>
-</div>
-<div><br>
-</div>
-<div><br>
-</div>
-<div>
-<div dir="ltr">
-<div style="line-height:23px;font-size:13px"><br>
-</div>
-<div style="line-height:23px;font-size:13px"><font size="3"><span style="line-height:27px"><br>
-</span></font></div>
-<div>
-<a name="4"></a>
-<div style="line-height:23px"><b><font size="5"></font></b></div>
 
+<a href="http://clonezilla.org/">http://clonezilla.org/</a>
+<br><br>
+This is the GUI partclone tool. see <a href="http://www.geekyprojects.com/cloning/how-to-use-clonezilla-tutorial/" rel="noreferrer">/how-to-use-clonezilla-tutorial/</a>
+
+<br><br>
+They recommend <a href="http://tuxboot.org/" rel="noreferrer"><b>tuxboot</b></a> (find the .deb <a href="http://sourceforge.net/projects/tuxboot/files/0.8/Linux/">here</a>) to install the <a href="http://sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/2.4.2-32/">clonezilla iso</a> to USB.
+
+
+<br><br><br>
+<h3>Making an image</h3>
+
+<div class="bullet"><ul>
+<li>1st screen hit enter</li>
+
+<li>select lang, keybd, and start CZ</li>
+
+<li>select <b>device-image</b></li>
+<li>select type of image dest - <b>local-dev</b> for a disk or USB device</li>
+<li>select disk (to mount on CZ's /home/partimag/)</li>
+<li>select dir of image</li>
+<li>select beginner/expert</li>
+<li>select <b>savedisk/saveparts</b></li>
+<li>enter image name</li>
+<li>select source (disk/parts) to image</li>
+<li>check and run</li>
+</ul></div>
+
+<br><br>
+<h3>Restore an Image</h3>
+
+<div class="bullet"><ul>
+<li>Go through like above, select image location as before</span></li>
+<li>select <b>restoredisk/restoreparts</b></li>
+<li>select image to use</li>
+<li>select the target disk/parts</li>
+<li>check and run</li>
+</ul></div>
+<br>
+Note: restoring an image from e.g. a 20Gb hdd source onto a 50Gb target, might render the target as a 20Gb disk - gparted will be needed in that case to expand the part to fill the 50Gb.
+
+<br><br><br>
+<h3>Make a Live USB</h3>
+
+
+Clonezilla can make a Live CD iso of your cloned image, see <a href="http://clonezilla.org/fine-print-live-doc.php?path=./clonezilla-live/doc/04_Create_Recovery_Clonezilla/05-start-clonezilla-or-cmd.doc#05-start-clonezilla-or-cmd.doc">here</a>
+
+<br><br>
+you need an image already
+
+<div class="bullet"><ul>
+<li>go through the steps above to restore an image, but after select beginner,</li>
+<li>select <b>recovery-iso-zip</b></li>
+<li>select image</li>
+<li>select target for restoring from the iso! - change to "<b>ask_user</b>"</li>
+<li>select lang, keymap</li>
+<li>select iso or zip</li>
+</ul></div>
+
+<br><br>
+<h3>Burn the USB</h3>
+
+
+try unetbootin or tuxboot with iso file
+<br><br>
+or use the zip file with a command like:
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+unzip image.zip -d /media/usb/</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+and make it bootable with:
+
+<form><textarea name="T" id="cmd" rows="2" cols="50">
+cd /media/usb/utils/linux
+bash makeboot.sh /dev/sdxx</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br><br>
 
 <h2 id="4" class="tag">RefractaSnapshot</h2>
 
+<br>
+
+With this script written by <a href="http://www.ibiblio.org/refracta/" rel="noreferrer">fsmithred</a>, you can make a full system backup of your working box, which also becomes a Live Debian that can run or install anywhere you like. It's smooth and easy to use. Runs via CLI or by its GUI.
+
+download <b>refractasnapshot</b> and <b>refractainstaller</b> (base and gui if needed) from <a href="http://sourceforge.net/projects/refracta/files/tools/">http://sourceforge.net/</a>
+
+cd to download dir
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+sudo dpkg -i refracta*</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 
-<div style="line-height:23px"><font size="3"><br>
-</font></div>
-<div><font size="3" style="line-height:23px;font-size:16px">With this script written by <a href="http://www.ibiblio.org/refracta/" rel="noreferrer">fsmithred</a>, we can make a full system backup of our working box, and if we are creative we can build a Live Debian that we can run or install anywhere we like. &nbsp;It's smooth and easy to use [although I've hit trouble booting the Live CD a few times]. &nbsp;It's certainly very user-friendly - it has a GUI version.</font></div>
-<div><font size="3" style="line-height:23px;font-size:16px"><br>
-</font></div>
-<div><font size="3" style="line-height:23px;font-size:16px">download <font color="#0b5394">refractasnapshot</font> and <font color="#0b5394">refractainstaller</font> (base and gui if needed) from&nbsp;</font><span style="line-height:22.986112594604492px"><a href="http://sourceforge.net/projects/refracta/files/tools/">http://sourceforge.net/</a></span></div>
-<div style="line-height:23px"><span style="line-height:23px;font-size:16px">cd to download dir</span></div>
-<div style="line-height:23px"><font color="#6A3200">sudo dpkg -i refracta*</font></div>
-<div style="line-height:23px"><br>
-</div>
-<div style="line-height:23px">If there are unmet dependencies, sort it out with <font color="#7C2020">sudo apt-get install -f</font></div>
-<div>
-<div><span style="line-height:22.986112594604492px">for a new system I found</span></div>
-<div><span style="line-height:22.986112594604492px;background-color:transparent;font-size:16px">refractasnapshot-base needed <font color="#0b5394">squashfs-tools live-boot live-config live-boot-initramfs-tools live-config-sysvinit&nbsp;</font></span></div>
-<div><span style="line-height:22.986112594604492px">refractainstaller needed <font color="#0b5394">grub-pc grub-legacy</font></span></div>
-<div><br>
-</div>
-</div>
-Also install a newer version yad (21.0), necessary for the snapshot installer to run properly, from here <a href="http://code.google.com/p/yad/downloads/list">http://code.google.com/p/yad/downloads/list</a>
-<div style="line-height:23px">then cd, ./configure, make, sudo make install</div>
-<div style="line-height:23px"><br>
-</div>
-<div style="line-height:23px">or get the deb from here..&nbsp;<a href="http://debs.slavino.sk/pool/main/y/yad/">http://debs.slavino.sk/pool/main/y/yad/</a></div>
-<div style="line-height:23px"><br>
-</div>
-<div style="line-height:23px"><br>
-</div>
-<div style="line-height:23px"><b><font size="4">1a.&nbsp;</font></b><b style="font-size:15.5555562973022px;background-color:transparent"><font size="4">&nbsp;Config file</font></b></div>
-<div style="font-size:15.5555562973022px;line-height:23px"><font size="3">change the refracta working directory out of /home (to another partition), using the&nbsp;</font><span style="font-size:medium">config file:</span></div>
-<div style="font-size:13px;line-height:23px"><font size="3"><font color="#6A3200">sudo leafpad&nbsp;</font><span style="line-height:27px"><font color="#6A3200">/etc/refractasnapshot.conf</font>&nbsp;</span></font></div>
-<div style="font-size:13px;line-height:23px"><span style="font-size:medium;line-height:26px">edit the exclude list (to reduce the final iso size)</span></div>
-<div style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#6A3200" size="3"><span style="line-height:25.9895839691162px">sudo leafpad /usr/lib/refractasnapshot/snapshot_exclude.list</span></font></div>
-<div style="font-size:13px;line-height:23px"><span style="font-size:medium;line-height:26px">I added&nbsp;</span></div>
-<div style="font-size:15.5555562973022px;line-height:28.4444465637207px">
-<div><font size="3"><span style="line-height:25.9895839691162px">- /home/*/Downloads/*</span></font></div>
-<div><span style="font-size:medium;line-height:25.9895839691162px">- /home/*/.googleearth/*</span></div>
-<div>
-<div style="font-size:medium;line-height:25.9895839691162px">- /home/*/.local/share/gvfs*</div>
-<div style="font-size:medium;line-height:25.9895839691162px">- /home/*/.local/share/clipit/*</div>
-</div>
-<div><span style="line-height:25.9895839691162px;font-size:medium">- /home/*/.local/share/marble/maps/*</span></div>
-<div><span style="line-height:25.9895839691162px;font-size:medium">
-<div>- /home/*/.local/share/recently-used.xbel</div>
-<div>- /home/*/.local/share/user*</div>
-<div><span style="background-color:transparent">- /home/*/.opera/cache</span></div>
-</span></div>
-<div><span style="font-size:medium;line-height:25.9895839691162px">- /home/*/.sword/*</span></div>
-<div><span style="font-size:medium;line-height:25.9895839691162px">- /home/*/kdenlive/*</span></div>
-<div><font size="3"><span style="line-height:25.9895839691162px">- /home/*/Projects/kdenlive/.backup/*</span></font></div>
-<div><font size="3"><span style="line-height:25.9895839691162px">- /home/*/Projects/kdenlive/proxy/*</span></font></div>
-<div><font size="3"><span style="line-height:25.9895839691162px">- /home/*/Projects/kdenlive/thumbs/*</span></font></div>
-</div>
-<div style="line-height:23px"><b><font size="4"><br>
-</font></b></div>
-<div style="line-height:23px"><b><font size="4"><br>
-</font></b></div>
-<div style="line-height:23px"><b><font size="4">1b. Post-scripts</font></b></div>
-these run after the install and before the unmount and reboot.</div>
-<div>This one is in process, a script to ask whether a root dir should be moved to another partition - such as /var, or /usr.</div>
-<div>check it here&nbsp;<a href="https://gist.github.com/fsmithred/931b0ccf0964a6fde2d9" rel="noreferrer">https://gist.github.com/fsmithred/931b0ccf0964a6fde2d9</a></div>
-<div><br>
-</div>
-<div>it needs to go in /usr/lib/refractainstaller/post-install/</div>
-<div>the source (dir to move) and dest (partition) can be added to the script</div>
-<div><br>
-</div>
-<div>or can try using yad to ask for which dir to move (I haven't had time yet to test it)</div>
-<div><br>
-</div>
-<font color="#274e13">source_dir=<span style="font-size:16px;line-height:1.6;background-color:transparent">"`yad --text='Enter the source directory name to be moved e.g. \/var' --entry --undecorated --width=400 --height=200`"</span></font>
-<div>and<br>
-<div style="line-height:23px"><font color="#274e13"><span style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent">target_partition=</span><span style="font-size:15.5555562973022px;line-height:28.4444465637207px">"</span><span style="font-size:15.5555562973022px;line-height:28.4444465637207px">/dev/`yad --text='Enter the correct disk name for the partition to move to, e.g. sda6' --entry --undecorated --width=400 --height=200`"</span></font></div>
-<div style="line-height:23px"><b><font size="4"><br>
-</font></b></div>
-<div style="line-height:23px"><b><font size="4"><br>
-</font></b></div>
-<div style="line-height:23px"><b style="font-size:15.5555562973022px;background-color:transparent"><font size="4">2. </font></b><b><font size="4">Disk clean up</font></b></div>
-<div style="line-height:23px">I highly recommend running Bleachbit as root to clean up the system before running a snapshot back-up. &nbsp;</div>
-<div>
-<ul><li><span style="line-height:22.986112594604492px">Get the latest bleachbit from&nbsp;<a href="http://bleachbit.sourceforge.net/download/linux" rel="noreferrer">http://bleachbit.blogspot.com/</a></span></li>
-<li>install a dependency: <font color="#7C2020">sudo apt-get install&nbsp;<span style="font-size:16px;line-height:1.6">python-simplejson</span></font></li>
+<br><br>
+If there are unmet dependencies, sort it out with 
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+sudo apt-get install -f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+for a new system I found refractasnapshot-base needed 
+<br>
+<span class="inst">squashfs-tools live-boot live-config live-boot-initramfs-tools live-config-sysvinit</span>
+<br><br>
+version 9.3.3 needed the following...
+<br>
+<span class="inst">libburn4 libjte1 libisofs6 libisoburn1 xorriso isolinux</span>
+<br><br>
+
+refractainstaller needed <br>
+
+<span class="inst">grub-pc grub-legacy</span>
+
+<br><br>
+Also, you must install a newer version <b>yad</b> (>21.0), necessary for the snapshot installer to run properly, from here <a href="http://code.google.com/p/yad/downloads/list">http://code.google.com/p/yad/downloads/list</a>
+
+<br><br>
+then cd, ./configure, make, sudo make install
+
+<br><br>
+or get the deb from here.. <a href="http://debs.slavino.sk/pool/main/y/yad/">http://debs.slavino.sk/pool/main/y/yad/</a></div>
+<br><br>
+
+<h3>1a. Config file</h3>
+<br>
+change the refracta working directory out of /home (to another partition), using the config file:
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+sudo leafpad /etc/refractasnapshot.conf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+edit the exclude list (to reduce the final iso size)
+
+
+sudo leafpad /usr/lib/refractasnapshot/snapshot_exclude.list
+
+I added
+
+<form><textarea name="T" id="file" rows="14" cols="50">
+- /home/*/Downloads/*
+- /home/*/.googleearth/*
+- /home/*/.local/share/gvfs*
+- /home/*/.local/share/clipit/*
+- /home/*/.local/share/marble/maps/*
+- /home/*/.local/share/recently-used.xbel
+- /home/*/.local/share/user*
+- /home/*/.opera/cache
+- /home/*/.sword/*
+- /home/*/kdenlive/*
+- /home/*/Projects/kdenlive/.backup/*
+- /home/*/Projects/kdenlive/proxy/*
+- /home/*/Projects/kdenlive/thumbs/*</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+
+<h3>1b. Post-scripts</h3>
+<br>
+
+these run after the install and before the unmount and reboot.
+<br><br>
+This one is in process, a script to ask whether a root dir should be moved to another partition - such as /var, or /usr.
+check it here <a href="https://gist.github.com/fsmithred/931b0ccf0964a6fde2d9" rel="noreferrer">https://gist.github.com/fsmithred/...</a>
+<br><br>
+-it needs to go in /usr/lib/refractainstaller/post-install/<br>
+-the source (dir to move) and dest (partition) can be added to the script or you can try using yad to ask for which dir to move (I haven't had time yet to test it)
+
+<form><textarea name="T" id="file" rows="2" cols="80">
+source_dir="`yad --text='Enter the source directory name to be moved e.g. \/var' --entry --undecorated --width=400 --height=200`"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+and<br>
+<form><textarea name="T" id="file" rows="3" cols="80">
+target_partition=/dev/`yad --text='Enter the correct disk name for the partition to move to, e.g. sda6' --entry --undecorated --width=400 --height=200`"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+<h3>2. Disk clean up</h3>
+<br>
+I recommend running Bleachbit as root to clean up the system before running a snapshot back-up. 
+
+<br><br>
+Get the latest bleachbit from <a href="http://bleachbit.sourceforge.net/download/linux" rel="noreferrer">http://bleachbit.blogspot.com/</a>
+
+<div class="bullet"><ul>
+<li>install a dependency: 
+<form><textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install python-simplejson</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form></li>
 <li>install the bleachbit deb</li>
 <li>run sudo bleachbit</li>
 <li>select some things like apt cache clean and Localization (unwanted languages - all those LC_MESSAGES files -set which ones to keep in preferences)</li>
 <li>hit preview and then clean</li>
-<li>run bleachbit as normal user to clean up the web browser cache and whatever</li></ul>
-<div>I cleaned and freed 1.72 Gb of disk space!!!!</div>
-</div>
-<div><br>
-</div>
-<div style="line-height:23px"><br>
-</div>
-<div style="line-height:23px"><span style="line-height:26px"><b><font size="4">3. Build the snapshot</font></b></span></div>
-<div style="font-size:13px;line-height:23px"><span style="font-size:medium;line-height:26px">To make a snapshot of the installed system, either to backup or clone it to another PC, run in terminal:</span></div>
-</div>
-<div>
-<div><font color="#6A3200" size="3"><span style="line-height:25.98958396911621px">sudo refractasnapshot</span></font></div>
-<div style="font-size:medium;line-height:26px"><br>
-</div>
-</div>
-<div style="font-size:medium;line-height:26px">running it with the gui seems pointless to me, really</div>
-<div style="font-size:13px;line-height:23px"><span style="line-height:26px;font-size:medium">needed disk space = disk size used by the system files + room for the iso file (in my case with the proper excludes, 5.5Gb + 1.9Gb)</span></div>
-<div style="font-size:13px;line-height:23px"><span style="line-height:26px;font-size:medium">you can enable xz compression in the conf file, but it<b> takes longer</b> to make it then. just un-comment the line:</span></div>
-<div><font color="#0F4F0B" size="3"><span style="line-height:25.98958396911621px">#mksq_opt="-comp xz"</span></font></div>
-<div><font color="#0F4F0B" size="3"><span style="line-height:25.98958396911621px"><br>
-</span></font></div>
-<div><span style="font-size:medium;line-height:26px">details&nbsp;</span><font size="3"><span style="line-height:25.98958396911621px"><a href="http://distro.ibiblio.org/refracta/files/documentation/" rel="noreferrer">http://distro.ibiblio.org/refracta/files/documentation/</a></span></font></div>
-<div style="font-size:13px;line-height:23px"><span style="line-height:26px;font-size:medium"><br>
-</span></div>
-<div style="font-size:13px;line-height:23px"><span style="line-height:26px;font-size:medium">Tip: to get the installer icon on the desktop when you boot the Live ISO on another machine, but not present on the desktop on a new install....</span></div>
-<div>
-<ol><li style="font-size:13px;line-height:23px"><span style="font-size:medium;line-height:26px;background-color:transparent">copy the .desktop file to the desktop i.e. <font color="#6A3200">cp /usr/share/applications/refractainstaller.desktop ~/Desktop/</font></span></li>
-<li style="font-size:13px;line-height:23px"><span style="background-color:transparent;font-size:16px;line-height:1.6"><font color="#6A3200">sudo leafpad /usr/lib/refractainstaller/installer_exclude.list</font></span></li>
-<li style="font-size:13px;line-height:23px"><span style="font-size:medium;background-color:transparent;line-height:26px">add the exclusion&nbsp;</span><font color="#0F4F0B"><span style="font-size:medium;background-color:transparent;line-height:25.98958396911621px">- /home/*/Desktop/</span><span style="font-size:medium;background-color:transparent;line-height:26px">refractainstaller.desktop</span></font></li>
-<li style="font-size:13px;line-height:23px"><span style="background-color:transparent;font-size:medium;line-height:26px">thus when the installer copies the file system to the target machine, the install icon will be excluded (so it only appears in the Live environment)</span></li>
-</ol>
-</div>
-<div style="font-size:13px;line-height:23px"><span style="line-height:26px;font-size:medium"><br>
-</span></div>
-<div style="line-height:23px"><b><font size="4">4. refracta2usb</font></b></div>
-<div>
-<div style="font-size:15.555556297302246px;line-height:23px">to install the package, get from <a href="http://sourceforge.net/projects/refracta/files/tools/">http://sourceforge.net/</a></div>
-<div style="font-size:15.555556297302246px;line-height:23px">install the dependencies</div>
-<font color="#7C2020">sudo apt-get install fuseiso hwinfo libhd16 pmount live-boot live-config mtools</font></div>
-<div><span style="line-height:22.986112594604492px"><br>
-</span></div>
-<div><font size="3"><span style="line-height:25.98958396911621px">This allows installing a Live system to USB from a Live CD iso or from a running <i>live</i> session, and can also update the file-system on USB stick later with a newer one. (Unetbootin can be used if preferred)</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px"><a href="http://distro.ibiblio.org/refracta/files/documentation/readme.refracta2usb.txt" rel="noreferrer">http://distro.ibiblio.org/refracta/...</a></span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px">refracta2usb complains if the usb is mounted (and Unetbootin complains if its not mounted!)</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px">Don't eject the device, unmount with&nbsp;</span></font></div>
-<div><font color="#6A3200"><font size="3"><span style="line-height:25.98958396911621px">pumount /dev/sdb1&nbsp;</span></font></font></div>
-<div><font color="#6A3200"><span style="font-size:medium;line-height:25.98958396911621px">pumount</span><font size="3"><span style="line-height:25.98958396911621px">&nbsp;/dev/sdb2&nbsp;</span></font></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px">etc</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px"><br>
-</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px">Tip: before&nbsp;updating&nbsp;the ISO image on the USB stick, first erase the previous files. &nbsp;It can happen that the stick gets full. &nbsp;</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px">If you can't boot with the stick, try to reformat the USB stick as a partition mess-up will prevent it booting.</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px"><br>
-</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px"><br>
-</span></font></div>
-<div><b style="line-height:22.986112594604492px"><font size="4">5. refractainstaller</font></b></div>
-<div><font size="3"><span style="line-height:25.98958396911621px">It's a pretty straight forward affair once you boot into the Live system you put on the USB stick. &nbsp;I get my partitions ready before hand with gparted from Live.</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px"><br>
-</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px">It's very nice to see your snapshot system getting cloned onto another box!</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px"><br>
-</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px"><br>
-</span></font></div>
-<div><font size="3"><span style="line-height:25.98958396911621px"><br>
-</span></font></div>
+<li>run bleachbit as normal user to clean up the web browser cache and whatever</li>
+</ul><div>
+<br><br><br>
+
+<h3>3. Build the snapshot</h3>
 <br>
+To make a snapshot of the installed system, either to backup or clone it to another PC, run `sudo refractasnapshot'
+<br><br>
+running it with the gui seems pointless to me, really
+<br><br>
+needed disk space = disk size used by the system files + room for the iso file (in my case with the proper excludes, 5.5Gb + 1.9Gb)
+<br><br>
+you can enable xz compression in the conf file, but it<b> takes longer</b> to make the iso file. You just un-comment the line: #mksq_opt="-comp xz"
+<br><br>
+details <a href="http://distro.ibiblio.org/refracta/files/documentation/" rel="noreferrer">http://distro.ibiblio.org/refracta/files/documentation/</a>
+
+<br><br><br>
+<b>Tip</b>: to get the installer icon on the desktop when you boot the Live ISO on another machine, but not present on the desktop on a new install....
+
+<br><br>
+<div class="numb"><ol>
+<li>copy the .desktop file to the desktop i.e. 
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+cp /usr/share/applications/refractainstaller.desktop ~/Desktop/</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+</li>
+<li>edit the exclude list
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+sudo leafpad /usr/lib/refractainstaller/installer_exclude.list</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+</li>
+<li>add the exclusion
+<form><textarea name="T" id="file" rows="1" cols="80">
+- /home/*/Desktop/refractainstaller.desktop</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+</li>
+<li>thus when the installer copies the file system to the target machine, the install icon will be excluded (so it only appears in the Live environment)</li>
+</ol></div>
+
+<br><br><br>
+
+<h3>4. refracta2usb</h3>
+<br>
+to install the package, get from <a href="http://sourceforge.net/projects/refracta/files/tools/">http://sourceforge.net/</a>
+<br><br>
+install the dependencies
+
+<form><textarea name="T" id="install" rows="2" cols="80">
+sudo apt-get install fuseiso hwinfo libhd16 pmount live-boot live-config mtools</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+This allows install of a Live system to USB from a Live CD iso or from a running <i>live</i> session, and can also update the file-system on USB stick later with a newer one. (Unetbootin can be used if preferred)
+<br>
+<a href="http://distro.ibiblio.org/refracta/files/documentation/readme.refracta2usb.txt" rel="noreferrer">http://distro.ibiblio.org/refracta/...</a>
+
+<br><br>
+refracta2usb complains if the usb is mounted (and Unetbootin complains if its not mounted!)
+
+<br><br>
+Don't eject the device, unmount with <b>pumount /dev/sdb1</b> etc
+
+<br><br>
+Tip: before updating the ISO image on the USB stick, first erase the previous files. It can happen that the stick gets full. 
+<br><br>
+If you can't boot with the stick, try to reformat the USB stick, as a partition mess-up will prevent it booting.
+<br><br><br><br>
+
+<h3>5. refractainstaller</h3>
+
+<br>
+It's a pretty straight forward affair once you boot into your Live system from the USB stick. I get my partitions ready before hand with gparted from Live. 
+<br><br>
+Just run "refractasnapshot-installer" to run the installer.
+<br><br>
+It's very nice to see your snapshot system getting cloned onto another box!
+<br>
+<br><br><br>
 
 <h2 id="5" class="tag">FSArchiver</h2>
 
-<span style="font-size:medium">&nbsp;is worth looking at too, its a file system archiver, as the name suggests &nbsp;</span><a href="http://www.fsarchiver.org/Main_Page" rel="noreferrer" style="font-size:medium">http://www.fsarchiver.org/Main_Page</a></div>
-</div>
-<br>
+is worth looking at too, its a file system archiver, as the name suggests <a href="http://www.fsarchiver.org/Main_Page" rel="noreferrer">http://www.fsarchiver.org/Main_Page</a>
+<br><br>
 you can apt-get it, or download the <a href="http://sourceforge.net/projects/fsarchiver/files/fsarchiver-bin/">binary file</a>
 <br><br>
 It has a frontend called fsarchiver_dialog, <a href="http://zolli.altervista.org/fsa_dial/">http://zolli.altervista.org/fsa_dial/</a>
 
-
+<br><br><br><br>
 
 <div dir="ltr" style="font-size:13px;line-height:23px"></div>
 </div>
