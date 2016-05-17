@@ -111,9 +111,10 @@ Options...
 </table>
 <br><br>
 
-Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care - see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page.  But it may be impossible to run Debian without systemd in the future... check out Devuan a fork of Debian that is systemd-free...
+Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care - see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page.  <br><br>
+But it may be impossible to run Debian without systemd in the future... so you could check out Devuan - a fork of Debian that is systemd-free...
 <br><br>
-Download a Devuan iso from their site at <a href="https://files.devuan.org/devuan_jessie_beta/" target="https://files.devuan.org/devuan_jessie_beta/">https://files.devuan.org/devuan_jessie_beta/</a>
+Download a Devuan iso from their site (full or netinstall) at <a href="https://files.devuan.org/devuan_jessie_beta/" target="https://files.devuan.org/devuan_jessie_beta/">https://files.devuan.org/devuan_jessie_beta/</a>
 <br><br>
 You could also use Fsmithred's Live CD made with Refractasnapshot that's now based on Devuan... <a href="http://sourceforge.net/projects/refracta/files/isohybrid/">http://sourceforge.net/projects/refracta/files/isohybrid/</a>
 <br><br>
@@ -205,13 +206,13 @@ Debian installer might not see the Win OS and so you will need to do some work t
 
 <br>
 
-<h3>Now get an ethernet cable internet connection, or have the ESSID of your wireless network to hand, if wireless connection is your only option!</h3>
+<h3>Now get an ethernet cable internet connection, or have the ESSID of your wireless network to hand...</h3>
 
 <br>
 <hr noshade="noshade">
 <br><br>
 
-<h2 id="4" class="tag">The install</h2>
+<h2 id="4" class="tag">The install (Netinstall CD)</h2>
 1. I chose Graphical expert install but plain Graphical install does the job and it might be faster.
 <br><br>
 2. configure network hardware: insert usb stick at firmware prompt for network hardware (or if it's on your Live CD stick just wait).
@@ -247,7 +248,7 @@ Then finish the install to set-up users and passwords... restart and boot into a
 <h2 id="5" class="tag">Sources list</h2>
 
 If the installer failed to download the APT files and didn't make the sources.list properly,
-you'll need to put that right before you can retrieve/install packages from Debian.  APT is the the package manager that controls package installation and it needs to have lists of packages from the Debian release you choose, with their current version numbers.
+you'll need to put that right before you can retrieve/install packages from Debian.  APT is the the package manager that controls package installation and it needs to have lists of current packages from the Debian release you choose (e.g. jessie).
 <br><br>
 At the command prompt, login as root, with "root" as username and the root password that you made during the Netinstall CD process, then enter
 <br><br>
@@ -270,8 +271,8 @@ example of lines needed:
 <br>
 <form>
 <textarea name="T" id="file" rows="2" cols="80">
-deb http://ftp.uk.debian.org/debian/ wheezy main contrib non-free
-deb-src http://ftp.uk.debian.org/debian/ wheezy main contrib non-free</textarea>
+deb http://ftp.uk.debian.org/debian/ jessie main contrib non-free
+deb-src http://ftp.uk.debian.org/debian/ jessie main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -279,8 +280,8 @@ and for security updates:
 <br>
 <form>
 <textarea name="T" id="file" rows="2" cols="80">
-deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
-deb http://security.debian.org/ wheezy/updates main contrib non-free</textarea>
+deb http://ftp.debian.org/debian/ jessie-updates main contrib non-free
+deb http://security.debian.org/ jessie/updates main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -291,7 +292,7 @@ Or you can use "http.debian.net" which will automatically retrieve from your mos
 <br>
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
-deb http://http.debian.net/debian wheezy main contrib non-free</textarea>
+deb http://http.debian.net/debian jessie main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -305,7 +306,7 @@ deb http://www.deb-multimedia.org testing main non-free</textarea>
 </form>
 <br><br>
 
-My sources list looks like so
+My sources list looks like so - using "http.debian.net" will look up the most local repository.
 
 <form>
 <textarea name="T" id="file" rows="11" cols="80">
@@ -503,7 +504,7 @@ then type '<i>reboot</i>' to terminate processes and boot into your new desktop!
 <h2 id="9" class="tag">Sudoers file</h2>
 To give your user(s) super-user priveleges, they need to be added to the sudoer file. This means that they can run commands with '<i>sudo</i>' infront to do things as root (nearly) with their user password.
 <br><br> 
-as root still (and if you already rebooted then you need to open a Terminal and "switch user" to root, with the command '<i>su</i>' and enter the root password), run "visudo",
+as root still (and if you already rebooted then you need to open a Terminal and "switch user" to root, with the command '<i>su</i>' and enter the root password), run "visudo", which will probably open nano for you,
 </form>
 <br>
 and then, either add this line after the root's line: 
@@ -704,11 +705,11 @@ example (tab separated):
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 proc            /proc           proc    defaults        0       0
 # sda5
-UUID=cc3bca0d-aee4-4b9c-95c2-57212cc36d4d    /               ext3    defaults,noatime    0       1
+UUID=cc3bca0d-aee4-4b9c-95c2-57212cc36d4d    /       ext3    defaults,noatime    0       1
 # sda6 
-UUID=ab67d8fe-d76b-4e21-abbe-e10d162e1d27    /home           ext3    defaults        0       2
+UUID=ab67d8fe-d76b-4e21-abbe-e10d162e1d27    /home   ext3    defaults        0       2
 # sda7 
-UUID=a7db1e95-4acd-4754-a043-a8d27405c316    none            swap    sw              0       0</textarea>
+UUID=a7db1e95-4acd-4754-a043-a8d27405c316    none    swap    sw              0       0</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 

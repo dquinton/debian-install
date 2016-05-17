@@ -257,7 +257,7 @@ sudo leafpad /etc/hosts</textarea>
 
 when done adding to the list of blocked sites, run
 <form>
-<textarea name="T" id="cmd" rows="1" cols="30">
+<textarea name="T" id="cmd" rows="1" cols="50">
 sudo service networking restart</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -300,7 +300,7 @@ note: connecting via bluetooth manager (i.e. the system's own bluetooth adapter)
 <span class="prob">network manager gives this message: "system policy prevents modification of network settings" and asks for root key to logon to network</span>
 <br><br>
 <form>
-<textarea name="T" id="cmd" rows="1" cols="80">
+<textarea name="T" id="cmd" rows="2" cols="80">
 sudo leafpad /usr/share/polkit-1/actions/org.freedesktop.NetworkManager.policy</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
