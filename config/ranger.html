@@ -99,7 +99,7 @@ https://github.com/hut/ranger.git</textarea>
 <br>
 
 optional installs for Ranger:
-<form><textarea name="T" id="install" rows="1" cols="80">
+<form><textarea name="T" id="install" rows="2" cols="80">
 sudo apt-get install w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -127,10 +127,14 @@ What you can do is copy your original config files, install a newer ranger, run 
 
 <br><br><br>
 
-To get started, two commands needed..
-
+To get started, three commands needed..
+<br><br>
 <table><tr><td width="120">ranger</td>		<td>launches ranger from the current dir in shell (I make a bash alias <span class="bblue">rr</span>)</td></tr>
-<tr><td>S</td>			   <td>in Ranger, drops to a shell at current dir (from where Ctrl-D or `exit' returns to Ranger)</td></tr></table>
+<tr><td>S</td>			   <td>in Ranger, drops to a shell at current dir (from where Ctrl-D or `exit' returns to Ranger)
+</td></tr>
+<tr><td>q</td>			   <td>quits Ranger</td>
+</tr>
+</table>
 
 <br><br>
 <br>
@@ -390,9 +394,9 @@ And that's just the basics!  There are endless possibilities with Ranger because
 <tr><td>-w                 </td><td>bash waits at the end of the process so that you can read the output and then press enter</td></tr></table>
 
 <br><br>
-typing '@-rf leafpad' will open a file with sudo (writes `shell -rf leafpad %s` to console)
+typing '<b>@-rf leafpad</b>' will open a file with sudo (writes `shell -rf leafpad %s` to console)
 
-
+<br><br>
 Check the rc.conf file
 
 <br><br><br><br>
@@ -444,10 +448,12 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 <br><br>
 <h3 style="color: #2D46CF; ">then all those I added..</h3>
 <br>
-<table width="50%" style="background-color:transparent"><tr><td style="padding-right: 20px; " valign="top">
+
+
+<table width="60%" style="background-color:transparent"><tr><td style="padding-right: 20px; " valign="top">
 <table width="80%" style="background-color:transparent"  cellpadding="2">
-<tr><td style="color: #2D46CF; font-weight: bold; "> Alt-m</td><td> <a href="#met" class="tag">metadata</a></td></tr>
-<tr><td style="color: #2D46CF; font-weight: bold;" width="100">f</td><td width="100"> <a href="#fi" class="tag">files</a></td></tr>
+<tr><td width="180" style="color: #2D46CF; font-weight: bold; "> Alt-m</td><td> <a href="#met" class="tag">metadata</a></td></tr>
+<tr><td style="color: #2D46CF; font-weight: bold;" width="100">f</td><td> <a href="#fi" class="tag">files</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> O</td><td> <a href="#op" class="tag">open files</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> y,d,p</td><td> <a href="#yk" class="tag">yanking</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> P</td><td> <a href="#su" class="tag">super user</a></td></tr>
@@ -463,7 +469,7 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 </td>
 <td>
 <table style="background-color:transparent"  cellpadding="2">
-<tr><td style="color: #2D46CF; font-weight: bold; " width="100"> fi </td><td> <a href="#img" class="tag">image files</a></td></tr>
+<tr><td width="120" style="color: #2D46CF; font-weight: bold;"> fi </td><td> <a href="#img" class="tag">image files</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> F</td><td>  <a href="#feh" class="tag">feh</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> fim</td><td>  <a href="#mog" class="tag">mogrify</a></td></tr>
 <tr><td style="color: #2D46CF; font-weight: bold; "> E</td><td>  <a href="#exif" class="tag">exiftool</a></td></tr>
@@ -484,7 +490,7 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 
 
 <h3 id="mov" class="tag">moving around</h3>
-<form><textarea name="T" id="file" rows="23" cols="120">
+<form><textarea name="T" id="file" rows="25" cols="120">
 ################## My keyinds ######################
 
 map &#60;a-PAGEDOWN> move down=0.5   pages=True
@@ -545,9 +551,9 @@ map ff   console -p25 shell -p find . -name "*?*" -type f -print            #fin
 map f\   shell -f catfish --path=%d                                        #find files with catfish
 map fx   shell -f regexxer %d                                            #run string replace tool
 map f1   console -p49 shell -s for file in %%s ;do cp "$file" "$file"_1 ;done           #duplicate selected files adding _1
-map f2   console shell -s sh ~/scripts/duplicate %%s                         #duplicate selected files infix _1
-map f3   console shell -s rename-with-selected %f %s                  #rename highlighted file with selected file's name
-map fW   console shell touch tmpfile; mv tmpfile %%f                        #wipe a file clean (overwrite with blank)</textarea>
+map f2   console shell -s sh ~/scripts/duplicate %%s               #duplicate selected files infix _1
+map f3   console shell -s rename-with-selected %f %s          #rename highlighted file with selected file's name
+map fW   console shell touch tmpfile; mv tmpfile %%f          #wipe a file clean (overwrite with blank)</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -808,7 +814,7 @@ map fipx  console shell -ft google picasa delete ""                    #delete a
 
 <br><br>
 <h3 id="feh" class="tag">map F for feh image viewer commands</h3>
-<form><textarea name="T" id="file" rows="13" cols="150">
+<form><textarea name="T" id="file" rows="15" cols="150">
 ##### feh commands ##########
 
 map Fs  shell ls | xarg ;feh -dFZ  -D4 -Sfilename             #start feh slideshow in dir of images, escape to quit
@@ -896,7 +902,7 @@ exiftool -r "-directory<datetimeoriginal" -d "%y-%m-%d" *.{jpg,JPG}</textarea>
 </form>
 <br><br>
 script for fD, "sort-files" (a very useful one to have when you've imported 400 clips from a video camera etc - no EXIF data)
-<form><textarea name="T" id="file" rows="2" cols="80">
+<form><textarea name="T" id="file" rows="3" cols="80">
 #!/bin/bash
 for i in  *; do DAT=$(date -r $i +%y-%m-%d); mkdir -p $DAT; mv $i $DAT ; done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
@@ -1092,7 +1098,7 @@ Here's my complete Ranger renaming tool that just might take care of all your ne
 You might want to have these printed on a sheet because some commands are too long and a #comment will not be seen.  You should also run some tests on dummy files - don't assume that they all work perfectly!!!
 <br><br>
 
-<form><textarea name="T" id="file" rows="64" cols="155">
+<form><textarea name="T" id="file" rows="66" cols="155">
 ###################################
 ##### batch renaming ##########
 
@@ -1284,7 +1290,7 @@ export EDITOR=nano</textarea>
 To change how different files types are opened (or the numbered choices when you hit 'r') you need to look in Ranger's <b>rifle.conf</b> file
 <br><br>
 Open images in feh, fullscreen, slideshow with progress to next, change the line to this,
-<form><textarea name="T" id="file" rows="1" cols="80">
+<form><textarea name="T" id="file" rows="2" cols="80">
 mime ^image, has feh,    X, flag f = feh -dFZ --start-at "$(basename "$1")" *</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -1298,7 +1304,7 @@ mime ^audio,  has mplayer, X, flag f  = urxvt -e mplayer -fs -- "$@"</textarea>
 </form>
 <br><br>
 Opening office docs, set the version you are using, e.g. 
-<form><textarea name="T" id="file" rows="1" cols="100">
+<form><textarea name="T" id="file" rows="2" cols="100">
 ext od[dfgpst]|docx?|sxc|xlsx?|xlt|xlw|gnm|gnumeric, has libreoffice4.4, X, flag f = libreoffice4.4 "$@"</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
