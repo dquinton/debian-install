@@ -111,7 +111,7 @@ Options...
 </table>
 <br><br>
 
-Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care - see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page.  <br><br>
+<b>Note</b>: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care - see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page.  <br><br>
 But it may be impossible to run Debian without systemd in the future... so you could check out Devuan - a fork of Debian that is systemd-free...
 <br><br>
 Download a Devuan iso from their site (full or netinstall) at <a href="https://files.devuan.org/devuan_jessie_beta/" target="https://files.devuan.org/devuan_jessie_beta/">https://files.devuan.org/devuan_jessie_beta/</a>
@@ -323,8 +323,11 @@ deb http://security.debian.org/ jessie/updates main contrib non-free
 deb http://www.deb-multimedia.org jessie main non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
+Note: if you go with the Devuan fork of Debian, you need to point sources there, not at Debian - see my <a href="go-devuan.html">Go devuan page</a>.
 
-<br>Then save the file, either with Ctrl-X (close file), y (yes) and Enter, or else, Ctrl-O (write out file), Enter and Ctrl-X.
+<br><br>
+Then save the file, either with Ctrl-X (close file), y (yes) and Enter, or else, Ctrl-O (write out file), Enter and Ctrl-X.
 <br><br>
 then update your Debian's package lists (which are updated frequently at the server side repository)  
 <br>if your lists are old you'll get errors when installing packages because old package versions will no longer be available.
