@@ -59,7 +59,7 @@ Once you have collated your GPS data and tidied up tracks, renumbered the points
 What we need is Geo Info System software, and for that we have QGIS (Quantum GIS).
  <br><br>
 <form><textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install qgis </textarea>
+sudo apt-get install qgis python-qgis</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -82,7 +82,7 @@ To update the geo data in the layer after changes were made to the source gpx fi
 <h3>Waypoint labels</h3> (or any feature labels) - double click on the layer, Labels > check "Label this layer.." then select "name" on drop-down list, OK - but you could select another field, as in altitude, etc.
 <br><br>
 <h3>Annotation -labels</h3>  
-install the plugin "<b>Easy custom labeling</b>" from Plugins menu > Manage and Install<br>
+install the plugin "<b>EasyCustomLabeling</b>" from Plugins menu > Manage and Install<br>
 and also "<b>Memory Layer Saver</b>" plugin so that your labels will be saved in the project
 <br><br>
 
@@ -143,20 +143,21 @@ then, with your polygon layer...
 <li>make a title with "Add new label" (text box) and you can give it a frame, and white background with 50% transparency in case your map is a full page of terrain detail</li>
 <li>Legend - add with the button to left, can set auto update or manual if you want to remove some layers from it</ul>
 <li>to move objects around you need to select the move tool at left</li>
-</div>
+</ul></div>
 
 <br><br><br>
 <h3>Background maps</h3>
 
-<div class="bullet"><ul><li>1. <b>OpenLayers</b> plugin</li>
-<li>then select a map Web > OpenLayers plugin > OpenStreet/Google/Bing...</li>
+1. <b>OpenLayers</b> plugin<br>
+then select a map via Web menu, Web > OpenLayers plugin > OpenStreet/Google/Bing...
 <br><br>
 To keep the map for offline use, turn off other layers and then Project > Save as Image<br>
 - then later you can add the map (provided the zoom level is still what you want) with Add Raster Layer 
 <br><br>
 --> note that the coodinate ref system (CRS) for map raster layer is <b>EPSG:3857 - WGS 84/ Pseudo Mercator</b>, and this will rather alter how the grid is displayed in the print manager (showing ref's such as 11304000 instead of 101.550 which shows for <b>EPSG:4326 - WGS 84</b>, gpx vector layers) and the units will need changing to intervals of 3000 or so - but its easier to change the CRS back to <b>EPSG:4326</b> so that coodinate format reads better, and you won't need to keep changing the unit intervals.
 <br><br>
-2. much better, install the <b>QuickMapServices</b> plugin, which offers transparency in the layer properties dialogue, and also, when you go offline the map data stays happy in the print composer (the above plugin prints blank squares if the connection is lost!)
+2. <b>QuickMapServices</b> plugin is much better<br>
+it offers transparency in the layer properties dialogue, and also, when you go offline the map data stays happy in the print composer (the above plugin prints blank squares if the connection is lost!)
 <br><br>
 <span class="ht">Note! Unless the map fills the entire page in the print composer, when printing, your map layers will become mis-aligned with the background map, which is unaccepable and worthless.  So when you prepare to print, stretch the map to snap to the edges of the page - this is the only way to prevent mis-alignment.</span> 
 </div>

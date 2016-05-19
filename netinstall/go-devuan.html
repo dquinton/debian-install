@@ -12,7 +12,7 @@ id: net
 <br>
 I run Debian Jessie without systemd, just because I don't need to go that way - sysvinit boots my system just fine.  But it was getting increasingly difficult to install some packages because they depended on systemd, and I needed to install bluefish.  This cool html editor however, is dependent on gvfs-backends which depends on libpam-systemd, which depends on the big one, systemd.
 <br><br>
-Enter Devuan.  It looks like they've come a long way developing their Debian fork.  They fork anything that depends on systemd to remove the dependency and mirror anything else from the debian repositories - quite a job to be doing.
+Enter <a href="https://devuan.org/">Devuan</a>.  They've come a long way developing their Debian fork.  Anything that depends on systemd is forked so that they won't be calling for it with Apt, and anything else from the debian repositories is mirrored.
 <br><br>
 To migrate to Devuan, at the moment you just need to change your package sources, update, and upgrade and that's all.
 <br><br>
@@ -32,16 +32,31 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list-debian</textarea>
 
 <li>Hit enter with "main"</li>
 
-<li>install the devuan keyring and run an upgrade</li></div>
+<li>You should then check your sources list - remove any Debian lines, and add the updates/security lines found on the Devuan home page, plus keep the deb-multimedia line (which is needed and I think can be used with Devuan?)</li></ul></div>
 <br>
-<textarea name="T" id="install" rows="3" cols="50">
+<form><textarea name="T" id="file" rows="8" cols="80">
+# Devuan repositories
+deb http://auto.mirror.devuan.org/merged jessie main contrib non-free
+deb-src http://auto.mirror.devuan.org/merged jessie main contrib non-free
+
+deb http://auto.mirror.devuan.org/merged jessie-updates  main contrib non-free
+deb http://auto.mirror.devuan.org/merged jessie-security main contrib non-free
+
+deb http://www.deb-multimedia.org jessie main non-free</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+<div class="bullet"><ul>
+<li>install the devuan keyring and run an upgrade</li></ul></div>
+
+<textarea name="T" id="install" rows="4" cols="50">
 su
-apt-get update && apt-get install devuan-keyring
+apt-get update
+apt-get install devuan-keyring
 aptitude full-upgrade </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br><br><br>
-(this upgraded 35 packages and retrieved 4Mb - for a recently updated Jessie install)
+
 <br><br>
 Now go ahead and install bluefish or whatever, without any systemd dependency issues!
 <br><br>
@@ -49,7 +64,7 @@ Now go ahead and install bluefish or whatever, without any systemd dependency is
 Download a Devuan iso from their site at <a href="https://files.devuan.org/devuan_jessie_beta/" target="https://files.devuan.org/devuan_jessie_beta/">https://files.devuan.org/devuan_jessie_beta/</a>
 
 <br><br>
-<br><br></div><b>Next page: </b>
+<br><br><b>Next page: </b>
 <br><br>
 <h3><a href="../configure.html">Configure Debian</a></h3>
 <br><br>
