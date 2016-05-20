@@ -323,14 +323,13 @@ deb http://security.debian.org/ jessie/updates main contrib non-free
 deb http://www.deb-multimedia.org jessie main non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
-Note: if you go with the Devuan fork of Debian, you need to point sources there, not at Debian - see my <a href="go-devuan.html">Go devuan page</a>.
+<br><br>
+<span class="ht"><b>Note</b>: if you go with the Devuan fork of Debian, you need to point sources there, not at Debian - see my <a href="go-devuan.html">Go devuan page</a>.</span>
 
 <br><br>
-Then save the file, either with Ctrl-X (close file), y (yes) and Enter, or else, Ctrl-O (write out file), Enter and Ctrl-X.
+save the file, either with Ctrl-X (close file), y (yes) and Enter, or else, Ctrl-O (write out file), Enter and Ctrl-X.
 <br><br>
-then update your Debian's package lists (which are updated frequently at the server side repository)  
-<br>if your lists are old you'll get errors when installing packages because old package versions will no longer be available.
+then update your Debian's package lists - if your lists are old you'll get errors when installing packages because old package versions will no longer be available.
 <br><br>
 Run the update with (while still as root)
 <form>
@@ -401,9 +400,13 @@ Follow this part only when using the Netinstall CD (a Debian Live CD will have a
 <br>
 The Debian command to install software via the Terminal is '<i>apt-get install</i>'... You will need these 'apt-get' commands handy on paper or on another screen as you won't have a desktop at this stage of install.  
 <br><br>
-If you like, you can make some files with package lists (e.g. desktop, apps, build) which you can save to a USB stick.  Then, on the command line that we've just been using, after netinstall CD and reboot, you mount the stick (find its device node with "<i>fdisk -l</i>" command, perhaps sdb1), mount it with '<i>mount /dev/sdb1 /mnt</i>' and '<i>cd /mnt</i>' and the dir with those files you made, with an '<i>ls</i>' command to see what's there...  
+If you like, you can make some files with package lists (e.g. desktop, apps, build) which you can save to a USB stick.  The files must contain a single line of package names, without the ap-get command.
 <br><br>
-then run:
+Then, after running netinstall CD, reboot, insert the stick, and use the command line to find the device node of the stick, with "<i>lsblk</i>" command (perhaps it's /dev/sdb1), 
+<br><br>
+mount it with '<i>mount /dev/sdb1 /mnt</i>', then change working directory to the mounted stick with '<i>cd /mnt</i>' and Enter, and again to the dir on the stick with those files you made - type '<i>cd</i>' and hit Tab twice to see what's there... then do '<i>cd your-dir</i>'... and finally, '<i>ls</i>' to see what files are in the dir..
+<br><br>
+then type and  run:
 <br>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
@@ -411,7 +414,7 @@ sudo apt-get install $(< desktop)</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-where "desktop" is the name of a file with package names.
+where "desktop" is the name of your file with package names. But if you have packages that can't be found, it will kinda halt the install process.  So you will need to edit the list in the file, with 'nano your-file', edit and Ctrl-X, y, Enter to save it.
 
 <br><br><br>
 <h3>XFCE Desktop</h3>

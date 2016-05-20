@@ -9,140 +9,194 @@ id: tutor
 
 <div class="cont">
 
-<div dir="ltr"><font size="3">With&nbsp;</font><span style="font-size:medium;line-height:27px"><b>Ubuntu One</b> not around for Debian</span><span style="font-size:medium">&nbsp;what other cloud sync options are there?...</span></div>
-<div dir="ltr"><font size="3"><br>
-</font></div>
-<div dir="ltr"><b><font size="4">Insync</font></b><font size="3"> is now available for Linux syncing with Google Drive -it will sync your entire Drive with your PC, not just selected files&nbsp;</font></div>
-<div dir="ltr"><font size="3"><span style="line-height:27px"><a href="http://www.webupd8.org/2012/08/insync-google-drive-client-for-linux.html" rel="noreferrer">http://www.webupd8.org</a></span></font></div>
-<div dir="ltr"><font size="3"><a href="https://www.insynchq.com/downloads" rel="noreferrer">..insynchq.com/downloads</a></font></div>
-<div dir="ltr"><font size="3"><br>
-</font></div>
-<div dir="ltr"><b><font size="4">dropbox</font></b><font size="3"> uploading via dropbox folder syncing was real slow for me.</font></div>
-<div dir="ltr"><span style="line-height:27px;font-size:medium"><br>
-</span></div>
-<div dir="ltr"><span style="line-height:27px"><b><font size="4">dvcs-autosync</font></b><font size="3"> -looks difficult!&nbsp;</font></span><a href="http://www.mayrhofer.eu.org/dvcs-autosync" rel="noreferrer" style="line-height:27px;font-size:medium">http://www.mayrho</a><a href="http://www.mayrhofer.eu.org/dvcs-autosync" rel="noreferrer" style="line-height:27px"><font size="3">fer...</font></a></div>
-<div dir="ltr"><font size="3">download&nbsp;<a href="http://packages.debian.org/wheezy/dvcs-autosync" rel="noreferrer">http://packages.debian.org...</a></font></div>
-<div dir="ltr"><font size="3"><span style="line-height:27px"><br>
-</span></font></div>
-<div dir="ltr">
-<div dir="ltr"><b><font size="4">spideroak</font><font size="3">&nbsp;</font></b><font size="3">looks ok, but they only give 2GB for free and you need their 23Mb program installed.&nbsp;</font><font size="3"><a href="https://spideroak.com/solutions/spideroak-one" rel="noreferrer">https://spideroak.com/signup/</a></font></div>
-<div dir="ltr"><font size="3"><br>
-</font></div>
-<div dir="ltr"><b><font size="4">OwnCube</font></b> which is hosted by ownCloud -but it's <u>no longer</u> a free service (and they didn't tell me about that!)</div>
-<div dir="ltr"><span style="font-size:medium">sign up&nbsp;</span></div>
-<div dir="ltr"><font size="3">
-<div dir="ltr">make source file</div>
-<div dir="ltr"><font color="#6A3200">sudo leafpad /etc/apt/sources.list.d/owncloud2012.list</font></div>
-<div dir="ltr">And paste this line into it:</div>
-<div dir="ltr"><font color="#0F4F0B">deb http://download.opensuse.org/repositories/isv:ownCloud:ownCloud2012/Debian_6.0/ /</font></div>
-<div dir="ltr"><font color="#7C2020">sudo apt-get update</font></div>
-<div dir="ltr"><font color="#7C2020">sudo apt-get install owncloud-client</font></div>
-<div dir="ltr">the rest is up to you -I couldn't connect to it recently</div>
-<div dir="ltr"><br>
-</div>
-</font><b><font size="4">Box</font></b> -5Gb free but has no Linux app but there's a way with webdav<font size="3">
-<div dir="ltr"><font color="#0b5394"><a href="http://seb.so/50gb-of-cloud-space-with-box-automatically-syncd-on-linux-with-webdav/" rel="noreferrer">http://seb.so/...</a></font></div>
-<div dir="ltr">another way here&nbsp;<a href="http://dev.modmancer.com/index.php/2011/12/17/access-box-com-box-net-from-your-ubuntu/" rel="noreferrer">http://dev.modmancer.com...</a></div>
-<div dir="ltr"><font color="#0b5394"><br>
-</font></div>
-</font><b><font size="5"><font color="#f3f3f3" style="background-color:rgb(204,0,0)">&nbsp;</font><font color="#f3f3f3" style="background-color:rgb(204,0,0)">W</font><font color="#f3f3f3" style="background-color:rgb(204,0,0)">&nbsp;</font></font></b>  <font size="4"><b>Wuala</b></font></div>
-<div dir="ltr">Linux friendly but no longer for free - it'll be 99 Euro cents per month for 5Gb.<br>
-<font size="3">
-<div dir="ltr"><font color="#0b5394"><a href="http://www.wuala.com/">http://www.wuala.com/</a></font></div>
-<div dir="ltr"><br>
-</div>
-</font>Basically you have 3 options given you within the Wuala app:
-<div><font size="3">
-<ol><li><font color="#0b5394">Select local directories to <b>backup</b> online (meaning files are uploaded and they will be uploaded each time the files are updated locally)</font></li>
-<li><font color="#0b5394">Select local directories to <b>sync</b> online (meaning that files are uploaded but also downloaded to the local dir if they have been updated online by another pc or mobile device).</font></li>
-<li><font color="#0b5394">Drag or copy/paste<b> directories and files</b> to a folder in the Wuala app window or Wuala directory in user's home (the files will upload but will not be uploaded if updated locally -you will have to replace those files in Wuala with more recent ones).</font></li>
-</ol>
-<font color="#0b5394"><span style="background-color:rgb(182,215,168)">Really, what you see in the Wuala app is your files being stored on-line. &nbsp;Wuala is desktop based, so you don't go to the website to login to see your files. &nbsp;</span><br>
-</font></font>Besides that there are options to set up private/public groups for sharing, company (business account) and storage devices.<br>
-Any directory can be shared also.</div>
-<div><br>
-</div>
-<div>Tip: if you reinstall with a new user name or change user name and copy over your config files, the Wuala app might get locked. &nbsp;So you can:</div>
-<div>
-<ol><li>rename the .wuala dir</li>
-<li>start Wuala and a new .wuala dir is made</li>
-<li>close Wuala and copy files from renamed .wuala dir</li>
-<li>start Wuala and then reconnect your synced folders: Right click on folder &gt; Backup Settings &gt; Reconnect &gt; search the folder in your home dir &gt; Save &gt; OK</li>
+With <b>Ubuntu One</b> not around for Debian, what other cloud sync options are there?
+<br><br>
+<h3>Insync</h3> is now available for Linux, allowing sync with Google Drive -except it will sync your entire Drive with your PC, not just selected files <a href="http://www.webupd8.org/2012/08/insync-google-drive-client-for-linux.html" rel="noreferrer">http://www.webupd8.org</a> <a href="https://www.insynchq.com/downloads" rel="noreferrer">..insynchq.com/downloads</a> 
+<br><br><br>
+
+<h3>dropbox</h3>  uploading via dropbox folder syncing was real slow for me (a few years back).
+
+<br><br><br>
+<h3>dvcs-autosync</h3> -looks difficult!<br>
+<a href="http://www.mayrhofer.eu.org/dvcs-autosync" rel="noreferrer">http://www.mayrhofer...</a> 
+download <a href="http://packages.debian.org/wheezy/dvcs-autosync" rel="noreferrer">http://packages.debian.org...</a>
+<br><br><br>
+
+<h3>spideroak</h3>
+<br>
+looks ok, but they only give 2GB for free and you need their 23Mb program installed. <br>
+<a href="https://spideroak.com/solutions/spideroak-one" rel="noreferrer">https://spideroak.com/signup/</a>
+
+<br><br><br>
+<h3>OwnCube</h3> 
+hosted by ownCloud -but it's <u>no longer</u> a free service (and they didn't tell me about that!)
+<br><br>
+-sign up<br>
+-make source file<br>
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+sudo leafpad /etc/apt/sources.list.d/owncloud2012.list</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+And paste this line into it:
+<form><textarea name="T" id="file" rows="1" cols="100">
+deb http://download.opensuse.org/repositories/isv:ownCloud:ownCloud2012/Debian_6.0/ /</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form><textarea name="T" id="cmd" rows="2" cols="50">
+sudo apt-get update
+sudo apt-get install owncloud-client</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+the rest is up to you -I couldn't connect to it recently
+
+<br><br><br>
+
+<h3>Box</h3>
+-5Gb free, there's no Linux app but there's a way with webdav <a href="http://seb.so/50gb-of-cloud-space-with-box-automatically-syncd-on-linux-with-webdav/" rel="noreferrer">http://seb.so/...</a><br>
+and another way here<a href="http://dev.modmancer.com/index.php/2011/12/17/access-box-com-box-net-from-your-ubuntu/" rel="noreferrer">http://dev.modmancer.com...</a>
+
+
+<br><br><br>
+<span style="color: #f3f3f3; background-color: #FF0000; font-size: 26px; ">&nbsp;W </span> <span style="font-size: 20px; font-weight: bold; ">  Wuala</span>
+<br>
+Linux friendly but no longer for free - it'll be 99 Euro cents per month for 5Gb.<br>
+
+<a href="http://www.wuala.com/">http://www.wuala.com/</a></font></
+<br><br>
+Basically you have 3 options given you within the Wuala app:
+
+<div class="numb"><ol><li> 
+Select local directories to <b>backup</b> online (meaning files are uploaded and they will be uploaded each time the files are updated locally)</li>
+
+<li>Select local directories to <b>sync</b> online (meaning that files are uploaded but also downloaded to the local dir if they have been updated online by another pc or mobile device).</li>
+
+<li>Drag or copy/paste<b> directories and files</b> to a folder in the Wuala app window or Wuala directory in user's home (the files will upload but will not be uploaded if updated locally -you will have to replace those files in Wuala with more recent ones).</li>
 </ol>
 <br>
-</div>
-<div><a href="http://www.forbes.com/sites/cherylsnappconner/2014/04/12/free-cloud-storage-for-entrepreneurs-top-6-picks/" rel="noreferrer">free-cloud-storage-for-entrepreneurs-top-6-picks/</a></div>
-<div><a href="http://www.1mtb.com/top-10-best-free-online-cloud-storage-services/" rel="noreferrer">top-10-best-free-online-cloud-storage-services/</a></div>
-<div dir="ltr" style="font-size:medium"><br>
-</div>
-<div dir="ltr" style="font-size:medium"><br>
-</div>
-<div><font color="#444444" size="6" style="background-color:rgb(243,243,243)">&nbsp;copy&nbsp;</font><font size="3">&nbsp;from <a href="https://techlib.barracuda.com/" rel="noreferrer">Barracuda Networks</a>&nbsp;&nbsp;</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">They give you 15Gb for the free plan and with an extra 5Gb if you get referred (use my link below) and a further 5Gb for referring another person. :-O</font></div>
-<div><font size="3">+ a Linux desktop app (which is a whopping 49mb because it contains all the libQt packages it needs in both 32 and 64bit)...</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">Download the tar file from&nbsp;</font><span style="background-color:transparent"><font size="3"><a href="https://copy.com?r=1x4aT3">copy.com</a></font></span></div>
-<div><span style="background-color:transparent">unpack it and cd to eithr 32 or 64 bit dir</span></div>
-<div><span style="background-color:transparent">run <font color="#6A3200">./CopyAgent</font></span></div>
-<div style="font-size:medium">
-<ul><li><span style="line-height:1.6;background-color:transparent">a nice clean web interface and easy to use - click on a folder and it expands the contents to the right, click a file and it shows a preview to the right - and revision history&nbsp;(click info button)&nbsp;if different versions have been uploaded;&nbsp;</span></li>
-<li><span style="line-height:1.6;background-color:transparent">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; click on a title to the left to close the furthest panel at right.</span></li>
-<li><span style="line-height:1.6;background-color:transparent">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; drag and drop files to other folders</span></li>
-<li><span style="line-height:1.6;background-color:transparent">the desktop app syncs from one location, copy home (which you can set where you like), and in there you need to make sym-links to any other folders/files you need to sync with your online account.</span></li>
-<li><span style="line-height:1.6;background-color:transparent">instructions here&nbsp;<a href="https://techlib.barracuda.com/COPY/FileUploadDownload" rel="noreferrer">https://techlib.barracuda.com/COPY/FileUploadDownload</a></span></li></ul>
-</div>
-<div style="font-size:medium"><span style="line-height:1.6;background-color:transparent">One problem with the online interface is that uploading a newer version of a file doesn't instantly update the older version! &nbsp;You need to refresh the browser page first (the refresh button in the interface doesn't do it).</span></div>
-<div style="font-size:medium"><span style="line-height:1.6;background-color:transparent">also, old versions can't be deleted to keep newer versions only.</span></div>
-<div>
-<ul><li><font size="3">the copy agent has command-line tools!&nbsp;</font></li>
-<li><font size="3">you will need to cd to the&nbsp;</font><span style="font-size:medium">/x86_64/CopyAgent&nbsp;or&nbsp;</span><span style="font-size:medium">/x86/CopyAgent&nbsp;dir first as they didn't package the app into a deb archive, it runs stand-alone</span></li>
-<li><font size="3">to connect with your account you'll first need to enter user/pw with&nbsp;</font><span style="color:#6A3200;font-size:medium">./CopyCmd -username={email} -password=xxxxx</span></li>
-<li><font size="3">then command use is&nbsp;</font><span style="color:#6A3200;font-size:medium">./CopyCmd {Module} {options}</span></li>
-<li><font size="3"><span style="color:#6A3200">./CopyCmd Cloud get [cloud path] [local path]&nbsp;</span></font>gets a file</li></ul>
-<span style="font-size:medium;line-height:1.6;background-color:transparent">put &nbsp;[local path] [cloud path] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;uploads a file</span></div>
-<div><span style="font-size:medium;line-height:1.6;background-color:transparent">ls [path1] [path2] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; lists files on server, -r recursive</span></div>
-<div><span style="font-size:medium;line-height:1.6;background-color:transparent">mkdir [path] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;makes folder</span></div>
-<div><span style="font-size:medium;line-height:1.6;background-color:transparent">rm [path] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;deletes</span></div>
-<div><span style="font-size:medium;line-height:1.6;background-color:transparent">undelete [path] &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; restores</span></div>
-<div style="font-size:medium"><span style="line-height:1.6;background-color:transparent"><br>
-</span></div>
-<div><span style="font-size:medium;line-height:1.6;background-color:transparent">make a command (e.g. Openbox menu entry) to run the QT app with&nbsp;</span><span style="background-color:transparent"><font size="3"><font color="#6A3200">~/Downloads/copy/x86_64/CopyAgent </font>etc</font></span></div>
-<div style="font-size:medium">You can&nbsp;<span style="line-height:1.6;background-color:transparent">see what's happening with the files sync&nbsp;</span>with right click on<span style="line-height:1.6;background-color:transparent">&nbsp;the panel icon, no. of files to upload and data speed - but detail could be better, its just about impossible to know which files are currently being processed or are queued.</span></div>
-<div><span style="background-color:transparent"><font size="3">in Preferences you can set what folders to sync to local from online, and sharing permissions on any.</font></span></div>
-<div style="font-size:medium"><br>
-</div>
-<div style="font-size:medium"><br>
-</div>
+<span style="background-color:rgb(182,215,168)">Really, what you see in the Wuala app is your files being stored on-line. &nbsp;Wuala is desktop based, so you don't go to the website to login to see your files. &nbsp;</span><br>
+
+<br>
+Besides that there are options to set up private/public groups for sharing, company (business account) and storage devices.<br>
+Any directory can be shared also.
+<br><br>
+
+<b>Tip</b>: if you reinstall with a new user name or change user name and copy over your config files, the Wuala app might get locked. &nbsp;So you can:
+<br>
+&nbsp;&nbsp;-rename the .wuala dir<br>
+&nbsp;&nbsp;-start Wuala and a new .wuala dir is made<br>
+&nbsp;&nbsp;-close Wuala and copy files from renamed .wuala dir<br>
+&nbsp;&nbsp;-start Wuala and then reconnect your synced folders: Right click on folder &gt; Backup Settings &gt;<br> &nbsp;&nbsp;-Reconnect &gt; search the folder in your home dir &gt; Save &gt; OK<br>
+
+<br><br>
+<a href="http://www.forbes.com/sites/cherylsnappconner/2014/04/12/free-cloud-storage-for-entrepreneurs-top-6-picks/" rel="noreferrer">free-cloud-storage-for-entrepreneurs-top-6-picks/</a>
+<a href="http://www.1mtb.com/top-10-best-free-online-cloud-storage-services/" rel="noreferrer">top-10-best-free-online-cloud-storage-services/</a>
+
+<br><br><br>
+
+<span style="color: #444444; background-color: #FFFFFF; font-size: 28px; ">&nbsp;copy&nbsp;</span> from <a href="https://techlib.barracuda.com/" rel="noreferrer">Barracuda Networks</a>
+
+<br><br>
+They give you 15Gb for the free plan and with an extra 5Gb if you get referred and a further 5Gb for referring another person. :-O<br>
+
++ a Linux desktop app (which is a whopping 49mb because it contains all the libQt packages it needs in both 32 and 64bit)...
+<br><br>
+
+Download the tar file from <a href="https://copy.com">copy.com</a><br>
+unpack it and cd to either 32 or 64 bit dir<br>
+run <span style="color:#6A3200;">./CopyAgent</span>
+<br>
+<ul><li>a nice clean web interface and easy to use <br>
+&nbsp; &nbsp; &nbsp;-click on a folder and it expands the contents to the right, <br>
+&nbsp; &nbsp; &nbsp;-click a file and it shows a preview to the right <br>
+&nbsp; &nbsp; &nbsp;-and revision history (click info button)&nbsp;if different versions have been uploaded<br>
+&nbsp; &nbsp; &nbsp;-click on a title to the left to close the furthest panel at right.<br>
+&nbsp; &nbsp; &nbsp;-drag and drop files to other folders<br>
+<li>the desktop app syncs from one location, copy home (which you can set where you like), and in there you need to make sym-links to any other folders/files you need to sync with your online account.</li>
+<li>instructions here <a href="https://techlib.barracuda.com/COPY/FileUploadDownload" rel="noreferrer">https://techlib.barracuda.com/COPY/FileUploadDownload</a></li></ul>
+<br>
+One problem with the online interface is that uploading a newer version of a file doesn't instantly update the older version!  You need to refresh the browser page first (the refresh button in the interface doesn't do it).  
+also, old versions can't be deleted to keep newer versions only.
+<br>
+
+
+The copy agent has command-line tools!
+<br>
+
+<ul><li>you'll need to cd to the /x86_64/CopyAgent or /x86/CopyAgent dir first as they didn't package the app into a deb archive, it runs stand-alone</li>
+<li>to connect with your account you'll first need to enter user/pw with <span style="color:#6A3200;">./CopyCmd -username={email} -password=xxxxx</span></li>
+
+<li>then command use is&nbsp;<span style="color:#6A3200;">./CopyCmd {Module} {options}</span></li>
+
+<li><span style="color:#6A3200">./CopyCmd Cloud get [cloud path] [local path]&nbsp;</span>gets a file</li></ul>
+
+<br><br>
+<table><tr>
+<td width="240px">put [local path] [cloud path] </td>
+<td>uploads a file</td>
+</tr>
+<tr>
+<td>ls [path1] [path2]</td>
+<td>lists files on server, -r recursive</td>
+</tr>
+<tr>
+<td>mkdir [path] </td>
+<td>makes folder</td>
+</tr>
+<tr>
+<td>rm [path]</td>
+<td>deletes</td>
+</tr>
+<tr>
+<td>undelete [path]</td>
+<td>restores</td>
+</tr>
+</table>
+
+<br><br>
+make a command (e.g. Openbox menu entry) to run the QT app with <span style="color:#6A3200">~/Downloads/copy/x86_64/CopyAgent </span>
+
+<br><br>
+You can see what's happening with the files sync with right click on the panel icon, no. of files to upload and data speed - but detail could be better, its just about impossible to know which files are currently being processed or are queued.
+<br><br>
+in Preferences you can set what folders to sync to local from online, and sharing permissions on any.
+
+
+<br><br><br><br>
 <div><font color="#eeeeee" size="5"><span style="background-color:rgb(204,0,0)">Z </span>&nbsp;<span style="background-color:rgb(56,118,29)">O </span>&nbsp;<span style="background-color:rgb(61,133,198)">H </span>&nbsp;<span style="background-color:rgb(241,194,50)">O</span></font><span style="font-size:medium"><span style="background-color:rgb(241,194,50)"><font color="#eeeeee"> </font></span>&nbsp;</span><font size="5">Docs</font></div>
-<div style="font-size:medium"><br>
+<br>
 </div>
 <div>
-<ul><li><font size="3">First sign up for a Zoho account, at&nbsp;<a href="https://www.zoho.com/signup.html">https://www.zoho.com/signup.html</a></font></li>
-<li><font size="3">login and at the Zoho Docs page, find the link, "Get Zohodocs for linux"</font></li>
-<li><font style="line-height:1.6;background-color:transparent">to run it you must install &nbsp;libssl0.9.8 found in Wheezy (it's 1.0.0 in Jessie)...&nbsp;</font><span style="font-size:medium;line-height:1.6;background-color:transparent">get it at this link</span></li></ul>
-</div>
-<div>
-<div><font size="3"><a href="http://snapshot.debian.org/archive/debian/20110406T213352Z/pool/main/o/openssl098/libssl0.9.8_0.9.8o-7_amd64.deb" rel="noreferrer">http://snapshot.debian.org/archive/debian/20110406T213352Z/pool/main/o/openssl098/libssl0.9.8_0.9.8o-7_amd64.deb</a></font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">and install it with dpkg -i</font></div>
-<div>
-<ul><li><span style="font-size:medium;line-height:1.6;background-color:transparent">then install zohodocs</span></li></ul>
-</div>
-<div><span style="color:#6A3200;font-size:medium;line-height:1.6;background-color:transparent">dpkg -is zohodocs_x64.deb</span></div>
-</div>
-<div>
+<ul><li>First sign up for a Zoho account, at&nbsp;<a href="https://www.zoho.com/signup.html">https://www.zoho.com/signup.html</a></font></li>
+<li>login and at the Zoho Docs page, find the link, "Get Zohodocs for linux"</font></li>
+<li><font style="line-height:1.6;background-color:transparent">to run it you must install &nbsp;libssl0.9.8 found in Wheezy (it's 1.0.0 in Jessie)...&nbsp;</font><span style="font-size:medium;line-height:1.6;background-color:transparent">get it at this link<br><a href="http://snapshot.debian.org/archive/debian/20110406T213352Z/pool/main/o/openssl098/libssl0.9.8_0.9.8o-7_amd64.deb" rel="noreferrer">http://snapshot.debian.org/archive/debian/...</a><br>
+and install it with dpkg -i</span></li></ul>
+
+<ul><li>then install zohodocs
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+dpkg -is zohodocs_x64.deb</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+</li></ul>
+
 <ul><li>when you run it, you set up where to sync files to on your box - and note that the folder "<b>Zoho Docs</b>" will be made at the dir you set, so that is the <b>actual</b> sync dir</li>
 <li>then select what folders to sync from your Zoho docs</li></ul>
-<div>I've tried with symlinks in the "Zoho Docs" dir but I've only made partial progress, and Zoho Docs support told me that symlinks are not supported yet. &nbsp;Some sym-linked dir's upload but some others don't....</div>
-</div>
-<div>Which means what you have to do is make hard copies of files you want synced to zohodocs in the sync dir. &nbsp;But to save yourself choosing and picking your files every time you want to copy thim to the Zoho Docs dir to sync with online docs, what you do is you have a dir with symlinks to all your dirs that need syncing, then select all those symlinks and rsync them with referred files option, so that the files which the links point to are copied.</div>
-<div><br>
-</div>
-<div>this is the command you need - map it in Ranger, or on the OB menu</div>
+
+<br>
+I've tried with symlinks in the "Zoho Docs" dir but I've only made partial progress, and Zoho Docs support told me that symlinks are not supported yet. &nbsp;Some sym-linked dir's upload but some others don't....
+
+<br><br>
+Which means what you have to do is make hard copies of files you want to sync to zohodocs in the sync dir. 
+<br><br>
+But to save yourself choosing and picking your files every time you want to copy them to the Zoho Docs dir to sync with online docs, what you do is you have a dir with symlinks to all your dirs and files that need syncing, then rsync that dir with symlinks to the sync dir - with rsync referred files option so that the files which the links point to are copied.
+
+<br><br>
+this is the command you need - map it in Ranger, or on the OB menu
 <form><textarea name="T" id="cmd" rows="1" cols="80">
 rsync -auLt --delete-after ~/Sync/links-dir/ ~/Sync/Zoho\ Docs/sync/</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
