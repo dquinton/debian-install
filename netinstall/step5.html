@@ -1,0 +1,162 @@
+---
+layout: default
+description: Installing Debian with the Netinstall CD - Step 5 of 5 - by D Quinton
+title: Debian install - Step 5
+id: net
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Enable i386 arch</a></li>
+                <li><a href="#2">Google earth</a></li>
+                <li><a href="#3">Skype</a></li>
+             </ul>
+    </li>
+  </ul> 
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Enable i386 arch</a><br>
+   <a href="#2">Google earth</a><br>
+   <a href="#3">Skype</a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
+
+<div class="cont">
+
+<br>
+<h2 id="1" class="tag">Enable i386 arch</h2>
+
+To install 32bit packages on 64 bit systems (e.g. Google earth and Skype, which are not provided in 64 bit versions for Linux), you will need to setup 32 bit arch to run alongside your 64 bit system - and with Debian this is called "multiarch". From 7.0, <a href="https://wiki.debian.org/Multiarch/HOWTO">Debian supports simultaneous running</a> of i386 and amd64 binaries.
+<br><br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo dpkg --add-architecture i386 && sudo apt-get update</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+Note: after enabling another architecture, you may have to specify from then on which arch to retrieve and install packages from, like this
+<br><br>
+apt-get install -a amd64 <package>
+<br><br>
+or set the preference for your architecture with editing the apt.conf file
+<br><br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo leafpad /etc/apt/apt.conf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+and add a line like this
+<br>
+<form>
+<textarea name="T" id="file" rows="1" cols="30">
+APT::Architecture="amd64";</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+save it and apt-get install will retrieve from amd64 packages
+<br><br>
+If at any time you need to be done with i386 (or any other arch), use this command:
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo dpkg --remove-architecture i386</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+But you will need to remove all the packages installed from that arch first, if that's possible, or really wanted.
+<br>
+Trying to remove an arch while still having packages installed from it, will return an error like this one:
+<br><br>
+<span class="prob">"dpkg: error: cannot remove architecture 'i386' currently in use by the database"</span>
+
+<br><br>To find out what packages are installed from an arch, run
+<br>
+
+<form> 
+<textarea name="T" id="cmd" rows="1" cols="50">
+dpkg --get-selections | grep i386 | awk '{print $1}'</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+And remove them with,
+<form>
+<textarea name="T" id="cmd" rows="2" cols="80">
+sudo apt-get remove --purge `dpkg --get-selections | grep i386 | awk '{print $1}'`</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="2" class="tag">Google Earth</h2>
+
+Downlaod from <a href="http://www.google.com/intl/en_uk/earth/download/ge/agree.html">earth/download/...</a>
+
+<br>
+cd to Downloads and install G-earth
+<br>
+<form>
+<textarea name="T" id="install" rows="1" cols="30">
+sudo dpkg -i googleearth*.deb</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+for i386, a dependency lsb-core is needed, for amd64 platform the package install ends with errors: 
+<br><br>
+googleearth depends on libfreeimage3 ... lsb-core ... ia32-libs-gtk 
+<br><br>
+Sort it out with:
+
+<form>
+<textarea name="T" id="install" rows="1" cols="30">
+sudo apt-get -f install</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+The following NEW packages will be installed:<br>
+  &#60;a huge heap of i386 packages><br>
+Need to get 56.9 MB of archives. After this operation, 171 MB of additional disk space will be used
+Enter y
+<br><br>
+In Debian Jessie, ia32-libs does not exist, and Google earth still depends on it (they say this has changed in sid), so if you hit this problem you can install a dummy i32-libs package from here <a href="http://forums.debian.net/viewtopic.php?f=10&t=111898">http://forums.debian.net/viewtopic.php?f=10&t=111898</a>
+
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="3" class="tag">Skype</h2><br>
+
+Requires multiarch enabled (see top).
+<br><br>
+
+Download skype from their <a href="http://www.skype.com/en/download-skype/skype-for-linux/">page</a> and install it
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+sudo dpkg -i skype-debian*.deb
+sudo apt-get -f install</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(a fair few i386 packages will be installed)
+
+<br><br>
+<br>
+<b>Next page: </b><br><br>
+<h3><a href="lxde-fast.html">LXDE fast install</a>&nbsp;&nbsp;&nbsp;<a href="../configure.html">Configure Debian</a></h3>
+<br><br>
+</div>
