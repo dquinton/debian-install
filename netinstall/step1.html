@@ -1,6 +1,6 @@
 ---
 layout: default
-description: Installing Debian from the Netinstall CD or Live CD and getting the system up and running - Step 1 of 4 - by D Quinton
+description: Installing Debian from the Netinstall CD or Live CD and getting the system up and running - Step 1 of 5 - by D Quinton
 title: Step 1 - Netinstall CD
 id: net
 ---
@@ -52,7 +52,7 @@ id: net
 <div class="cont">
 
 
-<span class="bblue">updated May 2016</span>
+<span class="bblue">updated September 2015</span>
 <br><br><br>
 
 The following method is ideal for building a minimal Debian install (without bloat) as it can install just the basic system without a desktop environment or any software packages, following which, you boot into a command prompt where you can install whatever else is needed for you to use Debian, through an internet connection. The Netinstall CD does give you the choice to install a full Desktop Environment as well, if you choose to, but then you can't specify exactly what you want installed at that level.
@@ -111,12 +111,9 @@ Options...
 </table>
 <br><br>
 
-<b>Note</b>: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care - see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page.  <br><br>
-But it may be impossible to run Debian without systemd in the future... so you could check out Devuan - a fork of Debian that is systemd-free...
+Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care - see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page.  But it may be impossible to run Debian without systemd in the future... check out Devuan?
 <br><br>
-Download a Devuan iso from their site (full or netinstall) at <a href="https://files.devuan.org/devuan_jessie_beta/" target="https://files.devuan.org/devuan_jessie_beta/">https://files.devuan.org/devuan_jessie_beta/</a>
-<br><br>
-You could also use Fsmithred's Live CD made with Refractasnapshot that's now based on Devuan... <a href="http://sourceforge.net/projects/refracta/files/isohybrid/">http://sourceforge.net/projects/refracta/files/isohybrid/</a>
+You could also use Fsmithred's Live CD made with Refractasnapshot that doesn't include systemd either... <a href="http://sourceforge.net/projects/refracta/files/isohybrid/">http://sourceforge.net/projects/refracta/files/isohybrid/</a>
 <br><br>
 
 <b>2.</b> &nbsp;&nbsp;for more advanced users who already have a Linux OS to work from, you can make your own Debian Live CD, with all the software you need pre-installed, using <b>Live Helper </b>-see my <a href="{{site.baseurl}}/tutorial/17-remote-install.html">Remote install</a> page.
@@ -206,13 +203,13 @@ Debian installer might not see the Win OS and so you will need to do some work t
 
 <br>
 
-<h3>Now get an ethernet cable internet connection, or have the ESSID of your wireless network to hand...</h3>
+<h3>Now get an ethernet cable internet connection, or have the ESSID of your wireless network to hand, if wireless connection is your only option!</h3>
 
 <br>
 <hr noshade="noshade">
 <br><br>
 
-<h2 id="4" class="tag">The install (Netinstall CD)</h2>
+<h2 id="4" class="tag">The install</h2>
 1. I chose Graphical expert install but plain Graphical install does the job and it might be faster.
 <br><br>
 2. configure network hardware: insert usb stick at firmware prompt for network hardware (or if it's on your Live CD stick just wait).
@@ -248,7 +245,7 @@ Then finish the install to set-up users and passwords... restart and boot into a
 <h2 id="5" class="tag">Sources list</h2>
 
 If the installer failed to download the APT files and didn't make the sources.list properly,
-you'll need to put that right before you can retrieve/install packages from Debian.  APT is the the package manager that controls package installation and it needs to have lists of current packages from the Debian release you choose (e.g. jessie).
+you'll need to put that right before you can retrieve/install packages from Debian.  APT is the the package manager that controls package installation and it needs to have lists of packages from the Debian release you choose, with their current version numbers.
 <br><br>
 At the command prompt, login as root, with "root" as username and the root password that you made during the Netinstall CD process, then enter
 <br><br>
@@ -271,8 +268,8 @@ example of lines needed:
 <br>
 <form>
 <textarea name="T" id="file" rows="2" cols="80">
-deb http://ftp.uk.debian.org/debian/ jessie main contrib non-free
-deb-src http://ftp.uk.debian.org/debian/ jessie main contrib non-free</textarea>
+deb http://ftp.uk.debian.org/debian/ wheezy main contrib non-free
+deb-src http://ftp.uk.debian.org/debian/ wheezy main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -280,8 +277,8 @@ and for security updates:
 <br>
 <form>
 <textarea name="T" id="file" rows="2" cols="80">
-deb http://ftp.debian.org/debian/ jessie-updates main contrib non-free
-deb http://security.debian.org/ jessie/updates main contrib non-free</textarea>
+deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
+deb http://security.debian.org/ wheezy/updates main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -292,7 +289,7 @@ Or you can use "http.debian.net" which will automatically retrieve from your mos
 <br>
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
-deb http://http.debian.net/debian jessie main contrib non-free</textarea>
+deb http://http.debian.net/debian wheezy main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -306,7 +303,7 @@ deb http://www.deb-multimedia.org testing main non-free</textarea>
 </form>
 <br><br>
 
-My sources list looks like so - using "http.debian.net" will look up the most local repository.
+My sources list looks like so
 
 <form>
 <textarea name="T" id="file" rows="11" cols="80">
@@ -323,13 +320,11 @@ deb http://security.debian.org/ jessie/updates main contrib non-free
 deb http://www.deb-multimedia.org jessie main non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br><br>
-<span class="ht"><b>Note</b>: if you go with the Devuan fork of Debian, you need to point sources there, not at Debian - see my <a href="go-devuan.html">Go devuan page</a>.</span>
 
+<br>Then save the file, either with Ctrl-X (close file), y (yes) and Enter, or else, Ctrl-O (write out file), Enter and Ctrl-X.
 <br><br>
-save the file, either with Ctrl-X (close file), y (yes) and Enter, or else, Ctrl-O (write out file), Enter and Ctrl-X.
-<br><br>
-then update your Debian's package lists - if your lists are old you'll get errors when installing packages because old package versions will no longer be available.
+then update your Debian's package lists (which are updated frequently at the server side repository)  
+<br>if your lists are old you'll get errors when installing packages because old package versions will no longer be available.
 <br><br>
 Run the update with (while still as root)
 <form>
@@ -400,13 +395,9 @@ Follow this part only when using the Netinstall CD (a Debian Live CD will have a
 <br>
 The Debian command to install software via the Terminal is '<i>apt-get install</i>'... You will need these 'apt-get' commands handy on paper or on another screen as you won't have a desktop at this stage of install.  
 <br><br>
-If you like, you can make some files with package lists (e.g. desktop, apps, build) which you can save to a USB stick.  The files must contain a single line of package names, without the ap-get command.
+If you like, you can make some files with package lists (e.g. desktop, apps, build) which you can save to a USB stick.  Then, on the command line that we've just been using, after netinstall CD and reboot, you mount the stick (find its device node with "<i>fdisk -l</i>" command, perhaps sdb1), mount it with '<i>mount /dev/sdb1 /mnt</i>' and '<i>cd /mnt</i>' and the dir with those files you made, with an '<i>ls</i>' command to see what's there...  
 <br><br>
-Then, after running netinstall CD, reboot, insert the stick, and use the command line to find the device node of the stick, with "<i>lsblk</i>" command (perhaps it's /dev/sdb1), 
-<br><br>
-mount it with '<i>mount /dev/sdb1 /mnt</i>', then change working directory to the mounted stick with '<i>cd /mnt</i>' and Enter, and again to the dir on the stick with those files you made - type '<i>cd</i>' and hit Tab twice to see what's there... then do '<i>cd your-dir</i>'... and finally, '<i>ls</i>' to see what files are in the dir..
-<br><br>
-then type and  run:
+then run:
 <br>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
@@ -414,7 +405,7 @@ sudo apt-get install $(< desktop)</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-where "desktop" is the name of your file with package names. But if you have packages that can't be found, it will kinda halt the install process.  So you will need to edit the list in the file, with 'nano your-file', edit and Ctrl-X, y, Enter to save it.
+where "desktop" is the name of a file with package names.
 
 <br><br><br>
 <h3>XFCE Desktop</h3>
@@ -481,7 +472,7 @@ apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugi
 
 <b>prepare for bluetooth, bash, NTFS and FAT32 support, archiving and Java</b>
 <form>
-<textarea name="T" id="install" rows="2" cols="100">
+<textarea name="T" id="install" rows="2" cols="80">
 apt-get install bluetooth blueman command-not-found bash-completion ntfs-3g blktool dosfstools mtools gvfs-backends zip unzip bzip2 p7zip-full openjdk-7-jre icedtea-7-plugin</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -510,7 +501,7 @@ then type '<i>reboot</i>' to terminate processes and boot into your new desktop!
 <h2 id="9" class="tag">Sudoers file</h2>
 To give your user(s) super-user priveleges, they need to be added to the sudoer file. This means that they can run commands with '<i>sudo</i>' infront to do things as root (nearly) with their user password.
 <br><br> 
-as root still (and if you already rebooted then you need to open a Terminal and "switch user" to root, with the command '<i>su</i>' and enter the root password), run "visudo", which will probably open nano for you,
+as root still (and if you already rebooted then you need to open a Terminal and "switch user" to root, with the command '<i>su</i>' and enter the root password), run "visudo",
 </form>
 <br>
 and then, either add this line after the root's line: 
@@ -711,11 +702,11 @@ example (tab separated):
 # <file system> <mount point>   <type>  <options>       <dump>  <pass>
 proc            /proc           proc    defaults        0       0
 # sda5
-UUID=cc3bca0d-aee4-4b9c-95c2-57212cc36d4d    /       ext3    defaults,noatime    0       1
+UUID=cc3bca0d-aee4-4b9c-95c2-57212cc36d4d    /               ext3    defaults,noatime    0       1
 # sda6 
-UUID=ab67d8fe-d76b-4e21-abbe-e10d162e1d27    /home   ext3    defaults        0       2
+UUID=ab67d8fe-d76b-4e21-abbe-e10d162e1d27    /home           ext3    defaults        0       2
 # sda7 
-UUID=a7db1e95-4acd-4754-a043-a8d27405c316    none    swap    sw              0       0</textarea>
+UUID=a7db1e95-4acd-4754-a043-a8d27405c316    none            swap    sw              0       0</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 

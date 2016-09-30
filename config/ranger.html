@@ -409,7 +409,7 @@ Check the rc.conf file
 <br>
 Note: with Ranger 1.7 it seems that key mapping with Alt is fixed, e.g. &#60;a-r>, which opens up a huge area for new keys!
 <br><br>
-<form><textarea name="T" id="file" rows="35" cols="100">
+<form><textarea name="T" id="file" rows="42" cols="100">
 map &#60;a-down>  move down=4     #replaced k
 map &#60;a-up>    move up=4       #replaced j
 map h      history_go -1    #replaced H
@@ -438,9 +438,17 @@ alias travel     scout -aefikst
 map fe  edit
 map du  shell -p du -ch -d 1 | sort -rh
 map dz  shell -p du -ch -d 1 | sort -k 2b
- 
+
+#change i to edit file name at first char, set Alt-i to open file in pager
+map &#60;a-i> display_file
+map i  eval fm.open_console('rename ' + fm.thisfile.basename, position=7)
+
 map uu   uncut
 map <C-n>  tab_new %d
+
+copymap gn &#60;a-t> 
+copymap ct &#60;a-c> 
+
 map <F5> reset          #refresh screen - easier than ctrl-r
 map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">

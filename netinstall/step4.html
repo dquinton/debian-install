@@ -12,13 +12,12 @@ id: net
              <ul>
                 <li><a href="#1">Light-weight web browsers</a></li>
                 <li><a href="#2">Chromium</a></li>
-                <li><a href="#2a">Iron</a></li>
                 <li><a href="#3">Opera</a></li>
                 <li><a href="#4">Midori</a></li>
                 <li><a href="#5">OpenGPG</a></li>
                 <li><a href="#6">Bible</a></li>
                 <li><a href="#7">GPS</a></li>
-                <li><a href="#8">Skype and others</a></li>
+                <li><a href="#8">others</a></li>
              </ul>
     </li>
   </ul>
@@ -28,13 +27,12 @@ id: net
 <table cellpadding="5"><tr><td>
    <a href="#1">Light-weight web browsers</a><br>
    <a href="#2">Chromium</a><br>
-   <a href="#2a">Iron</a><br>
    <a href="#3">Opera</a><br>
    <a href="#4">Midori</a><br>
    <a href="#5">OpenGPG</a><br>
    <a href="#6">Bible</a><br>
    <a href="#7">GPS</a><br>
-   <a href="#8">Skype and others</a><br>
+   <a href="#8">others</a><br>
 </td></tr></table></div>
 
 <div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
@@ -128,52 +126,6 @@ see this answer <a href="http://stackoverflow.com/questions/16243105/google-chro
 copy into two files in a dir and open chrome://extensions/ - check the "Developer mode" at top right of the page, and add the folder you saved the files in<br>
 I changed "black" to "gray" - works nicely.
 
-<br><br>
-<hr noshade="noshade">
-<br><br>
-
-<h2 id="2a" class="tag">Iron</h2>
-
-An alternative to Chrome/chromium, <a href="http://www.srware.net/forum/viewtopic.php?f=18&t=8699">from srware</a> which is built on the same engine, but without all the tracking that might go on.  <br>
-It will run just like Chromium if you already set that up, with the same extensions.
-<br>
-<br><br>
-<b>Iron and flash player</b>
-
-<div class="numb"><ul>
-<li>copy iron to /opt if you like, with </li>
-
-<form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-sudo rsync -a iron-linux /opt</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-<li>cd to the iron dir</li>
-	<li>mkdir plugins, in the iron root dir, and cd there</li>
-	<li>create a symlink to the pepperflash plugin in this new plugins dir, with</li>
-	
-	<form>
-<textarea name="T" id="cmd" rows="1" cols="80">
-ln -s /usr/lib/pepperflashplugin-nonfree/libpepflashplayer.so</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-	<li>make a launcher in .local/share/applications with something like,</li>
-
-<form>
-<textarea name="T" id="file" rows="10" cols="80">
-[Desktop Entry]
-Version=1.0
-Type=Application
-Exec=/opt/iron-linux/iron
-Icon=/opt/iron-linux/product_logo_48.png
-StartupNotify=true
-Terminal=false
-Categories=Network;
-Name=Iron Browser</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-</ul></div>
 
 <br><br>
 <hr noshade="noshade">
@@ -235,7 +187,7 @@ Both "Pretty Good Privacy" (PGP) and GnuPG implement OpenGPG.  The latter is a c
 sudo apt-get install gnupg2 gpa</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br><br>
+
 <span class="prob">A lot of useless keys appear in the gpa window.</span>
 <br>
 solve this by either starting the program: gpa --disable-x509
@@ -350,31 +302,9 @@ See my <a href="../tutorial/11a-gps.html">Geo data page</a> for more details!
 <hr noshade="noshade">
 <br><br>
 
-<h2 id="8" class="tag">Skype</h2> 
+<h2 id="8" class="tag">Others!</h2> 
 
-Enable multiarch (if you haven't already i.e. with installing Google earth)
-<form>
-<textarea name="T" id="cmd" rows="1" cols="80">
-sudo dpkg --add-architecture i386 && sudo apt-get update</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
 
-download skype from their <a href="http://www.skype.com/en/download-skype/skype-for-linux/">page</a> and install it
-<form>
-<textarea name="T" id="cmd" rows="2" cols="30">
-sudo dpkg -i skype-debian*.deb
-sudo apt-get -f install</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-(a fair few i386 packages will be installed)
-
-<br><br>
-<hr noshade="noshade">
-<br><br>
-
-<h3>Others!</h3>
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo apt-get install flush axel-kapt tucan pdfshuffler gperiodic xrandr</textarea>
@@ -392,6 +322,6 @@ xrandr -dual monitor/multi-display control<br>
 
 <b>Next pages: </b>
 <br><br>
-<h3><a href="lxde-fast.html">LXDE fast install</a>&nbsp;&nbsp;&nbsp;<a href="../configure.html">Configure Debian</a></h3>
+<h3><b><a href="step5.html">Step5</a></b> - Enable multiarch, Google earth, Skype</h3>
 <br><br>
 </div>

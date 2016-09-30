@@ -1,6 +1,6 @@
 ---
 layout: default
-description: Installing Debian with the Netinstall CD - Step 2 of 4 - by D Quinton
+description: Installing Debian with the Netinstall CD - Step 2 of 5 - by D Quinton
 title: Debian install - Step 2 
 id: net
 ---
@@ -17,7 +17,7 @@ id: net
                 <li><a href="#5">Google Earth</a></li>
              </ul>
     </li>
-  </ul>
+  </ul> 
 </div>
 
 <div class="pagemenu">
@@ -214,6 +214,7 @@ sudo apt-get install systemsettings</textarea>
 <br><br>
 
 <h2 id="2" class="tag">More video editors..</h2><br>
+
 Flowblade, another non-linear video editor, and it looks good <a href="http://code.google.com/p/flowblade/">http://code.google.com/p/flowblade/</a> 
 <br><br>
 Download the binary archive (.deb) and install it with
@@ -244,7 +245,7 @@ Also see here <a href="http://stray-notes.blogspot.com/2010/11/linux-video-editi
 A very cool image processing program available as a .deb at the forum, <a href="http://newsgroup.xnview.com/viewforum.php?f=82">http://newsgroup.xnview.com/...</a>
 
 <br><br>
-See my <a href="../tutorial/03-image-processing.html">XnView page</a> in Config and <a href="../tutorial/03a-xnview-tips.html">XnView Tips page</a> for setup and some help on use.
+See my <a href="../tutorial/03-image-processing.html">image processing</a> page for tips using XnView, setup and configuring appearance.
 
 <br><br>
 <hr noshade="noshade">
@@ -309,7 +310,7 @@ Tip: to change the toolbar icons to small, and tango for example, go to Tools > 
 
 <h2 id="5" class="tag">Google Earth</h2>
 
-Download from <a href="http://www.google.com/intl/en_uk/earth/download/ge/agree.html">earth/download/...</a>
+Downlaod from <a href="http://www.google.com/intl/en_uk/earth/download/ge/agree.html">earth/download/...</a>
 <br><br>
 Enable multiarch if you run amd64 machine! 
 (From 7.0 Debian supports simultaneous running of i386 and amd64 binaries and G-earth is i386 library dependant)
@@ -373,13 +374,37 @@ APT::Architecture="amd64";</textarea>
 <br>
 save it and apt-get install will retrieve from amd64 packages
 <br><br>
-if you need to be done with i386, or any other arch:
+if you need to be done with i386 (or any other arch):
 <br>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 sudo dpkg --remove-architecture i386</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+
+<br><br>
+But you will need to remove all the packages installed from that arch first, if that's possible, or wanted.
+<br>
+Trying to remove an arch with its packages installed from it, will return an error like this one:
+<br><br>
+<span class="prob">"dpkg: error: cannot remove architecture 'i386' currently in use by the database"</span>
+
+<br><br>To find out what packages are installed from an arch, run
+<br>
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+dpkg --get-selections | grep i386 | awk '{print $1}'</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+And remove them with,
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+apt-get remove --purge `dpkg --get-selections | grep i386 | awk '{print $1}'`</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
 
 <br><br>
 <br>
