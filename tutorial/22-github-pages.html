@@ -428,10 +428,21 @@ To enable Git to store your username/pw (15min default) run
 <textarea name="T" id="cmd" rows="1" cols="50">
 git config --global credential.helper cache</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
-<br>
+<br> <br>
+
+Fix a problem with having untracked files..
+<form>
+<textarea name="T" id="cmd" rows="4" cols="50">
+git rm -r --cached .
+git add --all
+git commit -m "Fixed untracked files"
+git push</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
 <span class="ht">Github tips <a href="https://gist.github.com/aguilarcarlos/dc8ff22845991c860e67">https://gist.github.com/aguilarcarlos/dc8ff22845991c860e67</a></span>
-<br>
+<br><br>
 <span class="ht">Git help <a href="https://help.github.com/">https://help.github.com/</a></span>
 
 
