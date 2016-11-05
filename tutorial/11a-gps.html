@@ -59,11 +59,11 @@ Once you have collated your GPS data and tidied up tracks, renumbered the points
 What we need is Geo Info System software, and for that we have QGIS (Quantum GIS).
  <br><br>
 <form><textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install qgis python-qgis</textarea>
+sudo apt-get install qgis python-qgis inkscape</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-Doumentation <a href="http://docs.qgis.org/2.0/en/docs/index.html">http://docs.qgis.org/2.0/en/docs/index.html</a>
+Doumentation <a href="http://docs.qgis.org/2.14/en/docs/user_manual/index.html">Qgis user manual</a>
 <br><br>
 to import geo data from e.g. Viking, first export the layers from Viking as GPX files, then in qgis,
 
@@ -108,6 +108,20 @@ and also "<b>Memory Layer Saver</b>" plugin so that your labels will be saved in
 </ul></div>
 <br><br>
 
+
+<h3>Filter wp's in a layer</h3>
+
+e.g. include only/exclude wp names with 'string'
+<div class="bullet"><ul>
+<li>right click on layer > Filter, or open properties > General > Feature filter > click on Query Builder</li>
+<li>click on name field (field in layer to be filtered)</li>
+<li>enter the expression: <b>"name" LIKE '%B%' </b> to show waypoints with "B" in the name (where the %B% means containing "B" anywhere in the name)</li>
+<li>use the expression: <b>"name" NOT LIKE '%B%'</b> to exclude waypoints with "B" in the name from the layer</li>
+<li>Click on test and Sample, to check if the filter is what you want, then OK</li>
+
+</ul></div>
+
+<br><br>
 <h3>Use SVG symbols for waypoints</h3>
 <div class="bullet"><ul>
 <li>properties > Style > Single > click on Single symbol under "Marker"</li>
@@ -118,7 +132,7 @@ and also "<b>Memory Layer Saver</b>" plugin so that your labels will be saved in
 <br><br>
 <h3>Get more svg symbols</h3>
 <div class="bullet"><ul>
-<li>Google "svg symbol tree" etc and download - or visit pixabay.com and sign up</li>
+<li>web search "svg symbol tree" etc and download - or visit pixabay.com and sign up</li>
 <li>if downloading png images, use inkscape to convert to svg: <br>
 open png, Path > Trace bitmap (check greys, remove background)</li>
 <li>drag original bitmap to the side and fill the tracing with original colours</li>
