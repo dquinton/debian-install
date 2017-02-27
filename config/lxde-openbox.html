@@ -558,8 +558,9 @@ copy icons from wherever you can find them in /usr/share/icons/hicolor/48x48/app
 this page might help <a href="http://lxlinux.com/openbox.html">http://lxlinux.com/openbox.html</a>
 <br><br><br><img src="{{site.baseurl}}/zimages/obmenu-utility.jpeg" width="150" height="379" alt="my OB menu" align="right">
 
-
-
+<span class="bblue">But, if I hide my openbox config files and reconfigure, I get a fresh OB menu with a Debian menu full of the installed applications, with icons.</span>
+<br><br>
+<br><br>
 <h2 id="11b" class="tag">Make a second menu for utility apps</h2>
 I used to have a panel at desktop right covered with utility apps, but it obstructed the page scroll bar all the time so I scrapped it and made a new ob menu that shows with Super-mouse scroll up.  
 <br><br>
@@ -618,8 +619,24 @@ Save the file, then reconfigure OB - run 'openbox --reconfigure' or right-click 
 Add icons to your heart's content. (If you can find them -and that's where xfce wins cos of its launcher icon finder).
 <br><br>
 <span class="caut">(note: always duplicate your lxde-rc.xml file while it's working, so that you can rename the duplicate back to lxde-rc.xml when your file gets a syntax error and you can't find what's gone wrong, or can't undo your changes! - but normally you might leave out a closing /keybind or /mousebind that makes OB choke).</span>
+<br><br><br>
 
-<br><br>
+<b>Tip: to make submenus sticky,</b> make these values in rc.conf negative... and if the second value isn't in your file, add it, as old versions didn't have it..
+
+<form><textarea name="T" id="file" rows="9" cols="80">
+    <submenuShowDelay>-100</submenuShowDelay>
+    <!-- this one is easy, time to delay before showing a submenu after hovering
+       over the parent entry -->
+    <submenuHideDelay>-400</submenuHideDelay>
+    <!-- time to delay before hiding a submenu when selecting another
+       entry in parent menu
+       if this is a negative value, then the delay is infinite and the
+       submenu will not be hidden until a different submenu is opened --></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
 <br><br>
 
 <h2 id="12" class="tag">Key bindings</h2>  

@@ -23,6 +23,7 @@ id: config
                 <li><a href="#9">Refine info for audio/video</a></li>
                 <li><a href="#10">Integrate system trash</a></li>
                 <li><a href="#11">UI enhancements</a></li>
+                <li><a href="#12">Mounting drives with SSH</a></li>
              </ul>
     </li>
   </ul>
@@ -46,14 +47,15 @@ id: config
                 <li><a href="#9">Refine info for audio/video</a></li>
                 <li><a href="#10">Integrate system trash</a></li>
                 <li><a href="#11">UI enhancements</a></li>
+                <li><a href="#12">Mounting drives with SSH</a></li>
              </ul>
 </td></tr></table></div>
 
 <div class="cont">
 
-<br><br>
-I was looking for a tidy way to navigate directories in a bash shell, so that I could speed up my work a bit.  I'm familiar with cd and tab completion of names, but sometimes my mind goes blank, so to have the list of directories to visibly choose from would be better for me.  Actually, an `ls` in the current dir, using the cursor keys and Enter on a chosen directory would have been pretty good, and I was looking at the possibility of doing that.  Then my search brought me across Roman Zimbelmann's impressive python project, Ranger - the terminal based file browser. 
-<br><br><br><br>
+<br><br><br>
+I was looking for a tidy way to navigate directories in a bash shell, so that I could speed up my work a bit.  I'm familiar with `cd` command and Tab key completion of names, but sometimes my mind goes blank, so having a visible list of directories to choose from would be way better for me.  Actually, listing the current directory contents with `ls` and using the cursor keys and Enter to navigate would have simplified things for me, if that had been possible.  But then my search brought me across Roman Zimbelmann's impressive python project, Ranger - the terminal based file browser. 
+<br><br><br><br><br>
 	<table cellpadding="2" align="center"><tr>
 <td><a href="{{site.baseurl}}/zimages/ranger-08-dirs-size.jpeg"><img src="{{site.baseurl}}/zimages/ranger-08-dirs-size-sm.jpeg" width="320" height="200" alt="ranger showing directories"></a></td>
 <td>&nbsp;<a href="{{site.baseurl}}/zimages/ranger-07-file-pager.jpeg"><img src="{{site.baseurl}}/zimages/ranger-07-file-pager-sm.jpeg" width="320" height="200" alt="ranger showing file content"></a></td>
@@ -744,7 +746,7 @@ map ,lr  shell -s ln -fsT "`yad --title="Re-link To" --file --height=400 --width
 
 <br><br>
 <h3 id="dir" class="tag">map comma-d for directory commands</h3>
-<form><textarea name="T" id="file" rows="9" cols="150">
+<form><textarea name="T" id="file" rows="13" cols="150">
 ##### directory ##########
 
 map ,ds  shell -w rsync -a --update --progress %d/ "`yad --title='Sync with directory' --file --height=400 --width=500 --directory`"
@@ -752,7 +754,11 @@ map ,ds  shell -w rsync -a --update --progress %d/ "`yad --title='Sync with dire
 map ,dc  shell -s find . -type d -exec mkdir -p -- ../tree_clone/{} \;             
                         #clone the dir tree of current dir down -creates empty dir's in new dir 1 level up
 map ,do  shell -rs chown -R $USER %f                 #change ownership of dir to user (recursively)
-map ,dx  console shell -f find . -type d -maxdepth 1 -empty -delete       #remove empty directories in current dir</textarea>
+map ,dx  console shell -f find . -type d -maxdepth 1 -empty -delete       #remove empty directories in current dir
+
+#count files and folders at current dir, recursively
+map ,df echo -e \.\.\.\.`find . -type d -printf x | wc -c` folders \.\.\.\. `find . -type f -printf x  |wc -c` files \.\.\.\.`du -chs --apparent-size` |less
+</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -1469,9 +1475,60 @@ then to restore a file, select and yank with yy, then hit h (I change history ke
 
 indent must be exact<br>
 change white in tab??
+
 <br><br><br><br>
 
-<span class="bblue">Got there! Now go ahead and enjoy some real file management!</span>
+<h2 id="12" class="tag">Mounting drives with SSH </h2>
+
+<br><br>
+
+<h3>Example: mount and browse file system on an Android device</h3>
+
+<div class="bullet"><ul><li>get "SSHFS Droid" app</li>
+<li>in the app settings: unselect require wifi, change p/w</li>
+<li>start the ssh server with the app, and run the wifi hotspot</li>
+<li>connect to the android hotspot on the linux box</li>
+<li>make a directory to mount the device on with, e.g.</li>
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+sudo mkdir /mnt/j1</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<li>enable allow_other in /etc/fuse.conf</li>
+<li>mount the android device with the command (noting the ip address that SSHFS Droid gives after linux box connectrs to the hotspot - in my case 192.168.43.1:2222)</li>
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+sudo sshfs -d root@192.168.43.1:/storage /mnt/j1 -p2222 -o allow_other</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<li>now the device will be mounted at /mnt/j1, with /storage (i.e. SDcard, extSDcard) at top level</li>
+
+<li>normal sshfs unmount is with </li>
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+sudo fusermount -u /mnt/j1</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<li>But Ctrl-C in the active sshfs window works to unmount ok - even switching off the ssh connection or hotspot on the android device.</li></ul></div>
+
+<br><br>
+<b>Ranger mapping: </b>
+
+<form><textarea name="T" id="file" rows="2" cols="100">
+map ,ssj1 shell -str sshfs -d root@192.168.43.1:/storage /mnt/j1 -p2222 -o allow_other
+map ,ssju shell -r sudo  fusermount -u /mnt/j1</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+
+
+
+<br><br><br><br>
+
+<h3><span class="bblue">Got there! Now go ahead and enjoy some real file management!</span></h3>
 
 
 <br><br><br>

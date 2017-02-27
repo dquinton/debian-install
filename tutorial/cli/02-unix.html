@@ -13,10 +13,10 @@ id: cli
 <table style="background-color:transparent">
 <tr><td><b>man</b> [command] 	</td>	<td>shows man page</td></tr>
 <tr><td><b>apropos</b> [command] 	</td>	<td>shows command description (greps the descrip lines for given string) = man -k [command]</td></tr>
-<tr><td><b>w</b> 			</td>		<td>find users logged in and their sctivity</td></tr>
+<tr><td><b>w</b> 			</td>		<td>find users logged in and their activity</td></tr>
 <tr><td><b>cal</b> 		</td>			<td>show simple calendar</td></tr>
-<tr><td><b>cal</b> [year]</td> <td>get full year calendar</td></tr>
-<tr><td><b>cal</b> 10 2005 </td>			<td>shows Oct, 2005</td></tr>
+<tr><td><b>cal</b> 2017</td> <td>get full year calendar for 2017</td></tr>
+<tr><td><b>cal</b> 10 2005 </td>			<td>shows the month of Oct, 2005</td></tr>
 <tr><td><b>ls</b>    </td>  <td>lists dir contents</td></tr>
 <tr><td> &nbsp;&nbsp;-s   </td> <td>list total files and no. files in sub dirs</td></tr>
 <tr><td>&nbsp;&nbsp; -sd </td>   <td>lists total no of files only</td></tr>
@@ -87,14 +87,14 @@ id: cli
 <tr><td>	&nbsp;&nbsp;-n	</td>	<td>numbers the lines that are matched</td></tr>
 <tr><td>	&nbsp;&nbsp;-c	</td>	<td>count of matching lines</td></tr>
 <tr><td>	&nbsp;&nbsp;-l	</td>	<td>lists files with matching lines</td></tr>
-<tr><td><b>sed</b> -e 's/cap/hat/g' [file] </td>  <td>  sed substitutes cap with hat in a file...</td></tr>
-<tr><td><b>grep</b> 'cap' [file] | sed -e 's/cap/hat/g'</td> <td>	(g tells it to doevery ocurrance)</td></tr>
-<tr><td><b>sed</b> -e 's/cap/hat/g;s/cat/rat/g'</td>    <td>  sed carries out 2 substitutions</td></tr>
+<tr><td><b>sed</b> -i 's/cap/hat/g' [file] </td>  <td>  sed substitutes cap with hat in a file (the -i option replaces inline, in the file, without which the changes are printed to standard output, the screen)...</td></tr>
+<tr><td><b>grep</b> 'cap' [file] | sed -i 's/cap/hat/g'</td> <td>	another method (g tells sed to do every ocurrance)</td></tr>
+<tr><td><b>sed</b> -i 's/cap/hat/g;s/cat/rat/g'</td>    <td>  sed carries out 2 different substitutions, and every instance of each</td></tr>
 </table>
 <br><br><br>
 
 <h3>UNIX in 24 hours</h3>- by Dave Taylor. James C. Armstrong, Jr.<br>
-I recommend going through this book if you are new to Linux, or perhaps not so new but haven't read up properly about the basic functions of the UNIX OS.<br>
+This is a useful book to look at if you are new to Linux, or haven't read up properly about the basic functions of the UNIX OS. But its no longer around for free!<br>
 <a href="http://downloads.tuxpuc.pucp.edu.pe/manuales/otros/UNIX.PDF">download the pdf here</a>
 <br>
 
@@ -115,12 +115,14 @@ replace all text occurring in all files under the current dir<br>
 <br><br>
 
 in a specific file<br>
-<span class="cmd">sed -i 's#old#new#gi' **/*.suffix</span>
+<span class="cmd">sed -i 's/old/new/g' filename</span>
 <br><br>
 
 change file names<br>
 <span class="cmd">sfind . -depth -name "* *" -execdir prename -n 'y/oldname/newname/' {} +</span>
 
+<br>
+Note that the "* *" will find all file names with spaces and then excecute the name change operation on only those files found. To include files without spaces in the name, just use "**", and to narrow down the search and speed up the operation, especially if the directory trree has thousands of files, if its a certain string to be changed, such as "ee", then use "*ee*".
 <br><br>
 
 
