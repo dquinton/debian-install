@@ -1495,7 +1495,7 @@ sudo mkdir /mnt/j1</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <li>enable allow_other in /etc/fuse.conf</li>
-<li>mount the android device with the command (noting the ip address that SSHFS Droid gives after linux box connectrs to the hotspot - in my case 192.168.43.1:2222)</li>
+<li>mount the android device with the command (noting the ip address that SSHFS Droid gives after linux box connectrs to the hotspot - in my case 192.168.43.1:2222) <b>- this will vary every time if mobile data is turned on!</b></li>
 <form><textarea name="T" id="cmd" rows="1" cols="80">
 sudo sshfs -d root@192.168.43.1:/storage /mnt/j1 -p2222 -o allow_other</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
@@ -1510,7 +1510,7 @@ sudo fusermount -u /mnt/j1</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<li>But Ctrl-C in the active sshfs window works to unmount ok - even switching off the ssh connection or hotspot on the android device.</li></ul></div>
+<li>But Ctrl-C in the active sshfs window works to unmount ok.</li></ul></div>
 
 <br><br>
 <b>Ranger mapping: </b>

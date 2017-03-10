@@ -306,12 +306,12 @@ sudo make install</textarea>
 <br>
 if you want to run checkinstall instead (which will create a deb archive and a simple means to uninstall compton later) you need to select 3 when checkinstall gives options, and change the version number as checkinstall won't succeed if the version no. begins with a character (not a digit).
 <br><br>
-kill xcompmgr if running, or any other compositor with killall <compositor-name>
-
-run in terminal 
+kill xcompmgr if running, or any other compositor with `killall <compositor-name>`
+<br><br>
+and to start compton, run in terminal 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
-compton -cC -i 0.8 -e 0.8 -m 0.8 -r 4 -l -4 -t -4</textarea>
+compton -cC -i 0.8 -e 0.8 -m 0.9 -r 4 -l -4 -t -4</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -329,17 +329,11 @@ Very nice for my openbox desktop!  Thank you sir.
 <a href="https://github.com/chjj/compton/blob/master/man/compton.1.asciidoc">man page</a> - <a href="https://wiki.archlinux.org/index.php/Compton">Arch page</a>
 <br><br>
 The Arch page is very helpful as it gives us a config file to use with compton (latest git version: compton-master) which has much more versitality.  <br>
-Copy it and save to file .compton.conf in your home dir.  Here's my <a href="{{site.baseurl}}/files/comptonconf.html">.compton.conf</a>
+Copy it and save to file ~/.config/compton.conf or ~/.compton.conf.  Here's my <a href="{{site.baseurl}}/files/comptonconf.html">.compton.conf</a>
 <br><br>
-Edit it to your liking and try it out with,
-
-<form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-compton --config ~/.compton.conf</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-and that can go in the autostart list.
+Edit it to your liking and try it out with `compton` (or else `compton --config file-location` if not in home config).
+<br>
+and add it to the autostart list.
 
 
 <br><br>
@@ -357,7 +351,7 @@ killall lxpanel && lxpanel -p LXDE &</textarea>
 where the -p sets the panel profile (it might work without it)
 <br><br>
 For those who would like to try something other/more capable than lxpanel, take a look at <a href="http://fbpanel.sourceforge.net/">fbpanel</a> or <a href="https://code.google.com/p/tint2/">tint2</a>
-<br>
+<br><br><br>
 <h3>Clock format</h3>
 
 right-lick on the clock on the panel and set your macros: <br>

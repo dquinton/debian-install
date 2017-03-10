@@ -11,6 +11,11 @@ title: menu.xml
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
 	<menu id="root-menu" label="Openbox 3">
+		<item label="Wifi">
+			<action name="Execute">
+				<execute>wicd-gtk</execute>
+			</action>
+		</item>
 		<item label="Web Browser">
 			<action name="Execute">
 				<execute>chromium</execute>
@@ -31,11 +36,6 @@ title: menu.xml
 				<execute>zohodocs</execute>
 			</action>
 		</item>
-		<item label="Cloud sync">
-			<action name="Execute">
-				<execute>/home/dav/Downloads/copy/x86_64/CopyAgent</execute>
-			</action>
-		</item>
 		<item label="Calculator">
 			<action name="Execute">
 				<execute>xcalc</execute>
@@ -52,7 +52,6 @@ title: menu.xml
 				<execute>lxpanelctl run</execute>
 			</action>
 		</item>
-		<!-- This requires the presence of the 'menu' package to work -->
 		<item label="XTerminal">
 			<action name="Execute">
 				<execute>xterm</execute>
@@ -129,11 +128,6 @@ title: menu.xml
 					<execute>Stellarium</execute>
 				</action>
 			</item>
-			<item label="Celestia">
-				<action name="Execute">
-					<execute>celestia</execute>
-				</action>
-			</item>
 		</menu>
 		<menu id="root-menu-98936" label="Media                            &gt;">
 			<item label="Audacious">
@@ -166,6 +160,11 @@ title: menu.xml
 			<item label="Pinta">
 				<action name="Execute">
 					<execute>pinta</execute>
+				</action>
+			</item>
+			<item label="Inkscape">
+				<action name="Execute">
+					<execute>inkscape</execute>
 				</action>
 			</item>
 			<item label="Kdenlive">
@@ -201,6 +200,11 @@ title: menu.xml
 			<item label="Viking">
 				<action name="Execute">
 					<execute>viking</execute>
+				</action>
+			</item>
+			<item label="Quantum GIS">
+				<action name="Execute">
+					<execute>qgis</execute>
 				</action>
 			</item>
 		</menu>
@@ -261,11 +265,6 @@ title: menu.xml
 			<item label="ClamTK                  .">
 				<action name="Execute">
 					<execute>clamtk</execute>
-				</action>
-			</item>
-			<item label="Etherape">
-				<action name="Execute">
-					<execute>gksu etherape</execute>
 				</action>
 			</item>
 			<item label="GD Map">
@@ -374,17 +373,7 @@ title: menu.xml
 					<execute>unetbootin</execute>
 				</action>
 			</item>
-			<item label="Multisystem">
-				<action name="Execute">
-					<execute>multisystem</execute>
-				</action>
-			</item>
-			<item label="Grub Customizer">
-				<action name="Execute">
-					<execute>gksu grub-customizer</execute>
-				</action>
-			</item>
-		</menu>
+			</menu>
 		<separator/>
 		<item label="Exit!">
 			<action name="Exit"/>
