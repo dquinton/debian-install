@@ -663,7 +663,7 @@ map Pyt shell -r rsync -u %s %D                   #sync selected to next tab</te
 
 <br><br>
 <h3 id="del" class="tag">map X for delete commands</h3>
-<form><textarea name="T" id="file" rows="12" cols="120">
+<form><textarea name="T" id="file" rows="14" cols="120">
 ##### delete ##########
 
 map <DELETE> shell -s trash-put %s            #integrated trash (recycler) - see below how to set up.
@@ -671,7 +671,9 @@ map &#60;a-DELETE> shell -cs trash-put %f		#delete the current file only - not a
 map &#60;S-DELETE>  console delete
 map X    console delete
 map PX   console shell -r rm %%s               #delete files with super-user priveleges
-map xX   console shell -tf shred -uv %d/%s           #shred files
+map xX1 console shell -tf shred -uv %%d/%%s       #shred files
+map xX2 console -p25 shell -ft find . -name *. -exec shred -uv {} \;   #shred all files recursively -with name
+map xX3 console shell -ft find . -type f -exec shred -uv {} \;        #shred all -any- files recursively
 map xx1  cd ~/.local/share/Trash/files
 map xx2  cd /media/FILES/.Trash-1000/files
 map xx3  cd /media/VIDEO/.Trash-1000/files</textarea>
@@ -855,18 +857,18 @@ map Fb  chain shell -f feh --bg-scale %f; shell cp %f ~/wallpapers; sed -i '7s/.
 
 <br><br>
 <h3 id="mog" class="tag">map fim for mogrify commands</h3>
-<form><textarea name="T" id="file" rows="13" cols="150">
+<form><textarea name="T" id="file" rows="15" cols="150">
 ##### mogrify commands ##########
-
-map fim1  shell -f mogrify -format jpg -quality 100 *.png      #convert png to jpeg -progress will be noted by green temp file moving down list
-map fim2  shell -f mkdir "../${PWD##*/}_a"; mogrify -path "../${PWD##*/}_a" -resize '1200x1200>' -quality 90 *.jpg *.JPG            
+map fim1  shell -f mkdir "../${PWD##*/}_a"; mogrify -path "../${PWD##*/}_a" -resize '1200x1200>' -quality 90 *.jpg *.JPG            
                                     #reduce jpegs in current dir and place new images in dir_a 1 level up
+map fim2 console shell -f mkdir "../${PWD##*/}_a"; mogrify -path "../${PWD##*/}_a" -resize '1200x1200>' -quality 85 *.jpg *.JPG
 map fim3  console shell -f mogrify -resize '1200x1200>' -quality 90 *{.jpg|.JPG}
                                                         #reduce jpegs in current dir, OVERWRITE files, 1200pix, 90%
 map fim4  console shell -f find . -type f -iname "*.jpg" -print0 | xargs -0 mogrify -resize '1024x1024>' -quality 84 {} \;
                                                         #reduce jpegs RECURSIVELY, start from current dir, OVERWRITE files, 1024pix, 84%
-map fim5  shell -f sh ~/scripts/image-resize.sh %f           #see image processing page for these 2 scripts
-map fim6  shell -f sh ~/scripts/image-convert.sh %f
+map fim5  shell -f mogrify -format jpg -quality 100 *.png      #convert png to jpeg -progress will be noted by green temp file moving down list
+map fim6  shell -f sh ~/scripts/image-resize.sh %f           #see image processing page for these 2 scripts
+map fim7  shell -f sh ~/scripts/image-convert.sh %f
 map fixx  shell -f jhead -di %s                           #remove iptc keywords from selected images</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
