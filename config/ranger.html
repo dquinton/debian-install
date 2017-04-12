@@ -547,14 +547,15 @@ map &#60;a-t> linemode metatitle              #linemode: titles </textarea>
 <br><br>
 
 <h3 id="fi" class="tag">map f for files</h3>
-<form><textarea name="T" id="file" rows="23" cols="120">
+<form><textarea name="T" id="file" rows="24" cols="120">
 
 ##### files ##########
 
 map fl   less %f                 #view file with less. q to quit (ranger i doesn't show full file)
 map fm   console mkdir             #(space after) create dir
 map ft   console touch             #(space after) create file
-map f+   shell -s chmod +x %f                     #make a file executable
+map f+   shell -s chmod +x %s                     #make a file executable
+map f- shell -s chmod -x %s
 map f=   console shell -s chmod 664 %%s                #chmod operations - or type 664=
 map fr   console rename
 map fb   bulkrename %s
@@ -724,7 +725,7 @@ map ';au  cd ~/QuickLink/applications-usr</textarea>
 
 map ,k1   shell -s cp ~/.config/ranger/* ~/Settings/ranger/    #backup the ranger config dir
 map ,k2   shell -s sh ~/scripts/backup-config-files
-map ,kp   shell -s sh ~/scripts/backup %%s                             
+map ,kp   shell -s sh ~/scripts/backup %s                             
 map ,k9   shell -s gksu sh ~/scripts/backup-sys-files</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -890,11 +891,11 @@ map Ed3  console shell exiftool -overwrite_original "-filemodifydate>alldates" %
 ###add keywords or rating:
 map Es   shell -f exiftool -m -overwrite_original -xmp:subject+="`yad --entry --button='Write keywords':0 --undecorated --width=400 --height=50`" %s
 map Er   console shell -f exiftool -m -overwrite_original -xmp:rating=2 %%s
-map Eb1  shell -f exiftool -m -overwrite_original -xmp:label=red %%s           #add color label
-map Eb2  shell -f exiftool -m -overwrite_original -xmp:label=yellow %%s
-map Eb3  shell -f exiftool -m -overwrite_original -xmp:label=green %%s
-map Eb4  shell -f exiftool -m -overwrite_original -xmp:label=blue %%s
-map Eb5  shell -f exiftool -m -overwrite_original -xmp:label=purple %%s
+map Eb1  shell -f exiftool -m -overwrite_original -xmp:label=red %s           #add color label
+map Eb2  shell -f exiftool -m -overwrite_original -xmp:label=yellow %s
+map Eb3  shell -f exiftool -m -overwrite_original -xmp:label=green %s
+map Eb4  shell -f exiftool -m -overwrite_original -xmp:label=blue %s
+map Eb5  shell -f exiftool -m -overwrite_original -xmp:label=purple %s
  
 ###add comment (crude! it replaces existing comment and blank or cancel also replaces!  I need to work on it)
 map Ec  shell -f exiftool -m -overwrite_original -comment="`yad --form --button='Write comment':0 --field=:TXT --undecorated --width=400 --height=200`" %s
@@ -993,7 +994,7 @@ map fa3  shell -ft ogg2mp3 -B 256 --vbr-new -V 0 *.ogg %s        #convert ogg to
 ##### GPS Babel conversion ##########
 
 #### gpx to Garmin tab delimited
-map fG1   shell -s for fi in %%s; do gpsbabel -w -i gpx -f "$fi" -x track,fix=pps -o garmin_txt -F "$fi".tab ;done</textarea>
+map fG1   shell -s for fi in %s; do gpsbabel -w -i gpx -f "$fi" -x track,fix=pps -o garmin_txt -F "$fi".tab ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -1139,9 +1140,9 @@ map Rs1  console shell -fs rename 's/ /_/g' %s
 map Rs2  console shell -fs find . -depth -name "* *" -execdir rename 's/ /_/g' "{}" \;     
                  # replace spaces with _ recursively from current location  
 
-map Ru1  shell rename 'y/a-z/A-Z/' %%s                #change lower case letters to upper case
+map Ru1  shell rename 'y/a-z/A-Z/' %s                #change lower case letters to upper case
  
-map Ru2  shell rename 'y/A-Z/a-z/' %%s                 #change upper case letters to lower case
+map Ru2  shell rename 'y/A-Z/a-z/' %s                 #change upper case letters to lower case
 
 #prepending
 map Rp1  console shell -fs rename 's/^/P/' %%s		
@@ -1170,7 +1171,7 @@ map Re1  shell -fs sh ~/scripts/exif-date-prepend
 map Re2  shell -fs ~/scripts/exif-date-append
                   #Append exif date to file names inside ext, mode: file-name.ext > file-name_120806-1134.ext
 
-map Re3  shell -fs sh ~/scripts/exifdate-name %%s       
+map Re3  shell -fs sh ~/scripts/exifdate-name %s       
                 #Rename files from exif date, mode: DSC_4322.JPG > 150812-163544.JPG
 
 #sequential numbering
@@ -1233,7 +1234,9 @@ One problem is, however, with so many key-bindings, is the lack of sort-by-key i
 <li><b>shell</b> must be used in order to run bash commands, and <b>console shell</b> where typing is needed (can use ranger macros and the shell flags)</li>
 <li><b>chain</b> allows multiple commands to be run consecutively, each separated by `;`</li>
 <li>without using 'console' a key-mapped command will execute immediately, without needing confirmation (in some cases it could be dangerous!)</li>
-<li>using <b>%s</b> in the mapping may not be a good idea in some cases, i.e. when the console is opened before executing, because it will expand to all the selected file names, and that would 1. render the console full and impossible to type in, and 2. send utter garbage to a shell command - so we need to use <b>%%s</b>  which remains "%s" on the console, and shell commands can act on every file</li>
+<li>using <b>%s</b> in the mapping may not be a good idea in some cases, i.e. when the console is opened before executing, because it will expand to all the selected file names, and that would 1. render the console full and impossible to type in, and 2. send utter garbage to a shell command - so we need to use <b>%%s</b> in the key mapping, which remains "%s" on the console, and then shell commands can act on every file.  
+<br><br>
+Just make sure that if you remove "console" and make a key-executable mapping (only with "shell") then you need to remove the "%%" (i.e. make it "%s" or "%f") or the command will fail.</li>
 <li><b>console -p{n}</b> will set the cursor at the nth character in the console, to make it convenient to edit a command, i.e. 'console -p22' will set the cursor at char 22</li>
 
 </ul></div>

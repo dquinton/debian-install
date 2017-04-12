@@ -9,89 +9,99 @@ id: help
 
 <div class="cont">
 
-<div>
-<div><b>options!</b></div>
-<div>1. <b>UNetbootin </b>(works effortlessly)
-</div>
-<div>2.&nbsp;<b>Multisystem</b>&nbsp;Live USB tool&nbsp;<a href="http://liveusb.info/dotclear/index.php?pages/install">http://liveusb.info/...</a></div>
-<div>3. set up the usb stick manually, following&nbsp;<a href="http://linuxconfig.org/install-debian-linux-from-usb-boot-memory-stick">http://linuxconfig.org/...</a>&nbsp;(didn't work for me) or&nbsp;<span style="line-height:26px"><a href="http://brskari.wordpress.com/2009/01/08/booting-multiple-livecds-from-a-single-usb-stick/">http://brskari.wordpress.com/.../</a></span></font></div>
+The options are...<br>
+1. <b>UNetbootin</b> (works effortlessly)<br>
+2. <b>Multisystem</b> Live USB tool <a href="http://liveusb.info/dotclear/index.php?pages/install">http://liveusb.info/...</a><br>
+3. set up the usb stick manually, following <a href="http://linuxconfig.org/install-debian-linux-from-usb-boot-memory-stick">http://linuxconfig.org/...</a> or <a href="http://brskari.wordpress.com/2009/01/08/booting-multiple-livecds-from-a-single-usb-stick/">http://brskari.wordpress.com/...</a>
 <br><br>
-<div><span style="line-height:27px;font-size:medium">WINDOZER USER: try out <b>LinuxLive</b> <b>USB</b> <b>Creator</b>&nbsp;</span><span style="font-size:medium;line-height:27px"><a href="http://www.linuxliveusb.com/">http://www.linuxliveusb.com/</a></span></div>
-<div><font size="3">or <b>YUMI</b> which can put multiple distro's on a usb stick&nbsp;<a href="http://www.pendrivelinux.com/yumi-multiboot-usb-creator/">http://www.pendrivelinux.com...</a></font></div>
-<div><font size="3"><span style="line-height:27px">or&nbsp;</span></font><span style="font-size:medium"><b>XBOOT</b></span><span style="font-size:medium">&nbsp;</span><a href="https://sites.google.com/site/shamurxboot/home" style="font-size:medium">https://sites.google.com/...</a></div>
-<div>
-<div><font size="3">or&nbsp;<b>SARDU</b>&nbsp;-Multiple Linux Live&nbsp;<a href="http://www.sarducd.it/linux">http://www.sarducd.it/linux</a></font></div>
-</div>
-<div><br>
-</div>
-<div><br>
-</div>
-<div><font size="3"><span style="line-height:27px"><br>
-</span></font></div>
-<div><span style="line-height:27px"><b style="font-size:large">UNetbootin&nbsp;</b></span></div>
-<div><span style="line-height:27px"><font size="3">-can install only one .ISO file at a time to usb stick</font></span></div>
-<div><span style="line-height:27px"><font size="3">install from packages with <font color="#7C2020">sudo apt-get install unetbootin</font></font></span></div>
-<div><span style="line-height:27px"><font size="3"><br>
-</font></span></div>
-<div><span style="line-height:27px;font-size:medium">use Gparted to make a Primary partition (FAT32) big enough for your ISO file + (optional) a small partition (FAT32) for any extra files.</span></div>
-<div><font size="3"><span style="line-height:25px"><strike><br>
-</strike></span></font></div>
-<div><span style="line-height:27px;font-size:medium">then run UNetbootin, select download or a local ISO file, the new partition, and fire away.</span></div>
-<div><span style="line-height:27px;font-size:medium">on reboot you need to tell your BIOS to boot from the USB - hit it on the boot menu... also you may have to add USB to the menu in BIOS settings.  </span></div>
-<div><span style="line-height:27px;font-size:medium"><br>
-</span></div>
-<div><span style="line-height:27px;font-size:medium">Its best to wipe the files from the Live CD partition on the usb before installing a different ISO to it</span></div>
-<div><span style="line-height:27px;font-size:medium"><br>
-</span></div>
-<div><span style="line-height:27px;font-size:medium">Note: for installing debian on a machine with only wireless available, it would be nice to have the driver files ready on the same usb drive.</span></div>
-<div><span style="line-height:27px;font-size:medium">So go back to Gparted, format some free space on the usb stick (FAT32) and use that for those firmware files</span></div>
-<div><span style="font-size:medium;line-height:27px">Note: if you need to resize a FAT32 formatted drive, you need to install</span><font size="3"><span style="line-height:27px">&nbsp;</span>FAT32 file support</font></div>
-<div><font color="#7C2020" size="3">sudo apt-get install dosfstools mtools</font></div>
-<div><font size="3">but likely you just need to wipe the partitions and make new ones.</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">this programme can download distro iso files -and no.4 above, Live USB Install, is pretty similar in scope -but no multi-ISO install possible, unless multicd.sh script is used first to make one ISO from different ones.</font></div>
-<div><br>
-</div>
-<div><font size="3"><span style="line-height:27px"><br>
-</span></font></div>
-<div>
-<div><font size="4"><b>Multicd.sh</b></font></div>
-<div><font size="3">this script from their web-page&nbsp;</font><a href="http://multicd.tuxfamily.org/" style="line-height:26px;font-size:medium">http://multicd.tuxfamily.org/</a>&nbsp;<span style="font-size:medium">makes one .iso file of multiple LiveCD or utility .iso's which can then be put on a USB stick with UNetbootin, Remastersys USB tool, or the commands:&nbsp;</span></div>
-<font color="#6A3200" size="3">isohybrid multicd.iso<br>
-dd if=multicd.iso of=/dev/</font><font color="#0b5394" size="3">sb1</font><font color="#6A3200" size="3"> bs=1M&nbsp;</font><font size="3">(eg only -<span style="background-color:rgb(255,229,153)">find your usb device name!</span> <font color="#6A3200">lsblk</font>)</font>
-<div><font size="3">but what is the .iso file size limit?? &nbsp;and can it deal with multiple .iso's of the same Linux distro such as those made with Remastersys, or different downloaded versions?</font></div>
-</div>
-<div><br>
-</div>
-<div><br>
-</div>
-<div><b><font size="4">Multisystem</font></b></div>
-<div>
-<div><span style="font-size:medium">can install multiple live cd ISO's to a usb stick, (but one time it got stuck renaming "bad names" and took a long time -and then the grub was bad and another .iso needed to be added to fix it).</span></div>
-<div><font size="3"><span style="line-height:27px"><br>
-</span></font></div>
-<div><span style="font-size:medium">I hacked the install script they give on the site which basically adds the source and repo key</span></div>
-<font color="#6A3200" size="3">
-<div><font color="#6A3200" size="3"><br>
-</font></div>
-sudo sh -c 'echo "deb http://liveusb.info/multisystem/depot all main" &gt;&gt; /etc/apt/sources.list'</font>
-<div><font size="3"><span style="line-height:27px">can comment out with # after install -sudo nano /etc/apt/sources.list</span></font></div>
-<div><font size="3"><span style="line-height:27px"><br>
-</span></font></div>
-<div><font size="3">install the key</font></div>
-<div><span style="color:rgb(180,95,6);font-size:medium">su</span></div>
-<div><font color="#6A3200" size="3">wget -q http://liveusb.info/multisystem/depot/multisystem.asc -O- | apt-key add -</font></div>
-<font color="#7C2020">apt-get update &amp;&amp; apt-get install multisystem</font></div>
-<div>
-<div>
-<div><br>
-</div>
-</div>
-</div>
-<div><br>
-</div>
-<div><font size="4"><span style="line-height:31px"><b><br>
-</b></span></font></div>
+Windozer users can try out <b>LinuxLive USB Creator</b> <a href="http://www.linuxliveusb.com/">http://www.linuxliveusb.com/</a> 
+<br>
+or <b>YUMI</b> which can put multiple distro's on a usb stick <a href="http://www.pendrivelinux.com/yumi-multiboot-usb-creator/">http://www.pendrivelinux.com...</a>
+<br>
+or <b>XBOOT</b> <a href="https://sites.google.com/site/shamurxboot/home">https://sites.google.com/...</a>
+<br>
+or <b>SARDU</b> -Multiple Linux Live <a href="http://www.sarducd.it/linux">http://www.sarducd.it/linux</a>
 
+<br><br>
+<br><br>
+
+<h3>UNetbootin </h3>
+
+-can install only one .ISO file at a time to usb stick
+<br><br>
+install from Debian packages with 
+
+<form><textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install unetbootin </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<div class="bullet"><ul><li>
+use Gparted to make a Primary partition (FAT32) big enough for your ISO file + (optional) a small partition (FAT32) for any extra files.</li>
+
+<li>then run UNetbootin, select download or a local ISO file, the new partition, and fire away.</li>
+
+<li>on reboot you need to tell your BIOS to boot from the USB - hit it on the boot menu... also you may have to add USB to the menu in BIOS settings.  </li>
+
+<li>Its best to wipe the files from the Live CD partition on the usb before installing a different ISO to it.</li>
+</ul></div>
+<br>
+Note: for installing debian on a machine with only wireless available, it would be nice to have the driver files ready on the same usb drive.<br>
+So go back to Gparted, format some free space on the usb stick (FAT32) and use that for those firmware files
+<br><br>
+Note: if you need to resize a FAT32 formatted drive, you need to install
+
+<form><textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install dosfstools mtools </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+but likely you just need to wipe the partitions and make new ones.
+
+<br><br><br><br>
+
+<h3>Multicd.sh</h3>
+
+get this script from their web-page </font><a href="http://multicd.tuxfamily.org/" style="line-height:26px;font-size:medium">http://multicd.tuxfamily.org/</a> 
+<br><br>
+it makes one .iso file of multiple LiveCD or utility .iso's which can then be put on a USB stick with UNetbootin, or the commands: 
+
+<form><textarea name="T" id="cmd" rows="2" cols="50">
+isohybrid multicd.iso
+dd if=multicd.iso of=/dev/sdb1 bs=1M</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+"sdb1" is an example, you can find your usb device name with `lsblk`
+<br><br>
+but what is the .iso file size limit??  and can it deal with multiple .iso's of the same Linux distro such as those made with Remastersys, or different downloaded versions?
+<br><br><br><br>
+
+<h3>Multisystem</h3>
+
+This can install multiple live cd ISO's to a usb stick, (but I had one time it got stuck renaming "bad names" and took a long time -and then the grub was bad and another .iso needed to be added to fix it).
+<br><br>
+The best use of this is if you have different distros in use alot of the time (and of course, you have a large capacity USB stick).  Even one or two distros and a couple of rescue bots would be good.  But it can't load Remastersys ISO's of your own system.  These days I don't test drive distros and all I use is my own Live Debian 64 and 32 bits versions, so for me its multiple USB sticks!
+<br><br>
+I hacked the install script they give on the site which basically adds the source and repo key
+
+<form><textarea name="T" id="cmd" rows="2" cols="80">
+sudo sh -c 'echo "deb http://liveusb.info/multisystem/depot all main" /etc/apt/sources.list'</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+you can comment out with # after install -<span class="cmd"> sudo nano /etc/apt/sources.list</span>
+<br><br>
+install the key
+
+<form><textarea name="T" id="cmd" rows="3" cols="100">
+wget -q http://liveusb.info/multisystem/depot/multisystem.asc -O- | apt-key add -
+apt-get update 
+apt-get install multisystem</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br><br><br>
+<br><br>
 </div>

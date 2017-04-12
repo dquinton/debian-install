@@ -10,102 +10,91 @@ id: help
 <div class="cont">
 
 Changing the root directory is useful when you need to repair a Debian install from a Live CD or a another working system, or for maintaining another system, or updating it, or installing packages on it, while you get on with other work.
-<div><br>
-</div>
-<div>First you mount the system's partition. &nbsp;Then you need to mount dev, proc and sys of the running system so that the mounted system can communicate with the computer's devices -as these are only loaded at start up.</div>
-<div><br>
-</div>
-<div><span style="color:rgb(180,95,6);font-size:16px;line-height:1.6;background-color:transparent">su</span></div>
-<div>
-<div><font color="#6A3200">mount -t ext4 /dev/sda5 /mnt</font></div>
-<div><font color="#6A3200">mount -t proc /proc /mnt/proc</font></div>
-<div><font color="#6A3200">mount -t sysfs /sys /mnt/sys</font></div>
-<div><font color="#6A3200">mount -o bind /dev /mnt/dev</font></div>
-<div><font color="#6A3200">cp /etc/resolv.conf /mnt/etc/resolv.conf</font></div>
-<div><br>
-</div>
-<div>
-<div>/etc/resolv.conf is made by the network manager you use and the mounted system will not have the file, so it needs to be copied over if you intend to access the network from the mounted system.</div>
-</div>
-<div><br>
-</div>
-<div>plus if /var is on another partition, you will need to mount it</div>
-<div><font color="#6A3200">mount -t ext3 /dev/sda7 /mnt/var</font></div>
-<div><br>
-</div>
-<div>
-<div>check mounts with</div>
-<div><font color="#6A3200">mount</font></span></div>
-</div>
-<div><br>
-</div>
-<div>
-<div>then change to the root of that system to run commands in it</div>
-<div><font color="#6A3200">chroot /mnt /bin/bash</font></span></div>
-</div>
-<div><br>
-</div>
-<div>The other partition's system is then mounted and you can run whatever maintenance that's needed.</div>
-<div><br>
-</div>
-<div>To finish, you exit the chroot environment with</div>
-<div><font color="#6A3200">exit</font></div>
-<div><br>
-</div>
-<div>then unmount the filesystems with</div>
-<div>
-<div><font color="#6A3200">umount /mnt/{proc,sys,dev,var}</font></div>
-<div><font color="#6A3200">umount /mnt</font></div>
-</div>
-<div><br>
-</div>
-<div>To use aptitude, and the error occurs "Could not open lock file /var/lock/aptitude No such file or directory", do</div>
-<div><font color="#6A3200">mkdir /run/lock</font></div>
-<div><br>
-</div>
-<div><br>
-</div>
-<div><b><font size="4">With scripts</font></b></div>
-<div><br>
-</div>
-<div>
-<div><font color="#0F4F0B">#!/bin/bash</font></div>
-<div><font color="#0F4F0B"><br>
-</font></div>
-<div><font color="#0F4F0B">chroot_os=$(find /dev -mindepth 1 -maxdepth 1 &nbsp;-name "*[sh]d[a-z][1-9]*" \</font></div>
-<div><font color="#0F4F0B">&nbsp; | sort | awk '{print "\n" $0 }' \</font></div>
-<div><font color="#0F4F0B">&nbsp; | yad --list --title=$"Partitions" --text=$"Choose the partition to chroot into." \</font></div>
-<div><font color="#0F4F0B">&nbsp; &nbsp; --separator="" --column ' ' --column $'Partitions' --height 380 --width 150 --button="OK":0)</font></div>
-<div><font color="#0F4F0B"><br>
-</font></div>
-<div><font color="#0F4F0B">mount -t ext4 $chroot_os /mnt</font></div>
-<div><font color="#0F4F0B">mount -t proc proc /mnt/proc</font></div>
-<div><font color="#0F4F0B">mount -t sysfs sys /mnt/sys</font></div>
-<div><font color="#0F4F0B">mount -o bind /dev /mnt/dev</font></div>
-<div><font color="#0F4F0B">cp /etc/resolv.conf /mnt/etc/resolv.conf</font></div>
-<div><font color="#0F4F0B">chroot /mnt /bin/bash</font></div>
-</div>
-<div><font color="#0F4F0B"><br>
-</font></div>
-<div><font color="#0F4F0B"><br>
-</font></div>
-<div>
-<div><font color="#0F4F0B">#!/bin/bash</font></div>
-<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#0F4F0B">umount /mnt/proc /mnt/sys /mnt/dev</font></span></div>
-<div><font color="#0F4F0B">umount /mnt</font></div>
-<div><br>
-</div>
-<div><br>
-</div>
-<div><br>
-</div>
-</div>
-<div><br>
-</div>
-<div><br>
-</div>
-<div><br>
-</div>
-</div>
+<br><br>
+First you mount the system's partition. &nbsp;Then you need to mount dev, proc and sys of the running system so that the mounted system can communicate with the computer's devices -as these are only loaded at start up.
+<br><br>
+<form><textarea name="T" id="cmd" rows="6" cols="50">
+su
+mount -t ext4 /dev/sda5 /mnt
+mount -t proc /proc /mnt/proc
+mount -t sysfs /sys /mnt/sys
+mount -o bind /dev /mnt/dev
+cp /etc/resolv.conf /mnt/etc/resolv.conf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+"/etc/resolv.conf" is made by the network manager you use and the mounted system will not have the file, so it needs to be copied over if you intend to access the network from the mounted system.
+<br><br>
+plus if /var is on another partition, you will need to mount it, e.g.
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+mount -t ext3 /dev/sda7 /mnt/var</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+check mounts with `mount`
+<br><br>
+then change to the root of that system so you can run commands in it..
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+chroot /mnt /bin/bash</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+The other partition's system is then mounted and you can run whatever maintenance that's needed.
+<br><br>
+To finish, you exit the chroot environment with `exit`
+<br><br>
+then unmount the filesystems with
+
+<form><textarea name="T" id="cmd" rows="2" cols="50">
+umount /mnt/{proc,sys,dev,var}
+umount /mnt</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+To use aptitude in a chroot environment, and the error occurs <span class="prob">"Could not open lock file /var/lock/aptitude No such file or directory"</span> , do
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+mkdir /run/lock</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+<h3>Chroot using scripts </h3>
+
+run these as root user, to chroot to any Linux OS and then unmount afterwards..
+<br>
+<form><textarea name="T" id="file" rows="13" cols="120">
+#!/bin/bash
+
+chroot_os=$(find /dev -mindepth 1 -maxdepth 1 &nbsp;-name "*[sh]d[a-z][1-9]*" \
+       | sort | awk '{print "\n" $0 }' \
+       | yad --list --title=$"Partitions" --text="Choose the partition to chroot into." \
+      --separator="" --column ' ' --column $'Partitions' --height 380 --width 150 --button="OK":0)
+
+mount -t ext4 $chroot_os /mnt
+mount -t proc proc /mnt/proc
+mount -t sysfs sys /mnt/sys
+mount -o bind /dev /mnt/dev
+cp /etc/resolv.conf /mnt/etc/resolv.conf
+chroot /mnt /bin/bash</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+<form><textarea name="T" id="file" rows="3" cols="50">
+#!/bin/bash
+umount /mnt/proc /mnt/sys /mnt/dev
+umount /mnt</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
 
 </div>

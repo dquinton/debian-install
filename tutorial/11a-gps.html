@@ -170,26 +170,28 @@ Add scale bar : View menu > Decorations > Scale<br>
 <br><br><br>
 <h3>Calculate an area</h3> 
 
-If you draw an area then you'll have a polygon layer to work with.. click on New shape file, check on polygon and OK, and save it.. then click on the Edit and Add Feature buttons on the toolbar, and click on the map to start drawing - right click to finish (and set feature no.)
+If you draw an area then you'll have a polygon layer to work with.. -> click on New shape file, check on polygon and OK, and save it.. then click on the Edit and Add Feature buttons on the toolbar, and click on the map to start drawing - right click to finish (and enter the feature no.)
 <br><br>
-If you want to convert a boundary line to a polygon, the "polygonize" algorithm requires "shapely module".
-
+To edit the polygon area, click on the Node tool button and select a node - then either move it or double click to create a new node to move (but sometimes the new node is on top, sometimes underneath!).
+<br><br>
+There is a vector tool called polygonize (which needs shapely plugin), which will make polygons where lines cross and enclose space. So if you have an area completely enclosed, i.e. a track without gaps and its two ends cross over, closing the area, then you can try using this tool to find the area enclosed.
 <form><textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get install python-shapely </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-select the layer to work with, then open the Toolbox with right-click on the tool bar > Toolbox<br>
-then navigate to: QGIS Geoalgorithms > Vector geometry tools > polygonize
+<span class="blue">Processing > Toolbox > QGIS Geoalgorithms > Vector geometry tools > polygonize</span>
+<br>  <br>
+You'll need to save the resulting polygons to a file as it only creates a temp layer. 
+<br>  <br>
+You can run error checking with Vector geometry tools > <b>Check validity</b> to see where there are faults in the lines, e.g. loops or crossing. But it won't show you if there are gaps.
 <br><br>
-I didn't succeed with this, as my lines were either broken, or needed specifically two ends, not multiple.  <br>
-You can also run error checking with Vector geometry tools > <b>Check validity</b> to see where there are faults in the lines, e.g. loops or crossing.
+Or, another way is to use <b>Lines to polygons</b>, which will save the polygons to a shapefile layer:
 <br><br>
-Or, Vector menu > Geometry tools > Lines to polygons (but this is not area)
+<span class="blue">Vector menu > Geometry tools > Lines to polygons </span>
 <br><br>
-If you've drawn polygons with a Shapefile layer, its easy to get an area calculation. 
-<br><br>
-with your polygon layer...
+With your polygons, its easy to get an area calculation...
+
 <div class="bullet"><ul><li>select the layer</li>
 <li>open the Attribute table with toolbar button at top</li>
 <li>click on the Field calculator button</li>
