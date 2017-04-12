@@ -327,9 +327,9 @@ bash makeboot.sh /dev/sdxx</textarea>&nbsp;<input type="button" class="submitLin
 <br>
 
 With this script written by <a href="http://www.ibiblio.org/refracta/" rel="noreferrer">fsmithred</a>, you can make a full system backup of your working box, which also becomes a Live Debian that can run or install anywhere you like. It's smooth and easy to use. Runs via CLI or by its GUI.
-
-download <b>refractasnapshot</b> and <b>refractainstaller</b> (base and gui if needed) from <a href="http://sourceforge.net/projects/refracta/files/tools/">http://sourceforge.net/</a>
-
+<br><br>
+download <b>refractasnapshot</b> and <b>refractainstaller</b> (base deb and gui deb if needed) from <a href="http://sourceforge.net/projects/refracta/files/tools/">http://sourceforge.net/</a>
+<br><br>
 cd to download dir
 
 <form><textarea name="T" id="cmd" rows="1" cols="30">
@@ -525,9 +525,12 @@ If you can't boot with the stick, try to reformat the USB stick, as a partition 
 <br>
 It's a pretty straight forward affair once you boot into your Live system from the USB stick. I get my partitions ready before hand with gparted from Live. 
 <br><br>
-Just run "refractasnapshot-installer" to run the installer.
+Just run `refractainstaller` or `refractainstaller-yad`to run the installer.
 <br><br>
 It's very nice to see your snapshot system getting cloned onto another box!
+<br><br>
+<b>Note:</b> installing on Uefi firmware PCs is not the same as installing on the usual BIOS PC.  You need to get refractainstaller 9.2 or later and to install your ISO run `refractainstaller-uefi`... see <a href="http://refracta.freeforums.org/uefi-and-the-installer-t684.html#p6461">"uefi and the installer"</a>
+
 <br>
 <br><br><br>
 
