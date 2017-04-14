@@ -503,7 +503,7 @@ map <DELETE> shell -s trash-put %s       (need trash-cli -see below)</textarea>
 
 
 <h3 id="mov" class="tag">moving around</h3>
-<form><textarea name="T" id="file" rows="29" cols="120">
+<form><textarea name="T" id="file" rows="35" cols="120">
 ################## My keyinds ######################
 
 map Vm set viewmode miller
@@ -529,7 +529,13 @@ copymap S &#60;a-s>                   #open Shell with Alt-s
 ######### Set the keyboard   ##########
 map %1 shell setxkbmap us -variant colemak
 map %2 shell setxkbmap us
-map %3 shell -r nano /etc/default/keyboard</textarea>
+map %3 shell -r nano /etc/default/keyboard
+
+######### Set screen brightness level   ##########
+map #1 shell xrandr --output LVDS1 --brightness 1.0
+map #5 shell xrandr --output LVDS1 --brightness 0.5
+map #8 shell xrandr --output LVDS1 --brightness 0.8
+map #9 shell xrandr --output LVDS1 --brightness 0.9</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 

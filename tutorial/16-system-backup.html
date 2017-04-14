@@ -529,8 +529,19 @@ Just run `refractainstaller` or `refractainstaller-yad`to run the installer.
 <br><br>
 It's very nice to see your snapshot system getting cloned onto another box!
 <br><br>
-<b>Note:</b> installing on Uefi firmware PCs is not the same as installing on the usual BIOS PC.  You need to get refractainstaller 9.2 or later and to install your ISO run `refractainstaller-uefi`... see <a href="http://refracta.freeforums.org/uefi-and-the-installer-t684.html#p6461">"uefi and the installer"</a>
+<b>Note:</b> installing on Uefi firmware PCs is not the same as installing on the usual BIOS PC.  You need to get refractainstaller 9.2 or later and to install your ISO run `refractainstaller-uefi`...see <a href="http://refracta.freeforums.org/uefi-and-the-installer-t684.html#p6461">"uefi and the installer"</a>
+<br><br>
+Uefi  will only boot a 64bit ISO as well - so to instll a 32bit Debian, you'll need at least one 64bit ISO on the usb stick in order to boot it and reach the boot menu...
+<br><br>
+ Also, you may need these .deb packages on the root or in home of the ISO, to run a dpkg install using chroot during the refractainstaller process, 
+ 
+ <form><textarea name="T" id="install" rows="1" cols="80">
+aptitude download efibootmgr grub-efi-amd64 grub-efi-amd64-bin libefivar0</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
+<br>
+You could install these on your 64bit Debian before running the snapshot, but it removes grub-pc, so you should only do that if your Pc is uefi.
 <br>
 <br><br><br>
 
