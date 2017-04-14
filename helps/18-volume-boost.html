@@ -1,0 +1,94 @@
+---
+layout: default
+description: How to add pr-amp to Alsa mixer, to boost the 100% volume louder - by D Quinton
+title: Volume Boost with Alsa Pre-Amp Control
+id: help
+---
+
+<div class="parent"><a href="../helps.html">Helps</a> ></div>
+
+<div class="cont">
+
+
+Many laptops are hampered by a maximum volume that seems much too quiet and it's particularly annoying when you're trying to play some media that was encoded with poor audio settings, so that there's almost nothing heard at all.  In such cases, it would be nice to amplify the sound above the normal 100% full volume, but it doesn't go (well we I'm talking laptop speakers, not plugin ones).  
+<br><br>
+VLC can boost to about 125% and pulse audio has some settings to boost to 150%.  But can it be done on a system with just Alsa installed? It sure can!
+<br><br>
+First we need to create an Alsa config file, and in there we will make a new control that makes the default audio channel its slave, and then itself sets a higher max dB limit.
+<br><br>
+There are quite a few forum posts (like <a href="http://www.linuxquestions.org/questions/slackware-14/alsa-with-pre-amp-4175527907-print/">here</a>) with ideas, but when I tried following them I had endless problems with Alsa not able to recognise the slave.  Then I found this config layout which is simpler and it worked for my box... from <a href="https://www.reddit.com/r/archlinux/comments/2vb1wm/artificially_boosting_alsa_audio_above_100/">..reddit.com/r/archlinux/comments/..</a>
+<br><br><br>
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+touch ~/.asoundrc </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+or `sudo touch /etc/asound.conf`
+<br><br>
+and add this content:
+
+<form><textarea name="T" id="file" rows="12" cols="50">
+pcm.!default {
+    type asym
+    playback.pcm "plug:softvol"
+    capture.pcm "plug:dsnoop"
+}
+
+pcm.softvol {
+    type softvol
+    slave.pcm "dmix"
+    control { name "PCM"; card 0; }
+    max_dB 32.0
+} </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+then do 
+
+<form><textarea name="T" id="cmd" rows="2" cols="50">
+sudo rm /var/lib/alsa/asound.state
+sudo alsactl store </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+play an audio in terminal - check if any errors
+
+<br><br>
+Note: some laptops may need to replace line `type plug` with `type hw`
+<br><br>
+
+also read the <a href="http://alsa.opensrc.org/How_to_use_softvol_to_control_the_master_volume">alsa softvol man page</a>
+<br><br>
+<br><br>
+<h3>Make Alsa forget a mixer control</h3>
+
+After messing around trying to add a softvol control with the wrong config layout, my box failed to suspend or shutdown!  A previous control remained in the alsa mixer board.
+<br><br>
+So how to make Alsa forget an old unneeded control?  The answer was here <a href="https://bbs.archlinux.org/viewtopic.php?id=157290">..archlinux.org/..</a>
+
+<br>
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+sudo rm /var/lib/alsa/asound.state </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+then make alsactl non-executable to prevent settings being written on shutdown
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+sudo chmod -x /usr/sbin/alsactl  </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+reboot and restore alsactl to be executable, and store alsactl again
+   
+<form><textarea name="T" id="cmd" rows="2" cols="50">
+chmod +x /usr/sbin/alsactl
+sudo alsactl store</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br><br><br><br>
