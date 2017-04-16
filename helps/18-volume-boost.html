@@ -16,7 +16,8 @@ VLC can boost to about 125% and pulse audio has some settings to boost to 150%. 
 <br><br>
 First we need to create an Alsa config file, and in there we will make a new control that makes the default audio channel its slave, and then itself sets a higher max dB limit.
 <br><br>
-There are quite a few forum posts (like <a href="http://www.linuxquestions.org/questions/slackware-14/alsa-with-pre-amp-4175527907-print/">here</a>) with ideas, but when I tried following them I had endless problems with Alsa not able to recognise the slave.  Then I found this config layout which is simpler and it worked for my box... from <a href="https://www.reddit.com/r/archlinux/comments/2vb1wm/artificially_boosting_alsa_audio_above_100/">..reddit.com/r/archlinux/comments/..</a>
+There are quite a few forum posts (like <a href="http://www.linuxquestions.org/questions/slackware-14/alsa-with-pre-amp-4175527907-print/">here</a>) with ideas, but when I tried following them I had endless problems with Alsa not able to recognise the slave.  Then I found this config layout which is simpler and it worked for my box... <br>
+from <a href="https://www.reddit.com/r/archlinux/comments/2vb1wm/artificially_boosting_alsa_audio_above_100/">..reddit.com/r/archlinux/comments/..</a>
 <br><br><br>
 
 <form><textarea name="T" id="cmd" rows="1" cols="50">
@@ -90,5 +91,6 @@ chmod +x /usr/sbin/alsactl
 sudo alsactl store</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br><br>
+Note: after that I needed another restart and when I opened alsa mixer I had to bring PCM down to a moderate level (<43 for audio file).
 <br><br><br><br><br>
