@@ -10,9 +10,9 @@ id: net
 <div class="cont">
 <a name="1"></a>
 <br>
-I run Debian Jessie without systemd, just because I don't need to go that way - sysvinit boots my system just fine.  But it was getting increasingly difficult to install some packages because they depended on systemd, and I needed to install bluefish.  This cool html editor however, is dependent on gvfs-backends which depends on libpam-systemd, which depends on the big one, systemd.
+I was running Debian Jessie without systemd, just because I didn't want to go that way - sysvinit boots my system just fine.  But it was getting increasingly difficult to install some packages because they depended on systemd.  I got stuck when I needed to install bluefish to work on html.  Bluefish is dependent on gvfs-backends which depends on libpam-systemd, which depends on the big one, systemd.
 <br><br>
-Enter <a href="https://devuan.org/">Devuan</a>.  They've come a long way developing their Debian fork.  Anything that depends on systemd is forked so that they won't be calling for it with Apt, and anything else from the debian repositories is mirrored.
+Enter <a href="https://devuan.org/">Devuan</a>.  They've come a long way developing their Debian fork.  Anything that depends on systemd is forked so that a system won't be calling for it with Apt, and anything else from the debian repositories is mirrored.
 <br><br>
 To migrate to Devuan, at the moment you just need to change your package sources, update, and upgrade and that's all. You can also get the Devuan Live CD or Netinstall CD to install it straight without needing to install Debian first - see the links on my Step1 page, or go to the Devuan home page.
 <br><br>

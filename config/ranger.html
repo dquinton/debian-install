@@ -1008,7 +1008,7 @@ map fG1   shell -s for fi in %s; do gpsbabel -w -i gpx -f "$fi" -x track,fix=pps
 
 <br><br>
 <h3 id="mt" class="tag">map comma-m and comma-u for mounting/unmouning drives</h3>
-<form><textarea name="T" id="file" rows="19" cols="100">
+<form><textarea name="T" id="file" rows="20" cols="100">
 ##### mounting ##########
 
 map ,mm  console shell -s pmount /dev/sdb1         
@@ -1025,7 +1025,8 @@ map ,u6  shell -r umount %f
 map ej	shell -s eject %s             #eject selected external volumes (safely remove)
 copymap ej <F8>
 map ,d1  shell -pw lsblk       #list partitions +mounts
-map ,d2  shell -pwr blkid            #list partitions with UUID
+map ,d2  shell -pw df -h        #list partitions with disk usage
+map ,d3  shell -pwr blkid            #list partitions with UUID
 map ,d0  shell -pwr fdisk -l       #list partitions
 </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
@@ -1181,8 +1182,8 @@ map Re3  shell -fs sh ~/scripts/exifdate-name %s
                 #Rename files from exif date, mode: DSC_4322.JPG > 150812-163544.JPG
 
 #sequential numbering
-map Rn  console shell -fs i=0; for file in %%s; do mv "$file" $(printf "NAME_%0.3d.${file##*.}" $i); i=$((i+1)); done		
-                  #sequential numbering: i=0 =start from, 3 =digits, +1 =step, mode: file-name.ext > new-name_000.ext, new-name_001.ext
+map Rn console -p55 shell -fs i=1; for file in %%s; do mv "$file" $(printf "N_%0.3d.${file##*.}" $i); i=$((i+1)); done		
+                  #sequential numbering: i=1 =start from, 3d =digits, +1 =step, N =name, mode: file-name.ext > new-name_000.ext, new-name_001.ext
                   # WARNING: if numbering digits are not correct (e.g. only 1 digit for 12 files) some files will be LOST (overwritten with others)!
 
 #cutting characters

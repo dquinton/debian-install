@@ -86,7 +86,7 @@ Trying to remove an arch while still having packages installed from it, will ret
 <br>
 
 <form> 
-<textarea name="T" id="cmd" rows="1" cols="50">
+<textarea name="T" id="cmd" rows="1" cols="80">
 dpkg --get-selections | grep i386 | awk '{print $1}'</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>

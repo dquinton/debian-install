@@ -162,6 +162,14 @@ Note that all my custom actions here are included in my Ranger keybinds which is
 <td style="background-color: #B4C2FE;">catfish --fileman=thunar --path=%f</td>
 <td>directories</td>
 </tr>
+<td>Make New Folder</td>
+<td style="background-color: #CAD4FF;">mkdir `yad --entry --height=100 --width=400 --title="Enter New Folder Name"`</td>
+<td>check all</td>
+</tr>
+<td>Make New File</td>
+<td style="background-color: #B4C2FE;">touch `yad --entry --height=100 --width=400 --title="Enter New File Name"`</td>
+<td>check all</td>
+</tr>
 <tr>
 <td>edit as root</td>
 <td style="background-color: #CAD4FF; ">gksu leafpad %f</td>
@@ -185,16 +193,6 @@ Note that all my custom actions here are included in my Ranger keybinds which is
 <tr>
 <td>make executable</td>
 <td style="background-color: #CAD4FF; ">chmod +x %F</td>
-<td>all other files</td>
-</tr>
-<tr>
-<td>New File (click on blank space)</td>
-<td style="background-color: #B4C2FE; ">leafpad %f/"`yad --height=100 --width=400 --entry --title=New\ File --text=Enter\ file\ name`"</td>
-<td>directories</td>
-</tr>
-<tr>
-<td>New File (click on a file -no blank space)</td>
-<td style="background-color: #CAD4FF; ">leafpad %d/"`yad --height=100 --width=400 --entry --title=New\ File --text=Enter\ file\ name`"</td>
 <td>all other files</td>
 </tr>
 <tr>
@@ -382,8 +380,8 @@ Note that all my custom actions here are included in my Ranger keybinds which is
 </tbody>
 </table>
 
-<br><br> Also, see my Image processing page for custom actions with Mogrify for converting and resizing images.
-Plus my custom actions with ffmpeg commands on my HD Video page
+<br><br> Also, see my Image processing page, under My Tutorials, for custom actions with Mogrify for converting and resizing images.
+Plus my custom actions with ffmpeg commands on my HD Video page.
 
 <br><br>
 <br><br>
@@ -406,7 +404,7 @@ Thunar command:	<b>~/scripts/duplicate %f</b>	<br>
 conditions: any
 <br><br>
 copy to backup (1st make the dir)
-<form><textarea name="T" id="file" rows="2" cols="50">
+<form><textarea name="T" id="file" rows="2" cols="80">
 #!/bin/bash
 for f in $@ ;do cp $f ~/backups/$f_$(date +"%y%m%d")</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">

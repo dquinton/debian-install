@@ -14,7 +14,6 @@ id: net
                 <li><a href="#2">More video editors</a></li>
                 <li><a href="#3">XnView Multi Platform</a></li>
                 <li><a href="#4">Libre Office</a></li>
-                <li><a href="#5">Google Earth</a></li>
              </ul>
     </li>
   </ul> 
@@ -26,7 +25,6 @@ id: net
    <a href="#2">More video editors</a><br>
    <a href="#3">XnView Multi Platform</a><br>
    <a href="#4">Libre Office</a><br>
-   <a href="#5">Google Earth</a><br>
 </td></tr></table></div>
 
 <div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
@@ -304,110 +302,9 @@ ln -s /opt/libreoffice4.4/share/xdg/writer.desktop libreoffice4.4-writer.desktop
 <br><br>
 Tip: to change the toolbar icons to small, and tango for example, go to Tools > Options > LibreOffice > View
 
-<br><br>
-<hr noshade="noshade">
-<br><br>
-
-<h2 id="5" class="tag">Google Earth</h2>
-
-Downlaod from <a href="http://www.google.com/intl/en_uk/earth/download/ge/agree.html">earth/download/...</a>
-<br><br>
-Enable multiarch if you run amd64 machine! 
-(From 7.0 Debian supports simultaneous running of i386 and amd64 binaries and G-earth is i386 library dependant)
-<br><br>
-<form>
-<textarea name="T" id="cmd" rows="1" cols="80">
-sudo dpkg --add-architecture i386 && sudo apt-get update</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-cd to Downloads and install G-earth
-<br>
-<form>
-<textarea name="T" id="install" rows="1" cols="30">
-sudo dpkg -i googleearth*.deb</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-
-for i386, a dependency lsb-core is needed, for amd64 platform the package install ends with errors: 
-<br><br>
-googleearth depends on libfreeimage3 ... lsb-core ... ia32-libs-gtk 
-<br><br>
-Sort it out with:
-
-<form>
-<textarea name="T" id="install" rows="1" cols="30">
-sudo apt-get -f install</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-The following NEW packages will be installed:
-  <huge heap of i386 packages>
-Need to get 56.9 MB of archives. After this operation, 171 MB of additional disk space will be used
-Enter y
-<br><br>
-In Debian Jessie, ia32-libs does not exist, and Google earth still depends on it (they say this has changed in sid), so if you hit this problem you can install a dummy i32-libs package from here <a href="http://forums.debian.net/viewtopic.php?f=10&t=111898">http://forums.debian.net/viewtopic.php?f=10&t=111898</a>
-<br><br>
-
-Note: after enabling another architecture, you may have to specify from then on which arch to retrieve and install packages from, like this
-<br><br>
-apt-get install -a amd64 <package>
-<br><br>
-or set the preference for your architecture with editing the apt.conf file
-<br><br>
-<form>
-<textarea name="T" id="cmd" rows="1" cols="30">
-sudo leafpad /etc/apt/apt.conf</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-<br>
-and add a line like this
-<br>
-<form>
-<textarea name="T" id="file" rows="1" cols="30">
-APT::Architecture="amd64";</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-<br>
-save it and apt-get install will retrieve from amd64 packages
-<br><br>
-if you need to be done with i386 (or any other arch):
-<br>
-<form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-sudo dpkg --remove-architecture i386</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
 
 <br><br>
-But you will need to remove all the packages installed from that arch first, if that's possible, or wanted.
-<br>
-Trying to remove an arch with its packages installed from it, will return an error like this one:
 <br><br>
-<span class="prob">"dpkg: error: cannot remove architecture 'i386' currently in use by the database"</span>
-
-<br><br>To find out what packages are installed from an arch, run
-<br>
-
-<form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-dpkg --get-selections | grep i386 | awk '{print $1}'</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-And remove them with,
-<form>
-<textarea name="T" id="cmd" rows="1" cols="80">
-apt-get remove --purge `dpkg --get-selections | grep i386 | awk '{print $1}'`</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
-<br><br>
-<br>
 <b>Next page: </b><br><br>
 <h3><b><a href="step3.html">Step3</a></b> - media players, media rippers, desktop apps, ClamTK, rootkit hunter</h3>
 <br><br>

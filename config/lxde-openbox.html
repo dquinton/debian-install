@@ -207,7 +207,7 @@ The files holding the colour settings are ~/.gtkrc-2.0-gnome-color-chooser and ~
 For KDE app's, adjust the appearance settings with KDE's "System Settings" 
 Remember to save your new KDE colour scheme as a profile, so you don't lose all your changes later on by some strange KDE reset to default!
 <br><br>
-Gnome-color-chooser has no affect on Gtk-3 apps eg. Gnome mplayer, zenity dialogues, audacious... 
+Gnome-color-chooser has no affect on Gtk-3 apps eg. Gnome mplayer, zenity dialogues, audacious, handbrake... 
 <br><br>
 I got a little tired of my root user applications in their near-white colour theme, so I tweaked root's colours with Gnome-color-chooser too.  But to make it easier than starting from scratch, I first saved my normal user's colour theme, with the necessary extension .gnomecc.  
 <br><br>
@@ -269,7 +269,7 @@ hover bg
 <br>
 Once you make a colour change, save the file, and open a GTK-3 app, such as audacious or g-mplayer.<br>
 This got back my colours, something similar to my GTK-2 config, but still it's not perfect - audacious tab text is not altered and also the theme itself needs some work as all the tabs and buttons are practically without any spacing, crowded up.
-<br><br>
+<br><br><br>
 
 <h3>ObTheme</h3>
 download from here under src link <a href="http://xyne.archlinux.ca/projects/obtheme/">http://xyne.archlinux.ca/projects/obtheme/</a>
@@ -306,7 +306,7 @@ sudo make install</textarea>
 <br>
 if you want to run checkinstall instead (which will create a deb archive and a simple means to uninstall compton later) you need to select 3 when checkinstall gives options, and change the version number as checkinstall won't succeed if the version no. begins with a character (not a digit).
 <br><br>
-kill xcompmgr if running, or any other compositor with `killall <compositor-name>`
+kill xcompmgr if running, or any other compositor with `killall CompositorName`
 <br><br>
 and to start compton, run in terminal 
 <form>
@@ -377,7 +377,7 @@ To omit a program from the menu entirely, open its .desktop file and add the lin
 To launch Gparted from the main menu I had to change the line in its .desktop file from Exec=gparted-pkexec to Exec=gksu gparted
 with the original exec command my desktop completely froze.
 <br><br>
-<span class="ht">[hint: to escape a desktop freeze, press Ctrl-Alt-F2 to switch to console 2, then login, and type 'killall openbox' followed by 'startx']</span>
+<span class="ht">[hint: to escape from a desktop freeze, press Ctrl-Alt-F2 to switch to console 2, then login, and type 'killall openbox' followed by 'startx']</span>
 <br><br>
 <br>
 <h3>Add/remove menu categories</h3>
@@ -434,8 +434,8 @@ sudo leafpad /etc/xdg/menus/lxde-applications.menu</textarea>
 <br><br>
 3. change categories in any .desktop files (see above) so that they are added to the new menu category.
 <br><br>
-<span style="color:#800080;"><b>The "Other" category sits on the main menu with just about every executable on it from /usr/bin.</b></span><br>
-To solve that problem, edit the /etc/xdg/menus/lxde-applications.menu file and remove the "other" entry entirely.
+Problem: <span style="color:#800080;"><b>the "Other" category sits on the main menu with just about every executable on it from /usr/bin.</b></span><br>
+To solve it, edit the /etc/xdg/menus/lxde-applications.menu file and remove the "other" entry entirely.
 
 <br><br>
 <br><br>
@@ -994,7 +994,7 @@ I add an application to lxde-rc.xml, at the end of the file,
 </application></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 if "skip_taskbar" is set to "yes" then switching desktop you can't type in the terminal without clicking on it.
 <br><br>
 save it and reconfigure OB
