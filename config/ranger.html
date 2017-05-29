@@ -381,7 +381,7 @@ And that's just the basics!  There are endless possibilities with Ranger because
 <h3>Flags used with open_with and shell commands</h3>
 (type <b>r</b> for open_with, or <b>s</b>, <b>!</b>, <b>@</b> for shell.  open_with flags must be plain with no dash -)
 <br><br>
-<table width="900"><tr><td style="width: 140px;">-f                   </td><td>runs process in background - would be useful for an encoding/mogrify, ranger will still b usable while the process completes</td></tr>
+<table width="900"><tr><td style="width: 140px;">-f                   </td><td>runs process in background - useful for an encoding/mogrify job as ranger will still be usable while the process completes</td></tr>
 
 <tr><td>-c                   </td><td>runs on current file, not selected</td></tr>
 
@@ -427,11 +427,11 @@ map &#60;a-m>i linemode fileinfo
 map &#60;a-m>p linemode permissions
 map &#60;a-m>t linemode metatitle
 
-map /   console search
-map \]  console find
-map \[  console travel
-map \\  console mark
-map |   console filter
+map /   console search%space
+map \]  console find%space
+map \[  console travel%space
+map \\  console mark%space
+map |   console filter%space
  
 alias filter     scout -iprt
 alias find       scout -aet
@@ -563,7 +563,7 @@ map ft   console touch             #(space after) create file
 map f+   shell -s chmod +x %s                     #make a file executable
 map f- shell -s chmod -x %s
 map f=   console shell -s chmod 664 %%s                #chmod operations - or type 664=
-map fr   console rename
+map fr   console rename%space
 map fb   bulkrename %s
 map fp   shell -f pyrenamer %d                            #GUI renamer, or another, `Thunar -B %d'
 map fg   console -p22 shell -p grep -nT -r ?* %%s            #grep (search) pattern in files or highl'd dir
@@ -1243,8 +1243,9 @@ One problem is, however, with so many key-bindings, is the lack of sort-by-key i
 <li>without using 'console' a key-mapped command will execute immediately, without needing confirmation (in some cases it could be dangerous!)</li>
 <li>using <b>%s</b> in the mapping may not be a good idea in some cases, i.e. when the console is opened before executing, because it will expand to all the selected file names, and that would 1. render the console full and impossible to type in, and 2. send utter garbage to a shell command - so we need to use <b>%%s</b> in the key mapping, which remains "%s" on the console, and then shell commands can act on every file.  
 <br><br>
-Just make sure that if you remove "console" and make a key-executable mapping (only with "shell") then you need to remove the "%%" (i.e. make it "%s" or "%f") or the command will fail.</li>
+Just make sure that if you change a mapping and remove "console" to make it key-executable (only with "shell") then you need to remove the "%%" (i.e. make it "%s" or "%f") or the command will fail.</li>
 <li><b>console -p{n}</b> will set the cursor at the nth character in the console, to make it convenient to edit a command, i.e. 'console -p22' will set the cursor at char 22</li>
+<li><b>%space</b> is used to ensure a space is inserted after a command, to avoid making uknown commands when space is not put in, e.g. 'console rename%space' </li>
 
 </ul></div>
 
@@ -1288,14 +1289,14 @@ Just make sure that if you remove "console" and make a key-executable mapping (o
 <br><br>
 
 <span style="font-size: 20; ">filter</span>
-<table><tr><td width="320"><b>map | console filter</b> (space after)</td><td>filters file base names, case-sensitive</td></tr></table>
+<table><tr><td width="320"><b>map | console filter%space</b></td><td> followed by any string, filters file names, including extensions, case-sensitive</td></tr></table>
 <br><br>
 <span style="font-size: 20; ">travel</span>
-<table><tr><td width="320"><b>map \[ travel</b> (space after)</td> <td>pretty much does `scout -efklt` -will navigate into the dir filtered when Enter is pressed, and the console is kept open to search for the next dir to enter</td></tr></table>
+<table><tr><td width="320"><b>map \[ travel%space</b></td> <td>pretty much does `scout -efklt ` which will navigate into the dir filtered by typing part of a dir name, when Enter is pressed, and the console is kept open to allow you to search for the next dir to enter</td></tr></table>
 <br><br>
 
 <span style="font-size: 20; ">enter_bookmark</span>
-<table><tr><td width="320"><b>map &#60;a-a> enter_bookmark a </b>  </td>                 <td>will map Alt-a to go to bookmark a (same as using the ' with its list of bookmarks but more permanent)</td></tr></table>
+<table><tr><td width="320"><b>map &#60;a-a> enter_bookmark a </b>  </td> <td>will map Alt-a to go to bookmark a (same as using the ' with its list of bookmarks but more permanent)</td></tr></table>
 
 
 <br><br><br>
