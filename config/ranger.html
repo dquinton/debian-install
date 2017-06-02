@@ -558,8 +558,8 @@ map &#60;a-t> linemode metatitle              #linemode: titles </textarea>
 ##### files ##########
 
 map fl   less %f                 #view file with less. q to quit (ranger i doesn't show full file)
-map fm   console mkdir             #(space after) create dir
-map ft   console touch             #(space after) create file
+map fm   console mkdir%space             # create dir
+map ft   console touch%space             # create file
 map f+   shell -s chmod +x %s                     #make a file executable
 map f- shell -s chmod -x %s
 map f=   console shell -s chmod 664 %%s                #chmod operations - or type 664=
@@ -653,12 +653,12 @@ map p\c  shell mkdir copied; cp -t copied `xsel -b -o`         #copy files via l
 <form><textarea name="T" id="file" rows="13" cols="120">
 ##### Super-user ##########
 
-map Pm  console shell -r mkdir 
-map Pt  console shell -r touch 
+map Pm  console shell -r mkdir%space
+map Pt  console shell -r touch%space
 map Pn  console shell -r nano 
 map Pe  shell -r nano %f                    #edit file with nano
 map Pp  shell -f gksu leafpad %f             #open with leafpad
-map Pr  console shell -r mv %%f               #(type new name after) rename file
+map Pr  console shell -r mv %f%space               #(type new name after) rename file
 map P+  shell -rs chmod +x %f                           #make a file executable
 map Pw  console shell -r chown -R $USER:$USER %%s            #change ownership of sel'd files
 map Ps  shell -r rsync -u %c %d                #sync buffered to dir
@@ -1027,7 +1027,7 @@ copymap ej <F8>
 map ,d1  shell -pw lsblk       #list partitions +mounts
 map ,d2  shell -pw df -h        #list partitions with disk usage
 map ,d3  shell -pwr blkid            #list partitions with UUID
-map ,d0  shell -pwr fdisk -l       #list partitions
+map ,d4  shell -pwr fdisk -l       #list partitions +details
 </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -1129,7 +1129,7 @@ Here's my complete Ranger renaming tool that just might take care of all your ne
 You might want to have these printed on a sheet because some commands are too long and a #comment will not be seen.  You should also run some tests on dummy files - don't assume that they all work perfectly!!!
 <br><br>
 
-<form><textarea name="T" id="file" rows="66" cols="155">
+<form><textarea name="T" id="file" rows="72" cols="155">
 ###################################
 ##### batch renaming ##########
 
@@ -1170,6 +1170,12 @@ map Ra3  shell -fs sh ~/scripts/append-date
 
 map Ra4  console shell -fs i=0; for file in %%s; do mv "$file" $(printf "${file%.*}_%0.2d.${file##*.}" $i); i=$((i+1)); done		
                   #append numbering: i=0 start from, 2=digits, +1=step, mode: file-name.ext > file-name_00.ext, file-name_01.ext
+
+#inserting
+map Ri1 console -p51 shell -fs for file in %%s ; do mv "$file" "${file:0:n}?${file:n}" ; done
+						#insert string: n=at character (set both n's), ?=string
+map Rir shell -fs rename 's/IMG//' %s; for file in %s ; do mv "$file" "${file:0:8}-${file:8}" ; done
+
 
 #exif date
 map Re1  shell -fs sh ~/scripts/exif-date-prepend	

@@ -58,6 +58,10 @@ rename 's/$/SUFFIX/' file</td>
 note: if we use&nbsp;'s/(.*)\.(.*)/$1SUFFIX.$2/' as can be found on some web pages, if you try appending digits, say 33 and so enter "$133.$2" the file will vanish!</td>
 </tr>
 <tr>
+<td>for file in * ; do mv "$file" "${file:0:8}INFIX${file:8}" ; done</td>
+<td>inserts a string INFIX to all file names in the dir, at character 8</td>
+</tr>
+<tr>
 <td><font color="#3d85c6">for file in *; do mv "$file" "$(echo $file | sed -e 's/string-to-replace/with-what/')"; done</font></td>
 <td><span style="color:rgb(61,133,198)">nb, rename command may not be the best for a huge number of files, but it's not bad. &nbsp;</span><i style="color:rgb(61,133,198)">for</i><span style="color:rgb(61,133,198)">&nbsp;with&nbsp;</span><i style="color:rgb(61,133,198)">mv</i><span style="color:rgb(61,133,198)">&nbsp;and&nbsp;</span><i style="color:rgb(61,133,198)">sed</i><span style="color:rgb(61,133,198)">&nbsp;can be used (as below)</span></td>
 </tr>
