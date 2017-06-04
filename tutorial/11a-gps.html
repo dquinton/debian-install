@@ -12,6 +12,13 @@ id: tutor
              <ul>
                 <li><a href="#1">Viking</a></li>
                 <li><a href="#2">QGIS  </a></li>
+                <li><a href="#3">Waypoint labels  </a></li>
+                <li><a href="#3a">SVG symbols  </a></li>
+                <li><a href="#4">Calculate area  </a></li>
+                <li><a href="#5">Printing  </a></li>
+                <li><a href="#6">Background maps  </a></li>
+                <li><a href="#7">Contours from OpenDEM </a></li>
+                
              </ul>
     </li>
   </ul>
@@ -20,7 +27,13 @@ id: tutor
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
    <a href="#1">Viking</a><br>
-   <a href="#2"> QGIS</a><br>
+   <a href="#2"> QGIS</a><br> 
+   <a href="#3">Waypoint labels  </a><br>
+    <a href="#3a">SVG symbols  </a><br>
+     <a href="#4">Calculate area  </a><br>
+     <a href="#5">Printing  </a><br>
+     <a href="#6">Background maps  </a><br>
+    <a href="#7">Contours from OpenDEM </a><br>
 </td></tr></table></div>
 
 <div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
@@ -28,8 +41,9 @@ id: tutor
 <div class="cont">
 
 <h2 id="1" class="tag">Viking</h2>
-
 <br>
+See my Step 4 page for installing Viking.
+<br><br><br>
 <h3>Using Viking to import data from a GPS unit</h3>
 Only some Garmin units can transfer through USB to viking (see the list <a href="http://www.gpsbabel.org/htmldoc-1.5.0/fmt_garmin.html">here</a> - works using a Garmin 60csx, but not a 62s)
 <br>
@@ -63,6 +77,7 @@ sudo apt-get install qgis python-qgis inkscape</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
+Latest version from here <a href="http://qgis.org/debian/pool/main/q/">http://qgis.org/..</a><br>
 Doumentation <a href="http://docs.qgis.org/2.14/en/docs/user_manual/index.html">Qgis user manual</a>
 <br><br>
 to import geo data from e.g. Viking, first export the layers from Viking as GPX files, then in qgis,
@@ -79,12 +94,13 @@ You also may need to set the track size/colour in the layer properties in order 
 To update the geo data in the layer after changes were made to the source gpx file by an external progam, e.g. updates were made in Viking and it was re-exported... click on the QGIS <b>Refresh button</b>!
 <br><br><br>
 
-<h3>Waypoint labels</h3> (or any feature labels) - double click on the layer, Labels > check "Label this layer.." then select "name" on drop-down list, and click OK - but you could select another field, as in altitude, etc.
+<h3 id="3" class="tag">Waypoint labels and symbols</h3> 
+or for any other feature labels - double click on the layer, Labels > check "Label this layer.." then select "name" on drop-down list, and click OK - but you could select another field, as in altitude, etc.
 <br><br>
 The problem is that the labels may be positioned a little badly, so how would you move them around? Simply use this....
 <br><br><br>
 
-<h3>Annotation -labels</h3>  
+<h3>Annotation-labels</h3>  
 install the plugin "<b>EasyCustomLabeling</b>" from Plugins menu > Manage and Install<br>
 and also "<b>Memory Layer Saver</b>" plugin so that your labels will be saved in the project
 <br><br>
@@ -110,7 +126,7 @@ and also "<b>Memory Layer Saver</b>" plugin so that your labels will be saved in
 <br><br>
 
 
-<h3>Filter wp's in a layer</h3>
+<h3>Filter waypoints in a layer</h3>
 
 e.g. include only/exclude wp names with 'string'
 <div class="bullet"><ul>
@@ -123,7 +139,7 @@ e.g. include only/exclude wp names with 'string'
 </ul></div>
 
 <br><br>
-<h3>Use SVG symbols for waypoints</h3>
+<h3 id="3a" class="tag">Use SVG symbols for waypoints</h3>
 <div class="bullet"><ul>
 <li>properties > Style > Single > click on Single symbol under "Marker"</li>
 <li>to the right, Symbol layer type, select SVG marker on the drop down menu</li>
@@ -168,7 +184,7 @@ Add scale bar : View menu > Decorations > Scale<br>
 (note that these will not be present in the print window - need to make others there)
 
 <br><br><br>
-<h3>Calculate an area</h3> 
+<h3 id="4" class="tag">Calculate an area</h3> 
 
 If you draw an area then you'll have a polygon layer to work with.. -> click on New shape file, check on polygon and OK, and save it.. then click on the Edit and Add Feature buttons on the toolbar, and click on the map to start drawing - right click to finish (and enter the feature no.)
 <br><br>
@@ -203,7 +219,7 @@ With your polygons, its easy to get an area calculation...
 
 <br><br><br>
 
-<h3>Printing</h3>
+<h3 id="5" class="tag">Printing</h3>
  Toolbar > New Print Composer, name it, click OK.. 
  <br><br>
  or,  Toolbar > Composer Manager, select a saved composer, click Show
@@ -224,7 +240,7 @@ With your polygons, its easy to get an area calculation...
 </ul></div>
 
 <br><br><br>
-<h3>Background maps</h3>
+<h3 id="6" class="tag">Background maps</h3>
 
 1. <b>OpenLayers</b> plugin<br>
 then select a map via Web menu, Web > OpenLayers plugin > OpenStreet/Google/Bing...
@@ -237,6 +253,50 @@ To keep the map for offline use, turn off other layers and then Project > Save a
 it offers transparency in the layer properties dialogue, and also, when you go offline the map data stays happy in the print composer (the above plugin prints blank squares if the connection is lost!)
 <br><br>
 <span class="ht"><b>Note!</b> Unless the map fills the entire page in the print composer, when printing, your map layers will become mis-aligned with the background map, which is unaccepable and worthless.  So when you prepare to print, stretch the map to snap to the edges of the page - this is the only way to prevent mis-alignment.</span> 
+<br><br><br><br>
+
+<h3 id="7" class="tag">Contours from OpenDEM (SRTM)</h3>
+
+This is a simple way to add nice-looking elevation data to your maps, albeit, without proper contour labels and only at 25m intervals.
+<br><br>
+Note that the data is under the Open <a href="https://opendatacommons.org/licenses/odbl/summary/">Database License (ODbL)</a> which must be attributed in any public use of it.
+<br><br>
+<div class="bullet"><ul><li>browse to <a href="http://opendem.info/opendem_client.html">the openDEM tile browser</a></li>
+<li>move the map to part of world</li>
+<li>press shift and drag an area</li>
+<li>select tiles to download from pop-up list</li>
+<li>unpack and import the shp file as vector layer</li>
+</ul></div>
+<br><br>
+
+<h3>Set dark/coloured for 50m/100m intervals:</h3>
+
+<div class="bullet"><ul><li>open layer properties</li>
+<li>select "Rule-based" from top-left selection (marker type)</li>
+<li>use the "+" button to add a rule:</li>
+<br>
+elevation LIKE '%25%'<br>Open Database License (ODbL) 
+<br>
+<li>set the line colour to a pale sandy brown, and leave it 0.26 thick</li>
+<li>copy and paste the rule 11 times</li>
+<li>click on the rule of each line to set the numbers to:</li>
+<br>
+elevation LIKE '%75%'<br>
+elevation LIKE '%50%'<br>
+elevation LIKE '%100%'<br>
+elevation LIKE '%200%'<br>
+.... <br>
+elevation LIKE '%900%'<br>
+<br>
+<li>right click on the 50 line and set line thickness to 0.46</li>
+<li>select all the hundreds lines and set thickness to 0.66, and a slightly darker sandy brown</li>
+
+<li>click OK to close</li>
+
+<li>right click on the layer and save it as a vector layer, to make it available to other projects</li>
+</ul></div>
+<br><br>
+Try also downloading areas from <a href="http://extract.bbbike.org/">http://extract.bbbike.org/</a>
 
 <br><br><br><br><br>
 </div>
