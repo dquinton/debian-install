@@ -553,7 +553,7 @@ map &#60;a-t> linemode metatitle              #linemode: titles </textarea>
 <br><br>
 
 <h3 id="fi" class="tag">map f for files</h3>
-<form><textarea name="T" id="file" rows="24" cols="120">
+<form><textarea name="T" id="file" rows="26" cols="120">
 
 ##### files ##########
 
@@ -565,10 +565,12 @@ map f- shell -s chmod -x %s
 map f=   console shell -s chmod 664 %%s                #chmod operations - or type 664=
 map fr   console rename%space
 map fb   bulkrename %s
-map fp   shell -f pyrenamer %d                            #GUI renamer, or another, `Thunar -B %d'
+map fpy   shell -f pyrenamer %d                            #GUI renamer, or another, `Thunar -B %d'
 map fg   console -p22 shell -p grep -nT -r ?* %%s            #grep (search) pattern in files or highl'd dir
 map f?   console -p22 shell perl -pi -e 's/?/@/g' %%s                  #replace string in files
 map fc   shell -f meld %s 	                                           #compare two files in meld
+map fpdf console -p88 shell -ft gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress-sOutputFile=?.pdf %%s
+                                                      #join selected pdf files together using ghost script -change ?
 map ff   console -p25 shell -p find . -name "*?*" -type f -print            #find files and print paths to pager
 map f\   shell -f catfish --path=%d                                        #find files with catfish
 map fx   shell -f regexxer %d                                            #run string replace tool

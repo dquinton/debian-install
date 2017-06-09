@@ -85,6 +85,8 @@ An iso file contains every file needed to be put on a CD/DVD/USB stick in order 
 <td style="width:360px;height:24px">&nbsp;<a href="http://www.debian.org/devel/debian-installer/">Debian Testing</a><br> &nbsp;(under "Netinst")</td>
 </tr></table>
 <br>
+Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care (see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page).  But it may be impossible to run Debian without systemd in the future... check out Devuan?
+<br><br>
 If you would like to install Wheezy (Debian 7) and upgrade to Jessie so as to prevent systemd installing, look here.. <br>
 <a href="http://cdimage.debian.org/cdimage/archive/7.8.0/i386/iso-cd/">32bit Debian 7</a> &nbsp;&nbsp;     <a href="http://cdimage.debian.org/cdimage/archive/7.8.0/amd64/iso-cd/">64bit Debian 7</a>
 <br><br>
@@ -117,9 +119,10 @@ If you would like to install Wheezy (Debian 7) and upgrade to Jessie so as to pr
 </table>
 <br><br>
 
-Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care - see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page.  But it may be impossible to run Debian without systemd in the future... check out Devuan?
+
+Devuan is a fork of Debian, mirroring most packages to Debian repositories, but providing its own versions where Debian packages demand systemd - thus providing a systemd-free Debian... 
 <br><br>
-Devuan is a fork of Debian, mirroring most packages to Debian repositories, but providing its own versions where Debian packages demand systemd - thus providing a systemd-free Debian... you can download a Devuan iso from their site at <a href="https://files.devuan.org/devuan_jessie_beta/" target="https://files.devuan.org/devuan_jessie_beta/">https://files.devuan.org/devuan_jessie_beta/</a>
+you can download a Devuan iso from their site at <a href="https://files.devuan.org/devuan_jessie_beta/" target="https://files.devuan.org/devuan_jessie/"><b>devuan.org</b></a>
 <br><br>
 You could also use Fsmithred's Live CD made with Refractasnapshot that doesn't include systemd either... <a href="http://sourceforge.net/projects/refracta/files/isohybrid/">http://sourceforge.net/projects/refracta/files/isohybrid/</a>
 <br><br>
@@ -168,6 +171,10 @@ You'll need to have an internet connection available, either by ethernet cable o
 
 <br><br>
 The installer may ask for missing firmware, such as for wireless.  You can get a zipped archive of firmware from Debian, and simply copy it to the USB stick with the Live ISO and unpack it there.  The installer will search for what it wants.  <a href="https://www.debian.org/releases/stable/amd64/ch06s04.html.en">https://www.debian.org/releases/stable/amd64/ch06s04.html.en</a>
+<br><br>
+If you know what wireless adapter your box has, you can look on Debian.org <a href="https://wiki.debian.org/WiFi#PCI_Devices">https://wiki.debian.org/WiFi#PCI_Devices</a>
+<br><br>
+If your firmware comes packaged as a .deb binary, you can search/download it from <a href="https://packages.debian.org/">https://packages.debian.org/</a> download and unpack it to copy the firmware files out.
 <br><br>
 Otherwise, the wireless and other firmware can be loaded after Debian is installed (see below).
 
@@ -231,7 +238,9 @@ Debian installer might not see the Win OS and so you will need to do some work t
 <h2 id="4" class="tag">The install</h2>
 1. I chose Graphical expert install but plain Graphical install does the job and it might be faster.
 <br><br>
-2. configure network hardware: insert usb stick at firmware prompt for network hardware (or if it's on your Live CD stick just wait).
+2. configure network hardware: insert usb stick at firmware prompt for network hardware 
+<br><br>
+NOTE: the installer didn't search for the firmware on the Live CD usb stick, it actually wanted me to insert another - and pulling out and inserting again gave a problem later on, i.e. "Failed to determine codename for the release" during install of base system)
 <br><br>
 3. then set up the network by either Ethernet (eth0) or wireless (wlan0), if you have the ESSID ready (your wireless network name)
 <br><br>
@@ -414,7 +423,11 @@ Follow this part only when using the Netinstall CD (a Debian Live CD will have a
 <br>
 The Debian command to install software via the Terminal is '<i>apt-get install</i>'... You will need these 'apt-get' commands handy on paper or on another screen as you won't have a desktop at this stage of install.  
 <br><br>
-If you like, you can make some files with package lists (e.g. desktop, apps, build) which you can save to a USB stick.  Then, on the command line that we've just been using, after netinstall CD and reboot, you mount the stick (find its device id with "<i>lsblk</i>" command, perhaps sdb1), mount it with `<i>mount /dev/sdb1 /mnt</i>` and change to the Usb mount with `<i>cd /mnt</i>` - then use `<i>ls</i>` command to see what's there and `cd packages` to change to the dir with those package list files you made.  
+If you like, you can make some files with package lists (e.g. desktop, apps, build) which you can save to a USB stick.  Then, on the command line that we've just been using, after netinstall CD and reboot, you mount the stick (find its device id with "<i>lsblk</i>" command, perhaps sdb1), mount it with `<i>mount /dev/sdb1 /mnt</i>` and change to the Usb mount with `<i>cd /mnt</i>` - then use `<i>ls</i>` command to see what's there and e.g. `cd pkg-list` to change to the dir with those package list files you made.  
+<br><br>
+Note: you'll need the network up!  If with LAN cable it should connect without any work. If wireless network, you will need to edit the /etc/network/interfaces file to show your SSID and pass phrase - see <a href="#10">Enable wireless</a>.
+<br><br>
+Another way would be to chroot into the new install from another Debian install.
 <br><br>
 then run:
 <br>
@@ -602,6 +615,15 @@ and if you already rebooted, restart networking with:
 sudo /etc/init.d/network-manager restart</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
+Then do
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo dhclient wlan0</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+or sometimes using `wlan1`, depending on your wireless hardware.
 
 
 <br>

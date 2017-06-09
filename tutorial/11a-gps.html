@@ -255,11 +255,16 @@ it offers transparency in the layer properties dialogue, and also, when you go o
 <span class="ht"><b>Note!</b> Unless the map fills the entire page in the print composer, when printing, your map layers will become mis-aligned with the background map, which is unaccepable and worthless.  So when you prepare to print, stretch the map to snap to the edges of the page - this is the only way to prevent mis-alignment.</span> 
 <br><br><br><br>
 
+from:
+http://opendem.info/opendem_client.html
+attribute open license:
+https://opendatacommons.org/licenses/dbcl/1.0/
+
 <h3 id="7" class="tag">Contours from OpenDEM (SRTM)</h3>
 
 This is a simple way to add nice-looking elevation data to your maps, albeit, without proper contour labels and only at 25m intervals.
 <br><br>
-Note that the data is under the Open <a href="https://opendatacommons.org/licenses/odbl/summary/">Database License (ODbL)</a> which must be attributed in any public use of it.
+Note that the data is under the <a href="https://opendatacommons.org/licenses/dbcl/1-0/">Database Contents License (DbCL) </a> which must be attributed in any public use of it.
 <br><br>
 <div class="bullet"><ul><li>browse to <a href="http://opendem.info/opendem_client.html">the openDEM tile browser</a></li>
 <li>move the map to part of world</li>
@@ -269,7 +274,7 @@ Note that the data is under the Open <a href="https://opendatacommons.org/licens
 </ul></div>
 <br><br>
 
-<h3>Set dark/coloured for 50m/100m intervals:</h3>
+<h3>Set dark/coloured for 50m/100m intervals</h3>
 
 <div class="bullet"><ul><li>open layer properties</li>
 <li>select "Rule-based" from top-left selection (marker type)</li>
@@ -293,10 +298,22 @@ elevation LIKE '%900%'<br>
 
 <li>click OK to close</li>
 
-<li>right click on the layer and save it as a vector layer, to make it available to other projects</li>
-</ul></div>
 <br><br>
 Try also downloading areas from <a href="http://extract.bbbike.org/">http://extract.bbbike.org/</a>
+<br><br><br>
+
+<h3>Loading layers in other projects</h3>
+To use the layer in other projects, with its rules and line styles, you can eith save it as "Layer definition file" and load it from another project via <br>
+&nbsp;&nbsp;&nbsp;Layer menu >> Add from layer definition file 
+<br><br>
+which could be useful so that important layers are saved to an accessible location.
+<br><br>
+Or you can simply load the layer (and multiple others) into a project, via <br>
+&nbsp;&nbsp;&nbsp;Layer menu >> Embed layers and groups 
+<br><br>
+then select a qgis project file and which layers to load in.
+
+
 
 <br><br><br><br><br>
 </div>
