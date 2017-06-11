@@ -34,24 +34,33 @@ sudo cp /etc/apt/sources.list /etc/apt/sources.list-debian</textarea>
 
 <li>You should then check your sources list - remove any Debian lines, and add the updates/security lines found on the Devuan home page, plus keep the deb-multimedia line (which is needed and I think can be used with Devuan?)</li></ul></div>
 <br>
-<form><textarea name="T" id="file" rows="6" cols="80">
+<form><textarea name="T" id="file" rows="12" cols="80">
 # Devuan repositories
-deb http://auto.mirror.devuan.org/merged jessie main contrib non-free
-deb-src http://auto.mirror.devuan.org/merged jessie main contrib non-free
+deb http://packages.devuan.org/merged jessie main contrib non-free
+deb-src http://packages.devuan.org/merged jessie main contrib non-free
 
-deb http://auto.mirror.devuan.org/merged jessie-updates  main contrib non-free
-deb http://auto.mirror.devuan.org/merged jessie-security main contrib non-free</textarea>
+deb http://packages.devuan.org/merged/ jessie-security main non-free
+deb-src http://packages.devuan.org/merged jessie-security main non-free
+
+deb http://packages.devuan.org/merged/ jessie-updates main non-free
+deb-src http://packages.devuan.org/merged jessie-updates main non-free
+
+deb http://packages.devuan.org/merged/ jessie-backports main non-free
+deb-src http://packages.devuan.org/merged/ jessie-backports main non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-The testing release sources will look like this:
-<form><textarea name="T" id="file" rows="6" cols="80">
+The next release sources will look like this:
+<form><textarea name="T" id="file" rows="9" cols="80">
 # Devuan repositories
 deb http://auto.mirror.devuan.org/merged ascii main contrib non-free
-deb-src http://auto.mirror.devuan.org/merged ascii main contrib non-free
+deb-src http://packages.devuan.org/merged ascii main contrib non-free
 
-deb http://auto.mirror.devuan.org/merged ascii-updates  main contrib non-free
-deb http://auto.mirror.devuan.org/merged ascii-security main contrib non-free</textarea>
+deb http://packages.devuan.org/merged ascii-security main contrib non-free
+deb-src http://packages.devuan.org/merged ascii-security main contrib non-free
+
+deb http://packages.devuan.org/merged ascii-updates  main contrib non-free
+deb-src http://packages.devuan.org/merged ascii-updates  main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
