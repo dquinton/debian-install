@@ -10,7 +10,8 @@ id: net
     <li>
         On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
              <ul>
-                <li><a href="#1">ffmpeg with Kdenlive</a></li>
+                <li><a href="#1">Kdenlive</a></li>
+                <li><a href="#1a">Latest ffmpeg</a></li>
                 <li><a href="#2">More video editors</a></li>
                 <li><a href="#3">XnView Multi Platform</a></li>
                 <li><a href="#4">Libre Office</a></li>
@@ -21,7 +22,8 @@ id: net
 
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
-   <a href="#1">ffmpeg with Kdenlive</a><br>
+   <a href="#1">Kdenlive</a><br>
+   <a href="#1a">Latest ffmpeg</a><br>
    <a href="#2">More video editors</a><br>
    <a href="#3">XnView Multi Platform</a><br>
    <a href="#4">Libre Office</a><br>
@@ -53,19 +55,48 @@ sudo apt-get install x264 libmp3lame0 libquicktime2 kdenlive frei0r-plugins dvgr
 
 Note: since Deboian 8 (Jessie), kdenlive depends on libav-tools - no longer ffmpeg.
 
-
+<br><br>
 <br><br>
 <h3>Install with the latest video codecs</h3>
 <br>
 
 <span class="ht"><b>Choice a.</b></span> <br>
 Download an Appimage which includes Kdenlive, MLT, libav etc and allows kdenlive to be run stand-alone from any previous install of these modules on the system, from.. <br> 
-<a href="https://kdenlive.org/download/">kdenlive.org/download/</a><br>
+<a href="https://kdenlive.org/download/">kdenlive.org/download/</a>
 <br><br>
-<br>
+Then make the Appimage executable and run it with ./Kdenlive*
+<br><br><br>
 
+I put it in ~/kdenlive and make a symlink to it (because of its version number in the Appimage name)
 
- 
+<form>
+<textarea name="T" id="cmd" rows="2" cols="50">
+cd ~/kdenlive
+ln -s Kdenlive*AppImage Kdenlive.AppImage</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+make a .desktop file with
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+nano ~/.local/share/applications/kde4/kdenlive.desktop</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<form>
+<textarea name="T" id="file" rows="8" cols="80">
+[Desktop Entry]
+Name=Kdenlive
+Comment=KDE non linear video editor
+Type=Application
+Exec=/home/dav/kdenlive/Kdenlive.AppImage
+Categories=AudioVideo
+Icon=/home/dav/.local/share/icons/hicolor/64x64/apps/kdenlive.png
+Path=/home/dav/kdenlive/</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+ <br><br>
 <span class="ht"><b>Choice b.</b></span> <br>
 
 use the build script to install the latest versions of Kdenlive, libav, mlt rendering engine, and x264 into a directory without changing anything on the system.<br><br>
@@ -197,28 +228,34 @@ sudo apt-get install systemsettings</textarea>
 <br><hr noshade="noshade">
 <br><br>
 
-<h3>Latest ffmpeg</h3>
+<h2 id="1a" class="tag">Latest ffmpeg</h2>
 <br>
 If you took choice (a) above, and downloaded the stand-alone Appimage Kdenlive, hopefully it will be safe to build ffmpeg on your system without clashing with Kdenlive's MLT, which will run from its sandbox environment.
 <br><br>
-download the ffmpeg stable release <a href="http://ffmpeg.org/download.html#releases">download.html#releases</a> 
+You can either 
+<br><b>
+1.</b> follow the <a href="https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu">ffmpeg build guide</a> (includes building libx264 libx265 libfdk-aac libmp3lame libopus libvpx) 
+<br><br>
+or <b>2.</b> build only ffmpeg and install others from repositories.
+<br><br>
+For no.2 option, download an ffmpeg stable release from <a href="http://ffmpeg.org/download.html#releases">download.html#releases</a> 
 <br><br>
 next get the build dependencies:<br>
 
 <form>
-<textarea name="T" id="install" rows="7" cols="80">
+<textarea name="T" id="install" rows="6" cols="100">
 sudo apt-get update
-sudo apt-get install cmake build-essential yasm libqt4-dev kdelibs5-dev libsdl1.2-dev libsdl-image1.2-dev libxml2-dev libx264-dev libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libschroedinger-dev libmp3lame-dev libfaac-dev libfaad-dev libgsm1-dev libopencore-amrnb-dev libopencore-amrwb-dev libsamplerate0-dev libjack-dev libsox-dev ladspa-sdk swh-plugins libmad0-dev libpango1.0-dev</textarea>
+sudo apt-get install cmake build-essential yasm libqt4-dev kdelibs5-dev libsdl1.2-dev libsdl-image1.2-dev libxml2-dev libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libschroedinger-dev libmp3lame-dev libfaac-dev libfaad-dev libgsm1-dev libopencore-amrnb-dev libopencore-amrwb-dev libsamplerate0-dev libjack-dev libsox-dev ladspa-sdk swh-plugins libmad0-dev libpango1.0-dev libass-dev libfdk-aac-dev libopus-dev libvpx-dev libx264-dev libx265-dev </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
-
-Then open a terminal in the ffmpeg dir, and run ./configure with the compilation flags (I omit --enable-libdc1394) :
+ 
+Then open a terminal in the ffmpeg dir, and run ./configure with the compilation flags (taken from the ffmped guide) :
 <br><br>
 
 <form>
-<textarea name="T" id="cmd" rows="5" cols="80">
-./configure --prefix=/usr --enable-shared --enable-libmp3lame --enable-gpl --enable-libfaac --enable-libvorbis --enable-pthreads --enable-libfaac --enable-libxvid --enable-x11grab --enable-libgsm --enable-libx264 --enable-libtheora --enable-nonfree --disable-stripping --enable-avfilter --enable-libschroedinger --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-version3</textarea>
+<textarea name="T" id="cmd" rows="4" cols="80">
+./configure --prefix=/usr --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-nonfree</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>

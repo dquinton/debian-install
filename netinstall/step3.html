@@ -43,14 +43,32 @@ id: net
 <form>
 <textarea name="T" id="install" rows="3" cols="80">
 sudo apt-get update
-sudo apt-get install mplayer gnome-mplayer mencoder vlc audacious handbrake-gtk avidemux bombono-dvd gimp pinta feh imagemagick bashburn bluefish</textarea>
+sudo apt-get install mplayer2 gnome-mplayer vlc audacious handbrake gimp feh imagemagick bashburn </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-that's two video players that can handle all you need, a winamp-style music player, video encoder, video cutter, dvd creator, image editor and basic paint, a command line image viewer, an image manipulation tool, a terminal based disc burner and html editor.
+that's two video players that can handle all you need, a winamp-style music player, video encoder, image  manipulation tool, a command line image viewer, a terminal based disc burner.
+<br><br><br>
+
+<h3>Avidemux</h3>
+Without the multimedia repository, you can find Avidemux here <a href="http://www.avidemux.org/nightly/appImage/">videmux.org/nightly/appImage/</a>
+<br><br>
+run app image with /dir../avidemux*.app
+<br><br><br>
+
+<h3>Bombono</h3> 
+download from <a href="https://pkgs.org/download/bombono">pkgs.org/download/bombono</a>
+<br><br>
+then do..
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+sudo dpkg -i bombono*deb
+sudo apt-get install -f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 
-<br><br><br><br>
+<br><br>
 <h3>Audacious Qt</h3><br>
 download the latest stable from <a href="http://audacious-media-player.org/download">http://audacious-media-player.org/download</a>
 <br><br>
@@ -119,16 +137,24 @@ lame is needed for mp3 encoding.
 
 <h3>for movie DVD</h3>
 
+with the deb-multimedia repo, you can..
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo apt-get install k9copy dvdrip dvdbackup libdvdcss2</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
+otherwise you need to look for packages elsewhere.
+<br><br>
+get libdvdcss from <a href="https://pkgs.org/download/libdvdcss2">pkgs.org/download/libdvdcss2</a>
+<br><br>
 <br>k9copy and dvdrip are both graphical, and you can select which title to rip. <br>
 dvdbackup is command-line, and it rips the DVD to hdd in its entirety. <br>
 With <b>libdvdcss2</b> installed you can play and possibly rip a DVD encrypted with CSS (Content Scramble System), e.g. it enables Handbrake to rip encrypted dvd titles to mp4, but there is still other encrypion it can't deal with.
 <br><br>
 To rip with dvdbackup, cd to the dir to store the dvd and run <span class="cmd">dvdbackup -i /dev/dvd -M -o movie</span>
+
+
 
 <br><br>
 <hr noshade="noshade">

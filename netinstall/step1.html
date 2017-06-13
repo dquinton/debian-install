@@ -55,24 +55,24 @@ id: net
 <span class="bblue">updated May 2017</span>
 <br><br><br>
 
-The following method is ideal for building a minimal Debian install (without bloat) as it can install just the basic system without a desktop environment or any software packages, following which, you boot into a command prompt where you can install whatever else is needed for you to use Debian, through an internet connection. The Netinstall CD does give you the choice to install a full Desktop Environment as well, if you choose to, but then you can't specify exactly what you want installed at that level.
+The following method is ideal for building a minimal Debian install (without bloat) as it can install just the basic system without a desktop environment or any software packages, following which, you boot into a command prompt (or you can chroot from a working Debian system) where you  install whatever else you need, through an internet connection. The Netinstall CD does give you the choice to install a full Desktop Environment as well, if you choose to, but then you can't specify exactly what you want installed at that level.
 <br><br>
-Another method is to get a Debian Live CD with a full DE of your choice, if you prefer, but then you lose the fun of keeping the install cut down to exactly what packages you want to be installed on your box.
+Another method is to get a Debian Live CD with a full Desktop of your choice, if you prefer, but again you lose the fun of building the install yourself, cut down to the exact packages you want on your box.
 <br><br>
-There are different releases of Debian - <b>Experimental</b> (just don't, because there will be many breakages of your system), <b>Unstable</b> (don't either, there will still be breaks), <b>Testing</b> (where packages from new release are sent down to before becoming stable, will still be bugs), and <b>Stable</b> (where packages are well-tested and bugs mostly already repaired).
+There are different releases of Debian - <b>Experimental</b> (better not to use, because there will be many breakages of your system), <b>Unstable</b> (don't either, there will still be breaks), <b>Testing</b> (where packages from new release are sent down to before becoming stable, will still be bugs), and <b>Stable</b> (where packages are well-tested and bugs mostly already repaired).
 <br><br>
 <b>Jessie</b> became the new Debian stable in 2015.. Debian 8.  For better package updates, you can follow Debian testing, by adding "<b>stretch</b>" or "<b>testing</b>" to your package sources list instead of "<b>jessie</b>" (I'll show how below).  If you add "testing", your Debian will stay with testing even when Stretch becomes the new Stable, Debian 9.  
 <br><br>
-However, when Testing is still new in life there may be some things that could break your system (meaning you might have crashes or package install conflicts to sort out)... so running stable at the moment should be very sufficient, and highly recommended for production systems or servers.  You can still install some packages from testing as well, by using the "-t testing" option with apt-get, while your default release is set to stretch or stable.  
+However, when Testing is still new in life there may be some things that could break your system (meaning you might have crashes or package install conflicts to sort out)... so its advisable to run stable while testing is still early in life, and it's highly recommended for production systems or servers.  You can still install some packages from testing as well, by using the "-t testing" option with apt-get, while your default release is set to stretch or stable (but that's mish-mashing releases which may not be healthy).
 <br><br><a name="1"></a>
-Upgrading to Testing, or Stretch, later on is also possible - see my page <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade debian</a>.
+Upgrading to Testing, or Stretch, later on is very straight forward - see my page <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade debian</a>.
 
 <br><br>
 <hr noshade="noshade"><br><br>
 <b id="1" class="tag">Pre-install, get an ISO file...</b>
 
 <br><br>
-An iso file contains every file needed to be put on a CD/DVD/USB stick in order to make a bootable medium with the chosen type of Debian Linux.  A suitable ISO to USB program will unpack the ISO to the medium. 
+An iso file contains every file needed to be put on a CD/DVD/USB stick in order to make a bootable medium with the chosen type of Debian Linux.  A suitable ISO to USB program will unpack the ISO to the USB stick. 
 <br><br><br>
 
 <h2>Debian Netinstall CD</h2>
@@ -85,11 +85,14 @@ An iso file contains every file needed to be put on a CD/DVD/USB stick in order 
 <td style="width:360px;height:24px">&nbsp;<a href="http://www.debian.org/devel/debian-installer/">Debian Testing</a><br> &nbsp;(under "Netinst")</td>
 </tr></table>
 <br>
-Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian used previously for startup scripts, you need to install Wheezy and then upgrade with care (see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page).  But it may be impossible to run Debian without systemd in the future... check out Devuan?
+Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" that Debian wheezy used for its init scripts, it is possible to install Wheezy and then upgrade to Jessie with care (see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page).  But upgrading later to Stretch may well be impossible to do, and you'll be stuck with Jessie. So I advise installing the Devuan branch of Debian.
 <br><br>
-If you would like to install Wheezy (Debian 7) and upgrade to Jessie so as to prevent systemd installing, look here.. <br>
-<a href="http://cdimage.debian.org/cdimage/archive/7.8.0/i386/iso-cd/">32bit Debian 7</a> &nbsp;&nbsp;     <a href="http://cdimage.debian.org/cdimage/archive/7.8.0/amd64/iso-cd/">64bit Debian 7</a>
+
+Devuan is a fork of Debian, mirroring most packages to Debian repositories, but providing its own versions where Debian packages demand systemd - thus providing a systemd-free Debian... 
 <br><br>
+you can download a Devuan iso from their site at <a href="https://files.devuan.org/devuan_jessie/"><b>files.devuan.org</b></a>
+<br><br>
+
 
 
 <br><br>
@@ -105,33 +108,21 @@ If you would like to install Wheezy (Debian 7) and upgrade to Jessie so as to pr
 
 <table border="1" cellspacing="0" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px">
 <tr>
-<td style="width:360px;height:24px">&nbsp;Downloads for 32 bit machines</td>
-<td style="width:360px;height:24px">&nbsp;Downloads for 64 bit machines</td>
-</tr>
+<td style="width:360px;height:30px">&nbsp;Downloads for 32 bit machines</td>
+<td style="width:360px;height:30px">&nbsp;Downloads for 64 bit machines</td>
 <tr>
-<td style="width:360px;height:24px">&nbsp;<a href="http://live.debian.net/cdimage/release/stable/i386/iso-hybrid/">Debian 7 Wheezy&nbsp;</a></td>
-<td style="width:360px;height:24px">&nbsp;<a href="http://live.debian.net/cdimage/release/stable/amd64/iso-hybrid/">Debian 7 Wheezy</a></td>
-</tr>
-<tr>
-<td style="width:360px;height:24px">&nbsp;<a href="http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current-live/i386/iso-hybrid/">Debian 8 Jessie</a></td>
+<td style="width:360px;height:30px">&nbsp;<a href="http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current-live/i386/iso-hybrid/">Debian 8 Jessie</a></td>
 <td style="width:360px;height:24px">&nbsp;<a href="http://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current-live/amd64/iso-hybrid/">Debian 8 Jessie</a></td>
 </tr>
 </table>
 <br><br>
 
-
-Devuan is a fork of Debian, mirroring most packages to Debian repositories, but providing its own versions where Debian packages demand systemd - thus providing a systemd-free Debian... 
-<br><br>
-you can download a Devuan iso from their site at <a href="https://files.devuan.org/devuan_jessie_beta/" target="https://files.devuan.org/devuan_jessie/"><b>devuan.org</b></a>
-<br><br>
-You could also use Fsmithred's Live CD made with Refractasnapshot that doesn't include systemd either... <a href="http://sourceforge.net/projects/refracta/files/isohybrid/">http://sourceforge.net/projects/refracta/files/isohybrid/</a>
+You could also use Fsmithred's Live CD made with Devuan.. <a href="http://sourceforge.net/projects/refracta/files/isohybrid/">sourceforge.net/projects/refracta</a>
 <br><br>
 
 <b>or.. build your own Live Cd</b> &nbsp;&nbsp;- for more advanced users who already have a Linux OS to work from, you can make your own Debian Live CD, with all the software you need pre-installed, using <b>Live Helper </b>-see my <a href="{{site.baseurl}}/tutorial/17-remote-install.html">Remote install</a> page.
 <br><br>
-<b>or.. clone Debian</b>&nbsp;&nbsp; - if you have a Debian system already running and at hand, you can "clone" it with refractasnapshot and then run it as a LiveCd or install it to another machine. This isn't a real clone, but a compressed copy of the system, and when you install it to another box you have options such as user name and passwords setup, and separate /home or /var partitions.  A real clone tool, such as partimage or clonezilla etc, makes an exact copy of the hdd partition.
--see my <a href="{{site.baseurl}}/tutorial/16-system-backup.html">System backup</a> page.
-<br><br>
+
 
 <br>
 <br>
@@ -141,8 +132,7 @@ You could also use Fsmithred's Live CD made with Refractasnapshot that doesn't i
 <li>Use a Live CD, in case you don't have the time to build Debian from scratch yourself.</li>
 
 <li>Make your own Live CD - but it takes a lot more time to get it right, plus it needs a sizeable area on disk to work with.</li>
-
-<li>Clone another Debian install - but this will not be a fresh tidy install, it will carry any problems with it.</li></ul></div>
+</ul></div>
 <br>
 <hr noshade="noshade">
 <br><br>
@@ -150,33 +140,46 @@ You could also use Fsmithred's Live CD made with Refractasnapshot that doesn't i
 <h2>Make a bootable USB stick</h2>
 Put the ISO onto a usb stick with a few easy steps with <a href="http://unetbootin.sourceforge.net/">Unetbootin</a> - see my <a href="{{site.baseurl}}/helps/01-usb-installer.html">usbinstaller</a> page
 <br><br>
-
-
-Or onto a Dvd, using any free Dvd writer software (burn the ISO to Dvd), or with Linux command line..
+Or with a dd command:
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
-growisofs -dvd-compat -Z /dev/dvd=Name.iso </textarea>
+dd bs=4M if=image.iso of=/dev/sdX status=progress && sync </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
+changing input file to the ISO name and output file 'X' to your usb device e.g. sdb1 - but check first with `lsblk`<br>
+Note: dd comand will write over <b>everything</b> on the output location.
+
+<br><br>
+Or onto a Dvd, using any free Dvd writer software (burn the ISO to Dvd), or with Linux command line..
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+dd if=image.iso of=/dev/dvd </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
 <br><br>
 <hr noshade="noshade">
 <br><br>
 
 <h2 id="2" class="tag">Prepare to install</h2>
 
-The netinstall CD image that you have downloaded and burned to USB stick or CD will install only the very basic Debian Linux system - all the packages necessary to build a desktop environment and run programs will be retrieved afterwards, at your own leisure.
+The netinstall CD image that you downloaded installs only the very basic Debian Linux system - and its <b>actually enough </b>if you know what you're doing afterwards. All the packages necessary to build a desktop environment and run programs you'll retrieve later.
 <br><br>
-You'll need to have an internet connection available, either by ethernet cable or with a wireless network (so long as you have the ESSID, password and the wireless firmware files), as much of the system will be downloaded together with the APT package lists.
+To insytall a bit more than the basic system you'll need to have an internet connection available, either by ethernet cable or with a wireless network (so long as you have the ESSID, password and the wireless firmware files).
 
 <br><br>
-The installer may ask for missing firmware, such as for wireless.  You can get a zipped archive of firmware from Debian, and simply copy it to the USB stick with the Live ISO and unpack it there.  The installer will search for what it wants.  <a href="https://www.debian.org/releases/stable/amd64/ch06s04.html.en">https://www.debian.org/releases/stable/amd64/ch06s04.html.en</a>
+The installer may ask for missing wireless firmware.  You can get a zipped archive of firmware from Debian, and simply copy it to the USB stick with the Live ISO and unpack it there.  The installer will search for what it wants.  <a href="https://www.debian.org/releases/stable/amd64/ch06s04.html.en">https://www.debian.org/releases/stable/amd64/ch06s04.html.en</a>
 <br><br>
 If you know what wireless adapter your box has, you can look on Debian.org <a href="https://wiki.debian.org/WiFi#PCI_Devices">https://wiki.debian.org/WiFi#PCI_Devices</a>
 <br><br>
 If your firmware comes packaged as a .deb binary, you can search/download it from <a href="https://packages.debian.org/">https://packages.debian.org/</a> download and unpack it to copy the firmware files out.
 <br><br>
-Otherwise, the wireless and other firmware can be loaded after Debian is installed (see below).
+Otherwise, the wireless and other firmware can be loaded after Debian is installed (see below). But note that runnint eh Netinstall CD without a network connection will leave you without proper repo sources in the sources.list file, and possibly some important components - though I did this in June 2017 and noticed only the package "aptitude" was absent.
 
 <br><br>
 <hr noshade="noshade">
@@ -184,8 +187,8 @@ Otherwise, the wireless and other firmware can be loaded after Debian is install
 
 <h2 id="3" class="tag">Get a partition ready! </h2>
 
-If you have a brand new PC to install on, or one with nothing worth keeping on the disk, you can format the harddisks with the installer.
-
+If you have a brand new PC to install on, or one with nothing worth keeping on the disk (like Windoze), you can format the harddisks with the installer.
+<br><br>
 On a PC which already has an OS installed, use Gparted to make free space for your new partitions -> 
 <br> <br>
 Get the <a href="http://gparted.org/download.php">Gparted Live CD</a> or install it if you have a Linux OS already on the PC.  Then...
@@ -226,21 +229,20 @@ If you're going to to wipe the W partition (yeah!) but there's data on it, back-
 <br><br>
 Debian installer might not see the Win OS and so you will need to do some work to add the Windows OS to the boot menu later.  Some tips on my <a href="{{site.baseurl}}/helps/02-grub.html">GRUB page</a> - although I only cover Legacy GRUB. Windows 8 boots with UEFI boot menu which makes it complex to have Debian on the same menu (<a href="http://www.getreu.net/public/downloads/doc/legacy2UEFIboot/Transform-Debian_7_wheezy-from_legacy_to_UEFI_boot_mode.html">see here</a> for example). With Debian on the Legacy menu you'll have to switch between Legacy and UEFI menus in BIOS settings. 
 <br><br>
+If you want to install dual boot with Windoze and use UEFI boot menu, you should check your ISO installer is UEFI enabled.
 
-<br>
 
-<b>Now get an ethernet cable internet connection, or have the ESSID of your wireless network to hand, if wireless connection is your only option!</b>
 
 <br><br>
 <hr noshade="noshade">
 <br><br>
 
 <h2 id="4" class="tag">The install</h2>
-1. I chose Graphical expert install but plain Graphical install does the job and it might be faster.
+1. I chose Graphical expert install (plain Graphical install does the job but it gives no option to add locales).
 <br><br>
-2. configure network hardware: insert usb stick at firmware prompt for network hardware 
+2. configure network hardware: insert usb stick at firmware prompt for network hardware (didn't work)
 <br><br>
-NOTE: the installer didn't search for the firmware on the Live CD usb stick, it actually wanted me to insert another - and pulling out and inserting again gave a problem later on, i.e. "Failed to determine codename for the release" during install of base system)
+NOTE: the installer didn't search for the firmware on the Live CD usb stick, it actually wanted me to insert another - and pulling out and inserting again gave a problem later on, failed to install the base system.
 <br><br>
 3. then set up the network by either Ethernet (eth0) or wireless (wlan0), if you have the ESSID ready (your wireless network name)
 <br><br>
@@ -257,13 +259,12 @@ NOTE: the installer didn't search for the firmware on the Live CD usb stick, it 
 </ul></div>
 
 <br>
-5. install software.. uncheck all (tap Spacebar) including graphical desktop (which installs the bloated Gnome, or Xfce with a lot of extras), select laptop if installing to a laptop. 
+5. install software.. uncheck all (tap Spacebar) including graphical desktop (which installs the bloated Gnome, or Xfce with a lot of extras), select laptop if installing to a laptop. Or select nothing!
 <br><br>
-6. Install GRUB (if for clean install) or otherwise don't - add the new install to GRUB later  - see my <a href="{{site.baseurl}}/helps/02-grub.html">GRUB page</a>
+6. Install GRUB (if for clean install) or otherwise don't - add the new install to GRUB later  - see my <a href="{{site.baseurl}}/helps/02-grub.html">GRUB page</a> It may fail to install anyway.
 <br><br>
-<span class="prob">-the netinstaller didn't detect my other OS so couldn't set up grub. </span>
-<br><br>
-Then finish the install to set-up users and passwords... restart and boot into the system - as yet without a desktop (it will be just a command prompt).
+
+Then finish the install, to set-up users and passwords... and you can restart and boot into the system - as yet without a desktop (it will be just a command prompt). Or else you could chroot into it from a working Debian/Devuan system and run the following config and desktop install commands.
 
 
 <br><br>
@@ -273,7 +274,7 @@ Then finish the install to set-up users and passwords... restart and boot into t
 <h2 id="5" class="tag">Sources list</h2>
 
 If the installer failed to download the APT files and didn't make the sources.list properly,
-you'll need to put that right before you can retrieve/install packages from Debian.  APT is the the package manager that controls package installation and it needs to have lists of packages from the Debian release you choose, with their current version numbers.
+you'll need to put that right before you can retrieve/install packages from Debian.  APT is the the package manager that controls package installation and it first retrieves the lists of packages from the Debian release you choose, with their current version numbers.
 <br><br>
 At the command prompt, login as root, with "root" as username and the root password that you made during the Netinstall CD process, then enter
 <br><br>
@@ -283,11 +284,11 @@ nano /etc/apt/sources.list </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-(and hit Enter at end)
+(and hit Enter)
 <br><br>
-The command "nano" there opens a file to edit it inside the command-line (because you don't have a GUI file editor yet).
+The command "nano" there opens a file to edit inside the command-line (because you don't have a graphical file editor yet).
 <br><br>
-You'll need these lines handy, on another screen while you follow these steps, because you won't have a graphical interface yet and won't have access this web page (OK, you could try using elinks!)
+(You'll need these lines handy, on another screen while you follow these steps)
 <br>
 Make sure you have the repository lines like the ones below in the file.
 
@@ -296,11 +297,11 @@ example of lines needed:
 <br>
 <form>
 <textarea name="T" id="file" rows="2" cols="80">
-deb http://ftp.uk.debian.org/debian/ jessie main contrib non-free
-deb-src http://ftp.uk.debian.org/debian/ jessie main contrib non-free</textarea>
+deb http://http.debian.net/debian/ jessie main contrib non-free
+deb-src http://http.debian.net/debian/ jessie main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 and for security updates:
 <br>
 <form>
@@ -310,49 +311,33 @@ deb http://security.debian.org/ jessie/updates main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-(but your sources file may already have these lines, or similar, made during the install process)
-<br><br>
-
-Or you can use "http.debian.net" which will automatically retrieve from your most local mirror:
-<br>
-<form>
-<textarea name="T" id="file" rows="1" cols="80">
-deb http://http.debian.net/debian jessie main contrib non-free</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
 
 see <a href="http://http.debian.net/">http://http.debian.net/</a>
 <br><br>
-also you can add the multimedia repository to the sources file, which has many useful codecs:
-<form>
-<textarea name="T" id="file" rows="1" cols="80">
-deb http://www.deb-multimedia.org testing main non-free</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
+You could also add the multimedia repository (deb-multimedia) to the sources file, which has many useful codecs, but its not recommended by Debian.
+
 <br><br>
-
-My sources list looks like so
+My sources list for Debian looks like so:
 
 <form>
-<textarea name="T" id="file" rows="11" cols="80">
+<textarea name="T" id="file" rows="10" cols="80">
 #local
 deb http://http.debian.net/debian jessie main contrib non-free
 deb-src http://http.debian.net/debian jessie main contrib non-free
 
 #updates
 deb http://ftp.debian.org/debian/ jessie-updates main contrib non-free
-#deb-src http://ftp.debian.org/debian/ jessie-updates main contrib non-free
-deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://ftp.debian.org/debian/ jessie-updates main contrib non-free
 
-#multimedia
-deb http://www.deb-multimedia.org jessie main non-free</textarea>
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://security.debian.org/ jessie/updates main contrib non-free</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>Then save the file, either with Ctrl-X (close file), y (yes) and Enter, or else, Ctrl-O (write out file), Enter and Ctrl-X.
+<br>Then save the file, either with Ctrl-X (close file), y (yes) and Enter.
 <br><br>
 then update your Debian's package lists (which are updated frequently at the server side repository)  
-<br>if your lists are old you'll get errors when installing packages because old package versions will no longer be available.
+<br><b>if your lists are old you'll get errors</b> when installing packages because old package versions will no longer be available.
 <br><br>
 Run the update with (while still root user)
 <form>
@@ -361,14 +346,6 @@ apt-get update</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-
-then, if you added the multimedia repository, you need to add the repository key (and you must be root user, or switched with su, to add it)
-<form>
-<textarea name="T" id="cmd" rows="1" cols="80">
-apt-get install deb-multimedia-keyring && apt-get update</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
 
 <br>
 you can make a system upgrade now as well if you like, to make sure all is up to date, including the kernel etc.
@@ -384,7 +361,7 @@ apt-get upgrade && apt-get dist-upgrade</textarea>
 
 <h2 id="6" class="tag">Prevent install of "recommended" packages</h2>
  
-Setting this up in the APT conf file does the same thing as adding the option <i>--no-install-recommends</i> to every install command. It prevents all the "recommended" packages being installed which are promoted by the ones we want and that means a lot less files to download and less disk space used, and quite possibly a few less processes running. Besides, why would you want to install what something else wants and what you don't know about?
+Setting this up in the APT conf file does the same thing as adding the option <i>--no-install-recommends</i> to every install command. It prevents all the "recommended" packages being installed which are promoted by whatever you install and that means a lot less files will be downloaded and less disk space used, and quite possibly a few less processes running. Besides, why would you want to install what something else wants?
 <br><br>
 still as root, type
 <form>
@@ -425,9 +402,8 @@ The Debian command to install software via the Terminal is '<i>apt-get install</
 <br><br>
 If you like, you can make some files with package lists (e.g. desktop, apps, build) which you can save to a USB stick.  Then, on the command line that we've just been using, after netinstall CD and reboot, you mount the stick (find its device id with "<i>lsblk</i>" command, perhaps sdb1), mount it with `<i>mount /dev/sdb1 /mnt</i>` and change to the Usb mount with `<i>cd /mnt</i>` - then use `<i>ls</i>` command to see what's there and e.g. `cd pkg-list` to change to the dir with those package list files you made.  
 <br><br>
-Note: you'll need the network up!  If with LAN cable it should connect without any work. If wireless network, you will need to edit the /etc/network/interfaces file to show your SSID and pass phrase - see <a href="#10">Enable wireless</a>.
-<br><br>
-Another way would be to chroot into the new install from another Debian install.
+Note: you'll need the network up!  If with LAN cable it should connect without any work. If wireless network, you will need to edit the /etc/network/interfaces file to show your SSID and pass phrase - see <a href="#10">Enable wireless</a> below.
+
 <br><br>
 then run:
 <br>
@@ -438,6 +414,10 @@ sudo apt-get install $(< desktop)</textarea>
 </form>
 <br>
 where "desktop" is the name of a file with package names.
+<br><br>
+Another way would be to chroot into the new install from another Debian install, as I mentioned already - see my  <a href="{{site.baseurl}}/helps/03-chrooting.html">chrooting page</a>. 
+
+
 
 <br><br><br>
 <h3>XFCE Desktop</h3>
@@ -446,7 +426,7 @@ Apologies for anything that no longer works!!! I don't run Xfce any more and so 
 as root, type
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg xfce4 lightdm network-manager-gnome pm-utils hdparm cpufrequtils xfce4-power-manager chromium leafpad xfce4-power-manager xfce4-notifyd tango-icon-theme firestarter dmz-cursor-theme xcursor-themes rxvt-unicode</textarea>
+apt-get install xorg xfce4 lightdm network-manager-gnome pm-utils hdparm cpufrequtils xfce4-power-manager chromium leafpad xfce4-notifyd tango-icon-theme dmz-cursor-theme moblin-cursor-theme rxvt-unicode htop gparted</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -458,7 +438,8 @@ This gets you a window manager, light desktop, display manager (login), network 
 There's iceweasel (open-source firefox) instead of chromium, or midori, which is a little less memory-consuming than both of them (but its not available to Jessie, it's in testing)
 <br><br>
 wicd is an alternative to network-manager-gnome (but the latter may handle mobile/vpn better).<br>
-lightdm is your best choice of display manager.  Gnome's gdm3 comes with bloat of dependencies at 40Mb. 
+lightdm is your best choice of display manager.  Gnome's gdm3 comes with bloat of dependencies.<br>
+firestarter is no longer maintained, so you are better off using iptables for firewall. 
 <br><br><br>
 
 <h3>LXDE Desktop</h3>
@@ -466,22 +447,22 @@ lightdm is your best choice of display manager.  Gnome's gdm3 comes with bloat o
 
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils network-manager-gnome chromium tango-icon-theme openbox-themes firestarter dmz-cursor-theme xcursor-themes moblin-cursor-theme rxvt-unicode</textarea>
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad rxvt-unicode htop gparted</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
-lightdm to be prefered over xdm, and gdm3 comes with a 40mb gnome dependency bloat.
+lightdm to be prefered over xdm, and gdm3 comes with a gnome dependency bloat.
 <br><br>
 I took out <span style="color:#7C2020">synaptic apt-xapian-index gdebi</span> as I hardly need them.
 <br><br>
-Again, you can choose between chromium, iceweasel and midori, you have wicd instead of network-manager, and you can set up ip tables instead of firestarter (see my <a href="{{site.baseurl}}/config/firewall.html">firewall</a> page)
+Again, you can choose between chromium, iceweasel and midori, you have wicd instead of network-manager-gnome, and you can set up ip tables instead of firestarter (see my <a href="{{site.baseurl}}/config/firewall.html">firewall</a> page)
 <br><br>
-It's possible to run openbox alone without installing the lxde package (but just the parts of it you might need) and without even a Display Manager (login screen etc), but its a little complex to set up at this stage 
+It's possible to run openbox alone without installing the lxde package (but just the parts of it you might need) and without even a Display Manager (login screen etc), but its a little complex to set up unless you're a Debian user already.
 <br><br>
 To do that I leave out lxde and lightdm, and add instead: <span style="color:#7C2020">openbox lxpanel lxtask leafpad</span>.  Then at boot, when reaching the command prompt, just type "startx" and Enter. 
-
-<br><span class="ht">Warning! this is not perhaps a good idea for beginner Debian users.</span> Installing LXDE will be more straightforward. But see see my page, <a href="{{site.baseurl}}/config/plain-openbox.html">plain openbox</a> if this is the way you want to go!
+<br><br>
+<span class="ht">Warning! this is not perhaps a good idea for beginner Debian users.</span> Installing LXDE will be more straightforward. But see see my page, <a href="{{site.baseurl}}/config/plain-openbox.html">plain openbox</a> if this is the way you want to go!
 
 <br><br>
 <hr noshade="noshade">
@@ -501,24 +482,18 @@ apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugi
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-
-<b>prepare for bluetooth, bash, NTFS and FAT32 support, archiving and Java</b>
+<br><br>
+<h3>Additional installs</h3>
+Prepare for bluetooth, bash, NTFS and FAT32 support, archiving, Java, printing and pgp
 <form>
 <textarea name="T" id="install" rows="3" cols="80">
-apt-get install bluetooth blueman command-not-found bash-completion ntfs-3g blktool dosfstools mtools gvfs-backends zip unzip bzip2 p7zip-full openjdk-7-jre icedtea-7-plugin</textarea>
+apt-get install bluetooth blueman command-not-found bash-completion ntfs-3g blktool dosfstools mtools testdisk gvfs-backends zip unzip bzip2 p7zip-full openjdk-7-jre icedtea-7-plugin locate git less cups gpa</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 (note that, the opensource java, openjdk and icedtea actually change their name with each new version - I suppose it will be 8 next)
 
+
 <br><br>
-<b>some extras</b>
-<form>
-<textarea name="T" id="install" rows="1" cols="50">
-apt-get install locate less git</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
 <br><br>
 before booting into the desktop, you could set up the wireless and edit your sudoers file (below)
 <br>
@@ -626,7 +601,7 @@ sudo dhclient wlan0</textarea>
 or sometimes using `wlan1`, depending on your wireless hardware.
 
 
-<br>
+<br><br>
 <hr noshade="noshade">
 <br><br>
 
@@ -801,33 +776,10 @@ and edit&nbsp;&nbsp; 'user-session=lightdm-xsession'&nbsp;  --> &nbsp; 'user-ses
 <hr noshade="noshade">
 <br><br>
 
-<h2 id="14" class="tag">Prepare to install software</h2>
-add the debian multimedia repository if you haven't already
-<form>
-<textarea name="T" id="cmd" rows="1" cols="30">
-nano /etc/apt/sources.list</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-add the line
-<form>
-<textarea name="T" id="file" rows="1" cols="80">
-deb http://www.deb-multimedia.org testing main non-free</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
+<h2 id="14" class="tag">Install build dependenciese</h2>
+
 <br>
 
-then 
-<form>
-<textarea name="T" id="cmd" rows="3" cols="80">
-sudo apt-get update 
-sudo apt-get install deb-multimedia-keyring 
-sudo apt-get update</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-<br>
-<h2>Build dependencies</h2>
 Get dependencies needed for building software from source (you could leave this for another time).
 <br>
 <form>
