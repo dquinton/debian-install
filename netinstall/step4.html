@@ -325,14 +325,7 @@ sudo apt-get install libcurl4-openssl-dev gnome-doc-utils libexif-dev scrollkeep
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
-make directories<br>
-<form>
-<textarea name="T" id="cmd" rows="2" cols="80">
-sudo mkdir -p /usr/local/share/gnome/help/viking
-sudo mkdir /usr/local/share/omf</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
+
 <br>
 unpack viking and run:
 <form>
@@ -345,7 +338,27 @@ sudo make install</textarea>
 <br>
 or sudo checkinstall to make a deb package
 <br><br>
-See my <a href="../tutorial/11a-gps.html">Geo data page</a> for more details!
+See my <a href="{{site.baseurl}}/tutorial/11a-gps.html">Geo data page</a> for more details!
+<br><br>
+<h3>Qgis</h3>
+
+<form><textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install qgis python-qgis inkscape</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+To get the latest version, add the qgis repo..
+
+
+<form><textarea name="T" id="install" rows="6" cols="100">
+sudo sh -c 'echo "deb http://qgis.org/debian jessie main" >> /etc/apt/sources.list'  
+sudo sh -c 'echo "deb-src http://qgis.org/debian jessie main " >> /etc/apt/sources.list'  
+wget -O - http://qgis.org/downloads/qgis-2016.gpg.key | gpg --import
+gpg --fingerprint 073D307A618E5811
+gpg --export --armor 073D307A618E5811 | sudo apt-key add -
+sudo apt-get update && sudo apt-get install qgis python-qgis </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br><br>
 <hr noshade="noshade">

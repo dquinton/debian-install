@@ -15,40 +15,46 @@ It looks like this for the Netinstall CD..
 <li>Restart and login to root</li>
 <li>add norecommends file</li>
 <li>install the desktop:</li></ol></div>
-
+<br><br>
+<b>LXDE</b>
 <form>
-<textarea name="T" id="install" rows="3" cols="80">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils alsamixergui wicd chromium tango-icon-theme openbox-themes xcursor-themes moblin-cursor-theme rxvt-unicode</textarea>
+<textarea name="T" id="install" rows="3" cols="100">
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad rxvt-unicode htop gparted</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
-add if you like: <span class="inst">synaptic apt-xapian-index gdebi firestarter</span>
-<br><br>
+add if you like: <span class="inst">synaptic apt-xapian-index gdebi</span>
+<br><br><br>
+
 I go without lxde and lightdm now, and add here: <span class="inst">openbox lxpanel lxtask leafpad</span>
+<br><br>
+
+<b>plain openbox</b>
+<form>
+<textarea name="T" id="install" rows="3" cols="100">
+apt-get install aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpanel lxtask wicd chromium tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 <br><br><br>
 
 <b>5.</b>&nbsp;&nbsp; Install the full programme suite:
 
 <form>
 <textarea name="T" id="install" rows="8" cols="100">
-apt-get install zip unzip bzip2 p7zip-full bluetooth blueman ntfs-3g blktool dosfstools mtools gvfs-backends command-not-found bash-completion openjdk-7-jre icedtea-7-plugin mplayer gnome-mplayer mencoder vlc gstreamer-0.10 audacious handbrake-gtk avidemux bombono-dvd ardour audacity lame qjackctl gimp pinta imagemagick bluefish abcde eyed3 bashburn furiousisomount xpdf x11-apps clipit pidgin uget transmission pyrenamer easytag catfish xfce4-notes-plugin gdmap gparted testdisk unetbootin qshutdown ksnapshot kcharselect luckybackup feh cheese meld regexxer bleachbit htop yelp xiphos fonts-sil-ezra gtk2-engines gtk2-engines-xfce gnome-color-chooser systemsettings rkhunter chkrootkit xsel w3m w3m-img less atool mediainfo jhead ffmpegthumbnailer locate git</textarea>
+apt-get install bluetooth blueman openjdk-7-jre icedtea-7-plugin zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs-backends command-not-found bash-completion locate git cups gpa mplayer2 gnome-mplayer vlc handbrake audacious gnome-sound-recorder lame gimp abcde eyed3 bashburn gtk2-engines gtk2-engines-xfce gtk3-engines-xfce gnome-color-chooser systemsettings yelp xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin bluefish catfish pyrenamer yelp</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
+<br><br>
+
+
 
 no longer with me, but could be useful:<br>
-<span class="inst">thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra xdg-user-dirs k3b libk3b6-extracodecs normalize-audio k9copy dvdrip marble etherape</span>
+<span class="inst">thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra xdg-user-dirs k3b libk3b6-extracodecs normalize-audio k9copy dvdrip marble pinta cheese </span>
 <br><br>
 Just add/remove what you like to/from this.
 <br><br>
-I install ffmpeg and x264 from source before kdenlive or other video editors -although Kdenlive installs ffmpeg from repositories anyhow. <br> If video editing is not a priority then apt-get this line:
 
-<form>
-<textarea name="T" id="install" rows="1" cols="100">
-apt-get install ffmpeg x264 kdenlive frei0r-plugins dvgrab recordmydesktop dvdauthor genisoimage </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
  
 <br><br>
 <b>6. </b>&nbsp;&nbsp;Install the build dependencies (as on the Netinstall page) 
@@ -60,11 +66,11 @@ You can always cancel apt downloading of packages and resume it later on, just u
 
 <b>7.</b> &nbsp;&nbsp;add user to sudoer file, setup fstab and configure wireless
 <br><br>
-<b>8.</b>&nbsp;&nbsp; boot into the system and..set up firestarter, chromium and desktop deco
+<b>8.</b>&nbsp;&nbsp; boot into the system.
 <br><br><br>
 
 
-Which leaves <span class="blue">ffmpeg, Kdenlive, Libre Office, ClamTK, XnViewMP, Ranger, compton, obmenu, Viking, Google Earth, Skype, Refractasnapshot </span> ......to install from downloaded packages.
+Which leaves <span class="blue">ffmpeg, Kdenlive, Libre Office, ClamTK, XnViewMP, Ranger, compton, Viking, Refractasnapshot </span> ......to install from downloaded packages.
 
 
 <br><br><br>
