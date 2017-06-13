@@ -251,46 +251,70 @@ lb config noauto \<br>
 <div><br>
 </div>
 <div>
-<hr>
+<hr><br><br>
 </div>
 <div><b><font size="4">3. Add package lists before the build</font></b></div>
-<div>
-<div>
-<div></div>
-<font size="3">su to root and run these in the build directory:</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><span style="font-size:medium;line-height:26.981481552124023px">needed for successful build as they are possibly excluded by the "no-recommends" option.</span></div>
-<div>
-<div style="overflow:auto;width:850px;height:50px;background-color:#99f">for p in<font color="#7C2020">
-eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup</font> grub ;do echo $p &gt;&gt; config/package-lists/needed.list.chroot ;done
-</div>
-<div><br>
-</div>
-<div><span style="line-height:27px"><font size="3">minimal LXDE install</font></span></div>
-<div style="overflow:auto;width:850px;height:160px;background-color:#99f">for p in xorg lxde lightdm lxtask xfce4-power-manager locales pm-utils hdparm cpufrequtils alsa-utils wicd chromium imagemagick openjdk-7-jre icedtea-7-plugin bluetooth blueman ntfs-3g blktool dosfstools mtools testdisk gvfs-backends zip unzip bzip2 p7zip-full unetbootin bash-completion tango-icon-theme openbox-themes xcursor-themes moblin-cursor-theme gtk2-engines gtk2-engines-xfce gtk2-engines-murrine gtk3-engines-xfce debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done
-</div>
-<div><br>
-</div>
 <br>
-<div><span style="line-height:27px"><font size="3">optional</font></span></div>
-<div style="overflow:auto;width:850px;height:50px;background-color:#99f">for p in firestarter thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra k3b libk3b6-extracodecs normalize-audio dvdrip marble ;do echo $p &gt;&gt; config/package-lists/optional.list.chroot ;done
-</div>
+updated June 2017
+<br><br>
+su to root and run these in the build directory, to create lists which will be used to install whatever you need to the build:
+
+<br><br>
+First of all, those needed for successful build as they are possibly excluded by the "no-recommends" option.
 <br>
-<div><font size="3">apps (copy to a text editor and omit/add what you like)</font></div>
-<div></div>
-<div style="overflow:auto;width:850px;height:170px;background-color:#99f">for p in ffmpeg x264 mplayer gnome-mplayer vlc avidemux handbrake-gtk bombono-dvd audacious ardour audacity lame qjackctl feh gimp pinta gcalctool clipit clamav clamtk catfish pidgin uget transmission bashburn bluefish abcde eyed3 xfce4-notes-plugin gdmap gparted qshutdown ksnapshot kcharselect luckybackup cheese meld regexxer furiousisomount bleachbit easytag viking libcurl4-openssl-dev gnome-doc-utils htop yelp xiphos fonts-sil-ezra gnome-color-chooser systemsettings rkhunter chkrootkit xsel w3m w3m-img less atool mediainfo jhead ffmpegthumbnailer locate git ;do echo $p &gt;&gt; config/package-lists/my.list.chroot ;done
-</div>
-</div>
-<div><br>
-</div>
-<div><font size="3">build essential</font></div>
-<div></div>
-<div style="overflow:auto;width:850px;height:90px;background-color:#99f">for p in build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev x11-xserver-utils libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake checkinstall ;do echo $p &gt;&gt; config/package-lists/build.list.chroot ;done
-</div>
-</div>
-<div><br>
-</div>
+<textarea name="T" id="cmd" rows="2" cols="100">
+for p in eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup grub ;do echo $p &gt;&gt; config/package-lists/needed.list.chroot ;done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+then either do either
+<br>
+<b>1. minimal LXDE install</b>
+<br>
+<textarea name="T" id="cmd" rows="5" cols="100">
+for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad xfce4-power-manager rxvt-unicode htop gparted aptitude bash-completion command-not-found gtk2-engines gtk2-engines-xfce gtk3-engines-xfce debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+or <br>
+<b>2. plain openbox install</b>
+<br>
+<textarea name="T" id="cmd" rows="5" cols="100">
+for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpanel lxtask wicd chromium tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted aptitude bash-completion command-not-found gtk2-engines gtk2-engines-xfce gtk3-engines-xfce debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+<b>For Thunar</b>
+<br>
+<textarea name="T" id="cmd" rows="4" cols="100">
+for p in thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra bluetooth blueman ntfs-3g blktool dosfstools mtools testdisk gvfs-backends zip unzip bzip2 p7zip-full openjdk-7-jre icedtea-7-plugin git cups gpa ;do echo $p config/package-lists/thunar.list.chroot ;done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+<b>All other apps</b>
+<br>
+<textarea name="T" id="cmd" rows="6" cols="100">
+for p in mplayer2 gnome-mplayer vlc handbrake audacious gnome-sound-recorder lame gimp abcde eyed3 bashburn gtk2-engines gtk2-engines-xfce gtk3-engines-xfce gnome-color-chooser systemsettings yelp xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin bluefish catfish pyrenamer yelp ;do echo $p config/package-lists/apps.list.chroot ;done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+<br><br>
+
+<b>For build dependencies</b>
+<br>
+<textarea name="T" id="cmd" rows="4" cols="100">
+for p in build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev x11-xserver-utils libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake checkinstall ;do echo $p config/package-lists/build.list.chroot ;done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
 <div><span style="font-size:16px;line-height:1.6"><a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html#373">http://live-systems.org/manual/...</a></span></div>
 <div><br>
 </div>

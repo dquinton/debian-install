@@ -10,16 +10,19 @@ id: net
 <div class="cont">
 
 <h2>Overview of the install</h2>
+updated June 2017
+<br><br>
+
 It looks like this for the Netinstall CD..
 <div class="numb"><ol><li>Run the Netinstall CD</li>
 <li>Restart and login to root</li>
 <li>add norecommends file</li>
 <li>install the desktop:</li></ol></div>
 <br><br>
-<b>LXDE</b>
+<b>for LXDE</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad rxvt-unicode htop gparted</textarea>
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad rxvt-unicode htop gparted aptitude bash-completion command-not-found</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -30,19 +33,26 @@ add if you like: <span class="inst">synaptic apt-xapian-index gdebi</span>
 I go without lxde and lightdm now, and add here: <span class="inst">openbox lxpanel lxtask leafpad</span>
 <br><br>
 
-<b>plain openbox</b>
+<b>for plain openbox</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpanel lxtask wicd chromium tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted</textarea>
+apt-get install aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpanel lxtask wicd chromium tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted aptitude bash-completion command-not-found </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br><br><br>
+<br><br>
 
 <b>5.</b>&nbsp;&nbsp; Install the full programme suite:
 
 <form>
-<textarea name="T" id="install" rows="8" cols="100">
-apt-get install bluetooth blueman openjdk-7-jre icedtea-7-plugin zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs-backends command-not-found bash-completion locate git cups gpa mplayer2 gnome-mplayer vlc handbrake audacious gnome-sound-recorder lame gimp abcde eyed3 bashburn gtk2-engines gtk2-engines-xfce gtk3-engines-xfce gnome-color-chooser systemsettings yelp xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin bluefish catfish pyrenamer yelp</textarea>
+<textarea name="T" id="install" rows="3" cols="100">
+apt-get install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs bluetooth blueman openjdk-7-jre icedtea-7-plugin zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs-backends locate git cups gpa</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<form>
+<textarea name="T" id="install" rows="6" cols="100">
+apt-get install mplayer2 gnome-mplayer vlc handbrake audacious gnome-sound-recorder lame gimp abcde eyed3 bashburn gtk2-engines gtk2-engines-xfce gtk3-engines-xfce gnome-color-chooser systemsettings yelp xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin bluefish catfish pyrenamer yelp</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -50,7 +60,7 @@ apt-get install bluetooth blueman openjdk-7-jre icedtea-7-plugin zip unzip bzip2
 
 
 no longer with me, but could be useful:<br>
-<span class="inst">thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra xdg-user-dirs k3b libk3b6-extracodecs normalize-audio k9copy dvdrip marble pinta cheese </span>
+<span class="inst">k3b libk3b6-extracodecs normalize-audio marble pinta cheese </span>
 <br><br>
 Just add/remove what you like to/from this.
 <br><br>
@@ -70,7 +80,7 @@ You can always cancel apt downloading of packages and resume it later on, just u
 <br><br><br>
 
 
-Which leaves <span class="blue">ffmpeg, Kdenlive, Libre Office, ClamTK, XnViewMP, Ranger, compton, Viking, Refractasnapshot </span> ......to install from downloaded packages.
+Which leaves <span class="blue">Ranger, compton, Libre Office, Kdenlive, ffmpeg, Avidemux, Bombono, XnViewMP, Iron, Viking, Qgis, Refractasnapshot, ClamTK </span> ......to install from downloaded packages.
 
 
 <br><br><br>
@@ -86,7 +96,7 @@ For gparted, use <span style="color:#076b00">gksu /usr/sbin/gparted</span>
 
 <br><br><br>
 <h3>Polkit error message on start-up</h3>
-After a fresh install this May '13 I had this report pop up on start-up:<br>
+After a fresh install May '13, I had this report pop up on start-up:<br>
 
 <span style="color:#800080;">GDBus.Error:org.freedesktop.PolicyKit1.Error.Failed: An authentication agent already exists for the given subject </span>
 <br>
