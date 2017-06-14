@@ -61,9 +61,17 @@ Note: since Deboian 8 (Jessie), kdenlive depends on libav-tools - no longer ffmp
 <br>
 
 <span class="ht"><b>Choice a.</b></span> <br>
-Download an Appimage which includes Kdenlive, MLT, libav etc and allows kdenlive to be run stand-alone from any previous install of these modules on the system, from.. <br> 
-<a href="https://kdenlive.org/download/">kdenlive.org/download/</a>
+Download an Appimage which includes Kdenlive, MLT, libav etc and allows kdenlive to be run stand-alone from any previous install of these modules on the system, from.. <a href="https://kdenlive.org/download/">kdenlive.org/download/</a><br>
+the only problem is it loads 660mb into /tmp with every load up.
 <br><br>
+make a necessary directory in /run with..
+<form>
+<textarea name="T" id="cmd" rows="2" cols="50">
+sudo mkdir /run/user/1000
+sudo chown $USER /run/user/1000</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
 Then make the Appimage executable and run it with ./Kdenlive*
 <br><br><br>
 
@@ -96,6 +104,11 @@ Icon=/home/dav/.local/share/icons/hicolor/64x64/apps/kdenlive.png
 Path=/home/dav/kdenlive/</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+
+
+
+
+
  <br><br>
 <span class="ht"><b>Choice b.</b></span> <br>
 

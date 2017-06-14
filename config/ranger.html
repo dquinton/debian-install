@@ -1137,10 +1137,10 @@ You might want to have these printed on a sheet because some commands are too lo
 
 
 #replacing
-map Rr1 console shell -fs rename 's/?/@/g' %%s         
+map Rr1 console -p20 shell -fs rename 's/?/@/g' %%s         
 #replace string - ?=old @=new, \ looks in extension ie 's/\?/\@/',  mode: file-?ame.ext > file-@ame.ext
 
-map Rr2  console shell find . -depth -name "* *" -execdir prename -n 'y/?/@/' {} +  
+map Rr2  console -p54 shell find . -depth -name "* *" -execdir prename -n 'y/?/@/' {} +  
                 #replace recurs - ?=old @=new
 
 map Rs1  console shell -fs rename 's/ /_/g' %s    
@@ -1154,27 +1154,27 @@ map Ru1  shell rename 'y/a-z/A-Z/' %s                #change lower case letters 
 map Ru2  shell rename 'y/A-Z/a-z/' %s                 #change upper case letters to lower case
 
 #prepending
-map Rp1  console shell -fs rename 's/^/P/' %%s		
+map Rp1  console -p22 shell -fs rename 's/^/P/' %%s		
                   #Prepend to file names -change P, mode: file-name.ext > Pfile-name.ext
 
-map Rp2  console shell -fs i=0; for file in %%s; do mv "$file" $(printf "%0.2d$file" $i); i=$((i+1)); done		
-                  #prepend numbering: 0=start from, 2=digits, +1=step, mode: file-name1.ext > 00file-name1.ext file-name2.ext > 01file-name2.ext
+map Rp2  console -p58 shell -fs i=1; for file in %%s; do mv "$file" $(printf "%0.3d$file" $i); i=$((i+1)); done		
+                  #prepend numbering: i=1 start from, 3d =digits, +1 =step, mode: file-name1.ext > 001file-name1.ext, file-name2.ext > 002file-name2.ext
 
 #appending
-map Ra1  console shell -fs rename 's/\.(.*)/A.$1/' %%s
+map Ra1  console -p27 shell -fs rename 's/\.(.*)/A.$1/' %%s
                   #Append to file names inside the ext -change A, mode: file-name.ext > file-nameA.ext
 
-map Ra2  console shell -fs rename 's/$/A/' %%s	
+map Ra2  console -p22 shell -fs rename 's/$/A/' %%s	
                   #Append to file names without ext, or after ext -change A, mode: file-name > file-nameA
 
 map Ra3  shell -fs sh ~/scripts/append-date                   
                   #append modified date to all file names in dir (script below), mode: file-name.ext > file-name_130825-1520.ext  
 
-map Ra4  console shell -fs i=0; for file in %%s; do mv "$file" $(printf "${file%.*}_%0.2d.${file##*.}" $i); i=$((i+1)); done		
-                  #append numbering: i=0 start from, 2=digits, +1=step, mode: file-name.ext > file-name_00.ext, file-name_01.ext
+map Ra4 	shell -fs sh ~/scripts/append-number %s 	
+                  #append numbering to selected files (only with ext) (script below), mode: file-name.ext > file-name_001.ext, file-name_002.ext
 
 #inserting
-map Ri1 console -p51 shell -fs for file in %%s ; do mv "$file" "${file:0:n}?${file:n}" ; done
+map Ri1 console -p53 shell -fs for file in %%s ; do mv "$file" "${file:0:n}?${file:n}" ; done
 						#insert string: n=at character (set both n's), ?=string
 map Rir shell -fs rename 's/IMG//' %s; for file in %s ; do mv "$file" "${file:0:8}-${file:8}" ; done
 
@@ -1195,10 +1195,10 @@ map Rn console -p55 shell -fs i=1; for file in %%s; do mv "$file" $(printf "N_%0
                   # WARNING: if numbering digits are not correct (e.g. only 1 digit for 12 files) some files will be LOST (overwritten with others)!
 
 #cutting characters
-map Rc1  console shell -fs for file in %%s; do mv "$file" "`echo $file | cut -c2-`"; done		
+map Rc1  console -p61 shell -fs for file in %%s; do mv "$file" "`echo $file | cut -c2-`"; done		
                   #cut until char 2 of selected file names (ie cut one char only) -change 2,  mode: file-name.ext > ile-name.ext
 
-map Rc2  console shell -fs for file in *; do mv "$file" "$(echo $file | sed -e 's/\(.*\)[0-9a-zA-Z]\{2\}\.\([^.]*\)/\1.\2/')"; done 			
+map Rc2  console -p87 shell -fs for file in *; do mv "$file" "$(echo $file | sed -e 's/\(.*\)[0-9a-zA-Z]\{2\}\.\([^.]*\)/\1.\2/')"; done 			
                   #cut any characters from back of selected file names -change {2,  mode: file-name.ext > file-na.ext</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -1230,6 +1230,17 @@ exiftool '-filename<%f_${DateTimeOriginal}.%e' -d %y%m%d-%H%M $@</textarea>
 </form>
 <br><br>
 
+
+script for append numbering (Ra4)
+<form><textarea name="T" id="file" rows="3" cols="80">
+#!/bin/bash
+i=1; for file in $@; do mv "$file" $(printf "${file%.*}_%0.3d.${file##*.}" $i); i=$((i+1)); done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+i=1 start from, 3d =digits, +1 =step
+
+<br><br>
 script for renaming images with date-time (Re3)
 <form><textarea name="T" id="file" rows="2" cols="80">
 #!/bin/bash
