@@ -80,15 +80,42 @@ I put it in ~/kdenlive and make a symlink to it (because of its version number i
 <form>
 <textarea name="T" id="cmd" rows="2" cols="50">
 cd ~/kdenlive
-ln -s Kdenlive*AppImage Kdenlive.AppImage</textarea>
+ln -s Kdenlive*AppImage Kdenlive.app</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br><br><br>
+You can <b>upack the App Image</b> and keep all the app libraries in a home dir - then you can easily copy render profiles and UI settings from a previous version. <br>
+This also sees that no files are unloaded to /tmp.
+<br><br>
+
+first find offset no. need to mount the image..
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+./Kdenlive*.AppImage --appimage-offset</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+Then mount it and copy out the contents..
+
+<form>
+<textarea name="T" id="cmd" rows="5" cols="80">
+sudo mount -o loop -o offset=112888 K*AppImage /mnt
+mkdir ~/kdenlive/extracted/
+rsync -ar /mnt/* ~/kdenlive/extracted/
+sudo umount /mnt</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
 <br><br>
 make a .desktop file with
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
-nano ~/.local/share/applications/kde4/kdenlive.desktop</textarea>
+nano ~/.local/share/applications/kde4/kdenlive-app.desktop</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -98,15 +125,14 @@ nano ~/.local/share/applications/kde4/kdenlive.desktop</textarea>
 Name=Kdenlive
 Comment=KDE non linear video editor
 Type=Application
-Exec=/home/dav/kdenlive/Kdenlive.AppImage
+Exec=/home/user/kdenlive/extracted/AppRun
 Categories=AudioVideo
-Icon=/home/dav/.local/share/icons/hicolor/64x64/apps/kdenlive.png
-Path=/home/dav/kdenlive/</textarea>
+Icon=/home/user/kdenlive/extracted/kdenlive.png</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
-
-
+<br>
+just change your user name!
+<br><br>
 
 
  <br><br>
