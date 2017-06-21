@@ -42,13 +42,46 @@ apt-get install xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpa
 <br><br>
 
 
-necessary and may be missing after an Netinstall without internet:
+necessary and may be missing after a Netinstall without internet:
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
 apt-get install consolekit aptitude sudo</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
 <br><br>
+
+
+<b id="xorg" class="tag">Possible error with Xorg</b> without installing a display manager, when you run startx:
+<br><br>
+<span style="color:#800080;">parse_vt_settings Cannot open /dev/tty0 (Permission Denied)</span>
+<br><br>
+or<br>
+<span style="color:#800080;">xf86OpenConsole: Cannot open virtual console 7 (Permission Denied)</span>
+<br><br>
+fix with:
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+apt-get install xserver-xorg-legacy</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/X11/Xwrapper.conf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+change "allowed_users=console"<br>
+to<br>
+
+<form>
+<textarea name="T" id="file" rows="2" cols="30">
+allowed_users=anybody
+needs_root_rights=yes</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br><br>
 
 
 <b>5.</b>&nbsp;&nbsp; Install the full programme suite:
