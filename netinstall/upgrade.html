@@ -224,15 +224,25 @@ sudo apt-get -t wheezy-backports install <package></textarea>
 This may be useful (or necessary) when you have hardware that needs latest drivers or to get laptop hot-keys functioning. You have somn choices...
 <br><br><br>
 
-<h3>1. Install the pae kernel for newer computers</h3>
+<h3>1. Install the latest kernel</h3>
+
+To check what kernel version is installed run
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+uname -r </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+
 search for available kernels with 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 apt-cache search linux-image </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
-install the pae kernel
+
 <br><br>
 
 reboot and select the new kernel if necessary<br>
@@ -245,7 +255,9 @@ dpkg --list | grep linux</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
+Then you will need to run update-grub
 
+<br><br>
 <h3>2. Install from stable backports</h3>
 add the backports to sources with the line 
 <form>

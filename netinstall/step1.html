@@ -179,7 +179,9 @@ If you know what wireless adapter your box has, you can look on Debian.org <a hr
 <br><br>
 If your firmware comes packaged as a .deb binary, you can search/download it from <a href="https://packages.debian.org/">https://packages.debian.org/</a> download and unpack it to copy the firmware files out.
 <br><br>
-Otherwise, the wireless and other firmware can be loaded after Debian is installed (see below). But note that runnint eh Netinstall CD without a network connection will leave you without proper repo sources in the sources.list file, and possibly some important components - though I did this in June 2017 and noticed only the package "aptitude" was absent.
+Otherwise, the wireless and other firmware can be loaded after Debian is installed (see below). But note that running the Netinstall CD without a network connection will leave you without proper repo sources in the sources.list file, and possibly some important components.
+<br>
+I did this in June 2017 and noticed the following packages were missing: consolekit (can't boot without it), aptitude, sudo
 
 <br><br>
 <hr noshade="noshade">
@@ -378,8 +380,9 @@ APT::Install-Suggests "false";</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-
-Also you can knock out the downloading of language packs with every apt-get update, by adding to the same file:
+"0" also works.
+<br><br>
+You can knock out the downloading of language packs with every apt-get update, by adding to the same file:
 
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
@@ -426,7 +429,7 @@ Apologies for anything that no longer works!!! I don't run Xfce any more and so 
 as root, type
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg xfce4 lightdm wicd pm-utils hdparm cpufrequtils xfce4-power-manager chromium leafpad xfce4-notifyd tango-icon-theme dmz-cursor-theme moblin-cursor-theme rxvt-unicode aptitude bash-completion command-not-found htop gparted</textarea>
+apt-get install xorg xfce4 lightdm wicd pm-utils hdparm cpufrequtils xfce4-power-manager chromium leafpad xfce4-notifyd tango-icon-theme dmz-cursor-theme moblin-cursor-theme rxvt-unicode bash-completion command-not-found htop gparted</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -447,7 +450,7 @@ firestarter is no longer maintained, so you are better off using iptables for fi
 
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad rxvt-unicode aptitude bash-completion command-not-found htop gparted</textarea>
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad rxvt-unicode bash-completion command-not-found htop gparted</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -463,6 +466,16 @@ It's possible to run openbox alone without installing the lxde package (but just
 To do that I leave out lxde and lightdm, and add instead: <span style="color:#7C2020">openbox lxpanel lxtask leafpad</span>.  Then at boot, when reaching the command prompt, just type "startx" and Enter. 
 <br><br>
 <span class="ht">Warning! this is not perhaps a good idea for beginner Debian users.</span> Installing LXDE will be more straightforward. But see see my page, <a href="{{site.baseurl}}/config/plain-openbox.html">plain openbox</a> if this is the way you want to go!
+
+<br><br><br>
+ <b>In case you ran Netinstall without an internet connection</b>, you will need to check these are installed:
+
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+apt-get install consolekit aptitude sudo</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
 
 <br><br>
 <hr noshade="noshade">
@@ -535,6 +548,8 @@ and if you added the sudo group to sudoers, now add your user(s) to the sudo gro
 adduser <username> sudo</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
+If there's no "sudoers" file just install sudo.
 
 <br>
 <hr noshade="noshade">

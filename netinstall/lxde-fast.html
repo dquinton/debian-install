@@ -22,10 +22,10 @@ It looks like this for the Netinstall CD..
 <b>for LXDE</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad rxvt-unicode htop gparted aptitude bash-completion command-not-found</textarea>
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad rxvt-unicode htop gparted bash-completion command-not-found</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 
 add if you like: <span class="inst">synaptic apt-xapian-index gdebi</span>
 <br><br><br>
@@ -36,10 +36,20 @@ I go without lxde and lightdm now, and add here: <span class="inst">openbox lxpa
 <b>for plain openbox</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpanel lxtask wicd chromium tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted aptitude bash-completion command-not-found </textarea>
+apt-get install xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpanel lxtask wicd chromium tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted bash-completion command-not-found </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
+
+
+necessary and may be missing after an Netinstall without internet:
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+apt-get install consolekit aptitude sudo</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
 
 <b>5.</b>&nbsp;&nbsp; Install the full programme suite:
 
@@ -52,7 +62,7 @@ apt-get install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plu
 
 <form>
 <textarea name="T" id="install" rows="6" cols="100">
-apt-get install mplayer2 gnome-mplayer vlc handbrake audacious gnome-sound-recorder lame gimp abcde eyed3 bashburn gtk2-engines gtk2-engines-xfce gtk3-engines-xfce gnome-color-chooser systemsettings xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin hasciicam bluefish catfish pyrenamer yelp</textarea>
+apt-get install mplayer2 gnome-mplayer vlc handbrake audacious gnome-sound-recorder lame gimp abcde eyed3 bashburn gtk2-engines gtk2-engines-xfce gtk3-engines-xfce gnome-color-chooser systemsettings xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer gpsbabel clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin hasciicam bluefish catfish pyrenamer yelp</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
