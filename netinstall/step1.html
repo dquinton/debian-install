@@ -181,7 +181,7 @@ If your firmware comes packaged as a .deb binary, you can search/download it fro
 <br><br>
 Otherwise, the wireless and other firmware can be loaded after Debian is installed (see below). But note that running the Netinstall CD without a network connection will leave you without proper repo sources in the sources.list file, and possibly some important components.
 <br>
-I did this in June 2017 and noticed the following packages were missing: consolekit (can't boot without it), aptitude, sudo
+I did this in June 2017 and noticed the following packages were missing: consolekit (can't boot without it), aptitude, sudo, grub2
 
 <br><br>
 <hr noshade="noshade">
@@ -472,7 +472,7 @@ To do that I leave out lxde and lightdm, and add instead: <span style="color:#7C
 
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-apt-get install consolekit aptitude sudo</textarea>
+apt-get install consolekit aptitude sudo gksu grub2 laptop-mode-tools network-config</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 

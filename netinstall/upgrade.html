@@ -226,7 +226,7 @@ This may be useful (or necessary) when you have hardware that needs latest drive
 
 <h3>1. Install the latest kernel</h3>
 
-To check what kernel version is installed run
+To check what kernel version is running, run
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 uname -r </textarea>
@@ -246,7 +246,7 @@ apt-cache search linux-image </textarea>
 <br><br>
 
 reboot and select the new kernel if necessary<br>
-if it runs well and fixes hardware issues such as video or networking, you can remove the non-pae kernel with apt-get
+if it runs well and fixes hardware issues such as video or networking, you can remove the older kernel with apt-get
 <br><br>
 find its package name with 
  <form>
