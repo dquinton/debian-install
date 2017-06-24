@@ -262,8 +262,8 @@ su to root and run these in the build directory, to create lists which will be u
 <br><br>
 First of all, those needed for successful build as they are possibly excluded by the "no-recommends" option.
 <br>
-<textarea name="T" id="cmd" rows="2" cols="100">
-for p in eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup grub ;do echo $p &gt;&gt; config/package-lists/needed.list.chroot ;done</textarea>
+<textarea name="T" id="cmd" rows="3" cols="100">
+for p in eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup grub2 consolekit aptitude laptop-mode-tools network-config ;do echo $p &gt;&gt; config/package-lists/needed.list.chroot ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -282,7 +282,7 @@ or <br>
 <b>2. plain openbox install</b>
 <br>
 <textarea name="T" id="cmd" rows="5" cols="100">
-for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpanel lxtask wicd chromium tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted aptitude bash-completion command-not-found gtk2-engines gtk2-engines-xfce gtk3-engines-xfce debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpolkit lxpanel lxtask wicd chromium tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted aptitude bash-completion command-not-found gtk2-engines gtk2-engines-xfce gtk3-engines-xfce udiskie gvfs debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -299,7 +299,7 @@ for p in thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tum
 <b>All other apps</b>
 <br>
 <textarea name="T" id="cmd" rows="6" cols="100">
-for p in mplayer2 gnome-mplayer vlc handbrake audacious gnome-sound-recorder lame gimp abcde eyed3 bashburn gtk2-engines gtk2-engines-xfce gtk3-engines-xfce gnome-color-chooser systemsettings xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer gpsbabel clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin hsasciicam bluefish catfish pyrenamer yelp xfburn xpad ;do echo $p config/package-lists/apps.list.chroot ;done</textarea>
+for p in mplayer2 gnome-mplayer vlc handbrake audacious gnome-sound-recorder lame gimp abcde eyed3 bashburn gtk2-engines gtk2-engines-xfce gtk3-engines-xfce gnome-color-chooser systemsettings xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer gpsbabel clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin hsasciicam bluefish catfish pyrenamer filezilla yelp xfburn xpad ;do echo $p config/package-lists/apps.list.chroot ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 

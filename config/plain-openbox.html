@@ -128,7 +128,7 @@ exec openbox-session</textarea>
 But the problem with this line is that suspend will not be triggered by a close/open of laptop lid.  So if you need that function, you must use:
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
-exec ck-launch-session dbus-launch openbox-session</textarea>
+exec dbus-launch openbox-session</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>  
 <br><br>
@@ -321,31 +321,76 @@ can use options like
 
 
 <h2 id="6" class="tag">Auto mounting solutions </h2>
-Drives do not mount when hot-plugged - but half of my problem might be I use a script to start OB which bypasses .Xinitrc and thus dbus is not started.
+<br>
+In simple installs without a display manager, drives do not mount when hot-plugged.  I tested with Thunar, thunar volume manager, gvfs and udiskie and I still needed lightdm installed in order to automount a usb stick without permissions problems.
 <br><br>
-<b>1.</b> try using pcmanfm or thunar/thunar-volman
-<br><br>
-<b>2.</b> method using <b>pmount and udev</b><br>
-didn't work very well for me - takes 20sec for device to show in /media, device often doesn't disappear when removed, can't eject it, mounts with files -rw-rw-rw- .......
+<br>
+<b>1.</b> <b>Udiskie</b> <a href="https://github.com/coldfix/udiskie/wiki/Usage">udiskie/wiki/Usage</a>
+<br>
+Udiskie does not depend on Thunar/thunar volume manager to operate.
 <form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install udiskie gvfs lxpolkit</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+Then, make a rule to allow automounting without super user privileges:
+<br>
+see <a href="https://unix.stackexchange.com/questions/37428/arch-linux-mount-disks-with-thunar-without-password">unix.stackexchange</a>
+<br>
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="100">
+sudo nano /etc/polkit-1/localauthority/50-local.d/org.freedesktop.udisks2.pkla</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+add this content:
+ <form>
+<textarea name="T" id="cmd" rows="6" cols="100">
+[Storage Permissions]
+Identity=unix-group:storage
+Action=org.freedesktop.udisks2.filesystem-mount;org.freedesktop.udisks2.filesystem-mount-system
+ResultAny=yes
+ResultInactive=yes
+ResultActive=yes</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+make the <i>storage</i> group and add any users who can automount.
+
+<br><br>
+add udiskie to your autostart file with
+
+<form>
+<textarea name="T" id="file" rows="1" cols="30">
+udiskie -2 &</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+where the -2 states to use udisks2, -t flag starts the tray, -A would prevent automounting -then you could click on the tray.
+<br><br>
+To have devices mounted in /media, not /media/username, another rule is needed (from <a href="https://wiki.archlinux.org/index.php/Udisks#Mount_to_.2Fmedia_.28udisks2.29">Arch wiki</a>)
+ <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
-sudo leafpad /etc/udev/rules.d/automount.rules</textarea>
+sudo nano /etc/udev/rules.d/99-udisks2.rules</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
-add the lines given at linked page <a href="http://www.monperrus.net/martin/automounting+usb+flash+drives+on+linux+with+udev+and+pmount">http://www.monperrus.net/martin/</a>  <a href="http://debiania.in.ua/posts/2013-03-24-automounting-with-udev-and-pmount.html">http://debiania.in.ua/</a>
-<br>
-restart udev with
-<form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-udevadm control --reload-rules</textarea>
+
+ <form>
+<textarea name="T" id="cmd" rows="5" cols="100">
+# UDISKS_FILESYSTEM_SHARED
+# ==1: mount filesystem to a shared directory (/media/VolumeName)
+# ==0: mount filesystem to a private directory (/run/media/$USER/VolumeName)
+# See udisks(8)
+ENV{ID_FS_USAGE}=="filesystem|other|crypto", ENV{UDISKS_FILESYSTEM_SHARED}="1"</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
-then plug in a removable drive, and wait for it to appear in /media...
+
+
+
 <br><br>
 <br>
-<b>3.</b> Using <b>udevil</b> - this works fine, taking around 5 or 6 sec to mount a USB drive, instantly with an SD card
+<b>2.</b> <b>Udevil</b> - couldn't install on testing<br>
  <a href="http://ignorantguru.github.io/udevil/#installer">http://ignorantguru.github.io/udevil/#installer</a>
 <br> <br>
 
