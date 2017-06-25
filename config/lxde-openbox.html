@@ -586,7 +586,7 @@ Here's how to make a menu - and you could have as many as you liked...
 	   <menu>menu-utility</menu>
 	 </action>
   </keybind>
-  <mousebind button="W-Up" action="Click">
+  <mousebind button="C-W-Right" action="Click">
     <action name="ShowMenu">
 	   <menu>menu-utility</menu>
 	 </action>
@@ -599,7 +599,7 @@ where &#60;menu>menu-utility&#60;/menu> is the menu ID
 and to get the utility menu up when only the Desktop is seen, add this to the section called &#60;context name="Root">
 <form>
 <textarea name="T" id="file" rows="5" cols="50">
-  <mousebind button="W-Up" action="Press">
+  <mousebind button="C-W-Right" action="Press">
     <action name="ShowMenu">
        <menu>menu-utility</menu>
     </action>
@@ -668,185 +668,151 @@ urukrama has blogged about it here <a href="http://urukrama.wordpress.com/openbo
 W= Super key, C= CTRL, S= Shift, A= Alt
 <br><br>
 
+These are the shortcut keys you can make with the below key bindings in your rc.conf file:
+<br><br>
+<b>Updated June 2017</b>
+<br><br>
 <form>
-<textarea name="T" id="file" rows="16" cols="80">
-<!-- Keybindings for applications -->
-    <keybind key="W-1">
-      <action name="Execute">
-        <execute>leafpad</execute>
-      </action>
-    </keybind>
-    <keybind key="W-2">
-      <action name="Execute">
-        <execute>chromium</execute>
-      </action>
-    </keybind>
-    <keybind key="W-e">
-      <action name="Execute">
-        <command>thunar</command>
-      </action>
-    </keybind></textarea>
+<textarea name="T" id="file" rows="40" cols="80">
+right (desktop) 	ob menu
+W-right(desktop)	ob menu
+W-right(window) 	ob menu
+C-W-right(desktop)	utility menu
+C-W-right(window) 	utility menu
+mouse middle (desktop) 	pager menu
+A-Space			window menu
+
+Alt-left		move window
+Alt-right		resize window
+
+C-A- mouse left		maximise
+C-A- mouse right	unmaximise
+S-A- mouse right	iconify
+A-   mouse middle 	lower to base
+A-Esc			lower to base
+S-A-c			move to center
+S-A-z			close
+A-F4			close
+A-F11			toggle fullscreen
+A-Tab			next window
+W-Tab			next window (all desktops)
+
+A- left/right		go to next desktop
+S-A- left/right		send window to next desktop
+W- F1/F2 etc		go to desktop 1,2 etc
+W-S- F1/F2 etc		send to desktop 1,2 etc
+
+W-R			Run
+W-T			Terminal
+W-O			Open file
+W-U			power down
+W-D			iconify all
+W-1			open leafpad
+W-2			open web browser
+W-Esc			task manager
+C-Esc			apps menu
+W-J			eject DVD
+A-C-del			power off script
+sleep hotkey		sleep confirm</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br><br><br>
 
+<h3>keyboard section key bindings..</h3>
+
+Be very careful to keep opening and closing "keybind" or "action" or else the whole file will be invalid and openbox will have no functioning keys or menus! Make a copy of the file before making changes, and edit it in leafpad so that you can undo changes if necessary.
+<br><br>
+You can use key chains too - see <a href="http://openbox.org/wiki/Help:Bindings">the wiki page</a>.
+<br><br>
+<form>
+<textarea name="T" id="file" rows="308" cols="80">
+ <!-- 
+
+Keybindings for desktop switching 
+
+-->
+    <keybind key="C-A-Left">
+      <action name="DesktopLeft">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="C-A-Right">
+      <action name="DesktopRight">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-Left">
+      <action name="SendToDesktopLeft">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="S-A-Right">
+      <action name="SendToDesktopRight">
+        <dialog>no</dialog>
+        <wrap>no</wrap>
+      </action>
+    </keybind>
+    <keybind key="W-F1">
+      <action name="Desktop">
+        <desktop>1</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F2">
+      <action name="Desktop">
+        <desktop>2</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F3">
+      <action name="Desktop">
+        <desktop>3</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-F4">
+      <action name="Desktop">
+        <desktop>4</desktop>
+      </action>
+    </keybind>
+    <keybind key="W-d">
+      <action name="ToggleShowDesktop"/>
+    </keybind>
+    <!-- 
+
+Keybindings for windows 
+
+-->
+    <keybind key="A-F4">
+      <action name="Close"/>
+    </keybind>
+    <keybind key="A-Escape">
+      <action name="Lower"/>
+      <action name="FocusToBottom"/>
+      <action name="Unfocus"/>
+    </keybind>
+    <keybind key="A-space">
+      <action name="ShowMenu">
+        <menu>client-menu</menu>
+      </action>
+    </keybind>
+    <!-- 
+
+Keybindings for window switching 
+
+-->
+    <keybind key="A-Tab">
+      <action name="NextWindow"/>
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow"/>
+    </keybind>
     
-<form>
-<textarea name="T" id="file" rows="6" cols="80">
-<!-- change this to urxvt or whichever terminal you prefer -->
-    <keybind key="W-T">
-      <action name="Execute">
-        <execute>lxterminal</execute>
-    	</action>
-    </keybind></textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>    
+    <!-- 
 
+Keybindings for sending windows to different desktops 
 
-<form>
-<textarea name="T" id="file" rows="6" cols="80">
-<!-- keybind to script open file with leafpad  -->
-    <keybind key="W-O">
-      <action name="Execute">
-        <execute>sh ~/scripts/open-leafpad</execute>
-      </action>
-    </keybind>      </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
-<form>
-<textarea name="T" id="file" rows="23" cols="80">
-<!-- Super-] paste primary - same as middle click - install xsel and xvkbd - now I add the -delay option to stop characters getting muddled up! -->
-    <keybind key="W-bracketright">
-      <action name="Execute">
-        <command>sh -c 'xsel | xvkbd -delay 4 -xsendevent -file -'</command>
-      </action>
-    </keybind>
-
-<!-- Ctrl-[ copy primary X selection to clipboard (selection even in terminal, then can Ctrl-V in other app) -->
-    <keybind key="C-bracketleft">
-      <action name="Execute">
-        <command>sh -c 'xsel | xsel -ob'</command>
-      </action>
-    </keybind>
-
-<!-- Ctrl-] paste from clipboard (even in terminal) -->
-    <keybind key="C-bracketright">
-      <action name="Execute">
-        <command>sh -c 'xsel -b | xvkbd -delay 4 -xsendevent -file -'</command>
-      </action>
-    </keybind></textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
- 
-<form>
-<textarea name="T" id="file" rows="23" cols="80">
-<!-- Launch ksnapshot when Print screen key (prt sc) is pressed -->
-    <keybind key="Print">
-      <action name="Execute">
-        <command>ksnapshot</command>
-      </action>
-    </keybind>
-
-<!--keybindings for LXPanel -->
-    <keybind key="W-R">
-      <action name="Execute">
-        <command>lxpanelctl run</command>
-      </action>
-    </keybind>
-    <keybind key="W-U">
-      <action name="Execute">
-        <command>lxde-logout</command>
-      </action>
-    </keybind>
-    <keybind key="W-Escape">
-      <action name="Execute">
-        <execute>lxtask</execute>
-      </action>
-    </keybind></textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
-<form>
-<textarea name="T" id="file" rows="6" cols="80">
-<!-- Eject the laptop internal cdrom -->
-    <keybind key="W-J">
-      <action name="Execute">
-        <command>sh -c eject /dev/sr0</command>
-      </action>
-    </keybind></textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
-<form>
-<textarea name="T" id="file" rows="16" cols="80">
-<!-- Show OB menu -->
-    <keybind key="W-Down">
-      <action name="ShowMenu">
-        <menu>root-menu</menu>
-      </action>
-    </keybind>
-    <keybind key="W-Up">
-      <action name="ShowMenu">
-        <menu>menu-utility</menu>
-    	</action>
-    </keybind>
-    <mousebind button="W-Middle" action="Press">
-      <action name="ShowMenu">
-        <menu>client-list-combined-menu</menu>
-      </action>
-    </mousebind></textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
-<form>
-<textarea name="T" id="file" rows="14" cols="80">
-<!--keybindings for Brightness 
-(if you have trouble with your laptop function keys just set your own brightness keys with a script -see my screen brightness page)
-obviously you need to find your own keys-->
-    <keybind key="Insert">
-      <action name="Execute">
-        <execute>~/.scripts/br-up</execute>
-      </action>
-    </keybind>
-    <keybind key="F12">
-      <action name="Execute">
-        <execute>~/.scripts/br-dn</execute>
-      </action>
-    </keybind>    </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
-<form>
-<textarea name="T" id="file" rows="16" cols="80">
-<!-- Keybindings for volume control --> 
-    <keybind key="XF86AudioMute">
-      <action name="Execute">
-        <command>amixer sset Master toggle</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioRaiseVolume">
-      <action name="Execute">
-        <command>amixer sset Master 5%+</command>
-      </action>
-    </keybind>
-    <keybind key="XF86AudioLowerVolume">
-      <action name="Execute">
-        <command>amixer sset Master 5%-</command>
-      </action>
-    </keybind></textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
-<form>
-<textarea name="T" id="file" rows="37" cols="80">
- <!-- Keybindings for sending windows to different desktops -->
+-->
     <keybind key="W-S-F1">
       <action name="SendToDesktop">
         <desktop>1</desktop>
@@ -864,84 +830,207 @@ obviously you need to find your own keys-->
         <desktop>3</desktop>
         <follow>no</follow>
       </action>
-    </keybind>  
+    </keybind>
     <keybind key="W-S-F4">
       <action name="SendToDesktop">
         <desktop>4</desktop>
         <follow>no</follow>
       </action>
-    </keybind> 
+    </keybind>
     <keybind key="W-S-F5">
       <action name="SendToDesktop">
         <desktop>5</desktop>
         <follow>no</follow>
       </action>
-    </keybind> 
+    </keybind>
+    <keybind key="W-Tab">
+      <action name="NextWindow">
+        <allDesktops>yes</allDesktops>
+      </action>
+    </keybind>
     <keybind key="A-S-c">
       <action name="MoveToCenter"/>
     </keybind>
-    <keybind key="S-A-z">
-      <action name="Close"/>
+
+    <!-- 
+
+Keybindings for running applications 
+
+-->
+    <keybind key="W-Escape">
+      <action name="Execute">
+        <execute>lxtask</execute>
+      </action>
+    </keybind>
+    <keybind key="W-1">
+      <action name="Execute">
+        <execute>leafpad</execute>
+      </action>
+    </keybind>
+   
+    <keybind key="W-2">
+      <action name="Execute">
+        <execute>chromium</execute>
+      </action>
+    </keybind>
+    
+ <!-- change this to whichever terminal you prefer --> 
+    <keybind key="W-T">
+      <action name="Execute">
+        <execute>rxvt</execute>
+      </action>
+    </keybind>
+    <keybind key="W-e">
+      <action name="Execute">
+        <command>thunar</command>
+      </action>
+    </keybind>
+    
+<!-- keybind to script open file with leafpad  -->
+    <keybind key="W-O">
+       <action name="Execute"><execute>sh ~/scripts/open-leafpad</execute>
+       </action>
+    </keybind>
+ <!--
+
+keybindings for LXPanel 
+
+-->
+    <keybind key="W-r">
+      <action name="Execute">
+        <command>lxpanelctl run</command>
+      </action>
+    </keybind>
+    <keybind key="C-Escape">
+      <action name="Execute">
+        <command>lxpanelctl menu</command>
+      </action>
+    </keybind>
+    <keybind key="A-F11">
+      <action name="ToggleFullscreen"/>
+    </keybind>
+    <keybind key="W-U">
+      <action name="Execute">
+        <command>sh ~/scripts/poweroff</command>
+      </action>
+    </keybind>
+    <keybind key="XF86WakeUp">
+      <action name="Execute">
+        <command>sh ~/scripts/sleep</command>
+      </action>
+    </keybind>
+
+<!-- Show OB menu with keys -->
+
+    <keybind key="W-Down">
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
+      </action>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="ShowMenu">
+        <menu>menu-utility</menu>
+      </action>
+    </keybind>
+
+    <context name="Desktop">
+     <keybind key="W-Down">
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
+      </action>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="ShowMenu">
+        <menu>menu-utility</menu>
+      </action>
+    </keybind>
+    </context>    
+    
+<!-- Launch ksnapshot when Print screen key (prt sc) is pressed -->
+
+    <keybind key="Print">
+      <action name="Execute">
+        <command>ksnapshot</command>
+      </action>
+    </keybind>
+    
+<!-- Super-] paste primary - same as middle click - install xsel and xvkbd -->
+
+    <keybind key="W-bracketright">
+      <action name="Execute">
+        <command>sh -c 'xsel | xvkbd -xsendevent -file -'</command>
+      </action>
+    </keybind>
+
+<!-- Ctrl-[ copy primary X selection to clipboard (selection even in terminal, then can Ctrl-V in other app) -->
+
+    <keybind key="C-bracketleft">
+      <action name="Execute">
+        <command>sh -c 'xsel -o | xsel --clipboard'</command>
+      </action>
+    </keybind>
+
+<!-- Ctrl-] paste from clipboard (even in terminal) -->
+
+    <keybind key="C-bracketright">
+      <action name="Execute">
+        <command>sh -c 'xsel -b | xvkbd -xsendevent -file -'</command>
+      </action>
+    </keybind>
+    
+<!-- Logout with Ctrl+Alt+Del -->
+
+    <keybind key="A-C-Delete">
+      <action name="Execute">
+        <command>sh ~/scripts/poweroff</command>
+      </action>
+    </keybind>
+    
+<!-- Eject the laptop internal cdrom -->
+
+    <keybind key="W-J">
+      <action name="Execute">
+        <command>sh -c eject /dev/sr0</command>
+      </action>
+    </keybind>
+    
+<!-- Volume keys - use xev to record the names of specific hotkeys once pressed -->
+
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>amixer sset Master toggle</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>amixer -q set Master 5%+</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>amixer -q set Master 5%-</command>
+      </action>
+    </keybind>
+  </keyboard>
+  
+  <!--keybindings for Brightness 
+(if you have trouble with your laptop function keys just set your own brightness keys with a script -see my screen brightness page)
+obviously you need to find your own keys-->
+
+    <keybind key="Insert">
+      <action name="Execute">
+        <execute>~/.scripts/br-up</execute>
+      </action>
+    </keybind>
+    <keybind key="F12">
+      <action name="Execute">
+        <execute>~/.scripts/br-dn</execute>
+      </action>
     </keybind></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
-<form>
-<textarea name="T" id="file" rows="12" cols="80">
-<!-- Show OB menu with Super key and mouse scroll button - inside the <context name="Frame"> section-->
-    <mousebind button="W-Down" action="Click">
-      <action name="ShowMenu">
-        <menu>root-menu</menu>
-	   </action>
-    </mousebind>
-    <mousebind button="W-Up" action="Click">
-      <action name="ShowMenu">
-        <menu>menu-utility</menu>
-	   </action>
-    </mousebind></textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
-<form>
-<textarea name="T" id="file" rows="20" cols="80">
- <!-- mousebindings for maximising-minimising windows -->
-    <mousebind button="W-S-Left" action="Click">
-      <action name="Maximize">
-      </action>
-    </mousebind>
-    <mousebind button="W-S-Right" action="Click">
-      <action name="Unmaximize">
-      </action>
-    </mousebind>
-    <mousebind button="W-Right" action="Click">
-      <action name="Lower">
-      </action>
-    </mousebind>
-    <mousebind button="A-Right" action="Click">
-      <action name="Iconify">
-      </action>
-    </mousebind>
-    <mousebind button="S-A-Right" action="Click">
-       <action name="Close"/>
-    </mousebind>      </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-<form>
-<textarea name="T" id="file" rows="8" cols="80">
-<!--  inside the <context name="Root"> section - to show the utility menu when desktop is shown-->
-    <mousebind button="W-Up" action="Press">
-      <action name="ShowMenu">
-        <menu>menu-utility</menu>
-      </action>
-    </mousebind>
-</context></textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
+ 
 <br>
 script for the above keybind to open a file with leafpad:
 
@@ -951,6 +1040,147 @@ script for the above keybind to open a file with leafpad:
 leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+
+<br><br>
+
+
+
+<h3>mouse section key bindings</h3>
+
+
+<form>
+<textarea name="T" id="file" rows="128" cols="80">
+      <mouse>
+   <!-- some mouse config goes here -->  
+    
+      <context name="Frame">
+      <mousebind button="A-Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="A-Left" action="Click">
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="A-Left" action="Drag">
+        <action name="Move"/>
+      <mousebind button="C-Right" action="Press">
+        <action name="Iconify"/>
+      </mousebind>
+      <mousebind button="A-Right" action="Drag">
+        <action name="Resize"/>
+      </mousebind>
+      <mousebind button="A-Middle" action="Press">
+        <action name="Lower"/>
+        <action name="FocusToBottom"/>
+        <action name="Unfocus"/>
+      </mousebind>
+      
+<!-- Move to desktop with mouse scroll -->
+
+      <mousebind button="A-Up" action="Click">
+        <action name="DesktopPrevious"/>
+      </mousebind>
+      <mousebind button="A-Down" action="Click">
+        <action name="DesktopNext"/>
+      </mousebind>
+           
+<!-- Show OB menu with mouse click -->
+
+      <mousebind button="W-Right" action="Click">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="C-W-Right" action="Click">
+        <action name="ShowMenu">
+          <menu>menu-utility</menu>
+        </action>
+      </mousebind>
+      <mousebind button="W-Middle" action="Press">
+        <action name="ShowMenu">
+          <menu>client-list-combined-menu</menu>
+        </action>
+      </mousebind>
+      
+     <!-- Window max/unmax with mouse buttons -->
+     
+      <mousebind button="C-A-Left" action="Click">
+        <action name="Maximize">
+	     </action>
+      </mousebind>
+      <mousebind button="C-A-Right" action="Click">
+        <action name="Unmaximize">
+	     </action>
+      </mousebind>
+      <mousebind button="S-A-Right" action="Click">
+        <action name="Iconify"/>
+      </mousebind>
+     </context>
+     
+     
+     <!--
+
+Mouse scroll button on desktop
+
+-->
+    <context name="Desktop">
+      <mousebind button="Up" action="Click">
+        <action name="DesktopPrevious"/>
+      </mousebind>
+      <mousebind button="Down" action="Click">
+        <action name="DesktopNext"/>
+      </mousebind>
+      <mousebind button="A-Up" action="Click">
+        <action name="DesktopPrevious"/>
+      </mousebind>
+      <mousebind button="A-Down" action="Click">
+        <action name="DesktopNext"/>
+      </mousebind>
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+
+    </context>
+    <context name="Root">
+
+      <!-- Menus - here I homogenise with the key binds for frame context, i.e on opened windows -->
+
+      <mousebind button="Middle" action="Press">
+        <action name="ShowMenu">
+          <menu>client-list-combined-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="W-Middle" action="Press">
+        <action name="ShowMenu">
+          <menu>client-list-combined-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="W-Right" action="Press">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>      
+      <mousebind button="C-W-Right" action="Press">
+        <action name="ShowMenu">
+          <menu>menu-utility</menu>
+        </action>
+      </mousebind>
+    </context>
+  </mouse>     </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
 
 <br><br>
 <br><br>

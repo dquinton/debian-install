@@ -145,7 +145,7 @@ alias a-du='sudo apt-get dist-upgrade'
 alias ap-du='sudo aptitude dist-upgrade'
 alias a-c='sudo apt-get autoclean'
 alias a-clean='sudo apt-get clean'
-alias a-s='apt-cache search'        #enter name/part of name of package 2 c available versions
+alias a-s='apt-cache search'        #enter name/part of name of package 2 c available versions   
 alias ahi='apt-history install'       #need apt-history
 alias ahu='apt-history upgrade'
 alias ahr='apt-history remove'
@@ -154,18 +154,19 @@ alias dpkr='sudo dpkg -r'            #uninstall deb
 
 alias a-s='apt-cache search'   #enter name/part of name of package 2 c available pkgs
 alias a-v='apt-cache showpkg'   #enter name of package 2 c available versions
-alias a-d='apt-cache depends'   #enter name of package 2 list dependencies
+alias a-d='apt-cache depends'   #enter name of package 2 list dependencies  
+alias dpl='dpkg -l | grep' 			#enter name/part of name of package to see installed
 alias dpv='dpkg -s' 	               #enter pkg name to c version
 alias dpq='dpkg-query -l'           #same
-alias dpc='dpkg -S'	                 #enter command to c what package belongs
-alias dpl='dpkg --list | grep'    #enter part of pkg name to list all installed 
+alias dpc='dpkg -S'	                 #enter command to c what package it belongs to
+
+alias visu='EDITOR=nano sudo visudo'
 
 alias power0='sudo shutdown -h now'
 alias boot0='sudo reboot'
 
 alias mnt='sudo mount'
 alias umnt='sudo umount'
-alias frac='gksu refractasnapshot-gui'
 
 alias chownme='sudo chown -R $USER'      #type file or dir after
 alias addme='sudo adduser $USER'          #type group name after

@@ -127,7 +127,7 @@ exec openbox-session</textarea>
 <br>
 But the problem with this line is that suspend will not be triggered by a close/open of laptop lid.  So if you need that function, you must use:
 <form>
-<textarea name="T" id="file" rows="1" cols="80">
+<textarea name="T" id="file" rows="1" cols="50">
 exec dbus-launch openbox-session</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>  
@@ -190,7 +190,7 @@ For the latter two, you can make a bash alias for each - which means you simply 
 You can make the shutdown/reboot commands not ask for password, if you modify the sudoers file
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
-sudo visudo</textarea>
+EDITOR=nano sudo visudo</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <form>
@@ -322,7 +322,7 @@ can use options like
 
 <h2 id="6" class="tag">Auto mounting solutions </h2>
 <br>
-In simple installs without a display manager, drives do not mount when hot-plugged.  I tested with Thunar, thunar volume manager, gvfs and udiskie and I still needed lightdm installed in order to automount a usb stick without permissions problems.
+In simple installs without a display manager, drives do not mount when hot-plugged.  I tested with Thunar, thunar volume manager, gvfs and udiskie and I still needed lxpolkit and lightdm installed in order to automount a usb stick without permissions problems.
 <br><br>
 <br>
 <b>1.</b> <b>Udiskie</b> <a href="https://github.com/coldfix/udiskie/wiki/Usage">udiskie/wiki/Usage</a>
