@@ -664,31 +664,34 @@ Below are my typical key bindings, which of course will need some alterations to
 more info here <a href="http://openbox.org/wiki/Help:Actions">http://openbox.org/wiki/Help:Actions</a><br>
 urukrama has blogged about it here <a href="http://urukrama.wordpress.com/openbox-guide/#Key_mouse">http://urukrama.wordpress.com...</a> and here <a href="http://urukrama.wordpress.com/2008/07/22/my-openbox-keybindings/">http://urukrama...</a>
 <br><br><br>
+<br>
 
-W= Super key, C= CTRL, S= Shift, A= Alt
-<br><br>
-
-These are the shortcut keys you can make with the below key bindings in your rc.conf file:
-<br><br>
+<h3>My keybinds</h3>
+<br>
 <b>Updated June 2017</b>
 <br><br>
+These are the shortcut keys you can make with the below key bindings in your rc.xml file:
+<br>
+W= Super key, C= CTRL, S= Shift, A= Alt
+
+<br><br>
 <form>
-<textarea name="T" id="file" rows="40" cols="80">
-right (desktop) 	ob menu
-W-right(desktop)	ob menu
-W-right(window) 	ob menu
-C-W-right(desktop)	utility menu
-C-W-right(window) 	utility menu
-mouse middle (desktop) 	pager menu
+<textarea name="T" id="file" rows="44" cols="80">
+msright (desktop) 	ob menu
+W- msright(desktop)	ob menu
+W- msright(window) 	ob menu
+C-W- msright(desktop)	utility menu
+C-W- msright(window) 	utility menu
+msmiddle (desktop) 	pager menu
 A-Space			window menu
 
 Alt-left		move window
 Alt-right		resize window
 
-C-A- mouse left		maximise
-C-A- mouse right	unmaximise
-S-A- mouse right	iconify
-A-   mouse middle 	lower to base
+C-A- msleft		maximise
+C-A- msright		unmaximise
+S-A- msright		iconify
+A-   msmiddle 		lower to base
 A-Esc			lower to base
 S-A-c			move to center
 S-A-z			close
@@ -697,8 +700,10 @@ A-F11			toggle fullscreen
 A-Tab			next window
 W-Tab			next window (all desktops)
 
-A- left/right		go to next desktop
+C-A- left/right		go to next desktop
+A- scroll		go to next desktop
 S-A- left/right		send window to next desktop
+S-A- scroll		send window to next desktop
 W- F1/F2 etc		go to desktop 1,2 etc
 W-S- F1/F2 etc		send to desktop 1,2 etc
 
@@ -706,14 +711,15 @@ W-R			Run
 W-T			Terminal
 W-O			Open file
 W-U			power down
-W-D			iconify all
+W-D			toggle show desktop
 W-1			open leafpad
 W-2			open web browser
 W-Esc			task manager
 C-Esc			apps menu
 W-J			eject DVD
 A-C-del			power off script
-sleep hotkey		sleep confirm</textarea>
+sleep hotkey		sleep confirm
+W-H 			clipit history (set in clipit)</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br><br>
@@ -1026,7 +1032,9 @@ obviously you need to find your own keys-->
       <action name="Execute">
         <execute>~/.scripts/br-dn</execute>
       </action>
-    </keybind></textarea>
+    </keybind>
+    
+  </keyboard>  </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -1049,9 +1057,12 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
 
 
 <form>
-<textarea name="T" id="file" rows="128" cols="80">
+<textarea name="T" id="file" rows="176" cols="80">
       <mouse>
-   <!-- some mouse config goes here -->  
+      
+   <!-- 
+      some mouse config goes here - don't remove!
+   -->  
     
       <context name="Frame">
       <mousebind button="A-Left" action="Press">
@@ -1083,8 +1094,20 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
       <mousebind button="A-Down" action="Click">
         <action name="DesktopNext"/>
       </mousebind>
-           
-<!-- Show OB menu with mouse click -->
+      <mousebind button="S-A-Up" action="Click">
+        <action name="SendToDesktopLeft">
+         <dialog>no</dialog>
+         <wrap>no</wrap>
+        </action>
+      </mousebind>
+      <mousebind button="S-A-Down" action="Click">
+        <action name="SendToDesktopRight">
+         <dialog>no</dialog>
+         <wrap>no</wrap>
+        </action>
+      </mousebind> 
+      
+<!-- Show OB menu with mouse click on open windows - put here in frame context -->
 
       <mousebind button="W-Right" action="Click">
         <action name="ShowMenu">
@@ -1099,6 +1122,19 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
       <mousebind button="W-Middle" action="Press">
         <action name="ShowMenu">
           <menu>client-list-combined-menu</menu>
+        </action>
+      </mousebind>
+      
+<!-- Show OB menu with mouse scroll on open windows - put here in frame context -->
+
+      <mousebind button="W-Down" action="Click">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="W-Up" action="Click">
+        <action name="ShowMenu">
+          <menu>menu-utility</menu>
         </action>
       </mousebind>
       
@@ -1117,12 +1153,14 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
       </mousebind>
      </context>
      
+   <!-- 
+   
+      contexts for titlebar and window buttons go here - don't remove them!
+      
+   --> 
+   
+     <!-- Mouse scroll button on desktop - here in desktop context -->
      
-     <!--
-
-Mouse scroll button on desktop
-
--->
     <context name="Desktop">
       <mousebind button="Up" action="Click">
         <action name="DesktopPrevious"/>
@@ -1144,11 +1182,11 @@ Mouse scroll button on desktop
         <action name="Focus"/>
         <action name="Raise"/>
       </mousebind>
-
+      
     </context>
     <context name="Root">
 
-      <!-- Menus - here I homogenise with the key binds for frame context, i.e on opened windows -->
+      <!-- Menus - here I homogenise with the key binds for frame context - put in desktop or root context -->
 
       <mousebind button="Middle" action="Press">
         <action name="ShowMenu">
@@ -1175,6 +1213,20 @@ Mouse scroll button on desktop
           <menu>menu-utility</menu>
         </action>
       </mousebind>
+
+<!-- Show OB menu with mouse scroll on desktop - must be in desktop or root context -->
+
+      <mousebind button="W-Down" action="Click">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="W-Up" action="Click">
+        <action name="ShowMenu">
+          <menu>menu-utility</menu>
+        </action>
+      </mousebind>
+      
     </context>
   </mouse>     </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
