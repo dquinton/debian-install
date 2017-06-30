@@ -468,7 +468,16 @@ Arch wiki <a href="https://wiki.archlinux.org/index.php/Openbox">Openbox</a>
 <br><br>
 <img src="{{site.baseurl}}/zimages/obmenu.jpeg" width="188" height="510" alt="my OB menu" align="right">
 
-I haven't got around to making any pipe menus (I am not a <i>follow-a-chevron-to-sub-menu-at-right-or-sometimes-left</i> fan), nor have I got debian menu onto my ob menu anyway...
+
+
+To include the App menu on the OB menu, add a new Pipe menu with Obmenu, and give it a name and ID, and the following command:
+<form>
+<textarea name="T" id="file" rows="1" cols="50">
+openbox-menu lxde-applications.menu</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
 <br><br><br>
 
 <h3>My example OB menu</h3>
@@ -676,7 +685,7 @@ W= Super key, C= CTRL, S= Shift, A= Alt
 
 <br><br>
 <form>
-<textarea name="T" id="file" rows="44" cols="80">
+<textarea name="T" id="file" rows="45" cols="80">
 msright (desktop) 	ob menu
 W- msright(desktop)	ob menu
 W- msright(window) 	ob menu
@@ -715,9 +724,10 @@ W-D			toggle show desktop
 W-1			open leafpad
 W-2			open web browser
 W-Esc			task manager
-C-Esc			apps menu
+C-Esc			lxde menu
 W-J			eject DVD
-A-C-del			power off script
+C-A-del			power off script
+C-A-x x 		xkill (press keychain, wait then x)
 sleep hotkey		sleep confirm
 W-H 			clipit history (set in clipit)</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
@@ -731,7 +741,7 @@ Be very careful to keep opening and closing "keybind" or "action" or else the wh
 You can use key chains too - see <a href="http://openbox.org/wiki/Help:Bindings">the wiki page</a>.
 <br><br>
 <form>
-<textarea name="T" id="file" rows="308" cols="80">
+<textarea name="T" id="file" rows="320" cols="80">
  <!-- 
 
 Keybindings for desktop switching 
@@ -802,6 +812,13 @@ Keybindings for windows
         <menu>client-menu</menu>
       </action>
     </keybind>
+    <keybind key="C-A-x">
+	 <keybind key="x">
+      <action name="Execute">
+        <execute>xkill</execute>
+      </action>
+    </keybind>
+    </keybind>
     <!-- 
 
 Keybindings for window switching 
@@ -857,7 +874,9 @@ Keybindings for sending windows to different desktops
     <keybind key="A-S-c">
       <action name="MoveToCenter"/>
     </keybind>
-
+    <keybind key="A-F11">
+      <action name="ToggleFullscreen"/>
+    </keybind>
     <!-- 
 
 Keybindings for running applications 
@@ -912,15 +931,15 @@ keybindings for LXPanel
         <command>lxpanelctl menu</command>
       </action>
     </keybind>
-    <keybind key="A-F11">
-      <action name="ToggleFullscreen"/>
-    </keybind>
+
+<!-- power off scripts -->
+   
     <keybind key="W-U">
       <action name="Execute">
         <command>sh ~/scripts/poweroff</command>
       </action>
     </keybind>
-    <keybind key="XF86WakeUp">
+    <keybind key="XF86ScreenSaver">
       <action name="Execute">
         <command>sh ~/scripts/sleep</command>
       </action>
