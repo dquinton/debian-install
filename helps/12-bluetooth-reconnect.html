@@ -9,43 +9,51 @@ id: help
 
 <div class="cont">
 
-When resuming from suspend or hybernate, a paired bluetooth mouse remains unconnected (unresponsive).
-<div>Make a script that runs when going to suspend, like so</div>
-<div><br>
-</div>
-<div>
-<div><font color="#6A3200">cd /etc/pm/sleep.d</font></div>
-<div><font color="#6A3200">sudo nano 10_bluetooth</font></div>
-<div><br>
-</div>
-</div>
-<div>fill with this&nbsp;</div>
-<div><br>
-</div>
-<div><font color="#274e13">#!/bin/bash</font></div>
-<div><font color="#274e13">. /usr/lib/pm-utils/functions</font></span></div>
-<div><font color="#274e13"><br>
-</font></div>
-<div><font color="#274e13">case "$1" in</font></div>
-<div><font color="#274e13">&nbsp; &nbsp; hibernate|suspend)</font></div>
-<div><font color="#274e13">&nbsp; &nbsp; rfkill block bluetooth</font></div>
-<div><font color="#274e13">&nbsp; &nbsp; ;;</font></div>
-<div><font color="#274e13">&nbsp; &nbsp; thaw|resume)</font></div>
-<div><font color="#274e13">&nbsp; &nbsp; rfkill unblock bluetooth</font></div>
-<div><font color="#274e13">&nbsp; &nbsp; ;;</font></div>
-<div><font color="#274e13">&nbsp; &nbsp; *)</font></div>
-<div><font color="#274e13">&nbsp; &nbsp; ;;</font></div>
-<div><font color="#274e13">esac</font></div>
-<div><font color="#274e13">exit</font></span></div>
-<div><br>
-</div>
-<div>Ctrl-X, y and Enter</div>
-<div>then make it executable</div>
-<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#6A3200">sudo chmod 0755 10_bluetooth</font></span></div>
-<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px"><br>
-</span></div>
-<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px">On wake up, the bluetooth devices should be reconnected and in about 10 sec will be usable again.</span></div>
-<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px"><br>
-</span></div>
+Problem: when resuming from suspend or hybernate, a paired bluetooth mouse remains unconnected (unresponsive).
+
+<br><br>
+Make a script that runs when going to suspend, like so
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/pm/sleep.d/10_bluetooth</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+
+and fill with this
+<br>
+<form>
+<textarea name="T" id="file" rows="14" cols="50">
+#!/bin/bash
+. /usr/lib/pm-utils/functions
+
+case "$1" in
+  hibernate|suspend)
+  rfkill block bluetooth
+  ;;
+  thaw|resume)
+  rfkill unblock bluetooth
+  ;;
+  *)
+  ;;
+esac
+exit</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+save it and make it executable
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo chmod 0755 /etc/pm/sleep.d10_bluetooth</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+On wake up, the bluetooth devices should be reconnected and in about 10 sec will be usable again.
 
 </div>
+

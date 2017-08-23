@@ -450,7 +450,7 @@ firestarter is no longer maintained, so you are better off using iptables for fi
 
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad rxvt-unicode bash-completion command-not-found htop gparted</textarea>
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf leafpad rxvt-unicode bash-completion command-not-found htop gparted</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -461,18 +461,18 @@ I took out <span style="color:#7C2020">synaptic apt-xapian-index gdebi</span> as
 <br><br>
 Again, you can choose between chromium, iceweasel and midori, you have wicd instead of network-manager-gnome, and you can set up ip tables instead of firestarter (see my <a href="{{site.baseurl}}/config/firewall.html">firewall</a> page)
 <br><br>
-It's possible to run openbox alone without installing the lxde package (but just the parts of it you might need) and without even a Display Manager (login screen etc), but its a little complex to set up unless you're a Debian user already.
+It's possible to run openbox alone without installing the lxde package (but just the parts of it you might need) and without even a Display Manager (login screen etc), but its a little complex to set up unless you're handy with Debian already.
 <br><br>
 To do that I leave out lxde and lightdm, and add instead: <span style="color:#7C2020">openbox lxpanel lxtask leafpad</span>.  Then at boot, when reaching the command prompt, just type "startx" and Enter. But you may have problems with Xorg display permissions if you opt out of installing a display manager -see <a href="{{site.baseurl}}/netinstall/lxde-fast.html#xorg">Xorg issue</a> 
 <br><br>
 <span class="ht">Warning! this is not perhaps a good idea for beginner Debian users.</span> Installing LXDE will be more straightforward. But see see my page, <a href="{{site.baseurl}}/config/plain-openbox.html">plain openbox</a> if this is the way you want to go!
 
 <br><br><br>
- <b>In case you ran Netinstall without an internet connection</b>, you will need to check these are installed:
+ <b>In case you ran Netinstall without an internet connection</b>, you will need to check these are installed (check anyway):
 
 <form>
-<textarea name="T" id="install" rows="1" cols="50">
-apt-get install consolekit aptitude sudo gksu grub2 laptop-mode-tools network-config iw</textarea>
+<textarea name="T" id="install" rows="1" cols="100">
+apt-get install consolekit aptitude sudo gksu grub2 laptop-mode-tools network-config iw rfkill lshw</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -490,8 +490,8 @@ There are alternative file browsers too, such as xfe (with no bookmarking except
 But for those bored of GUI mouse-clicking browsers there's Ranger, a file browser which runs in a terminal window (takes up my 2nd desktop in full screen) - see my <a href="{{site.baseurl}}/config/ranger.html">ranger page</a>.
 <br><br>
 <form>
-<textarea name="T" id="install" rows="2" cols="80">
-apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra thunar-media-tags-plugin xdg-user-dirs</textarea>
+<textarea name="T" id="install" rows="2" cols="100">
+apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra thunar-media-tags-plugin xdg-user-dirs exiftool</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -499,16 +499,17 @@ apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugi
 <h3>Additional installs</h3>
 Prepare for bluetooth, NTFS and FAT32 support, ssh, archiving, Java, printing, pgp and time
 <form>
-<textarea name="T" id="install" rows="3" cols="80">
-apt-get install bluetooth blueman ntfs-3g sshfs blktool dosfstools mtools testdisk gvfs-backends zip unzip bzip2 p7zip-full openjdk-7-jre icedtea-7-plugin locate git less cups gpa ntp</textarea>
+<textarea name="T" id="install" rows="2" cols="100">
+apt-get install bluetooth blueman ntfs-3g sshfs blktool dosfstools mtools testdisk gvfs-backends zip unzip bzip2 p7zip-full openjdk-8-jre icedtea--plugin locate git less cups gpa ntp</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
 (note that, the opensource java, openjdk and icedtea actually change their name with each new version - I suppose it will be 8 next)
 
 
 <br><br>
 <br><br>
-before booting into the desktop, you could set up the wireless and edit your sudoers file (below)
+before booting into the desktop, you could set up the wireless and edit your sudoers file (see below)
 <br>
 unmount any usb device that you might have used files from, with '<i>umount /mnt</i>'
 <br>
@@ -539,6 +540,8 @@ or, add the sudo group to sudoers, which is the more recommended practice:
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
+note: if you add a user name line with "ALL=(ALL:ALL) ALL" under the %sudo group line, it will supersede the group line, so that the sudo group actually won't be effective!
+<br><br>
 write to file by Ctrl-X, y, Enter, and if you switched to root then type '<i>exit</i>' and Enter to return to normal user.
 
 <br><br>
@@ -613,7 +616,9 @@ sudo dhclient wlan0</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-or sometimes using `wlan1`, depending on your wireless hardware.
+or sometimes using `wlan1`, depending on your wireless hardware. 
+<br><br>
+<b>Note:</b> you can check what device it is using `ifconfig` (my wireless changed to "wlp3s0")
 
 
 <br><br>

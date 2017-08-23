@@ -9,80 +9,101 @@ id: help
 
 <div class="cont">
 
-I've never needed to find out this info, as I seem to always be installing Debian on laptops. &nbsp;But just now I installed on a desktop PC and the screen resolution was somewhat stuck on a low setting with no options in Preferences &gt; Monitor Settings to set 1920x1080 pix. &nbsp;
-<div><br>
-</div>
-<div>So, whether its a proprietry driver&nbsp;or its the kernel's driver that&nbsp;</span>didn't detect the monitor's capabilities, we might need to add a config file to tell the system what res to turn on the screen with.</span></div>
-<div><br>
-</div>
-<div>What we need to do is edit the "Monitor" and "Screen" sections of Xorg.conf - and I read that if there is no Xorg.conf file around (in /etc/X11 - and its not there any more by default as X loads up device settings as it sees them during boot) it can be generated with</div>
-<div><font color="#6A3200">cd /etc/X11</font></div>
-<div><font color="#6A3200">X11 -configure&nbsp;</font></div>
-<div>or&nbsp;</div>
-<div><font color="#6A3200">X :1 -configure</font></div>
-<div>(and that's when outside of any display manager - I exit Openbox first)</div>
-<div><br>
-</div>
-<div>But I only got an error and no file made.</div>
-<div><br>
-</div>
-<div>The next option is to create a file in /etc/X11/xorg.conf.d/ with just the Sections that we want Xorg to make the settings for,</div>
-<div><font color="#6A3200">sudo mkdir&nbsp;/etc/X11/xorg.conf.d</span></font></div>
-<div><font color="#6A3200">sudo leafpad&nbsp;</span>/etc/X11/xorg.conf.d/10-monitor.conf</span></font></div>
-<div><br>
-</span></div>
-<div>For my resolution requirement I put these lines in the file:</span></div>
-<div><font color="#0F4F0B">Section "Monitor"</font></span></div>
-<div><font color="#0F4F0B">Identifier &nbsp; "Monitor0"</font></span></div>
-<div><font color="#0F4F0B">HorizSync &nbsp; &nbsp;30.0 - 86.0</font></span></div>
-<div><font color="#0F4F0B">VertRefresh &nbsp;56.0 - 76.0</font></span></div>
-<div><font color="#0F4F0B">Modeline &nbsp; &nbsp; "1920x1080" &nbsp;173.00 &nbsp;1920 2048 2248 2576 &nbsp;1080 1083 1088 1120 -hsync +vsync</font></span></div>
-<div><font color="#0F4F0B">Option &nbsp; &nbsp;"PreferredMode" "1920x1080"</font></span></div>
-<div><font color="#0F4F0B">EndSection</font></span></div>
-<div><font color="#0F4F0B"><br>
-</font></span></div>
-<div><font color="#0F4F0B"><br>
-</font></span></div>
-<div><font color="#0F4F0B">Section "Screen"</font></span></div>
-<div><font color="#0F4F0B">Identifier "Screen0"</font></span></div>
-<div><font color="#0F4F0B">Device &nbsp; &nbsp; "Device0"</font></span></div>
-<div><font color="#0F4F0B">Monitor &nbsp; &nbsp;"Monitor0"</font></span></div>
-<div><font color="#0F4F0B"><br>
-</font></span></div>
-<div><font color="#0F4F0B">SubSection "Display"</font></span></div>
-<div><font color="#0F4F0B">Depth &nbsp; &nbsp; 24</font></span></div>
-<div><font color="#0F4F0B">Modes &nbsp; &nbsp;"1920x1080"</font></span></div>
-<div><font color="#0F4F0B">EndSubSection</font></span></div>
-<div><font color="#0F4F0B">EndSection</font></span></div>
-<div><br>
-</span></div>
-<div>you can add modelines to Monitor section and modes to Screen section, as you need.</span></div>
-<div><br>
-</span></div>
-<div>You get the modeline by this command</div>
-<div><font color="#6A3200">cvt 1920 1080 60</font></div>
-<div>ie cvt &lt;width&gt; &lt;height&gt; &lt;refresh-rate&gt;</div>
-<div><br>
-</div>
-<div><br>
-</div>
-<div><br>
-</div>
-<div>If you are using a specific graphics card, then that might need adding too, with</div>
-<div><font color="#0F4F0B">Section "Device"</font></div>
-<div><font color="#0F4F0B">&nbsp; &nbsp; Identifier &nbsp; &nbsp;"Device0"</font></div>
-<div><font color="#0F4F0B">&nbsp; &nbsp; Driver &nbsp; &nbsp; &nbsp; &nbsp;"driver-name" #Choose the driver used for this monitor</font></div>
-<div><font color="#0F4F0B">EndSection</font></div>
-<div><br>
-</div>
-<div><br>
-</span></div>
-<div>Detailed manual is here&nbsp;<a href="http://www.x.org/archive/current/doc/man/man5/xorg.conf.5.xhtml">http://www.x.org/archive/current/doc/man/man5/xorg.conf.5.xhtml</a></div>
-<div><br>
-</span></div>
-<div>
-<div>A second monitor will need its own entries, and Monitor0, Screen0 and Device0 will change to&nbsp;Monitor1, Screen1 and Device1.</span></div>
-<div>see&nbsp;<a href="https://gist.github.com/daemox/6325050">https://gist.github.com/daemox/6325050</a></div>
-</div>
+I've never needed to find out about setting the screen resolution, as I seem to always be installing Debian on laptops. But just now I installed on a desktop PC and the screen resolution was somewhat stuck on a low setting with no options in Preferences &gt; Monitor Settings to set 1920x1080 pix. 
+<br><br><br>
 
+So, whether its a propriety driver or its the kernel's driver that isn't detecting the monitor's capabilities, we might need to add a config file to tell the system what res to turn on the screen with.
+<br><br><br>
+
+What we need to do is edit the "Monitor" and "Screen" sections of xorg.conf - and I read that if that file is not around (in /etc/X11 - and its not there any more by default as X loads up device settings as it sees them during boot) it can be generated with,
+<br>
+<form><textarea name="T" id="cmd" rows="2" cols="30">
+cd /etc/X11
+X11 -configure</textarea>
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+or exit Openbox (ie stop any display manager running X) and run<br>
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+X :1 -configure</textarea>
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+
+But I only got an error and no file made.
+<br><br><br>
+
+The next option is to create a file in /etc/X11/xorg.conf.d/ with just the Sections that we want Xorg to make the settings for,
+
+
+<form><textarea name="T" id="cmd" rows="2" cols="80">
+sudo mkdir/etc/X11/xorg.conf.d
+sudo nano /etc/X11/xorg.conf.d/10-monitor.conf</textarea>
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+For my resolution requirement I put these lines in the file:
+
+<form><textarea name="T" id="file" rows="18" cols="100">
+Section "Monitor"
+  Identifier  "Monitor0"
+  HorizSync  30.0 - 86.0
+  VertRefresh 56.0 - 76.0
+  Modeline   "1920x1080" 173.00 1920 2048 2248 2576 1080 1083 1088 1120 -hsync +vsync
+  Option  "PreferredMode" "1920x1080"
+EndSection
+
+Section "Screen"
+  Identifier "Screen0"
+  Device   "Device0"
+  Monitor  "Monitor0"
+
+  SubSection "Display"
+   Depth   24
+   Modes  "1920x1080"
+  EndSubSection
+EndSection</textarea>
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+<br>
+
+you can add modelines to Monitor section and modes to Screen section, as you need.
+<br><br>
+
+You get the modeline by this command
+
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+cvt 1920 1080 60</textarea>
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+ie, `cvt &lt;width&gt; &lt;height&gt; &lt;refresh-rate&gt;`
+<br><br>
+<br>
+
+If you are using a specific graphics card, then that might need adding too, with
+
+<form><textarea name="T" id="file" rows="4" cols="80">
+Section "Device"
+  Identifier  "Device0"
+  Driver    "driver-name" #Choose the driver used for this monitor
+EndSection</textarea>
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+Detailed manual is here<a href="http://www.x.org/archive/current/doc/man/man5/xorg.conf.5.xhtml">www.x.org/archive/...</a>
+<br><br><br>
+
+
+A second monitor will need its own entries, and Monitor0, Screen0 and Device0 will change to Monitor1, Screen1 and Device1.<br>
+see<a href="https://gist.github.com/daemox/6325050">https://gist.github.com/daemox/6325050</a>
+<br><br><br><br><br><br>
+</div>
 </div>

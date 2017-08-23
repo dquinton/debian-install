@@ -24,7 +24,7 @@ from <a href="https://www.reddit.com/r/archlinux/comments/2vb1wm/artificially_bo
 
 <form><textarea name="T" id="cmd" rows="1" cols="50">
 touch ~/.asoundrc </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 or `sudo touch /etc/asound.conf`
@@ -44,7 +44,7 @@ pcm.softvol {
     control { name "PCM"; card 0; }
     max_dB 32.0
 } </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -53,7 +53,7 @@ then do
 <form><textarea name="T" id="cmd" rows="2" cols="50">
 sudo rm /var/lib/alsa/asound.state
 sudo alsactl store </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
@@ -75,14 +75,14 @@ So how to make Alsa forget an old unneeded control?  The answer was here <a href
 <br>
 <form><textarea name="T" id="cmd" rows="1" cols="50">
 sudo rm /var/lib/alsa/asound.state </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 then make alsactl non-executable to prevent settings being written on shutdown
 
 <form><textarea name="T" id="cmd" rows="1" cols="50">
 sudo chmod -x /usr/sbin/alsactl  </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -91,7 +91,7 @@ reboot and restore alsactl to be executable, and store alsactl again
 <form><textarea name="T" id="cmd" rows="2" cols="50">
 chmod +x /usr/sbin/alsactl
 sudo alsactl store</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 Note: after that I needed another restart and when I opened alsa mixer I had to bring PCM down to a moderate level (<43 for audio file).

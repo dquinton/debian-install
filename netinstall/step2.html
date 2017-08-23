@@ -132,7 +132,16 @@ Icon=/home/user/kdenlive/extracted/kdenlive.png</textarea>
 </form>
 <br>
 just change your user name!
-<br><br>
+<br><br><br>
+
+Also, important, make the kdenlive runtime dir with..
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo mkdir /run/user/1000
+sudo chown -R $USER:$USER /run/user/1000</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
 
 
  <br><br>

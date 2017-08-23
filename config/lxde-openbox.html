@@ -167,11 +167,10 @@ gtk2-engines-xfce gtk2-engines-murrine gtk2-engines-cleanice gtk2-engines-aurora
 <h3>Mouse cursor themes</h3>
 <form>
 <textarea name="T" id="install" rows="1" cols="100">
-sudo apt-get install dmz-cursor-theme xcursor-themes chameleon-cursor-theme moblin-cursor-theme</textarea>
+sudo apt-get install dmz-cursor-theme xcursor-themes moblin-cursor-theme</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-(I've decided I don't like chameleon!)
 
 <br><br>
 <br><br>
@@ -186,16 +185,16 @@ cp -r theme-name ~/.themes</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-Rename the theme if you still want to have the original to revert to (in /usr/share/) and enter its name in the ~/.config/gtk-3.0 config file. Then see below about setting colours.
+Rename the theme if you still want to have the original to revert to (in /usr/share/) and either select it in the lxappearance dialogue, or enter its name in the ~/.config/gtk-3.0 config file. Then see below about setting colours.
 <br><br>
-So now gtk2 themes work with gtk2 apps, and gtk3 themes with gtk3 apps....
-And if all apps are heading for gtk-3, you need to prepare for it - audacious has gone gtk-3 and will revert to gtk-2 and soon will port to Qt.
+So now gtk2 themes work with gtk2 apps, and gtk3 themes with gtk3 apps.... The problem is if you select a gtk2 theme which doesn't look happy in gtk3 apps :(
+And if all apps are heading for gtk-3, help! GTK3 css is quite complex. audacious has gone gtk-3 and will revert to gtk-2 and soon will port to Qt.
 <br><br>
 gtk-2.0 themes have a "gtkrc" file with all its settings and can be copied to ~/.themes/theme-name/gtk-2.0 and edited there.<br>
 gtk-3.0 themes have a "gtk.css " file that goes in ~/.themes/theme-name/gtk-3.0<br>
 <a href="http://worldofgnome.org/">http://worldofgnome.org/</a>
 <br><br>
-There is no GUI that can give us total control of our gtk-3 themes, so we have to edit the css files by hand.  These Gnome people are forcing us to do a whole lot of work, just so we get our desktop colours right!  And how will PC learners cope with that?  I hope there will be a GUI in the future.
+There is no GUI that can give us total control of our gtk-3 themes, so we have to edit the css files by hand.  What a load of work, just so we get our desktop colours right!  And how will PC learners cope with that?  I hope there will be a GUI in the future.
 
 <br><br>
 <br><br>
@@ -533,8 +532,7 @@ To use yad, which looks nicer than zenity, use this line in the script:
 file=$(yad --width=300 --height=400 --list --undecorated --text "Select file to open"  --column File sources.list fstab autostart rc.xml menu.xml menu-utility.xml 'ranger rc.conf' --separator='')</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-You will also need to install yad (improved zenity)... from <a href="https://code.google.com/p/yad/downloads/list">../yad/downloads/list</a>
-(download, unpack and install with <span style="color:#994900;">./configure, make, sudo make install</span> )
+You will also need to install yad (improved zenity)...
 <br><br><br>
 
 <h3>Menu Icons</h3>
@@ -560,8 +558,16 @@ and then every menu entry in your menu.xml file needs an icon location added (so
 copy icons from wherever you can find them in /usr/share/icons/hicolor/48x48/apps/ etc. into somewhere convenient, such as openbox/icons/<br>
 this page might help <a href="http://lxlinux.com/openbox.html">http://lxlinux.com/openbox.html</a>
 <br><br><br><img src="{{site.baseurl}}/zimages/obmenu-utility.jpeg" width="150" height="379" alt="my OB menu" align="right">
+<br><br>
 
-<span class="bblue">But, if I hide my openbox config files and reconfigure, I get a fresh OB menu with a Debian menu full of the installed applications, with icons.</span>
+To add an app menu, you need to install openbox-menu, and include a line like this in your menu.xml file:
+<form>
+<textarea name="T" id="file" rows="2" cols="80">
+<menu execute="openbox-menu lxde-applications.menu" id="desktop-app-menu" label="All Apps"/></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+the menu name can be any menu you have in /etc/xdg/menus (e.g. lxde-applications.menu, xfce-applications.menu)
 <br><br>
 <br><br>
 <h2 id="11b" class="tag">Make a second menu for utility apps</h2>

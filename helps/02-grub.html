@@ -8,7 +8,7 @@ id: help
 <div class="onpage">
   <ul>
     <li>
-        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+        On this page    <a href="#">TOP</a>
              <ul>
                 <li><a href="#1">Super Grub2</a></li>
                 <li><a href="#2">Boot Repair Disk</a></li>
@@ -17,8 +17,8 @@ id: help
                 <li><a href="#5">custom entry </a></li>
               </ul>
     </li>
-  </ul>
-</div>
+  </ul></div>
+
 
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
@@ -33,7 +33,7 @@ id: help
 
 <div class="cont">
 
-GRUB is the Linux boot manager. When a new system is installed, GRUB needs to be installed to the harddisk and it has to updated with the system type and partition so that it can boot it correctly. If you add another OS to another partition, GRUB needs updating again so that it can list and boot that new OS. 
+GRUB is the Linux boot manager. When a new system is installed, GRUB needs to be installed to the harddisk and it has to be updated with the system type, kernel and partition in order to boot it correctly. If you add another OS to another partition, GRUB needs updating again so that it can list and boot that new OS. 
 
 <br><br>
 
@@ -53,7 +53,7 @@ With the system up you can install GRUB and update it easily. As root,
 apt-get install grub
 grub-install /dev/sda
 update-grub</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -66,9 +66,9 @@ My no.2 was a gui program called Grub customizer... but as I never use it any mo
 
 <a href="http://sourceforge.net/projects/boot-repair-cd/" rel="noreferrer">http://sourceforge.net/projects/boot-repair-cd/</a>
 <br><br>
-Run this Live CD and the Recovery app automatically searches for OS's present. Open the Advanced options to choose a location to install GRUB (set it to the root of your main harddisk, e.g. sda) and any other particulars.
+Run this Live CD and the Recovery app automatically searches for OS's present. Open the Advanced options to choose a location to install GRUB (set it to the root of your main harddisk, e.g. /dev/sda) and any other particulars.
 <br><br>
-This is a more friendly GUI app for those unsure of a terminal.
+This is a friendly GUI app for those unsure of a terminal.
 <br><br>
 You can install Boot repair to your system as well, but to detect and repair GRUB it must be run during a live session, and the version installed is arch specific, so 32bit will not repair GRUB on a 64bit system - as essentially it's chrooting.
 <br>
@@ -79,9 +79,10 @@ You can install Boot repair to your system as well, but to detect and repair GRU
 
 
 <li> 2. install glad2script - download and install the .deb package from <a href="https://launchpad.net/glade2script">https://launchpad.net/glade2script</a></li>
+
 <form><textarea name="T" id="install" rows="1" cols="30">
 sudo dpkg -i glad <Tab> </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <li> 3. get and install parted <a href="https://packages.debian.org/wheezy/parted">https://packages.debian.org/...</a></li>
@@ -105,14 +106,14 @@ chroot /mnt
 grub-install /dev/sda
 update-grub
 exit </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 and unmount the system with
 <form><textarea name="T" id="cmd" rows="2" cols="30">
 umount /mnt/{proc,sys,dev}
 umount /mnt </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -132,7 +133,7 @@ type "rescue" at boot prompt ? or select Advanced Graphical Rescue Mode</li>
 <li> test the internet connection with </li>
 <form><textarea name="T" id="cmd" rows="1" cols="30">
 ping debian.org </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <li> edit /etc/apt/sources.list if necessary, then install Grub</li>
@@ -141,7 +142,7 @@ ping debian.org </textarea>
 ping debian.org apt-get update
 apt-get install grub
 grub-install /dev/sda </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <li> reboot</li>
@@ -186,3 +187,4 @@ There are ways to set how the different systems on a box appear on the Grub menu
 
 <br><br><br><br><br>
 </div>
+</div></div>
