@@ -100,12 +100,12 @@ cannot create a new folder in the left pane favorites tree (Favorites doesn't up
 
 <br><br><br><br>
 
-<h2 id="4" class="tag">Search Similar files tool</h2>
+<h3 id="4" class="tag">Search Similar files tool</h3>
 
 <br>
 Find this on the Tools menu. You can load files to compare with another directory for similar file name, file data or picture content. When you have selected files and/or folders, hit OK and the tool searches. The results show up in a new window, and similar files/photos sit side-by-side. You can then copy/move/delete either one of them by buttons under the images. It would be nice if you could select all and copy but you can't!</div>
 
-<br><br>
+<br><br><br>
 <h3>Search for Originals on back-up media?</h3>
 <br>
 I wanted to use the Search similar files tool for this but it was going to take too much time, searching and copying files one by one from the search result.
@@ -131,10 +131,10 @@ leafpad ~/scripts/findcopypics</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form></li>
  
-<li>and fill it with this content
+<li>and fill it with this content</li>
 
 
-<form><textarea name="T" id="file" rows="12" cols="80">
+<form><textarea name="T" id="file" rows="11" cols="100">
 #!/bin/bash
 dir=somewhere/to/search/
 dest=somewhere/to/copy/to/
@@ -142,11 +142,11 @@ toCopyList=/directory/images/copylist
 notCopied=/directory/images/missed
 
 while read line; do find "$dir" -name "$line" -exec cp '{}' $dest \; -printf "%f\n" 
-done &lt; "$toCopyList" &gt; cpList
+done < "$toCopyList" > cpList
 
-cat cpList "$toCopyList" | sort | uniq -c | sed -nr '/^ +1/s/^ +1 +(.*)/\1/p' \ &gt; "$notCopied"</textarea>
+cat cpList "$toCopyList" | sort | uniq -c | sed -nr '/^ +1/s/^ +1 +(.*)/\1/p' \ > "$notCopied"</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form></li>
+</form>
 
 <li>save that file and make it executable 
 <form><textarea name="T" id="cmd" rows="1" cols="50">

@@ -10,10 +10,9 @@ id: net
     <li>
         On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
              <ul>
-                <li><a href="#1">Kdenlive</a></li>
+                <li><a href="#1">Video editors</a></li>
                 <li><a href="#1a">Latest ffmpeg</a></li>
-                <li><a href="#2">More video editors</a></li>
-                <li><a href="#3">XnView Multi Platform</a></li>
+                <li><a href="#3">Image cataloguer/editor</a></li>
                 <li><a href="#4">Libre Office</a></li>
              </ul>
     </li>
@@ -22,10 +21,9 @@ id: net
 
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
-   <a href="#1">Kdenlive</a><br>
+   <a href="#1">Video editors</a><br>
    <a href="#1a">Latest ffmpeg</a><br>
-   <a href="#2">More video editors</a><br>
-   <a href="#3">XnView Multi Platform</a><br>
+   <a href="#3">Image cataloguer/editor</a><br>
    <a href="#4">Libre Office</a><br>
 </td></tr></table></div>
 
@@ -34,15 +32,63 @@ id: net
 <div class="cont">
 
 <br>
-<h2 id="1" class="tag">Kdenlive</h2>
+<h2 id="1" class="tag">Video editors</h2>
 <br>
-Updated 06-2017
+Updated 08-2017
+<br><br><br>
+
+<span style="color: #1818B3; ">
+<b>____Basic____</b></span>
+<br><br><br>
+<h3>Pitivi</h3>
+available from repo or as a "flatpak" from <a href="http://developer.pitivi.org/Install_with_flatpak.html">pitivi.org</a>
 <br><br>
-Kdenlive is KDE's non-linear video editor (hence its name.. KDE-n-li-v-e) that is both powerful and easy to use. It's also well supported online. <br>
+if the install fails with "Error resolving 'sdk.gnome.org': Name or service not known", try backup /etc/resolv.conf and then change "nameserver" to 8.8.8.8
+<br><br>
+
+<br>
+<h3>Flowblade</h3> 
+another non-linear video editor, and it looks good <a href="https://github.com/jliljebl/flowblade">github.com/jliljebl/flowblade/</a> 
+<br><br>
+Download the binary archive (.deb) from "Releases" and install it with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo dpkg -i flowblade</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+(hit Tab to complete package name)
+<br><br>
+then sort out dependencies with:
+<br>
+<form>
+<textarea name="T" id="install" rows="1" cols="30">
+sudo apt-get install -f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+<br>
+<h3>Openshot</h3> 
+available as an AppImage from <a href="http://www.openshot.org/download/">openshot.org</a>
+<br><br>
+
+<br>
+<h3>Shotcut</h3> 
+(with its amazingly bad name).... available from <a href="https://shotcut.org/download/">shotcut.org</a> 
+<br><br>
+
+
+And see here <a href="https://opensource.com/article/16/12/yearbook-top-open-source-creative-tools-2016">https://opensource.com..</a>
+<br><br>
+<br><br>
+<span style="color: #1818B3; ">
+<b>____Intermediate____</b></span>
+<br><br><br>
+<h3>Kdenlive</h3> 
+KDE's non-linear video editor (hence its name.. KDE-n-li-v-e) that is both powerful and easy to use. It's also well supported online. <br>
 I give some tips on it on my page, <a href="../tutorial/04-working-with-hd-video.html">working with HD video</a>.
 <br><br><br>
 
-<h3>Basic install</h3>
+(Basic install)<br>
 If you're not to concerned about getting the latest codecs, you can use this install line - and if you run Debian testing then kdenlive should be quite up to date.
 
 <br><br>
@@ -56,17 +102,36 @@ sudo apt-get install x264 libmp3lame0 libquicktime2 kdenlive frei0r-plugins dvgr
 Note: since Deboian 8 (Jessie), kdenlive depends on libav-tools - no longer ffmpeg.
 <br><br><br>
 
-<b> <a href="kdenlive.html">Kdenlive page</a>... </b>see this page for info on installing the <b>Appimage</b> or from source.
+(Latest release) </b> see <a href="kdenlive.html">my kdenlive page</a> for info on installing the Appimage or from source.
 
+<br><br><br>
+<h3>VLMC</h3>
+from <a href="https://code.videolan.org/videolan/vlmc/blob/master/INSTALL.md">videolan.org</a>  (but it looks way difficult to install as vlc is needed first from git source with masses of libs that don't want to install!!)
+<br><br><br>
+<br>
+<span style="color: #1818B3; ">
+<b>____Slightly_Advanced____</b></span>
+
+<br><br><br>
+<h3>Blender</h3>
+a 3D animation tool that doubles as video editor, and with professional looks and features... 
+<br>
+available in the Debian repo or downloaded from <a href="https://www.blender.org/download/">blender.org/..</a>
 <br><br>
+<a href="https://www.linux.com/learn/using-blender-video-editing-software-linux">using-blender-video-editing-software</a>
+<br><br>
+<a href="https://www.youtube.com/playlist?list=PLjyuVPBuorqIhlqZtoIvnAVQ3x18sNev4">Blender Video Editing tutorial by Mikeycal Meyers</a>
+<br><br>
+Blender manual  <a href="https://docs.blender.org/manual/en/dev/editors/vse/sequencer/strips/introduction.html">blender.org/manual/..</a>
+<br><br>
+It's built-in Video Sequence Editor (VSE) is not without issues however, the main one for me being the problem of utilising full CPU power - as it does not simultaneously multi-thread, it switches threads, meaning that only 25% of a four core CPU is at work at any one time.
+<br>
 
 <br><hr noshade="noshade">
-<br><br>
+<br><br><br>
 
 <h2 id="1a" class="tag">Latest ffmpeg</h2>
 <br>
-If you took choice (a) above, and downloaded the stand-alone Appimage Kdenlive, hopefully it will be safe to build ffmpeg on your system without clashing with Kdenlive's MLT, which will run from its sandbox environment.
-<br><br>
 You can either 
 <br><b>
 1.</b> follow the <a href="https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu">ffmpeg build guide</a> (includes building libx264 libx265 libfdk-aac libmp3lame libopus libvpx) 
@@ -102,57 +167,10 @@ sudo make install</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br><hr noshade="noshade">
-<br><br>
 
-<h2 id="2" class="tag">More video editors..</h2><br>
-
-<b>Flowblade</b>, another non-linear video editor, and it looks good <a href="https://github.com/jliljebl/flowblade">github.com/jliljebl/flowblade/</a> 
-<br><br>
-Download the binary archive (.deb) from "Releases" and install it with
-<form>
-<textarea name="T" id="cmd" rows="1" cols="30">
-sudo dpkg -i flowblade</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-(hit Tab to complete package name)
-<br><br>
-then sort out dependencies with:
-<br>
-<form>
-<textarea name="T" id="install" rows="1" cols="30">
-sudo apt-get install -f</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br><br>
-<b>Openshot</b>, available as an AppImage from <a href="http://www.openshot.org/download/">openshot.org</a>
-<br><br>
-There's also <b>pitivi</b> available from repo or as a "flatpak" from <a href="http://developer.pitivi.org/Install_with_flatpak.html">pitivi.org</a>
-<br><br>
-if the install fails with "Error resolving 'sdk.gnome.org': Name or service not known", try backup /etc/resolv.conf and then change "nameserver" to 8.8.8.8
-<br><br><br>
-
-then also.. 
-<br><br>
-<a href="https://shotcut.org/download/"><b>shotcut</b></a> (with its amazingly bad name with no meaning).... 
-<br><br>
-<a href="https://code.videolan.org/videolan/vlmc/blob/master/INSTALL.md"><b>VLMC</b>.....</a> from VLC (but it looks way difficult to install as vlc is needed first from git source with masses of libs that don't want to install)
-
-<br><br>
-And see here <a href="https://opensource.com/article/16/12/yearbook-top-open-source-creative-tools-2016">https://opensource.com..</a>
-
-<br><br><br>
-<b>Blender</b> is there too, a 3D animation tool that doubles as video editor, and with professional looks... in the Debian repo or downloaded from <a href="https://www.blender.org/download/">blender.org/..</a>
-<br><br>
-<a href="https://www.linux.com/learn/using-blender-video-editing-software-linux">using-blender-video-editing-software</a>
-<br><br>
-<a href="https://www.youtube.com/playlist?list=PLjyuVPBuorqIhlqZtoIvnAVQ3x18sNev4">Blender Video Editing by Mikeycal Meyers</a>
-<br><br>
-Blender manual  <a href="https://docs.blender.org/manual/en/dev/editors/vse/sequencer/strips/introduction.html">blender.org/manual/..</a>
-<br>
 <br><br>
 <hr noshade="noshade">
-<br><br>
+<br><br><br>
 
 <h2 id="3" class="tag">Image cataloguers/editors</h2>
 <br><br>
@@ -161,7 +179,7 @@ Blender manual  <a href="https://docs.blender.org/manual/en/dev/editors/vse/sequ
 A very cool image processing program available as a .deb at the forum, <a href="http://newsgroup.xnview.com/viewforum.php?f=82">http://newsgroup.xnview.com/...</a>
 
 <br><br>
-See my <a href="../tutorial/03-image-processing.html">image processing</a> page for tips using XnView, setup and configuring appearance.
+See my <a href="../tutorial/03a-xnview-tips.html">Xnview Tips</a> page for help using XnView, setup and configuring appearance.
 
 <br><br>
 Don't forget gimp and inkscape are useful tools to have, as well as... 
@@ -175,7 +193,7 @@ Offers many good tools for making your shots stand out.
 
 <br><br>
 <hr noshade="noshade">
-<br><br>
+<br><br><br><br>
 
 <h2 id="4" class="tag">Libre Office</h2>
 <br>
