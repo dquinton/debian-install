@@ -109,6 +109,19 @@ sudo apt-get install w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnail
 
 w3m and w3m-image are responsible for in-line preview of images (only with rxvt, urxvt and xterm)
 
+<br><br>
+serious w3m issue: w3mimgdisplay process eats up memory - browsing 50 images can run into a Gb of RAM.
+<br><br>
+there's a patch for it which kills the process after each image preview (but I'm not sure how to use it) <a href="https://github.com/ranger/ranger/issues/451#issuecomment-309900698">..ranger/issues/451#</a>
+
+<form><textarea name="T" id="file" rows="3" cols="50">
+108a109,110
+>         self.quit()
+>         self.is_initialized = False</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
 
 <br><br>
 After installing, copy over the config files so that you can make modifications

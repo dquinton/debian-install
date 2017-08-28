@@ -309,7 +309,7 @@ t=`echo "$*" | grep -Eo '[0-9]{1,}'`
 if [[ $* == *-*k* ]] ; then keep=true ; else keep=false ; fi
 if [[ $* == *-*e* ]] ; then err=true ; else err=false ; fi
 
-pulverize.php "`yad --title='Choose a Blender file' --file \
+pulverize.php "`yad --center --title='Choose a Blender file' --file \
 --filename=$HOME/Projects/blender/ --height=400 --width=500`" $t \
 '{\"keepTempFiles\":$keep,\"displayStdErr\":$err}'</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
