@@ -48,16 +48,18 @@ Blender manual  <a href="https://docs.blender.org/manual/en/dev/editors/vse/sequ
 Here are some main differences of Blender VSE to other non-linear video editors for Linux..
 <br><br>
 
+<li>video clips are called strips, tracks are called channels, rendering is called animation! 
+
 <li>video-audio is immediately split into "strips" when added, therefore moving a strip means that you must select both video + audio atthe same time, also for cutting at the same frame</li>
 
-<li>no overlapping mode - when strips are overlapped the overlapping one highlights red, then on placing it it jumps to the end of the underlying strip - handy for placing strips exactly at end of others.</li>
+<li>there's no overlapping mode - when strips are overlapped the overlapping one highlights red, then on placing it it jumps to the end of the underlying strip - handy for placing strips exactly at end of others.</li>
 <br>
-- means that vid/audio strips need to be cut at whatever frame should be first/last, then pressing Backspace will close the gap between the cut frame and the preceding/next stip.
+- means that vid/audio strips need to be cut at whatever frame should be first/last, then the gap between other strips closed up
 <br><br>
-- the idea is that each strip should to be worked on by itself, not by another strip overlapping it to decide what its last frame should be.
+- the idea is that each strip should to be worked on by itself, not by another strip overlapping it deciding what its last frame should be.
 <br><br>
 
-<li>selection is done by RMB, seek is by LMB on the sequence editor.</li>
+<li>selection is done by RMB, seek position is by LMB on the sequence editor.</li>
 
 <li>the render does not assume that the total length of strips is the total length of the project to be made - rendering uses the frame range for length of output movie.</li>
 </ul>
@@ -111,6 +113,8 @@ its set to play!<br>
 <ul>
 <li>Press <b>Shift-B</b> and drag a box with LMB to select an area to zoom in on
 <li>press <b>Home</b> to zoom out to see the whole length of strips
+<li>mouse scroll zooms in/out
+<li><b>Shift-MMB</b> (middle button) + drag allows you to travel about along or up/down the Sequencer
 </ul>
 
 <br><br><br>
@@ -133,6 +137,7 @@ its set to play!<br>
 <ul>
 <li>Press <b>P </b>and drag an area to set the preview range - play will run through this area over and over, no stopping. That means you can keep playing a particular edit/effect, while you make adjustments to the effects to see the changes live.
 <li><b>Alt-P</b> to clear the range.
+<li>to set the preview range more accurately, set the seek point to the start, then hover on the Timeline and press <b>S </b>, set the seek point to the end of the preview range and then hover the Timeline and press <b>E</b>
 </ul>
 
 <br><br><br>
@@ -153,6 +158,16 @@ you can't overlap strips, they will jump out to find space on the end.
 <ul>
 <li><b>RMB</b> select strips and hit <b>X</b> or <b>Delete</b>, then confirm
 <li><b>Ctrl-Z</b> will also undo the action</ul>
+
+<br><br><br>
+<h3>Cutting strips</h3>
+<ul>
+<li>seek to the cut point (<b>Left/Right</b> keys seek one frame)
+<li><b>RMB</b> select the strip to be cut and press <b>K</b> for a soft cut (ends of strip can be extended again)
+<li><b>or Shift-K</b> to make a hard cut (the ends will be gone)
+<li>select both video and audio strips to cut them together with K, or select them one by one and hit K for each one
+</ul>
+
 
 <br><br><br>
 <h3>Snapping strips</h3>
@@ -192,6 +207,7 @@ To get round that you need to insert gaps at the strip end with <b>Shift-=</b>, 
 <li>move seek point to the end of the clip, click on the Opacity and set to 0, then RC and <b>Insert Keyframe</b>
 <li>Blender will make a smooth transition from one setting to the other between the keyframes, which you can see in the Graph (press Home to show full).
 <li>0 opacity will be showing the base colour which should be black, unless other strips are under the strip on another channel.
+<li>on the graph window you can adjust the curve of the fade by dragging the line (with presets to choose from too)
 </ul>
 
 <br>
@@ -199,6 +215,27 @@ You don't need to make a black colour strip and gamma cross effect (as the tutor
 <br><br><br>
 
 <h3>Transitions</h3>
+
+You can use the above fade-out method pretty well to fade one strip and emerge another strip (the emerging strip should be placed under the fading strip) and this is more professional looking.
+<br><br>
+you can use an effect strip too..
+<br>
+<ul>
+<li>set the strips you want to transition in an overlapping position on different channels
+<li>select both strips (video only or both video/audio)
+<li>go to <b>Add > Effect strip > Gamma Cross</b>
+<li> or you can use Wipe, which is more comical - and look in the properties to the right, scroll down to Transition and select which one you want 
+</ul>
+
+
+<h3>Colour correction</h3>
+
+<ul>
+<li>select a strips and go to properties on the right, scroll down to Add Modifier, select what you need and use the colour swabs below
+<li>to apply colour enhancements to multiple strips, without adding modifiers to each one, go to <b>Add > Effect Strip >Adjustment Layer</b>
+<li>then select the end of the strip, <b>G </b>to grab, drag to extend - or select and <b>S</b> to snap to the seek point
+<li> then you go to Add Modifier again in properties and adjust how you like
+</ul>
 
 
 
@@ -232,8 +269,9 @@ sudo apt-get install php7.0</textarea>
 </form>
 
 <br><br>
-
-save your blender output to a dir, no file name.
+For best results (concatenating with ffmpeg) set the video to MPEG/MP4/H264 (i.e. File format {container}/output file {extension}/encoding codec)
+<br><br>
+set the output file to a dir, without file name, and save to a blender project file.
 <br><br>
 
 
@@ -242,21 +280,56 @@ pulverize.php &#60;blender_project_file> [&#60;number_of_processes>] [&#60;optio
 <br><br>
 e.g.
 <form>
-<textarea name="T" id="cmd" rows="1" cols="80">
-pulverize.php project.blend 4 '{\"displayStdErr\":true}'</textarea>
+<textarea name="T" id="cmd" rows="1" cols="100">
+pulverize.php project.blend 4 '{\"keepTempFiles\":true,\"displayStdErr\":true}'</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
 <br>
-if you state too many threads, it will default to half of real no. threads.
+if you state too many threads, or none, it will default to half of real no. threads.
 
 <br><br>
 
 
-For the portable app, not installed with package manager, need to symlink the app in /usr...
+In order for the script to run properly with the portable app version, (ie not installed with package manager) you need to symlink the app in /usr/bin
 <br><br>
 ln -s path/to/your/blenderdir/blender /usr/bin/blender
-<br><br><br><br>
+<br><br><br>
+
+
+Let's further script this so that we get a file chooser pop up, in order to be able to run the script from anywhere, e.g. while browsing the video target dir..
+<br><br>
+using yad...
+<form>
+<textarea name="T" id="file" rows="9" cols="80">
+#!/bin/bash
+
+t=`echo "$*" | grep -Eo '[0-9]{1,}'`
+if [[ $* == *-*k* ]] ; then keep=true ; else keep=false ; fi
+if [[ $* == *-*e* ]] ; then err=true ; else err=false ; fi
+
+pulverize.php "`yad --title='Choose a Blender file' --file \
+--filename=$HOME/Projects/blender/ --height=400 --width=500`" $t \
+'{\"keepTempFiles\":$keep,\"displayStdErr\":$err}'</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+I call this script 'run-pulverize'
+<br><br>
+run like so..
+<br>
+<form>
+<textarea name="T" id="file" rows="1" cols="30">
+run-pulverize -ke4</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+'t' is the cpu threads value, found out from the command line by grep <br>
+-k and -e are the keep files and error options (but I'm not sure they really work) - they can be given individually or joined, like -ke or -ek<br>
+the if command in the script checks if the flags are on the command line or not<br>
+<br>
+
+<br>
 
 </div>
