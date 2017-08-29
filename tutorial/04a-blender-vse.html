@@ -1,0 +1,335 @@
+---
+layout: default
+description: Video editing using Blender's VSE - by D Quinton
+title: Blender's Video Sequence Editor
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">What's different</a></li>
+                <li><a href="#2">My Tips</a></li>
+                <li><a href="#3">Multi-threading with Pulverize</a></li>
+             </ul>
+    </li>
+  </ul> 
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">What's different</a><br>
+   <a href="#2">My Tips</a><br>
+   <a href="#3">Multi-threading with Pulverize</a><br>
+</td></tr></table></div>
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+
+Blender can look quite confusing for the first time, especially as it has so many functions in its main role of producing 3D animations. Its Sequence Editor has a slightly different approach to making movies than other editors and it's a very good idea to spend time with the video tutorials online first, so that things become obvious.
+<br><br>
+<a href="https://www.linux.com/learn/using-blender-video-editing-software-linux">using-blender-video-editing-software</a>
+<br><br>
+<a href="https://www.youtube.com/playlist?list=PLjyuVPBuorqIhlqZtoIvnAVQ3x18sNev4">Blender Video Editing tutorial by Mikeycal Meyers</a>
+<br><br>
+Blender manual  <a href="https://docs.blender.org/manual/en/dev/editors/vse/sequencer/strips/introduction.html">blender.org/manual/..</a>
+<br><br>
+<br>
+
+
+
+<h2 id="1" class="tag">What's different</h2>
+
+<div class="bullet"><ul>
+
+Here are some main differences of Blender VSE to other non-linear video editors for Linux..
+<br><br>
+
+<li>video clips are called strips, tracks are called channels, rendering is called animation! 
+
+<li>video-audio is immediately split into "strips" when added, therefore moving a strip means that you must select both video + audio atthe same time, also for cutting at the same frame</li>
+
+<li>there's no overlapping mode - when strips are overlapped the overlapping one highlights red, then on placing it it jumps to the end of the underlying strip - handy for placing strips exactly at end of others.</li>
+<br>
+- means that vid/audio strips need to be cut at whatever frame should be first/last, then the gap between other strips closed up
+<br><br>
+- the idea is that each strip should to be worked on by itself, not by another strip overlapping it deciding what its last frame should be.
+<br><br>
+
+<li>selection is done by RMB, seek position is by LMB on the sequence editor.</li>
+
+<li>the render does not assume that the total length of strips is the total length of the project to be made - rendering uses the frame range for length of output movie.</li>
+</ul>
+
+<br><br><br>
+
+<h2 id="2" class="tag">My Tips</h2>
+<br><br>
+<h3>Window arrangement</h3>
+<ul>
+<li>Open Blender and select Video Editing layout from first drop-down at top.
+<li>drag the preview from right over to the left and make the new far right window a Properties.
+<li>make the left window Graph if you like.
+<li>under File, Save Startup File - so that reopening Blender it will be ready for video editing.
+</ul>
+
+<br><br>
+<h3>Theme</h3>
+<ul>
+<li>open User Preferences in the left window
+<li>Themes tab
+<li>choose a preset - I selected Ubuntu and adjusted the graph and sequencer backgrounds a little lighter
+</ul>
+
+<br><br>
+<h3>Set Spacebar to play/pause animation..</h3>
+<ul>
+<li>open User Preferences in one window (select from type icon)
+<li>go to Input tab and expand Sequencer and Frame
+<li>click on Add New then expand it and paste "screen.animation_play" to the first box (which reads "none")
+<li>click on the second box twice and press <b>Spacebar</b>
+<li>make one for both Sequencer and Frame for the shortcut to be active when the mouse hovers these windows (including the preview window) 
+its set to play!<br>
+(this will stop Space from bringing up shortcut search!)
+<li>Click Save User Settings too.
+</ul>
+
+
+<br><br>
+<h3>Adding video strips</h3>
+<ul>
+<li>click on Add > Movie
+<li>select files (hold Shift for multiple)
+<li>once the strips are on the sequencer, check that the no. of frames for audio = no. frames for video - if audio shows more, go to the project properties and adjust the <b>Frame rate </b>to the correct value, e.g. 24, 25, 29.97 etc - so that the audio and video match up for frames. 
+<li>if the video looks squashed or stretched, RMB on the video strip and go to <b>Strip</b> (below) <b>> Render size</b> to set the strip's dimensions to the properties window - as your saved properties may be set to 1080p resolution and the video you're working with is different.
+<li>if it still looks skewiff after that, go to the properties and adjust the <b>Aspect Ratio</b> to correct value (sometimes needs 1:1)
+</ul>
+
+<br><br><br>
+<h3>Zooming in on the Sequencer</h3>
+<ul>
+<li>Press <b>Shift-B</b> and drag a box with LMB to select an area to zoom in on
+<li>press <b>Home</b> to zoom out to see the whole length of strips
+<li>mouse scroll zooms in/out
+<li><b>Shift-MMB</b> (middle button) + drag allows you to travel about along or up/down the Sequencer
+</ul>
+
+<br><br><br>
+<h3>Using the Timeline</h3>
+<ul>
+<li>if you are zoomed in quite close in the Sequencer, you can move to other places on it quite easily by clicking in the Timeline, below the Sequencer (you might need to pull it up to see it, and you may have to zoom out)
+<li>pressing Home while hovering the Timeline will zoom to the Frame range you have set, mouse scroll to zoom out/in
+<li>unfortunately, the Timeline doesn't show what positions the strips are placed on, or how much space they use, but it does show markers, so adding markers along the way would be useful
+</ul>
+<br><br><br>
+
+<h3>Markers</h3>
+<ul>
+<li>place a marker with <b>M</b>, RMB select one and <b>X</b> to remove it.
+<li>set hotkeys for Jump to previous/ Jump to next marker - RC on the menu item and select Add Shortcut, then type your shortcut, e.g <b>Shift-,</b> and <b>Shift-.</b> (in effect < and >)
+</ul>
+
+<br><br><br>
+<h3>Preview Range </h3>
+<ul>
+<li>Press <b>P </b>and drag an area to set the preview range - play will run through this area over and over, no stopping. That means you can keep playing a particular edit/effect, while you make adjustments to the effects to see the changes live.
+<li><b>Alt-P</b> to clear the range.
+<li>to set the preview range more accurately, set the seek point to the start, then hover on the Timeline and press <b>S </b>, set the seek point to the end of the preview range and then hover the Timeline and press <b>E</b>
+</ul>
+
+<br><br><br>
+<h3>Selecting strips to move them about</h3>
+<ul>
+<li><b>RMB</b> on the middle of a strip to select it, <b>Shift-RMB</b> to select others, or press <b>B</b> and drag a box with LMB to select all in the box (note that you should RMB without Shift on the first strip to cancel any previous selection and so as not add to the previous selected strips and later cause trouble)
+<li>you can press <b>A</b> to toggle select all
+<li>press <b>G</b> to grab them
+<li>they will now follow the mouse - <b>LMB</b> to place them, or <b>RMB</b> again to cancel the grab.
+<li>if you press the <b>Shift</b> key while moving the strip it will move much more minutely, in order to be more accurate.
+</ul>
+<br>
+you can't overlap strips, they will jump out to find space on the end.
+
+<br>
+<br><br><br>
+<h3>Delete strips</h3>
+<ul>
+<li><b>RMB</b> select strips and hit <b>X</b> or <b>Delete</b>, then confirm
+<li><b>Ctrl-Z</b> will also undo the action</ul>
+
+<br><br><br>
+<h3>Cutting strips</h3>
+<ul>
+<li>seek to the cut point (<b>Left/Right</b> keys seek one frame)
+<li><b>RMB</b> select the strip to be cut and press <b>K</b> for a soft cut (ends of strip can be extended again)
+<li><b>or Shift-K</b> to make a hard cut (the ends will be gone)
+<li>select both video and audio strips to cut them together with K, or select them one by one and hit K for each one
+</ul>
+
+
+<br><br><br>
+<h3>Snapping strips</h3>
+<br>
+Shift-S snaps a selected strip to the seek point, or the end of a strip (stretches it out)
+<br><br>
+So, to move the start/end frame to the seek point (ie make a soft cut while removing the cut off part from the sequencer) ..
+<br>
+<ul>
+<li>seek to the cut point
+<li>RMB on the end of the strip you want to shrink down
+<li><b>Shift-S</b> to shrink the strip to the seek point
+</ul>
+
+<br><br>
+and if its the first strip in the sequence, and you remove some of the start frames, you will need to move to the new start frame with PgUp and use Frame > Set Start Frame (as there's no gap to remove)
+<br><br>
+if its a strip somewhere along the sequence the cut will make a gap - click LMB in the gap and use <b>Backspace</b> to close the gap.
+<br><br>
+If you press <b>S</b> (Slip Strip) you can then drag the content of the strip that you cut within its new frame length, in case you wanted to.
+(worth changing round <b>S</b> and <b>Shift-S</b>)
+<br><br>
+If you select the ends of a strip and press <b>G </b>to grab them you can extend them out, but if the strip then overlaps another strip and you place it with LMB, then the strip you extended will jump out to the end of the sequence to find enough space forewith that it might sit.  It will not overlap or push out the strips it overlapped.
+<br><br>
+To get round that you need to insert gaps at the strip end with <b>Shift-=</b>, as much as you think you need to extend the strip ends.
+<br><br><br>
+
+
+
+
+
+<br><br>
+<h3>Fade out/ fade in</h3>
+<ul>
+<li>Select the point to start the fade out to black.
+<li>in the properties to the right (press <b>N</b>) make sure Opacity is 1.0, RC and <b>Insert Keyframe</b>
+<li>move seek point to the end of the clip, click on the Opacity and set to 0, then RC and <b>Insert Keyframe</b>
+<li>Blender will make a smooth transition from one setting to the other between the keyframes, which you can see in the Graph (press Home to show full).
+<li>0 opacity will be showing the base colour which should be black, unless other strips are under the strip on another channel.
+<li>on the graph window you can adjust the curve of the fade by dragging the line (with presets to choose from too)
+</ul>
+
+<br>
+You don't need to make a black colour strip and gamma cross effect (as the tutorials teach).
+<br><br><br>
+
+<h3>Transitions</h3>
+
+You can use the above fade-out method pretty well to fade one strip and emerge another strip (the emerging strip should be placed under the fading strip) and this is more professional looking.
+<br><br>
+you can use an effect strip too..
+<br>
+<ul>
+<li>set the strips you want to transition in an overlapping position on different channels
+<li>select both strips (video only or both video/audio)
+<li>go to <b>Add > Effect strip > Gamma Cross</b>
+<li> or you can use Wipe, which is more comical - and look in the properties to the right, scroll down to Transition and select which one you want 
+</ul>
+
+
+<h3>Colour correction</h3>
+
+<ul>
+<li>select a strips and go to properties on the right, scroll down to Add Modifier, select what you need and use the colour swabs below
+<li>to apply colour enhancements to multiple strips, without adding modifiers to each one, go to <b>Add > Effect Strip >Adjustment Layer</b>
+<li>then select the end of the strip, <b>G </b>to grab, drag to extend - or select and <b>S</b> to snap to the seek point
+<li> then you go to Add Modifier again in properties and adjust how you like
+</ul>
+
+
+
+</div>
+
+
+<br><br><br>
+
+
+<h2 id="3" class="tag">Multi-threading the render process</h2>
+
+Man! Blender will not render on all threads together, it switches threads, using only 25% cpu power - thus renders take much longer than they should do and modern processing speed is not utilised.
+<br><br>
+Here's the answer (for now).. <b>Pulverize</b>
+<br><br>
+copy these scripts made by Hunter Perrin, from <a href="https://github.com/sciactive/pulverize">github.com/sciactive..</a>
+<br><br>
+<i>pulverize.php<br>
+pulverize_tools.py</i>
+<br><br>
+(pulverize.py is also there but it doesn't show progress)
+<br><br>
+put them in your scripts dir or symlink to them in /usr/bin
+<br><br>
+
+then install php with,
+<form>
+<textarea name="T" id="install" rows="1" cols="30">
+sudo apt-get install php7.0</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+For best results (concatenating with ffmpeg) set the video to MPEG/MP4/H264 (i.e. File format {container}/output file {extension}/encoding codec)
+<br><br>
+set the output file to a dir, without file name, and save to a blender project file.
+<br><br>
+
+
+cd projects/blender/<br>
+pulverize.php &#60;blender_project_file> [&#60;number_of_processes>] [&#60;options>]
+<br><br>
+e.g.
+<form>
+<textarea name="T" id="cmd" rows="1" cols="100">
+pulverize.php project.blend 4 '{\"keepTempFiles\":true,\"displayStdErr\":true}'</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+if you state too many threads, or none, it will default to half of real no. threads.
+
+<br><br>
+
+
+In order for the script to run properly with the portable app version, (ie not installed with package manager) you need to symlink the app in /usr/bin
+<br><br>
+ln -s path/to/your/blenderdir/blender /usr/bin/blender
+<br><br><br>
+
+
+Let's further script this so that we get a file chooser pop up, in order to be able to run the script from anywhere, e.g. while browsing the video target dir..
+<br><br>
+using yad...
+<form>
+<textarea name="T" id="file" rows="9" cols="80">
+#!/bin/bash
+
+t=`echo "$*" | grep -Eo '[0-9]{1,}'`
+if [[ $* == *-*k* ]] ; then keep=true ; else keep=false ; fi
+if [[ $* == *-*e* ]] ; then err=true ; else err=false ; fi
+
+pulverize.php "`yad --center --title='Choose a Blender file' --file \
+--filename=$HOME/Projects/blender/ --height=400 --width=500`" $t \
+'{\"keepTempFiles\":$keep,\"displayStdErr\":$err}'</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+I call this script 'run-pulverize'
+<br><br>
+run like so..
+<br>
+<form>
+<textarea name="T" id="file" rows="1" cols="30">
+run-pulverize -ke4</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+'t' is the cpu threads value, found out from the command line by grep <br>
+-k and -e are the keep files and error options (but I'm not sure they really work) - they can be given individually or joined, like -ke or -ek<br>
+the if command in the script checks if the flags are on the command line or not<br>
+<br>
+
+<br>
+
+</div>

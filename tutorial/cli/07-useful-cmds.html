@@ -1,0 +1,18 @@
+
+
+ck-list-sessions
+
+
+processes:
+ps -aux | less
+
+processes, not root:
+ps -U root -u root -N
+
+processes run by a user:
+ps -u vivek
+
+process tree:
+ps -ejH
+ps axjf
+
