@@ -10,172 +10,150 @@ id: help
 <div class="onpage">
   <ul>
     <li>
-        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+        On this page    <a href="#">TOP</a>
              <ul>
                 <li><a href="#1"> HP Printers</a></li>
-                <li><a href="#2">HPlip Debian 8 </a></li>
                 <li><a href="#3"> Trouble-shoot a hp printer</a></li>
-                <li><a href="#4"> Notes on laserjet p1102</a></li>
-                <li><a href="#5"> Notes for installing hplip</a></li>
+                <li><a href="#4"> Laserjet p1102</a></li>
+              
     </li>
-  </ul>
-</div>
+  </ul></div>
+
 
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
    <a href="#1"> HP Printers </a><br>
-   <a href="#2"> HPlip Debian 8</a><br>
    <a href="#3"> Trouble-shoot a hp printer </a><br>
-   <a href="#4"> Notes on laserjet p1102</a><br>
-   <a href="#5"> Notes for installing hplip</a><br>
+   <a href="#4"> Laserjet p1102</a><br>
+   
 </td></tr></table></div>
 
 <div class="cont">
 
-<div><br>
-</div>
+<br>
+
 <h2 id="1" class="tag">HP Printers</h2>
 
-<font size="3">HP are kind to provide driver help for Linux systems, through hplipopensource.com</font>
-<div><font size="3">Hplip is in the Debian repo, and can be installed (if not already) with</font></div>
-<div><span style="color:rgb(204,0,0);font-size:medium;line-height:28.4444465637207px">sudo apt-get install cups cups-filters hplip</span></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">If you need the latest HPlip driver,&nbsp;</font><span style="font-size:medium;line-height:28.4444465637207px;background-color:transparent">download and run the install script from:&nbsp;</span><a href="http://hplipopensource.com/hplip-web/install/install/index.html" rel="noreferrer" style="font-size:medium;line-height:1.6;background-color:transparent">http://hplipopensource.com/...</a></div>
-<div><font size="3">(and run the WIzard on the link at left to check what version you need to install - I'm not sure if one "does them all").</font></div>
-<div>
-<div style="line-height:28.4444465637207px"><font size="3">then cd to download directory, and run the script with,</font></div>
-<div style="line-height:28.4444465637207px"><font color="#6A3200" size="3">sh hplip*.run</font></div>
-<div style="line-height:28.4444465637207px">and follow the instructions</div>
-</div>
-<div style="line-height:28.4444465637207px"><br>
-</div>
-<div><span style="font-size:medium">If the version of hplip installed with your debian version supports your printer type, then you should be able to add it in the CUPS Admin page:</span></div>
-<div>
-<ul><li>connect the printer and turn it on</li>
-<li>for hp printers (and others?) simply run&nbsp;</li></ul>
-<font color="#6A3200">hp-setup</font><br>
+HP provide driver help for Linux systems, through hplipopensource.com
+<br><br>
+Hplip is in the Debian repo, and can be installed (if not already) with
+
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install cups cups-filters hplip</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+
+If you need the latest HPlip driver, download and run the install script from:<a href="http://hplipopensource.com/hplip-web/install/install/index.html">http://hplipopensource.com/...</a>
+<br><br>
+(and run the Wizard on the link at left to check what version you need to install - I'm not sure if one "does them all").
+<br><br>
+then cd to download directory, and run the script with,
+
+<form>
+<textarea name="T" id="install" rows="1" cols="30">
+sh hplip*.run</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+and follow the instructions
+
+<br><br><br>
+
+If the version of hplip installed with your debian version supports your printer type, then you should be able to add it in the CUPS Admin page:
+<br><br>
+<div class="bullet"><ul><li>connect the printer and turn it on</li>
+<li>for hp printers (and others?) simply run <b>hp-setup</b></li></ul>
+
 <ul><li>this will locate your printer, download a tool to disable "smart-start" if necessary, and download any plugin required</li></ul>
+<ul><li>For other printers, using CUPS, go to <a href="http://localhost:631/admin">localhost:631/admin</a> in a web browser</li>
+<li>click on Add printer, login and follow the steps</li>
+<li>if you can't get far in CUPS (error "Request entity too large"), see my printers page</li>
+<li>if the printer shows hpcups failed, see below</li></ul>
+
+<br><br><br>
+
 <br>
-<ul><li>For other printers, using CUPS, go to&nbsp;<a href="http://localhost:631/admin" style="font-size:medium;line-height:1.6">localhost:631/admin</a><span style="font-size:medium;line-height:1.6">&nbsp;in a web browser</span></li>
-<li><span style="font-size:medium;line-height:1.6">click on Add printer, login and follow the steps</span></li>
-<li><span style="font-size:medium;line-height:1.6">if you can't get far in CUPS (error "Request entity too large"), see my printers page</span></li>
-<li><span style="font-size:medium;line-height:1.6">if the printer shows hpcups failed, see below</span></li></ul>
-</div>
-<div><br>
-</div>
-<h2 id="2" class="tag">HPlip Debian 8</h2>
-<div><br>
-Sanjay Kumar (sanjay-kumar14) said on <a href="https://answers.launchpad.net/hplip/+question/262497">2015-02-21</a>:<br>
-<div><font color="#741b47">"Debian 8 is not yet supported in HPLIP automatic installer, however you can install HPLIP using manual instructions. Below are the steps.<br>
+
+
+<h3 id="3" class="tag">Trouble-shoot a hp printer that's not printing</h3>
+
+run this command to check for errors, or needed dependencies:
 <br>
-=&gt; Download and install the latest HPLIP release from<br>
-<a href="http://hplipopensource.com/hplip-web/install/manual/index.html" rel="noreferrer">http://hplipopensource.com/hplip-web/install/manual/index.html</a> (Use debian 7.x steps)<br>
-=&gt; Reconfigure print queue using below commands.<br>
-=&gt; hp-setup -r (remove all print queues)<br>
-=&gt; su -c "hp-plugin"<br>
-=&gt; hp-setup<br>
-=&gt;Try printing now."</font>
-<div><br>
-</div>
-<div><br>
-</div>
-<div><br>
-</div>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+hp-check -r</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
-<h2 id="3" class="tag">Trouble-shoot a hp printer that's not printing</h2>
+<br><br>
 
-<div>run this command to check for errors, or needed dependencies:</span></div>
-<div><font color="#6A3200">hp-check -r</font></div>
-<div><br>
-</div>
-<div>To sort out errors you can run</div>
-<div><font color="#6A3200">hp-doctor</font></div>
-<div><br>
-</div>
-<div><br>
-</div>
-
-<h2 id="4" class="tag">Notes on installing a laserjet p1102</h2>
-
-<div>First of all, I installed the p1102 with CUPS and tried a test page<br>
-no print, reports:&nbsp;<br>
-<font color="#0F4F0B">stopped <br>
-"/usr/lib/cups/filter/hpcups failed"</font></div>
-<div>error log:<br>
-<font color="#0F4F0B">printer-state-reasons=hplip.plugin-error</font><br>
-</div>
-<div>installed the 3.12.6 plugin and still get error</div>
-<div><br>
-</div>
-<div>
-<ul><li><span style="font-size:16px;line-height:1.6">So I ran hp-setup in a terminal, with this</span></li></ul>
-</div>
-<div><font color="#6A3200">hp-setup</font></div>
-<div>
-<ul><li><span style="font-size:16px;line-height:1.6">selected USB connection</span></li>
-<li><span style="font-size:16px;line-height:1.6">smart-start detected - downloads a fix</span></li>
-<li><span style="font-size:16px;line-height:1.6">downloaded the plugin ppd file</span></li>
-<li><span style="font-size:16px;line-height:1.6">printed the test page and it worked!</span></li></ul>
-</div>
-<div><br>
-</div>
-<div>Make a panel launcher with</div>
-<div>
-<div><font color="#0F4F0B">[Desktop Entry]</font></div>
-<div><font color="#0F4F0B">Name=P1102 Status</font></div>
-<div><font color="#0F4F0B">Comment=printer status</font></div>
-<div><font color="#0F4F0B">Exec=chromium http://localhost:631/printers/HP_P1102</font></div>
-<div><font color="#0F4F0B">Icon=printer</font></div>
-<div><font color="#0F4F0B">Terminal=false</font></div>
-<div><font color="#0F4F0B">Encoding=UTF-8</font></div>
-<div><font color="#0F4F0B">Type=Application</font></div>
-<div><font color="#0F4F0B">Categories=Settings;</font></div>
-<div><br>
-</div>
-</div>
-<div><br>
-</div>
-
-<h2 id="5" class="tag">Notes for installing hplip</h2>
-
-<div>
-<ol><li><span style="font-size:medium">during hplip install, it prompts you to connect and turn on the printer&nbsp;</span></li>
-<li><span style="font-size:medium">then it prompts for installing the plugin -so download it or locate it on disk<br>
-</span>I found the download link to the plugin file and put it into uget <br>
-<font color="#0b5394">http://www.openprinting.org/download/printdriver/auxfiles/HP/plugins/hplip-x.yy.z-plugin.run</font><br>
- there are other versions here at sourceforge <a href="http://hplip.sourceforge.net/plugin.conf" rel="noreferrer">http://hplip.sourceforge.net/plugin.conf</a></li>
-<li>actually, hp-setup will try to download it and it gives you the URL<br>
-can also use command line to install plugin<font><font size="3"><span style="line-height:normal;white-space:pre-wrap">:</span></font></font><span style="font-size:medium">&nbsp;</span><font style="font-size:medium"><font color="#6A3200">sudo hp-plugin -i -g</font><br>
-then</font><font color="#6A3200" style="font-size:medium">&nbsp;</font><span style="font-size:medium">specify the path of the plugin .run file<span style="line-height:26px"><br>
-</span></span><span style="font-size:medium">but downloading the digital signature might fail -</span><span style="font-size:medium">install anyway&nbsp;</span></li>
-<li><font size="3">must add the user to the lpadmin group with&nbsp;<font color="#6A3200">sudo adduser &lt;user&gt; lpadmin</font></font></li>
-</ol>
-<font size="3"><br>
+To sort out errors you can run
 <br>
-</font><span style="font-size:medium;line-height:1.6">My P1102 had a horrible problem with an earlier hplip (3.12.4 I think)&nbsp;</span></div>
-<div><span style="font-size:medium;line-height:1.6">in hp device manager the printer had a communication error</span><br>
-<span style="font-size:medium;line-height:1.6"><span style="line-height:23px">In CUPS admin</span></span><span style="font-size:medium;line-height:1.6">&nbsp;</span><span style="font-size:medium;line-height:26px"><b style="color:rgb(166,77,121)">"/usr/lib/cups/backend/hp failed"&nbsp;</b>in job state</span></div>
-<div><font size="3" style="font-size:16px;line-height:1.6"><span style="line-height:26px">CUPS &nbsp;error log<font color="#a64d79">&nbsp;-</font></span></font><font size="3" style="font-size:16px;line-height:1.6"><span style="line-height:25px">it is clear that "backend" is not getting through to the printer</span></font></div>
-<div><span style="line-height:25px">The soluton was a mode switch code!<br>
-</span><br>
-<div><font size="3">Some new HP printers (WITH P1102 DEFINITELY) have smart install on their memory chip so that they can install onto a Windows machine (for ease of process) so on Linux the printer shows up as a usb CD Rom, and CUPS can't get it to print.</font></div>
-</div>
-<div><font size="3">Eventually&nbsp;I found a ticket on Launchpad with a solution&nbsp;<span style="line-height:26px"><a href="https://bugs.launchpad.net/hplip/+bug/672134" rel="noreferrer">https://bugs.launchpad.net/hplip/+bug/672134</a>&nbsp;</span></font><span style="font-size:medium">using&nbsp;<b>usb_modeswitch&nbsp;</b></span></div>
-<div><font color="#7C2020" size="3">sudo apt-get install usb-modeswitch</font></div>
-<div><font size="3">then I ran the code that Dudinea posted,</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">
-<div><span style="background-color:rgb(234,209,220)">usb_modeswitch -v 0x03f0 -p 0x002a -M 505554202F6465762F666561747572655374617475732E786D6C20485454502F312E310D0A434F4E54454E542D4C454E4754483A203232320D0A555345522D4147454E543A68702050726F78792F332E300D0A484F53543A6C6F63616C686F73743A333931300D0A0D0A3C3F786D6C2076657273696F6E3D22312E302220656E636F64696E673D225554462D38223F3E0D0A3C6665617475726553746174757320786D6C6E733A7873693D22687474703A2F2F7777772E77332E6F72672F323030312F584D4C536368656D612D696E7374616E636522207873693A6E6F4E616D657370616365536368656D614C6F636174696F6E3D22666561747572655374617475732E787364223E0D0A20203C736D617274496E7374616C6C3E64697361626C65643C2F736D617274496E7374616C6C3E0D0A3C2F666561747572655374617475733E0D0A0D0A -n -2 474554202F6465762F666561747572655374617475732E786D6C20485454502F312E310D0A434F4E54454E542D4C454E4754483A20300D0A555345522D4147454E543A68702050726F78792F332E300D0A484F53543A6C6F63616C686F73743A333931300D0A0D0A -n -R</span></div>
-<div><br>
-</div>
-<div>and the printer is switched over to another usb device or something! &nbsp;</div>
-<div><br>
-</div>
-<div>Thankfully there's no need for this in hplip 3.12.6. &nbsp;perhaps they included the mode switch?</div>
-</font></div>
-</div>
-</div>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+hp-doctor</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
+<br>
+<br><br>
+<br>
+
+
+<h2 id="4" class="tag">Laserjet p1102</h2>
+
+First of all, I installed the p1102 with CUPS and tried a test page
+<br><br>
+no print, reports:<br>
+<br>
+stopped <br>
+"/usr/lib/cups/filter/hpcups failed"
+<br><br>
+
+error log:<br>
+printer-state-reasons=hplip.plugin-error
+<br><br>
+
+installed the 3.12.6 plugin and still get error
+<br>
+
+
+So I ran hp-setup in a terminal, then
+
+
+<div class="bullet"><ul><li>selected USB connection</li>
+<li>smart-start detected - downloads a fix</li>
+<li>downloaded the plugin ppd file</li>
+<li>printed the test page and it worked!</li></ul></div>
+
+<br>
+But sometimes the printer keeps holding jobs, or the filter fails.  In that case you can try deleting the printer and reinstalling it in CUPS.
+<br><br><br>
+Make a panel launcher for printer status with
+
+<br>
+<form>
+<textarea name="T" id="file" rows="9" cols="80">
+[Desktop Entry]
+Name=P1102 Status
+Comment=printer status
+Exec=chromium http://localhost:631/printers/HP_P1102
+Icon=printer
+Terminal=false
+Encoding=UTF-8
+Type=Application
+Categories=Settings;</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+<br>
+
+</div>
+</div>
 </div>

@@ -7,14 +7,14 @@ id: help
 <div class="onpage">
   <ul>
     <li>
-        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+        On this page    <a href="#">TOP</a>
              <ul>
                 <li><a href="#1"> CUPS admin</a></li>
                 <li><a href="#2">Enable a user to resume</a></li>
              </ul>
     </li>
-  </ul>
-</div>
+  </ul></div>
+
 
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
@@ -27,89 +27,119 @@ id: help
 <div class="cont">
 
 Here are the few printers I've got working so far with Debian...
-<div><br>
-</div>
-<div><a href="13-1-hp1102.html">HP printers and P1102</a></div>
-<div><br>
-</div>
-<div><a href="13-2-canon-ip1900.html">Canon IP1900</a></div>
-<div><br>
-</div>
-<div><a href="13-3-canon-e510.html">Canon Pixma E510</a></div>
-<div><br>
-</div>
-<div><a href="13-4-brother-j315w.html">Brother DCP-J315W</a></div>
-<div><br>
-</div>
-<div><br>
-</div>
+<br><br>
+
+<a href="13-1-hp1102.html">HP printers and P1102</a>
+<br><br>
+
+<a href="13-2-canon-ip1900.html">Canon IP1900</a>
+<br><br>
+
+<a href="13-3-canon-e510.html">Canon Pixma E510</a>
+<br>
+<br>
+<a href="13-4-brother-j315w.html">Brother DCP-J315W</a>
+<br><br>
+
+<br><br>
+
 
 <h2 id="1" class="tag">CUPS admin</h2>
 
-<div><br>
-</div>
-<div><b>Error:&nbsp;<span style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:rgb(204,204,204)">Request entity too large</span></b></div>
-<div>Can't get into the CUPS admin pages</div>
-<div><br>
-</div>
-<div>http://localhost:631/admin pages can't be reached and the error log shows "unable to create directory /var/spool/cups/tmp"
-<div>so the spool directory likely needs creating!</div>
-<div>
-<div><font color="#6A3200">sudo mkdir /var/spool/cups</font></div>
-<div><font color="#6A3200">sudo mkdir /var/spool/cups/tmp&nbsp;</font></div>
-<div>if those are present already then they might need to belong to the lp group</div>
-<div><font color="#6A3200">sudo chown -R root:lp /var/spool/cups</font></div>
-<div>and your user needs to be added to the lp/lpadmin group</div>
-<div>
-<div><font color="#6A3200">sudo adduser &lt;user&gt; lp</font></div>
-<div><font color="#6A3200">sudo adduser &lt;user&gt; lpadmin</font></div>
-</div>
-<div>the other error that will occur if your user is not added to the lp/lpadmin group is that logging into the admin page with your user name will return a failed&nbsp;unauthorized&nbsp;page.</div>
-</div>
-</div>
-<div><br>
-</div>
-<div><br>
-</div>
-<h2 id="2" class="tag">Enable a user to resume a printer</h2>
+<br>
 
-<div>To prevent CUPS asking for authentication of a user when using resume or pause printer in Cups Admin...<br>
-<ol><li>Open cups&nbsp;<a href="http://localhost:631/admin/">http://localhost:631/admin/</a></li>
+<h3>"Request entity too large" error</h3>
+<br>
+Can't get into the CUPS admin pages - http://localhost:631/admin pages can't be reached and the error log shows "unable to create directory /var/spool/cups/tmp"
+<br><br>
+so the spool directory likely needs creating!
+<br><br>
+
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+sudo mkdir /var/spool/cups
+sudo mkdir /var/spool/cups/tmp</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+if those are present already then they might need to belong to the lp group
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo chown -R root:lp /var/spool/cups</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+and your user needs to be added to the lp/lpadmin group
+
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+sudo adduser <user> lp
+sudo adduser <user> lpadmin</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+the other error that will occur if your user is not added to the lp/lpadmin group is that logging into the admin page with your user name will return a failed unauthorized page.
+
+
+<br>
+
+<br><br>
+
+<h3 id="2" class="tag">Enable a user to resume a printer</h3>
+
+To prevent CUPS asking for authentication of a user when using resume or pause printer in Cups Admin...
+<br><br>
+<div class="numb"><ol><li>Open cups <a href="http://localhost:631/admin/">http://localhost:631/admin/</a></li>
 <li>click on Edit Configuration File</li>
 <li>under the printer you need to give access to and the sections with "Resume-Printer Enable-Printer Disable-Printer..." either:</li>
 </ol>
-<ul><li><span style="line-height:1.6;background-color:transparent">remove the authorisation, e.g. under</span> "AuthType Default" remove the line,</li></ul>
-<div><font color="#0F4F0B">&nbsp; &nbsp; Require user @OWNER @SYSTEM</font></div>
-</div>
-<div>
-<ul><li><span style="line-height:1.6;background-color:transparent">Or, if that fails, just remove the items from that limit list which you don't need to login to do</span></li></ul>
-</div>
-<div>Then save the file.</div>
-<div><br>
-</div>
-<div>If you'd like a desktop shortcut button to do it, then you can use,</div>
-<div>
-<div><font color="#0F4F0B">[Desktop Entry]</font></div>
-<div><font color="#0F4F0B">Name=</font><font color="#0F4F0B" style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent">r</font><span style="font-size:16px;line-height:1.6;color:rgb(56,118,29);background-color:transparent">esume-printer-name</span></div>
-<div><font color="#0F4F0B">Comment=Enable printer</font></div>
-<div><font color="#0F4F0B">Exec=sudo cupsenable<i>&nbsp;</i></font><i style="line-height:28.4444465637207px;font-size:15.5555562973022px;background-color:transparent"><font color="#0b5394">printer-name</font></i></div>
-<div><font color="#0F4F0B">Icon=printer</font></div>
-<div><font color="#0F4F0B">Terminal=false</font></div>
-<div><font color="#0F4F0B">Encoding=UTF-8</font></div>
-<div><font color="#0F4F0B">Categories=System;</font></div>
-<div><br>
-</div>
-</div>
-<div>Or, Openbox menu item&nbsp;</div>
-<div><font color="#0F4F0B" style="font-size:15.5555562973022px;line-height:28.4444465637207px">sudo cupsenable&nbsp;</font><span style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent"><i><font color="#0b5394">printer-name</font></i></span></div>
-<div><br>
-</div>
-<div>and edit the /etc/sudoers file</div>
-<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px"><font color="#6A3200">sudo visudo</font></span></div>
-<div><span style="font-size:15.5555562973022px;line-height:28.4444465637207px">add the line:</span></div>
-<div><font color="#0F4F0B">&lt;user&gt; ALL=(ALL) NOPASSWD: /usr/sbin/cupsenable</font></div>
-<div>(and any other specific cups command -need other desktop file too)</div>
-<div><br>
-</div>
+<ul><li>remove the authorisation, e.g. under "AuthType Default" remove the line,</li></ul>
+&nbsp;&nbsp;&nbsp;&nbsp;  Require user @OWNER @SYSTEM
 
-</div>
+
+<ul><li>Or, if that fails, just remove the items from that limit list which you don't need to login to do</li></ul>
+
+Then save the file.
+<br><br>
+<br><br>
+If you'd like a desktop shortcut button to re-enable a printer, then you can use,
+<br>
+
+<form><textarea name="T" id="file" rows="8" cols="50">
+[Desktop Entry]
+Name= style=resume-printer-name
+Comment=Enable printer
+Exec=sudo cupsenable printer-name
+Icon=printer
+Terminal=false
+Encoding=UTF-8
+Categories=System;</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+
+Or, Openbox menu item with the command, `sudo cupsenable printer-name`
+<br><br>
+
+and edit the /etc/sudoers file
+sudo visudo
+
+add the line:
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+<username> ALL=(ALL) NOPASSWD: /usr/sbin/cupsenable</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+</div></div>
+

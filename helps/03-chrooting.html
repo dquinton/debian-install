@@ -11,7 +11,7 @@ id: help
 
 Changing the root directory is useful when you need to repair a Debian install from a Live CD or a another working system, or for maintaining another system, or updating it, or installing packages on it, while you get on with other work.
 <br><br>
-First you mount the system's partition. &nbsp;Then you need to mount dev, proc and sys of the running system so that the mounted system can communicate with the computer's devices -as these are only loaded at start up.
+First you mount the system's partition. Then you need to mount dev, proc and sys of the running system so that the mounted system can communicate with the computer's devices -as these are only loaded at start up.
 <br><br>
 <form><textarea name="T" id="cmd" rows="6" cols="50">
 su
@@ -20,7 +20,7 @@ mount -t proc /proc /mnt/proc
 mount -t sysfs /sys /mnt/sys
 mount -o bind /dev /mnt/dev
 cp /etc/resolv.conf /mnt/etc/resolv.conf</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -30,7 +30,7 @@ plus if /var is on another partition, you will need to mount it, e.g.
 
 <form><textarea name="T" id="cmd" rows="1" cols="50">
 mount -t ext3 /dev/sda7 /mnt/var</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -40,7 +40,7 @@ then change to the root of that system so you can run commands in it..
 
 <form><textarea name="T" id="cmd" rows="1" cols="50">
 chroot /mnt /bin/bash</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -53,15 +53,15 @@ then unmount the filesystems with
 <form><textarea name="T" id="cmd" rows="2" cols="50">
 umount /mnt/{proc,sys,dev,var}
 umount /mnt</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
-To use aptitude in a chroot environment, and the error occurs <span class="prob">"Could not open lock file /var/lock/aptitude No such file or directory"</span> , do
+To use aptitude in a chroot environment, and the error occurs <span class="prob">"Could not open lock file /var/lock/aptitude No such file or directory" , do
 
 <form><textarea name="T" id="cmd" rows="1" cols="30">
 mkdir /run/lock</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
@@ -73,7 +73,7 @@ run these as root user, to chroot to any Linux OS and then unmount afterwards..
 <form><textarea name="T" id="file" rows="13" cols="120">
 #!/bin/bash
 
-chroot_os=$(find /dev -mindepth 1 -maxdepth 1 &nbsp;-name "*[sh]d[a-z][1-9]*" \
+chroot_os=$(find /dev -mindepth 1 -maxdepth 1 -name "*[sh]d[a-z][1-9]*" \
        | sort | awk '{print "\n" $0 }' \
        | yad --list --title=$"Partitions" --text="Choose the partition to chroot into." \
       --separator="" --column ' ' --column $'Partitions' --height 380 --width 150 --button="OK":0)
@@ -84,7 +84,7 @@ mount -t sysfs sys /mnt/sys
 mount -o bind /dev /mnt/dev
 cp /etc/resolv.conf /mnt/etc/resolv.conf
 chroot /mnt /bin/bash</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
@@ -92,9 +92,8 @@ chroot /mnt /bin/bash</textarea>
 #!/bin/bash
 umount /mnt/proc /mnt/sys /mnt/dev
 umount /mnt</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
 
-</div>

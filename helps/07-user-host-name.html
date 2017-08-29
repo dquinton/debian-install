@@ -1,7 +1,7 @@
 ---
 layout: default
 description: Changing the user name and host name - by D Quinton
-title: User host name
+title: User and host name
 id: help
 ---
 
@@ -9,48 +9,92 @@ id: help
 
 <div class="cont">
 
-<div><b><font size="4">Add or change user in Linux</font></b></div>
-<div><font color="#6A3200" size="3"><br>
-</font></div>
-<div><font color="#6A3200" size="3"><a href="http://www.debianadmin.com/users-and-groups-administration-in-linux.html" rel="noreferrer">http://www.debianadmin.com/...</a></font></div>
-<div><font color="#6A3200" size="3">sudo adduser &lt;name&gt;</font></div>
-<div><font size="3">(setting password is automatically asked, and home directory created)</font></div>
-<div><font size="3">then set the home dir of new user to be owned by new user</font></div>
-<div><font color="#6A3200" size="3">sudo chown&nbsp;</font><span style="color:rgb(180,95,6);line-height:27px;font-size:medium">&lt;</span><span style="color:rgb(180,95,6);line-height:27px;font-size:medium">user</span><span style="color:rgb(180,95,6);line-height:27px;font-size:medium">&gt;</span><font color="#6A3200" size="3">:</font><span style="color:rgb(180,95,6);line-height:26px;font-size:medium">&lt;</span><span style="color:rgb(180,95,6);line-height:27px;font-size:medium">user</span><span style="color:rgb(180,95,6);line-height:26px;font-size:medium">&gt;</span><font color="#6A3200" size="3">&nbsp;/home/</font><span style="color:rgb(180,95,6);font-size:medium;line-height:27px">&lt;</span><span style="color:rgb(180,95,6);line-height:27px;font-size:medium">user</span><span style="color:rgb(180,95,6);font-size:medium;line-height:27px">&gt;</span></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">[not sure about this below]&nbsp;</font></div>
-<div><font size="3">to make the new user belong to same groups as first user, find groups of the first user</font></div>
-<div><font color="#6A3200" size="3">groups &lt;user&gt;</font></div>
-<div><span style="font-size:medium">then add new user to each group</span></div>
-<div><font color="#6A3200" size="3">sudo adduser &lt;user&gt; &lt;group&gt;</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">add new user to sudoer file</font></div>
-<div><font color="#6A3200" size="3">sudo visudo</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3"><span style="line-height:27px">If replacing first user (i.e. changing the name) copy content of /home/first-user to /home/new-user with sudo thunar</span></font></div>
-<div><font size="3"><span style="line-height:27px">or <font color="#6A3200">sudo cp /home/olduser/* /home/newuser</font></span></font></div>
-<div><font size="3"><span style="line-height:27px"><font color="#6A3200"><br>
-</font></span></font></div>
-<font size="3">to remove a user</font>
-<div><font size="3"><span style="line-height:27px"><font color="#6A3200">userdel &lt;user&gt;</font></span></font></div>
-<font size="3">or to remove the home dir with it</font>
-<div><font size="3"><span style="line-height:27px"><font color="#6A3200">userdel -r &lt;user&gt;</font></span></font></div>
-<div><font size="3"><span style="line-height:27px"><font color="#6A3200"><br>
-</font></span></font></div>
-<font color="#0b5394"><font size="3">Problems will start appearing, like MLT in kdenlive calling all clips invalid, ffmpeg cannot open filters.... so these need permissions changed in the right places, or simply&nbsp;</font><span style="line-height:27px;font-size:medium">re-installing them if in the case of migrating to a new user.</span></font>
-<div><font color="#0b5394"><span style="line-height:27px;font-size:medium"><br>
-</span></font></div>
-<div><font color="#0b5394"><span style="line-height:27px;font-size:medium"><br>
-</span></font></div>
-<b><font size="4">Change the host/server name</font></b>
-<div><font color="#6A3200">sudo nano /etc/hostname&nbsp;/etc/hosts</span></font></div>
-<div><br>
-</span></div>
-<div>change it in those files - twice in /etc/hosts</span></div>
-<div>then restart the server</span></div>
-<div><font color="#6A3200">sudo sh -c /etc/init.d/hostname.sh start</font></span></div>
+<h3>Add or change user in Linux</h3>
+<br><br>
 
-</div>
+See <a href="http://www.debianadmin.com/users-and-groups-administration-in-linux.html" rel="noreferrer">http://www.debianadmin.com/...</a>
+<br><br>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo adduser <username></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+(setting password is automatically asked, and home directory created)
+<br><br>
+then set the home dir of new user to be owned by new user, with
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo chown <user>:<user> /home/<user> </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+to make the new user belong to same groups as first user, find groups of the first user with..
+<br>
+<textarea name="T" id="cmd" rows="1" cols="30">
+groups <user></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+then add the new user to each group..
+<br>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo adduser <user> <group></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br><br>
+
+also, add the new user to the sudoers file, or sudo group
+
+<br><br>
+
+If replacing the first user (i.e. changing the name) copy content of /home/first-user to /home/new-user with..
+
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo rsync -arult /home/olduser/* /home/newuser</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+to remove a user..
+<br>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo userdel <user></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+or to remove the home dir with it
+<br>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo userdel -r <user></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+Problems may start appearing, like MLT in kdenlive calling all clips invalid, ffmpeg cannot open filters.... so these need permissions changed in the right places, or else re-installing them if in the case of migrating to a new user.
+
+<br><br><br>
+<b>Change the host/server name</b>
+<br>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/hostname /etc/hosts</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+change it in those files - twice in /etc/hosts
+<br><br>
+then restart the server
+<br>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo sh -c /etc/init.d/hostname.sh start</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+

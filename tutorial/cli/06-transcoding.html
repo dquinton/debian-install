@@ -12,84 +12,84 @@ id: cli
 
 <div><font color="#666666" size="3" style="font-family:Arial,Verdana,sans-serif"><b>Due to the "Frozen frames" problem after encoding with Kdenlive (</b></font><span style="background-color:transparent"><font color="#666666" face="Arial, Verdana, sans-serif" size="3"><b><a href="https://bugs.kdenlive.org/view.php?id=2659">view.php?id=2659</a></b></font></span><b style="font-family:Arial,Verdana,sans-serif;color:rgb(102,102,102);font-size:medium;line-height:1.6;background-color:transparent">), I went through some experiments to try to make a smooth film...</b></div>
 <div><font size="3" style="font-family:Arial,Verdana,sans-serif"><b><br>
-</b></font></div>
-<div><font size="3" style="font-family:Arial,Verdana,sans-serif"><b>I experimented with transcoding</b>&nbsp;mts movie files to&nbsp;<b>DNxHD&nbsp;</b>with Kdenlive, and using the transcoded .mov files for editing and rendering to mpeg2, mp4, vob etc. (and you need to make a shortcut key for Transcode or find it on the File menu)</font></div>
+</b>
+<div><font size="3" style="font-family:Arial,Verdana,sans-serif"><b>I experimented with transcoding</b>&nbsp;mts movie files to&nbsp;<b>DNxHD&nbsp;</b>with Kdenlive, and using the transcoded .mov files for editing and rendering to mpeg2, mp4, vob etc. (and you need to make a shortcut key for Transcode or find it on the File menu)
 <div><font face="Arial, Verdana, sans-serif" size="3"><br>
 </font>
 <div style="font-family:Arial,Verdana,sans-serif"><span style="font-size:medium">I tried a short project and got some</span><span style="font-size:medium"><b>&nbsp;</b>disappointing results</span><span style="font-size:medium">, along with an extra 10Gb of mkv files and suffocating RAM. &nbsp;The video quality was not like the AVCHD quality, and had some glitches.</span></div>
 <div style="font-family:Arial,Verdana,sans-serif"><span style="font-size:medium"><br>
 </span></div>
-<div style="font-family:Arial,Verdana,sans-serif"><span style="font-size:medium;line-height:25px">2nd, I&nbsp;</span><b style="font-size:medium">Remuxed</b><span style="font-size:medium">&nbsp;the mts movie files to&nbsp;</span><font size="3"><b>MKV</b>, and&nbsp;</font><span style="font-size:medium;line-height:27px"><b>MPEG-2 PS/VOB</b>&nbsp;and then encoded the film,&nbsp;b</span><span style="font-size:medium">ut the results were jumpy with one and with slight stops on every clip join as well as some slow motion with the other.</span></div>
-<div style="font-family:Arial,Verdana,sans-serif"><font size="3"><span style="line-height:26px"><br>
-</span></font></div>
-<div>3rd, I <b>re-encoded </b>the MTS files to various <b>high-Q formats</b>&nbsp;<font size="3"><font face="Arial, Verdana, sans-serif"><span style="line-height:26px">using ffmpeg to do this with a script:</span></font></font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:25px"><b style="background-color:rgb(255,229,153)">mpeg2</b></span></font></div>
+<div style="font-family:Arial,Verdana,sans-serif"><span style="font-size:medium;line-height:25px">2nd, I&nbsp;</span><b style="font-size:medium">Remuxed</b><span style="font-size:medium">&nbsp;the mts movie files to&nbsp;</span><b>MKV</b>, and&nbsp;</font><span style="font-size:medium;line-height:27px"><b>MPEG-2 PS/VOB</b>&nbsp;and then encoded the film,&nbsp;b</span><span style="font-size:medium">ut the results were jumpy with one and with slight stops on every clip join as well as some slow motion with the other.</span></div>
+<div style="font-family:Arial,Verdana,sans-serif"><span style="line-height:26px"><br>
+</span>
+<div>3rd, I <b>re-encoded </b>the MTS files to various <b>high-Q formats</b>&nbsp;<font face="Arial, Verdana, sans-serif"><span style="line-height:26px">using ffmpeg to do this with a script:</span></font>
+<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:25px"><b style="background-color:rgb(255,229,153)">mpeg2</b></span>
 <div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:25px">
 <div style="color:rgb(56,118,29)">#!/bin/bash</div>
-<div><font color="#f3f3f3" style="background-color:rgb(7,55,99)">for file in *.MTS; do ffmpeg -i $file -vcodec mpeg2video -b 85000k -threads 2 $file.mpg;done</font></div>
-</span></font></div>
-<div style="font-family:Arial,Verdana,sans-serif"><font size="3"><span style="line-height:26px"><br>
-</span></font></div>
-<div style="font-family:Arial,Verdana,sans-serif"><font size="3"><span style="line-height:26px">where&nbsp;<i>mpeg2video</i>&nbsp;is the codec, the&nbsp;<i>k</i>&nbsp;value is bits/sec (i.e. 85Mbps here) and the&nbsp;<i>-threads</i>&nbsp;flag tells ffmpeg to encode using more cpu cores (so it depends on your cpu whether it's dual core, quad core etc) but leaving it out will set to automatic.</span></font></div>
+<div><font color="#f3f3f3" style="background-color:rgb(7,55,99)">for file in *.MTS; do ffmpeg -i $file -vcodec mpeg2video -b 85000k -threads 2 $file.mpg;done
+</span>
+<div style="font-family:Arial,Verdana,sans-serif"><span style="line-height:26px"><br>
+</span>
+<div style="font-family:Arial,Verdana,sans-serif"><span style="line-height:26px">where&nbsp;<i>mpeg2video</i>&nbsp;is the codec, the&nbsp;<i>k</i>&nbsp;value is bits/sec (i.e. 85Mbps here) and the&nbsp;<i>-threads</i>&nbsp;flag tells ffmpeg to encode using more cpu cores (so it depends on your cpu whether it's dual core, quad core etc) but leaving it out will set to automatic.</span>
 <div style="font-family:Arial,Verdana,sans-serif">
 <div style="font-family:Droid Sans Mono,sans-serif"><font size="3" style="font-family:Arial,Verdana,sans-serif"><span style="line-height:25px"><br>
-</span></font></div>
-<div style="font-family:Droid Sans Mono,sans-serif"><font size="3" style="font-family:Arial,Verdana,sans-serif"><span style="line-height:25px">I made the script in home dir, named "convert.sh", chmod +x, and made a Thunar custom action with the name "Convert MTS", &nbsp;command&nbsp;<span style="background-color:rgb(182,215,168)"><font color="#0F4F0B">/home/username/convert.sh %F</font>&nbsp;</span>and Appearance conditions set to&nbsp;<span style="background-color:rgb(182,215,168)">&nbsp;</span></span></font><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px"><font color="#0F4F0B" style="background-color:rgb(182,215,168)">*.MTS;*.mts</font>&nbsp;and check video files. &nbsp;So I just click on an MTS file and hit Convert MTS and all files in the dir are converted. &nbsp;Can easily make a custom action for any particular video format to encode to.</span></font></div>
-<div><font size="3"><br>
-</font></div>
+</span>
+<div style="font-family:Droid Sans Mono,sans-serif"><font size="3" style="font-family:Arial,Verdana,sans-serif"><span style="line-height:25px">I made the script in home dir, named "convert.sh", chmod +x, and made a Thunar custom action with the name "Convert MTS", &nbsp;command&nbsp;<span style="background-color:rgb(182,215,168)"><font color="#0F4F0B">/home/username/convert.sh %F</font>&nbsp;</span>and Appearance conditions set to&nbsp;<span style="background-color:rgb(182,215,168)">&nbsp;</span></span></font><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px"><font color="#0F4F0B" style="background-color:rgb(182,215,168)">*.MTS;*.mts</font>&nbsp;and check video files. &nbsp;So I just click on an MTS file and hit Convert MTS and all files in the dir are converted. &nbsp;Can easily make a custom action for any particular video format to encode to.</span>
+<div><br>
+
 </div>
-<div style="font-family:Arial,Verdana,sans-serif"><font size="3"><span style="line-height:24px">the resulting file is quite good quality (and you can go over 100Mbps but threshhold seems to be around 65-80M) and reasonable x4 file size, but it's not lossless, and it's another compressed video format that a video edito has to decompress and recompress, losing quality.</span></font></div>
+<div style="font-family:Arial,Verdana,sans-serif"><span style="line-height:24px">the resulting file is quite good quality (and you can go over 100Mbps but threshhold seems to be around 65-80M) and reasonable x4 file size, but it's not lossless, and it's another compressed video format that a video edito has to decompress and recompress, losing quality.</span>
 <div style="font-family:Arial,Verdana,sans-serif"><span style="font-family:arial,sans-serif;font-size:medium">... but the rendered result in Kdenlive (say, to 18Mb mpeg2) is blocky, poor Q, when looked at close-up. So still not an acceptable solution!</span></div>
 <div style="font-family:Arial,Verdana,sans-serif"><span style="line-height:27px;font-size:medium;background-color:rgb(252,229,205)"><br>
 </span></div>
-<div style="font-family:Arial,Verdana,sans-serif"><font size="3"><span style="line-height:24px"><b><span style="background-color:rgb(255,229,153)">lossless mpeg2</span>&nbsp;</b>using intra-coded frames (makes files&nbsp;<b>13-20x&nbsp;</b>orig. file size), use</span></font></div>
-<div><font color="#f3f3f3" face="Arial, Verdana, sans-serif" size="3" style="background-color:rgb(7,55,99)">for file in *.MTS; do ffmpeg -i $file -vcodec mpeg2video -qscale 1 -qmin 1 -intra -an $file.m2v;done</font></div>
+<div style="font-family:Arial,Verdana,sans-serif"><span style="line-height:24px"><b><span style="background-color:rgb(255,229,153)">lossless mpeg2</span>&nbsp;</b>using intra-coded frames (makes files&nbsp;<b>13-20x&nbsp;</b>orig. file size), use</span>
+<div><font color="#f3f3f3" face="Arial, Verdana, sans-serif" size="3" style="background-color:rgb(7,55,99)">for file in *.MTS; do ffmpeg -i $file -vcodec mpeg2video -qscale 1 -qmin 1 -intra -an $file.m2v;done
 <div><font color="#0F4F0B" face="Arial, Verdana, sans-serif" size="3"><br>
-</font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3">rendering result: smooth joins, high quality</font></div>
+
+<div><font face="Arial, Verdana, sans-serif" size="3">rendering result: smooth joins, high quality
 <div><font color="#0F4F0B" face="Arial, Verdana, sans-serif" size="3"><br>
-</font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:27px"><b style="background-color:rgb(255,229,153)">DNxHD</b>&nbsp;(makes files&nbsp;<b>17x&nbsp;</b>orig. file size), use</span></font></div>
-<div><font color="#f3f3f3" face="Arial, Verdana, sans-serif" size="3" style="background-color:rgb(7,55,99)">for file in *.MTS; do ffmpeg -i $file -vcodec dnxhd -b 120M -an $file.mov;done</font></div>
+
+<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:27px"><b style="background-color:rgb(255,229,153)">DNxHD</b>&nbsp;(makes files&nbsp;<b>17x&nbsp;</b>orig. file size), use</span>
+<div><font color="#f3f3f3" face="Arial, Verdana, sans-serif" size="3" style="background-color:rgb(7,55,99)">for file in *.MTS; do ffmpeg -i $file -vcodec dnxhd -b 120M -an $file.mov;done
 <div><font size="3" style="font-family:Arial,Verdana,sans-serif"><br>
-</font></div>
-<div><font size="3" style="font-family:Arial,Verdana,sans-serif">(got from superuser answers&nbsp;</font><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:27px"><a href="http://superuser.com/questions/294660/encode-hd-video-to-a-good-format-for-editing">http://superuser.com/...</a>)</span></font></div>
+
+<div><font size="3" style="font-family:Arial,Verdana,sans-serif">(got from superuser answers&nbsp;</font><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:27px"><a href="http://superuser.com/questions/294660/encode-hd-video-to-a-good-format-for-editing">http://superuser.com/...</a>)</span>
 <div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px"><br>
-</span></font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px"><b style="background-color:rgb(255,229,153)">M2TS</b>&nbsp;(mpeg2 transport stream) -which the bundled Panasonic software always converted MTS into when capturing from the camera. &nbsp;</span></font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px">The files produced are just over<b>&nbsp;3x&nbsp;</b>the orig. file size, and the best thing is, Kdenlive copes really well with them AND the rendered movie is clean and high Q.</span></font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px">M2ts is 1440-1080 but the pixels are not square like AVCHD, but are 1.33 ratio, so the picture remains the same aspect ratio as the MTS 1920-1080.</span></font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px">When rendering the m2ts into mpeg2, it will come back to 1920-1080, (use the HD 1080p 50fps profile in Kdenlive to maintain 50fps).</span></font></div>
+</span>
+<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px"><b style="background-color:rgb(255,229,153)">M2TS</b>&nbsp;(mpeg2 transport stream) -which the bundled Panasonic software always converted MTS into when capturing from the camera. &nbsp;</span>
+<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px">The files produced are just over<b>&nbsp;3x&nbsp;</b>the orig. file size, and the best thing is, Kdenlive copes really well with them AND the rendered movie is clean and high Q.</span>
+<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px">M2ts is 1440-1080 but the pixels are not square like AVCHD, but are 1.33 ratio, so the picture remains the same aspect ratio as the MTS 1920-1080.</span>
+<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px">When rendering the m2ts into mpeg2, it will come back to 1920-1080, (use the HD 1080p 50fps profile in Kdenlive to maintain 50fps).</span>
 <div><font face="Arial, Verdana, sans-serif" size="3"><br>
-</font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3">script line:</font></div>
-<div><font color="#f3f3f3" face="Arial, Verdana, sans-serif" size="3" style="background-color:rgb(7,55,99)">for file in *.MTS; do ffmpeg -i $file -acodec mp2 -f mpegts -vcodec mpeg2video -s 1440x1080 -vb 45000k -g 12 -trellis 1 $file.m2ts;done</font></div>
+
+<div><font face="Arial, Verdana, sans-serif" size="3">script line:
+<div><font color="#f3f3f3" face="Arial, Verdana, sans-serif" size="3" style="background-color:rgb(7,55,99)">for file in *.MTS; do ffmpeg -i $file -acodec mp2 -f mpegts -vcodec mpeg2video -s 1440x1080 -vb 45000k -g 12 -trellis 1 $file.m2ts;done
 <div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px"><br>
-</span></font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px">change the k value to suite your quality needs. 85Mb is better.</span></font></div>
+</span>
+<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px">change the k value to suite your quality needs. 85Mb is better.</span>
 <div><font face="Arial, Verdana, sans-serif" size="3"><br>
-</font></div>
+
 <div>
 <div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:24px">FROM M2TS, ENCODE TO&nbsp;<b>H264</b>&nbsp;OR&nbsp;<b>WEBM</b>&nbsp;CODEC FOR *FAIR* RESULTS -ENCODING TO&nbsp;<b>MPEG2</b>&nbsp;GIVES&nbsp;</span></font><span style="font-family:Arial,Verdana,sans-serif;font-size:medium">BAD QUALITY LOSS</span><span style="font-family:Arial,Verdana,sans-serif;font-size:medium">&nbsp;</span><span style="line-height:24px;font-family:Arial,Verdana,sans-serif;font-size:medium">!</span></div>
 <div><span style="line-height:24px;font-family:Arial,Verdana,sans-serif;font-size:medium">But encoding the 1440x1080 M2ts to&nbsp;<b>HDV 1440 50i&nbsp;</b>gives probably the best result and fastest encoding.</span></div>
 <div><span style="line-height:24px;font-family:Arial,Verdana,sans-serif;font-size:medium"><br>
 </span></div>
-<font face="arial, sans-serif" size="3"><b>Attempt to Remux to MKV using Mkvmerge!</b></font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:27px"><b>Mkvmerge GUI</b>&nbsp;is an app for muxing video into a matroska container -worth looking at,&nbsp;</span></font><span style="font-family:Arial,Verdana,sans-serif;font-size:medium;line-height:27px">from here&nbsp;</span><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:26px"><a href="https://www.bunkus.org/videotools/mkvtoolnix/downloads.html">http://www.bunkus.org/videotools/...</a></span></font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:27px">the guide, here&nbsp;</span><span style="line-height:26px"><a href="https://www.bunkus.org/videotools/mkvtoolnix/doc/mkvmerge.html">..mkvmerge.html</a>&nbsp;</span><span style="line-height:25px"><a href="http://linux.die.net/man/1/mkvmerge">http://linux.die.net/man/1/mkvmerge</a></span></font></div>
+<font face="arial, sans-serif" size="3"><b>Attempt to Remux to MKV using Mkvmerge!</b>
+<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:27px"><b>Mkvmerge GUI</b>&nbsp;is an app for muxing video into a matroska container -worth looking at,&nbsp;</span></font><span style="font-family:Arial,Verdana,sans-serif;font-size:medium;line-height:27px">from here&nbsp;</span><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:26px"><a href="https://www.bunkus.org/videotools/mkvtoolnix/downloads.html">http://www.bunkus.org/videotools/...</a></span>
+<div><font face="Arial, Verdana, sans-serif" size="3"><span style="line-height:27px">the guide, here&nbsp;</span><span style="line-height:26px"><a href="https://www.bunkus.org/videotools/mkvtoolnix/doc/mkvmerge.html">..mkvmerge.html</a>&nbsp;</span><span style="line-height:25px"><a href="http://linux.die.net/man/1/mkvmerge">http://linux.die.net/man/1/mkvmerge</a></span>
 <div><font face="Arial, Verdana, sans-serif" size="3"><br>
-</font></div>
-<div><font face="Arial, Verdana, sans-serif" size="3">Here's a batch script to remux all MTS files in a directory into a matroska container (.mkv). &nbsp;I put this in a Thunar custom action and just right-click in the directory.</font></div>
+
+<div><font face="Arial, Verdana, sans-serif" size="3">Here's a batch script to remux all MTS files in a directory into a matroska container (.mkv). &nbsp;I put this in a Thunar custom action and just right-click in the directory.
 <font face="arial, sans-serif" size="3"><font color="#0F4F0B">#!/bin/bash</font><br>
-<font color="#f3f3f3" style="background-color:rgb(7,55,99)">for file in *.MTS; do mkvmerge $file -o $file.mkv;done</font></font></div>
+<font color="#f3f3f3" style="background-color:rgb(7,55,99)">for file in *.MTS; do mkvmerge $file -o $file.mkv;done</font>
 <div>
-<div style="font-family:Arial,Verdana,sans-serif"><font size="3"><span style="line-height:26px"><b><br>
-</b></span></font></div>
-<div style="font-family:Arial,Verdana,sans-serif"><font color="#0b5394" size="3"><span style="line-height:26px">once the AVCHD files are remuxed into a mkv container it seems that ffmpeg is able to read/decompress the files without making frozen frames at start/end of the clips in a Kdenlive project. &nbsp;So the results are<strike>&nbsp;flawless, smooth,&nbsp;</strike>and of course there's no Q loss like you get when encoding to a lossy intermediate video format and then encoding a second time to the finished film. &nbsp;<b>Smooth at clip joins, but so far jittery all through, from frame to frame!</b></span></font></div>
+<div style="font-family:Arial,Verdana,sans-serif"><span style="line-height:26px"><b><br>
+</b></span>
+<div style="font-family:Arial,Verdana,sans-serif"><font color="#0b5394" size="3"><span style="line-height:26px">once the AVCHD files are remuxed into a mkv container it seems that ffmpeg is able to read/decompress the files without making frozen frames at start/end of the clips in a Kdenlive project. &nbsp;So the results are<strike>&nbsp;flawless, smooth,&nbsp;</strike>and of course there's no Q loss like you get when encoding to a lossy intermediate video format and then encoding a second time to the finished film. &nbsp;<b>Smooth at clip joins, but so far jittery all through, from frame to frame!</b></span>
 <div style="font-family:Arial,Verdana,sans-serif"><font color="#0b5394" size="3"><span style="line-height:26px"><b><br>
-</b></span></font></div>
-<div style="font-family:Arial,Verdana,sans-serif"><font color="#073763" size="3"><span style="line-height:26px"><b>The Simple Solution!</b></span></font></div>
-<div><font size="3" style="font-family:Arial,Verdana,sans-serif"><span style="line-height:26px;background-color:rgb(207,226,243)">Thanks to Norm2 reporting this on the Mantis Bug Tracker bug report. &nbsp;All we need to do is to overlap every clip at the end i.e. move up each next clip to cover the end of the previous clip by 3-4 frames. &nbsp;To do this make sure the "Overwrite" mode is selected with the button at bottom below the tracks.</span></font></div>
+</b></span>
+<div style="font-family:Arial,Verdana,sans-serif"><font color="#073763" size="3"><span style="line-height:26px"><b>The Simple Solution!</b></span>
+<div><font size="3" style="font-family:Arial,Verdana,sans-serif"><span style="line-height:26px;background-color:rgb(207,226,243)">Thanks to Norm2 reporting this on the Mantis Bug Tracker bug report. &nbsp;All we need to do is to overlap every clip at the end i.e. move up each next clip to cover the end of the previous clip by 3-4 frames. &nbsp;To do this make sure the "Overwrite" mode is selected with the button at bottom below the tracks.</span>
 <div><br>
 </div>
 </div>

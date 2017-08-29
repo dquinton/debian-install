@@ -121,8 +121,10 @@ in a specific file<br>
 change file names<br>
 <span class="cmd">sfind . -depth -name "* *" -execdir prename -n 'y/oldname/newname/' {} +</span>
 
-<br>
-Note that the "* *" will find all file names with spaces and then excecute the name change operation on only those files found. To include files without spaces in the name, just use "**", and to narrow down the search and speed up the operation, especially if the directory trree has thousands of files, if its a certain string to be changed, such as "ee", then use "*ee*".
+<br><br>
+Note that the "* *" will find all file names with spaces and then excecute the name change operation on only those files found. To include files without spaces in the name, just use "**".
+<br><br>
+To narrow down the search and speed up the operation further, especially if the directory tree contains thousands of files, if its a certain string to be changed, such as "ee", then use "*ee*".
 <br><br>
 
 

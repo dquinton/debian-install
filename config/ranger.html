@@ -109,6 +109,19 @@ sudo apt-get install w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnail
 
 w3m and w3m-image are responsible for in-line preview of images (only with rxvt, urxvt and xterm)
 
+<br><br>
+serious w3m issue: w3mimgdisplay process eats up memory - browsing 50 images can run into a Gb of RAM.
+<br><br>
+there's a patch for it which kills the process after each image preview (but I'm not sure how to use it) <a href="https://github.com/ranger/ranger/issues/451#issuecomment-309900698">..ranger/issues/451#</a>
+
+<form><textarea name="T" id="file" rows="3" cols="50">
+108a109,110
+>         self.quit()
+>         self.is_initialized = False</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
 
 <br><br>
 After installing, copy over the config files so that you can make modifications
@@ -672,17 +685,18 @@ map Pyt shell -r rsync -u %s %D                   #sync selected to next tab</te
 
 <br><br>
 <h3 id="del" class="tag">map X for delete commands</h3>
-<form><textarea name="T" id="file" rows="14" cols="120">
+<form><textarea name="T" id="file" rows="15" cols="120">
 ##### delete ##########
 
 map <DELETE> shell -s trash-put %s            #integrated trash (recycler) - see below how to set up.
 map &#60;a-DELETE> shell -cs trash-put %f		#delete the current file only - not all the selected ones!! 
 map &#60;S-DELETE>  console delete
 map X    console delete
+map xX shell rm -f %f  			#delete highlighted file not the selected files!
 map PX   console shell -r rm %%s               #delete files with super-user priveleges
 map xX1 console shell -tf shred -uv %%d/%%s       #shred files
-map xX2 console -p25 shell -ft find . -name *. -exec shred -uv {} \;   #shred all files recursively -with name
-map xX3 console shell -ft find . -type f -exec shred -uv {} \;        #shred all -any- files recursively
+map xX2 console -p26 shell -ft find . -depth -name "*." -execdir shred -uv {} \;   #shred all files recursively -with name
+map xX3 console shell -ft find . -depth -type f -execdir shred -uv {} \;        #shred all -any- files recursively
 map xx1  cd ~/.local/share/Trash/files
 map xx2  cd /media/FILES/.Trash-1000/files
 map xx3  cd /media/VIDEO/.Trash-1000/files</textarea>

@@ -103,6 +103,7 @@ full-screen google maps, quick bookmarks, recently closed tabs, vertical tabs, s
 	<li>change colors - allows custom colours for any wb page, background, text links, can be set to any web address domain or global (chromium does not allow CSS anymore) </li>
 	<li>stylish - add styles fromt he user styles and apply them to web pages </li>
 	<li>youtube downloaders: <a href="http://en.savefrom.net/user.php?helper=chrome">http://en.savefrom.net</a> <a href="http://youtubedownloader.anoniamto.com/?Down=install_chrome">http://youtubedownloader</a> (drag and drop the download from download-bar onto the extension page) but they might not work anymore</li>
+	<li>tab suspender</li>
 </ul></div>
  <br><br>
 
@@ -139,42 +140,7 @@ An alternative to Chrome/chromium, <a href="http://www.srware.net/forum/viewtopi
 It will run just like Chromium if you already set that up, with the same extensions.
 <br>
 <br><br>
-<b>Iron and flash player</b>
 
-<div class="numb"><ul>
-<li>copy iron to /opt if you like, with </li>
-
-<form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-sudo rsync -a iron-linux /opt</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-<li>cd to the iron dir</li>
-	<li>mkdir plugins, in the iron root dir, and cd there</li>
-	<li>create a symlink to the pepperflash plugin in this new plugins dir, with</li>
-	
-	<form>
-<textarea name="T" id="cmd" rows="1" cols="80">
-ln -s /usr/lib/pepperflashplugin-nonfree/libpepflashplayer.so</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-	<li>make a launcher in .local/share/applications with something like,</li>
-
-<form>
-<textarea name="T" id="file" rows="10" cols="80">
-[Desktop Entry]
-Version=1.0
-Type=Application
-Exec=/opt/iron-linux/iron
-Icon=/opt/iron-linux/product_logo_48.png
-StartupNotify=true
-Terminal=false
-Categories=Network;
-Name=Iron Browser</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-</ul></div>
 
 <br><br>
 <hr noshade="noshade">
@@ -361,7 +327,7 @@ sudo apt-get update && sudo apt-get install qgis python-qgis </textarea>
 </form>
 <br>
 Note: running testing you will need to add the "stretch" repo, not "jessie".<br>
-This may not be safe to do if running Devuan.
+This may not be recommended if running Devuan.
 <br><br>
 <hr noshade="noshade">
 <br><br>
@@ -369,17 +335,6 @@ This may not be safe to do if running Devuan.
 <h2 id="8" class="tag">Others!</h2> 
 
 
-<form>
-<textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install flush axel-kapt tucan pdfshuffler gperiodic xrandr</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-
-axel-kapt -download accelerator<br>
-tucan -upload-downloader for file share sites<br>
-flush or transmission -bit torrent handlers<br>
-xrandr -dual monitor/multi-display control<br>
 
 
 <br><br><br>

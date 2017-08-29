@@ -22,7 +22,7 @@ It looks like this for the Netinstall CD..
 <b>for LXDE</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad rxvt-unicode htop gparted bash-completion command-not-found</textarea>
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf leafpad rxvt-unicode htop gparted bash-completion command-not-found rfkill lshw</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -36,16 +36,16 @@ I go without lxde and lightdm now, and add here: <span class="inst">openbox lxpa
 <b>for plain openbox</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpanel lxtask lxpolkit wicd chromium tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted bash-completion command-not-found udiskie gvfs</textarea>
+apt-get install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd chromium tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted udiskie gvfs</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
 
-necessary and may be missing after a Netinstall without internet:
+necessary packages and may be missing after a Netinstall without internet:
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
-apt-get install consolekit aptitude sudo grub2 laptop-mode-tools network-config iw</textarea>
+apt-get install consolekit aptitude sudo grub2 laptop-mode-tools network-config iw rfkill lshw</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -87,8 +87,8 @@ needs_root_rights=yes</textarea>
 <b>5.</b>&nbsp;&nbsp; Install the full programme suite:
 
 <form>
-<textarea name="T" id="install" rows="4" cols="100">
-apt-get install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs bluetooth blueman openjdk-7-jre icedtea-7-plugin zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs-backends sshfs locate git cups gpa ntp</textarea>
+<textarea name="T" id="install" rows="5" cols="100">
+apt-get install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs exiftool w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer bluetooth blueman openjdk-8-jre icedtea-8-plugin zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs-backends sshfs locate git cups gpa ntp yad</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 

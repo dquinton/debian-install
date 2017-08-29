@@ -39,7 +39,7 @@ install from Debian packages with
 
 <form><textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get install unetbootin </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <div class="bullet"><ul><li>
@@ -50,7 +50,7 @@ use Gparted to make a Primary partition (FAT32) big enough for your ISO file + (
 <li>on reboot you need to tell your BIOS to boot from the USB - hit it on the boot menu... also you may have to add USB to the menu in BIOS settings.  </li>
 
 <li>Its best to wipe the files from the Live CD partition on the usb before installing a different ISO to it.</li>
-</ul></div>
+</ul>
 <br>
 Note: for installing debian on a machine with only wireless available, it would be nice to have the driver files ready on the same usb drive.<br>
 So go back to Gparted, format some free space on the usb stick (FAT32) and use that for those firmware files
@@ -59,7 +59,7 @@ Note: if you need to resize a FAT32 formatted drive, you need to install
 
 <form><textarea name="T" id="install" rows="1" cols="80">
 sudo apt-get install dosfstools mtools </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 but likely you just need to wipe the partitions and make new ones.
@@ -68,14 +68,14 @@ but likely you just need to wipe the partitions and make new ones.
 
 <h3>Multicd.sh</h3>
 
-get this script from their web-page </font><a href="http://multicd.tuxfamily.org/" style="line-height:26px;font-size:medium">http://multicd.tuxfamily.org/</a> 
+get this script from their web-page <a href="http://multicd.tuxfamily.org/" style="line-height:26px;font-size:medium">http://multicd.tuxfamily.org/</a> 
 <br><br>
 it makes one .iso file of multiple LiveCD or utility .iso's which can then be put on a USB stick with UNetbootin, or the commands: 
 
 <form><textarea name="T" id="cmd" rows="2" cols="50">
 isohybrid multicd.iso
 dd if=multicd.iso of=/dev/sdb1 bs=1M</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 "sdb1" is an example, you can find your usb device name with `lsblk`
@@ -93,11 +93,11 @@ I hacked the install script they give on the site which basically adds the sourc
 
 <form><textarea name="T" id="cmd" rows="2" cols="80">
 sudo sh -c 'echo "deb http://liveusb.info/multisystem/depot all main" /etc/apt/sources.list'</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
-you can comment out with # after install -<span class="cmd"> sudo nano /etc/apt/sources.list</span>
+you can comment out with # after install -<span class="cmd"> sudo nano /etc/apt/sources.list
 <br><br>
 install the key
 
@@ -105,9 +105,8 @@ install the key
 wget -q http://liveusb.info/multisystem/depot/multisystem.asc -O- | apt-key add -
 apt-get update 
 apt-get install multisystem</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br><br><br>
 <br><br>
-</div>
