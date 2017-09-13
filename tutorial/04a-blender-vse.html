@@ -481,17 +481,16 @@ you can use an effect strip too..
 
 <h2 id="4" class="tag">Multi-threading the render process</h2>
 
-Man! Blender will render on only a single thread, sharing the task over multiple cpu cores, thereby using only 25% cpu power - thus renders take much longer than they should do and modern processing speed is not utilised.
+Man! Blender will not render on all threads together, it switches threads, using only 25% cpu power - thus renders take much longer than they should do and modern processing speed is not utilised.
 <br><br>
-Here's something of an answer.. <b>Pulverize</b>
+Here's the answer (for now).. <b>Pulverize</b>
 <br><br>
 copy these scripts made by Hunter Perrin, from <a href="https://github.com/sciactive/pulverize">github.com/sciactive..</a>
 <br><br>
 <i>pulverize.php<br>
 pulverize_tools.py</i>
 <br><br>
-note: pulverize.py is also there but it doesn't show progress<br>
-also, concatenating videos with ffmpeg doesn't produce smooth audio joins and it still may be necessary to export the audio first and then mux it to the concatenated video afterwards.
+(pulverize.py is also there but it doesn't show progress)
 <br><br>
 put them in your scripts dir or symlink to them in /usr/bin
 <br><br>
