@@ -9,162 +9,288 @@ id: help
 
 <div class="cont">
 
-1.<b><font color="#741b47"></b><span style="font-size:medium"><span style="font-weight:bold;"><font color="#0b5394">Network Manager applet becomes invisible<b style="color:rgb(116,27,71)"></b>in the notification areaon the panel? Go to panel preferences and edit Notification area, check that icon size =16px as below that the nm-applet icon vanishes! This is only one solution.
-terminal:nm-applet
-showsGdkPixbuf problem?
-<span style="background-color:rgb(207,226,243);line-height:27px;font-size:medium">CHECK that the panel size &gt;18px -this is the element I completely forgot to adjust for ages. I had it the smallest size possible.
-<font color="#0b5394" size="3"><span style="line-height:27px;background-color:rgb(207,226,243)">Adjusting to 18px the applet reappeared!!!!!!
+<h4>1. Network Manager applet becomes invisible in the notification area on the panel?</h4> 
+<br>
+(XFCE panel) Go to panel preferences and edit Notification area, check that icon size =16px as below that the nm-applet icon vanishes! This is only one solution.
+<br><br>
+terminal: `nm-applet` shows GdkPixbuf problem?
+<br><br>
+CHECK that the panel size &gt;18px -this is the element I completely forgot to adjust for ages. I had it the smallest size possible.
+Adjusting to 18px the applet will reappear.
+<br><br><br>
+
+<h4>2. Alsa sound is always muted (speakers) on start-up and needs unmuting in mixer</h4>
+<br>
+set the mixer volume in your profile..
 <br>
 
-2. <font color="#0b5394"><b><font style="">Alsa sound is always muted</b> (speakers) on start-up and needs unmuting in mixer
-set the mixer volume in your profile with<br>
-<span style="color:rgb(180,95,6);font-size:medium">sudo leafpad /etc/rc.local
-<span style="font-size:medium">add these lines before ">exit 0"
->amixer -q set Speaker 100%
->amixer -q set Headphone 100%
->amixer -q set Master 50%
-<span style="font-size:medium;line-height:27px">==========Did not solve the issue!
-<br>
 
-try this<font color="#741b47"><a href="http://ubuntuforums.org/showthread.php?t=764576" rel="noreferrer">ubuntuforums.org...</a>
-<font color="#7C2020" size="3">sudo apt-get install alsa-utils
-set the speaker and master volume how you'd like it to be at start-up then
-sudo alsactl store
-get the stored values used with every boot by adding to the file /etc/rc.local, above >exit 0, the line
- size="3">alsactl restore
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo leafpad /etc/rc.local</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+add these lines before "exit 0"
+<form>
+<textarea name="T" id="file" rows="3" cols="50">
+amixer -q set Speaker 100%
+amixer -q set Headphone 100%
+amixer -q set Master 50%</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+==========Did not solve the issue!
+<br><br>
+
+try this (<a href="http://ubuntuforums.org/showthread.php?t=764576" rel="noreferrer">ubuntuforums.org...</a>)
+
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install alsa-utils</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+set the speaker and master volume how you'd like it to be at start-up, then
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo alsactl store</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and to get the stored values used with every boot, add tis line to the file /etc/rc.local, above "exit 0",
+
+<form>
+<textarea name="T" id="file" rows="1" cols="50">
+ size="3">alsactl restore</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
 ==========Problem solved!
-<font color="#741b47"><br>
+<br><br><br>
 
-3.<b style="line-height:27px;font-size:medium"><font color="#0b5394" style="">Forgot the root password!</b><span style="font-size:medium"><font color="#0b5394"> duh!
-<span style="font-size:medium">the easiest way to rectify this situation is to boot and get the grub menu up (press escape if its not set to show up)
-<span style="font-size:medium">highlight your Linux entry and<span style="font-size:medium;line-height:27px">press e
-<span style="font-size:medium">on the line with your Linux kernel version, add the word <font color="#0b5394">single
-<span style="font-size:medium">boot from there -might be F10
-<span style="font-size:medium">you boot into a root command line
-<span style="font-size:medium">type <font color="#0b5394">passwd and Enter
-<span style="font-size:medium">enter your new password
-<span style="font-size:medium">finally <font color="#0b5394">reboot
-<span style="font-size:medium"><font color="#0b5394"><br>
+<h4>3. Forgot the root password! duh!</h4>
+<br>
+the easiest way to rectify this situation is to boot and get the grub menu up (press escape or Shift if its not set to show up), then
+<div class="bullet"><ul>
+<li>highlight your Linux entry andpress e
+<li>on the line with your Linux kernel version, add the word single
+<li>boot from there -might be F10
+<li>you boot into a root command line
+<li>type passwd and Enter
+<li>enter your new password
+<li>finally reboot
+</ul></div>
+<br><br>
 
-<span style="font-size:medium">4. <b><font color="#0b5394" style="">Forgot the User password</b>
-<span style="font-size:medium">su
-<span style="font-size:medium">passwd &lt;user&gt;
-<span style="font-size:medium">enter new password twice to reset it
-<span style="font-size:medium"><br>
-
-<span style="font-size:medium">5.<font color="#0b5394"><b style=""> No read/write access to a Linux partition</b> (ext3/ext4)
-<span style="font-size:medium">fstab already has UUID= &lt;mount&gt; &lt;type&gt; defaults [or users,exec] 0 2
-<font color="#6A3200" style="line-height:25px;font-size:medium">sudo chown -R &lt;user&gt; /media/FILES <span style="line-height:25px;font-size:medium">(where it's mounted)
-<span style="line-height:24px"><br>
-
-<span style="line-height:27px;font-size:medium">6.<font color="#0b5394" style="line-height:27px;font-size:medium"><b style="">No permissions on an NTFS partition for new user</b>
-<span style="line-height:25px;font-size:medium">find the user's uid and gid with:
-<span style="line-height:24px">sudo id -u &lt;user&gt;
-<span style="line-height:24px">sudo id -g &lt;user&gt;
-<span style="line-height:24px">changing the uid is quite a task<a href="http://www.ibm.com/developerworks/aix/library/au-satuidgid/" rel="noreferrer">au-satuidgid/</a>
-so we can just edit fstab where on the NTFS partiton line we might have uid=1000, so we alter this uid to our user's uid.
-or we change it to "users".
-<span style="line-height:24px"><br>
-
-<span style="line-height:27px;font-size:medium">7.<font color="#0b5394" style="line-height:27px;font-size:medium"><b style="">K3b can't detect the executables cdrecord, cdrdao and growisofs of the new user</b>
-
-<ol><li><span style="font-size:medium">cdrecord is done by wodim, so give it permissiond of user with<font color="#6A3200" style="font-size:medium">sudo chown &lt;user&gt;:&lt;user&gt;/usr/bin/wodim</li>
-<li>same for /usr/bin/cdrdao and<span style="line-height:26px;font-size:medium">/usr/bin/growisofs</li>
-</ol>
-
-8.<b style="color:rgb(11,83,148);line-height:26px;font-size:medium;">CUPS returns "Request entity too large" error when entering an admin page (add printer etc)</b>
-http://localhost:631/admin pages can't be reached and the error log shows "unable to create directory /var/spool/cups/tmp"
-so the spool directory likely needs creating!
-
-sudo mkdir /var/spool/cups
-sudo mkdir /var/spool/cups/tmp
-if those are present already then they might need to belong to the lp group
-sudo chown -R root:lp /var/spool/cups
-and your user needs to be added to the lp/lpadmin group
-
-sudo adduser &lt;user&gt; lp
-sudo adduser &lt;user&gt; lpadmin
-
-the other error that will occur if your user is not added to the lp/lpadmin group is that logging into the admin page with your user name will return a failedunauthorizedpage.
+<h4>4. Forgot the User password</h4>
 <br>
 
-9.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">Sound Juicer can't read a CD</b>
-An error message pops up saying: <span style="background-color:rgb(204,204,204)">"Sound Juicer could not read the track listing on this CD.The specified location is not supported."
-I solved this by running:
-<font color="#7C2020">sudo apt-get install gvfs-backends
-<font color="#0b5394" size="3"><span style="line-height:24px"><b><br>
-</b>
+su to root then
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+passwd user-name</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+enter new password twice to reset it
+<br><br><br>
 
-10.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">A KDE app reports that Trash is full when trying to delete a file (and Trash is not full)</b>
-leafpad ~/,local.share/Trash/metadata<br>
+<h4>5. No read/write access to a Linux partition (ext3/ext4)</h4>
+<br>
+and fstab already has UUID= &lt;mount&gt; &lt;type&gt; defaults [or users,exec] 0 2
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo chown -R <user> /media/D1 </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+(/media/D1 is where the partition is mounted)
+<br><br><br>
+
+<h4>6. No permissions on an NTFS partition for new user</h4>
+<br>
+find the user's uid and gid with: 
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+sudo id -u user-name
+sudo id -g user-name</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+changing the uid is quite a task (see <a href="http://www.ibm.com/developerworks/aix/library/au-satuidgid/" rel="noreferrer">www.ibm.com..</a>)
+<br><br>
+so we can just edit fstab where on the NTFS partiton line we might have uid=1000, so we alter this uid to our user's uid.<br>
+or we change it to "users".
+<br><br><br>
+
+<h4>7. K3b can't detect the executables cdrecord, cdrdao and growisofs of the new user</h4>
+<br>
+cdrecord is done by wodim, so give it permissiond of user with 
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo chown <user>:<user>/usr/bin/wodim</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+same for /usr/bin/cdrdao and /usr/bin/growisofs
+<br><br><br>
+
+<h4>8. CUPS returns "Request entity too large" error when entering an admin page (add printer etc)</h4>
+<br>
+See my <a href="{{site.baseurl}}/helps/13-printers.html">Printers page</a>
+
+<br>
+<br><br>
+
+<h4>9. Sound Juicer can't read a CD</h4>
+<br>
+An error message pops up saying: "Sound Juicer could not read the track listing on this CD.The specified location is not supported."
+<br><br>
+I solved this by running:
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install gvfs-backends</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+
+<h4>10. A KDE app reports that Trash is full when trying to delete a file (and Trash is not full)</h4>
+<br>
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+leafpad ~/.local/share/Trash/metadata</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
 edit the line "Size=nnnnnnnnnnnnn"<br>
 to "Size=0"
-<br>
+<br><br><br>
 
-11.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">gksu saves root password to keyring</b>
-I just found this happening recently. When I launch any app using gksu it pops up without need for root password and a notice also pops up,<b>Granted permissions without asking for password.</b>
-I'm not sure if it's since I added "gksu" launched apps onto the Openbox menu or not. To eradicate this insecure behaviour, I edit the file<font color="#0b5394">~/.gconf/apps/gksu/%gconf.xml
+<h4>11. gksu saves root password to keyring</h4>
+<br>
+I just found this happening recently. When I launch any app using gksu it pops up without need for root password and a notice also pops up, Granted permissions without asking for password.
+<br><br>
+I'm not sure if it's since I added "gksu" launched apps onto the Openbox menu or not. To eradicate this insecure behaviour, I edit the file~/.gconf/apps/gksu/%gconf.xml
+<br><br>
 so that it reads
->&lt;entry name="save-to-keyring" mtime="1368699346" type="bool" value="<b>false</b>"/&gt;
+<form>
+<textarea name="T" id="cmd" rows="1" cols="100">
+<entry name="save-to-keyring" mtime="1368699346" type="bool" value=" false"/></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
 then restart the session (logout/login)
+<br><br><br>
+
+<h4>12. File system is inaccessible with error: Transport endpoint is not connected.</h4>
 <br>
+This error can come up for lots of reasons... a disk partition becomes inaccessible while an app is reading/writing to it. In my case it seems to be ntfs-3g dropping the fs. I found how to remedy it (but not fix it for good) with umount and mount operations. The mount point had disappeared too (likely the hhd sata connection was loose?)
+<br><br>
+check partitions with `lsblk`, then
 
-12.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">File system is inaccessible with error:</b><span style=""><b style="font-size:medium;color:rgb(11,83,148);line-height:26px"></b><font color="#0b5394" size="3"><span style="line-height:25.98958396911621px"><b>Transport endpoint is not connected.</b><b style="font-size:medium;color:rgb(11,83,148);line-height:26px;"></b>
-This error can possibly come up for lots of reasons. A disk partition becomes inaccessible while an app is reading/writing to it. In my case it seems to be ntfs-3g dropping the fs. I found how to remedy it (but not fix it for good) with umount and mount operations. The mount point had disappeared too.
-
-lsblk
-
+<form><textarea name="T" id="cmd" rows="3" cols="50">
 sudo umount /dev/sda2
-
-
-sudo mkdir /media/FILES
-sudo mount /dev/sda2 /media/FILES
-
-Apparently it is something to do with package fuse. Hopefully this will be updated. Otherwise download latest here<a href="http://sourceforge.net/projects/fuse/files/fuse-2.X/">http://sourceforge.net/...</a>
+sudo mkdir /media/D1
+sudo mount /dev/sda2 /media/D1</textarea>
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br>
 
-13.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">Can't use checkinstall - "/bin/mkdir: cannot create directory"</b>
+Apparently it was something to do with package fuse. Hopefully this will be updated. Otherwise download latest here <a href="http://sourceforge.net/projects/fuse/files/fuse-2.X/">http://sourceforge.net/...</a>
 
-sudo leafpad /etc/checkinstallrc
+<br><br><br>
 
-search Trans and edit the line to read:
+<h4>13. Can't use checkinstall - "/bin/mkdir: cannot create directory"</h4>
+<br>
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo leafpad /etc/checkinstallrc</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+search Trans and edit the line to read:<br>
 >TRANSLATE=0
 <br>
 
-<br>
-14.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">Apt list gets locked - exiting terminal while apt was running!</b><br>
-remove the lock file<br>
-
-sudo rm -f /var/lib/apt/lists/lock
-then retry apt<br>
- 
-15.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">Tumblerd process eats up the system memory as it creates and holds thumbnail data as video is encoded</b>
-
-
-stop video thumbnailing by renaming the video thumbnailer module in <font color="#0b5394">/usr/lib/x86_64-linux-gnu/   like so:<font face="Arial, Verdana, sans-serif"><br>
-      cd/usr/lib/x86_64-linux-gnu/tumbler-1/plugins/<br>
-       sudo mvtumbler-gst-thumbnailer.sotumbler-gst-thumbnailer.so.bak
-that's just my work-around for the moment!  No more video thumbnails with that remedy though.
-<font face="Arial, Verdana, sans-serif"><br>
-
-15.<b style="font-size:medium;color:rgb(11,83,148);line-height:26px;">Error using make -</b><font color="#0b5394" size="3"><span style="line-height:25.98958396911621px;"><b>Package libconfig was not found in the pkg-config search path.</b>
-<font color="#6A3200" face="Arial, Verdana, sans-serif">echo $PKG_CONFIG_PATH
-if this returnsemptyor something other than /usr/lib/pkgconfig, then it may have been reset earlier on.
-set it to default with
-export $PKG_CONFIG_PATH /usr/lib/pkgconfig<br>
-might need to install libconfig<br>
-<font color="#7C2020" face="Arial, Verdana, sans-serif">sudo apt-get install libconfig-dev libconfig8-dev libconfig9 libdrm-dev
-
-
-<font color="#7C2020" face="Arial, Verdana, sans-serif"><br>
-
-16.<b style=""><font color="#0b5394" size="3"><span style="line-height:26px">Error "unprivileged user cannot mount ntfs block devices"</b><br>
-can't mount an inserted USB drive and get above error message...
-there's bound to be a /dev/sdb1 entry in your /etc/fstab file
-have a look and if it's there remove that line and save the file, and that's all it is.
 <br><br>
-17.<b style=""><font color="#0b5394" size="3"><span style="line-height:26px">Gnome mplayer can't start</b><br>
+<h4>14. Apt list gets locked - exiting terminal while apt was running!</h4>
+<br>
+remove the lock file<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo rm -f /var/lib/apt/lists/lock</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+then retry apt
+<br><br><br>
+ 
+<h4>15. Tumblerd process eats up the system memory as it creates and holds thumbnail data as video is encoded</h4>
+<br>
+
+stop video thumbnailing by renaming the video thumbnailer module in /usr/lib/x86_64-linux-gnu/   like so:<br>
+
+<form>
+<textarea name="T" id="cmd" rows="2" cols="80">
+cd/usr/lib/x86_64-linux-gnu/tumbler-1/plugins/
+sudo mvtumbler-gst-thumbnailer.sotumbler-gst-thumbnailer.so.bak</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>  
+       <br>
+that's just a work-around -no more video thumbnails with that remedy though. (tumbler has been fixed)
+<br><br><br>
+
+<h4>16. Error using make - Package libconfig was not found in the pkg-config search path.</h4>
+<br>
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+echo $PKG_CONFIG_PATH</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+if this returns empty or something other than /usr/lib/pkgconfig, then it may have been reset earlier on.
+<br><br>
+set it to default with
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+export $PKG_CONFIG_PATH /usr/lib/pkgconfig</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+might need to install libconfig<br>
+
+
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install libconfig-dev libconfig8-dev libconfig9 libdrm-dev</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br><br>
+
+<h4>17. Error "unprivileged user cannot mount ntfs block devices"</h4>
+<br>
+can't mount an inserted USB drive and get above error message... there's bound to be a /dev/sdb1 entry in your /etc/fstab file
+<br><br>
+have a look and if it's there remove that line and save the file, and that's all it is.
+<br><br><br>
+
+<h4>18. Gnome mplayer can't start</h4>
+<br>
 
 
 error: "gnome-mplayer: error while loading shared libraries: /usr/lib/libgda-5.0.so.4: unexpected PLT reloc type 0x00"
@@ -174,3 +300,7 @@ error: "gnome-mplayer: error while loading shared libraries: /usr/lib/libgda-5.0
 sudo apt-get install libgda-5.0-4 --reinstall</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+  
+  <br><br><br><br><br><br>
+  </div>
+  </div>

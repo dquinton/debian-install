@@ -109,24 +109,43 @@ move files found in a list of file names (files.list)<br>
 <br><br>
 
 replace all text occurring in all files under the current dir<br>
-<span class="cmd">find /abc/abc -type f | xargs perl -pi -e '/xyz/xyz'</span>
+<span class="cmd">find . -type f -exec sed -i 's/abc/xyz/g' {} +</span>
 <br>
-(note, I replaced a directory path found in the files)
+or using perl:<br>
+<span class="cmd">find . -type f | xargs perl -pi -e 's/abc/xyz/g'</span>
 <br><br>
 
+or in files in the current dir only (and of certain extension)
+<br><br>
+<span class="cmd">sed -i -- 's/abc/xyz/g' *.py</span>
+
+<br><br>
 in a specific file<br>
 <span class="cmd">sed -i 's/old/new/g' filename</span>
-<br><br>
+<br><br><br>
 
+There is also a program called rpl..
+<br><br>
+<span class="cmd">rpl -iw old new filename</span>
+<br><br>
+where -i ignores case, -w finds whole words only, -x specifies extensions of files to replace in, -p is interactive mode, -e regular expression escapes, -d preserve modification times, -s simulate, -v verbose.
+<br><br><br>
+
+replace a whole line in a file<br>
+<span class="cmd">sed 'Ns/.*/replacement-line/' filename</span>
+<br><br>
+N=line no.
+
+<br><br>
 change file names<br>
-<span class="cmd">sfind . -depth -name "* *" -execdir prename -n 'y/oldname/newname/' {} +</span>
+<span class="cmd">find . -depth -name "* *" -execdir rename 's/oldname/newname/' '{}' /;</span>
 
 <br><br>
 Note that the "* *" will find all file names with spaces and then excecute the name change operation on only those files found. To include files without spaces in the name, just use "**".
 <br><br>
 To narrow down the search and speed up the operation further, especially if the directory tree contains thousands of files, if its a certain string to be changed, such as "ee", then use "*ee*".
 <br><br>
-
-
+Be careful using "y" e.g. 'y/sring/string2/' as it does a translate action, not a direct replacement, it may even replace letters/digits one for one, e.g. 'y/b45/c54/' will change all 'b's for 'c's, all '4's for '5's etc - so you can end up with totally wasted file names if you use it without knowing what its doing.
+<br><br><br>
 
 </div>

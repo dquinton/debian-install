@@ -120,8 +120,9 @@ there's a patch for it which kills the process after each image preview (but I'm
 >         self.is_initialized = False</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
-
+<br><br>
+Good thing is, you can quit the w3m process any time with <b>Ctrl-C</b><br>
+To release media drives that could be caught in a process such as w3mimgdisplay, then you will need to use Ctrl-C before ejecting.
 
 <br><br>
 After installing, copy over the config files so that you can make modifications
@@ -298,9 +299,9 @@ And that's just the basics!  There are endless possibilities with Ranger because
 
 <tr><td>c w    </td><td>rename/bulk rename</td></tr>
 
-<tr><td>A			</td><td>edit name, cursor at end</td></tr>
+<tr><td>I			</td><td>edit name, cursor at front (I change it to i, and make Alt-i view in pager)</td></tr>
 
-<tr><td>I			</td><td>edit name, cursor at front</td></tr>
+<tr><td>A			</td><td>edit name, cursor at end </td></tr>
 
 <tr><td>a			</td><td>edit name, cursor inside extension</td></tr>
 
@@ -457,7 +458,7 @@ map fe  edit
 map du  shell -p du -ch -d 1 | sort -rh          #note also my ,df displays file and dir count
 map dz  shell -p du -ch -d 1 | sort -k 2b
 
-#change i to edit file name at first char, set Alt-i to open file in pager
+#change i to edit file name at first char, set Alt-i to open file in pager instead of i
 map &#60;a-i> display_file
 map i  eval fm.open_console('rename ' + fm.thisfile.basename, position=7)
 

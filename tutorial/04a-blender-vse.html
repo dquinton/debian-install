@@ -11,8 +11,9 @@ id: tutor
         On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
              <ul>
                 <li><a href="#1">What's different</a></li>
-                <li><a href="#2">My Tips</a></li>
-                <li><a href="#3">Multi-threading with Pulverize</a></li>
+                <li><a href="#2">My Keys</a></li>
+                <li><a href="#3">My Tips</a></li>
+                <li><a href="#4">Multi-threading with Pulverize</a></li>
              </ul>
     </li>
   </ul> 
@@ -21,15 +22,16 @@ id: tutor
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
    <a href="#1">What's different</a><br>
-   <a href="#2">My Tips</a><br>
-   <a href="#3">Multi-threading with Pulverize</a><br>
+   <a href="#2">My Keys</a><br>
+   <a href="#3">My Tips</a><br>
+   <a href="#4">Multi-threading with Pulverize</a><br>
 </td></tr></table></div>
 <div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
 
 <div class="cont">
 
 
-Blender can look quite confusing for the first time, especially as it has so many functions in its main role of producing 3D animations. Its Sequence Editor has a slightly different approach to making movies than other editors and it's a very good idea to spend time with the video tutorials online first, so that things become obvious.
+Blender can look quite confusing for the first time, especially as so many of its functions fulfil its main role of producing 3D animations. Its Sequence Editor has a slightly different approach to making movies than other editors and it's a good idea to look at the video tutorials first, so that things become obvious.
 <br><br>
 <a href="https://www.linux.com/learn/using-blender-video-editing-software-linux">using-blender-video-editing-software</a>
 <br><br>
@@ -40,7 +42,7 @@ Blender manual  <a href="https://docs.blender.org/manual/en/dev/editors/vse/sequ
 <br>
 
 
-
+<br>
 <h2 id="1" class="tag">What's different</h2>
 
 <div class="bullet"><ul>
@@ -48,42 +50,160 @@ Blender manual  <a href="https://docs.blender.org/manual/en/dev/editors/vse/sequ
 Here are some main differences of Blender VSE to other non-linear video editors for Linux..
 <br><br>
 
-<li>video clips are called strips, tracks are called channels, rendering is called animation! 
+<li>Blender video clips are called strips, tracks are called channels, the normal "clip timeline" is called the sequencer, and rendering is called animation! 
 
-<li>video-audio is immediately split into "strips" when added, therefore moving a strip means that you must select both video + audio atthe same time, also for cutting at the same frame</li>
+<li>there is no clip library or clip preview, movie files are opened straight onto the sequencer
+
+<li>video-audio is immediately split into "strips" when added, therefore moving a strip means that you must select both video + audio together , also for cutting at the same frame</li>
 
 <li>there's no overlapping mode - when strips are overlapped the overlapping one highlights red, then on placing it it jumps to the end of the underlying strip - handy for placing strips exactly at end of others.</li>
 <br>
-- means that vid/audio strips need to be cut at whatever frame should be first/last, then the gap between other strips closed up
+- means that your vid/audio strips should be cut at their last/first frame, then the gap between other strips closed up
 <br><br>
-- the idea is that each strip should to be worked on by itself, not by another strip overlapping it deciding what its last frame should be.
+- the idea is that each strip's first/last frames should to be decided by itself, not by another strip overlapping it.
 <br><br>
 
 <li>selection is done by RMB, seek position is by LMB on the sequence editor.</li>
 
 <li>the render does not assume that the total length of strips is the total length of the project to be made - rendering uses the frame range for length of output movie.</li>
+
+<li>projects open up instantly and editing work is highly stable - no crashes!
+
+<li>multiple Blender windows can be opened and render processes can be run background while other video is edited
 </ul>
 
 <br><br><br>
 
-<h2 id="2" class="tag">My Tips</h2>
+<h2 id="2" class="tag">Main Keys</h2>
+<br>
+my keys are in blue
 <br><br>
-<h3>Window arrangement</h3>
-<ul>
-<li>Open Blender and select Video Editing layout from first drop-down at top.
-<li>drag the preview from right over to the left and make the new far right window a Properties.
-<li>make the left window Graph if you like.
-<li>under File, Save Startup File - so that reopening Blender it will be ready for video editing.
-</ul>
+<table cellpadding="6" cellspacing="0" border="1" style="border-collapse: collapse; background-color: transparent;">
+<tbody><tr>
+<td width="160">&nbsp;<span style="color: #191994; ">Mouse scroll</span>&nbsp;</td>
+<td width="360"> travel up/down sequencer</td>
+<td width="160">&nbsp;RMB/<span style="color: #191994; ">Ctrl-RMB</span> /Shift-Ctrl-RMB&nbsp;</td>
+<td width="320">Select strips</td>
+</tr>
+<tr>
+<td width="60">&nbsp;<span style="color: #191994; ">Ctrl-scroll</span>&nbsp;</td>
+<td> zoom</td>
+<td>&nbsp;B&nbsp;</td>
+<td>Selection box </td>
+</tr>
+<tr>
+<td>&nbsp;MMB-drag&nbsp;</td>
+<td>Pan sequencer</td>
+<td>&nbsp;<span style="color: #191994; ">Ctrl-A</span> &nbsp;</td>
+<td>Select all (def. A)</td>
+</tr>
+<tr>
+<td>&nbsp;Ctrl-MMB-drag&nbsp;</td>
+<td>Pan-zoom sequencer</td>
+<td>&nbsp;<span style="color: #191994; ">1</span></td>
+<td>Select left handle</td>
+<tr>
+<td >&nbsp;<span style="color: #191994; ">Shift-Z</span>&nbsp;</td>
+<td>Draw box to zoom to (def. Shift-B)</td>
+<td>&nbsp;<span style="color: #191994; ">2</span></td>
+<td>Select right handle</td>
+</tr>
+<tr>
+<td >&nbsp;<span style="color: #191994; ">A/Z</span>&nbsp;</td>
+<td>Zoom in/Zoom out</td>
+<td width="60">&nbsp;<span style="color: #191994; ">X</span>&nbsp;</td>
+<td>Soft cut (def. K)</td>
+</tr>
+<tr>
+<td >&nbsp;<span style="color: #191994; ">Q</span>&nbsp;</td>
+<td>Zoom to all strips (= Home)</td>
+<td>&nbsp;<span style="color: #191994; ">K</span>&nbsp;</td>
+<td>Hard cut (def. Shift-K)</td>
+</tr>
+<tr>
+<td>&nbsp;<span style="color: #191994; ">V</span>&nbsp;</td>
+<td>View selected strip (def. Numpad .)</td>
+<td>&nbsp;<span style="color: #191994; ">S</span> &nbsp;</td>
+<td>Snap strips (def. Shift-S)</td>
+</tr>
+<tr>
+<td>&nbsp;<span style="color: #191994; ">F</span>&nbsp;</td>
+<td>Jump to frame (def. Numpad 0)</td>
+<td>&nbsp;<span style="color: #191994; ">R</span>&nbsp;</td>
+<td>Remove gaps (or Backspace)</td>
+</tr>
+<tr>
+<td>&nbsp;<span style="color: #191994; ">W</span>&nbsp;</td>
+<td>Jump to strip start</td>
+<td>&nbsp;<span style="color: #191994; ">=</span>&nbsp;</td>
+<td>Insert gap (def. Shift=)</td>
+</tr>
+<tr>
+<td>&nbsp;<span style="color: #191994; ">E</span>&nbsp;</td>
+<td>Jump to next strip start</td>
+<td>&nbsp;G</td>
+<td>Grab strips</td>
+</tr>
+<tr>
+<td>&nbsp;<span style="color: #191994; ">Spacebar</span>&nbsp;</td>
+<td>Play/pause (def. Alt-A)</td>
+<td>&nbsp;<span style="color: #191994; ">T</span></td>
+<td>Extend strips (def. E)</td>
+</tr>
+<tr>
+<td>&nbsp;Left/Right&nbsp;</td>
+<td>move to next frame</td>
+<td>&nbsp;Ctrl-G</td>
+<td>Create Meta strip</td>
+</tr>
+<tr>
+<td>&nbsp;Up/Down</td>
+<td>Next/Prev keyframe</td>
+<td>&nbsp;Shift-D</td>
+<td>Duplicate strip</td>
+</tr>
+<tr>
+<td>&nbsp;Shift-Up/Down</td>
+<td>Fwd/Bkwd 1/10 sec</td>
+<td>&nbsp;Alt-Left/ Alt-Right </td>
+<td>Swap strip with adjacent strip</td>
+</tr>
+<tr>
+<td>&nbsp;M</td>
+<td>Add marker</td>
+<td>&nbsp;N</td>
+<td>Strip properties</td>
+</tr>
+<tr>
+<td>&nbsp;Ctrl-M</td>
+<td>Rename marker</td>
+<td>&nbsp;C</td>
+<td>Call menu for strip</td>
+</tr>
+<tr>
+<td>&nbsp;P</td>
+<td>Preview range</td>
+<td>&nbsp;Shift-L</td>
+<td>Lock strips from frame adjustments</td>
+</tr>
+<tr>
+<td>&nbsp;Alt-P</td>
+<td>Close preview range</td>
+<td>&nbsp;Shift-Alt-L </td>
+<td>Unlock strips</td>
+</tr>
+<tr>
+<td>&nbsp;Ctrl-Up/Ctrl-Down </td>
+<td>Toggle maximise area</td>
+<td>&nbsp;</td>
+<td></td>
+</tr>
+</tbody></table>
+
 
 <br><br>
-<h3>Theme</h3>
-<ul>
-<li>open User Preferences in the left window
-<li>Themes tab
-<li>choose a preset - I selected Ubuntu and adjusted the graph and sequencer backgrounds a little lighter
-</ul>
-
+many shortcut keys can be modified/added by a right click on the menu item > <b>Change shortcut/Add shortcut</b>, or else in Preferences > Input tab
+<br><br>
 <br><br>
 <h3>Set Spacebar to play/pause animation..</h3>
 <ul>
@@ -93,38 +213,113 @@ Here are some main differences of Blender VSE to other non-linear video editors 
 <li>click on the second box twice and press <b>Spacebar</b>
 <li>make one for both Sequencer and Frame for the shortcut to be active when the mouse hovers these windows (including the preview window) 
 its set to play!<br>
-(this will stop Space from bringing up shortcut search!)
+(this will however stop Space from bringing up shortcut search)
 <li>Click Save User Settings too.
 </ul>
 
 
 <br><br>
+<h3>Set zoom controls</h3>
+<ul>
+<li>To change the zoom controls look in Preferences > Input > expand View2D
+<li>uncheck the controls for <br>
+1. Scroll Right/Scroll Left (which are set to Ctrl-scroll) and <br>
+2. Scroll Down/Scroll Up (set to scroll) <br>
+<li>then change the keybinds for <br>
+1. Zoom in/Zoom Out to be <b>Ctrl-Wheel-Up</b> and <b>Ctrl-Wheel-Down</b><br>
+2. Scroll Right/Scroll Left to be <b>Wheel-Down</b> and <b>Wheel-Up</b> <br>
+<li>you might need to add shortcuts in Sequencer for <br>
+1. Zoom in/Zoom Out (view2d.zoom_in / view2d.zoom_out), <br>
+2. Scroll Right/Scroll Left (view2d.scroll_right / view2d.scroll_left)<br>
+<li>save user settings and export your Key Configuration to a file, in case it is reset later.
+</ul>
+
+
+<br><br>
+<h3>Set strip select</h3>
+<br>
+I find Ctrl-RMB (for selecting time-linked video/audio clips) very awkward on my brain, so I changed it to the mouse Button 4
+<br><br>
+It's probably too tricky to change it to LMB
+<ul>
+<li>in Input > Sequencer, find the shortcut "Activete/Select" that uses Ctrl Right Mouse <br>
+<li>click on the action and press the side button on the mouse <br>
+<li>then uncheck Extend (which adds to the selected strips)<br>
+</ul>
+<br><br>
+You could add shortcuts for selecting a strip together with adjoining strips (check Linked Handle), or for selecting all strips to the left or right of the seek point or the mouse (set "Left/Rig None" to Left, Right or Mouse) - I use Ctrl-Left/Ctrl-Right (but need to uncheck two shortcuts in Screen)
+<br><br>
+If you create a new shortcut and paste "sequencer.select" you will get the options for Extend, Linked Time, Linked Handle.
+<br><br>
+The controls I'd really like would be shortcuts to snap the strip ends of the strip under the seek point to the seek point (without selecting the strip ends first), and a key to select the strip under the seek point which would be faster than using the mouse on every strip.
+
+
+
+<br><br><br><br><br>
+
+<h2 id="3" class="tag">My Tips</h2>
+<br><br>
+<h3>Window arrangement</h3>
+<ul>
+<li>Open Blender and select Video Editing layout from the first drop-down list at top.
+<li>drag the preview from the right over to the left and make the new far right window that just appeared a Properties, via lower selection button.
+<li>make the left window Graph if you like.
+<li>under File, Save Startup File - so that when reopening Blender it will be ready for video editing.
+</ul>
+
+<br><br>
+<h3>Theme</h3>
+<ul>
+<li>open User Preferences in the left window via lower button
+<li>go to Themes tab
+<li>choose a preset - I selected Ubuntu and adjusted the graph and sequencer backgrounds a little lighter
+</ul>
+
+
+
+
+<br><br>
 <h3>Adding video strips</h3>
 <ul>
-<li>click on Add > Movie
-<li>select files (hold Shift for multiple)
+<li>click on Add > Movie (or set a shortcut like <b>Alt-V</b>)
+<li>select files (hold Shift for multiple select, or press A for Select all)
 <li>once the strips are on the sequencer, check that the no. of frames for audio = no. frames for video - if audio shows more, go to the project properties and adjust the <b>Frame rate </b>to the correct value, e.g. 24, 25, 29.97 etc - so that the audio and video match up for frames. 
-<li>if the video looks squashed or stretched, RMB on the video strip and go to <b>Strip</b> (below) <b>> Render size</b> to set the strip's dimensions to the properties window - as your saved properties may be set to 1080p resolution and the video you're working with is different.
+<li>in the properties window you can specify the video size clicking on Dimensions, in case the size of your default project is different to the current movie and the video looks squashed or stretched, (RMB on the video strip, press <b>N</b> and look at Original Dimensions to check)
+<li>or you can RMB on the video strip and go to <b>Strip</b> (below) <b>> Render size</b> to set the strip's dimensions to the properties window - as your saved properties may be set to 1080p resolution and the video you're working with is different.
 <li>if it still looks skewiff after that, go to the properties and adjust the <b>Aspect Ratio</b> to correct value (sometimes needs 1:1)
+<li>if playing the video lags, you can change "No Sync" at the bottom to AV-sync or Frame-dropping.
 </ul>
 
-<br><br><br>
+<br><br>
 <h3>Zooming in on the Sequencer</h3>
 <ul>
-<li>Press <b>Shift-B</b> and drag a box with LMB to select an area to zoom in on
+<li>mouse scroll zooms in/out laterally (by default, but I change it to Ctrl-scroll), 
+<li> <b>Ctrl-MMB +drag</b> zooms in/out vertically-laterally, to show more or less channels
+<li>Press <b>Shift-Z</b>  (def. Shift-B) and drag a box with LMB to select an area to zoom in on
 <li>press <b>Home</b> to zoom out to see the whole length of strips
-<li>mouse scroll zooms in/out
-<li><b>Shift-MMB</b> (middle button) + drag allows you to travel about along or up/down the Sequencer
+<li>Ctrl-scroll up/down moves the sequencer along (I change it to scroll-up/scroll down)
+<li><b>MMB</b> (middle mouse  button) + drag allows you to travel about along the Sequencer or up/down channels
 </ul>
 
-<br><br><br>
+
+<br><br>
+<h3>Setting the frame range</h3>
+<ul>
+<li>pressing the play button or Spacebar will preview through the sequencer, but only until the end of the frame range, and then it will return to the start of frame range
+<li>set the start/end of frame range by placing the seek point and then going to Frame (Timeline) > Set Start Frame/Set End Frame
+<li>or you can hover on the Timeline and press <b>S </b>, or <b>E</b>
+</ul>
+
+
+
+<br><br>
 <h3>Using the Timeline</h3>
 <ul>
-<li>if you are zoomed in quite close in the Sequencer, you can move to other places on it quite easily by clicking in the Timeline, below the Sequencer (you might need to pull it up to see it, and you may have to zoom out)
+<li>clicking in the Timeline will move the seek point to other places on the Sequencer (within the set frame range)
 <li>pressing Home while hovering the Timeline will zoom to the Frame range you have set, mouse scroll to zoom out/in
-<li>unfortunately, the Timeline doesn't show what positions the strips are placed on, or how much space they use, but it does show markers, so adding markers along the way would be useful
+<li>the Timeline shows the frame range, from 0 to n min/sec, it doesn't show where strips start/end, but it does show markers, so adding markers along the way would be useful
 </ul>
-<br><br><br>
+<br><br>
 
 <h3>Markers</h3>
 <ul>
@@ -132,74 +327,112 @@ its set to play!<br>
 <li>set hotkeys for Jump to previous/ Jump to next marker - RC on the menu item and select Add Shortcut, then type your shortcut, e.g <b>Shift-,</b> and <b>Shift-.</b> (in effect < and >)
 </ul>
 
-<br><br><br>
+<br><br>
 <h3>Preview Range </h3>
 <ul>
-<li>Press <b>P </b>and drag an area to set the preview range - play will run through this area over and over, no stopping. That means you can keep playing a particular edit/effect, while you make adjustments to the effects to see the changes live.
+<li>Press <b>P </b>and drag an area to set the preview range - play will run through this area over and over. That means you can keep playing a particular edit/effect, while you make adjustments to the effects to see the changes live.
 <li><b>Alt-P</b> to clear the range.
-<li>to set the preview range more accurately, set the seek point to the start, then hover on the Timeline and press <b>S </b>, set the seek point to the end of the preview range and then hover the Timeline and press <b>E</b>
+
 </ul>
 
-<br><br><br>
+<br><br>
 <h3>Selecting strips to move them about</h3>
 <ul>
-<li><b>RMB</b> on the middle of a strip to select it, <b>Shift-RMB</b> to select others, or press <b>B</b> and drag a box with LMB to select all in the box (note that you should RMB without Shift on the first strip to cancel any previous selection and so as not add to the previous selected strips and later cause trouble)
-<li>you can press <b>A</b> to toggle select all
-<li>press <b>G</b> to grab them
-<li>they will now follow the mouse - <b>LMB</b> to place them, or <b>RMB</b> again to cancel the grab.
+<li><b>RMB</b> on the middle of a strip to select it, <b>Button 4</b> (def. Ctrl-RMB) to select both video/audio strips with one click, <b>Ctrl-RMB</b> (def. Shift-RMB) to select others, or press <b>B</b> and drag a box with LMB to select all in the box 
+<li>note that multi-selecting strips will add strips to previously selected ones by default, so you should RMB on empty space first, so as not add to the previous selected strips) - you could change the default adding to selection by unchecking "Extend" in the shortcut properties.
+<li><b>Ctrl-A</b> (def. A) to toggle select all
+<li>press <b>G</b> to grab the selected strips 
+<li>they will follow the mouse about - then do <b>LMB</b> click to place them, or <b>RMB</b> again to cancel the grab.
 <li>if you press the <b>Shift</b> key while moving the strip it will move much more minutely, in order to be more accurate.
+<li>Note: try setting <b>RMB</b> for Box select 
 </ul>
 <br>
 you can't overlap strips, they will jump out to find space on the end.
 
 <br>
-<br><br><br>
-<h3>Delete strips</h3>
-<ul>
-<li><b>RMB</b> select strips and hit <b>X</b> or <b>Delete</b>, then confirm
-<li><b>Ctrl-Z</b> will also undo the action</ul>
 
-<br><br><br>
+
+
+<br><br>
 <h3>Cutting strips</h3>
 <ul>
 <li>seek to the cut point (<b>Left/Right</b> keys seek one frame)
-<li><b>RMB</b> select the strip to be cut and press <b>K</b> for a soft cut (ends of strip can be extended again)
-<li><b>or Shift-K</b> to make a hard cut (the ends will be gone)
-<li>select both video and audio strips to cut them together with K, or select them one by one and hit K for each one
+<li><b>RMB</b> select the strip to be cut and press <b>X</b> (def. K) for a soft cut (ends of strip can be extended again)
+<li><b>K</b> (def. Shift-K) to make a hard cut (the ends will be gone)
+<li>select both video and audio strips to cut them together with X/K, or select them one by one and hit X for each one
+<li>simply LMB in the gaps and press <b>R </b> or Backspace to close them up
 </ul>
 
+<br><br>
+<h3>Delete strips</h3>
+<ul>
+<li><b>RMB</b> select strips and hit <b>D</b> (changed from X) or <b>Delete</b>, then confirm
+<li><b>Ctrl-Z</b> will also undo the action</ul>
 
-<br><br><br>
+<br><br>
 <h3>Snapping strips</h3>
 <br>
-Shift-S snaps a selected strip to the seek point, or the end of a strip (stretches it out)
+<b>S</b> (def. Shift-S) snaps a selected strip to the seek point, or extends/shortens the end of a strip to the seek point<br>
+(I change it to S and make Trim Strips Shift-S) 
 <br><br>
-So, to move the start/end frame to the seek point (ie make a soft cut while removing the cut off part from the sequencer) ..
+moving the start/end frame to the seek point is the same as making a soft cut on the strip while removing the cut off part from the sequencer..
 <br>
 <ul>
 <li>seek to the cut point
-<li>RMB on the end of the strip you want to shrink down
-<li><b>Shift-S</b> to shrink the strip to the seek point
+<li>RMB on the end of the strip you want to shrink down - or select the strip and press<b> 1</b> or <b>2</b> (add these shortcuts to Select > Right handle/Left handle)
+<li><b>S</b> to snap the strip end to the seek point (to shrink or extend the strip)
+<li>if you select the strip (not the end of it) and press <b>S</b>, the strip's start frame will jump to the seek point, changing channel if necessary
 </ul>
 
 <br><br>
-and if its the first strip in the sequence, and you remove some of the start frames, you will need to move to the new start frame with PgUp and use Frame > Set Start Frame (as there's no gap to remove)
+- if its the first strip in the sequence, and you remove some of the start frames, you will need to adjust the frame range start -
+move to the new start of the strip with PgUp (or my W) and use Timeline Frame > Set Start Frame (or hover Timeline below and press <b>S</b>) 
 <br><br>
-if its a strip somewhere along the sequence the cut will make a gap - click LMB in the gap and use <b>Backspace</b> to close the gap.
+if its a strip somewhere along the sequence the cut will make a gap - click LMB in the gap and use <b>Backspace</b> (or my <b>R</b>) to close the gap.
 <br><br>
-If you press <b>S</b> (Slip Strip) you can then drag the content of the strip that you cut within its new frame length, in case you wanted to.
-(worth changing round <b>S</b> and <b>Shift-S</b>)
+If you press <b>Shift-S</b> (Slip Strip, by default S) you can then drag the content of the strip that you cut within its new frame length, in case you wanted to adjust where the cut was made.
 <br><br>
 If you select the ends of a strip and press <b>G </b>to grab them you can extend them out, but if the strip then overlaps another strip and you place it with LMB, then the strip you extended will jump out to the end of the sequence to find enough space forewith that it might sit.  It will not overlap or push out the strips it overlapped.
 <br><br>
-To get round that you need to insert gaps at the strip end with <b>Shift-=</b>, as much as you think you need to extend the strip ends.
+To get round that you need to insert gaps at the strip end with <b>=</b>, as much as you think you need to extend the strip ends - gaps will be inserted after the selected strip.
+<br><br><br><br>
+
+<h3><i>Fast work-flow</i></h3>
+<br>
+<table cellpadding="26" cellspacing="2" border="1"><tr><td width="50%" valign="top"><b>Cutting the ends of strips</b>
+<ul>
+<li>Play the movie up to a cut point
+<li><b>Ctrl-RMB</b> on the video clip
+<li>press <b>1 </b>or <b>2</b> to select strip ends (start/end)
+<li>press <b>S</b> to snap strip ends to the cut point
+<li>press <b>R </b>to close the gap between the strip to the right
+<li>press <b>W</b> and <b>R </b>to close the gap between the strip to the left
+</ul></td>
+
+
+<td><b>Cutting strips midway</b>
+<ul>
+<li>Play the movie up to a cut point
+<li><b>Ctrl-RMB</b> on the video clip
+<li>press <b>X</b> to make a cut
+<li>play again until the next cut point
+<li>press <b>X </b>to make another cut
+<li><b>Ctrl-RMB</b> on the cut part (if it doesn't stay selected)
+<li>press <b>D </b>to remove
+<li>press <b>W</b> and <b>R </b>to close the gap to the next strip (or leave the gaps until last)
+</ul></td></tr></table>
+
+
+<br><br><br><br>
+<h3>Extend strips</h3>
+<ul>
+<li>press <b>T</b> (def. E) to get the Transform tool - which has two different effects: 
+<br><br>
+1. select strips on the same channel, press E and the strips will move with mouse, only left or right, not crossing channels<br>
+2. select strips on the same channel, press E and the strips will expand/shrink from their end frame 
+</ul>
 <br><br><br>
 
-
-
-
-
-<br><br>
 <h3>Fade out/ fade in</h3>
 <ul>
 <li>Select the point to start the fade out to black.
@@ -208,10 +441,11 @@ To get round that you need to insert gaps at the strip end with <b>Shift-=</b>, 
 <li>Blender will make a smooth transition from one setting to the other between the keyframes, which you can see in the Graph (press Home to show full).
 <li>0 opacity will be showing the base colour which should be black, unless other strips are under the strip on another channel.
 <li>on the graph window you can adjust the curve of the fade by dragging the line (with presets to choose from too)
+<li>for fading out/in audio, select the audio strip and set keyframes for 100% volume and 0% volume
 </ul>
 
 <br>
-You don't need to make a black colour strip and gamma cross effect (as the tutorials teach).
+You don't need to make a black colour strip and gamma cross effect (as the tutorials say).
 <br><br><br>
 
 <h3>Transitions</h3>
@@ -227,7 +461,7 @@ you can use an effect strip too..
 <li> or you can use Wipe, which is more comical - and look in the properties to the right, scroll down to Transition and select which one you want 
 </ul>
 
-
+<br><br>
 <h3>Colour correction</h3>
 
 <ul>
@@ -242,21 +476,22 @@ you can use an effect strip too..
 </div>
 
 
-<br><br><br>
+<br><br><br><br>
 
 
-<h2 id="3" class="tag">Multi-threading the render process</h2>
+<h2 id="4" class="tag">Multi-threading the render process</h2>
 
-Man! Blender will not render on all threads together, it switches threads, using only 25% cpu power - thus renders take much longer than they should do and modern processing speed is not utilised.
+Man! Blender will render on only a single thread, sharing the task over multiple cpu cores, thereby using only 25% cpu power - thus renders take much longer than they should do and modern processing speed is not utilised.
 <br><br>
-Here's the answer (for now).. <b>Pulverize</b>
+Here's something of an answer.. <b>Pulverize</b>
 <br><br>
 copy these scripts made by Hunter Perrin, from <a href="https://github.com/sciactive/pulverize">github.com/sciactive..</a>
 <br><br>
 <i>pulverize.php<br>
 pulverize_tools.py</i>
 <br><br>
-(pulverize.py is also there but it doesn't show progress)
+note: pulverize.py is also there but it doesn't show progress<br>
+also, concatenating videos with ffmpeg doesn't produce smooth audio joins and it still may be necessary to export the audio first and then mux it to the concatenated video afterwards.
 <br><br>
 put them in your scripts dir or symlink to them in /usr/bin
 <br><br>

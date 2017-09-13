@@ -93,9 +93,12 @@ h3 {
 
 
 h4 {
-  background-color:#BF787D;
-  font-size: 1.2em;
+  background-color:#CA97AB;
+  color:#1D160F;
+  font-size: 1.1em;
   font-weight: bold;
+  padding-top: 4px;
+  padding-bottom: 2px;
   padding-left: 12px;
   margin-left: -10px;
   margin-right: -10px;
