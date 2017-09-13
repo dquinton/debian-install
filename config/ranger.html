@@ -112,19 +112,28 @@ w3m and w3m-image are responsible for in-line preview of images (only with rxvt,
 <br><br>
 serious w3m issue: w3mimgdisplay process eats up memory - browsing 50 images can run into a Gb of RAM.
 <br><br>
-there's a patch for it which kills the process after each image preview (but I'm not sure how to use it) <a href="https://github.com/ranger/ranger/issues/451#issuecomment-309900698">..ranger/issues/451#</a>
+there's a patch for it which kills the process after each image preview <a href="https://github.com/ranger/ranger/issues/451#issuecomment-309900698">..ranger/issues/451#</a>
+<br><br>
+edit the python file img_display.py
+<br>
 
-<form><textarea name="T" id="file" rows="3" cols="50">
-108a109,110
->         self.quit()
->         self.is_initialized = False</textarea>
+<form><textarea name="T" id="file" rows="2" cols="50">
+sudo nano /usr/local/lib/python2.7/dist-packages/ranger/ext/img_display.py</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
+find the "draw" function and add these two lines at the end of it..<br>
+<form><textarea name="T" id="file" rows="2" cols="50">
+        self.quit()
+        self.is_initialized = False</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+You can also quit the w3m process any time with <b>Ctrl-C</b>
 <br><br>
-Good thing is, you can quit the w3m process any time with <b>Ctrl-C</b><br>
 To release media drives that could be caught in a process such as w3mimgdisplay, then you will need to use Ctrl-C before ejecting.
 
-<br><br>
+<br><br><br>
 After installing, copy over the config files so that you can make modifications
 <form><textarea name="T" id="cmd" rows="1" cols="30">
 ranger --copy-config=all</textarea>
@@ -567,7 +576,7 @@ map &#60;a-t> linemode metatitle              #linemode: titles </textarea>
 <br><br>
 
 <h3 id="fi" class="tag">map f for files</h3>
-<form><textarea name="T" id="file" rows="26" cols="120">
+<form><textarea name="T" id="file" rows="27" cols="120">
 
 ##### files ##########
 
@@ -591,7 +600,8 @@ map fx   shell -f regexxer %d                                            #run st
 map f1   console -p49 shell -s for file in %%s ;do cp "$file" "$file"_1 ;done           #duplicate selected files adding _1
 map f2   console shell -s sh ~/scripts/duplicate %%s               #duplicate selected files infix _1
 map f3   console shell -s rename-with-selected %f %s          #rename highlighted file with selected file's name
-map fW   console shell touch tmpfile; mv tmpfile %%f          #wipe a file clean (overwrite with blank)</textarea>
+map fW1  console shell > %f												#wipe a file with 0 bytes
+map fW2  console shell -f for file in %%s; do > "$file" ;done           </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>

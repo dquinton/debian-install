@@ -109,14 +109,27 @@ move files found in a list of file names (files.list)<br>
 <br><br>
 
 replace all text occurring in all files under the current dir<br>
-<span class="cmd">find /abc/abc -type f | xargs perl -pi -e '/xyz/xyz'</span>
+<span class="cmd">find . -type f -exec sed -i 's/abc/xyz/g' {} +</span>
 <br>
-(note, I replaced a directory path found in the files)
+or using perl:<br>
+<span class="cmd">find . -type f | xargs perl -pi -e 's/abc/xyz/g'</span>
 <br><br>
 
+or in files in the current dir only (and of certain extension)
+<br><br>
+<span class="cmd">sed -i -- 's/abc/xyz/g' *.py</span>
+
+<br><br>
 in a specific file<br>
 <span class="cmd">sed -i 's/old/new/g' filename</span>
+<br><br><br>
+
+There is also a program called rpl..
 <br><br>
+<span class="cmd">rpl -iw old new filename</span>
+<br><br>
+where -i ignores case, -w finds whole words only, -x specifies extensions of files to replace in, -p is interactive mode, -e regular expression escapes, -d preserve modification times, -s simulate, -v verbose.
+<br><br><br>
 
 replace a whole line in a file<br>
 <span class="cmd">sed 'Ns/.*/replacement-line/' filename</span>
