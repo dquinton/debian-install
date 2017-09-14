@@ -122,7 +122,14 @@ sudo nano /usr/local/lib/python2.7/dist-packages/ranger/ext/img_display.py</text
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-find the "draw" function and add these two lines at the end of it..<br>
+find the "draw" function which begins like...
+<br>
+<i>&nbsp;&nbsp;&nbsp;def draw(self, path, start_x, start_y, width, height):</i>
+<br><br>
+and add these two lines after the the line..
+<br>
+<i>&nbsp;&nbsp;&nbsp;self.process.stdout.readline()</i>
+
 <form><textarea name="T" id="file" rows="2" cols="50">
         self.quit()
         self.is_initialized = False</textarea>

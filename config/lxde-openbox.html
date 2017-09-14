@@ -386,7 +386,7 @@ e.g.
 <form>
 <textarea name="T" id="cmd" rows="2" cols="50">
 cd /usr/share/desktop-directories
-sudo nano dvd.directory</textarea>
+sudo nano editor.directory</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -397,8 +397,8 @@ paste this content, or similar, with Shift-insert or middle mouse button:
 [Desktop Entry]
 Encoding=UTF-8
 Type=Directory
-Name=Dvd
-Icon=cdrom_unmount</textarea>
+Name=Video Editors
+Icon=video</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -418,11 +418,11 @@ sudo leafpad /etc/xdg/menus/lxde-applications.menu</textarea>
 <textarea name="T" id="file" rows="11" cols="80">
 	<!-- dvd -->
 	<Menu>
-		<Name>Dvd</Name>
-		<Directory>dvd.directory</Directory>
+		<Name>Video Editors</Name>
+		<Directory>editor.directory</Directory>
 		<Include>
 			<And>
-				<Category>DVD</Category>
+				<Category>Editor</Category>
 			</And>
 			</Include>
 	</Menu> 
@@ -435,6 +435,33 @@ sudo leafpad /etc/xdg/menus/lxde-applications.menu</textarea>
 <br><br>
 Problem: <span style="color:#800080;"><b>the "Other" category sits on the main menu with just about every executable on it from /usr/bin.</b></span><br>
 To solve it, edit the /etc/xdg/menus/lxde-applications.menu file and remove the "other" entry entirely.
+<br><br><br><b></b>
+
+<b>To reorganise the order</b> in which the Categories show on the menu, you need to edit the Layout area at the bottom of the menu file..
+<br><br>
+my example:
+<br>
+<form>
+<textarea name="T" id="file" rows="16" cols="50">
+	<Layout>
+		<Menuname>Games</Menuname>	
+		<Menuname>Education</Menuname>
+		<Separator/>
+		<Menuname>Development</Menuname>
+		<Menuname>Office</Menuname>
+		<Menuname>Graphics</Menuname>
+		<Menuname>Multimedia</Menuname>
+		<Menuname>Video Editors</Menuname>
+		<Separator/>
+		<Menuname>Accessories</Menuname>
+		<Menuname>Internet</Menuname>
+		<Separator/>
+		<Menuname>DesktopSettings</Menuname>
+		<Menuname>System</Menuname>
+	</Layout></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
 
 <br><br>
 <br><br>
