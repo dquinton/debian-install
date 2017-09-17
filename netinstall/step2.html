@@ -46,6 +46,14 @@ available from repo or as a "flatpak" from <a href="http://developer.pitivi.org/
 if the install fails with "Error resolving 'sdk.gnome.org': Name or service not known", try backup /etc/resolv.conf and then change "nameserver" to 8.8.8.8
 <br><br>
 
+to enable mp4 decoding/encoding, you need some gstreamer codecs that are not dependencies..
+<br>
+<form>
+<textarea name="T" id="install" rows="1" cols="100">
+apt-get install gstreamer1.0-libav gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
 <br>
 <h3>Flowblade</h3> 
 another non-linear video editor, and it looks good <a href="https://github.com/jliljebl/flowblade">github.com/jliljebl/flowblade/</a> 
@@ -73,7 +81,7 @@ available as an AppImage from <a href="http://www.openshot.org/download/">opensh
 
 <br>
 <h3>Shotcut</h3> 
-(with its amazingly bad name).... available from <a href="https://shotcut.org/download/">shotcut.org</a> 
+(with its less inspired bad name).... available from <a href="https://shotcut.org/download/">shotcut.org</a> 
 <br><br>
 
 
@@ -99,7 +107,7 @@ sudo apt-get install x264 libmp3lame0 libquicktime2 kdenlive frei0r-plugins dvgr
 </form>
 <br>
 
-Note: since Deboian 8 (Jessie), kdenlive depends on libav-tools - no longer ffmpeg.
+Note: since Debian 8 (Jessie), kdenlive depends on libav-tools - no longer ffmpeg.
 <br><br><br>
 
 (Latest release) </b> see <a href="kdenlive.html">my kdenlive page</a> for info on installing the Appimage or from source.
@@ -123,7 +131,10 @@ available in the Debian repo or downloaded from <a href="https://www.blender.org
 Its built-in Video Sequence Editor is very good but it can't yet render utilising full CPU power - we need to use a script to split up the work between cpu cores and then concatenate the parts into a complete movie!
 <br><br>
 See my <a href="{{site.baseurl}}/tutorial/04a-blender-vse.html">Blender page</a> for my tips and links to tutorials
-<br>
+<br><br><br>
+
+<b>see how these editors scored </b>with me after a day of testing the first four above, some years with kdenlive and a month with blender... on my <a href="{{site.baseurl}}/tutorial/04b-video-editors.html">score sheet here</a>
+<br><br>
 
 <br><hr noshade="noshade">
 <br><br><br>

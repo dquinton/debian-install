@@ -20,8 +20,10 @@ id: config
                 <li><a href="#8">Compositing</a></li>
                 <li><a href="#9">Panels</a></li>
                 <li><a href="#10">LXDE menu</a></li>
+                <li><a href="#10a">Super key main menu</a></li>
                 <li><a href="#11">Openbox menu</a></li>
                 <li><a href="#11b">2nd OB menu</a></li>
+                <li><a href="#11c">Docky</a></li>
                 <li><a href="#12">Key bindings </a></li>
                 <li><a href="#13">GTK Accel's </a></li>
                 <li><a href="#14">Terminal Emulator </a></li>
@@ -43,8 +45,10 @@ id: config
    <a href="#8">Compositing</a><br>
    <a href="#9">Panels</a><br>
    <a href="#10">LXDE menu</a><br>
+   <a href="#10a">Super key main menu</a><br>
    <a href="#11">Openbox menu</a><br>
    <a href="#11b">2nd OB menu</a><br>
+   <a href="#11c">Docky</a><br>
    <a href="#12">Key bindings </a><br>
    <a href="#13">GTK Accel's </a><br>
    <a href="#14">Terminal Emulator </a><br>
@@ -443,22 +447,64 @@ my example:
 <br>
 <form>
 <textarea name="T" id="file" rows="16" cols="50">
-	<Layout>
-		<Menuname>Games</Menuname>	
-		<Menuname>Education</Menuname>
-		<Separator/>
-		<Menuname>Development</Menuname>
-		<Menuname>Office</Menuname>
-		<Menuname>Graphics</Menuname>
-		<Menuname>Multimedia</Menuname>
-		<Menuname>Video Editors</Menuname>
-		<Separator/>
-		<Menuname>Accessories</Menuname>
-		<Menuname>Internet</Menuname>
-		<Separator/>
-		<Menuname>DesktopSettings</Menuname>
-		<Menuname>System</Menuname>
-	</Layout></textarea>
+        <Layout>
+                <Menuname>Games</Menuname>
+                <Menuname>Education</Menuname>
+                <Separator/>
+                <Menuname>Office</Menuname>
+                <Menuname>Graphics</Menuname>
+                <Menuname>Multimedia</Menuname>
+                <Menuname>Video Editors</Menuname>
+                <Separator/>
+                <Menuname>Accessories</Menuname>
+                <Menuname>Internet</Menuname>
+                <Menuname>Development</Menuname>
+                <Separator/>
+                <Menuname>DesktopSettings</Menuname>
+                <Menuname>System</Menuname>
+        </Layout>
+</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+<br><br>
+
+<h2 id="10a" class="tag">Set Super key for main menu</h2> 
+
+To make the Super key activate main menu when pressed alone (so that Super key can also be used as modifier key with other keys without activating the main menu)
+<br>
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install xcape</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+then use the command
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+xcape -e 'Super_L=Control_L|Escape'</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+to tell xcape to send a "Ctrl-Esc" keyboard event when Super key is pressed and released within 500ms.
+<br><br>
+(providing your OB keybind for main menu was Ctrl-Esc)
+<br><br>
+then add that to autostart with the same command as above, adding '&' at the end
+<form>
+<textarea name="T" id="file" rows="1" cols="50">
+xcape -e 'Super_L=Control_L|Escape' &</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+you can set multiple xcape key events like this..
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+xcape -e 'Super_L=Control_L|Escape;Shift_L=Escape'</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -670,10 +716,34 @@ Add icons to your heart's content. (If you can find them -and that's where xfce 
        submenu will not be hidden until a different submenu is opened --></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
-
-
 <br><br>
+
+<h2 id="11c" class="tag">Docky</h2> 
+
+Docky is a very nice app-launcher dock that can be made to look rather like a mac app dock, with icons that kind of jump up when the mouse hovers them. It's available in the repo as, simply, docky.
+<br><br>
+To remove the docky settings icon that sits on the left, you need to edit the file found in ~/.gconf/ and mak it "false"..
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+nano ~/.gconf/apps/docky-2/Docky/Items/DockyItem/ShowDockyItem</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+To add apps to the dock you simply open them and then right-click on the icon that appears on Docky and click on Pin to dock.
+<br><br>
+However this is hard to do for apps that open full-screen and hide Docky completely (such as Tuxtype and others). 
+So to add apps like that or to have full control of Docky, you'll need to edit the content file, but first exiting Docky, and then restarting gconf (logout and back in)..
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+leafpad ~/.gconf/apps/docky-2/Docky/Interface/DockPreferences/Dock1/%gconf.xml</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+And "Dock1" is the first dock, etc
+
+<br><br><br><br>
 
 <h2 id="12" class="tag">Key bindings</h2>  
 Openbox allows you to bind nearly any key combination to a command (openbox, bash or script) and the keybinds are made in an easy to edit xml file.  You can edit OB keybinds with graphical help if you like...

@@ -83,14 +83,17 @@ Icon=/home/user/kdenlive/extracted/kdenlive.png</textarea>
 just change your user name!
 <br><br><br>
 
-Also, important, make the kdenlive runtime dir with, as root..
+Also, important, make the kdenlive runtime dir with..
 <form>
-<textarea name="T" id="cmd" rows="2" cols="80">
-mkdir -p /run/user/1000
-chown -R $USER:$USER /run/user/1000</textarea>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo mkdir -p /run/user/1000 ; sudo chown -R $USER:$USER /run/user/1000</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
+I can't get past this error and renders crash:
+<br><br>
+mlt_repository_init: failed to dlopen /home/dav/kdenlive/extracted/usr/lib/mlt/libmltgtk2.so<br>
+  (/usr/lib/x86_64-linux-gnu/libpangoft2-1.0.so.0: undefined symbol: hb_buffer_set_cluster_level)
 
 
  <br><br>
@@ -144,45 +147,7 @@ Exec=/home/your-user-name/kdenlive/start-kdenlive</textarea>
 <br><br>
 <span class="ht"><b>Choice c.</b></span> <br>
 
-If you would like to have the latest ffmpeg running, and MLT to be compatible with it, you can either build everything from source, or just ffmpeg and MLT. (MLT will have to be compiled to make it run with ffmpeg).
-<br><br>
-download the ffmpeg stable release <a href="http://ffmpeg.org/download.html#releases">download.html#releases</a> 
-<br><br>
-or clone it from git - as the kdenlive Developers page says to do - <a href="https://community.kde.org/Kdenlive/Development/KF5">community.kde.org/Kdenlive/Development/KF5</a><br>
-And you should read that page!
-<br><br>
-next get the build dependencies:<br>
-
-<form>
-<textarea name="T" id="install" rows="7" cols="80">
-sudo apt-get update
-sudo apt-get install cmake build-essential yasm libqt4-dev kdelibs5-dev libsdl1.2-dev libsdl-image1.2-dev libxml2-dev libx264-dev libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libschroedinger-dev libmp3lame-dev libfaac-dev libfaad-dev libgsm1-dev libopencore-amrnb-dev libopencore-amrwb-dev libsamplerate0-dev libjack-dev libsox-dev ladspa-sdk swh-plugins libmad0-dev libpango1.0-dev</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br><br>
-
-Then open a terminal in the ffmpeg dir, and run ./configure with the compilation flags (I omit --enable-libdc1394):
-<br>
-(uses "mlt" prefix)
-<br>
-<form>
-<textarea name="T" id="cmd" rows="5" cols="120">
-./configure --prefix=/usr/local --progs-suffix=mlt --build-suffix=mlt --enable-shared --enable-libmp3lame \
---enable-gpl --enable-libfaac --enable-libvorbis --enable-pthreads --enable-libfaac --enable-libxvid \
---enable-x11grab --enable-libgsm --enable-libx264 --enable-libtheora --enable-libdc1394 --enable-nonfree \
---disable-stripping --enable-avfilter --enable-libschroedinger --enable-libopencore-amrnb \
---enable-libopencore-amrwb --enable-version3 --enable-libvpx</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-followed by 
-<form>
-<textarea name="T" id="cmd" rows="2" cols="30">
-make -j4
-sudo make install</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
+build kdenlive/ffmpeg/mlt from source see <a href="https://community.kde.org/Kdenlive/Development/KF5">dev page</a>
 <br><br>
 
 download MLT from sourceforge <a href="http://sourceforge.net/projects/mlt/files/">mlt/files/</a><br>
@@ -215,13 +180,8 @@ sudo make install</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
-Install KDE's system settings manager to enable changes to appearance in Kdenlive or any other KDE app (if you didn't already from my Step 1 page).<br>
 
-<form>
-<textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install systemsettings</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
+
 
 </div>
 </div>
