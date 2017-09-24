@@ -1,7 +1,7 @@
 ---
 layout: default
 description: My workflow using Kdenlive - by D Quinton
-title: Working with HD video
+title: Kdenlive and HD video
 id: tutor
 ---
 
@@ -28,10 +28,9 @@ id: tutor
 <div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
 
 <div class="cont">
-
-I use Kdenlive as my dedicated video editor and encoder for all my projects. (Install notes on step2 page)
+I wrote this page while using Kdenlive for all my editing (install notes on my Step2 page).
 <br><br>
-I'm currently shooting films with a Panasonic V500 which has pretty reasonable quality and colour, and produces progressive HD video saved as .MTS files.  MTS (Mpeg Transport Stream) is something like h264 mp4 AVC compressed video. HD being 1920 x 1080 pixels, interlaced 25fps (1080i), while full HD is progressive 50fps (1080p).
+I've been shooting films with a low-end Panasonic V500 which has pretty reasonable quality and colour, and produces progressive HD video saved as .MTS files.  MTS (Mpeg Transport Stream) is something like h264 mp4 AVC compressed video. HD being 1920 x 1080 pixels, interlaced 25fps (1080i), while full HD is progressive 50fps (1080p).
 <br><br>
 Firstly, compressed HD video files take a lot of cpu power to play or seek through with an editor programme, so unless you have 3rd generation Intel i5 or similar, you will experience staggered playback or pauses while trying to stop and play in Kdenlive (as my old Intel core duo gave me).  
 <br><br>
@@ -49,9 +48,9 @@ for i in *.MTS; do DAT=$(date -r $i +%y-%m-%d); mkdir -p $DAT; mv $i $DAT ; done
 
 <h2 id="1" class="tag">Taking still images from MTS</h2>
 
-I use Gnome-mplayer to get quality stills from my film -it's also possible to take shots of the film on the camera itself, though I haven't taken to this method.
+I use Gnome-mplayer to get quality stills from my film 
 <br><br>
-settings: <br>
+use these settings: <br>
 <div class="bullet"><ul>
 
 <li>Player tab: video output = gl or x11 (I don't notice the difference)</li>

@@ -393,7 +393,7 @@ cd /usr/share/desktop-directories
 sudo nano editor.directory</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 paste this content, or similar, with Shift-insert or middle mouse button:
 
 <form>
@@ -446,7 +446,7 @@ To solve it, edit the /etc/xdg/menus/lxde-applications.menu file and remove the 
 my example:
 <br>
 <form>
-<textarea name="T" id="file" rows="16" cols="50">
+<textarea name="T" id="file" rows="17" cols="50">
         <Layout>
                 <Menuname>Games</Menuname>
                 <Menuname>Education</Menuname>
@@ -478,7 +478,7 @@ To make the Super key activate main menu when pressed alone (so that Super key c
 sudo apt-get install xcape</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br><br>
+<br>
 
 then use the command
 <form>
@@ -524,7 +524,7 @@ cp -p /etc/xdg/openbox/* ~/.config/openbox</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
+<br>
 
 install openbox menu editor "OBmenu", download <a href="http://obmenu.sourceforge.net/download.html">http://obmenu.sourceforge.net/download.html</a> or apt-get,
 <form>
@@ -562,6 +562,7 @@ To use my OB menu first backup your own,
 mv ~/.config/openbox/menu.xml ~/.config/openbox/menu.xml.bak</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
 Create a new menu file
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
@@ -597,7 +598,7 @@ else
 fi</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 To use yad, which looks nicer than zenity, use this line in the script:
 
 <form>
@@ -615,7 +616,7 @@ To get icons on your ob menu you need to put &#60;showIcons>yes&#60;/showIcons> 
 leafpad ~/.config/openbox/lxde-rc.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 and then every menu entry in your menu.xml file needs an icon location added (some work), e.g.
 
 <form>
@@ -627,7 +628,7 @@ and then every menu entry in your menu.xml file needs an icon location added (so
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
+<br>
 copy icons from wherever you can find them in /usr/share/icons/hicolor/48x48/apps/ etc. into somewhere convenient, such as openbox/icons/<br>
 this page might help <a href="http://lxlinux.com/openbox.html">http://lxlinux.com/openbox.html</a>
 <br><br><br><img src="{{site.baseurl}}/zimages/obmenu-utility.jpeg" width="150" height="379" alt="my OB menu" align="right">
@@ -695,7 +696,7 @@ and to get the utility menu up when only the Desktop is seen, add this to the se
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-
+<br>
 Save the file, then reconfigure OB - run 'openbox --reconfigure' or right-click on the desktop and click reconfigure
 <br><br>
 Add icons to your heart's content. (If you can find them -and that's where xfce wins cos of its launcher icon finder).
@@ -736,7 +737,7 @@ However this is hard to do for apps that open full-screen and hide Docky complet
 So to add apps like that or to have full control of Docky, you'll need to edit the content file, but first exiting Docky, and then restarting gconf (logout and back in)..
 <br>
 <form>
-<textarea name="T" id="cmd" rows="1" cols="80">
+<textarea name="T" id="cmd" rows="2" cols="80">
 leafpad ~/.gconf/apps/docky-2/Docky/Interface/DockPreferences/Dock1/%gconf.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -1418,7 +1419,7 @@ To get an app opening at a particular position, you add this, changing x, y, and
  </position></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
+<br>
 
 To get an app to open with a particular size, you need to add geometry to whatever controls its launch...
 

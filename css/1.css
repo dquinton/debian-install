@@ -48,8 +48,8 @@ div.cont {
   color: #0A0A0A;
   min-height: 600px;
   font-family:  PT Sans, Dejavu sans, Tahoma, sans-serif;
-  font-size: 1.0em;
-  line-height: 130%;
+  font-size: .9em;
+  line-height: 140%;
   margin: 0px 30px 0px;      /* grey margin off the page sides */
   padding: 80px 0px 40px;  /* body text from top, edges, bottom */
   padding-left: 100px;

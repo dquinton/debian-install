@@ -1,0 +1,195 @@
+---
+layout: default
+description: Video editing using Cinelerra - by D Quinton
+title: Cinelerra Video Editor
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page    <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">What's different</a></li>
+                <li><a href="#2">Keys</a></li>
+                <li><a href="#3">My Tips</a></li>
+             </ul>
+    </li>
+  </ul> 
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">What's different</a><br>
+   <a href="#2">Keys</a><br>
+   <a href="#3">My Tips</a><br>
+</td></tr></table></div>
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+Here's a video editor that can pack a punch. It's kdenlive with some professional tools and output abilities, and its a whole load more stable.
+
+<br><br>
+See my Netinstall Step2 page for how to install.
+<br><br>
+cinelerra documentation <a href="https://cinelerra-cv.org/docs.php">https://cinelerra-cv.org/docs.php</a>
+<br><br>
+I recommend you download the pdf manual from there and check out all the other resources.
+<br><br>
+
+<b>tutorials</b><br>
+<a href="http://www.g-raffa.eu/Cinelerra/HOWTO/index.html">www.g-raffa.eu/Cinelerra/HOWTO/index.html</a><br>
+<a href="https://n1njahacks.wordpress.com/2013/03/11/exporting-h-264-from-cinelerra/">n1njahacks.wordpress.com/2013/03/11/exporting-h-264-from-cinelerra/</a><br>
+<a href="http://crazedmuleproductions.blogspot.my/2007/06/beginners-guide-to-exporting-video-from.html">crazedmuleproductions.blogspot.my/2007/06/beginners-guide-to-exporting-video-from.html</a><br>
+<a href="http://beccatoria.dreamwidth.org/2011/02/28/">beccatoria.dreamwidth.org/2011/02/28/</a><br>
+<a href="http://jumptuck.com/2011/11/03/rendering-video-with-cinelerra-and-ffmpeg/">jumptuck.com/2011/11/03/rendering-video-with-cinelerra-and-ffmpeg/</a><br>
+
+
+
+
+
+
+<br><br>
+<h2 id="1" class="tag">What's different</h2>
+
+<div class="bullet"><ul>
+
+Here are some main differences of Blender VSE to other non-linear video editors for Linux..
+<br><br>
+<li>apart from technical stuff, the main differences are found in the UI and how clips are edited - there are two mouse modes (copy-paste and drag-drop) and three mouse drag modes (three mouse buttons)
+<li>cutting a segment out of a media clip immediately moves the rest along to left to close over the time that the clip previously filled, or else mute can be use to replace the segment with silence (looks like a gap is left)
+<li>silence can also be selected and cut, copied or pasted, there is no "close gap" command (but gaps can be removed)
+<li>red and yellow lines above the timeline mark the last played from and stopped at points
+<li>cuts of clips are called edits
+
+</ul>
+
+<h2 id="2" class="tag">Main Keys</h2>
+<br>
+The manual lists the keyboard shortcuts quite well, here I just list the main keys.
+<br><br>
+<table cellpadding="6" cellspacing="0" border="1" style="border-collapse: collapse; background-color: transparent;">
+<tbody><tr>
+<td width="160"> Left/Right</td>
+<td width="360">moves the timeline along</td>
+<td width="160"> X/C/V</td>
+<td width="320">cut/copy/paste</td>
+</tr>
+<tr>
+<td >Alt-Left/Alt-Right</td>
+<td>move insert point to prev/next edit (cut point or clip)</td>
+<td>del</td>
+<td>remove selected (leaves no space)</td>
+</tr>
+<tr>
+<td>Home/End</td>
+<td>move to timeline start/end</td>
+<td>M</td>
+<td>mute selected (remove and leave space)</td>
+</tr>
+<tr>
+<td>Ctrl-Left/Ctrl-Right</td>
+<td>go to prev/next label</td>
+<td>E</td>
+<td>toggle drag-drop/cut-paste modes</td>
+<tr>
+<td >Down/Up</td>
+<td>zoom in/out</td>
+<td>L</td>
+<td>toggle label</td>
+</tr>
+<tr>
+<td >F</td>
+<td>fit all/selection to display</td>
+<td >[/]</td>
+<td>toggle in/out points</td>
+</tr>
+<tr>
+<td>Shift-Home/Shift-End</td>
+<td>highlight from insert point to start/end</td>
+<td >A </td>
+<td>select all</td>
+</tr>
+
+<tr>
+<td>Shift-Ctrl-Left/Shift-Ctrl-Right</td>
+<td>highlight from insert point to prev/next label, or to last played from point</td>
+<td> Z/Shift-Z</td>
+<td>undo/redo</td>
+</tr>
+<tr>
+<td>Shift-LMB on label/in-out point</td>
+<td>highlight from label/in-out point to insert point</td>
+<td > Shift-R</td>
+<td>render</td>
+</tr>
+
+<tr>
+<td > Space</td>
+<td>play/pause</td>
+<td > S</td>
+<td>save project</td>
+</tr>
+</tbody></table>
+
+<br><br>
+Unfortunately, there are no shortcut settings in Preferences.
+<br><br><br><br>
+
+<h2 id="3" class="tag">My Tips</h2>
+<br><br>
+
+<h3>Selecting clips</h3>
+<ul>
+<li>to move an edit, activate <b>drag-drop mode</b>, then click and drag the edit to another place
+<li>to select an edit, in either mode, double click on the titlebar
+<li>to select an area, activate <b>copy-paste mode</b>, then click and drag on edits
+<li>to select everything left or right of the insert point, press <b>Shift-Home </b>or <b>Shift-End</b>
+<li>to select the whole timeline hit <b>A</b>
+<li>to select with more accuracy, play to or find a start point and press <b>[</b> (set in-point), then play until the end point is found and press <b>]</b> (set out-point), then click on the in-point and <b>Shift-click</b> on the out-point to select the time between them
+<li>to remove in/out points, just double-press <b>[</b> and <b>]</b>
+<li>another way is to adjust the selected time using the entry fields at the bottom panel -Bkspace, enter new value, Enter
+</ul>
+<br><br>
+<h3>cutting</h3>
+<ul>
+<li>press <b>Del</b> or <b>X </b>to cut a selection (edits move up, no gap created)
+<li>press <b>M</b> to mute a selection (edits stay put, gap created), press <b>CM </b>to first copy selected area then mute it
+<li>if in/out points are set the time between will be cut (or copied) or muted
+<li>press <b>V</b> to paste any cut/copied edit, it will insert at the insert point and the edits will shift up to the right
+<li>select <b>Trim Selection</b> on the Edit menu to crop the timeline to selected
+</ul>
+<br><br>
+<h3>removing gaps</h3>
+<ul>
+<li>to remove empty space, double-click in it to highlight the space and then press <b>X </b>or <b>Del</b>
+</ul>
+
+<br><br>
+<h3>extending edit ends</h3>
+when you move the mouse pointer to the edge of an edit an arrow appears, then you can drag the end left or right. The mouse button you use decides what the dragging does.
+<br><br>
+by default, mouse buttons Left, middle, Right (1,2,3) do the following:
+<ul>
+<li>LMB: only the selected edit end transforms, shortening, or lengthening (and the following edits move up)
+<li>MMB: the selected edit end transforms, and the following edit also extends in time to replace what the selected edit retracted from
+<li>RMB: the edit is slipped, meaning, the start/end time is changed to earlier/later from the source media
+</ul>
+
+
+<br><br>
+<h3>Labels</h3>
+<ul>
+<li>toggle a label at the insert point with <b>L</b>
+<li>to remove one, click on the label and hit <b>L</b> or select an area and use <b>Edit > Clear labels</b>
+</ul>
+
+<br><br>
+<h3>Image overlays </h3>
+this is easy as resizing/positioning one armed track in the compositor window - see <a href="http://www.calcmaster.net/cinelerra/forgotten-guide/06-edit-contents/06-edit-03-compose-video/">this tutorial</a>
+
+
+<br><br><br><br>
+</div>
+</div>

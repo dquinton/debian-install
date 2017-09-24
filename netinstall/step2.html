@@ -43,7 +43,7 @@ Updated 08-2017
 <h3>Pitivi</h3>
 available from repo or as a "flatpak" from <a href="http://developer.pitivi.org/Install_with_flatpak.html">pitivi.org</a>
 <br><br>
-if the install fails with "Error resolving 'sdk.gnome.org': Name or service not known", try backup /etc/resolv.conf and then change "nameserver" to 8.8.8.8
+if the install fails with "Error resolving 'sdk.gnome.org': Name or service not known", try to backup the file /etc/resolv.conf and then edit that file so that "nameserver" equals 8.8.8.8
 <br><br>
 
 to enable mp4 decoding/encoding, you need some gstreamer codecs that are not dependencies..
@@ -56,7 +56,7 @@ apt-get install gstreamer1.0-libav gstreamer1.0-plugins-bad gstreamer1.0-plugins
 <br>
 <br>
 <h3>Flowblade</h3> 
-another non-linear video editor, and it looks good <a href="https://github.com/jliljebl/flowblade">github.com/jliljebl/flowblade/</a> 
+another non-linear video editor, and it looks good and works well <a href="https://github.com/jliljebl/flowblade">github.com/jliljebl/flowblade/</a> 
 <br><br>
 Download the binary archive (.deb) from "Releases" and install it with
 <form>
@@ -81,23 +81,25 @@ available as an AppImage from <a href="http://www.openshot.org/download/">opensh
 
 <br>
 <h3>Shotcut</h3> 
-(with its less inspired bad name).... available from <a href="https://shotcut.org/download/">shotcut.org</a> 
+(with its not so well inspired name).... available from <a href="https://shotcut.org/download/">shotcut.org</a> 
 <br><br>
 
+there's also Kino - perhaps the most basic of all editors, and Lives with its disastrous UI, but they don't score very well with me.
+<br><br>
+<br><br>
 
-And see here <a href="https://opensource.com/article/16/12/yearbook-top-open-source-creative-tools-2016">https://opensource.com..</a>
-<br><br>
-<br><br>
 <span style="color: #1818B3; ">
 <b>____Intermediate____</b></span>
 <br><br><br>
 <h3>Kdenlive</h3> 
-KDE's non-linear video editor (hence its name.. KDE-n-li-v-e) that is both powerful and easy to use. It's also well supported online. <br>
-I give some tips on it on my page, <a href="../tutorial/04-working-with-hd-video.html">working with HD video</a>.
+the non-linear video editor from KDE (hence its name.. KDE-n-li-v-e) that is both powerful and easy to use. It's also well supported online. 
+<br><br>
+
+I give some tips on it on my page, <a href="{{site.baseurl}}/tutorial/04-kdenlive-hd-video.html"><b>Kdenlive and HD video</b></a>.
 <br><br><br>
 
 (Basic install)<br>
-If you're not to concerned about getting the latest codecs, you can use this install line - and if you run Debian testing then kdenlive should be quite up to date.
+If you're not too concerned about getting the latest codecs, you can use this install line - and if you run Debian testing then kdenlive should be quite up to date.
 
 <br><br>
 <form>
@@ -110,7 +112,7 @@ sudo apt-get install x264 libmp3lame0 libquicktime2 kdenlive frei0r-plugins dvgr
 Note: since Debian 8 (Jessie), kdenlive depends on libav-tools - no longer ffmpeg.
 <br><br><br>
 
-(Latest release) </b> see <a href="kdenlive.html">my kdenlive page</a> for info on installing the Appimage or from source.
+<b>Latest release: </b> see my <a href="{{site.baseurl}}/netinstall/kdenlive.html"><b>kdenlive page</b></a> for info on installing the Appimage or from source.
 
 <br><br><br>
 <h3>VLMC</h3>
@@ -122,18 +124,96 @@ from <a href="https://code.videolan.org/videolan/vlmc/blob/master/INSTALL.md">vi
 
 <br><br><br>
 <h3>Blender</h3>
-a 3D animation tool that doubles as video editor, and with professional looks and features... 
+a 3D animation tool that ships with a built-in video sequencer, and with professional looks and features... 
 <br>
 available in the Debian repo or downloaded from <a href="https://www.blender.org/download/">blender.org/..</a>
 <br><br>
 
 
-Its built-in Video Sequence Editor is very good but it can't yet render utilising full CPU power - we need to use a script to split up the work between cpu cores and then concatenate the parts into a complete movie!
+one of its major flaws (presently) is it can't render utilising full CPU power, it renders single-thread, split between cpu cores. A work around is to use a script that splits up the work between cpu cores and then concatenates the parts into a complete movie - but that might get tehnical (sound glitches).
 <br><br>
-See my <a href="{{site.baseurl}}/tutorial/04a-blender-vse.html">Blender page</a> for my tips and links to tutorials
+See my <a href="{{site.baseurl}}/tutorial/04a-blender-vse.html"><b>Blender page</b></a> for my tips and links to tutorials
 <br><br><br>
 
-<b>see how these editors scored </b>with me after a day of testing the first four above, some years with kdenlive and a month with blender... on my <a href="{{site.baseurl}}/tutorial/04b-video-editors.html">score sheet here</a>
+
+
+<span style="color: #1818B3; ">
+<b>____Advanced____</b></span>
+
+<br><br><br>
+<h3>Cinelerra</h3>
+
+A video editor for Linux that is without rival. The three main versions available are HV (maintained by the original author and without community input), CV (the community version that builds on HV releases) and GG (from Good Guy).
+<br><br>
+
+download it from..
+<br><br>
+<a href="https://cinelerra-cv.org/download_cv.php">get cin CV (quicktime-based) </a>........ 
+<a href="https://cinelerra-cv.org/download_gg.php">get cin GG (ffmpeg-based)</a> ... 
+<br><br><br>
+CV must be built for debian, there's no packaging done after deb-multimedia shifted to cinelerra HV.  <br>
+GG can be more easily run without building - just unpack the archive and run it with `./cin`
+
+<br><br>
+unpack the txz archive with
+
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+tar xvf cinelerra-5.1-</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+
+to build cinelerra, first get dependencies:
+
+<form>
+<textarea name="T" id="install" rows="3" cols="80">
+aptitude install libtool libogg-dev libvorbis-dev libdv-dev libtheora-dev libjpeg-dev libfaac-dev libfaad-dev libtiff-dev libx264-dev libfftw3-dev libopenexr-dev uuid-dev libmjpegtools-dev liba52-dev libmp3lame-dev libsndfile-dev nasm libxv-dev</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+and I had to choose this option:
+<br><br><span style="font-size: 0.9em;">
+ &nbsp;Downgrade the following packages:  <br>
+1) &nbsp;&nbsp;&nbsp;&nbsp;    libfftw3-double3 [3.3.6p2-1 (now) -> 3.3.5-3 (testing)]<br>
+2)  &nbsp;&nbsp;&nbsp;&nbsp;   libfftw3-single3 [3.3.6p2-1 (now) -> 3.3.5-3 (testing)]<br>
+<br><br></span>
+then run
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+./autogen.sh</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+./configure</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+make
+sudo make install</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<b>See my tips and links to tutorials on <a href="{{site.baseurl}}/tutorial/04c-cinelerra.html">my Cinelerra page...</a></b>
+
+<br><br>
+
+
+<b>Lumiera</b>
+<a href="http://lumiera.org/index.html">http://lumiera.org/index.html</a>
+<br><br>
+The future of Linux video editing? Born out of Cinelerra but no usable version has been released to date.
+<br><br><br><br>
+
+
+<br>
+.......<br>
+<b>Also, see how these editors scored with me after testing </b>- a couple of days with the first four above, some years with kdenlive, a month with blender and just recently with cinelerra... on my <a href="{{site.baseurl}}/tutorial/04b-video-editors.html"><b>video editor review/score sheet</b></a>
 <br><br>
 
 <br><hr noshade="noshade">
@@ -213,15 +293,15 @@ You need a Java Runtime Environment for running macros, such as openjdk:
 <br>
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install openjdk-7-jre</textarea>
+sudo apt-get install openjdk-8-jre</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>(version number changes here, it now has "7" in the name)
+
 <br><br>
-Then you can just apt-get install libreoffice (wheezy installs Libre Office 3.5, Jessie, )
-or better, download LibreOffice 4 from <a href="http://www.libreoffice.org/download/?nodetect">libreoffice.org/download/</a>
+Then you can just apt-get install libreoffice ...<br>
+or better, download LibreOffice 5 from <a href="http://www.libreoffice.org/download/?nodetect">libreoffice.org/download/</a>
 <br><br>
-To remove an older version (because installing a newer version will leave the previous version in /opt/libreoffice4.x - all 557mb of it)
+To remove an older version (because installing a newer version may leave the previous version in /opt - all 700mb of it)
 
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
