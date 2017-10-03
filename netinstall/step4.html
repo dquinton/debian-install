@@ -11,10 +11,9 @@ id: net
         On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
              <ul>
                 <li><a href="#1">Light-weight web browsers</a></li>
-                <li><a href="#2">Chromium</a></li>
-                <li><a href="#2a">Iron</a></li>
+                <li><a href="#2">Chrome-based</a></li>
+                <li><a href="#2a">Firefox-based</a></li>
                 <li><a href="#3">Opera</a></li>
-                <li><a href="#4">Midori</a></li>
                 <li><a href="#5">OpenGPG</a></li>
                 <li><a href="#6">Bible</a></li>
                 <li><a href="#7">GPS</a></li>
@@ -27,10 +26,9 @@ id: net
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
    <a href="#1">Light-weight web browsers</a><br>
-   <a href="#2">Chromium</a><br>
-   <a href="#2a">Iron</a><br>
+   <a href="#2">Chrome-based</a><br>
+   <a href="#2a">Firefox-based</a><br>
    <a href="#3">Opera</a><br>
-   <a href="#4">Midori</a><br>
    <a href="#5">OpenGPG</a><br>
    <a href="#6">Bible</a><br>
    <a href="#7">GPS</a><br>
@@ -50,7 +48,7 @@ There plenty of light and fast web browsers to choose from if the sites you inte
 <li>dillo, </li>
 <li>uzbl.... see my <a href="{{site.baseurl}}/tutorial/10-uzbl.html">uzbl page</a> - uzbl could almost replace my need for chromium... but it takes days to configure it and there's not much info around, and actually I can't get as much usability out of it, which kind of goes against the name.</li>
 <li>elinks, links2, lynx - CLI browsers, run links2 with the switch <b>-g</b> to allow graphics on page.</li>
-<li>jumanji  (from <a href="http://pwmt.org/projects/jumanji/">http://pwmt.org/...</a> <a href="https://wiki.archlinux.org/index.php/Jumanji">wiki.archlinux.org/</a>) - like uzbl but with tabs built in by design - need to install libunique-dev and also <a href="http://pwmt.org/projects/girara/download/">girara</a></li></ul></div>
+<li>jumanji  (from <a href="http://pwmt.org/projects/jumanji/">http://pwmt.org/...</a> <a href="https://wiki.archlinux.org/index.php/Jumanji">wiki.archlinux.org/</a>) - like uzbl but with tabs built in by design - need to install libunique-dev and also <a href="http://pwmt.org/projects/girara/download/">girara</a> - but arch wiki says its not continued</li></ul></div>
 
 <br><br>
 there's a useful list here at Arch wiki <a href="https://wiki.archlinux.org/index.php/List_of_Applications/Internet#Web_browsers">Web_browsers</a>
@@ -58,13 +56,31 @@ there's a useful list here at Arch wiki <a href="https://wiki.archlinux.org/inde
 mem usages: surf 140mb... dillo 12mb... elinks 12mb... luakit 79mb... dwb 53mb... uzbl 55mb
 <br><br><br>
 
-and then the heavy-weights...
+
+<h3>Midori</h3>
+Download the latest .deb file from <a href="http://midori-browser.org/download/debian/">midori-browser.org</a>
+<br><br>
+A light-weight web browser. You need to enable the userscripts plugin in Preferences, then just find and install what you need (though i couldn't get youtube downloader working)
+<br><br>
+To get flash working, run
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install flashplugin-nonfree</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+sometimes crashes!
+
+<br><br><br>
+and then the heavy-weights, which eat up some ram (typically 900mb+)...
 
 <br><br>
 <hr noshade="noshade">
 <br><br>
 
-<h2 id="2" class="tag">Chromium</h2>
+<h2 id="2" class="tag">Chrome-based</h2>
+<br>
+<h3>Chromium</h3>
 
 Adobe Flash Player is no longer being updated for Linux, so there's a solution for all flash content:
 <br>
@@ -92,19 +108,50 @@ sudo apt-get install browser-plugin-vlc</textarea>
 
 <br>
 
+<br><br>
+<h3>Iron</h3>
+
+An alternative to Chrome/chromium, <a href="http://www.srware.net/forum/viewtopic.php?f=18&t=8699">from srware</a> which is built on the same engine, but without all the tracking that might go on.  <br>
+It will run just like Chromium if you already set that up, with the same extensions.
+<br>
+<br><br>
+<br><br>
+<h3>Vivaldi</h3>
+
+built on the same blink engine chrome and opera use, built by ex-Opera developers and community (disgruntled with Opera's change in direction since v12)<br>
+download the .deb archive from <a href="https://vivaldi.com/download/">vivaldi.com/download/</a>
+
+<br><br>
+<div class="bullet"><ul><li>a lot of control given for appearance
+<li>stacking/tiling of tabs
+<li>can set default web search engine and add others 
+<li>web pages can be added to the side panel
+<li>can write notes and make folders
+<li>history can choose sort by date, page address or title, views 
+<li>compatible with most chrome extensions
+</ul></div>
+<br>
+I think it is top of the pack
+<br><br>
+<br><br>
+
 <h3>Extensions</h3>
-some useful ones: <br>
+my pick: <br>
 
 <div class="bullet">
-	<ul><li>too many tabs, tab scissors, back to top button (in options uncheck "enable animation"), 
-full-screen google maps, quick bookmarks, recently closed tabs, vertical tabs, session manager, copy tab url, clickboard </li>
+	<ul><li>back to top button (in options uncheck "enable animation") or scroll to top, <a href="https://chrome.google.com/webstore/detail/copy-tab-url/fdmeijohjeejdnjhlpcmnhnbcbjchchg?utm_source=chrome-app-launcher-info-dialog">copy tab url</a> </li>
 	<li>scriptsafe (click on green icon to see what sources are blocked then allow/trust those you need to work, or else distrust anything that's not wanted) </li>
 	<li>hola (alters your IP address) </li>
-	<li>change colors - allows custom colours for any wb page, background, text links, can be set to any web address domain or global (chromium does not allow CSS anymore) </li>
-	<li>stylish - add styles fromt he user styles and apply them to web pages </li>
-	<li>youtube downloaders: <a href="http://en.savefrom.net/user.php?helper=chrome">http://en.savefrom.net</a> <a href="http://youtubedownloader.anoniamto.com/?Down=install_chrome">http://youtubedownloader</a> (drag and drop the download from download-bar onto the extension page) but they might not work anymore</li>
-	<li>tab suspender</li>
-</ul></div>
+	<li><a href="https://chrome.google.com/webstore/detail/change-colors/jbmkekhehjedonbhoikhhkmlapalklgn?utm_source=chrome-app-launcher-info-dialog">change colors</a> - allows custom colours for any wb page, background, text links, can be set to any web address domain or global (chromium does not allow CSS anymore) </li>
+	<li>youtube downloaders: <a href="http://en.savefrom.net/user.php?helper=chrome">http://en.savefrom.net</a> <a href="http://youtubedownloader.anoniamto.com/?Down=install_chrome">http://youtubedownloader</a> (drag and drop the download from download-bar or file manager onto the extension page - but sometimes it becomes disabled)</li>
+	<li><a href="https://chrome.google.com/webstore/detail/tab-suspender-memory-save/ghklhojdnolaljfmaappofimepjeapih?utm_source=chrome-app-launcher-info-dialog">tab suspender</a></li>
+</ul>
+<br><br>
+others: <br>
+<ul><li>too many tabs, tab scissors, full-screen google maps, quick bookmarks, recently closed tabs, vertical tabs, session manager, clickboard </li>
+	<li>stylish - add styles from the user styles and apply them to web pages </li>
+	
+</div>
  <br><br>
 
 <h3>User scripts</h3>
@@ -123,24 +170,27 @@ First install the extension "TamperMonkey" and then to install a user script, cl
 </ul></div>
  
 <br><br>
-Stop the white background flash just before a page loads<br>
+Stop the white background flash just before a page loads (no need in vivaldi)<br>
 see this answer <a href="http://stackoverflow.com/questions/16243105/google-chrome-override-white-blank-page-between-webpage-loads">http://stackoverflow.com/</a>
 <br><br>
 copy into two files in a dir and open chrome://extensions/ - check the "Developer mode" at top right of the page, and add the folder you saved the files in<br>
-I changed "black" to "gray" - works nicely.
+I changed "black" to "gray" - works?
+<br><br>
 
 
 <br><br>
 <hr noshade="noshade">
 <br><br>
-
-<h2 id="2a" class="tag">Iron</h2>
-
-An alternative to Chrome/chromium, <a href="http://www.srware.net/forum/viewtopic.php?f=18&t=8699">from srware</a> which is built on the same engine, but without all the tracking that might go on.  <br>
-It will run just like Chromium if you already set that up, with the same extensions.
+<h2 id="2a" class="tag">Firefox-based</h2> 
 <br>
+<h3>Waterfox</h3>
+from <a href="https://www.waterfoxproject.org/">waterfoxproject.org/</a> 
 <br><br>
-
+<h3>Icecat</h3>
+(formerly iceweasel) from <a href="https://www.gnu.org/software/gnuzilla/">gnu.org/software/gnuzilla/</a> - depends on pulse audio.. arggh
+<br><br>
+both are compatible with firefox addons (my basic choice being: scroll to top, noscript, 1-click youtube, tab suspender, enhancer for youtube, copy tab url, download manager s3)
+<br><br>
 
 <br><br>
 <hr noshade="noshade">
@@ -162,25 +212,12 @@ and restart Opera
 <br><br><br>
 my addons: flash video downloader, documents, scroll to top, open-in-background-with-long-press, yet another statusbar, turn off the lights
 <br><br>
-see more about it on my <a href="{{site.baseurl}}/tutorial/09-opera.html">Opera page</a>.  At the moment Opera (linux v 12.16) can't properly handle dynamic web page content, like lots of Google stuff, yahoo news headlines etc... v25 is out for Win/Mac<br>
-there's OperaBeta for Linux <a href="http://www.opera.com/computer/beta">http://www.opera.com/computer/beta</a>
+see more about it on my <a href="{{site.baseurl}}/tutorial/09-opera.html">Opera page</a>.  At the moment Opera (linux v 12.16) can't properly handle dynamic web page content, like lots of Google stuff, yahoo news headlines etc... v25 is out for Win/Mac
+<br><br>
+there's Opera Beta 48 for Linux <a href="http://www.opera.com/computer/beta">http://www.opera.com/computer/beta</a><br>
+-lacks skinning, has <b>turbo</b> option hidden at bottom of Settings page
+<br>
 
-
-<br><br>
-<hr noshade="noshade">
-<br><br>
-
-<h2 id="4" class="tag">Midori</h2>
-Download the latest .deb file from <a href="http://midori-browser.org/download/debian/">midori-browser.org</a>
-<br><br>
-A light-weight web browser. You need to enable the userscripts plugin in Preferences, then just find and install what you need (though i couldn't get youtube downloader working)
-<br><br>
-To get flash working, run
-<form>
-<textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install flashplugin-nonfree</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
 
 
 <br>

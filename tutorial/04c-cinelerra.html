@@ -1,7 +1,7 @@
 ---
 layout: default
 description: Video editing using Cinelerra - by D Quinton
-title: Cinelerra Video Editor
+title: Cinelerra
 id: tutor
 ---
 
@@ -43,13 +43,13 @@ I recommend you download the pdf manual from there and check out all the other r
 <a href="https://n1njahacks.wordpress.com/2013/03/11/exporting-h-264-from-cinelerra/">n1njahacks.wordpress.com/2013/03/11/exporting-h-264-from-cinelerra/</a><br>
 <a href="http://crazedmuleproductions.blogspot.my/2007/06/beginners-guide-to-exporting-video-from.html">crazedmuleproductions.blogspot.my/2007/06/beginners-guide-to-exporting-video-from.html</a><br>
 <a href="http://beccatoria.dreamwidth.org/2011/02/28/">beccatoria.dreamwidth.org/2011/02/28/</a><br>
-<a href="http://jumptuck.com/2011/11/03/rendering-video-with-cinelerra-and-ffmpeg/">jumptuck.com/2011/11/03/rendering-video-with-cinelerra-and-ffmpeg/</a><br>
+<a href="http://jumptuck.com/2011/11/03/rendering-video-with-cinelerra-and-ffmpeg/">jumptuck.com/2011/11/03/rendering-video-with-cinelerra-and-ffmpeg/</a>
+<br><br>
+more news here at <a href="https://www.reddit.com/r/linux/comments/47h29z/til_a_little_bit_more_about_cinelerra/"><b>reddit</b></a>
 
 
 
-
-
-
+<br><br>
 <br><br>
 <h2 id="1" class="tag">What's different</h2>
 
@@ -60,7 +60,7 @@ some main differences of Cinlerra to other non-linear video editors for Linux..
 <li>apart from technical stuff, the main differences are found in the UI and how clips are edited - there are two mouse modes (copy-paste and drag-drop) and three mouse drag modes (three mouse buttons)
 <li>cutting a segment out of a media clip immediately moves the rest along to the left to cover over the time that the clip previously filled, or else mute can be used to replace the segment with silence (looks like a gap is left)
 <li>silence can also be selected and cut, copied or pasted, there is no "close gap" command (but silence can be cut!)
-<li>red and yellow lines above the timeline mark the last played from and stopped at points
+<li>red and yellow lines above the timeline mark the last played from and paused points
 <li>cuts of clips are called edits
 
 </ul>
@@ -115,7 +115,7 @@ The manual lists the keyboard shortcuts quite well, here I just list the main ke
 
 <tr>
 <td>Shift-Ctrl-Left/Shift-Ctrl-Right</td>
-<td>highlight from insert point to prev/next label, or to last played from point</td>
+<td>highlight from insert point to prev/next label, or to played from/paused point</td>
 <td> Z/Shift-Z</td>
 <td>undo/redo</td>
 </tr>
@@ -147,7 +147,8 @@ The manual lists the keyboard shortcuts quite well, here I just list the main ke
 <td></td>
 </tr>
 </tbody></table>
-
+<br><br>
+The number pad has playback shortcuts too.
 <br><br>
 Unfortunately, there are no shortcut settings in Preferences.
 <br><br><br><br>
@@ -165,6 +166,7 @@ Unfortunately, there are no shortcut settings in Preferences.
 <li>to select with more accuracy, play to or find a start point and press <b>[</b> (set in-point), then play until the end point is found and press <b>]</b> (set out-point), then click on the in-point and <b>Shift-click</b> on the out-point to select the time between them
 <li>to remove in/out points, just double-press <b>[</b> and <b>]</b>
 <li>another way is to adjust the selected time using the entry fields at the bottom panel -Bkspace, enter new value, Enter
+<li>to cancel selection, press <b>A </b>twice
 </ul>
 <br><br>
 <h3>cutting</h3>
@@ -178,15 +180,15 @@ Unfortunately, there are no shortcut settings in Preferences.
 <br><br>
 <h3>removing gaps</h3>
 <ul>
-<li>to remove empty space, double-click in it to highlight the space and then press <b>X </b>or <b>Del</b>
+<li>to remove empty space, double-click in the space to highlight it and then press <b>X </b>or <b>Del</b>
 </ul>
 
 <br><br>
 <h3>Snapping edit ends</h3>
 there is no handy snap tool in cinelerra to contract/extend edit ends like with kdenlive or blender... so a select and remove action will be needed.
-<ul><li>play until the cut point is reached, then press [ to set in-point
-<li>press Alt-Right to move insert point to the end of the edit (clip) and press ] to set out-point
-<li>press del or X to remove the end of the clip - similar for beginning
+<ul><li>use in/out points: play until the cut point is reached and pause, then press <b>[</b> to set in-point... press <b>Alt-Right</b> to move to the end of the edit (clip) and press <b>]</b> to set out-point... press <b>del </b>or <b>X</b> to remove the end of the clip
+<li>select area: play until the cut point is reached and pause... press <b>Alt-Right</b> to move to the end of the edit (clip)... then press <b>Shift-Ctrl-Left</b> to select from end of clip up to the pause point... press <b>del </b>or <b>X</b> to remove the end of the clip
+<li>to contract the clip from the start you'd need to either make an in-point before playing, and out-point at the cut point, or do <b>Alt-Left</b> to return to start (after played until cut point) and <b>Shift-Ctrl-Right</b> to select up to pause point!
 </ul>
 
 <br><br>

@@ -143,30 +143,35 @@ See my <a href="{{site.baseurl}}/tutorial/04a-blender-vse.html"><b>Blender page<
 <br><br><br>
 <h3>Cinelerra</h3>
 
-A video editor for Linux that is without rival. The three main versions available are HV (maintained by the original author and without community input), CV (the community version that builds on HV releases) and GG (from Good Guy).
+A video editor for Linux that is perhaps without rival. The three main versions available are HV (maintained by the original author and without community input, and lacking many features added by the community), CV (the community version that builds on HV releases) and GG (from Good Guy).
 <br><br>
 
 download it from..
 <br><br>
-<a href="https://cinelerra-cv.org/download_cv.php">get cin CV (quicktime-based) </a>........ 
-<a href="https://cinelerra-cv.org/download_gg.php">get cin GG (ffmpeg-based)</a> ... 
+<a href="https://cinelerra-cv.org/download_cv.php">get cin CV </a>(v2.3, quicktime-based) ........ 
+<a href="https://cinelerra-cv.org/download_gg.php">get cin GG </a>(v5.1, ffmpeg-based) ... 
 <br><br><br>
-CV must be built for debian, there's no packaging done after deb-multimedia shifted to cinelerra HV.  <br>
-GG can be more easily run without building - just unpack the archive and run it with `./cin`
-
+cin. CV must be built for debian, there's no packaging done after deb-multimedia shifted to cinelerra HV.  
 <br><br>
-unpack the txz archive with
-
+cin. GG can be more easily run without building it - you may want to preinstall the latest ffmpeg (see below)
+<br><br>
+either..
+<br><br>
+1. add the repo and use apt-get, or download the .deb archive from <a href="https://cinelerra-cv.org/five/pkgs/debian/">cinelerra-cv.org/five/pkgs/debian/</a> 
+<br><br>
+2. download and unpack the stand-alone archive from <a href="https://cinelerra-cv.org/five/tars/">cinelerra-cv.org/five/tars/</a>, and run it with `./cin`<br>
+<br><br>
+-> unpack the txz archive with
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 tar xvf cinelerra-5.1-</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br><br>
+<br><br><br>
 
 
-to build cinelerra, first get dependencies:
+to build cinelerra-CV, first get dependencies:
 
 <form>
 <textarea name="T" id="install" rows="3" cols="80">
@@ -207,7 +212,7 @@ sudo make install</textarea>
 <b>Lumiera</b>
 <a href="http://lumiera.org/index.html">http://lumiera.org/index.html</a>
 <br><br>
-The future of Linux video editing? Born out of Cinelerra but no usable version has been released to date.
+The future of Linux video editing? Born out of Cinelerra but only a demo (non-functioning) version has been released to date.
 <br><br><br><br>
 
 
