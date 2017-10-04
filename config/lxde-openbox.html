@@ -1402,12 +1402,31 @@ I add an application to lxde-rc.xml, at the end of the file,
 <br>
 if "skip_taskbar" is set to "yes" then switching desktop you can't type in the terminal without clicking on it.
 <br><br>
-save it and reconfigure OB
+save it and reconfigure OB (note that you can remove the "name=" variable if its not working)
 <br><br> 
 To get the terminal sticking to that desktop from startup, just add @lxterminal to autostart (see above).
 <br><br>
-If you maximise some apps that have info/confirm dialogues, the dialogue windows will pop up maximised too!  So best not to do it that way, just maximise the window when open and then close, and hopefully next time it will open maximised.
 
+<h3>Other applications</h3>
+
+To find the "name", "class", "role", "title" of an app, you can enter something like this command in the terminal and click in the running app window..<br>
+(see <a href="http://openbox.org/wiki/Help:Applications">openbox.org/wiki/Help:Applications</a>)<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+xprop _OB_APP_CLASS</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+Some apps that have info/confirm dialogues may open these maximised too if you have set the app to open maximised, so you can run the xprop command in the secondary widow to see if there's a difference in class.
+<br><br>
+A work around for a web browser is to have the line:
+<br><br>
+<i>&#60;application role="browser"></i>
+<br><br>
+or for other apps.. <i>&#60;application type="normal"></i>
+
+
+<br><br><br>
 To get an app opening at a particular position, you add this, changing x, y, and desktop or monitor values,
 
 <form>
@@ -1419,8 +1438,23 @@ To get an app opening at a particular position, you add this, changing x, y, and
  </position></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
+<br><br>
+For mpv..
 
+<form>
+<textarea name="T" id="file" rows="9" cols="50">
+ <application class="mpv">
+      <decor>no</decor>
+      <layer>normal</layer>
+      <skip_pager>no</skip_pager>
+      <skip_taskbar>no</skip_taskbar>
+      <position>
+      <x>center</x>  <y>center</y>
+      </position>
+    </application></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
 To get an app to open with a particular size, you need to add geometry to whatever controls its launch...
 
 <div class="bullet"><ul><li>.desktop file for applications menu e.g. </li></ul></div>
