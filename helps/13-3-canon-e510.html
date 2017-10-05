@@ -10,32 +10,37 @@ id: help
 <div class="cont">
 
 This printer worked first time round, it was almost too easy!
-<br>
+<br><br>
 
-1. Get the drivers for printer and scangear<a href="http://support-in.canon-asia.com/P/search?model=PIXMA+E510&amp;menu=download&amp;filter=0&amp;tagname=g_os&amp;g_os=Linux" rel="noreferrer">http://support-in.canon-asia.com...</a>
-<br>
+1. Get the drivers for printer and scangear from <a href="http://support-in.canon-asia.com/P/search?model=PIXMA+E510&amp;menu=download&amp;filter=0&amp;tagname=g_os&amp;g_os=Linux" rel="noreferrer">http://support-in.canon-asia.com...</a>
+<br><br>
 
-2. Set up the printer and power on, and connect the USB
-<br>
+2. Set up the printer and power it on, and connect the USB
+<br><br>
 
 3. Unpack the tar.gz driver archives and open a Terminal in the printer driver directory first (cnijfilter), then run
 <br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo ./install.sh</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
-sudo ./install.sh
-<br>
+<br><br>
 
 answer the questions and it should complete. Print something.
-<br>
+<br><br>
 
-If the printer doesn't register, see here<a href="http://linux.wikia.com/wiki/Getting_Canon_PIXMA_to_work_on_Linux" rel="noreferrer">http://linux.wikia.com/...</a>
-<br>
+If the printer doesn't register, see here.. <a href="http://linux.wikia.com/wiki/Getting_Canon_PIXMA_to_work_on_Linux" rel="noreferrer">http://linux.wikia.com/...</a>
+<br><br>
 
 cngpijmone510 is the status monitor (also shows ink levels)
-<br>
+<br><br>
 
 <br>
 
-
+<form>
+<textarea name="T" id="cmd" rows="9" cols="30">
 [Desktop Entry]
 Name=scangear
 Comment=scan a document
@@ -44,11 +49,16 @@ Icon=scanner
 Terminal=false
 Encoding=UTF-8
 Type=Application
-Categories=Graphics;
+Categories=Graphics;</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
 
 <br>
 
-
+<form>
+<textarea name="T" id="cmd" rows="9" cols="50">
 [Desktop Entry]
 Name=E510Status
 Comment=printer status
@@ -57,32 +67,46 @@ Icon=printer
 Terminal=false
 Encoding=UTF-8
 Type=Application
-Categories=Settings;
+Categories=Settings;</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
-<br>
+
+<br><br>
 
 I tried for hours to get the Status Monitor up with printer info, but to no avail, so I can only check print jobs etc through CUPS in a web browser.
+<br><br>
 According to the Canon documentation, one calls up the monitor with
-cngpijmone510 &lt;printer_name&gt;
-but withcngpijmone510 E510(or plain<span style="color:rgb(180,95,6);font-size:16px;line-height:1.6">cngpijmone510)<span style="font-size:16px;line-height:1.6">the monitor reports "Printer not responding"
-<br>
+<br><br>
+<i>cngpijmone510 &lt;printer_name&gt;</i>
+<br><br>
+but with <i>cngpijmone510</i> E510 (or plain <i>cngpijmone510</i>) the monitor reports "Printer not responding"
+<br><br><br>
 
 
-an old thread mentioned, to get it working for IP, MP series, the printer URI in the file /etc/cups/printers.conf needs editing,
-from usb://dev/usb/&lt;whatever&gt;
-to cnij_usb:/dev/usb/&lt;whatever&gt;
+an old thread mentioned, to get it working for IP, MP series, the printer URI in the file /etc/cups/printers.conf needs editing..
+<br><br>
+from <i>usb://dev/usb/&lt;whatever&gt;</i>
+<br><br>
+to <i>cnij_usb:/dev/usb/&lt;whatever&gt;</i>
+<br><br>
 <a href="http://forums.opensuse.org/english/get-technical-help-here/hardware/423057-canon-printer-drivers-ip-mp-series-status-ink-monitor.html" rel="noreferrer">http://forums.opensuse.org/...</a>
-<br>
 
+<br><br>
 but the e510 URI is usb://Canon/E510%20series?serial=&lt;number&gt;
-if I change this URI (after stopping cups) to cnij_usb:/Canon... or even cnij_usb:/dev/usb/Canon...
-the status monitor reports "Unknown printer"
-cups printers reports that cnij_usb backend does not exist
-
-
+<br><br>
+if I change this URI (after stopping cups) to cnij_usb:/Canon... or even cnij_usb:/dev/usb/Canon... the status monitor reports "Unknown printer" <br>
+- cups printers reports that cnij_usb backend does not exist
+<br><br>
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
 sudo /etc/init.d/cups stop
-sudo /etc/init.d/cups restart
+sudo /etc/init.d/cups restart</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
-<br>
+
+<br><br>
 more info seems hard to come by on this one!
-
+<br><br><br><br>
+</div>

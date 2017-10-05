@@ -13,50 +13,80 @@ I found the solution to installing the canon driver for this printer at Ubuntu f
 <br>
 
 
-
-<ul><li>Download Debian drivers over at <a href="http://software.canon-europe.com/products/0010647.asp" rel="noreferrer">http://software.canon-europe.com/products/0010647.asp</a></li>
+<div class="bullet">
+<ul><li>Download the Debian drivers over at <a href="http://software.canon-europe.com/products/0010647.asp" rel="noreferrer">software.canon-europe.com/</a></li>
 <li>extract</li>
-<li>repackage the common .deb.</li></ul>
+<li>repackage the common .deb archive...</li></ul>
 
+<form>
+<textarea name="T" id="cmd" rows="2" cols="80">
 dpkg-deb -x cnijfilter-common_3.00-1_i386.deb common
-dpkg-deb --control cnijfilter-common_3.00-1_i386.deb
+dpkg-deb --control cnijfilter-common_3.00-1_i386.deb</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
-<ul><li>now you see two new folders - common and DEBIAN. now to change the file control in DEBIAN to reflect libcups2.</li></ul>
 
+<ul><li>now you see two new folders - common and DEBIAN. ...then to change the file control in DEBIAN to reflect libcups2...</li></ul>
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
 cd DEBIAN
-leafpad control
+leafpad control</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
 
 <ul><li>look for the line</li></ul>
->Depends: libc6 (&gt;= 2.3.4-1), libcupsys2 (&gt;= 1.2.1), libpopt0 (&gt;= 1.7)
+Depends: libc6 (&gt;= 2.3.4-1), libcupsys2 (&gt;= 1.2.1), libpopt0 (&gt;= 1.7)
 <br>
 
 
 <ul><li>and change libcupsys2 to libcups2. Save the file.</li>
-<li>Now, copy the entire DEBIAN folder into common. then repackage these into a .deb.</li></ul>
+<li>Now, copy the entire DEBIAN folder into common. then repackage these into a .deb archive...</li>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+dpkg -b common cnijfilter-common_3.00-1_i386.deb</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
 
-dpkg -b common cnijfilter-common_3.00-1_i386.deb
-
-<ul><li>install that .deb file</li></ul>
+<li>install that .deb file</li>
 
 
-<ul><li>Repeat for <font color="#0b5394">cnijfilter-ip1900series_3.00-1_i386.deb</li></ul>
+<li>Repeat for cnijfilter-ip1900series_3.00-1_i386.deb</li>
 
-
+<form>
+<textarea name="T" id="cmd" rows="2" cols="80">
 dpkg-deb -x cnijfilter-ip1900series_3.00-1_i386.deb common
-dpkg-deb --control cnijfilter-<span style="color:rgb(180,95,6)">ip1900series_3.00-1_i386.deb
+dpkg-deb --control cnijfilter-ip1900series_3.00-1_i386.deb</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
-edit the control file as before (change libcupsys2 to libcups2)
-copy the DEBIAN folder into common, then
-<span style="color:rgb(180,95,6)">dpkg -b common cnijfilter-<span style="color:rgb(180,95,6)">ip1900series<span style="color:rgb(180,95,6)">_3.00-1_i386.deb
-<span style="color:rgb(180,95,6)"><br>
+<br>
+<li>edit the control file as before (change libcupsys2 to libcups2)
+<li>copy the DEBIAN folder into common, then repackage with...</li>
 
-Install that one too, and then, use cups to add the printer: http://localhost:631 (plugged in)
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+dpkg -b common cnijfilter-ip1900series_3.00-1_i386.deb</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
 <br>
 
-set root ownership of the filter
-sudo chown root /usr/lib/cups/filter/pstocanonij
+<li>install that one too, and then use cups to add the printer: http://localhost:631 (plugged in)
 <br>
 
-test page!!!
+<li>set root ownership of the filter</li>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo chown root /usr/lib/cups/filter/pstocanonij</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
+<br>
 
+<li>run a test page!!!
+</div>
+<br><br><br><br>
+</div>

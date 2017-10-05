@@ -10,98 +10,93 @@ id: help
 <div class="cont">
 
 Systemd (a suite of system management daemons) replaces the init scripts of Debian Wheezy that we all saw running at every boot, giving us a slightly faster boot time and not so much on screen during the boot.
-<br>
+<br><br>
 
-It may be a great advancement in Debian/Linux evolution, but it seems to be thrown into Debian Jessie without any warning. There are many voices against its implementation, its default addition to Debian, and that it was passed by vote more than by principle (Debian's do one thing and do it well - i.e the individual scripts running daemons for each purpose). There is even a forked Debian now called Devuan (what tragic name) that seeks to provide repositories with packages independent of systemd. But at the moment, Debian should still run on the init sytem, if we want it to.... but for how long, who knows?
-<br>
+It may be a great advancement in Debian/Linux evolution, but it seems to have been thrown into Debian Jessie without any warning. There are many voices against its implementation, its default addition to Debian, and that it was passed by vote more than by principle (Debian's do one thing and do it well - i.e the individual scripts running daemons for each purpose). 
+<br><br>
+There is a forked Debian now, called Devuan, that seeks to provide repositories with packages independent of systemd. Installing Devuan will setup the apt files that will prevent systemd-sysv installing (hence systemd from controlling startup).
+<br><br>
+Debian should still run on the init system, if we want it to.... but probably not for long...
+<br><br>
 
-You need to start the system in single user mode (press e on a line of the grub menu, add single, enter), or run a Live CD and chroot to your system, to remove systemd and reinstall sysvinit. 
-<b><font color="#0b5394"><span style="background-color:rgb(255,229,153)">You might need to chroot </b>if there's no grub menu (to start in single user mode), or if you tried to remove systemd from a normally booted system and it left the system unbootable (as /sbin/init remains a link made by systemd but systemd is now removed). 
-<br>
+You need to start the system in single user mode (press e on a line of the grub menu, add single, enter), or run a Live CD and chroot to your system, to remove <b>systemd-sysv</b> (not systemd) and reinstall <b>sysvinit</b>. 
+<br><br>
+<b>You might need to chroot </b>if there's no grub menu (to start in single user mode), or if you tried to remove systemd from a normally booted system and it left the system unbootable (as /sbin/init remains a link made by systemd but systemd is now removed). 
+<br><br>
 
 install the SysV init packages and remove systemd-sysv
-<font color="#7C2020">sudo apt-get install sysvinit-core sysvinit systemd-sysv-
-<br>
 
-systemd-sysv with a - after it means it will uninstall
-<br>
-
-<a href="https://wiki.debian.org/FAQsFromDebianUser#How_can_I_prevent_systemd_from_being_installed_on_upgrades.3F" rel="noreferrer">faq's from debian users</a>
-Note: that when I initially removed "systemd" I couldn't get past a grub rescue on boot, so I had to re-install systemd... but with systemd-sysv removed and sysvinit installed it means that systemd will not be running the start-up of X.
-<br>
-
-Prevent apt from installing systemd packages in the future.
-<span style="font-size:15.5555562973022px;line-height:28.4444465637207px;background-color:transparent">sudo nano /etc/apt/preferences.d/systemd
-<br>
-
-<font color="#274e13">Package: systemd
-<font color="#274e13">Pin: origin ""
-<font color="#274e13">Pin-Priority: -1
-<br>
-
-<b style="background-color:rgb(255,229,153)"><font color="#0b5394">Actually this does not prevent APT installing systemd - as when there is no alternative it will install low pinned packages anyway!! The best way is to install a dummy package that conflicts with the package that should not be installed ever - but where that is for systemd I know not.</b>
-<br>
-
-<a href="http://sohcahtoa.org.uk/osd.html">http://sohcahtoa.org.uk/osd.html</a>
-<br>
-
-also read here on running svinit even with systemd installed<a href="http://forums.debian.net/viewtopic.php?f=5&amp;t=106062">http://forums.debian.net/viewtopic.php?f=5&amp;t=106062</a>
-<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo apt-get install sysvinit-core sysvinit systemd-sysv-</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br>
 
-Problems</b>
-<font color="#741b47">After removing systemd and installing sysvinit, my GRUB installation pooped - on reboot it came to Grub rescue. chrooting and updating grub had no result. When I used Boot Repair, from the Live CD, it took a long while to look at the GRUB install and then got me to clean it off and re-install it, so I recommend using that.
-<br>
+systemd-sysv with a '-' after it means it will uninstall
+<br><br>
+
+<a href="https://wiki.debian.org/FAQsFromDebianUser#How_can_I_prevent_systemd_from_being_installed_on_upgrades.3F">faq's from debian users</a>
+<br><br>
+Note: that I initially removed "systemd" and I couldn't get past a grub rescue on boot, so I had to re-install systemd... but removing systemd-sysv is enough.
+<br><br>
+
+Prevent apt from installing systemd-sysv packages in the future.
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/apt/preferences.d/avoid-systemd</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br>
+<form>
+<textarea name="T" id="file" rows="3" cols="30">
+Package: systemd-sysv
+Pin: release o=Debian
+Pin-Priority: -1</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br>
+this is the file that Devuan installs to apt preferences.d.
+<br><br>
+Actually this method does not prevent APT installing a package - as when there is no alternative it will install low pinned packages anyway!! The best way is to install a dummy package that conflicts with the package that should not be installed ever - but where that is for systemd-sysv I know not.
+<br><br>
 
-<b><font size="5">Chrooting from a Live CD</b>
-<br>
+<a href="http://sohcahtoa.org.uk/osd.html">sohcahtoa.org.uk..</a>
+<br><br>
 
-1st mount the system partition you want to change to the root of, and mount any parts of the system held on other partitions (below I mount /var held on sda7)
-
-<a href="http://superuser.com/questions/111152/whats-the-proper-way-to-prepare-chroot-to-recover-a-broken-linux-installation">http://superuser.com/questions/...</a>
-
-<br>
-
-su
-cd /
-mount -t ext3 /dev/sdb1 /mnt
-mount -t proc proc /mnt/proc
-mount -t sysfs sys /mnt/sys
-mount -o bind /dev /mnt/dev
-mount -t ext3 /dev/sda7 /mnt/var
+also read here on running svinit even with systemd installed<br>
+ <a href="http://forums.debian.net/viewtopic.php?f=5&amp;t=106062">forums.debian.net/..</a>
 <br>
 
 <br>
 
-check mounts with
-<span style="color:rgb(180,95,6);font-size:16px;line-height:1.6;background-color:transparent">mount
-<br>
-
-/dev/sdb1 on / type ext3 (rw,relatime,data=ordered)
-proc on /proc type proc (rw,relatime)
-sys on /sys type sysfs (rw,relatime)
-udev on /dev type devtmpfs (rw,relatime,size=10240k,nr_inodes=1007433,mode=755)
-/dev/sda7 on /var type ext3 (rw,relatime,data=ordered)
+Problems<br>
+After removing systemd (which you're not meant to do) and installing sysvinit, my GRUB installation pooped - on reboot it came to Grub rescue. chrooting and updating grub had no result. When I used Boot Repair, from the Live CD, it took a long while to look at the GRUB install and then got me to clean it off and re-install it.
 <br>
 
 <br>
 
-then change to the root of that system to run commands in it
-chroot /mnt /bin/bash
 <br>
 
-(in the case of re-installing svinit, run the install/remove commands above at this point)
+<b>Chrooting from a Live CD</b>
+<br>
+
+1st mount the system partition you want to change to the root of, then chroot into it
+<br><br>
+see my <a href="03-chrooting.html">chroot page</a>
+<br>
+
+<br>
+
+and in the case of re-installing svinit, run the install/remove commands above 
 <br>
 
 when finished,
-exit
-umount /mnt/{proc,sys,dev,var}
-umount /mnt
-<br>
-
+exit and unmount
+<br><br><br><br>
+</div>
 

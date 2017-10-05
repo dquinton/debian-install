@@ -9,78 +9,100 @@ id: help
 
 <div class="cont">
 
-Simple. Followed the instructions here<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_prn1a.html">http://welcome.solutions.brother.com/...</a>
-<br>
+Simple. Followed the instructions here<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_prn1a.html">welcome.solutions.brother.com/...</a>
+<br><br>
 
 
-<ol><li><span style="font-size:16px;line-height:1.6">Download the printer driver and cupswrapper driver from<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html">..brother.com</a></li>
-<li><span style="font-size:16px;line-height:1.6">Step 4. Install LPR driver</li>
-</ol>
+1. Download the printer driver and cupswrapper driver from<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_prn.html">..brother.com</a>
+2. follow Step 4. Install LPR driver
 
 
 
-<ul>
-<ul><li><span style="font-size:16px;line-height:1.6">1. Turn on the printer and connect the USB cable.</li>
-<li><span style="font-size:16px;line-height:1.6">2. <span style="font-size:16px;line-height:1.6">Install LPR driver.</li></ul></ul>
 
-<span style="font-size:16px;line-height:1.6"><span> <span> sudo dpkg -i --force-all &lt;lpr-drivername&gt;
-<br>
-
-<span> <span> I needed to sudo mkdir for a lot of non existing dir's (on a new laptop)
-<span> <span> /usr/local/etc/cups
-<span> <span> /usr/local/etc/cups/certs
-<span> <span> /usr/local/etc/cups/ppd
-<br>
-
-
-<span><span>  /var/spool/
-<span> <span> /var/spool/lpd/dcpj315w
+<div class="bullet">
+<ul><li>Turn on the printer and connect the USB cable.</li>
+<li>Install LPR driver.</li></ul>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo dpkg -i --force-all <lpr-drivername></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br>
 
-<span style="font-size:16px;line-height:1.6"><span> 3. Install cupswrapper driver.
-<br>
+I needed to sudo mkdir for a lot of non existing dir's (on a new laptop)
+<form>
+<textarea name="T" id="cmd" rows="2" cols="80">
+sudo mkdir /usr/local/etc/cups /usr/local/etc/cups/certs /usr/local/etc/cups/ppd
+sudo mkdir /var/spool/ /var/spool/lpd/dcpj315w</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
-<span><span>  sudo dpkg -i --force-all &lt;cupswrapper-drivername&gt;
-<br>
+<br><br>
 
-<span><span>  /var/tmp
-<br>
+ 3. Install cupswrapper driver.
 
-<span><span>  It prints!
-
-<br>
-
-<span>  4. Download the scanner driver and scan tool from<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_scn.html#brscan3">...brother.com/...brscan3</a>
-<span>  5. install away!<br>
-
-<span><span>  6. follow the instructions here to allow normal users to scan<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_scn1c.html#d6">...instruction_scn1c.html#d6</a>
-<br>
-
-
-<span> <span> sudo leafpad /lib/udev/rules.d/60-libsane.rules
-<br>
-
-<span> <span> Add the following two lines to the end of the device list. (Before the line "# The following rule will disable ..."):
-<br>
-
-<span> <span> ># Brother scanner
-><span> <span> ATTRS{idVendor}=="04f9", MODE="0664", GROUP="scanner", ENV{libsane_matched}="yes"
-<br>
-
-<span> <span>7.add user to scanner group
-<span>  sudo adduser &lt;username&gt; scanner
-<br>
-
-<span> <span>8. To let the scan-key-tool operate it must be started with commandbrscan-skey
-<span> <span> Then Scan can be pressed on the machine. <a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_scn3.html">scn3...</a><br>
-<span style="font-size:16px;line-height:1.6"><span> <span> add it to Xfce autostart apps or/etc/xdg/lxsession/<span style="font-size:16px;line-height:1.6">LXDE/autostart with @brscan-skey
-<span style="font-size:16px;line-height:1.6"><br>
-
-<span style="font-size:16px;line-height:1.6"><span> <span>  Try xsane or other scanner app -might not require the scan-key-tool (I haven't tested it yet)<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo dpkg -i --force-all <cupswrapper-drivername></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br>
 
-<span>   Reboot.
+  It prints!
+
+<br><br>
+
+  4. Download the scanner driver and scan tool from<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/download_scn.html#brscan3">...brother.com/...brscan3</a>
+  <br><br>
+  5. install away!
+  <br><br>
+
+  6. follow the instructions here to allow normal users to scan<a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_scn1c.html#d6">...instruction_scn1c.html#d6</a>
+<br>
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo leafpad /lib/udev/rules.d/60-libsane.rules</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+Add the following two lines to the end of the device list. (Before the line "# The following rule will disable ..."):
+<br><br>
 
 
+<form>
+<textarea name="T" id="file" rows="3" cols="80">
+# Brother scanner
+ATTRS{idVendor}=="04f9", MODE="0664", GROUP="scanner", ENV{libsane_matched}="yes"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+ 7.add user to scanner group
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo adduser <username> scanner</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+ 
+  
+<br>
+
+ 8. To let the scan-key-tool operate it must be started with command `brscan-skey`
+ 
+Then Scan can be pressed on the machine. <a href="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/instruction_scn3.html">scn3...</a><br>
+<br>
+add it to autostart with @brscan-skey
+<br><br>
+
+ Try xsane or other scanner app -might not require the scan-key-tool (I haven't tested it yet)<br>
+
+<br>
+<br><br>
+
+</div>

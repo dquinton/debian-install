@@ -27,87 +27,132 @@ id: help
 
 <div class="cont">
 
-<font size="4"><b></b>
 
 <h2 id="1" class="tag">using ntfsundelete</h2>
 
 
 
-<br>
-
 This might save your life one day (or the life of some files you removed bypassing the trash!)
-<br>
+<br><br>
 
 In Linux it's easy (relatively, if you act quickly) to reclaim files that have been wiped from disk -because really they are still there but their names are gone and their inodes have been offered for new files to be stored in their place.
 <br>
-
-You can "undelete" wiped files from Linux partitions (ext3/ext4) and NTFS -so long as you haven't been using the partition and stored new files over the lost ones. So if something goes wrong you should make a rescue op immediately.
 <br>
+You can "undelete" wiped files from Linux partitions (ext3/ext4) and NTFS -so long as you haven't been using the partition and stored new files over the lost ones. So if something goes wrong you should make a rescue op immediately.
+<br><br>
 
 Today I managed to wipe 200Gb of very important data off an external drive. I couldn't believe it had happened. One thing I need to watch out for is when an external drive is not present and an app needs to access it, say for a DVD project, it will create the partition somewhere locally and carry on! Then inserting the external drive makes another entry with a _ after it in /media -it was when I tried removing the phony local version of the drive that it decided to take out loads of real data with it (but left some), and I still can't understand how because I had already unplugged the drive.
-<br>
+<br><br>
 
 Fortunately I had just enough space around on different drives to rescue everything. The deleted files have to be copied to a different partition than the one they were on, and the one recovering from must be unmounted. My drive was NTFS so I'll show how that works.
+<br><br>
+
+note: ntfsundelete is installed with the package ntfs-3g
+
+<br><br>
+
+1. get device i.e. sdb1 etc with `lsblk`
+<br><br>
+
+2. unmount drive with e.g. `sudo umount /dev/sdb1`
+<br><br>
+
+3. list files available for undelete - might need the force option -f
+
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo ntfsundelete /dev/sdb1 -f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+(note: you might need to adjust the scroll lines of the Terminal to a few thousand to show long lists)
+
+<br><br>
+
+4. list files of certain type available for undelete
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo ntfsundelete /dev/sdb1 -m *.MTS -f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 <br>
 
-note: ntfsundelete is installed with ntfs-3g
+5. list files with something in the filename, available for undelete
+
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo ntfsundelete /dev/sdb1 -m something\* -f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br>
 
-[get device i.e. sdb1 etc]
-lsblk
-<br>
 
-[unmount drive]
-sudo umount /media/VIDEO
-or click on eject in a file browser
-<br>
+6. combine the above two
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo ntfsundelete /dev/sdb1 -m something\*MTS -f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
-[list files available for undelete, might need<span style="font-size:medium;line-height:27px">force option -f<span style="font-size:medium">]
-sudo ntfsundelete /dev/sdb1 -f
-<span style="font-size:medium">adjust the scroll lines of the Terminal to a few thousand to show long lists.
-
-<br>
-
-[list files of certain type available for undelete]
-<div style="color:rgb(180,95,6)">sudo ntfsundelete /dev/sdb1 -m *.MTS -f
-<div style="color:rgb(180,95,6)"><br>
-
-[list files with something in the filename, available for undelete]
-sudo ntfsundelete /dev/sdb1 -m something\* -f
-<br>
-
-
-[combine the above two]
-sudo ntfsundelete /dev/sdb1 -m something\*MTS -f
 
 
 <br>
 
-[undelete with file name]
-sudo ntfsundelete /dev/sdb1 -u -m 0032.MTS -f
-<br>
-
-[undelete with wildcard extension (will recover ALL files with the ex.), to a destination dir with -d switch]
-sudo ntfsundelete /dev/sdb1 -u -m *.MTS -d /media/VIDEO
-sudo ntfsundelete /dev/sdb1 -u -msomething\<span style="color:rgb(180,95,6);font-size:medium">*.MTS -d /media/VIDEO
-<br>
-
-[undelete with inode range, to a destination dir]
-sudo ntfsundelete /dev/sdb1 -u -i 7245-7275 -d /media/VIDEO -f
-<br>
-
-[change permissions to user for undeleted files if necessary]
-sudo chown <i>username</i> *.MTS
-
+7. undelete with file name
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo ntfsundelete /dev/sdb1 -u -m 0032.MTS -f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br>
+
+8. undelete with wildcard extension (will recover ALL files with the ext), to a destination dir with -d switch
+
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo ntfsundelete /dev/sdb1 -u -m *.MTS -d /media/VIDEO</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+or 
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo ntfsundelete /dev/sdb1 -u -msomething\*.MTS -d /media/VIDEO</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+9. undelete with inode range, to a destination dir
+
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo ntfsundelete /dev/sdb1 -u -i 7245-7275 -d /media/VIDEO -f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+10. change permissions to user for undeleted files if necessary
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo chown <username> *.MTS</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+<br><br>
 
 Notes
 
-<ol><li>If you cancel the terminal with the process going, you can restart with exactly the same command and dir location and the process will skip all the files already recovered -it won't write over them, or it can't.</li>
+<ul><li>If you cancel the terminal with the process going, you can restart with exactly the same command and dir location and the process will skip all the files already recovered -it won't write over them, or it can't.</li>
 <li>If you try to split the process between different target directories it will be impossible using a wildcard extension, you'd have to use inode ranges, I'd say. combine them?</li>
-</ol>
+</ul>
 
 <br>
 
@@ -116,92 +161,113 @@ Notes
 
 
 
-Undelete files on ext3/ext4 partitions
-<a href="http://everydaylht.com/howtos/system-administration/undelete-files-on-an-ext3-or-ext4-file-system/" rel="noreferrer">http://everydaylht.com/</a>
-<a href="http://extundelete.sourceforge.net/" rel="noreferrer">http://extundelete.sourceforge.net/</a>
-Undelete files on NTFS from Linux
-<a href="http://www.howtogeek.com/howto/13706/recover-deleted-files-on-an-ntfs-hard-drive-from-a-ubuntu-live-cd/" rel="noreferrer">http://www.howtogeek.com/.../</a>
+Undelete files on ext3/ext4 partitions<br>
+<a href="http://everydaylht.com/howtos/system-administration/undelete-files-on-an-ext3-or-ext4-file-system/" rel="noreferrer">http://everydaylht.com/</a><br>
+<a href="http://extundelete.sourceforge.net/" rel="noreferrer">http://extundelete.sourceforge.net/</a><br>
+Undelete files on NTFS from Linux<br>
+<a href="http://www.howtogeek.com/howto/13706/recover-deleted-files-on-an-ntfs-hard-drive-from-a-ubuntu-live-cd/" rel="noreferrer">http://www.howtogeek.com/.../</a><br>
 <a href="http://linux.die.net/man/8/ntfsundelete" rel="noreferrer">http://linux.die.net/man/8/ntfsundelete</a>
 <br>
 
 <br>
-
-<font size="4"><b></b>
+<br>
 
 <h2 id="2" class="tag">using photorec or testdisk</h2>
 
 
-Afterrecovering files from my removable drive (see on the left) I realised that there were some videos yet to be encoded from raw files -and I couldn't get those files after the restore as they were written over -luckily I remembered I hadn't used the SD card much since then, I had just formatted it.
+After recovering files from my removable drive (see on the left) I realised that there were some videos yet to be encoded from raw files -and I couldn't get those files after the restore as they were written over -luckily I remembered I hadn't used the SD card much since then, but I had just formatted it.
+<br><br>
+
+So in comes photorec, packaged with <b>testdisk</b>, for recovering from FAT format disks -and also from ext3/ext4 and NTFS.
+<br><br>
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo photorec</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
 <br>
-
-So in comes photorec, packaged with testdisk, for recovering from FAT format disks -and also from ext3/ext4 and NTFS.
-<br>
-
-
-<font color="#7C2020">sudo apt-get install testdisk
-<br>
-
-sudo photorec
-<br>
-
-1. choose disk to rescue files from
-2. choose partition on disk (and also file options -search for extensions)
-3. choose format type
-4. choose rescue from freespace or whole disk
-5. select directory to rescue files to: use left/right arrows to go up/down dir tree
+<div class="numb"><ol><li>
+choose disk to rescue files from
+<li>choose partition on disk (and also file options -search for extensions)
+<li>choose format type
+<li>choose rescue from freespace or whole disk
+<li>select directory to rescue files to: use left/right arrows to go up/down dir tree
 e.g. use left to get out of /home/username, then down to /media, right and down to reach dir
-6. enter the chosen dir and press C
-<br>
+<li>enter the chosen dir and press C
+<br></ol>
 
+<br>
 tip: stop photorec in taskmanager if it's eating the cpu even after it's finished the process!
+<br><br>
 <br>
-
 using <b>Testdisk</b> is just as easy, it will list the deleted files and it works on NTFS, FAT (SD cards etc) and ext2<a href="http://www.cgsecurity.org/wiki/TestDisk" rel="noreferrer">http://www.cgsecurity.org/wiki/TestDisk</a>
+<br><br>
+<ol>
+<li>sudo testdisk
+<li>choose log option
+<li>choose disk to rescue files from
+
+<li>choose partition table type (Intel) choose [Advanced] File System Utils
+<li>select partition
+<li>choose option [undelete] or [Image Creation]
+<li>search for deleted directory or file and press C, select multiple files and press Shift-C
+<li>select directory to copy files to: use left/right arrows to go up/down dir tree
+<li>enter the chosen dir (e.g. Desktop), go down one to .. and press C
+
+<li>cd to where the recovery dir has been copied to and run:</li>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo chown -R <username>/recovered-dir-name</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br></ol>
+</div>
 <br>
 
-sudo testdisk
-1. choose log option
-2. choose disk to rescue files from
-
-3. choose partition table type (Intel)
-4. choose [Advanced] File System Utils
-5. select partition
-6. choose option [undelete] or [Image Creation]
-7. search for deleted directory or file and press C
-8. select directory to copy files to: use left/right arrows to go up/down dir tree
-9. enter the chosen dir (e.g. Desktop), go down one to .. and press C
-
-10. cd to where the recovery dir has been copied to and run:
-<span style="color:rgb(180,95,6);font-size:medium;line-height:1.6">sudo chown -R<i>username</i>./recovered-dir-name
 <br>
 
+<h3>Using dd to make an image of a partition first</h3>
 <br>
 
-<br>
-
-<font size="4"><b>Using dd to make an image of a partition first</b>
-<br>
-
-I had one SDHC card that photorec and testdisk couldn't see any deleted files on, even though I had recently had MTS files on it and just formatted it.
-<br>
+I had one SDHC card that photorec and testdisk couldn't see any deleted files on, even though I had recently had MTS files on it ..
+<br><br>
 
 So I made an image of the SD card with
-<span style="color:rgb(180,95,6);font-size:medium">dd if=/dev/mmcblk0p1 of=/media/FILES/RECOV/disk.img bs=1024M
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+dd if=/dev/mmcblk0p1 of=/media/FILES/RECOV/disk.img bs=1024M</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 <br>
+remember that "of" stands for output file and it will wipe everything on the location it points to, so be careful!
+<br><br>
 
 then
-photorec<span style="color:rgb(180,95,6);font-size:medium;line-height:27px">/media/FILES/RECOV/disk.img
-<span style="color:rgb(180,95,6);font-size:medium;line-height:27px"><br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+photorec /media/FILES/RECOV/disk.img</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
-<span style="font-size:medium;line-height:27px">but alas, no files were found either! duh, the card had been formatted.
-<span style="font-size:medium;line-height:27px"><br>
-
-<span style="font-size:medium;line-height:27px"><br>
-
-Then there's extundelete</b>
-<font color="#7C2020">sudo apt-get install<span style="background-color:transparent;line-height:27px">extundelete
 <br>
 
-see here<span style="background-color:transparent;line-height:27px"><a href="http://www.gnutoolbox.com/extundelete/" rel="noreferrer">http://www.gnutoolbox.com/extundelete/</a>
+but alas, no files were found either! duh, the card had been formatted.
+<br>
 
+<br><br>
+
+<h3>Then there's extundelete</h3>
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt-get install extundelete</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+see here<a href="http://www.gnutoolbox.com/extundelete/" rel="noreferrer">gnutoolbox.com/extundelete/</a>
+<br><br><br><br>
 </div></div>
