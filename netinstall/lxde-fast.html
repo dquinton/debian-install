@@ -22,7 +22,7 @@ It looks like this for the Netinstall CD..
 <b>for LXDE</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf leafpad rxvt-unicode htop gparted bash-completion command-not-found rfkill lshw</textarea>
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf leafpad rxvt-unicode htop elinks gparted bash-completion command-not-found</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -36,7 +36,7 @@ I go without lxde and lightdm now, and add here: <span class="inst">openbox lxpa
 <b>for plain openbox</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd chromium tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted udiskie gvfs</textarea>
+apt-get install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop elinks gparted bash-completion command-not-found udiskie gvfs</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -86,16 +86,17 @@ needs_root_rights=yes</textarea>
 
 <b>5.</b>&nbsp;&nbsp; Install the full programme suite:
 
+file manager..<br>
 <form>
 <textarea name="T" id="install" rows="5" cols="100">
-apt-get install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs exiftool w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer bluetooth blueman openjdk-8-jre icedtea-8-plugin zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs-backends sshfs locate git cups gpa ntp yad rpl</textarea>
+apt-get install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs feh imagemagick exiftool w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer bluetooth blueman openjdk-8-jre icedtea-8-plugin zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs-backends sshfs locate git cups gpa ntp yad rpl</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
-
+<br>
+media player/encoder/desktop apps..
 <form>
 <textarea name="T" id="install" rows="6" cols="100">
-apt-get install mplayer2 vlc handbrake audacious gnome-sound-recorder lame gimp abcde eyed3 bashburn gtk2-engines gtk2-engines-xfce gtk3-engines-xfce gnome-color-chooser systemsettings xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer gpsbabel clipit uget clamtk gdmap bleachbit ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin bluefish elinks yelp filezilla docky</textarea>
+apt-get install mplayer2 vlc handbrake audacious gnome-sound-recorder lame gimp darktable inkscape abcde eyed3 bashburn gnome-color-chooser systemsettings xpdf x11-apps gpsbabel clipit uget clamtk gdmap bleachbit ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin bluefish elinks yelp filezilla docky gtk2-engines gtk2-engines-xfce gtk3-engines-xfce </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -123,7 +124,7 @@ You can always cancel apt downloading of packages and resume it later on, just u
 <br><br><br>
 
 
-Which leaves <span class="blue">Ranger, compton, Libre Office, video editors, ffmpeg, Avidemux, Bombono, XnViewMP, Iron, Viking, Qgis, Refractasnapshot, ClamTK </span> ......to install from downloaded packages.
+Which leaves <span class="blue">Ranger, compton, Libre Office, video editors, ffmpeg, Avidemux, Bombono, XnViewMP, web browser, Viking, Qgis, Refractasnapshot, ClamTK </span> ......to install from downloaded packages.
 
 
 <br><br><br>

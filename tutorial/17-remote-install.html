@@ -272,7 +272,7 @@ then either do either
 <b>1. minimal LXDE install</b>
 <br>
 <textarea name="T" id="cmd" rows="5" cols="100">
-for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad xfce4-power-manager rxvt-unicode htop gparted aptitude bash-completion command-not-found gtk2-engines gtk2-engines-xfce gtk3-engines-xfce ntp debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad xfce4-power-manager rxvt-unicode htop elinks gparted aptitude bash-completion command-not-found ntp debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -282,7 +282,7 @@ or <br>
 <b>2. plain openbox install</b>
 <br>
 <textarea name="T" id="cmd" rows="5" cols="100">
-for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpolkit lxpanel lxtask wicd chromium tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop gparted aptitude bash-completion command-not-found gtk2-engines gtk2-engines-xfce gtk3-engines-xfce udiskie gvfs ntp debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpolkit lxpanel lxtask wicd tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop elinks gparted aptitude bash-completion command-not-found udiskie gvfs ntp debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -298,8 +298,8 @@ for p in thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tum
 
 <b>All other apps</b>
 <br>
-<textarea name="T" id="cmd" rows="6" cols="100">
-for p in mplayer2 vlc handbrake audacious gnome-sound-recorder lame gimp abcde eyed3 bashburn gtk2-engines gtk2-engines-xfce gtk3-engines-xfce gnome-color-chooser systemsettings xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer gpsbabel clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin hsasciicam bluefish catfish pyrenamer filezilla yelp xfburn xpad ;do echo $p config/package-lists/apps.list.chroot ;done</textarea>
+<textarea name="T" id="cmd" rows="7" cols="100">
+for p in mplayer2 vlc handbrake audacious gnome-sound-recorder lame gimp darktable inkscape abcde eyed3 bashburn gnome-color-chooser systemsettings xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer gpsbabel clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha xfce4-notes-plugin hsasciicam bluefish filezilla yelp easytag catfish pyrenamer xfburn xpad gtk2-engines gtk2-engines-xfce gtk3-engines-xfce ;do echo $p config/package-lists/apps.list.chroot ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 

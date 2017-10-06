@@ -11,6 +11,7 @@ id: net
         On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
              <ul>
                 <li><a href="#1">Media players</a></li>
+                <li><a href="#1">Media encoders</a></li>
                 <li><a href="#2">Media rippers</a></li>
                 <li><a href="#3">Desktop apps</a></li>
                 <li><a href="#4">ClamTK virus scanner</a></li>
@@ -25,6 +26,7 @@ id: net
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
    <a href="#1">Media players</a><br>
+   <a href="#1">Media encoders</a><br>
    <a href="#2">Media rippers</a><br>
    <a href="#3">Desktop apps</a><br>
    <a href="#4">ClamTK virus scanner</a><br>
@@ -41,34 +43,15 @@ id: net
 
 
 <form>
-<textarea name="T" id="install" rows="3" cols="80">
+<textarea name="T" id="install" rows="2" cols="50">
 sudo apt-get update
-sudo apt-get install mplayer2 vlc audacious handbrake gimp feh imagemagick bashburn </textarea>
+sudo apt-get install mplayer2 vlc audacious </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-that's two video players that can handle all you need, a winamp-style music player, video encoder, image manipulation tool, a command line image viewer, a terminal based disc burner.
+that's two video players that can handle all you need, and a winamp-style music player. I don't install gnome-mplayer now, as mplayer2 comes with mpv.
+
 <br><br><br>
-
-<h3>Avidemux</h3>
-Without sourcing the deb-multimedia repository, you can find the great video cutter Avidemux here <a href="http://www.avidemux.org/nightly/appImage/">videmux.org/nightly/appImage/</a>
-<br><br>
-run app image with /dir../avidemux*.app
-<br><br><br>
-
-<h3>Bombono</h3> 
-An easy dvd creator. download from <a href="https://pkgs.org/download/bombono">pkgs.org/download/bombono</a>
-<br><br>
-then do..
-<form>
-<textarea name="T" id="cmd" rows="2" cols="30">
-sudo dpkg -i bombono*deb
-sudo apt-get install -f</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-
-<br><br>
 <h3>Audacious Qt</h3><br>
 download the latest stable from <a href="http://audacious-media-player.org/download">http://audacious-media-player.org/download</a>
 <br><br>
@@ -99,11 +82,46 @@ sudo make install</textarea>
 </form>
 <br>
 with the plugins, just <span style="color:#994900">./configure, make, sudo make install</span>
-<br><br><br><br>
+
+
+<br><br>
+<hr noshade="noshade">
+<br><br>
+
+<h2 id="1a" class="tag">Media encoders</h2>
+<br>
+<h3>Handbrake </h3>
+get it from the repo's - the venerable, quality video encoder
+<form>
+<textarea name="T" id="install" rows="1" cols="30">
+sudo apt-get install handbrake</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+<h3>Avidemux</h3>
+Without sourcing the deb-multimedia repository, you can find the great video cutter Avidemux here <a href="http://www.avidemux.org/nightly/appImage/">videmux.org/nightly/appImage/</a>
+<br><br>
+run app image with /dir../avidemux*.app
+<br><br><br>
+
+<h3>Bombono</h3> 
+An easy dvd creator. download from <a href="https://pkgs.org/download/bombono">pkgs.org/download/bombono</a>
+<br><br>
+then do..
+<form>
+<textarea name="T" id="cmd" rows="2" cols="30">
+sudo dpkg -i bombono*deb
+sudo apt-get install -f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
 
 <h3>Audio editors</h3>
 <form>
-<textarea name="T" id="install" rows="1" cols="80">
+<textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get install ardour audacity qjackctl</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -164,11 +182,11 @@ furiusisomount and acetoneiso are two useful apps but only available in testing.
 
 <form>
 <textarea name="T" id="install" rows="4" cols="80">
-sudo apt-get install xpdf x11-apps clipit uget clamtk easytag gdmap ksnapshot kcharselect luckybackup meld regexxer bleachbit transmission yelp gnome-color-chooser systemsettings xsel xvkbd goldendict artha xfce4-notes-plugin bluefish filezilla</textarea>
+sudo apt-get install xpdf x11-apps clipit uget clamtk easytag gdmap ksnapshot kcharselect luckybackup meld regexxer bleachbit transmission yelp gnome-color-chooser systemsettings xsel xvkbd goldendict artha xfce4-notes-plugin bluefish filezilla bshburn</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-that gets you... a light-weight a pdf viewer, basic x11 tools, clipboard manager, download manager, virus scanner, id3 tag writer, graphical disk map, kde screenshot taker, character map, data backup utility, file/directory comparison app, file text search/replace, system cleanup app, torrent downloader, help agent, Gnome's desktop colours editor, KDE's control panel, x-selection tools, dictionaries, gnome webcam app, grouped sticky notes, html editor, ftp manager
+that gets you... a light-weight a pdf viewer, basic x11 tools, clipboard manager, download manager, virus scanner, id3 tag writer, graphical disk map, kde screenshot taker, character map, data backup utility, file/directory comparison app, file text search/replace, system cleanup app, torrent downloader, help agent, Gnome's desktop colours editor, KDE's control panel, x-selection tools, dictionaries, gnome webcam app, grouped sticky notes, html editor, ftp manager, terminal dvd writer
 <br><br>
 <span class="prob">transmission gets permissions error - right click on a torrent and > Set Location, select the actual download location.</span>
 
@@ -305,8 +323,8 @@ or you can try hostsblock <a href="http://gaenserich.github.io/hostsblock/">http
 
 
 <form>
-<textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install evince geekie pyrenamer catfish cheese elinks docky flush hasciicam xfburn xpad xrandr axel-kapt tucan pdfshuffler gperiodic </textarea>
+<textarea name="T" id="install" rows="2" cols="80">
+sudo apt-get install evince geekie pyrenamer catfish cheese docky flush hasciicam xfburn xpad xrandr axel-kapt tucan pdfshuffler gperiodic </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -314,7 +332,6 @@ sudo apt-get install evince geekie pyrenamer catfish cheese elinks docky flush h
 evince, geekie - gui pdf and image viewers<br>
 pyrenamer, catfish - batch rename and file search gui tools
 cheese, hasciicam - webcam apps<br>
-elinks - terminal-based web browser<br>
 docky - app launcher dock
 flush or transmission -bit torrent handlers<br>
 xfburn - dvd burner<br>
@@ -376,6 +393,6 @@ to <span style="color:#0F4F0B"><keysym><</keysym>allow_active>yes<keysym><</keys
 <br>
 <b>Next page: </b>
 <br><br>
-<h3><b><a href="step4.html">Step4</a></b> - web browsers, GPG, Bible, GPS, Skype</h3>
+<h3><b><a href="step4.html">Step4</a></b> - web browsers, GPG, Bible, GPS</h3>
 <br><br>
 </div>

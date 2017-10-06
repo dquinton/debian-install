@@ -429,16 +429,16 @@ Apologies for anything that no longer works!!! I don't run Xfce any more and so 
 as root, type
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg xfce4 lightdm wicd pm-utils hdparm cpufrequtils xfce4-power-manager chromium leafpad xfce4-notifyd tango-icon-theme dmz-cursor-theme moblin-cursor-theme rxvt-unicode bash-completion command-not-found htop gparted</textarea>
+apt-get install xorg xfce4 lightdm wicd pm-utils hdparm cpufrequtils xfce4-power-manager leafpad xfce4-notifyd tango-icon-theme dmz-cursor-theme moblin-cursor-theme rxvt-unicode bash-completion command-not-found htop elinks gparted</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
-I took out <span style="color:#7C2020">synaptic apt-xapian-index gdebi</span> as I hardly need them (package manager, and gui package installer)
+I took out <span style="color:#7C2020">synaptic apt-xapian-index gdebi </span> as I hardly need them (package manager, and gui package installer)
 <br><br>
 This gets you a window manager, light desktop, display manager (login), network manager, power manager, browser, text editor and a cool terminal.
 <br><br>
-There's iceweasel (open-source firefox) instead of chromium, or midori, which is a little less memory-consuming than both of them (but its not available to Jessie, it's in testing)
+For a web browser, there's midori (memory light), or others on my Step4 page.
 <br><br>
 wicd is an alternative to network-manager-gnome (but the latter may handle mobile/vpn better).<br>
 lightdm is your best choice of display manager.  Gnome's gdm3 comes with bloat of dependencies.<br>
@@ -450,7 +450,7 @@ firestarter is no longer maintained, so you are better off using iptables for fi
 
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf leafpad rxvt-unicode bash-completion command-not-found htop gparted</textarea>
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf leafpad rxvt-unicode bash-completion command-not-found htop elinks gparted</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -491,7 +491,7 @@ But for those bored of GUI mouse-clicking browsers there's Ranger, a file browse
 <br><br>
 <form>
 <textarea name="T" id="install" rows="2" cols="100">
-apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra thunar-media-tags-plugin xdg-user-dirs exiftool</textarea>
+apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra thunar-media-tags-plugin xdg-user-dirs exiftool feh imagemagick</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -500,11 +500,11 @@ apt-get install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugi
 Prepare for bluetooth, NTFS and FAT32 support, ssh, archiving, Java, printing, pgp and time
 <form>
 <textarea name="T" id="install" rows="2" cols="100">
-apt-get install bluetooth blueman ntfs-3g sshfs blktool dosfstools mtools testdisk gvfs-backends zip unzip bzip2 p7zip-full openjdk-8-jre icedtea--plugin locate git less cups gpa ntp rpl</textarea>
+apt-get install bluetooth blueman ntfs-3g sshfs blktool dosfstools mtools testdisk gvfs-backends zip unzip bzip2 p7zip-full openjdk-8-jre icedtea-8-plugin locate git less cups gpa ntp rpl</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-(note that, the opensource java, openjdk and icedtea actually change their name with each new version - I suppose it will be 8 next)
+(note that the opensource java, openjdk and icedtea actually change their name with each new version)
 
 
 <br><br>
