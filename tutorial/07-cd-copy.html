@@ -9,35 +9,75 @@ id: tutor
 
 <div class="cont">
 
-<font size="3">I needed to run a command to copy one cd directly to another without ripping the tracks and burning them and thus loosing audio quality.</font>
-<div><font size="3">I read here&nbsp;<a href="http://www.linuxtopia.org/online_books/linux_beginner_books/debian_linux_desktop_survival_guide/Duplicate_Audio.shtml">http://www.linuxtopia.org/</a>&nbsp;that this command does the job:</font></div>
-<div><font color="#6A3200" size="3">sudo cdrdao copy</font></div>
-<font size="3"><br>
-and to get things working we need the scsi address for the reader and writer, using</font>
-<div><font color="#6A3200" size="3">cdrdao scanbus</font></div>
-<div><font size="3">then we make/edit the cdrdao file with&nbsp;</font></div>
-<div><font color="#6A3200" size="3">sudo nano /etc/default/cdrdao</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">and add the lines with the scsi values,</font></div>
-<div><font color="#0F4F0B" size="3">write_device: "x,x,x"</font></div>
-<div><font color="#0F4F0B" size="3">read_device: "y,y,y"</font></div>
-<div><font size="3">except my scsi addresses were not found, I only had /dev/sr1 and /dev/sr0 reported -so I used those exactly, in the quotes " "</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">
-<div><font color="#6A3200">eject /dev/sr0</font></div>
-<div>is very handy for me as my laptop CD drive is very hard to get open with its button.  And now I map this in Ranger, to something like ,cd-F8</div>
-<div><br>
-</div>
-<div>test the written cd with this command:</div>
-<div><font color="#6A3200">mplayer -cdrom-device /dev/sr1 cdda://&nbsp;-cache 5000</font></div>
-</font></div>
-<div><font size="3">depending on which device holds the new cd, of course!</font></div>
-<div><font size="3"><br>
-</font></div>
-<div><font size="3">rip audio cd's&nbsp;<a href="http://www.cyberciti.biz/faq/linux-ripping-and-encoding-audio-files/">http://www.cyberciti.biz/</a></font></div>
-<div><font size="3">burn mp3 to audio CD&nbsp;<a href="http://www.cyberciti.biz/faq/linux-ripping-and-encoding-audio-files/">http://www.cyberciti.biz/</a></font></div>
-<div><font size="3"><br>
-</font></div>
+I needed to run a command to copy one cd directly to another without ripping the tracks and burning them and thus loosing audio quality.
+<br><br>
+I read here <a href="http://www.linuxtopia.org/online_books/linux_beginner_books/debian_linux_desktop_survival_guide/Duplicate_Audio.shtml">linuxtopia.org/</a> that this command does the job:
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo cdrdao copy</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
+<br>
+
+and to get things working we need the scsi address for the reader and writer, using
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+cdrdao scanbus</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+then we make/edit the cdrdao file with 
+and to get things working we need the scsi address for the reader and writer, using
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/default/cdrdao</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+
+and add the lines with the scsi values..
+<form>
+<textarea name="T" id="file" rows="2" cols="30">
+write_device: "x,x,x"
+read_device: "y,y,y"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+except my scsi addresses were not found, I only had /dev/sr1 and /dev/sr0 reported -so I used those exactly, in the quotes " "
+<br><br>
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+eject /dev/sr0</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+is very handy for me as I had a laptop CD drive very hard to get open with its button.  And now I map this in Ranger, to something like ,cdej
+<br><br>
+
+test the written cd with this command:
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+mplayer -cdrom-device /dev/sr1 cdda:// -cache 5000</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+depending on which device holds the new cd, sr0 or sr1 etc.
+<br><br><br>
+
+rip audio cd's <a href="http://www.cyberciti.biz/faq/linux-ripping-and-encoding-audio-files/">cyberciti.biz/</a>
+<br><br>
+burn mp3 to audio CD <a href="http://www.cyberciti.biz/faq/linux-ripping-and-encoding-audio-files/">cyberciti.biz/</a>
+<br><br><br><br>
+
+</div>
+</div>
