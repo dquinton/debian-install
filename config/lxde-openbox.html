@@ -801,15 +801,15 @@ A-Space			window menu
 Alt-left		move window
 Alt-right		resize window
 
-C-A- msleft		maximise
-C-A- msright		unmaximise
+W-A- msleft		maximise
+W-A- msright		unmaximise
 S-A- msright		iconify
 A-   msmiddle 		lower to base
 A-Esc			lower to base
 S-A-c			move to center
 S-A-z			close
 A-F4			close
-A-F11			toggle fullscreen
+F11			toggle fullscreen
 A-Tab			next window
 W-Tab			next window (all desktops)
 
@@ -978,7 +978,7 @@ Keybindings for sending windows to different desktops
     <keybind key="A-S-c">
       <action name="MoveToCenter"/>
     </keybind>
-    <keybind key="A-F11">
+    <keybind key="F11">
       <action name="ToggleFullscreen"/>
     </keybind>
     <!-- 
@@ -1263,11 +1263,11 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
       
      <!-- Window max/unmax with mouse buttons -->
      
-      <mousebind button="C-A-Left" action="Click">
+      <mousebind button="W-A-Left" action="Click">
         <action name="Maximize">
 	     </action>
       </mousebind>
-      <mousebind button="C-A-Right" action="Click">
+      <mousebind button="W-A-Right" action="Click">
         <action name="Unmaximize">
 	     </action>
       </mousebind>
