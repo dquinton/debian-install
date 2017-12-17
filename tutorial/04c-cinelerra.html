@@ -277,6 +277,10 @@ by default, mouse buttons Left, middle, Right (1,2,3) do the following:
 <li>click again on the band at the point of fade out completion (eg at end of the movie) and drag it down to the bottom of track
 <li>fade in: similar, just make a keyframe first at point of the end of fade in then make one and drag down at point of the start of fade in
 </ul>
+<b>still another method:</b> drag a video transition onto the end of the edit and make sure there is no video after the edit end. The video will transition to black! Nice!
+<br><br>
+this can be done for fade in, and also audio fades.
+<br>
 
 <br><br>
 <h3>Fading audio</h3>
@@ -328,11 +332,15 @@ by default, mouse buttons Left, middle, Right (1,2,3) do the following:
 <ul>
 <li>drag a transition from the Resource window onto a join between two edits, A and B: hovering over the start of edit B will show a box over the join on which to drop it
 <li>Right click on the transition effect icon at the edit join to set the duration
-<li>note: the transition between edits will begin at start of edit B, which means preferably there is some time left of 1st edit that will show in part during the transition - if there is no more of source media after edit A end then edit A picture will freeze during the transition!
+<li>note: the transition between edits will begin at start of edit B, which means preferably there is some time left of 1st edit that will show in part during the transition - if there is no more of source media after end of edit A end then edit A picture will freeze during the transition!
 <li>the transition may not look very good played realtime in the timeline but it should be good once rendered - you can set in/out points to render that part to run a test first.
+<li>
 </ul>
-
-
+<br><br>
+<b>note:</b> if you have applied an effect such as colour-correction to edit A and the effect is not attached (not wanted) on edit B, you will run into a small problem with a video transition.. do you stop the effect at end of A (and then visible edit A suddenely returns to pre-effect picture during the transition) or do you exten it to the end of the transition (and then edit B gets coated with edit A effect for the duration of the transition, which is bad)? 
+<br><br>
+What you need to do in this case, is add a video track above and drag edit A onto it, then drag-extend the effect attached to edit A to the end of the transition - the effect will then not alter edit B picture!
+<br>
 <br><br>
 <h3>Colour correction</h3>
 Cinelerra offers some outstanding tools for control of colour output, but mastering them might take you some time! 
