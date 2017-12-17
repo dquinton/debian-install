@@ -30,9 +30,9 @@ id: tutor
 <div class="cont">
 I wrote this page while using Kdenlive for all my editing (install notes on my Step2 page).
 <br><br>
-I've been shooting films with a low-end Panasonic V500 which has pretty reasonable quality and colour, and produces progressive HD video saved as .MTS files.  MTS (Mpeg Transport Stream) is something like h264 mp4 AVC compressed video. HD being 1920 x 1080 pixels, interlaced 25fps (1080i), while full HD is progressive 50fps (1080p).
+I've been shooting films with a Panasonic V500 which has pretty reasonable quality and colour, and produces progressive HD video saved as .MTS files.  MTS (Mpeg Transport Stream) is something like h264 mp4 AVC compressed video. HD being 1920 x 1080 pixels, interlaced 25fps (1080i), while full HD is progressive 50fps (1080p).
 <br><br>
-Firstly, compressed HD video files take a lot of cpu power to play or seek through with an editor programme, so unless you have 3rd generation Intel i5 or similar, you will experience staggered playback or pauses while trying to stop and play in Kdenlive (as my old Intel core duo gave me).  
+Firstly, compressed HD video files take a lot of cpu power to play or seek through with an editor programme, so unless you have at least a 3rd generation Intel i5 or similar, you will experience staggered playback or pauses while trying to stop and play in Kdenlive (as my old Intel core duo gave me).  
 <br><br>
 [Kdenlive has an auto proxy clip maker for large HD files, so once those have been made - time for a coffee or two if you have a low-spec CPU - playing and cutting is much smoother, but with on-screen quality loss of course from the proxies.]
 <br><br>
@@ -48,7 +48,7 @@ for i in *.MTS; do DAT=$(date -r $i +%y-%m-%d); mkdir -p $DAT; mv $i $DAT ; done
 
 <h2 id="1" class="tag">Taking still images from MTS</h2>
 
-I use Gnome-mplayer to get quality stills from my film 
+I use Gnome-mplayer to get stills from my film 
 <br><br>
 use these settings: <br>
 <div class="bullet"><ul>
@@ -107,7 +107,7 @@ What we need to do is simply turn on "Overwrite mode" in kdenlive and move the n
 
 <h2 id="2" class="tag">Editing films with Kdenlive</h2>
 
-For detailed install instruction see my install Step 2 page.  I highly recommend doing long video productions/encodes on a desktop PC with a modern multi-core CPU (3rd gen i5 preferably) and plenty of RAM (>8gb), as laptops are just not built for it).
+For detailed install instruction see my install Step 2 page.  I highly recommend doing long video productions/encodes on a desktop PC with a modern multi-core CPU (3rd gen i5 at least) and plenty of RAM (>8gb), as laptops are just not built for it, although they are getting much faster).
 <br><br>
 Official Manual here.. <a href="http://userbase.kde.org/Kdenlive/Manual">http://userbase.kde.org/Kdenlive/Manual</a>
 <br><br><br>
@@ -267,7 +267,7 @@ Another way, if you know exactly how much time a clip should duress, you can dou
 
 <h3>Note about frozen frames after joining MTS clips</h3>
 
-The only way to get around this problem (unless its fixed in a new build of MLT) is to overlap the end of the clip with the following one.
+The only way to get around this problem (unless its fixed in a new build of MLT) is to overlap the near end of the clip to the right onto the far end of the previous clip.
 So to do this, turn on "Overwrite mode" (button at bottom left) and just move up the clip on the right so that it overlaps the end of the clip to its left.
 <br><br>
 But to do this while editing, just click the point at which normally you'd cut the clip (to remove the end) and then overlap the clip on the right (move it to the left) up to the seek line.

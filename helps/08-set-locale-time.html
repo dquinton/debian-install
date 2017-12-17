@@ -128,3 +128,17 @@ ntpd -b</textarea>
 <br>
 to update the clock once you have internet
 
+
+<br><br><br>
+
+<h3>update the time with hwclock</h3>
+
+in case you are out of internet service for a long while, you can set the hardware clock with the hwclock command, e.g.:
+<br>
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+sudo hwclock --set --date='2017-11-23 15:19:40'</textarea>
+<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br><br>
+</div>
+

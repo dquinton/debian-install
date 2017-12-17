@@ -12,13 +12,14 @@ id: tutor
              <ul>
                 <li><a href="#1">Viking</a></li>
                 <li><a href="#2">QGIS  </a></li>
-                <li><a href="#3">Waypoint labels  </a></li>
+                <li><a href="#3">Symbols and styles </a></li>
                 <li><a href="#3a">SVG symbols  </a></li>
+                <li><a href="#3b">Layer labels  </a></li>
                 <li><a href="#4">Calculate area  </a></li>
                 <li><a href="#5">Printing  </a></li>
                 <li><a href="#6">Background maps  </a></li>
                 <li><a href="#7">Contours from OpenDEM </a></li>
-                
+                <li><a href="#8">Georeferencing </a></li>
              </ul>
     </li>
   </ul>
@@ -28,12 +29,14 @@ id: tutor
 <table cellpadding="5"><tr><td>
    <a href="#1">Viking</a><br>
    <a href="#2"> QGIS</a><br> 
-   <a href="#3">Waypoint labels  </a><br>
+   <a href="#3">Symbols and styles  </a><br>
     <a href="#3a">SVG symbols  </a><br>
+    <a href="#3b">Layer labels  </a><br>
      <a href="#4">Calculate area  </a><br>
      <a href="#5">Printing  </a><br>
      <a href="#6">Background maps  </a><br>
     <a href="#7">Contours from OpenDEM </a><br>
+    <a href="#8">Georeferencing</a><br>
 </td></tr></table></div>
 
 <div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
@@ -47,9 +50,9 @@ See my Step 4 page for installing Viking.
 <h3>Using Viking to import data from a GPS unit</h3>
 Only some Garmin units can transfer through USB to viking (see the list <a href="http://www.gpsbabel.org/htmldoc-1.5.0/fmt_garmin.html">here</a> - works using a Garmin 60csx, but not a 62s)
 <br>
-<div class="bullet"><ul><li>In Viking, go through File > Acquire > From GPS</li>
+<ul><li>In Viking, go through File > Acquire > From GPS</li>
 <li>/dev/ttyUSB0 will be shown as the serial port </li>
-<li>select tracks and/or waypoints and hit OK</li></ul></div>
+<li>select tracks and/or waypoints and hit OK</li></ul>
 <br><br>
 
 For a Garmin 62s (and many others on the list) hook up the device to a USB port and read the gpx and waypoint files through a file browser, search in the Garmin/gpx and Garmin/gpx/archived dir's.
@@ -62,96 +65,87 @@ Also, you can write geo-coordinate data to multiple photos from any waypoint.  P
 What's limited is the ability to print decent maps as only the screen is sent to the print dialogue, which makes it impossible to print large scale of areas off the screen.<br>
 Other limitations are lack of drawing or labeling tools, and that waypoint titles can get crowded and overlapped.  But then, this is purely a data compiler, not so much a map production suite (aka GIS).
 
-
+<div class="bullet">
 <br><br><br><br>
 
 
 <h2 id="2" class="tag">QGIS</h2>
 <br>
-Once you have collated your GPS data and tidied up tracks, renumbered the points etc, its time to make it presentable, with labels that don't overlap, area shading, and quality PNG detail for printing.
+Once you have collated your GPS data and tidied up tracks, renumbered the points etc, its time to make it presentable, with styled labels that don't overlap, polygon area shading, and quality image detail for printing.
 <br><br>
-What we need is Geo Info System software, and for that we have QGIS (Quantum GIS).
+What we need is Geo Info System software, and in Linux we have Quantum QGIS (QGIS).
  <br><br>
-See my Step 4 page for installing Qgis.
+See my Step4 page for installing Qgis.
 
 <br>
 Doumentation <a href="http://docs.qgis.org/2.14/en/docs/user_manual/index.html">Qgis user manual</a>
 <br><br>
 to import geo data from e.g. Viking, first export the layers from Viking as GPX files, then in qgis,
 
-<div class="bullet"><ul><li> either open the GPS import tool, Vector menu > GPS > <b>GPS Tools</b></li>
+<ul><li> either open the GPS import tool, Vector menu > GPS > <b>GPS Tools</b></li>
 
 <li>or click on <b>Vector layer</b> button at left, select file, Open, select which attributes to import, OK</li></ul></div>
 
 <br><br>
 With the second way, you can import track waypoints, which will make it possible to alter the track (how?).<br>
-However, it imports without any useful name, so you need to rename the layer, with a simple right-click, or F2<br>
-You also may need to set the track size/colour in the layer properties in order for it to become visible<br>
+However - it now imports without a proper name, but you can rename the layer with F2
 <br><br>
-To update the geo data in the layer after changes were made to the source gpx file by an external progam, e.g. updates were made in Viking and it was re-exported... click on the QGIS <b>Refresh button</b>!
+You'll also need to set the track size/colour in the layer properties in order for it to become more visible on the map<br>
+<br><br>
+To update the geo data in the layer after changes were made to the source gpx file by an external program, e.g. updates were made in Viking and it was re-exported... click on the QGIS <b>Refresh button</b>!
 <br><br><br>
 
-<h3 id="3" class="tag">Waypoint labels and symbols</h3> 
-or for any other feature labels - double click on the layer, Labels > check "Label this layer.." then select "name" on drop-down list, and click OK - but you could select another field, as in altitude, etc.
-<br><br>
-The problem is that the labels may be positioned a little badly, so how would you move them around? Simply use this....
-<br><br><br>
 
-<h3>Annotation-labels</h3>  
-install the plugin "<b>EasyCustomLabeling</b>" from Plugins menu > Manage and Install<br>
-and also "<b>Memory Layer Saver</b>" plugin so that your labels will be saved in the project
-<br><br>
-
-<div class="bullet"><ul><li>select a layer</li>
-<li>click on the "Easy" button to genrate a layer for labels - then choose what label field to use -select name</li>
-<li>all waypoint labels get redrawn! (then you don't need to draw them with layer properties)</li>
-<li>click the move button, click on and drag a label</li>
-<li>click the rotate button, click on a label and adjust its angle - very useful for names of rivers</li>
-<li>when done with all changes, save the layer edits, and turn off editing (pencil icon button)</li>
-<li>remember that to edit any layer you need to select layer and click on the pencil icon edit button</li>
-</ul></div>
-
+<h3 id="3" class="tag">Symbols and Styles</h3>
 <br><br>
 <h3>Use various icon symbols in a single layer</h3>
-<div class="bullet"><ul>
+<ul>
 <li>properties > Style > select Categorized</li>
-<li>click Classify</li>
+<li>click on Classify below</li>
 <li>select points to change</li>
-<li>right click on points > change colour</li>
-<li>or click on Change to select new symbol</li>
-</ul></div>
+<li>right click on points > change colour/size</li>
+<li>click on Change button above to select new symbol</li>
+</ul>
 <br><br>
 
+<h3>Track style</h3>
+<ul>
+<li>In a track layer properties, in Style, select a style such as Bridleway or Road</li>
+<li>click on the Simple line for each colour of the style and adjust the thickness</li>
+<li>for Road style, reduce thickness of the inner colour and leave white to make appear like the thicker underlying colour is a double line</li>
+<li>for Bridleway, make the underlying colour white to make appear like a dashed line</li>
+</ul>
+<br><br>
 
 <h3>Filter waypoints in a layer</h3>
 
 e.g. include only/exclude wp names with 'string'
-<div class="bullet"><ul>
+<ul>
 <li>right click on layer > Filter, or open properties > General > Feature filter > click on Query Builder</li>
 <li>click on name field (field in layer to be filtered)</li>
 <li>enter the expression: <b>"name" LIKE '%B%' </b> to show waypoints with "B" in the name (where the %B% means containing "B" anywhere in the name)</li>
 <li>use the expression: <b>"name" NOT LIKE '%B%'</b> to exclude waypoints with "B" in the name from the layer</li>
 <li>Click on test and Sample, to check if the filter is what you want, then OK</li>
 
-</ul></div>
+</ul>
 
 <br><br>
 <h3 id="3a" class="tag">Use SVG symbols for waypoints</h3>
-<div class="bullet"><ul>
-<li>properties > Style > Single > click on Single symbol under "Marker"</li>
-<li>to the right, Symbol layer type, select SVG marker on the drop down menu</li>
+<ul>
+<li>properties > Style > click on "Simple marker" under "Marker"</li>
+<li>to the right, at top, click on the Symbol layer type, select SVG marker on the drop down menu</li>
 <li>then below select category and symbol and change size and colour</li>
-</ul></div>
+</ul>
 
 <br><br>
 <h3>Get more svg symbols</h3>
-<div class="bullet"><ul>
+<ul>
 <li>web search "svg symbol tree" etc and download - or visit pixabay.com and sign up</li>
 <li>if downloading png images, use inkscape to convert to svg: <br>
 open png, Path > Trace bitmap (check greys, remove background)</li>
 <li>drag original bitmap to the side and fill the tracing with original colours</li>
 <li>save as Plain svg, not inkscape svg which has a larger file size</li>
-<li>copy to your Qgis svg folder</li>
+<li>copy to your Qgis svg folder (or to /usr/share/qgis/svg/ so that you can work on other computers and not lose your symbols because of different user name)</li>
 <li>in Qgis Settings > Options > System, add the path to the svg folder</li>
 <li>then in layer properties you can see your new svg symbols</li>
 <br>
@@ -170,15 +164,58 @@ style="fill:#000000"</textarea>
 <path fill="param(fill) #000" stroke="param(outline) #fff" stroke-width="param(outline-width) 1"</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-</ul></div>
+</ul>
+<br><br><br>
 
+<h3 id="3b" class="tag">Layer Labels </h3> 
+To add labels for waypoints and tracks, or for any other feature labels - double click on the layer, Labels > check "Label this layer.." then select "name" on drop-down list, and click OK - but you could select another field, as in altitude, etc.
+<br><br>
+The problem is that the labels may be positioned a little badly, so how would you move them around? Simply use this....
+<br><br><br>
 
+<h3>Annotation-labels</h3>  
+install the plugin "<b>EasyCustomLabeling</b>" from Plugins menu > Manage and Install<br>
+and also "<b>Memory Layer Saver</b>" plugin so that your labels will be saved in the project
+<br><br>
+
+<ul><li>select a layer</li>
+<li>click on the <b>"Easy labels" button </b>to generate a layer for labels and choose what label field to use -select name</li>
+<li>all waypoint labels get redrawn - so you don't need to draw them with layer properties</li>
+<li>click the <b>move button</b>, click on and drag a label</li>
+<li>click the <b>rotate button</b>, click on a label and adjust its angle, Ctrl-drag for incremental 15 degrees - very useful for names of rivers... 
+<li><b>note: </b>the label must be moved first before it can be rotated!</li>
+<br><br>
+
+<b>Important note: </b>the label placement on the map is not going to look the same when you create your Print composer, as the labels on the map will show same size on any scale (to be human readable), but in the composer according to the font size/page size.
+<br><br>
+Ideally you want to set up a print composer before moving labels (as Easy labels will not adjust distance from points with change of map scale - unlike the standard Qgis labels), set the right scale, and then start moving your labels.  Switch between map and composer and refresh the composer to see if the label positions are good.
+<br><br>
+Also, find a good scale in the project window to work with and stick with it (zoom out just to pan around then zoom back to work) so that you can judge distance from points that the labels need to show correctly in the composer.
+<br><br>
+
+<li>click on the <b>Highlight pinned labels </b>button to see which labels have been moved
+<li>click on the <b>Change label</b> button to edit the label or adjust font/size for individual labels
+<li><b>tip: </b>to change font size for the whole layer you need to Deactivate the "Data defined override" first > Properies > Labels > Right click on the yellow button next to font size</li>
+<li><b>to hide a label</b> click on the <b>Hide button</b> then Shift-click on the label (but you must select the right layer with the label in, if you select another layer the label won't hide)
+<li><b>to show hidden labels</b> you need the Hide tool again and then you click on the red 'x' where the label is placed - sometimes it takes a while to find it and get the click right!
+<li>when done with all changes, save the layer edits, and turn off editing (pencil icon button)</li>
+<li><b>tip: </b>set S to <b>save All layer edits</b> in Settings menu >> Shortcuts
+<li>remember that to edit any layer you need to select layer and click on the pencil icon edit button</li>
+<li>also, the Easy label layer can't be updated with new waypoint labels if the layer source file is updated</li>
+</ul>
 
 <br><br>
-<h3>Add Lat-Lon grid</h3>
-View menu > Decorations > Grid - set "Interval X" and "Y" to 0.05, check "annotations"<br>
-Add scale bar : View menu > Decorations > Scale<br>
-(note that these will not be present in the print window - need to make others there)
+<h3>Tidy up label displays</h3>  
+In case you have some rather long waypoint names that are going to take up too much space on your map, you can add various functions to the Easy label layer so that the labels are succincted or filtered, whatever..
+<br><br>
+<ul><li>Properies > Labels > click function button next to "Label with" at right</li>
+<li>click on + by String to show functions and select, say, left (double click)</li>
+<li>make your function look like:  <b>left( LblField,7 )</b> where 'left' retains characters from the left, LblField is where the labels are stored, and '7' is number of characters to retain</li>
+<li>to cut any more off the label you can use the regexp_replace function, but for now I only found out how to nest functions, putting 'left' inside the 'regexp_replace'..</li>
+<li>e.g.   <b>regexp_replace( left( LblField,7 ) , '\\s[A-Z,a-z]+', '')</b> where I replace a space and any characters left after retaining 7 first char - I wanted to retain only the waypoint code number but some codes were shorter than 7 char and so extra text remained</li>
+
+</ul>
+
 
 <br><br><br>
 <h3 id="4" class="tag">Calculate an area</h3> 
@@ -205,14 +242,14 @@ Or, another way is to use <b>Lines to polygons</b>, which will save the polygons
 <br><br>
 With your polygons, its easy to get an area calculation...
 
-<div class="bullet"><ul><li>select the layer</li>
+<ul><li>select the layer</li>
 <li>open the Attribute table with toolbar button at top</li>
 <li>click on the Field calculator button</li>
 <li>Enter a new field name, i.e. "area" </li>
 <li>Select decimal number </li>
 <li>then expand "Geometry" and double click on $area</li>
 <li>you may need to add /1000 to the expression</li>
-<li>you should get a new column with area of each polygon</ul></div>
+<li>you should get a new column with area of each polygon</ul>
 
 <br><br><br>
 
@@ -221,23 +258,48 @@ With your polygons, its easy to get an area calculation...
  <br><br>
  or,  Toolbar > Composer Manager, select a saved composer, click Show
  <br><br>
-<div class="bullet"><ul><li>set the paper size first, A4, A3, A2, whatever size you need to print</li>
-<li>click on "Add new map" button then drag a rectangle over the tile.</li>
-<li>click "Move item content" button, and drag map to center, zoom if needed with scroll button</li>
-<li>Item properties tab to right > Main properties ..set best scale to fit what detail you need</li>
-<li>Item properties > Grid ..Click the Add + button, set X,Y intervals to 0.05 or whatever (depends on the map scale?), check "Draw coordinates" and set whether they will appear above or below the border and how far from border</li>
+<ul><li>set the paper size first, A4, A3, A2, whatever size you need to print</li>
+<li>click on "<b>Add new map</b>" button then drag a rectangle over the tile, leaving some gap for a margin.</li>
+<li>click "<b>Move item content</b>" button, and drag map to center, zoom if needed with scroll button</li>
+<li>Set scale in <b>Item properties</b> tab to right <b>> Main properties</b> ..manual set best scale to fit what detail you need</li>
+<li>Set the map grid in <b>Item properties > Grid </b>..Click the Add + button, set X,Y intervals to 0.05 or whatever (depends on the map scale?), check "Draw coordinates" and set whether they will appear above or below the border and how far from border</li>
 <br>
---> note that the coodinate ref system (CRS) for map raster layer is <b>EPSG:3857 - WGS 84/ Pseudo Mercator</b>, and this will rather alter how the grid is displayed in the print manager (showing ref's such as 11304000 instead of 101.550 which shows for <b>EPSG:4326 - WGS 84</b>, gpx vector layers) and the units will need changing to intervals of 3000 or so - but its easier to change the CRS back to <b>EPSG:4326</b> so that coodinate format reads better, and you won't need to keep changing the unit intervals.
+--> note that the coordinate ref system (CRS) for map raster layer is <b>EPSG:3857 - WGS 84/ Pseudo Mercator</b>, and this will rather alter how the grid is displayed in the print manager (showing ref's such as 11304000 instead of 101.550 which shows for <b>EPSG:4326 - WGS 84</b>, gpx vector layers) and the units will need changing to intervals of 3000 or so - but its easier to change the CRS back to <b>EPSG:4326</b> so that coodinate format reads better, and you won't need to keep changing the unit intervals.
 <br><br>
-<li>uncheck "background" - this will be really helpful, especially if your map layer is transparent</li>
-<li>scale bar - find the button on left toolbar - you need to play around with the "map units per bar unit" - I set it to 0.01, or 0.02, the units to meters and label "km"</li>
-<li>make a title with "Add new label" (text box) and you can give it a frame, and white background with 50% transparency in case your map is a full page of terrain detail</li>
-<li>Legend - add with the button to left, can set auto update or manual if you want to remove some layers from it</li>
+<li>Go down and uncheck "<b>background</b>" - this will be really helpful, especially if your map layer is transparent</li>
+<li>Add a <b>scale bar</b> - find the button on left toolbar - you need to play around with the "map units per bar unit" - I set it to 0.01, or 0.02, the units to meters and label "km"</li>
+<li>make a <b>title</b> with "Add new label" button (text box) and you can give it a frame, and white background with 50% transparency in case your map is a full page of terrain detail</li>
+<li>add a <b>Legend</b> - add with the button to left, can set auto update or manual if you want to remove some layers from it, and you can adjust coloumns, icon width</li>
 <li>to move objects around you need to select the move tool at left</li>
-</ul></div>
+<li>you can move objects with more control using the up/down/left/right keys, with Shift to move larger steps, with Alt to move in tiny steps
+<li>Be careful to keep saving your work - the composer can cause Qgis to crash!
+</ul>
+
+<br><br>
+<h3>Map tips</h3>
+<li>You can put symbols on the map too: draw a small shape and go to Properties > change fill, then select Simple symbol, SVG, or pattern...
+<li>If you need multiple pages to cover all your map detail you can add pages in a single composer - but bear in mind that with a large amount of layer data it will start to eat cpu and time to refresh, so multiple composers may be better, and you can copy-paste between them.
+<li>if you've prepared all 10 pages of B1 size with maps and titles and then you find you need another page inserted after page2, you'll have to move p3-10 down - so zoom out drag select all that content, cut, zoom in on p4, and paste at top corner (just save before you try it)
+<li>undoing a paste of so much data items will do it one by one, so to move everything if its placed wrong, select all that content and use left/right etc
+</ul>
+
+<br><br>
+<h3>Create an inlay map</h3>
+How would you create a small map and set it as an inlay in the corner of a bigger map, the small scale one being from the same Qgis layers as the large scale map but without all the layers showing and smearing all over it?
+<br><br>
+Easy, you set Layer Visibility for as many layers as would smear on the small scale map, to become non visible after a certain minimum scale, leaving perhaps some layers to give the outline, such as rivers or roads.  You could add special layers just for the inlay map too, such as county borders and set Layer Visibility minimum for them to large enough scale so that they won't show on the main map - although they might not fit on it anyway.
+<br><br>
+<ul>
+<li>Ctrl-click to select layers you need to set visibility for then right-click >>  <b> Set Layer Scale Visibility</b>
+<li>check the box and replace the default 100,000,000 with say, 50,000
+<li>then in a print composer, create a new map and drag a small box in a corner, then set the scale to much smaller than the main map
+<li>Or you could create a map on a new sheet, for example, to show what area is covered by a set of maps you've made - open your main map composer and switch between small scale map and that and draw boxes and place them on the small scale map to show coverage of the main map
+<li>to find the box size of your map area on the small scale map, use main map width (e.g. 667mm) x scale (e.g. 10,000) / small scale (e.g. 80,000)
+</ul>
+
 
 <br><br><br>
-<h3 id="6" class="tag">Background maps</h3>
+<h3 id="6" class="tag">Background topo maps</h3>
 
 1. <b>OpenLayers</b> plugin<br>
 then select a map via Web menu, Web > OpenLayers plugin > OpenStreet/Google/Bing...
@@ -260,17 +322,17 @@ This is a simple way to add nice-looking elevation data to your maps, albeit, wi
 <br><br>
 Note that the data is under the <a href="https://opendatacommons.org/licenses/dbcl/1-0/">Database Contents License (DbCL) </a> which must be attributed in any public use of it.
 <br><br>
-<div class="bullet"><ul><li>browse to <a href="http://opendem.info/opendem_client.html">the openDEM tile browser</a></li>
+<ul><li>browse to <a href="http://opendem.info/opendem_client.html">the openDEM tile browser</a></li>
 <li>move the map to part of world</li>
 <li>press shift and drag an area</li>
 <li>select tiles to download from pop-up list</li>
 <li>unpack and import the shp file as vector layer</li>
-</ul></div>
+</ul>
 <br><br>
 
 <h3>Set dark/coloured for 50m/100m intervals</h3>
 
-<div class="bullet"><ul><li>open layer properties</li>
+<ul><li>open layer properties</li>
 <li>select "Rule-based" from top-left selection (marker type)</li>
 <li>double-click the empty rule at top and give it a label, and a rule like so:</li>
 <br>
@@ -289,23 +351,46 @@ elevation LIKE '%00%'<br>
 <li>click on the 00 line and set thickness to 0.66, and a slightly darker sandy brown</li>
 
 <li>click OK to close</li>
-
+</ul>
 <br><br>
 Try also downloading areas from <a href="http://extract.bbbike.org/">http://extract.bbbike.org/</a>
 <br><br><br>
 
 <h3>Loading layers in other projects</h3>
-To use the layer in other projects, with its rules and line styles, you can eith save it as "Layer definition file" and load it from another project via <br>
-&nbsp;&nbsp;&nbsp;Layer menu >> Add from layer definition file 
+To use the layer in other projects, with its rules and line styles, you need to embed the layer into your new project...
 <br><br>
-which could be useful so that important layers are saved to an accessible location.
+&nbsp;&nbsp;&nbsp;Layer menu >> <b>Embed layers and groups </b>
 <br><br>
-Or you can simply load the layer (and multiple others) into a project, via <br>
-&nbsp;&nbsp;&nbsp;Layer menu >> Embed layers and groups 
+then select a qgis project file and the layers to load in. 
 <br><br>
-then select a qgis project file and which layers to load in.
+The problem is, however, you can't do anything to that layer (such as adjust line styles) as it belongs to the originating project.  But what you can do is...
+<ul>
+<li>right-click on the embedded layer, Styles >> Copy, 
+<li>then do Styles >> Paste on a layer that you want to have same/adjusted styles as the embedded layer
+<li>for example, to create another contours layer in another project, you need to import the shapefile as Vector layer again then copy-paste the style including the line weight rules/colours from an embedded layer
+</ul>
+<br><br>
+Note:  "Save as layer definition file" <b>does not</b> save any styles or categorized rules<br>
 
 
+<br><br><br>	
+<h3 id="8" class="tag">Geo-referencing a scanned map</h3>
+<ul>
+<li>Open Raster >> Georeferencer</li>
+<li>click on Open Raster and select your scan</li>
+<li>Then start making points on the scan where you have real coordinates for, such as grid intersections</li>
+<li>also you can click on the Pencil button to locate and click corresponding points on the Qgis map canvas - for example you have accurate GPS points for a specific land feature
+<li>click on the cog icon and set how and where the Georeferencer will save the raster layer
+<li>when ready hit Start Georeferencing button and a new layer should be added to Qgis project</li>
+</ul>
 
+<br><br>
+<h3>Add Lat-Lon grid</h3>
+View menu > Decorations > Grid - set "Interval X" and "Y" to 0.05, check "annotations"<br>
+Add scale bar : View menu > Decorations > Scale<br>
+(note that these will not be present in the print window - need to make others there)
+
+
+</div>
 <br><br><br><br><br>
 </div>

@@ -13,6 +13,7 @@ id: tutor
                 <li><a href="#1">What's different</a></li>
                 <li><a href="#2">Main Keys</a></li>
                 <li><a href="#3">My Tips</a></li>
+                <li><a href="#4">Handy effects</a></li>
              </ul>
     </li>
   </ul> 
@@ -23,12 +24,13 @@ id: tutor
    <a href="#1">What's different</a><br>
    <a href="#2">Main Keys</a><br>
    <a href="#3">My Tips</a><br>
+   <a href="#4">Handy effects</a><br>
 </td></tr></table></div>
 <div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
 
 <div class="cont">
 
-Here's a video editor that can pack a punch. It's kdenlive with some professional tools and output abilities, and its a whole load more stable.
+Here's a video editor that can pack a punch.  Cinelerra is an exceptional video/audio workstation with professional tools and output abilities, and it's awesomely stable on Debian.. A film maker for Linux to replace all others - for more advanced users that is.
 
 <br><br>
 See my Netinstall Step2 page for how to install.
@@ -45,11 +47,6 @@ I recommend you download the pdf manual from there and check out all the other r
 <a href="http://beccatoria.dreamwidth.org/2011/02/28/">beccatoria.dreamwidth.org/2011/02/28/</a><br>
 <a href="http://jumptuck.com/2011/11/03/rendering-video-with-cinelerra-and-ffmpeg/">jumptuck.com/2011/11/03/rendering-video-with-cinelerra-and-ffmpeg/</a>
 <br><br>
-more news here at <a href="https://www.reddit.com/r/linux/comments/47h29z/til_a_little_bit_more_about_cinelerra/"><b>reddit</b></a>
-
-
-
-<br><br>
 <br><br>
 <h2 id="1" class="tag">What's different</h2>
 
@@ -59,9 +56,10 @@ some main differences of Cinlerra to other non-linear video editors for Linux..
 <br><br>
 <li>apart from technical stuff, the main differences are found in the UI and how clips are edited - there are two mouse modes (copy-paste and drag-drop) and three mouse drag modes (three mouse buttons)
 <li>cutting a segment out of a media clip immediately moves the rest along to the left to cover over the time that the clip previously filled, or else mute can be used to replace the segment with silence (looks like a gap is left)
-<li>silence can also be selected and cut, copied or pasted, there is no "close gap" command (but silence can be cut!)
+<li>silence can also be selected and cut, copied or pasted, there is no "close gap" command (but silence can be cut/deleted!)
 <li>red and yellow lines above the timeline mark the last played from and paused points
-<li>cuts of clips are called edits
+<li>cuts of clips on the timeline are called edits
+<li>all picture adjustments and effects are keyframable and tracks have overlay bands on which to create/remove keyframes
 
 </ul>
 <br><br><br><br>
@@ -79,7 +77,7 @@ The manual lists the keyboard shortcuts quite well, here I just list the main ke
 </tr>
 <tr>
 <td >Alt-Left/Alt-Right</td>
-<td>move insert point to prev/next edit (cut point or clip)</td>
+<td>move insert point to prev/next edit (cut point)</td>
 <td>del</td>
 <td>remove selected (leaves no space)</td>
 </tr>
@@ -95,8 +93,8 @@ The manual lists the keyboard shortcuts quite well, here I just list the main ke
 <td>E</td>
 <td>toggle drag-drop/cut-paste modes</td>
 <tr>
-<td >Down/Up</td>
-<td>zoom in/out</td>
+<td >Down/Up/Shift-scroll</td>
+<td>zoom in/out (also scroll button on zoom factor, lower left)</td>
 <td>L</td>
 <td>toggle label</td>
 </tr>
@@ -143,13 +141,40 @@ The manual lists the keyboard shortcuts quite well, here I just list the main ke
 <tr>
 <td >Ctrl-L </td>
 <td>set loopback play (whole timeline or selected)</td>
-<td > </td>
-<td></td>
+<td >Tab/Shift-Tab</td>
+<td>toggle Arm track with mouse over track/toggle arm all other tracks</td>
 </tr>
 </tbody></table>
 <br><br>
-The number pad has playback shortcuts too.
-<br><br>
+The number pad has playback shortcuts too. Since Nov 2017, these shortcuts are now added to main keys:
+<br>
+<table cellpadding="6" cellspacing="0" border="1" style="border-collapse: collapse; background-color: transparent;"><tbody>
+<tr>
+<td width="160" > </td>
+<td width="160">one frame</td>
+<td width="160" >slow mo </td>
+<td width="160">normal speed</td>
+<td width="160">fast mo</td>
+</tr>
+<tr>
+<td > backward</td>
+<td>Alt-U</td>
+<td > Alt-I</td>
+<td>Alt-O</td>
+<td>Alt-P</td>
+</tr>
+<tr>
+<td > forward</td>
+<td>Alt-J</td>
+<td > Alt-K</td>
+<td>Alt-L</td>
+<td>Alt-:</td>
+</tr>
+</tbody></table>
+<br>
+Pressing Ctrl with any of the playback keys and the time betwen in/out points will be played.
+
+<br><br><br>
 Unfortunately, there are no shortcut settings in Preferences.
 <br><br><br><br>
 
@@ -169,14 +194,16 @@ Unfortunately, there are no shortcut settings in Preferences.
 <li>another way is to adjust the selected time using the entry fields at the bottom panel - Bkspace, enter new value, Enter
 <li>to cancel selection, press <b>A </b>twice, or click in the timeline (copy paste mode)
 </ul>
+
+
 <br><br>
 <h3>cutting</h3>
 <ul>
 <li>press <b>Del</b> or <b>X </b>to cut a selection (edits move up, no gap created)
 <li>press <b>M</b> to mute a selection (edits stay put, gap created), press <b>CM </b>to first copy selected area then mute it
 <li>if in/out points are set the time between will be cut (or copied) or muted
-<li>press <b>V</b> to paste any cut/copied edit, it will insert at the insert point and the edits will shift up to the right
-<li>select <b>Trim Selection</b> on the Edit menu to crop the timeline to selected
+<li>press <b>V</b> to paste any cut/copied edit (including muted time), it will insert at the insert point and the edits will shift up to the right
+<li>select <b>Trim Selection</b> on the Edit menu to crop the timeline to selected!
 </ul>
 <br><br>
 <h3>removing gaps</h3>
@@ -188,26 +215,34 @@ Unfortunately, there are no shortcut settings in Preferences.
 <h3>Snapping edit ends</h3>
 edit snapping function coming with CGG Nov 2017 (see below for use).. but first the awkward way:
 
-<ul><li>use in/out points: play until the cut point is reached and pause, then press <b>[</b> to set in-point... press <b>Alt-Right</b> to move to the end of the edit (clip) and press <b>]</b> to set out-point... press <b>del </b>or <b>X</b> to remove the end of the clip
-<li>select area: play until the cut point is reached and pause... press <b>Alt-Right</b> to move to the end of the edit... then press <b>Shift-Ctrl-Left</b> to select from end of clip up to the pause point... press <b>del </b>or <b>X</b> to remove the end of the clip
-<li>to contract the clip from the start you'd need to either make an in-point before playing, and out-point at the cut point, or do <b>Alt-Left</b> to return to start (after played until cut point) and <b>Shift-Ctrl-Right</b> to select up to pause point!
+<ul><li>use in/out points: play until the cut point is reached and pause, then press <b>[</b> to set in-point... press <b>Alt-Right</b> to move to the end of the edit and press <b>]</b> to set out-point... press <b>del </b>or <b>X</b> to remove the end of the edit
+<li>select area: play until the cut point is reached and pause... press <b>Alt-Right</b> to move to the end of the edit... then press <b>Shift-Ctrl-Left</b> to select from end of edit back to the pause point... press <b>del </b>or <b>X</b> to remove the end of the edit
+<li>to contract the edit from the start you'd need to either make an in-point before playing, and out-point at the cut point, or do <b>Alt-Left</b> to return to start (after played until cut point) and <b>Shift-Ctrl-Right</b> to select up to pause point and then delete.
 <br><br>
-<li><b>Three new functions in the next CGG version </b>(found <a href="https://cinelerra-cv.org/five/quinton/">here</a>): press <b>Ctrl-Alt-,</b> to snap left handle to insert point, or <b>Ctrl-Alt-.</b> to snap right handle to insert point - which makes work very much easier!
-<li>Also, press <b>Shift-Ctrl-Alt-,</b> or <b>Shift-Ctrl-Alt-.</b> to snap from insert point to next label, to left or right 
+<li><b>Three new functions in the next CGG version </b>(test version found <a href="https://cinelerra-cv.org/five/quinton/">here</a>): press <b>Ctrl-Alt-,</b> to snap left handle to insert point, or <b>Ctrl-Alt-.</b> to snap right handle to insert point - this makes work much easier!
+<li>Also, press <b>Shift-Ctrl-Alt-,</b> or <b>Shift-Ctrl-Alt-.</b> to snap from insert point to next label, to left or right (this instantly removes the everything between these points, so watch out)
 <li>and press <b>Ctrl-Alt</b> while clicking on the edit handle to snap edit end to insert point
 </ul>
 
 <br><br>
-<h3>extending edit ends</h3>
+<h3>Transforming edit ends</h3>
 when you move the mouse pointer to the edge of an edit an arrow appears, then you can drag the end left or right. The mouse button you use decides what the dragging does.
 <br><br>
 by default, mouse buttons Left, middle, Right (1,2,3) do the following:
 <ul>
-<li>LMB: only the selected edit end transforms, shortening, or lengthening (and the following edits move up)
-<li>MMB: the selected edit end transforms, and the following edit also extends in time to replace what the selected edit retracted from
+<li>LMB: only the selected edit end transforms, shortening, or lengthening and following edits all move up to make space or fill space - edits on other tracks (eg audio) will move together, if they are synchronous and the tracks are armed 
+<li>MMB: the selected edit end transforms, and the following edit also retracts/extends in time to make space for or replace what the selected edit retracted from
 <li>RMB: the edit is slipped, meaning, the start/end time is changed to earlier/later from the source media
 </ul>
 
+<br><br>
+<h3>Swap edits</h3>
+<ul>
+<li>switch to Drag and Drop mode with <b>E</b>
+<li>click on an edit title bar and drag it along the timeline
+<li>insertion arrows will appear to show you where it will be placed, and just drop it between two edits
+<li>you can also select multiple edits or between in-out points and press <b>X</b> to cut, and then <b>V </b>to paste back in at another point
+</ul>
 
 <br><br>
 <h3>Labels</h3>
@@ -230,8 +265,25 @@ by default, mouse buttons Left, middle, Right (1,2,3) do the following:
 <br><br>
 <h3>Keyframes</h3>
 <ul>
-<li>use number keys 1-0 to toggle show keyframe lines
-<li>click on a keyframe line to create a keyframe, then drag it up or down to make adjustment
+<li>use number keys 1-0 to toggle show different overlay controls
+<li>click on an overlay band (such as fade) to create a keyframe, then drag it up or down to make adjustment
+</ul>
+
+<br><br>
+<h3>Fading video</h3>
+<ul>
+<li>zoom in closer to the area that will fade in/out (<b>Shift-scroll</b>)
+<li>fade out: click on the video fade overlay band to create a keyframe at the point where the fade out should begin 
+<li>click again on the band at the point of fade out completion (eg at end of the movie) and drag it down to the bottom of track
+<li>fade in: similar, just make a keyframe first at point of the end of fade in then make one and drag down at point of the start of fade in
+</ul>
+
+<br><br>
+<h3>Fading audio</h3>
+<br>note: the overlay band for audio fade by default is set to normal level at base of track, which means you can't achieve reduced audio or silence until you adjust that base level...
+<ul>
+<li>first select <b>Audio Fade</b> at bottom and lower "Automation adjust minimum" to <b>-45.0</b> so that the base line will reach negative level
+<li>then you can set keyframes as per video fade in/fade out
 </ul>
 
 <br><br>
@@ -243,20 +295,134 @@ by default, mouse buttons Left, middle, Right (1,2,3) do the following:
 <li>you can copy/paste clips to the timeline, or a new timeline window
 </ul>
 
+<br><br>
+<h3>Rendering</h3>
+<ul>
+<li>Hit Shift-R to open render dialogue, then set target file
+<li>File format: for h264 encoding, select FFmpeg/mp4 
+<li>click on the wrench icons by audio/video and set the bitrate: a= 192000, v= 2000000 (i.e. 2Mbps) etc
+<li>To render to a quality format for storage, you can try OGG TheoraVorbis/ogg (or FFmpeg/ogg) with a constant bitrate or quality (7 or 8) - but it's slow as it doesn't cpu multithread 100% (50fps 25M mpegts, @q8, 4min movie took 28min).
+<li>you can enter a name for this render setting and save as preset (though your last setting will be stored)
+<li>insert strategy: insert nothing
+<li>note: if you open new media onto the timeline and replace existing, the render will terminate
+</ul>
+<br><br>
+
+
+<h3>Batch Rendering</h3>
+<ul>
+<li>Open File > Batch Render
+<li>Set output file and format, and the project EDL (xml file) and hit <b>New</b> to add to the batch queue
+<li>Run them from the Batch Render window or hit <b>Save Jobs</b> to save a batch list (but job does not match session?)
+<li>close Cin and render from the command line.. run `<b>cin -r</b>`
+<li>command line render will abort if an output file already exists
+</ul>
+<br><br>
+
+++++++++++++++++++++++++++++++++++++++
+<br><br>
+<h2 id="4" class="tag">Some effects handy to know</h2>
+<br><br>
+
+<h3>Video transitions</h3>
+<ul>
+<li>drag a transition from the Resource window onto a join between two edits, A and B: hovering over the start of edit B will show a box over the join on which to drop it
+<li>Right click on the transition effect icon at the edit join to set the duration
+<li>note: the transition between edits will begin at start of edit B, which means preferably there is some time left of 1st edit that will show in part during the transition - if there is no more of source media after edit A end then edit A picture will freeze during the transition!
+<li>the transition may not look very good played realtime in the timeline but it should be good once rendered - you can set in/out points to render that part to run a test first.
+</ul>
+
+
+<br><br>
+<h3>Colour correction</h3>
+Cinelerra offers some outstanding tools for control of colour output, but mastering them might take you some time! 
+<ul>
+<li><b>blue banana:</b> in controls check Combine and Mask Selection, check Filter Active, then check which control is needed: hue, saturation, value (from the middle controls - not sure how the top controls affect the middle ones)
+<li>dragging the pointers apart increases the control range, then moving the dot point along adjusts the control
+<li><b>brightness/contrast:</b> set values in the Preset window
+<li><b>color 3 way:</b> probably easier tool to use for saturation control, just increase Saturation control and leave the color adjustment alone, increase Midtone and Highlight values to increase brightness
+<li><b>color balance</b>: adjust cyan, magenta and yellow levels
+<li><b>gradient:</b> to set a coloured light effect.. <b>linear</b>: adjust angle, inner radius zero, reduce outer radius a little, set inner and outer colours..  <b>radial</b>: move the radial center off the picture on X or Y axis and also reduce outer radius
+<li><b>histogram:</b> drag the three pointers to set pre, mid and end of curve - to adjust brightness and shadows
+ <li><b>histogram:</b> control the histogram curve with points
+ <li><b>hue saturation:</b> easily increase colour or reduce to b/w picture
+</ul>
+<br><br>
+
+<h3>Keyframe an effect</h3>
+easily set keyframes in effects to alter the parameters through time..
+<ul>
+<li>Add an effect to the timeline and turn on auto keyframing
+<li>then click in the timeline at the start of it click the glass icon - set what you need, e.g. slight contrast 
+<li>set the insert point halfway along the effect and then increase the contrast a little, then set the contrast higher at the end
+<li>each adjustment will set a new keyframe (visible on the effect with a key -the sharp end of the key at the keyframe point) and they can be dragged along - how sweet!
+<li>if you click drag to extend an effect, the<b> left button </b>will drag all other keyframes along, including fades and all, also the keyframes on the effect will moves
+<li>if you click with <b>middle button</b> you will control just the one effect (though you can set what the mouse buttons do in Settings)
+<li>to adjust a certain keyframe, right click on it >> <b>Show Plugin Settings</b> or just left click on it if settings is open
+<li>render a short in-out segment to test ow the effect will look on the finished film - as the effect may appear less harsh viewed from the composer window</ul>
+<br><br>
+
+
+<h3>Rotate video</h3>
+<ul>
+<li>the effect you need is obviously called "<b>Rotate</b>" - you either set it to the entire track with right click >> Attach effect, or you can drag it from Resources to the edit or selection 
+<li>click on the glass icon to set the degree of rotation
+</ul>
+<br>
+but, rotating a video (e.g. 16:9 aspect ratio 90 degrees) will crop top and bottom (as obviously 1920 pix wide can't rotate and stand up in 1080 pix high - its top and bottom won't fit in), so what you need is the "<b>Scale</b>" effect placed above the rotate effect, so that the video width can be scaled down to the new height dimension before rotation. 
+<ul><li>attach the scale effect and then right click on it >> <b>Move up</b> to set it above Rotate
+<li>Scale: just click on the glass, click on "Constrain ratio" then use mouse scroll button to raise the value to something less than 1. 
+
+</ul>
+
+<br><br>
+<h3>Scaling down video</h3>
+
+To produce video with smaller dimensions than the source, you need to set the format dimensions and then add a video effect to the entire timeline.<br>
+<ul>
+<li>Open format settings with Ctrl-F and set the canvas size to the scaled down dimensions
+<li>then right click on the timeline >> <b>Attach effect </b>>> <b>Scale</b>, click OK (or open Video effects in the resource window and find Scale, drag it to an edit or the selected area).
+<li>Then click on the glass icon button on the effect and set the dimensions or scale.
+<li>you can also use <b>Auto Scale</b> effect and then Right click >> <b>Presets</b> and click and enter new values
+</ul>
+
 
 <br><br>
 <h3>Image overlays </h3>
-this is easy as resizing/positioning one armed track in the compositor window - see <a href="http://www.calcmaster.net/cinelerra/forgotten-guide/06-edit-contents/06-edit-03-compose-video/">this tutorial</a>
-
+this is easy as resizing/positioning one armed track in the compositor window 
+<ul>
+<li>arm only the track you want to resize as an overlay with <b>Shift-Tab </b>on the track (disarms all other tracks)
+<li>show the <b>Compositor</b> window and click on <b>Projector</b> tool
+<li>with insert point at the start of the track or start point of the edit that will overlay, click drag the projector box to the overlay position and Shift-click and drag to resize it
+<li>if you move along some time in the edit or track and change the projector position/size then you will create a new keyframe and the video position will jump when played - so make sure that only one keyframe (ie postion set at start and no keyframes added) is active for the duration of the overlaid picture
+</ul>
 
 <br><br>
-<h3>Rotate affect</h3>
+<h3>Projector animation </h3>
+This technique will create a movement and transform shrink/grow of the video picture across or around the screen - you are advised to look at the good Heroine manual first! (find/copy it after install at /usr/share/cin/doc/cinelerra.html)
 <ul>
-<li>the affect you need is obviously called "Rotate" - you drag it to the edit or selection and click on the glass icon to set the degree of rotation
-<li>but, rotating a video (e.g. 16:9 aspect ratio 90 degrees) will crop top and bottom, so what you need is the "Scale" affect placed above the rotate affect, so that the video size can be scaled down before rotation. Just click on the glass, click on Constrain ratio" then use mouse scroll button to raise the value to something less than 1. 
-<li>also you can right-click in Clips and click Paste clip
-<li>you can copy/paste clips to the timeline, or a new timeline window
+<li>In the Compositor, turn on auto keyframes, select Projector tool, then drag the frame a tiny amount to create first keyframe (the point to start the picture movement/shrink) - without that keyframe to start the movement a slow linear change will be applied right from the start of the timeline to your first projector change - not so happy :(
+<li>further along the time in the Compositor, drag the projector frame to a new position where you want it to reach at that time and resize it with Shift-click drag if necessary - and repeat for as many changes of transformation/direction you need
+<li>for example, you want the picture to wipe off to the top right and shrink into an inch size (the following edit could then grow out of the same position and you get a disappearing/appearing transition)
+<li>or perhaps you want different pictures or still pics to move across the screen from all directions
+<li>or you could have a picture shrink to half size and bounce around the screen and then bounce back to full size
+<li>turning on auto-keyframing first before making the change to projector position is important as it will create progressive changes (you can have either smooth or linear) from one keyframe to the next
+<li>The projector changes will show on the video track as X and Y axis and Z (Z is the shrinkage or zoom) 
+<li>Increase track depth by bottom "<b>Height of tracks</b>" to see whats happening with your keyframes on those axis bands... but moving them on the tracks is too complex, you can just about remove them and that's all... you need to work in the Compositor to make sensible changes. 
+<li>Click on <b>Show Tool info</b> button to get full control, ..how?
+<li>turn off auto keyframing after the work is done witht he projector, as other wise when you make new keyframes on a track it will adjust automatically from the last keyframe, instead of from the point you click.
 </ul>
+ 
+ <br><br>
+<h3>Warping video</h3>
+<ul>
+<li><b>Lens</b> adjust Radius, Center X and Y to create a book page flip effect and use auto keyframing with projector to have the picture flip into view
+<li>
+</ul>
+
+
+
+
 
 <br><br><br><br>
 </div>

@@ -796,6 +796,7 @@ W- msright(window) 	ob menu
 C-W- msright(desktop)	utility menu
 C-W- msright(window) 	utility menu
 msmiddle (desktop) 	pager menu
+W- msmiddle (window) 	pager menu
 A-Space			window menu
 
 Alt-left		move window
@@ -803,22 +804,22 @@ Alt-right		resize window
 
 W-A- msleft		maximise
 W-A- msright		unmaximise
-S-A- msright		iconify
+W-A- msmiddle		iconify
 A-   msmiddle 		lower to base
 A-Esc			lower to base
-S-A-c			move to center
-S-A-z			close
+W-A-c			move to center
+W-A-z			close
 A-F4			close
 F11			toggle fullscreen
-A-Tab			next window
-W-Tab			next window (all desktops)
+A-Tab			window pager
+W-Tab			window pager (all desktops)
 
 C-A- left/right		go to next desktop
 A- scroll		go to next desktop
-S-A- left/right		send window to next desktop
-S-A- scroll		send window to next desktop
+W-A- left/right		send window to next desktop
+W-A- scroll		send window to next desktop
 W- F1/F2 etc		go to desktop 1,2 etc
-W-S- F1/F2 etc		send to desktop 1,2 etc
+W-A- F1/F2 etc		send to desktop 1,2 etc
 
 W-R			Run
 W-T			Terminal
@@ -863,13 +864,13 @@ Keybindings for desktop switching
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-A-Left">
+    <keybind key="W-A-Left">
       <action name="SendToDesktopLeft">
         <dialog>no</dialog>
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-A-Right">
+    <keybind key="W-A-Right">
       <action name="SendToDesktopRight">
         <dialog>no</dialog>
         <wrap>no</wrap>
@@ -916,7 +917,7 @@ Keybindings for windows
         <menu>client-menu</menu>
       </action>
     </keybind>
-    <keybind key="C-A-x">
+    <keybind key="C-W-x">
 	 <keybind key="x">
       <action name="Execute">
         <execute>xkill</execute>
@@ -934,48 +935,47 @@ Keybindings for window switching
     <keybind key="A-S-Tab">
       <action name="PreviousWindow"/>
     </keybind>
-    
+    <keybind key="W-Tab">
+      <action name="NextWindow">
+        <allDesktops>yes</allDesktops>
+      </action>
+    </keybind>          
     <!-- 
 
 Keybindings for sending windows to different desktops 
 
 -->
-    <keybind key="W-S-F1">
+    <keybind key="W-A-F1">
       <action name="SendToDesktop">
         <desktop>1</desktop>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-S-F2">
+    <keybind key="W-A-F2">
       <action name="SendToDesktop">
         <desktop>2</desktop>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-S-F3">
+    <keybind key="W-A-F3">
       <action name="SendToDesktop">
         <desktop>3</desktop>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-S-F4">
+    <keybind key="W-A-F4">
       <action name="SendToDesktop">
         <desktop>4</desktop>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-S-F5">
+    <keybind key="W-A-F5">
       <action name="SendToDesktop">
         <desktop>5</desktop>
         <follow>no</follow>
       </action>
     </keybind>
-    <keybind key="W-Tab">
-      <action name="NextWindow">
-        <allDesktops>yes</allDesktops>
-      </action>
-    </keybind>
-    <keybind key="A-S-c">
+    <keybind key="W-A-c">
       <action name="MoveToCenter"/>
     </keybind>
     <keybind key="F11">
@@ -1180,7 +1180,7 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
 
 
 <form>
-<textarea name="T" id="file" rows="176" cols="80">
+<textarea name="T" id="file" rows="172" cols="80">
       <mouse>
       
    <!-- 
@@ -1197,9 +1197,6 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
       </mousebind>
       <mousebind button="A-Left" action="Drag">
         <action name="Move"/>
-      <mousebind button="C-Right" action="Press">
-        <action name="Iconify"/>
-      </mousebind>
       <mousebind button="A-Right" action="Drag">
         <action name="Resize"/>
       </mousebind>
@@ -1217,13 +1214,13 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
       <mousebind button="A-Down" action="Click">
         <action name="DesktopNext"/>
       </mousebind>
-      <mousebind button="S-A-Up" action="Click">
+      <mousebind button="W-A-Up" action="Click">
         <action name="SendToDesktopLeft">
          <dialog>no</dialog>
          <wrap>no</wrap>
         </action>
       </mousebind>
-      <mousebind button="S-A-Down" action="Click">
+      <mousebind button="W-A-Down" action="Click">
         <action name="SendToDesktopRight">
          <dialog>no</dialog>
          <wrap>no</wrap>
@@ -1271,7 +1268,7 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
         <action name="Unmaximize">
 	     </action>
       </mousebind>
-      <mousebind button="S-A-Right" action="Click">
+      <mousebind button="W-A-Middle" action="Click">
         <action name="Iconify"/>
       </mousebind>
      </context>

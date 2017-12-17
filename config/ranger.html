@@ -583,7 +583,7 @@ map &#60;a-t> linemode metatitle              #linemode: titles </textarea>
 <br><br>
 
 <h3 id="fi" class="tag">map f for files</h3>
-<form><textarea name="T" id="file" rows="27" cols="120">
+<form><textarea name="T" id="file" rows="28" cols="120">
 
 ##### files ##########
 
@@ -595,6 +595,7 @@ map f- shell -s chmod -x %s
 map f=   console shell -s chmod 664 %%s                #chmod operations - or type 664=
 map fr   console rename%space
 map fb   bulkrename %s
+map fC console -p16 shell cat %%s > 1              #concatenate text files
 map fpy   shell -f pyrenamer %d                            #GUI renamer, or another, `Thunar -B %d'
 map fg   console -p22 shell -p grep -nT -r ?* %%s            #grep (search) pattern in files or highl'd dir
 map f?   console -p22 shell perl -pi -e 's/?/@/g' %%s                  #replace string in files
@@ -635,15 +636,14 @@ mv $1 "${2%.*}.${1##*.}"</textarea>
 
 <br><br>
 <h3 id="op" class="tag">map O to open files</h3>
-<form><textarea name="T" id="file" rows="10" cols="120">
+<form><textarea name="T" id="file" rows="9" cols="120">
 ##### open file ##########
 
 map Op   shell -f leafpad %f                #open with leafpad
 map Ow   shell -f libreoffice4.4 %s        #will open any open doc format file, or other compatible, with libre office (change version)
 map On   shell -f rxvt -e nano %f        #open file forked in nano
 map Ol   shell -f rxvt -e less %f         #open forked to view
-map Ot   shell -f rxvt -cd %d              #open current dir in new terminal
-map &#60;a-v> shell -f gnome-mplayer %s</textarea>
+map Ot   shell -f rxvt -cd %d              #open current dir in new terminal</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -799,7 +799,7 @@ map ,lr  shell -s ln -fsT "`yad --title="Re-link To" --file --height=400 --width
 <form><textarea name="T" id="file" rows="13" cols="150">
 ##### directory ##########
 
-map ,ds  shell -w rsync -a --update --progress %d/ "`yad --title='Sync with directory' --file --height=400 --width=500 --directory`"
+map ,ds  shell -w rsync -a --update --progress %d/%f/* "`yad --title='Sync the selected directory with...' --file --height=400 --width=500 --directory`"
                 #sync contents of current dir with another dir, shows progress
 map ,dc  shell -s find . -type d -exec mkdir -p -- ../tree_clone/{} \;             
                         #clone the dir tree of current dir down -creates empty dir's in new dir 1 level up
@@ -862,15 +862,13 @@ map ,s3  shell -pw sudo make install</textarea>
 
 <br><br>
 <h3 id="img" class="tag">map fi for image file commands</h3>
-<form><textarea name="T" id="file" rows="9" cols="150">
+<form><textarea name="T" id="file" rows="6" cols="150">
 ##### image files ##########
 
-map fiv   shell /usr/sbin/xnview %f                                #edit image with XnViewMP
-map fip1  console shell -ft google picasa create "" %%s            
-                #googlecl command upload selected pics to new Picasa album -enter album name in "", use * to upload all files
-map fip2  console shell -ft google picasa post "" %%s                #upload to existing album
-map fip3  console shell -pw google picasa list-albums                #list albums
-map fipx  console shell -ft google picasa delete ""                    #delete album -name ""</textarea>
+map fiv   shell xnview %f          #edit image with XnViewMP
+map fig   shell gimp %f          #edit image with Gimp
+map fii   shell inkscape %f          #edit image with inkscape
+map fid   shell darktable %f          #edit image with darktable</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -979,8 +977,9 @@ for i in  *; do DAT=$(date -r $i +%y-%m-%d); mkdir -p $DAT; mv $i $DAT ; done</t
 <form><textarea name="T" id="file" rows="15" cols="120">
 ##### video files ##########
 
-map f<F2>  shell -f gnome-mplayer %s
+map fvm  shell -f mpv %s
 map fvv  shell -f vlc %s
+copymap fvm f<F2>
 
 
 ##### ffmpeg commands ##########
