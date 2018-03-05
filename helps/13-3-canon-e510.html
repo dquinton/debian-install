@@ -9,7 +9,7 @@ id: help
 
 <div class="cont">
 
-This printer worked first time round, it was almost too easy!
+This printer worked first time round, it was almost too easy! (but that was Wheezy - its more tricky with later Debian releases -see below)
 <br><br>
 
 1. Get the drivers for printer and scangear from <a href="http://support-in.canon-asia.com/P/search?model=PIXMA+E510&amp;menu=download&amp;filter=0&amp;tagname=g_os&amp;g_os=Linux" rel="noreferrer">http://support-in.canon-asia.com...</a>
@@ -34,7 +34,27 @@ answer the questions and it should complete. Print something.
 If the printer doesn't register, see here.. <a href="http://linux.wikia.com/wiki/Getting_Canon_PIXMA_to_work_on_Linux" rel="noreferrer">http://linux.wikia.com/...</a>
 <br><br>
 
-cngpijmone510 is the status monitor (also shows ink levels)
+....<br>
+Alternatively, no need for the script, just install the debian archive with
+<br>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo dpkg -i cnijfilter-e510series_3.80-1_amd64.deb</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+<b>Note: </b>this was fine with Debian Wheezy, but with Jessie or later the cnijfilter archive will not install due to dependencies issues (depends libpng12-0 and libtiff4, but Stretch ships with libpng16-16 and libtiff5 etc).
+<br><br>
+The easiest solution that I found was to install those dep's from Jessie packages, which install fine without any hiccup.  But others say its better practice to forward port these packages to your Debian release, build them from source in that release.
+<br><br>
+download them from <br>
+<a href="http://ftp.uk.debian.org/debian/pool/main/libp/libpng/">http://ftp.uk.debian.org/debian/pool/main/libp/libpng/</a><br>
+<a href="http://ftp.uk.debian.org/debian/pool/main/t/tiff3/">http://ftp.uk.debian.org/debian/pool/main/t/tiff3/</a>
+<br><br><br>
+<br><br>
+
+<b>cngpijmone510</b> is the status monitor (also shows ink levels)
 <br><br>
 
 <br>
