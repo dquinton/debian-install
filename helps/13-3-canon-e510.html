@@ -19,38 +19,25 @@ This printer worked first time round, it was almost too easy! (but that was Whee
 <br><br>
 
 3. Unpack the tar.gz driver archives and open a Terminal in the printer driver directory first (cnijfilter), then run
-<br>
-<form>
-<textarea name="T" id="cmd" rows="1" cols="30">
-sudo ./install.sh</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
 <br><br>
 
-answer the questions and it should complete. Print something.
-<br><br>
-
-If the printer doesn't register, see here.. <a href="http://linux.wikia.com/wiki/Getting_Canon_PIXMA_to_work_on_Linux" rel="noreferrer">http://linux.wikia.com/...</a>
-<br><br>
-
-....<br>
-Alternatively, no need for the script, just install the debian archive with
+no need for the script, just enter the DEB directory and install the debian archives with
 <br>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-sudo dpkg -i cnijfilter-e510series_3.80-1_amd64.deb</textarea>
+sudo dpkg -i cnijfilter*</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
-<b>Note: </b>this was fine with Debian Wheezy, but with Jessie or later the cnijfilter archive will not install due to dependencies issues (depends libpng12-0 and libtiff4, but Stretch ships with libpng16-16 and libtiff5 etc).
+<b>Note: </b>this was fine with Debian Wheezy, but with Jessie or later the cnijfilter archive will not install due to dependencies issues (depends libpng12-0 and libtiff4, also libjpeg8, but Stretch ships with libpng16-16 and libtiff5 etc).
 <br><br>
 The easiest solution that I found was to install those dep's from Jessie packages, which install fine without any hiccup.  But others say its better practice to forward port these packages to your Debian release, build them from source in that release.
 <br><br>
 download them from <br>
 <a href="http://ftp.uk.debian.org/debian/pool/main/libp/libpng/">http://ftp.uk.debian.org/debian/pool/main/libp/libpng/</a><br>
 <a href="http://ftp.uk.debian.org/debian/pool/main/t/tiff3/">http://ftp.uk.debian.org/debian/pool/main/t/tiff3/</a>
+<a href="http://ftp.uk.debian.org/debian/pool/main/libj/libjpeg/">http://ftp.uk.debian.org/debian/pool/main/libj/libjpeg/</a><br>
 <br><br><br>
 <br><br>
 
