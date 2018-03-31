@@ -1,0 +1,422 @@
+---
+layout: default
+description: My workflow using Kdenlive - by D Quinton
+title: Working with HD video
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Taking still images from MTS</a></li>
+                <li><a href="#2">Editing films with Kdenlive  </a></li>
+                <li><a href="#3">Rendering projects </a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Taking still images from MTS</a><br>
+   <a href="#2">Editing films with Kdenlive  </a><br>
+   <a href="#3">Rendering projects </a><br>
+</td></tr></table></div>
+
+<div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
+
+<div class="cont">
+
+I use Kdenlive as my dedicated video editor and encoder for all my projects. (Install notes on step2 page)
+<br><br>
+I'm currently shooting films with a Panasonic V500 which has pretty reasonable quality and colour, and produces progressive HD video saved as .MTS files.  MTS (Mpeg Transport Stream) is something like h264 mp4 AVC compressed video. HD being 1920 x 1080 pixels, interlaced 25fps (1080i), while full HD is progressive 50fps (1080p).
+<br><br>
+Firstly, compressed HD video files take a lot of cpu power to play or seek through with an editor programme, so unless you have 3rd generation Intel i5 or similar, you will experience staggered playback or pauses while trying to stop and play in Kdenlive (as my old Intel core duo gave me).  
+<br><br>
+[Kdenlive has an auto proxy clip maker for large HD files, so once those have been made - time for a coffee or two if you have a low-spec CPU - playing and cutting is much smoother, but with on-screen quality loss of course from the proxies.]
+<br><br>
+I locate my STREAM dir on the camera's SD card (inserted) and copy all the MTS files to a raw files disk.  Then I use bash to sort the files into folders, by date:
+<br><br>
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+for i in *.MTS; do DAT=$(date -r $i +%y-%m-%d); mkdir -p $DAT; mv $i $DAT ; done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+<br><br>
+
+<h2 id="1" class="tag">Taking still images from MTS</h2>
+
+I use Gnome-mplayer to get quality stills from my film -it's also possible to take shots of the film on the camera itself, though I haven't taken to this method.
+<br><br>
+settings: <br>
+<div class="bullet"><ul>
+
+<li>Player tab: video output = gl or x11 (I don't notice the difference)</li>
+<li>Mplayer tab: check Deinterlace + Drop frames</li>
+<li>Interface tab: check Only allow one instance + when opening.. replace existing file + When opening file, bring main window to front + Remember Window Location and Size (but will go off screen when opening a large MTS file) + Pause playback on mouse click.</li>
+<li>To stop the player going full size picture and off the screen, ALT-F8 (Xfce) and resize the window, or check Half Size (1:2) under View.</li>
+</ul></div>
+
+<br><br>
+1. browse to the MTS files, select how many to open and run Gnome MPlayer<br>
+    the files are added to the play list and you can move to the next easily.
+<br><br>
+2. space to pause/play, CTRL-T [I change that to CTRL-Z] to capture a still frame (and press space again to un-pause and get the snapshot saved!)<br>
+    seeking with the left/right keys moves about 10sec onward/back so it might end the film if its short
+<br><br>
+3. pics saved in the same dir as video files, 6MB .png files<br> 
+    move them to "images/NEW/abc" on your picture storage partition/disk (that's just my way)
+<br><br>
+-----do 3. after each folder of mts files
+<br><br>
+4. rename pics in each dir in the /abc dir and run a mogrify command to convert to jpeg format (see my image processing page)
+<br><br>
+5. once the files are converted, run a couple of commands on them to write the EXIF date to them
+first, to write the date from the file modify date with<br>
+
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+exiftool -overwrite_original "-filemodifydate>alldates"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+and then to adjust the date so that it better matches the real date of the video it came from, e.g.<br>
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+jhead -ds2014:10:09 *</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+that will set the date on all files, leaving the time stamp as-is
+<br><br>
+<br><br>
+
+<h2>Converting MTS movie files into films</h2>
+
+Although it's possible to edit MTS files (though they don't like seeking) and directly render to a finished format with Kdenlive (mpeg2, mp4, h264, webm, vob etc), my rendered movies have been showing pauses at the points where clips join.  Even with ffmpeg and melt built from latest snapshots.
+<br><br>
+I think there's something happening with Kdenlive's MLT in dealing with the compressed MTS files, because the clips are good with no frozen frames if i join them after converting them to mpeg2 or m2ts.
+<br><br>
+It's like, Kdenlive says, "Oh, the end of a clip, what do we do now?  Oh, the next clip, let's start it.."  And with that behaviour, there will be frozen frames at the end of nearly every clip.  There is a solution though - and at first I tried transcoding to raw formats (see my page <a href="cli/06-transcoding.html">transcoding MTS</a>) but results were not perfect either and it ate up hours of CPU intensive work.  
+<br><br>
+What we need to do is simply turn on "Overwrite mode" in kdenlive and move the next clip along to the left so that it slightly (or greatly) overlaps the end of the clip before it.  That way MLT will not get to see the end of the clip, but the next one will be starting already!!
+<br><br>
+<br><br>
+
+<h2 id="2" class="tag">Editing films with Kdenlive</h2>
+
+For detailed install instruction see my install Step 2 page.  I highly recommend doing long video productions/encodes on a desktop PC with a modern multi-core CPU (3rd gen i5 preferably) and plenty of RAM (>8gb), as laptops are just not built for it).
+<br><br>
+Official Manual here.. <a href="http://userbase.kde.org/Kdenlive/Manual">http://userbase.kde.org/Kdenlive/Manual</a>
+<br><br><br>
+<div style="display:block;text-align:center;"><a href="{{site.baseurl}}/zimages/kdenlive-1304.jpeg"  imageanchor="1"><img border="0" height="500" src="{{site.baseurl}}/zimages/kdenlive-1304.jpeg" width="800"></a></div>
+<br><br>
+
+<h3>1. Add clips to the Project Tree</h3>
+
+    Click on the black film icon just above the clip tree to open video files from a folder<br>
+    The clips may take some time to load and you can only use them once they've all appeared as thumbs, and the last clip appears in the Clip monitor.<br>
+    The cpu will slow down once they're loaded.
+    <br><br>
+    When the files open the profile should be set to what files you are using e.g. HD 1080p 50fps 16/9 -this can be set as default also in Settings >Configure Kdenlive >Project Defaults.  <br>
+    Also set the default kdenlive project folder >Configure Kdenlive >Environment >Default folders tab.
+    <br><br>
+
+    You should set videos of over 1000px to have proxy clips made, so that seeking through them in the Timeline will be much smoother than trying to seek huge, compressed and cpu-intensive movie files. (Configure Kdenlive > Project Defaults)
+    <br><br>
+    When using proxy clips you will have to leave the PC to build all the clips when you add them to the Project before you can get on with the video editing.
+    <br><br>
+
+    In the Project Tree you can make folders and drag and drop clips into them, or select a folder and click on the add clips button to add new clips into the folder.  This is indispensible for a project made of many clips from all sorts of directories on disk -otherwise you'd have them all mixed up, ordered just by file names.
+    <br><br>
+
+   You can close some of the Kdenlive components so that its less cluttered, under View (you just need Clip tree, Clip monitor and Project monitor, and Effects stack if you add effects and have to adjust them)
+<br><br>
+<br>
+<h3>Shortcut Keys</h3>
+
+
+You want to make some short-cut keys to help speed up the work: Settings  > Configure > shortcuts...
+<br><br>
+<table cellpadding="4" cellspacing="0" style="border-collapse: collapse; background-color: transparent; ">
+<tbody><tr>
+<td width="60"><span style="background-color:#95C0EB">&nbsp;X&nbsp;</span></td>
+<td>razor tool</td>
+<td width="60"><span style="background-color:#95C0EB">&nbsp;C&nbsp;</span></td>
+<td>or right, backward&nbsp;one frame</span></td>
+<td width="60"><span style="background-color:#95C0EB">&nbsp;A&nbsp;</span></td>
+<td>zoom in</td>
+</tr>
+<tr>
+<td width="60"><span style="background-color:#95C0EB">&nbsp;S&nbsp;</span></td>
+<td>select</td>
+<td><span style="background-color:#95C0EB">&nbsp;V&nbsp;</span></td>
+<td>or left, forward&nbsp;one frame&nbsp;</span></td>
+<td><span style="background-color:#95C0EB">&nbsp;Z&nbsp;</span></td>
+<td>zoom out</td>
+</tr>
+<tr>
+<td ><span style="background-color:#95C0EB">&nbsp;D&nbsp;</span></td>
+<td>delete selected item</td>
+<td><span style="background-color:#95C0EB">&nbsp;L / J&nbsp;</span></td>
+<td>Fast forward / Rewind</td>
+<td><span style="background-color:#95C0EB">&nbsp;Q&nbsp;</span></td>
+<td>fit zoom to project -very useful too</td>
+</tr>
+<tr>
+<td ><span style="background-color:#95C0EB">&nbsp;Shift-X&nbsp;</span></td>
+<td>cut clip (at seek point)</td>
+<td><span style="background-color:#95C0EB">&nbsp;E&nbsp;</span></td>
+<td>or end key, go to clip end</td>
+<td><span style="background-color:#95C0EB">&nbsp;G&nbsp;</span>
+</td>
+<td>insert marker
+</td>
+</tr>
+<tr>
+<td ><span style="background-color:#95C0EB">&nbsp;M&nbsp;</span></td>
+<td>spacer tool</td>
+<td><span style="background-color:#95C0EB">&nbsp;W&nbsp;</span></td>
+<td>or home key, go to clip start</td>
+<td><span style="background-color:#95C0EB">&nbsp;Alt-N&nbsp;</span></td>
+<td>create folder&nbsp;</td>
+</tr>
+<tr>
+<td><span style="background-color:#95C0EB">&nbsp;P&nbsp;</span></td>
+<td>snap to &nbsp;toggle</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr></tbody></table>
+<br><br><br>
+
+<h3>2. Adding clips to the Timeline</h3>
+<br>
+    <h3>Quick</h3>
+Select the needed clips (or click in the clip tree and CTRL-A) and drag down to the time-line, they will snap to the start as you move them close.
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp; -if the film looks too long and you need less clips on the time-line, press<span style="background-color:#95C0EB"> <b>D</b> </span> as soon as they are dropped there (to remove the whole lot from Timeline) and the duration will be given.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    -also you can press<span style="background-color:#95C0EB"> <b> Q</b> </span>to show the whole length of the clips in Timeline, without them going off the end.
+    <br><br>
+    <b>at this moment it is good to click the save icon (CTRL-S) and give the project a name.
+    </b><br><br>
+    now click on the Project Monitor tab (the marker will be set to the start of the project) and the project will start playing, pause with <b>Space</b> (or press<span style="background-color:#95C0EB">  <b>L</b> </span>to fast forward).
+<br><br><br>
+
+    <h3>Specific</h3>
+    <div class="bullet">
+<ul>
+    <li>Select a clip in the Project Tree and play it in the Clip Monitor (check it under View menu)</li>
+    <li>Play/pause with<span style="background-color:#95C0EB">  <b>Space</b>, </span>or by clicking on the Monitor, and then set in and out points with buttons or<span style="background-color:#95C0EB">  <b>I</b> </span>and<span style="background-color:#95C0EB">  <b>O </b></span></li>
+    <li>Click on the Clip Monitor and drag it down to the Timeline and the selected part of the clip (within the in/out points) will be added to the Timeline, wherever you like.</li>
+<li>You can use<span style="background-color:#95C0EB">  <b>I</b> </span>and<span style="background-color:#95C0EB">  <b>O </b></span>  while the video plays</li>
+<li>Use <b>Shift-left</b> or <b>Shift-right</b> to move one second forward/backward, or<span style="background-color:#95C0EB">  <b>C</b> </span>or<span style="background-color:#95C0EB">  <b>V </b></span>  ( <b>left/right</b> ) to move by one frame</li>
+<li>You can also use the <b>mouse scroll button</b> on the duration bar, alone to move by frame, with <b>Ctrl</b> to move by seconds</li>
+<li>Use <b>Shift-I</b> to reach the zone start, or <b>Shift-O</b> to reach zone end</li>
+<li>Use <b>home</b> to reach clip start, or <b>end</b> to reach clip end</li>
+<li>Use <b>Ctrl-home</b> to reach project start, <b>Ctrl-end</b> to reach project end (my shortcuts<span style="background-color:#95C0EB">  <b>W</b> </span>and<span style="background-color:#95C0EB">  <b>E </b></span> )</li>
+</ul></div>
+
+<br><br><br>
+
+<h3>3. Using sub-clips</h3>
+    Similarly as above, play a clip in the clip monitor and set in/out points with<span style="background-color:#95C0EB">  <b>I</b> </span>and<span style="background-color:#95C0EB">  <b>O </b></span>, then click and drag from the Clip Monitor to the Project Tree -the clip segment will be listed under its parent clip (with time of segment start).  <br>
+    Thus the segment of the clip (between in/out points) becomes a sub-clip in the Project Tree (much like a bookmarked part of a clip) ready for use on the Timeline.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;-select the parent clip in the Project Tree to make more sub-clips<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;-select a sub-clip, adjust the in/out points in the Clip Monitor and the sub-clip will be updated.
+    <br><br>
+Another way, you can right click on the Monitor and click on Extract Zone, to save the clip segment as a file, and list it in the Project Tree.<br>
+This method makes for a good video cutter!  Works cutting h264 film.  It's just that joining files you have to render them, there's no joiner!
+<br><br><br>
+
+<h3>4. Cutting clips on the Timeline</h3>
+    when you hit a part of the clip that's unneeded, pause with Space, find the exact place to make a cut by moving backwards/forwards by one second (<b> Shift-left </b>or <b>Shift-right </b>) or by one frame (<span style="background-color:#95C0EB">  <b>C</b> </span>and<span style="background-color:#95C0EB">  <b>V </b></span> or left/right key)
+   
+    <br><br>
+You can also use the mouse scroll button on the Monitor, using normal scroll for moving frame-by-frame in the video from the seek point, or holding Ctrl with the mouse scroll to move a second at a time.
+<br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;-Zoom in with<span style="background-color:#95C0EB">  <b>A</b> </span> to get to a more accurate place to cut the clip ( <b>Ctrl-mouse scroll button </b> on the Timeline as well)<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;-then click on the clip in Timeline to highlight it and use <b>Shift-X</b> to cut at the seek point or press<span style="background-color:#95C0EB">  <b>X</b> </span> for the razor/sissor tool and click on the clip at the seek point (not accurate).
+    
+     <br><br>
+    But you may need to cut the clip just before/after some audio part, so to do that you need to click at a point under the clip and hit Space to play. Keep adjusing where you click and play from, but keep the mouse at that point.  Once you have the exact place to cut, switch to cut tool with<span style="background-color:#95C0EB">  <b>X,</b> </span> and click on the clip at the cursor (press<span style="background-color:#95C0EB">  <b>A</b> </span> to zoom in if needed.)
+    <br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;-press<span style="background-color:#95C0EB">  <b>S</b> </span>  and click on the part to remove to select it.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;-press<span style="background-color:#95C0EB">  <b>D</b> </span> to remove it.<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;-right click in the empty space and press<span style="background-color:#95C0EB">  <b>R</b> </span> to close the gap (or you can leave the gaps and close them later)
+<br><br>
+        ! Caution! If you close a gap and you have clips on multiple Video/audio tracks then only one track moves along, disrupting the alignment.  Therefore it is better to use the Spacer tool with<span style="background-color:#95C0EB">  <b>M</b> </span> in that case and drag the whole proceeding part of the project up.
+        <br><br>
+Instead of cutting, you can just drag the ends of a clip to change the clip's length i.e. make the clip "time out" before it's end or beginning - to do this hover near the clip end and select and drag the green arrow that pops up.
+<br><br>
+To get this more accurate, you can seek where the clip needs to begin or end, and as you drag the actual beginning or end of the clip, it will snap to the seeking line.
+<br><br>
+To make this even faster, select the clip and press<span style="background-color:#95C0EB">  <b>1</b> </span>to move the selected clip's start point up to the seek point, or<span style="background-color:#95C0EB">  <b>2</b> </span> to move the clip's end point up, which does the same as dragging start/end.
+<br><br>
+Another way, if you know exactly how much time a clip should duress, you can double click on a clip on Timeline and set start/end points.
+<br><br>
+    However, if you only need to cut a piece out of a clip, it will not help if you reset the start or end of the clip, you will need the razor tool or <b>Shift-X</b> on seek point at the start and end of the piece to remove.
+<br><br>
+<b>Keep saving the project as you go along</b> -just in case there's a crash!
+
+<br><br><br><br>
+
+
+<h3>Note about frozen frames after joining MTS clips</h3>
+
+The only way to get around this problem (unless its fixed in a new build of MLT) is to overlap the end of the clip with the following one.
+So to do this, turn on "Overwrite mode" (button at bottom left) and just move up the clip on the right so that it overlaps the end of the clip to its left.
+<br><br>
+But to do this while editing, just click the point at which normally you'd cut the clip (to remove the end) and then overlap the clip on the right (move it to the left) up to the seek line.
+<br><br>
+If you've already made edits, cutting clips, and you want to overlap clips, you'll need to use the move tool to move all the clips to the right, to make some space.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;-click on the first clip and press "end" key to set the seek at the clip end.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;-Try to move the clip out to the right by hovering the end and dragging on the green arrow.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;-If it moves out (which means you made a cut there) then move it a little way, and then hit<span style="background-color:#95C0EB">  <b>S</b> </span> and drag the clip on the right to overlap, up to the seek point (which will be where you wanted the clip to be cut).<br>
+&nbsp;&nbsp;&nbsp; &nbsp;-If it doesn't move out (means there's no cut made) then you'll just have to overlap the clip on its right a little on it.<br>
+&nbsp;&nbsp;&nbsp; &nbsp;-Do that for all clips on the project time-line before rendering.
+<br><br>
+Results??  No more frozen frames at all.  But, there may be some audio artifact found at joins!  A very short crackle at the start of new clips. :(
+<br><br><br>
+
+<h3>Other notes </h3>
+<div class="bullet"><ul>
+    <li>The spacer tool<span style="background-color:#95C0EB">  <b>M</b> </span> is used to move all the clips up along the track and make some space to insert a clip.</li>
+
+    <li>You can select multiple clips in the time-line by right-click and Group clips (or CTRL-G), then CTRL-click on clips. <br> 
+    Release CTRL to move them all together.<br>
+    But if you want to move them to another part on the time line you'll have to move them onto the second row and then along.</li>
+  
+    <li>if on occasion Kdenlive deals badly with a certain clip and it appears frozen when you play it in the time-line, it's most likely that the camera did something to it, a write error. </li> 
+    <li>Say you've been working on a few clips on the Timeline and you'd like to use that edit in another Project... you can't drag the in/out zone to the Project Tree, unfortunately, so you have to save that and import the saved project as a clip to the Project Tree in the new Project.</li>
+   <li> But if you have been using proxy clips in the project you want to import, very strangely the new project will put the proxy files into the rendered film!  So you need to turn off proxy clips (select all and right click > Proxy Clip) and save the project before importing it to another project :(</li>
+   </ul></div>
+<br><br>
+<br>
+
+<h3>5. Adding Sub-titles</h3>
+    to add sub-titles you need to make a Title clip, with transparent back-ground.  Move the clip which the Title clip will coincide with down onto video track 2, drag the Title clip from the Project Tree on to Track 1 and resize it to the right duration.
+<br><br><br><br>
+
+<h3>6. EFFECTS </h3>
+    there is a huge amount of effects available.<br>
+    if adjusting brightness (RMB on clip in the timeline >Add Effect >Colour Correction) <br>
+    stretch the Effects Stack so you can adjust the value manually
+<br>
+ <div class="bullet"><ul>
+ <li>increase brightness: you need to increase the contrast also (RMB on clip in the timeline >Add Effect >Colour) and perhaps saturation a very little</li>
+  <li>increase brightness from 500 to 700 and contrast from 250 to 350 for example and adjust further until the right colour is obtained</li>
+  <li>if reducing brightness there's no need to adjust contrast</li>
+  </ul></div>
+ 
+<br><br>
+To apply an effect to multiple clips, <br>
+<div class="bullet"><ul>
+<li>add an effect to a clip, then right-click and select copy</li>
+<li>select other clips with Ctrl, or Ctrl-A to select all, </li>
+<li>right-click again and select Paste effects</li>
+</ul></div>
+
+<br><br><br>
+
+<h3>7. Rendering / Encoding</h3>
+
+when ready, click on the Render icon on tool bar or press<span style="background-color:#95C0EB">  <b>R</b> </span> !  
+<br><br>
+You can also render a selection of the project by using the in/out zone markers -set these by pressing<span style="background-color:#95C0EB">  <b>I</b> </span> for the in marker and<span style="background-color:#95C0EB">  <b>O</b> </span>for the out, then in render dialogue check "selected zone".
+<br><br>
+Another way is to set guides and that way you can chop up the finished movie into segments and render each segment at a time.<br>
+set a guide at the end of a clip: press "end" key, use shortcut<span style="background-color:#95C0EB">  <b>G</b> </span> for Add marker/guide quickly. 
+<br>
+<ul><li>Note that the guide will stick to its time placement, so if you close up gaps or make edits before it on the timeline, the guide will need moving again (it will drag and snap to a clip end). </li>
+
+  <li>If you are making a few films on the same timeline, it would be better to separate last and first clips with some blank space and set the marker in the space, probably closer to the first clip of the next film.</li></ul>
+<br>
+In the render dialogue select the area on the project to be encoded  Full.. Selected Zone.. Guide Zone.
+then render or generate a script to render it later.
+<br><br>
+You can also create your project, set the render options and make a script for it so that it can be started later - this will give you maximum system resources with which to play and seek the clips of another project.  
+<br><br>
+When ready to make the next project from other files, click on New.  Trying to remove the clips from the time-line is a bit of a pain, and unnecessary.  
+You can however, clear the timeline if you need to, with just Ctrl-A and press<span style="background-color:#95C0EB">  <b>D</b> </span> (with Timeline active)
+<br><br>
+<br><br>
+
+<h2 id="3" class="tag">Rendering projects to different movie formats</h2>
+
+I often render a "raw-ish" copy of my film to mpeg2 @ 12000 K bitrate, which is an easier format to deal with later.
+<br><br>
+Then to h264 @ 2000 K, resized to 1024p, for viewing on mobile devices, which gives OK video quality. Without rescaling, video from 1080 profile will easily merit HD display on a video share website.
+<br><br>
+I'll make a lower quality mp4 render for some cases where laptop performance is low or where a DVD player can handle mp4 movies from flash stick.
+<br><br>
+For making DVD's, I'll render the same project to DV/DVD (must change project profile to 25 fps) which renders @ 8000 K bitrate and the result is 720p.  This can be added to a DVD project in bombono with ease.
+<br><br>
+EXPERIMENTAL: TO FORCE WIDESCREEN PLAY OF 16:9 VIDEO ON A 4:3 DISPLAY, SELECT DVD 4:3 WITH THE 16:9 SOURCE.  YOU GET A 16:9 PICTURE ON A 4:3 SCREEN -BUT NO GOOD FOR A WIDESCREEN TV.
+<br><br>
+Add your best encoding profiles to favorites.
+<br><br>
+Rendering takes time!  The faster your processor the better.  I would leave the render queue going all night on my Intel dual core.
+<br><br>
+If you are confident with your rendered film then you can dispose of the MTS files, unless you want to keep them for a while.
+<br><br><br>
+
+<h3>Notes</h3>
+<br>
+<div class="bullet"><ul>
+<li>It's wise to keep a task manager open to kill either kdenlive or another process eating the RAM.</li>
+<li>Kdenlive can sometimes work up some big mem usage, and that means closing it and restarting once memory is freed up -but that dpends on how much memory you have installed!  (It was tricky having only 4gb all shared out).</li>
+<li>[old problem: h264 render "crashes" at the end - the rendered file is usually OK, so check it]</li>
+<li>[old problem: h264 clips with proxy clips turned on can strangely become double length, with white blank part on the end. Just turn off proxy for that clip and turn on again and the clip is restored to correct length.]</li>
+<li>if app crashes/freezes during render, the render will still complete (at least the one already sent to MLT), so wait for it to finish.</li>
+<li>send projects to script so that you can start the render again if there's a crash.</li>
+<li>watch the project profile -make sure it fits your target film size -don't put 1024x576 clips through HD 1080 profile as they will get larger - stretched to 1920x1080.</li>
+<li>To resize video, check "Rescale" in the render dialogue and set the values to what you need.</li>
+<li>if you use a guide to split a project up into parts on the timeline, put the guide in blank space, so that next clip won't get last frame of previous clip!</li>
+<li>be careful with interlaced files, render to progressive might get choppy</li>
+<li>add to tool bar: proxy clip (toggle), effect stack (toggle), insert guide, title clip, slideshow clip, fade from black, fade to black, gain, fade in/out audio</li>
+<li>add to extra tool bar: go to clip start/end, go to project start/end, forward 1 second/1 frame, rewind 1 second/1 frame, </li>
+<li>If you have problems (e.g. crash loading any clip, crash rendering, can't render) start kdenlive in terminal, use it and note any error messages after it crashes, then check the forums 
+also you can test your ffmpeg is installed properly with a command ffmpeg <video-file> and your melt install with melt <video-file></li>
+</ul></div>
+<br><br>
+<br><br>
+
+<h2>Avidemux</h2>
+If cutting up mp4/m4v/h264 you are limited to making cuts only on KEYFRAMES! If you cut on any frame between it will cause smearing of where the frames get joined in the resulting movie - ie, blocky or jittery picture tor a split second.
+ <br> <br>
+    It's much easier to cut up an mpeg2 film, while using Same for video and audio, but +40 ms to correct the audio lag.  Still best to use key frames for cuts as mpeg2 is also compressed.
+    <br><br>
+More on Avidemux on the next page, Dvd-authoring.
+    <br><br><br>
+
+<h2>Bombono</h2>
+
+add the vob files made with the Kdenlive DVD render to bombono and create ("render only") the DVD ISO (which you can move to a folder).<br>
+    I used to use DVD Styler, but it remuxes the films (whether 720p mpeg2 or vob files) and that takes a long time.
+ <br><br>
+Then burn the DVD iso file, from command line with:<br>
+
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+growisofs -dvd-compat -Z /dev/dvd=dvd-file.iso</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+  (use /dev/dvd1 or /dev/dvd2 for an external DVD writer)
+<br><br><br>
+
+<h2>Handbrake</h2> 
+convert 1920p mpeg2 with h.264 codec 2pass @ 2500 kbps for Youtube. <br>
+    Convert to mp4 with mpeg4 codec @ constant quality=8 and resize to 820p for showing on TV with a thumb-drive.
+    <br><br>
+    Also just "decomb" the video (Picture settings >Filter), don't force deinterlace, as not all frames are interlaced, so combing gets those that are and the result is a nice picture.
+
+
+
+<br><br><br><br>
+
+</div>

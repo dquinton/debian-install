@@ -648,8 +648,13 @@ the menu name can be any menu you have in /etc/xdg/menus (e.g. lxde-applications
 By default, the root menu shows only with a right click on the desktop (set in the OB xml file with a mousebind click right). But if you can't see the desktop, how can you get to that menu? You need to have another mousebind, set with the Super key, so that you can call it up any time. 
 <br><br>
 Also, you can set a keybind with the Super and Up keys, in case you can't use the mouse.
-<br><br>
-The following lines are to set keybinds to launch the OB menus (where "root-menu" is the main OB menu, "menu-primary" is my menu with all my main apps, and "menu-utility" is my menu with utility/system tools)
+<br><br><br>
+The following lines are to set keybinds to launch the OB menus, where<br> 
+<b>root-menu</b> = main OB menu <br>
+<b>menu-primary</b> = my menu with all my main apps<br>
+<b>menu-apps</b> = the LXDE apps menu on its own<br>
+<b>menu-utility</b> = my utility/system tools menu<br>
+<b>client-list-combined-menu</b> shows activity on each desktop, i.e. a task bar
 <br><br>
 <form><textarea name="T" id="file" rows="18" cols="50">
 <!-- 
@@ -706,7 +711,7 @@ The next lines go in the "mouse" section, to set the mouse clicks to launch the 
 -->
       <mousebind button="W-Down" action="Click">
         <action name="ShowMenu">
-          <menu>root-menu</menu>
+          <menu>menu-apps</menu>
         </action>
       </mousebind>
       <mousebind button="W-Up" action="Click">
@@ -768,7 +773,7 @@ Show OB menu with mouse scroll
 -->
       <mousebind button="W-Down" action="Click">
         <action name="ShowMenu">
-          <menu>root-menu</menu>
+          <menu>menu-apps</menu>
         </action>
       </mousebind>
       <mousebind button="W-Up" action="Click">
@@ -809,41 +814,64 @@ Here's how to make a menu - and you can have as many as you like...
   <li>Go to keybindings and/or mouse section in lxde-rc.xml and make an action for the new menu to show (see above keybinds/mousebinds)</li>
   <li>Save the file, then hit reconfigure OB again
   </ul></div>
-  <img src="{{site.baseurl}}/zimages/obmenu-utility.png" width="160" height="341" alt="my OB menu" align="right">
-  
-  <br><br>
-<h3>1. utility apps menu</h3>
-I used to have a panel at desktop right covered with utility apps, but it obstructed the page scroll bar all the time so I scrapped it and made a new ob menu that shows with Ctrl-Super-mouse scroll up.  
-<br><br>
-You can use my menu.. first make a file
-<form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-nano ~/.config/openbox/menu-utility.xml</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-and copy the contents of my <a href="{{site.baseurl}}/files/menu-utility.html">menu-utility.xml</a> to it. Then Ctrl-X,y, Enter to save it.
-<br><br>
-add the menu ID to the OB rc.xml file, as well as the keybinds/mousebinds for the menu given above... then right-click on the desktop or far edge of screen and click on Reconfigure. 
 
 <br><br>
-Add icons to your heart's content (need to hit reconfigure again to see changes)
-<br><br><br><br>
 
-<h3>2. primary apps menu</h3>
+<h3>1. primary apps menu</h3>
 This menu kind of replaces a launcher panel, giving quick access to the most used apps.
 <img src="{{site.baseurl}}/zimages/obmenu-primary.png" width="202" height="303" alt="my OB menu" align="right">
 <br><br>
 make a file
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-nano ~/.config/openbox/menu-primary.xml</textarea>
+leafpad ~/.config/openbox/menu-primary.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-and copy the contents of my  to it. 
+and copy the contents of my <a href="{{site.baseurl}}/files/menu-primary.html">menu-primary.xml</a>  to it. 
 <br><br>
 Add/remove apps as needed. Note that you will need to check the app execute commands and find/copy the icons to /usr/share/icons/openbox/
 <br><br>
+
+add the menu ID to the OB rc.xml file, as well as the keybinds/mousebinds for the menu given above... then right-click on the desktop or far edge of screen and click on Reconfigure. 
+
+<br><br><br>
+<h3>2. LXDE apps menu</h3>
+I figured how to get the dynamic apps menu onto an OB menu - just make a file with
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+leafpad ~/.config/openbox/menu-apps.xml</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form><img src="{{site.baseurl}}/zimages/obmenu-apps.png" width="137" height="215" alt="my OB menu" align="right">
+and copy this content into it:
+
+<form><textarea name="T" id="file" rows="5" cols="85">
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu>
+<menu execute="openbox-menu lxde-applications.menu" id="menu-apps" label="Apps"/>
+</menu>
+</openbox_menu></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
 add the menu ID to the OB rc.xml file, as well as the keybinds/mousebinds, then reconfigure.
+
+<br><br><br>
+<h3>3. utility apps menu</h3>
+I used to have a panel at desktop right covered with utility apps, but it obstructed the page scroll bar all the time so I scrapped it and made a new ob menu that shows with Ctrl-Super-mouse scroll up.  
+<br><br>
+You can use my menu.. first make a file
+  <img src="{{site.baseurl}}/zimages/obmenu-utility.png" width="160" height="341" alt="my OB menu" align="right">
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+leafpad ~/.config/openbox/menu-utility.xml</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+and copy the contents of my <a href="{{site.baseurl}}/files/menu-utility.html">menu-utility.xml</a> to it. 
+<br><br>
+then add the menu ID to the OB rc.xml file, as well as the keybinds/mousebinds, then reconfigure.
+<br><br>
+Add icons to your heart's content (need to hit reconfigure again to see changes)
 
 <br><br><br><br>
 <h3>Tip: to make submenus sticky,</h3> 

@@ -1,0 +1,103 @@
+---
+layout: default
+description:  - by D Quinton
+title: 
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page
+             <ul>
+                <li><a href="#1">My keybinds</a></li>
+                <li><a href="#2">Prepare  </a></li>
+                <li><a href="#3">Get </a></li>
+                <li><a href="#4">The </a></li>
+                <li><a href="#5">Sources </a></li>
+                <li><a href="#6">Prevent </a></li>
+                <li><a href="#7">Install  </a></li>
+                <li><a href="#8">Install </a></li>
+                <li><a href="#9">Sudoers </a></li>
+                <li><a href="#10">Enable  </a></li>
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">My keybinds</a><br>
+   <a href="#2">Prepare  </a><br>
+   <a href="#3">Get </a><br>
+   <a href="#4">The </a><br>
+   <a href="#5">Sources </a><br>
+   <a href="#6">Prevent </a><br>
+   <a href="#7">Install </a><br>
+   <a href="#8">Install </a><br>
+   <a href="#9">Sudoers </a><br>
+   <a href="#10">Enable  </a><br>
+</td></tr></table></div>
+
+
+<div class="cont">
+
+viking
+
+
+
+qgis
+
+http://docs.qgis.org/2.0/en/docs/index.html
+
+to import geo data from e.g. Viking, first export the layers from Viking as GPX files
+
+in qgis, either open the gps import tool, Vector > GPS > GPS Tools
+
+or click on Vector layer button at left, select file, Open, select which attributes to import, OK
+
+
+with the second way, you can import track waypoints, which will make it possible to alter the track.
+however, it imports without any useful name, so you need to rename the layer
+you also may need to set the track colour in the layer properties in order for it to become visible
+
+to update the layer after changes were made to it by an external progam, e.g. viking export, click on the Refresh button!
+
+wp labels - double click on the layer, Labels > check "Label this layer.." then select "name" on drop-down list, OK
+
+Annotation -labels  
+install the plugin "Easy custom labeling" from Plugins > Manage and Install
+also "Memory Layer Saver" plugin to save labels
+
+-select a layer
+-click on the "Easy" button to genrate a layer for labels - then choose what label field to use -select name
+-all waypoint labels get redrawn! (then you don't need to draw them with layer properties)
+-click click the move button, click on and drag a label
+
+
+grid View menu > Decorations > set "Interval X" and "Y" to 0.05, check annotations
+View menu > Decorations > scale
+
+Legend-
+
+
+calc area - Polygonize algorithm requires shapely module
+
+sudo apt-get install python-shapely
+
+open the Toolbox
+Vector geometry tools > polygonize
+
+
+print > New Print Composer, name it, OK.. 
+-set the paper size first, A3 if you need it
+-click on "Add new map" buttin then drag a rectangle over the tile.
+-click "Move item content" button, and drag map to center, zoom once with scroll button
+-Item properties tab to right > Main properties ..set best scale in 
+-Item properties > Grid ..Click the Add + button, set X,Y intervals to 0.05 or whatever, check "Draw coordinates" 
+
+scale bar - find the button on left toolbar
+- you need to play around with the "map units per bar unit" - I set it to 0.01, the units to meters and label "km"
+make a title with "Add new label" (text box)
+
+
+</div>

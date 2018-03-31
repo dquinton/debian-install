@@ -1,0 +1,95 @@
+---
+layout: default
+description: Openbox primary apps menu file - by D Quinton
+keywords: debian, lxde, openbox
+title: menu-primary.xml
+---
+
+<div class="cont">
+
+<form><textarea name="T" id="file" rows="50" cols="150">
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu>
+	<menu id="menu-primary" label="Primary">
+		<separator/>
+		<item label=" Leafpad                            ." icon="/usr/share/icons/openbox/leafpad.png">
+			<action name="Execute">
+				<execute>leafpad</execute>
+			</action>
+		</item>
+		<item label=" Writer" icon="/usr/share/icons/openbox/writer.png">
+			<action name="Execute">
+				<execute>libreoffice5.3 --writer</execute>
+			</action>
+		</item>
+		<item label=" Calc" icon="/usr/share/icons/openbox/calc.png">
+			<action name="Execute">
+				<execute>libreoffice5.3 --calc</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label=" Xnview" icon="/usr/share/icons/openbox/xnview.png">
+			<action name="Execute">
+				<execute>xnview</execute>
+			</action>
+		</item>
+		<item label=" Darktable" icon="/usr/share/icons/openbox/darktable.png">
+			<action name="Execute">
+				<execute>darktable</execute>
+			</action>
+		</item>
+		<item label=" Gimp" icon="/usr/share/icons/openbox/gimp.png">
+			<action name="Execute">
+				<execute>gimp</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label=" Cinelerra" icon="/usr/share/icons/openbox/cin.svg">
+			<action name="Execute">
+				<execute>cin</execute>
+			</action>
+		</item>
+		<item label=" Avidemux" icon="/usr/share/icons/openbox/avidemux.png">
+			<action name="Execute">
+				<execute>/opt/Avidemux/avidemuxU</execute>
+			</action>
+		</item>
+		<item label=" Handbrake" icon="/usr/share/icons/openbox/hb-icon.svg">
+			<action name="Execute">
+				<execute>handbrake</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label=" Viking" icon="/usr/share/icons/openbox/viking.png">
+			<action name="Execute">
+				<execute>viking</execute>
+			</action>
+		</item>
+		<item label=" Qgis" icon="/usr/share/icons/openbox/qgis.png">
+			<action name="Execute">
+				<execute>qgis</execute>
+			</action>
+		</item>
+		<item label=" Thunar" icon="/usr/share/icons/openbox/Thunar.png">
+			<action name="Execute">
+				<execute>thunar</execute>
+			</action>
+		</item>
+		<item label=" Vivaldi" icon="/usr/share/icons/openbox/vivaldi.png">
+			<action name="Execute">
+				<execute>vivaldi</execute>
+			</action>
+		</item>
+		<item label=" Bluefish  " icon="/usr/share/icons/openbox/bluefish.png">
+			<action name="Execute">
+				<execute>bluefish</execute>
+			</action>
+		</item>
+		<separator/>
+	</menu>
+</openbox_menu>
+</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+</div>

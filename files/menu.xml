@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+	<menu id="root-menu" label="Openbox 3">
+		<item label="Web Browser">
+			<action name="Execute">
+				<execute>chromium</execute>
+			</action>
+		</item>
+		<item label="Ranger">
+			<action name="Execute">
+				<execute>rxvt -e ranger</execute>
+			</action>
+		</item>
+		<item label="Htop">
+			<action name="Execute">
+				<execute>rxvt -e htop</execute>
+			</action>
+		</item>
+		<item label="Cloud sync">
+			<action name="Execute">
+				<execute>copy</execute>
+			</action>
+		</item>
+		<item label="Encryption">
+			<action name="Execute">
+				<execute>gpa</execute>
+			</action>
+		</item>
+		<item label="Calculator">
+			<action name="Execute">
+				<execute>xcalc</execute>
+			</action>
+		</item>
+		<item label="Notes">
+			<action name="Execute">
+				<execute>xfce4-notes</execute>
+			</action>
+		</item>
+		<separator/>
+		<item label="Run">
+			<action name="Execute">
+				<execute>lxpanelctl run</execute>
+			</action>
+		</item>
+		<!-- This requires the presence of the 'menu' package to work -->
+		<item label="XTerminal">
+			<action name="Execute">
+				<execute>xterm</execute>
+			</action>
+		</item>
+		<separator/>
+		<menu id="client-list-menu"/>
+		<separator/>
+		<menu id="root-menu-77123" label="Files                              &gt;">
+			<item label="Copy Xfce notes">
+				<action name="Execute">
+					<execute>sh -c &quot;rsync -ru $HOME/.local/share/notes $(yad --title='Copy Xfce notes' --file --directory --height=400 --width=500)&quot;</execute>
+				</action>
+			</item>
+			<item label="Config files">
+				<action name="Execute">
+					<execute>sh ~/scripts/yad-configfiles</execute>
+				</action>
+			</item>
+			<item label="open odt">
+				<action name="Execute">
+					<execute>sh -c &quot;libreoffice4.4 $(yad --title='Select file' --file --filename=$HOME/ --height=400 --width=500)&quot;</execute>
+				</action>
+			</item>
+			<item label="view pdf                  .">
+				<action name="Execute">
+					<execute>sh -c &quot;xpdf $(yad --file --title='Select pdf file' --filename=$HOME/Documents/ --height=400 --width=500)&quot;</execute>
+				</action>
+			</item>
+			<item label="Send a file to Trash">
+				<action name="Execute">
+					<execute>sh -c &quot;mv $(yad --title='Warning! Sending file to the trash!' --file --filename=$HOME/ --height=400 --width=500) $HOME/.local/share/Trash/files/&quot;</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-911357" label="Apps                             &gt;">
+			<item label="Leafpad">
+				<action name="Execute">
+					<execute>leafpad</execute>
+				</action>
+			</item>
+			<item label="LO                          .">
+				<action name="Execute">
+					<execute>libreoffice4.4</execute>
+				</action>
+			</item>
+			<item label="Writer">
+				<action name="Execute">
+					<execute>libreoffice4.4 --writer</execute>
+				</action>
+			</item>
+			<item label="Calc">
+				<action name="Execute">
+					<execute>libreoffice4.4 --calc</execute>
+				</action>
+			</item>
+			<item label="Xiphos">
+				<action name="Execute">
+					<execute>xiphos</execute>
+				</action>
+			</item>
+			<item label="Audacious">
+				<action name="Execute">
+					<execute>audacious</execute>
+				</action>
+			</item>
+			<item label="Gnome mplayer">
+				<action name="Execute">
+					<execute>gnome-mplayer</execute>
+				</action>
+			</item>
+			<item label="VLC">
+				<action name="Execute">
+					<execute>vlc</execute>
+				</action>
+			</item>
+			<item label="Skype">
+				<action name="Execute">
+					<execute>skype</execute>
+				</action>
+			</item>
+			<item label="Pidgin">
+				<action name="Execute">
+					<execute>pidgin</execute>
+				</action>
+			</item>
+			<item label="Marble">
+				<action name="Execute">
+					<execute>marble</execute>
+				</action>
+			</item>
+			<item label="GE">
+				<action name="Execute">
+					<execute>googleearth</execute>
+				</action>
+			</item>
+			<item label="Stellarium">
+				<action name="Execute">
+					<execute>Stellarium</execute>
+				</action>
+			</item>
+			<item label="Celestia">
+				<action name="Execute">
+					<execute>celestia</execute>
+				</action>
+			</item>
+			<item label="Viking">
+				<action name="Execute">
+					<execute>viking</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-992641" label="Editor                            &gt;">
+			<item label="XnViewMP              .">
+				<action name="Execute">
+					<execute>xnview</execute>
+				</action>
+			</item>
+			<item label="Gimp">
+				<action name="Execute">
+					<execute>gimp</execute>
+				</action>
+			</item>
+			<item label="Pinta">
+				<action name="Execute">
+					<execute>pinta</execute>
+				</action>
+			</item>
+			<item label="Kdenlive">
+				<action name="Execute">
+					<execute>~/kdenlive/start-kdenlive</execute>
+				</action>
+			</item>
+			<item label="Avidemux">
+				<action name="Execute">
+					<execute>avidemux</execute>
+				</action>
+			</item>
+			<item label="Handbrake">
+				<action name="Execute">
+					<execute>handbrake</execute>
+				</action>
+			</item>
+			<item label="Bombono">
+				<action name="Execute">
+					<execute>bombono-dvd</execute>
+				</action>
+			</item>
+			<item label="K3b">
+				<action name="Execute">
+					<execute>k3b</execute>
+				</action>
+			</item>
+			<item label="Dvd:rip">
+				<action name="Execute">
+					<execute>dvdrip</execute>
+				</action>
+			</item>
+			<item label="Audacity">
+				<action name="Execute">
+					<execute>audacity</execute>
+				</action>
+			</item>
+			<item label="Ardour">
+				<action name="Execute">
+					<execute>ardour2</execute>
+				</action>
+			</item>
+			<item label="EasyTag">
+				<action name="Execute">
+					<execute>easytag</execute>
+				</action>
+			</item>
+			<item label="PyRenamer">
+				<action name="Execute">
+					<execute>/usr/bin/pyrenamer</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<menu id="root-menu-605948" label="Utility                            &gt;">
+			<item label="Uget">
+				<action name="Execute">
+					<execute>uget-gtk</execute>
+				</action>
+			</item>
+			<item label="Torrent">
+				<action name="Execute">
+					<execute>transmission-gtk</execute>
+				</action>
+			</item>
+			<item label="ClamTK                  .">
+				<action name="Execute">
+					<execute>clamtk</execute>
+				</action>
+			</item>
+			<item label="Firestarter">
+				<action name="Execute">
+					<execute>su-to-root -X -c /usr/sbin/firestarter</execute>
+				</action>
+			</item>
+			<item label="Etherape">
+				<action name="Execute">
+					<execute>gksu etherape</execute>
+				</action>
+			</item>
+			<item label="GD Map">
+				<action name="Execute">
+					<execute>gdmap</execute>
+				</action>
+			</item>
+			<item label="Bleachbit">
+				<action name="Execute">
+					<execute>bleachbit</execute>
+				</action>
+			</item>
+			<item label="Lucky Backup">
+				<action name="Execute">
+					<execute>luckybackup</execute>
+				</action>
+			</item>
+			<item label="Catfish">
+				<action name="Execute">
+					<execute>catfish</execute>
+				</action>
+			</item>
+			<item label="Meld">
+				<action name="Execute">
+					<execute>meld</execute>
+				</action>
+			</item>
+			<item label="Regexxer">
+				<action name="Execute">
+					<execute>regexxer</execute>
+				</action>
+			</item>
+			<item label="Ksnapshot">
+				<action name="Execute">
+					<execute>ksnapshot</execute>
+				</action>
+			</item>
+			<item label="Character map">
+				<action name="Execute">
+					<execute>kcharselect</execute>
+				</action>
+			</item>
+			<item label="Qshutdown">
+				<action name="Execute">
+					<execute>qshutdown</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-405158" label="Settings                        &gt;">
+			<item label="Customise Appearance">
+				<action name="Execute">
+					<execute>lxappearance</execute>
+				</action>
+			</item>
+			<item label="Window Management ">
+				<action name="Execute">
+					<execute>obconf</execute>
+				</action>
+			</item>
+			<item label="Gnome-color-chooser">
+				<action name="Execute">
+					<execute>gnome-color-chooser</execute>
+				</action>
+			</item>
+			<item label="KDE settings">
+				<action name="Execute">
+					<execute>systemsettings</execute>
+				</action>
+			</item>
+			<item label="Power Manager">
+				<action name="Execute">
+					<execute>xfce4-power-manager-settings</execute>
+				</action>
+			</item>
+			<item label="Network Connections">
+				<action name="Execute">
+					<execute>nm-connection-editor</execute>
+				</action>
+			</item>
+			<item label="Network as root">
+				<action name="Execute">
+					<execute>gksu nm-connection-editor</execute>
+				</action>
+			</item>
+			<item label="Alsa Mixer">
+				<action name="Execute">
+					<execute>alsamixer</execute>
+				</action>
+			</item>
+			<item label="OpenBox keybindings">
+				<action name="Execute">
+					<execute>python ~/.obkey-master/obkey</execute>
+				</action>
+			</item>
+			<item label="OpenBox menu">
+				<action name="Execute">
+					<execute>obmenu</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-84416" label="System files                  &gt;">
+			<item label="/etc/refractasnapshot.conf">
+				<action name="Execute">
+					<execute>gksu leafpad /etc/refractasnapshot.conf</execute>
+				</action>
+			</item>
+			<item label="refractasnapshot excludes">
+				<action name="Execute">
+					<execute>gksu leafpad /usr/lib/refractasnapshot/snapshot_exclude.list</execute>
+				</action>
+			</item>
+			<item label="refractasnapshot_errors.log">
+				<action name="Execute">
+					<execute>leafpad /var/log/refractasnapshot_errors.log</execute>
+				</action>
+			</item>
+		</menu>
+		<menu id="root-menu-204847" label="System                         &gt;">
+			<item label="Gparted">
+				<action name="Execute">
+					<execute>gksu gparted</execute>
+				</action>
+			</item>
+			<item label="Unet Bootin">
+				<action name="Execute">
+					<execute>unetbootin</execute>
+				</action>
+			</item>
+			<item label="Multisystem">
+				<action name="Execute">
+					<execute>multisystem</execute>
+				</action>
+			</item>
+			<item label="Grub Customizer">
+				<action name="Execute">
+					<execute>gksu grub-customizer</execute>
+				</action>
+			</item>
+		</menu>
+		<separator/>
+		<item label="Exit!">
+			<action name="Exit"/>
+		</item>
+		<item label="Sleep">
+			<action name="Execute">
+				<execute>sudo pm-suspend</execute>
+			</action>
+		</item>
+		<item label="Power Off">
+			<action name="Execute">
+				<execute>sh ~/scripts/poweroff</execute>
+			</action>
+		</item>
+		<item label="Reset panels">
+			<action name="Execute">
+				<execute>sh -c 'killall lxpanel &amp;&amp; lxpanel -p OB &amp;'</execute>
+			</action>
+		</item>
+		<item label="Reconfigure">
+			<action name="Reconfigure"/>
+		</item>
+	</menu>
+</openbox_menu>
