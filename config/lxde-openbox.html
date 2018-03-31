@@ -22,7 +22,7 @@ id: config
                 <li><a href="#10">LXDE menu</a></li>
                 <li><a href="#10a">Super key main menu</a></li>
                 <li><a href="#11">Openbox menu</a></li>
-                <li><a href="#11b">2nd OB menu</a></li>
+                <li><a href="#11b">Making OB menus</a></li>
                 <li><a href="#11c">Docky</a></li>
                 <li><a href="#12">Key bindings </a></li>
                 <li><a href="#13">GTK Accel's </a></li>
@@ -47,7 +47,7 @@ id: config
    <a href="#10">LXDE menu</a><br>
    <a href="#10a">Super key main menu</a><br>
    <a href="#11">Openbox menu</a><br>
-   <a href="#11b">2nd OB menu</a><br>
+   <a href="#11b">Making OB menus</a><br>
    <a href="#11c">Docky</a><br>
    <a href="#12">Key bindings </a><br>
    <a href="#13">GTK Accel's </a><br>
@@ -631,10 +631,10 @@ and then every menu entry in your menu.xml file needs an icon location added (so
 <br>
 copy icons from wherever you can find them in /usr/share/icons/hicolor/48x48/apps/ etc. into somewhere convenient, such as openbox/icons/<br>
 this page might help <a href="http://lxlinux.com/openbox.html">http://lxlinux.com/openbox.html</a>
-<br><br><br><img src="{{site.baseurl}}/zimages/obmenu-utility.jpeg" width="150" height="379" alt="my OB menu" align="right">
+<br><br><br>
 <br><br>
 
-To add an app menu, you need to install openbox-menu, and include a line like this in your menu.xml file:
+To add an Dynamic LXDE menu, you need to install openbox-menu, and include a line like this in your menu.xml file:
 <form>
 <textarea name="T" id="file" rows="2" cols="80">
 <menu execute="openbox-menu lxde-applications.menu" id="desktop-app-menu" label="All Apps"/></textarea>
@@ -642,23 +642,163 @@ To add an app menu, you need to install openbox-menu, and include a line like th
 </form>
 <br>
 the menu name can be any menu you have in /etc/xdg/menus (e.g. lxde-applications.menu, xfce-applications.menu)
-<br><br>
-<br><br>
-<h2 id="11b" class="tag">Make a second menu for utility apps</h2>
-I used to have a panel at desktop right covered with utility apps, but it obstructed the page scroll bar all the time so I scrapped it and made a new ob menu that shows with Super-mouse scroll up.  
-<br><br>
-You can use my menu..
-<form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-nano ~/.config/openbox/menu-utility.xml</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-and copy the contents of my <a href="{{site.baseurl}}/files/menu-utility.html">menu-utility.xml</a> to it. Then Ctrl-X,y, Enter to save it.
-<br><br>
-right-click on the desktop or far edge of screen and click on Reconfigure. 
 
 <br><br><br>
-Here's how to make a menu - and you could have as many as you liked...
+<h3>Menu keybinds</h3>
+By default, the root menu shows only with a right click on the desktop (set in the OB xml file with a mousebind click right). But if you can't see the desktop, how can you get to that menu? You need to have another mousebind, set with the Super key, so that you can call it up any time. 
+<br><br>
+Also, you can set a keybind with the Super and Up keys, in case you can't use the mouse.
+<br><br>
+The following lines are to set keybinds to launch the OB menus (where "root-menu" is the main OB menu, "menu-primary" is my menu with all my main apps, and "menu-utility" is my menu with utility/system tools)
+<br><br>
+<form><textarea name="T" id="file" rows="18" cols="50">
+<!-- 
+Show OB menu with keys
+-->
+    <keybind key="W-Down">
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
+      </action>
+    </keybind>
+    <keybind key="W-Up">
+      <action name="ShowMenu">
+        <menu>menu-primary</menu>
+      </action>
+    </keybind>
+    <keybind key="C-W-Up">
+      <action name="ShowMenu">
+        <menu>menu-utility</menu>
+      </action>
+    </keybind></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+
+The next lines go in the "mouse" section, to set the mouse clicks to launch the menus when the desktop is hidden..
+<br><br>
+<form><textarea name="T" id="file" rows="45" cols="50">
+<!--
+    Show OB menu with mouse click on open windows - put in frame context 
+-->
+      <mousebind button="W-Right" action="Click">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="W-Left" action="Click">
+        <action name="ShowMenu">
+          <menu>menu-primary</menu>
+        </action>
+      </mousebind>
+      <mousebind button="C-W-Right" action="Click">
+        <action name="ShowMenu">
+          <menu>menu-utility</menu>
+        </action>
+      </mousebind>      
+      <mousebind button="W-Middle" action="Press">
+        <action name="ShowMenu">
+          <menu>client-list-combined-menu</menu>
+        </action>
+      </mousebind>
+<!--
+     Show OB menu with mouse scroll on open windows - put in frame context 
+-->
+      <mousebind button="W-Down" action="Click">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="W-Up" action="Click">
+        <action name="ShowMenu">
+          <menu>menu-primary</menu>
+        </action>
+      </mousebind>
+      <mousebind button="C-W-Up" action="Click">
+        <action name="ShowMenu">
+          <menu>menu-utility</menu>
+        </action>
+      </mousebind></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+The next lines go in the "context root" section, to set the mouse clicks to launch the menus when the desktop is not covered over with windows..
+<br><br>
+<form><textarea name="T" id="file" rows="56" cols="50">
+<!--
+Show OB menu with mouse click -desktop root!!
+-->
+    <context name="Root">
+
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="W-Right" action="Press">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+
+      <mousebind button="W-Left" action="Press">
+        <action name="ShowMenu">
+          <menu>menu-primary</menu>
+        </action>
+      </mousebind>
+      <mousebind button="C-W-Right" action="Click">
+        <action name="ShowMenu">
+          <menu>menu-utility</menu>
+        </action>
+      </mousebind>
+      <mousebind button="Middle" action="Press">
+        <action name="ShowMenu">
+          <menu>client-list-combined-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="W-Middle" action="Press">
+        <action name="ShowMenu">
+          <menu>client-list-combined-menu</menu>
+        </action>
+      </mousebind>
+<!--
+Show OB menu with mouse scroll
+-->
+      <mousebind button="W-Down" action="Click">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="W-Up" action="Click">
+        <action name="ShowMenu">
+          <menu>menu-primary</menu>
+        </action>
+      </mousebind>
+      <mousebind button="C-W-Up" action="Click">
+        <action name="ShowMenu">
+          <menu>menu-utility</menu>
+        </action>
+      </mousebind>
+    </context></textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+Save the file, then reconfigure OB - run 'openbox --reconfigure' or right-click on the desktop and click reconfigure
+<br><br>
+<br>
+<span class="caut">(note: always duplicate your lxde-rc.xml file while it's working, so that you can rename the duplicate back to lxde-rc.xml when your file gets a syntax error and you can't find what's gone wrong, or can't undo your changes! - but normally you might leave out a closing /keybind or /mousebind that makes OB choke).</span>
+<br>
+
+<br><br>
+<br><br>
+<h2 id="11b" class="tag">Making menus</h2>
+<br>
+
+Here's how to make a menu - and you can have as many as you like...
 <div class Here's how it's done...="bullet">
   <ul><li>Make a new menu with OBmenu</li>
   <li>Highlight the top line and change the ID in "Id" field below to your liking (the id will be called by the lxde-rc file)</li>
@@ -666,46 +806,50 @@ Here's how to make a menu - and you could have as many as you liked...
   <li>I just copied the utility and system apps from my menu.xml file into the new menu file</li>
   <li>Open ~/.config/openbox/lxde-rc.xml</li>
   <li>In the <b>menu section near the end</b> before applications section, add your new menu file's location, e.g. <span style="color:#076b00">&#60;file>~/.config/openbox/menu-utility.xml&#60;/file></span></li>
-  <li>Go to either keybindings or mouse section in lxde-rc.xml and make an action for the new menu,</li></ul></div>
-
-<form>
-<textarea name="T" id="file" rows="10" cols="50">
-  <keybind key="W-Up">
-    <action name="ShowMenu">
-	   <menu>menu-utility</menu>
-	 </action>
-  </keybind>
-  <mousebind button="C-W-Right" action="Click">
-    <action name="ShowMenu">
-	   <menu>menu-utility</menu>
-	 </action>
-  </mousebind></textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-where &#60;menu>menu-utility&#60;/menu> is the menu ID
+  <li>Go to keybindings and/or mouse section in lxde-rc.xml and make an action for the new menu to show (see above keybinds/mousebinds)</li>
+  <li>Save the file, then hit reconfigure OB again
+  </ul></div>
+  <img src="{{site.baseurl}}/zimages/obmenu-utility.png" width="160" height="341" alt="my OB menu" align="right">
+  
+  <br><br>
+<h3>1. utility apps menu</h3>
+I used to have a panel at desktop right covered with utility apps, but it obstructed the page scroll bar all the time so I scrapped it and made a new ob menu that shows with Ctrl-Super-mouse scroll up.  
 <br><br>
-and to get the utility menu up when only the Desktop is seen, add this to the section called &#60;context name="Root">
+You can use my menu.. first make a file
 <form>
-<textarea name="T" id="file" rows="5" cols="50">
-  <mousebind button="C-W-Right" action="Press">
-    <action name="ShowMenu">
-       <menu>menu-utility</menu>
-    </action>
-  </mousebind></textarea>
+<textarea name="T" id="cmd" rows="1" cols="50">
+nano ~/.config/openbox/menu-utility.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+and copy the contents of my <a href="{{site.baseurl}}/files/menu-utility.html">menu-utility.xml</a> to it. Then Ctrl-X,y, Enter to save it.
+<br><br>
+add the menu ID to the OB rc.xml file, as well as the keybinds/mousebinds for the menu given above... then right-click on the desktop or far edge of screen and click on Reconfigure. 
+
+<br><br>
+Add icons to your heart's content (need to hit reconfigure again to see changes)
+<br><br><br><br>
+
+<h3>2. primary apps menu</h3>
+This menu kind of replaces a launcher panel, giving quick access to the most used apps.
+<img src="{{site.baseurl}}/zimages/obmenu-primary.png" width="202" height="303" alt="my OB menu" align="right">
+<br><br>
+make a file
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+nano ~/.config/openbox/menu-primary.xml</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+and copy the contents of my  to it. 
+<br><br>
+Add/remove apps as needed. Note that you will need to check the app execute commands and find/copy the icons to /usr/share/icons/openbox/
+<br><br>
+add the menu ID to the OB rc.xml file, as well as the keybinds/mousebinds, then reconfigure.
+
+<br><br><br><br>
+<h3>Tip: to make submenus sticky,</h3> 
+make these values in rc.xml negative... and if the second value isn't in your file, add it, as old versions didn't have it..
 
 <br>
-Save the file, then reconfigure OB - run 'openbox --reconfigure' or right-click on the desktop and click reconfigure
-<br><br>
-Add icons to your heart's content. (If you can find them -and that's where xfce wins cos of its launcher icon finder).
-<br><br>
-<span class="caut">(note: always duplicate your lxde-rc.xml file while it's working, so that you can rename the duplicate back to lxde-rc.xml when your file gets a syntax error and you can't find what's gone wrong, or can't undo your changes! - but normally you might leave out a closing /keybind or /mousebind that makes OB choke).</span>
-<br><br><br>
-
-<b>Tip: to make submenus sticky,</b> make these values in rc.conf negative... and if the second value isn't in your file, add it, as old versions didn't have it..
-
 <form><textarea name="T" id="file" rows="9" cols="80">
     <submenuShowDelay>-100</submenuShowDelay>
     <!-- this one is easy, time to delay before showing a submenu after hovering
@@ -717,7 +861,8 @@ Add icons to your heart's content. (If you can find them -and that's where xfce 
        submenu will not be hidden until a different submenu is opened --></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br><br>
+<br><br><br><br>
+
 
 <h2 id="11c" class="tag">Docky</h2> 
 
@@ -789,14 +934,16 @@ W= Super key, C= CTRL, S= Shift, A= Alt
 
 <br><br>
 <form>
-<textarea name="T" id="file" rows="45" cols="80">
-msright (desktop) 	ob menu
-W- msright(desktop)	ob menu
-W- msright(window) 	ob menu
-C-W- msright(desktop)	utility menu
-C-W- msright(window) 	utility menu
-msmiddle (desktop) 	pager menu
-W- msmiddle (window) 	pager menu
+<textarea name="T" id="file" rows="47" cols="80">
+msright 		ob menu (desktop) 
+W- msright		ob menu (desktop/window)
+W- ms scroll down	ob menu (desktop/window)
+W- msleft		primary apps menu (desktop/window)
+W- ms scroll up		primary apps menu (desktop/window)
+C-W- msright		utility menu (desktop/window)
+C-W- ms scroll up	utility menu (desktop/window)
+msmiddle  		pager menu (desktop)
+W- msmiddle 		pager menu (desktop/window)
 A-Space			window menu
 
 Alt-left		move window
@@ -845,8 +992,10 @@ Be very careful to keep opening and closing "keybind" or "action" or else the wh
 <br><br>
 You can use key chains too - see <a href="http://openbox.org/wiki/Help:Bindings">the wiki page</a>.
 <br><br>
+(Not including the OB menu keybinds -see above)
+<br>
 <form>
-<textarea name="T" id="file" rows="320" cols="80">
+<textarea name="T" id="file" rows="290" cols="80">
  <!-- 
 
 Keybindings for desktop switching 
@@ -1049,31 +1198,6 @@ keybindings for LXPanel
       </action>
     </keybind>
 
-<!-- Show OB menu with keys -->
-
-    <keybind key="W-Down">
-      <action name="ShowMenu">
-        <menu>root-menu</menu>
-      </action>
-    </keybind>
-    <keybind key="W-Up">
-      <action name="ShowMenu">
-        <menu>menu-utility</menu>
-      </action>
-    </keybind>
-
-    <context name="Desktop">
-     <keybind key="W-Down">
-      <action name="ShowMenu">
-        <menu>root-menu</menu>
-      </action>
-    </keybind>
-    <keybind key="W-Up">
-      <action name="ShowMenu">
-        <menu>menu-utility</menu>
-      </action>
-    </keybind>
-    </context>    
     
 <!-- Launch ksnapshot when Print screen key (prt sc) is pressed -->
 
@@ -1178,9 +1302,10 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
 
 <h3>mouse section key bindings</h3>
 
-
+(Not including the OB menu mousebinds -see above)
+<br>
 <form>
-<textarea name="T" id="file" rows="172" cols="80">
+<textarea name="T" id="file" rows="96" cols="80">
       <mouse>
       
    <!-- 
@@ -1226,37 +1351,8 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
          <wrap>no</wrap>
         </action>
       </mousebind> 
-      
-<!-- Show OB menu with mouse click on open windows - put here in frame context -->
 
-      <mousebind button="W-Right" action="Click">
-        <action name="ShowMenu">
-          <menu>root-menu</menu>
-        </action>
-      </mousebind>
-      <mousebind button="C-W-Right" action="Click">
-        <action name="ShowMenu">
-          <menu>menu-utility</menu>
-        </action>
-      </mousebind>
-      <mousebind button="W-Middle" action="Press">
-        <action name="ShowMenu">
-          <menu>client-list-combined-menu</menu>
-        </action>
-      </mousebind>
       
-<!-- Show OB menu with mouse scroll on open windows - put here in frame context -->
-
-      <mousebind button="W-Down" action="Click">
-        <action name="ShowMenu">
-          <menu>root-menu</menu>
-        </action>
-      </mousebind>
-      <mousebind button="W-Up" action="Click">
-        <action name="ShowMenu">
-          <menu>menu-utility</menu>
-        </action>
-      </mousebind>
       
      <!-- Window max/unmax with mouse buttons -->
      
@@ -1279,7 +1375,7 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
       
    --> 
    
-     <!-- Mouse scroll button on desktop - here in desktop context -->
+     <!-- Mouse scroll button on desktop - goes in desktop context -->
      
     <context name="Desktop">
       <mousebind button="Up" action="Click">
@@ -1304,51 +1400,7 @@ leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
       </mousebind>
       
     </context>
-    <context name="Root">
-
-      <!-- Menus - here I homogenise with the key binds for frame context - put in desktop or root context -->
-
-      <mousebind button="Middle" action="Press">
-        <action name="ShowMenu">
-          <menu>client-list-combined-menu</menu>
-        </action>
-      </mousebind>
-      <mousebind button="W-Middle" action="Press">
-        <action name="ShowMenu">
-          <menu>client-list-combined-menu</menu>
-        </action>
-      </mousebind>
-      <mousebind button="Right" action="Press">
-        <action name="ShowMenu">
-          <menu>root-menu</menu>
-        </action>
-      </mousebind>
-      <mousebind button="W-Right" action="Press">
-        <action name="ShowMenu">
-          <menu>root-menu</menu>
-        </action>
-      </mousebind>      
-      <mousebind button="C-W-Right" action="Press">
-        <action name="ShowMenu">
-          <menu>menu-utility</menu>
-        </action>
-      </mousebind>
-
-<!-- Show OB menu with mouse scroll on desktop - must be in desktop or root context -->
-
-      <mousebind button="W-Down" action="Click">
-        <action name="ShowMenu">
-          <menu>root-menu</menu>
-        </action>
-      </mousebind>
-      <mousebind button="W-Up" action="Click">
-        <action name="ShowMenu">
-          <menu>menu-utility</menu>
-        </action>
-      </mousebind>
-      
-    </context>
-  </mouse>     </textarea>
+   </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
