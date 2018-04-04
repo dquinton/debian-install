@@ -538,7 +538,7 @@ how to configure the OB menu <a href="http://urukrama.wordpress.com/openbox-guid
 pipe menus <a href="http://openbox.org/wiki/Openbox:Pipemenus">openbox.org/wiki</a>
 Arch wiki <a href="https://wiki.archlinux.org/index.php/Openbox">Openbox</a>
 <br><br>
-<img src="{{site.baseurl}}/zimages/obmenu.jpeg" width="188" height="510" alt="my OB menu" align="right">
+<img src="{{site.baseurl}}/zimages/obmenu.png" width="270" height="510" alt="my OB menu" align="right">
 
 
 
@@ -813,6 +813,7 @@ Here's how to make a menu - and you can have as many as you like...
   <li>In the <b>menu section near the end</b> before applications section, add your new menu file's location, e.g. <span style="color:#076b00">&#60;file>~/.config/openbox/menu-utility.xml&#60;/file></span></li>
   <li>Go to keybindings and/or mouse section in lxde-rc.xml and make an action for the new menu to show (see above keybinds/mousebinds)</li>
   <li>Save the file, then hit reconfigure OB again
+  <li>then start adding icons, the tedious part (use bluefish to edit if you like)
   </ul></div>
 
 <br><br>
@@ -842,7 +843,7 @@ I figured how to get the dynamic apps menu onto an OB menu - just make a file wi
 <textarea name="T" id="cmd" rows="1" cols="50">
 leafpad ~/.config/openbox/menu-apps.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form><img src="{{site.baseurl}}/zimages/obmenu-apps.png" width="137" height="215" alt="my OB menu" align="right">
+</form><img src="{{site.baseurl}}/zimages/obmenu-apps.png" width="137" height="215" alt="obmenu-apps: my OB menu with main apps" align="right">
 and copy this content into it:
 
 <form><textarea name="T" id="file" rows="5" cols="85">
@@ -861,7 +862,7 @@ add the menu ID to the OB rc.xml file, as well as the keybinds/mousebinds, then 
 I used to have a panel at desktop right covered with utility apps, but it obstructed the page scroll bar all the time so I scrapped it and made a new ob menu that shows with Ctrl-Super-mouse scroll up.  
 <br><br>
 You can use my menu.. first make a file
-  <img src="{{site.baseurl}}/zimages/obmenu-utility.png" width="160" height="341" alt="my OB menu" align="right">
+  <img src="{{site.baseurl}}/zimages/obmenu-utility.png" width="179" height="324" alt="obmenu-utility: my OB menu with utility apps" align="right">
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
 leafpad ~/.config/openbox/menu-utility.xml</textarea>

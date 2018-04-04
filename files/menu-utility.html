@@ -11,126 +11,94 @@ title: menu-utility.xml
 <?xml version="1.0" encoding="utf-8"?>
 <openbox_menu>
 	<menu id="menu-utility" label="Utility">
-		<item label="Customise Appearance">
+		<item label=" Customise Appearance" icon="/usr/share/icons/openbox/u/preferences-desktop-theme.png">
 			<action name="Execute">
 				<execute>lxappearance</execute>
 			</action>
 		</item>
-		<item label="Window Management ">
+		<item label=" Window Management " icon="/usr/share/icons/openbox/u/preferences-system-windows.png">
 			<action name="Execute">
 				<execute>obconf</execute>
 			</action>
 		</item>
-		<item label="Gnome-color-chooser">
+		<item label=" Gnome-color-chooser" icon="/usr/share/icons/openbox/u/gnome-color-chooser.svg">
 			<action name="Execute">
 				<execute>gnome-color-chooser</execute>
 			</action>
 		</item>
-		<item label="KDE settings">
+		<item label=" KDE settings" icon="/usr/share/icons/openbox/u/preferences-system.png">
 			<action name="Execute">
 				<execute>systemsettings</execute>
 			</action>
 		</item>
-		<item label="Power Manager">
+		<item label=" Power Manager" icon="/usr/share/icons/openbox/u/xfpm-ac-adapter.png">
 			<action name="Execute">
 				<execute>xfce4-power-manager-settings</execute>
 			</action>
 		</item>
-		<item icon="~/.config/openbox/icons/nm-device-wired.svg" label="Network Connections">
-			<action name="Execute">
-				<execute>nm-connection-editor</execute>
-			</action>
-		</item>
-		<item label="Alsa Mixer">
+		<item label=" Alsa Mixer" icon="/usr/share/icons/openbox/u/mixer-lfe.png">
 			<action name="Execute">
 				<execute>alsamixer</execute>
 			</action>
 		</item>
-		<item label="OB keybindings">
-			<action name="Execute">
-				<execute>~/.obkey-master/obkey ~/.config/openbox/lxde-rc.xml</execute>
-			</action>
-		</item>
-		<item label="OB menu">
-			<action name="Execute">
-				<execute>obmenu</execute>
-			</action>
-		</item>
-		<item label="ClamTK">
+		<item label=" ClamTK" icon="/usr/share/icons/openbox/u/clamtk.xpm">
 			<action name="Execute">
 				<execute>clamtk</execute>
 			</action>
 		</item>
-		<item label="Firestarter">
-			<action name="Execute">
-				<execute>su-to-root -X -c /usr/sbin/firestarter</execute>
-			</action>
-		</item>
-		<item label="Etherape">
-			<action name="Execute">
-				<execute>gksu etherape</execute>
-			</action>
-		</item>
-		<item label="GD Map">
+		<item label=" GD Map" icon="/usr/share/icons/openbox/u/gdmap_icon.xpm">
 			<action name="Execute">
 				<execute>gdmap</execute>
 			</action>
 		</item>
-		<item label="Bleachbit">
+		<item label=" Bleachbit" icon="/usr/share/icons/openbox/u/edit-clear.png">
 			<action name="Execute">
 				<execute>bleachbit</execute>
 			</action>
 		</item>
-		<item label="Lucky Backup">
+		<item label=" Lucky Backup" icon="/usr/share/icons/openbox/u/luckybackup.png">
 			<action name="Execute">
 				<execute>luckybackup</execute>
 			</action>
 		</item>
-		<item label="Catfish">
-			<action name="Execute">
-				<execute>catfish</execute>
-			</action>
-		</item>
-		<item label="Meld">
+		
+		<item label=" Meld" icon="/usr/share/icons/openbox/u/meld.svg">
 			<action name="Execute">
 				<execute>meld</execute>
 			</action>
 		</item>
-		<item label="Regexxer">
+		<item label=" Regexxer" icon="/usr/share/icons/openbox/u/regexxer.png">
 			<action name="Execute">
 				<execute>regexxer</execute>
 			</action>
 		</item>
-		<item label="Ksnapshot">
+		<item label=" Ksnapshot" icon="/usr/share/icons/openbox/u/spectacle.png">
 			<action name="Execute">
 				<execute>ksnapshot</execute>
 			</action>
 		</item>
-		<item label="Character map">
+		<item label=" Character map" icon="/usr/share/icons/openbox/u/accessories-character-map.png">
 			<action name="Execute">
 				<execute>kcharselect</execute>
 			</action>
 		</item>
-		<item label="Qshutdown">
+		<item label=" Printer status" icon="/usr/share/icons/openbox/u/printer.png">
 			<action name="Execute">
-				<execute>qshutdown</execute>
+				<execute>chromium http://localhost:631/printers</execute>
 			</action>
 		</item>
-		<item label="Printer status">
-			<action name="Execute">
-				<execute>chromium http://localhost:631/printers/HP_P1102</execute>
-			</action>
-		</item>
-		<item label="Unetbootin">
+		<item label=" Unetbootin" icon="/usr/share/icons/openbox/u/media-flash.png">
 			<action name="Execute">
 				<execute>unetbootin</execute>
 			</action>
 		</item>
-		<item label="Gpartition Ed">
+		
+		<item label=" Graphical partition Ed" icon="/usr/share/icons/openbox/u/gparted.xpm">
 			<action icon="~/.config/openbox/icons/gparted.png" name="Execute">
 				<execute>gksu gparted</execute>
 			</action>
 		</item>
+		
 	</menu>
 </openbox_menu>
 </textarea>
