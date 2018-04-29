@@ -624,7 +624,7 @@ for f in $@; do  cp "$f" "${f/\.*/_1\.${f##*.}}" ;done
 </form>
 
 <br>
-f3 script, to rename the highlighted file with the selected file's name, keeping original extension
+"f3" script, to rename the highlighted file with the selected file's name, keeping original extension
 
 <form><textarea name="T" id="file" rows="2" cols="30">
 #!/bin/bash
@@ -1041,26 +1041,50 @@ map fG1   shell -s for fi in %s; do gpsbabel -w -i gpx -f "$fi" -x track,fix=pps
 
 <br><br>
 <h3 id="mt" class="tag">map comma-m and comma-u for mounting/unmouning drives</h3>
-<form><textarea name="T" id="file" rows="20" cols="100">
-##### mounting ##########
+<form><textarea name="T" id="file" rows="43" cols="100">
+##### mounting/unmounting drives with mount/pmount ##########
 
-map ,mm  console shell -s pmount /dev/sdb1         
+map <F1>0 console -p22 shell -r mount /dev/sd %f                    
+map <F1>m  console shell -s pmount /dev/sdb1         
                         #use pmount to mount devices if sys does not auto-mount
+   
+   #use pmount for removable drives not listed in fstab  (F1 replaces help key bind!)                   
+map <F1>b1 shell -s pmount /dev/sdb1
+map <F1>b2 shell -s pmount /dev/sdb2
+map <F1>b3 shell -s pmount /dev/sdb3
+map <F1>b4 shell -s pmount /dev/sdb4
+map <F1>c1 shell -s pmount /dev/sdc1
+map <F1>c2 shell -s pmount /dev/sdc2
+map <F1>c3 shell -s pmount /dev/sdc3
+map <F1>c4 shell -s pmount /dev/sdc4
+map <F1>d1 shell -s pmount /dev/sdd1
+map <F1>d2 shell -s pmount /dev/sdd2
+map <F1>d3 shell -s pmount /dev/sdd3
+map <F1>d4 shell -s pmount /dev/sdd4
+map <F1>e1 shell -s pmount /dev/sde1
+map <F1>e2 shell -s pmount /dev/sde2
+map <F1>e3 shell -s pmount /dev/sde3
+map <F1>e4 shell -s pmount /dev/sde4
+map <F1>f1 shell -s pmount /dev/sdf1
+map <F1>f2 shell -s pmount /dev/sdf2
+map <F1>f3 shell -s pmount /dev/sdf3
+map <F1>f4 shell -s pmount /dev/sdf4
+map <F1>g1 shell -s pmount /dev/sdg1
+map <F1>g2 shell -s pmount /dev/sdg2
+map <F1>g3 shell -s pmount /dev/sdg3
+map <F1>g4 shell -s pmount /dev/sdg4
+
+map <F1>s  shell -s pmount /dev/mmcblk0p1           #mount SD card
 map ,uu  shell -s pumount %f
-map ,m1  shell -s pmount /dev/sdc1
-map ,m2  shell -s pmount /dev/sdc2
-map ,m5  shell -s pmount /dev/mmcblk0p1                  #mount SD card
-map ,m6  console shell -r mount /dev/sda4 %%f
-map ,u1  shell -s pumount /dev/sdc1
-map ,u2  shell -s pumount /dev/sdc2
-map ,u5  shell -s pumount /dev/mmcblk0p1
-map ,u6  shell -r umount %f
+map ,u1  shell -r umount %f
+map ,u2 console shell -r umount -l %f   #lazy umount -if busy
 map ej	shell -s eject %s             #eject selected external volumes (safely remove)
 copymap ej <F8>
-map ,d1  shell -pw lsblk       #list partitions +mounts
-map ,d2  shell -pw df -h        #list partitions with disk usage
-map ,d3  shell -pwr blkid            #list partitions with UUID
-map ,d4  shell -pwr fdisk -l       #list partitions +details
+
+map <F1><f1>  shell -pw lsblk       #list partitions +mounts
+map <F1><f2>  shell -pw df -h        #list partitions with disk usage
+map <F1><f3>  shell -pwr blkid            #list partitions with UUID
+map <F1><f4>  shell -pwr fdisk -l       #list partitions +details
 </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
