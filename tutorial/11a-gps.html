@@ -43,10 +43,13 @@ id: tutor
 
 <div class="cont">
 
+Page updated July 2018.
+<br><br><br>
 <h2 id="1" class="tag">Viking</h2>
 <br>
 See my Step 4 page for installing Viking.
 <br><br><br>
+
 <h3>Using Viking to import data from a GPS unit</h3>
 Only some Garmin units can transfer through USB to viking (see the list <a href="http://www.gpsbabel.org/htmldoc-1.5.0/fmt_garmin.html">here</a> - works using a Garmin 60csx, but not a 62s)
 <br>
@@ -57,50 +60,64 @@ Only some Garmin units can transfer through USB to viking (see the list <a href=
 
 For a Garmin 62s (and many others on the list) hook up the device to a USB port and read the gpx and waypoint files through a file browser, search in the Garmin/gpx and Garmin/gpx/archived dir's.
 <br><br>
+
 Viking supports layers including map backgrounds, colour-coding of tracks, waypoint symbols, and a lot of track and waypoints editing tools.  
-You can also geotag photos by correlating them against a track that was made at the time of shooting photos.  Your camera's clock should first be synced to the gps unit's clock, to the second - but, just incase it wasn't, there is an offset option so that if the camera's clock was different to the GPS unit's clock at the time of shooting, Viking will add/subtract so many seconds to/from the pictures' timestamps (without altering the image timestamp data), so that the pics are correlated to the right points on the track.
 <br><br>
-Also, you can write geo-coordinate data to multiple photos from any waypoint.  Photos with geo info can be imported to the map too.
+You can also geotag photos by correlating them against a track that was made at the time of shooting photos.  Your camera's clock would first need to be synced to the GPS unit's clock, to the second - but, just in case it wasn't, there is an offset option so that if the camera's clock was different to the GPS unit's clock at the time of shooting, Viking can add/subtract so many seconds to/from the pictures' own timestamps (without altering the image timestamp data), so that the pics are correlated to the right points on the track.
 <br><br>
-What's limited is the ability to print decent maps as only the screen is sent to the print dialogue, which makes it impossible to print large scale of areas off the screen.<br>
+Also, you can write geo-coordinate data to multiple photos from any waypoint.  Plus, any photos with geo info can be imported to the map via dragging from a file browser.
+<br><br>
+What's limited is the ability to print decent maps as only the visible screen is sent to the print dialogue, which makes it impossible to print large scale of areas off the screen.
+<br><br>
 Other limitations are lack of drawing or labeling tools, and that waypoint titles can get crowded and overlapped.  But then, this is purely a data compiler, not so much a map production suite (aka GIS).
+<br><br>
+<b>One bug to watch out for</b> is freezing of the program when zooming right down to the largest scale!  So make sure you keep saving the work manually, every so often, because there's no auto-save or auto-recovery and you work can be lost!  
+<br><br>
+Closing the program it doesn't ask to save your work either, although there is a toolbar button to "save and close."
+<br><br>
+Also there is no undo/redo function, which means that if you do something horrible you will have to re-open the last saved version.
 
 <div class="bullet">
 <br><br><br><br>
 
 
-<h2 id="2" class="tag">QGIS</h2>
+<h2 id="2" class="tag">Quantum GIS</h2>
 <br>
 Once you have collated your GPS data and tidied up tracks, renumbered the points etc, its time to make it presentable, with styled labels that don't overlap, polygon area shading, and quality image detail for printing.
 <br><br>
-What we need is Geo Info System software, and in Linux we have Quantum QGIS (QGIS).
+What we need is Geo Info System software, and in Linux we have Quantum GIS (Qgis).
  <br><br>
 See my Step4 page for installing Qgis.
+ <br><br>
+<b>Update: Qgis is now at v3.0, which has seen some great improvements over v2.x. Notes below are updated.</b>
+ <br><br>
 
-<br>
-Doumentation <a href="http://docs.qgis.org/2.14/en/docs/user_manual/index.html">Qgis user manual</a>
-<br><br>
-to import geo data from e.g. Viking, first export the layers from Viking as GPX files, then in qgis,
-
-<ul><li> either open the GPS import tool, Vector menu > GPS > <b>GPS Tools</b></li>
-
-<li>or click on <b>Vector layer</b> button at left, select file, Open, select which attributes to import, OK</li></ul></div>
-
-<br><br>
-With the second way, you can import track waypoints, which will make it possible to alter the track (how?).<br>
-However - it now imports without a proper name, but you can rename the layer with F2
-<br><br>
-You'll also need to set the track size/colour in the layer properties in order for it to become more visible on the map<br>
-<br><br>
-To update the geo data in the layer after changes were made to the source gpx file by an external program, e.g. updates were made in Viking and it was re-exported... click on the QGIS <b>Refresh button</b>!
+Doumentation here: <a href="http://docs.qgis.org/2.14/en/docs/user_manual/index.html">Qgis user manual</a>
 <br><br><br>
 
+to import geo data from e.g. Viking, first export the layers from Viking as GPX files, then in Qgis,
+
+<ul><li> open the <b>Data source manager</b> (new)</li>
+
+<li>click on <b>Vector layer</b> button at left, select file and click Open, then click on Add, then select which attributes to import (routes, tracks, waypoints etc), and OK</li></ul></div>
+
+<br><br>
+The imported Vector layer from GPX file appears as a new layer in the Layers panel, you can rename the layer by pressing F2 if necessary.
+<br><br>
+New to Qgis is the <b>Layer Styling panel </b>to the right. Here you can set track line style and colour, waypoint symbols, and whether to have labelling for the Layer. Tracks may not be too visible until you set a different line style.  Style and Labelling is also found in the Layer properties dialogue.
+<br><br>
+Vector layers from GPX source files are easy to update with new data.  Once you have added tracks or waypoints or edited names, export the data to the same GPX file using Viking. Then click on the QGIS <b>Refresh button</b>, or zoom in and out if the Render box is checked at bottom of screen.
+<br><br>
+the only problem this may give you is that if you have changed the placement of labels and rotated them, and then the source file track/waypoint names are changed, refreshing the layer in Qgis may reset the placement/rotation of labels, as the changes were stored by the previous names.
+<br><br><br>
+<br>
 
 <h3 id="3" class="tag">Symbols and Styles</h3>
 <br><br>
-<h3>Use various icon symbols in a single layer</h3>
+<h3>Using multiple symbol or line styles in a single layer</h3>
 <ul>
-<li>properties > Style > select Categorized</li>
+<li>in the Layer Styling panel, on the paintbrush tab, select "Categorized" instead of "Single Symbol"</li>
+<li>for "Column" scroll with mouse wheel to select 'name'</li>
 <li>click on Classify below</li>
 <li>select points to change</li>
 <li>right click on points > change colour/size</li>
@@ -110,21 +127,21 @@ To update the geo data in the layer after changes were made to the source gpx fi
 
 <h3>Track style</h3>
 <ul>
-<li>In a track layer properties, in Style, select a style such as Bridleway or Road</li>
-<li>click on the Simple line for each colour of the style and adjust the thickness</li>
-<li>for Road style, reduce thickness of the inner colour and leave white to make appear like the thicker underlying colour is a double line</li>
-<li>for Bridleway, make the underlying colour white to make appear like a dashed line</li>
+<li>in Layer Styling, select a style such as Bridleway or Road</li>
+<li>click on the "Simple line" for each colour of the style and adjust the thickness</li>
+<li>for Road style, reduce thickness of the inner colour and leave it white, and leave the underlying colour wider to make it appear like a double line</li>
+<li>for Bridleway, make the underlying colour white to get a dashed line like a footpath</li>
 </ul>
 <br><br>
 
-<h3>Filter waypoints in a layer</h3>
+<h3>Filter waypoints/tracks in a layer</h3>
 
-e.g. include only/exclude wp names with 'string'
+In case the source file has data that you don't want shown on the map canvas, you can either simply use <b>Classify</b> as above, and uncheck the features that you don't need or you can include/exclude any names that fit an expression
 <ul>
-<li>right click on layer > Filter, or open properties > General > Feature filter > click on Query Builder</li>
-<li>click on name field (field in layer to be filtered)</li>
-<li>enter the expression: <b>"name" LIKE '%B%' </b> to show waypoints with "B" in the name (where the %B% means containing "B" anywhere in the name)</li>
-<li>use the expression: <b>"name" NOT LIKE '%B%'</b> to exclude waypoints with "B" in the name from the layer</li>
+
+<li>Select Categorize and then next to Column, click on the Expression button</li>
+<li>enter an expression such as <b>"name" LIKE '%B%' </b> that will show features of the layer with "B" in the name (where the %B% means containing "B" anywhere in the name)</li>
+<li>or <b>"name" NOT LIKE '%B%'</b> to exclude features with "B" in the name from the layer</li>
 <li>Click on test and Sample, to check if the filter is what you want, then OK</li>
 
 </ul>
@@ -132,13 +149,13 @@ e.g. include only/exclude wp names with 'string'
 <br><br>
 <h3 id="3a" class="tag">Use SVG symbols for waypoints</h3>
 <ul>
-<li>properties > Style > click on "Simple marker" under "Marker"</li>
+<li>Layer Styling > Style > click on "Simple marker" under "Marker"</li>
 <li>to the right, at top, click on the Symbol layer type, select SVG marker on the drop down menu</li>
 <li>then below select category and symbol and change size and colour</li>
 </ul>
 
 <br><br>
-<h3>Get more svg symbols</h3>
+<b>Get more svg symbols</b>
 <ul>
 <li>web search "svg symbol tree" etc and download - or visit pixabay.com and sign up</li>
 <li>if downloading png images, use inkscape to convert to svg: <br>
@@ -148,7 +165,7 @@ open png, Path > Trace bitmap (check greys, remove background)</li>
 <li>copy to your Qgis svg folder (or to /usr/share/qgis/svg/ so that you can work on other computers and not lose your symbols because of different user name)</li>
 <li>in Qgis Settings > Options > System, add the path to the svg folder</li>
 <li>then in layer properties you can see your new svg symbols</li>
-<br>
+<br><br>
 <b>To enable the symbol to have borders</b>
 
 <li>open the svg file in editor</li>
@@ -168,51 +185,49 @@ style="fill:#000000"</textarea>
 <br><br><br>
 
 <h3 id="3b" class="tag">Layer Labels </h3> 
-To add labels for waypoints and tracks, or for any other feature labels - double click on the layer, Labels > check "Label this layer.." then select "name" on drop-down list, and click OK - but you could select another field, as in altitude, etc.
+Qgis 3.0 now has a good labelling functionalty. With v2.x before, labels were positioned pretty badly, with no means to move them about and the only way to do so was with the <i><b>EasyCustomLabeling</b></i> plugin together with the <b><i>Memory Layer Saver</i></b> plugin.  
 <br><br>
-The problem is that the labels may be positioned a little badly, so how would you move them around? Simply use this....
+It looks like Qgis has now incorporated this very tool into the main program, which is great.  Only, compatibility with Qgis and this plugin is not totally perfect (in the case of layers previously labelled using this plugin).  The label layer shows fine in v3.0, but as soon as you adjust a label position then all the labels flip horizontal, which is bad news for a layer with 100's of labels all set correctly.
+<br><br>
+From now on I don't think we need to use the EasyCustomLabeling plugin, and it might very well become obsolete soon.
 <br><br><br>
 
-<h3>Annotation-labels</h3>  
-install the plugin "<b>EasyCustomLabeling</b>" from Plugins menu > Manage and Install<br>
-and also "<b>Memory Layer Saver</b>" plugin so that your labels will be saved in the project
-<br><br>
+To turn on labelling for a layer,
 
 <ul><li>select a layer</li>
-<li>click on the <b>"Easy labels" button </b>to generate a layer for labels and choose what label field to use -select name</li>
-<li>all waypoint labels get redrawn - so you don't need to draw them with layer properties</li>
-<li>click the <b>move button</b>, click on and drag a label</li>
-<li>click the <b>rotate button</b>, click on a label and adjust its angle, Ctrl-drag for incremental 15 degrees - very useful for names of rivers... 
-<li><b>note: </b>the label must be moved first before it can be rotated!</li>
-<br><br>
+<li>Layer Styling > abc tab > scroll button on "No labels" to select "Show labels forr this layer"</li>
+<li>for "Label with" scroll button down to select 'name'</li>
+<li>set colour and font style (but bold you need to click the override button next to greyed-out Bold and select 'name' from "Field type"!)</li>
+<li>to start moving labels, click on the<b> move label tool</b>, and click on a label - you then have to select a Key to store changes by
+<li>to rotate a label (must be moved first before rotation possible) click the <b>rotate label tool</b>, click on a label and adjust its angle, Ctrl-drag for incremental 15 degrees. </ul>
+<br>
 
-<b>Important note: </b>the label placement on the map is not going to look the same when you create your Print composer, as the labels on the map will show same size on any scale (to be human readable), but in the composer according to the font size/page size.
+<b>Important note: </b>the label placement on the map is not going to look the same when you create your Print Layout, as the labels on the map will show same size on any scale (to be human readable), but in the composer according to the font size/page size.
 <br><br>
-Ideally you want to set up a print composer before moving labels (as Easy labels will not adjust distance from points with change of map scale - unlike the standard Qgis labels), set the right scale, and then start moving your labels.  Switch between map and composer and refresh the composer to see if the label positions are good.
+Ideally you want to set up a print layout before moving labels, set the right scale, and then start moving your labels.  Switch between map and layout window and refresh the layout each time to see if the label positions are good.
 <br><br>
-Also, find a good scale in the project window to work with and stick with it (zoom out just to pan around then zoom back to work) so that you can judge distance from points that the labels need to show correctly in the composer.
+Also, find a good scale in the project window to work with and stick with it (zoom out just to pan around then zoom back to work) so that you can judge distance from points that the labels need in order to show correctly in the layout.
 <br><br>
-
+Note that with Qgis 3.0, <b>labels can auto-move</b> along a feature (especially tracks) when you zoom in/out or if you place a label near another one.  So you need to check the labelling in the Layout window carefully.  A label can also auto-hide if another label obstructs it (which is sometimes handy).
+<br><br>
+<ul>
 <li>click on the <b>Highlight pinned labels </b>button to see which labels have been moved
 <li>click on the <b>Change label</b> button to edit the label or adjust font/size for individual labels
-<li><b>tip: </b>to change font size for the whole layer you need to Deactivate the "Data defined override" first > Properies > Labels > Right click on the yellow button next to font size</li>
-<li><b>to hide a label</b> click on the <b>Hide button</b> then Shift-click on the label (but you must select the right layer with the label in, if you select another layer the label won't hide)
-<li><b>to show hidden labels</b> you need the Hide tool again and then you click on the red 'x' where the label is placed - sometimes it takes a while to find it and get the click right!
-<li>when done with all changes, save the layer edits, and turn off editing (pencil icon button)</li>
-<li><b>tip: </b>set S to <b>save All layer edits</b> in Settings menu >> Shortcuts
-<li>remember that to edit any layer you need to select layer and click on the pencil icon edit button</li>
-<li>also, the Easy label layer can't be updated with new waypoint labels if the layer source file is updated</li>
+<li><b>to hide a label</b> click on the <b>Hide label tool</b> then Shift-click on the label (but you can only hide labes of an active layer)
+<li><b>to show hidden labels</b> you need the Hide tool again and then you click on the feature the label belongs to (might need to zoom) 
+
 </ul>
 
 <br><br>
 <h3>Tidy up label displays</h3>  
-In case you have some rather long waypoint names that are going to take up too much space on your map, you can add various functions to the Easy label layer so that the labels are succincted or filtered, whatever..
+In case you have some rather long waypoint/track names that are going to take up too much space on your map, you can add various functions so that the labels are shortened..
 <br><br>
-<ul><li>Properies > Labels > click function button next to "Label with" at right</li>
-<li>click on + by String to show functions and select, say, left (double click)</li>
-<li>make your function look like:  <b>left( LblField,7 )</b> where 'left' retains characters from the left, LblField is where the labels are stored, and '7' is number of characters to retain</li>
-<li>to cut any more off the label you can use the regexp_replace function, but for now I only found out how to nest functions, putting 'left' inside the 'regexp_replace'..</li>
-<li>e.g.   <b>regexp_replace( left( LblField,7 ) , '\\s[A-Z,a-z]+', '')</b> where I replace a space and any characters left after retaining 7 first char - I wanted to retain only the waypoint code number but some codes were shorter than 7 char and so extra text remained</li>
+<ul><li>Layer Styling > abc tab > click function button next to "Label with" at right</li>
+<li>click on the arrow by String to show functions and select, substr</li>
+<li>make the expression like this, <b>substr( name,4 )</b> will cut all char's until 4th from left, or <b>substr( name,-4 )</b> will cut all characters from end until the 4th from right.
+<li>you can also use  <b>left( name,4 )</b> where 'left' retains characters from the left, </li>
+<li>or using regular expressions, <b>regexp_replace( left( name,7 ) , '\\s[A-Z,a-z]+', '')</b> where I replace a space (\s) and any characters left after retaining 7 first char - I wanted to retain only the waypoint code number</li>
+
 
 </ul>
 

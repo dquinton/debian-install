@@ -305,7 +305,7 @@ if success then unpack xiphos and cd there, install with
 <h2 id="7" class="tag">GPS</h2>
 
 <h3> Handheld Garmin devices</h3>
-With devices that download the data through gpsbabel, you need to add your user to plugdev if not already added:
+With (old) devices that download the data through gpsbabel, you need to add your user to the plugdev group if not already added:
 <form>
 <textarea name="T" id="cmd" rows="2" cols="30">
 groups <username>
@@ -317,7 +317,7 @@ plus, add your user to the <b>dialout</b> group -as with my 60csx (firmware 4.0)
 <br><br><br>
 
 <h3>Viking</h3>
-An excellent app for collating, sorting and exporting geo data.  It can be simple or complex and its stable.
+An excellent app for collating, sorting and editing GPS data.  Its simple and (quite) stable.  Files are saved as .vik and are only usable in Viking, and so data needs exporting to gpx format for sharing with any one else or with GIS map-making software.  Exporting can be done by individual layer or all layers in one go.
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
 sudo apt-get install gpsbabel gpsbabel-gui viking</textarea>
@@ -329,7 +329,7 @@ Get the latest Viking from here <a href="http://sourceforge.net/projects/viking/
 <br><br>
 get build dependencies<br>
 <form>
-<textarea name="T" id="install" rows="2" cols="120">
+<textarea name="T" id="install" rows="4" cols="80">
 sudo apt-get install libcurl4-openssl-dev gnome-doc-utils libexif-dev scrollkeeper libbz2-dev libmagic-dev libgps-dev intltool libexpat1 libexpat1-dev libgtk2.0-dev libgexiv2-dev libsqlite3-dev libmapnik-dev</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -347,7 +347,8 @@ sudo make install</textarea>
 <br>
 or sudo checkinstall to make a deb package
 <br><br>
-See my <a href="{{site.baseurl}}/tutorial/11a-gps.html">Geo data page</a> for more details!
+See my <a href="{{site.baseurl}}/tutorial/11a-gps.html">GIS page</a> for more details!
+<br><br>
 <br><br>
 <h3>Qgis</h3>
 
@@ -371,15 +372,9 @@ sudo apt-get update && sudo apt-get install qgis python-qgis </textarea>
 <br>
 Note: running testing you will need to add the "stretch" repo, not "jessie".<br>
 This may not be recommended if running Devuan.
+
+
 <br><br>
-<hr noshade="noshade">
-<br><br>
-
-<h2 id="8" class="tag">Others!</h2> 
-
-
-
-
 <br><br><br>
 
 <b>Next pages: </b>
