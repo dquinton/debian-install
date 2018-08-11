@@ -218,8 +218,9 @@ and first the awkward way:
 <ul><li>use in/out points: play until the cut point is reached and pause, then press <b>[</b> to set in-point... press <b>Alt-Right</b> to move to the end of the edit and press <b>]</b> to set out-point... press <b>del </b>or <b>X</b> to remove the end of the edit
 <li>select area: play until the cut point is reached and pause... press <b>Alt-Right</b> to move to the end of the edit... then press <b>Shift-Ctrl-Left</b> to select from end of edit back to the pause point... press <b>del </b>or <b>X</b> to remove the end of the edit
 <li>to contract the edit from the start you'd need to either make an in-point before playing, and out-point at the cut point, or do <b>Alt-Left</b> to return to start (after played until cut point) and <b>Shift-Ctrl-Right</b> to select up to pause point and then delete.
-<br><br>
-<li><b>Three new functions in CGG: press <b>Ctrl-Alt-,</b> to snap left handle to insert point, or <b>Ctrl-Alt-.</b> to snap right handle to insert point - this makes work much easier!
+<br><br></ul>
+Three new functions in CGG: 
+<ul><li>press <b>Ctrl-Alt-,</b> to snap left handle to insert point, or <b>Ctrl-Alt-.</b> to snap right handle to insert point - this makes work much easier!
 <li>Also, press <b>Shift-Ctrl-Alt-,</b> or <b>Shift-Ctrl-Alt-.</b> to snap from insert point to next label, to left or right (this instantly removes the everything between these points, so watch out)
 <li>and press <b>Ctrl-Alt</b> while clicking on the edit handle to snap edit end to insert point
 </ul>
@@ -272,11 +273,12 @@ by default, mouse buttons Left, middle, Right (1,2,3) do the following:
 <br><br>
 <h3>Fading video</h3>
 <ul>
-<li>zoom in closer to the area that will fade in/out (<b>Shift-scroll</b>)
+<li>zoom in closer to the area that will fade in/out (<b>Shift-scroll-down</b>)
 <li>fade out: click on the video fade overlay band to create a keyframe at the point where the fade out should begin 
 <li>click again on the band at the point of fade out completion (eg at end of the movie) and drag it down to the bottom of track
 <li>fade in: similar, just make a keyframe first at point of the end of fade in then make one and drag down at point of the start of fade in
 </ul>
+<br>
 <b>still another method:</b> drag a video transition onto the end of the edit and make sure there is no video after the edit end. The video will transition to black! Nice!
 <br><br>
 this can be done for fade in, and also audio fades.
@@ -284,7 +286,7 @@ this can be done for fade in, and also audio fades.
 
 <br><br>
 <h3>Fading audio</h3>
-<br>note: the overlay band for audio fade by default is set to normal level at base of track, which means you can't achieve reduced audio or silence until you adjust that base level...
+note: the overlay band for audio fade by default is set to normal level at base of track, which means you can't achieve reduced audio or silence until you adjust that base level...
 <ul>
 <li>first select <b>Audio Fade</b> at bottom and lower "Automation adjust minimum" quite a bit, say, to <b>-45.0</b> (with the mouse scroll button over it) so that the base line will reach negative level
 <li>then you can set keyframes as per video fade in/fade out
@@ -334,7 +336,7 @@ this can be done for fade in, and also audio fades.
 <li>Right click on the transition effect icon at the edit join to set the duration
 <li>note: the transition between edits will begin at start of edit B, which means preferably there is some time left of 1st edit that will show in part during the transition - if there is no more of source media after end of edit A end then edit A picture will freeze during the transition!
 <li>the transition may not look very good played realtime in the timeline but it should be good once rendered - you can set in/out points to render that part to run a test first.
-<li>
+
 </ul>
 <br><br>
 <b>note:</b> if you have applied an effect such as colour-correction to edit A and the effect is not attached (not wanted) on edit B, you will run into a small problem with a video transition.. do you stop the effect at end of A (and then visible edit A suddenely returns to pre-effect picture during the transition) or do you exten it to the end of the transition (and then edit B gets coated with edit A effect for the duration of the transition, which is bad)? 

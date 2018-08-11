@@ -350,7 +350,9 @@ or sudo checkinstall to make a deb package
 See my <a href="{{site.baseurl}}/tutorial/11a-gps.html">GIS page</a> for more details!
 <br><br>
 <br><br>
-<h3>Qgis</h3>
+<h3>Quantum GIS</h3>
+
+
 
 <form><textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get install qgis python-qgis inkscape</textarea>
@@ -358,14 +360,15 @@ sudo apt-get install qgis python-qgis inkscape</textarea>
 </form>
 <br>
 To get the latest version, add the qgis repo..
-
+<br>
+(see the Qgis Debian install page here <a href="https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu">https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu</a>)
 
 <form><textarea name="T" id="install" rows="6" cols="100">
 sudo sh -c 'echo "deb http://qgis.org/debian jessie main" >> /etc/apt/sources.list'  
 sudo sh -c 'echo "deb-src http://qgis.org/debian jessie main " >> /etc/apt/sources.list'  
-wget -O - http://qgis.org/downloads/qgis-2016.gpg.key | gpg --import
-gpg --fingerprint 073D307A618E5811
-gpg --export --armor 073D307A618E5811 | sudo apt-key add -
+wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
+gpg --fingerprint CAEB3DC3BDF7FB45
+gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
 sudo apt-get update && sudo apt-get install qgis python-qgis </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
