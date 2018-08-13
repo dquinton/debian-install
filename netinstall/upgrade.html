@@ -258,6 +258,15 @@ dpkg --list | grep linux</textarea>
 Then you will need to run update-grub
 
 <br><br>
+<b>Note: you most likely will need to update initramfs as well..</b> for example, I installed the linux 4.17 kernel and forgot about initramfs, resulting in a hang during boot, with EXT4-fs I/O error and kernel waiting for the root partition endlessly...
+
+ <form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+sudo update-initramfs -u</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+<br><br>
 <h3>2. Install from stable backports</h3>
 add the backports to sources with the line 
 <form>
