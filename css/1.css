@@ -1,4 +1,4 @@
-html { background: #8C8C8C; }
+html { background: #464D83; }
 
 body, h1, h2, h3, h4, h5, h6, p, a, ul, ol, li, small {
   margin: 0;
@@ -17,7 +17,7 @@ div.ban {
   height: 116px;
   position: relative;
   background-repeat: no-repeat;
-  background-size: cover;
+   background-size: cover;
 }
 
 div.pagemenu {
@@ -44,7 +44,7 @@ div.parent {             /* link to parent above page title */
 
 
 div.cont { 
-  background: #BDBEC6; 
+  background: #CECECE; 
   color: #0A0A0A;
   min-height: 600px;
   font-family:  PT Sans, Dejavu sans, Tahoma, sans-serif;
@@ -71,7 +71,7 @@ a:visited {color: #63204C; }
 a:active  { color: #80244D; } 
 
 h1 { 
-  background-color:#ADADAD;
+  background-color:#A9ABB9;
   font-family: Monospace;
   font-size: 2.3em;
   padding-top: 45px;
@@ -208,7 +208,7 @@ table {
 .prob {   color:#730973;}
 
 textarea#install { 
-  background-color : #CCCCCC;
+  background-color : #E3DEDE;
   border: 2px solid #6C6D80;
   padding: 8px;
   margin: 6px 0px 4px;
@@ -217,7 +217,7 @@ textarea#install {
 }
 
 textarea#cmd { 
-  background-color : #CCCCCC;
+  background-color : #E3DEDE;
   border: 2px solid #6C6D80;
   padding: 8px;
   margin: 6px 0px 4px;
@@ -226,7 +226,7 @@ textarea#cmd {
 }
 
 textarea#file { 
-  background-color : #CCCCCC;
+  background-color : #E3DEDE;
   border: 2px solid #6C6D80;
   padding: 8px;
   margin: 6px 0px 4px;

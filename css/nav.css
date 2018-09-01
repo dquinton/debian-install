@@ -20,8 +20,8 @@ nav ul {
 
 nav ul li {
     display: table-cell;
-  background: #333648;
     padding: 0px;
+    width: auto;
 }
 body#intro a#intro,
 body#cont a#cont,
@@ -39,7 +39,7 @@ nav ul li a {
   height: 17px;
   padding: 4px 0;
   display: block;
-  width: auto;
+  width: 100%;
   background: #3B3F55; /* Old browsers */
   background: -moz-linear-gradient(top, #424765 0%, #3B3F55 100%); /* FF3.6+ */
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#424765), 
@@ -57,7 +57,7 @@ nav ul li a:link,
 nav ul li a:visited,
 nav ul li a:hover,
 nav ul li a:active {
-  color: #B4B4B4;
+  color: #BDC0D1;
   font-family: Monospace;
   text-decoration: none; 
   font-weight: bold; }
@@ -76,7 +76,7 @@ nav ul li a:active {
 
 nav ul ul {
   display: none;
-  width: 12.5%;
+  width: 20%;
   margin-left: -20px;    /* move drop down list to the left */
   
 }

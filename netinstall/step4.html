@@ -15,8 +15,8 @@ id: net
                 <li><a href="#2a">Firefox-based</a></li>
                 <li><a href="#3">Opera</a></li>
                 <li><a href="#5">OpenGPG</a></li>
-                <li><a href="#6">Bible</a></li>
-                <li><a href="#7">GPS</a></li>
+                <li><a href="#6">GPS</a></li>
+                <li><a href="#7">Bible</a></li>
                 <li><a href="#8">others</a></li>
              </ul>
     </li>
@@ -30,8 +30,8 @@ id: net
    <a href="#2a">Firefox-based</a><br>
    <a href="#3">Opera</a><br>
    <a href="#5">OpenGPG</a><br>
-   <a href="#6">Bible</a><br>
-   <a href="#7">GPS</a><br>
+   <a href="#6">GPS</a><br>   
+   <a href="#7">Bible</a><br>
    <a href="#8">others</a><br>
 </td></tr></table></div>
 
@@ -262,47 +262,8 @@ sudo mv /usr/share/gnupg/gnupg2/com-certs.pem /usr/share/gnupg/gnupg2/com-certs.
 <hr noshade="noshade">
 <br><br>
 
-<h2 id="6" class="tag">Bible</h2>
-<form>
-<textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install xiphos fonts-sil-ezra </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-or download latest from <a href="https://sourceforge.net/projects/gnomesword/files/Xiphos/">https://sourceforge.net/</a>
-<br><br>
-install dependencies<br>
-<form>
-<textarea name="T" id="install" rows="2" cols="80">
-sudo apt-get install libgtkhtml-4.0-dev libgtkhtml-editor-4.0-dev webkitgtk-3.0 libwebkitgtk-3.0-dev  libgsf-1-dev libgnomeprintui2.2 libicu-dev</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
 
-Download the newest sword engine from <a href="http://crosswire.org/sword/software/swordapi.jsp">http://crosswire.org/</a>
-<br>
-unpack and install with <span style="color:#994900"></span> 
-<form>
-<textarea name="T" id="cmd" rows="3" cols="30">
-./userinst.sh
-make
-sudo make install</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-(read INSTALL file)
-<br><br>
-if success then unpack xiphos and cd there, install with 
-<form>
-<textarea name="T" id="cmd" rows="1" cols="30">
-./waf configure build install</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-<br><br>
-<hr noshade="noshade">
-<br>
-
-<h2 id="7" class="tag">GPS</h2>
+<h2 id="6" class="tag">GPS</h2>
 
 <h3> Handheld Garmin devices</h3>
 With (old) devices that download the data through gpsbabel, you need to add your user to the plugdev group if not already added:
@@ -364,8 +325,8 @@ To get the latest version, add the qgis repo..
 (see the Qgis Debian install page here <a href="https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu">https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu</a>)
 
 <form><textarea name="T" id="install" rows="6" cols="100">
-sudo sh -c 'echo "deb http://qgis.org/debian jessie main" >> /etc/apt/sources.list'  
-sudo sh -c 'echo "deb-src http://qgis.org/debian jessie main " >> /etc/apt/sources.list'  
+sudo sh -c 'echo "deb http://qgis.org/debian stretch main" >> /etc/apt/sources.list'  
+sudo sh -c 'echo "deb-src http://qgis.org/debian stretch main " >> /etc/apt/sources.list'  
 wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
 gpg --fingerprint CAEB3DC3BDF7FB45
 gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
@@ -375,13 +336,57 @@ sudo apt-get update && sudo apt-get install qgis python-qgis </textarea>
 <br>
 Note: running testing you will need to add the "stretch" repo, not "jessie".<br>
 This may not be recommended if running Devuan.
+<br><br>
+<b>Also, if you run a dist-upgrade</b> at any time, its most likely that Qgis will be removed in the process, so you will need to reinstall qgis with the above apt-get command again.
+
+
+
+<br><br>
+<hr noshade="noshade">
+<br>
+
+<h2 id="7" class="tag">Bible</h2>
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt-get install xiphos fonts-sil-ezra </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+or download latest from <a href="https://sourceforge.net/projects/gnomesword/files/Xiphos/">https://sourceforge.net/</a>
+<br><br>
+install dependencies<br>
+<form>
+<textarea name="T" id="install" rows="2" cols="80">
+sudo apt-get install libgtkhtml-4.0-dev libgtkhtml-editor-4.0-dev webkitgtk-3.0 libwebkitgtk-3.0-dev  libgsf-1-dev libgnomeprintui2.2 libicu-dev</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+Download the newest sword engine from <a href="http://crosswire.org/sword/software/swordapi.jsp">http://crosswire.org/</a>
+<br>
+unpack and install with <span style="color:#994900"></span> 
+<form>
+<textarea name="T" id="cmd" rows="3" cols="30">
+./userinst.sh
+make
+sudo make install</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+(read INSTALL file)
+<br><br>
+if success then unpack xiphos and cd there, install with 
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+./waf configure build install</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 
 <br><br>
 <br><br><br>
 
-<b>Next pages: </b>
+<b>Next page: 
 <br><br>
-<h3><b><a href="step5.html">Step5</a></b> - Enable multiarch, Google earth, Skype</h3>
+<a style="font-size: 1.2em; " href="step5.html">Step5</a> - Enable multiarch, Google earth, Skype</b>
 <br><br>
 </div>
