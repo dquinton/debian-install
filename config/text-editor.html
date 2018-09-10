@@ -1,0 +1,407 @@
+---
+layout: default
+description: Configure text editors for Linux - by D Quinton
+title: Configure the text editor
+id: config
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Geany</a></li>
+                <li><a href="#2">SciTE</a></li>
+                </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Geany</a><br>
+   <a href="#2">SciTE</a><br>
+   </td></tr></table></div>
+
+<div class="parent"><a href="../configure.html">Configure</a> ></div>
+
+<div class="cont">
+	
+One of the simplest text editors aroiund is Leafpad, it is fine for quick edits such as tweaking system files, but it does have its limitations when serious work is needed.  For one, its search and replace function is pretty dodgy.  It has no settings available of its self, it just takes on the system GTK scheme.  It can't show mark-up of special file formats or folding of tag headers.
+<br><br>
+So what else is there for Linux?  Two class editors I found are Geany and SciTE.  Very customizable and they are both very capable as development environments.  
+<br><br>
+To start off with them, you'll need to get a better color scheme going for each.
+<br>
+<br><br>
+<h2 id="1" class="tag">Geany </h2>
+
+Geany has a few features better over SciTE.  On the left-hand side is a panel which shows symbols (headers in a doc) and files - but you can remove files (I don't see the use in it) and show a file browser instead.  These two panels make for a good experience, e.g. for working on html pages of a website.  You can also setup auto completion of tags, and the like.  If it had some auto text tools and it could almost take over from bluefish as html editor (except you won't have style properties dialogue).
+<br><br>
+To set a dark color scheme, first make an editable scheme file..
+<textarea name="T" id="cmd" rows="1" cols="80">
+cp /usr/share/geany/colorschemes/alt.conf ~/.config/geany/colorschemes/dark.conf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+Then make whatever changes you need in this scheme file<br>
+<textarea name="T" id="cmd" rows="1" cols="50">
+geany ~/.config/geany/colorschemes/dark.conf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+The codes such as 0x000000 refer to a hex color code with 0x appended. 
+A value such as 0x000000;0xf0f0f0;false;false means: black fg, grey bg, not bold, not italic.
+<br><br>
+Then select the new scheme, View > Change Color Scheme (you need to select another scheme then your scheme again to see further changes).
+<br><br>
+Here's my dark theme.  There may be some things missing.
+
+<textarea name="T" id="file" rows="50" cols="80">
+[theme_info]
+name=Alternate-Dark
+description=Alternate Geany dark color scheme
+version=0.01 - Aug 2018
+author=DP Quinton
+url=
+
+[named_styles]
+
+#text fg, page bg
+default=0xCECECE;0x101010;false;false
+error=0xffffff;0x983952
+
+# Editor styles
+#------------------------------------------------------------------------------
+
+selection=0x000157;0x98697A;true;true
+current_line=0xBEBCBE;0x2F2E2E;true
+brace_good=0x0000ff;0xA2A2D5;true;false
+brace_bad=0xff0000;0xA2A2D5;true;false
+margin_line_number=0xC5C5C5;0x333333
+margin_folding=0xA6A6A6;0x525252
+fold_symbol_highlight=0xA6A0A3
+indent_guide=0xc0c0c0
+caret=0xff0000;0x000000;false
+marker_line=0xBEBCBE;0x414137
+marker_search=0xBEBCBE;0x0000f0
+marker_mark=0xBEBCBE;0x636363
+call_tips=0xc0c0c0;0xA2A2D5;false;false
+white_space=0xc0c0c0;0xA2A2D5;true;false
+
+# Programming languages
+#------------------------------------------------------------------------------
+
+comment=0xA2A2A2
+comment_doc=0x9E8C8C
+comment_line=comment
+comment_line_doc=comment_doc
+comment_doc_keyword=comment_doc,bold
+comment_doc_keyword_error=comment_doc,italic
+
+number=0xFBAEDF
+number_1=number
+number_2=number_1
+
+#incl html tags
+type=0xBD597B;;true
+class=type
+function=0x7D7D93
+parameter=function
+
+#text before =
+keyword=0xA9B3F1;;
+keyword_1=keyword
+keyword_2=0x9f0200;;true
+keyword_3=keyword_1
+keyword_4=keyword_1
+
+identifier=default
+identifier_1=identifier
+identifier_2=identifier_1
+identifier_3=identifier_1
+identifier_4=identifier_1
+
+string=0x57A357
+string_1=string
+string_2=string_1
+string_3=default
+string_4=default
+string_eol=0xBEBCBE;0x635563
+character=string_1
+backticks=string_2
+here_doc=string_2
+
+label=default,bold
+preprocessor=0x808000
+regex=number_1
+operator=0xBB5E5E
+decorator=string_1,bold
+other=0x7F7B85
+
+# Markup-type languages
+#------------------------------------------------------------------------------
+
+tag=type
+tag_unknown=tag,bold
+tag_end=tag,bold
+attribute=keyword_1
+attribute_unknown=attribute,bold
+value=string_1
+entity=default
+
+# Diff
+#------------------------------------------------------------------------------
+
+line_added=0x008B8B
+line_removed=0x6A5ACD
+line_changed=preprocessor
+</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+<br><br>
+
+<h2 id="2" class="tag">SciTE </h2>
+
+I got the following color scheme from the internet (pastebin) and it wasn't complete regarding some file types (no settings for xml and others). I've made colour adjustments.
+<br><br>
+In SciTE, Options > Open User Options File
+<br><br>
+copy and paste the scheme (and open a new file to see changes, as further changes may not reflect in the user options file).
+<br>
+<textarea name="T" id="file" rows="50" cols="80">
+#
+#
+#       COLOR SCHEME
+#
+#
+ 
+# Misc colours
+fold.margin.colour=#505050
+fold.margin.highlight.colour=#101010
+whitespace.fore=#508050
+caret.fore=#ff0000
+caret.line.back=#ffffff
+caret.line.back.alpha=30
+selection.back=#D269A9
+selection.fore=#dcdcdc
+selection.alpha=90
+ 
+#~ # Give symbolic names to the set of colours used in the standard styles.
+colour.code.comment.box=fore:#65C172,back:#202020
+colour.code.comment.line=fore:#D0F0D0
+colour.code.comment.doc=fore:#D0F0D0
+colour.text.comment=fore:#8F98D6,back:#D0F0D0
+colour.other.comment=fore:#8F98D6
+colour.embedded.comment=back:#E0EEFF
+colour.embedded.js=back:#242020
+#colour.embedded.js=fore:#bfbfbf
+colour.notused=back:#FF0000
+colour.number=fore:#FF99AA
+colour.keyword=fore:#00A0C0
+colour.keyword2=fore:#B99C4C
+#html tags
+colour.keyword3=fore:#B06A82,bold
+colour.string=fore:#4A9D4F
+colour.char=fore:#FF7788
+colour.operator=fore:#7F7B85
+colour.preproc=fore:#8B8B7A
+colour.error=fore:#FFFF00,back:#A05050
+ 
+# Global default styles for all languages
+# Default
+style.*.32=$(font.base),back:#101010,fore:#A9B3F1
+# Line number
+style.*.33=$(font.base),back:#101010,fore:#979797
+# Brace highlight
+style.*.34=back:#4F4F4F,fore:#B5A8A8,bold
+# Brace incomplete highlight
+style.*.35=fore:#FF0000,bold
+# Control characters
+style.*.36=
+# Indentation guides
+style.*.37=fore:#507050
+ 
+# Comment italique
+style.*.1=$(colour.code.comment.box),$(font.code.comment.box),italics
+style.*.2=$(colour.code.comment.line),$(font.code.comment.line),italics
+style.*.3=$(colour.code.comment.doc),$(font.code.comment.doc),italics
+ 
+# White space (text after =)
+style.*.0=fore:#CACACA
+# Number
+style.*.4=$(colour.number)
+ 
+# Keyword
+style.cpp.5=$(colour.keyword),bold
+ 
+# Double quoted string
+style.*.6=$(colour.string)
+# Single quoted string
+style.*.7=$(colour.char)
+# UUIDs (only in IDL)
+style.*.8=fore:#7F7F00
+# Preprocessor
+style.*.9=$(colour.preproc)
+# Operators
+style.*.10=$(colour.operator)
+ 
+# Identifiers
+style.*.11=
+# End of line where string is not closed
+style.*.12=$(colour.string),back:#5A5050,eolfilled
+# Verbatim strings for C#
+style.*.13=$(colour.string),back:#5A5050,eolfilled
+# Regular expressions for JavaScript
+style.*.14=$(colour.string),back:#5A5050,eolfilled
+# Doc Comment Line
+style.*.15=$(colour.code.comment.doc),$(font.code.comment.doc)
+# Keywords2
+style.*.16=$(colour.keyword2)
+# Comment keyword
+style.*.17=fore:#3060A0,$(font.code.comment.doc)
+# Comment keyword error
+style.*.18=fore:#804020,$(font.code.comment.doc)
+# Braces are only matched in operator style
+braces.*.style=10
+ 
+ 
+# Makefile styles
+# Default
+style.makefile.0=$(font.base)
+# Comment: #
+style.makefile.1=$(colour.code.comment.box),$(font.comment),italics
+comment.block.makefile=#~
+# Pre-processor or other comment: !
+style.makefile.2=$(colour.preproc)
+# Variable: $(x)
+style.makefile.3=fore:#9F9F20
+# Operator
+style.makefile.4=$(colour.operator)
+# Target
+style.makefile.5=$(colour.preproc)
+# Error
+style.makefile.9=$(colour.error),eolfilled
+# Matched Operators
+style.makefile.34=fore:#FF6030,bold
+style.makefile.35=fore:#FF0000,bold
+ 
+ 
+# Properties styles
+# Default
+style.props.0=$(font.base)
+# Comment
+style.props.1=$(colour.code.comment.box),$(font.comment),italics
+# Section
+style.props.2=$(colour.preproc),back:#494949,eolfilled
+# Assignment operator
+style.props.3=$(colour.keyword2)
+# Default value (@)
+style.props.4=$(colour.preproc)
+# Matched Operators
+style.props.34=fore:#FF6030,bold
+style.props.35=fore:#FF0000,bold
+ 
+ 
+# Batch styles
+# Default
+style.batch.0=$(font.base)
+# Comment (rem or ::)
+style.batch.1=$(colour.code.comment.box),$(font.comment),italics
+# Keywords
+style.batch.2=$(colour.keyword),bold
+# Label (line beginning with ':')
+style.batch.3=$(colour.preproc),back:#494949,eolfilled
+# Hide command character ('@')
+style.batch.4=$(colour.preproc)
+# External commands
+style.batch.5=fore:#007090,$(font.monospace),bold
+# Variable: %%x (x is almost whatever, except space and %), %n (n in [0-9]), %EnvironmentVar%
+style.batch.6=$(font.base)
+# Operator: * ? < > |
+style.batch.7=$(colour.operator)
+ 
+ 
+ 
+#~ # Bash styles
+# Default
+style.bash.32=$(font.base)
+# White space
+style.bash.0=fore:#808080,$(font.base)
+# Error
+style.bash.1=$(colour.error)
+# Comment
+style.bash.2=$(colour.code.comment.box),$(font.comment),italics
+# Number
+style.bash.3=$(colour.number)
+# Keyword
+style.bash.4=$(colour.keyword),bold
+# Double quoted string
+style.bash.5=$(colour.string),$(font.monospace)
+# Single quoted string
+style.bash.6=$(colour.char),$(font.monospace)
+# Operators
+style.bash.7=$(colour.operator),bold
+# Identifiers (functions, etc.)
+style.bash.8=$(font.base)
+# Scalars: $var
+style.bash.9=fore:#000000,back:#FFE0E0
+# Parameter expansion: ${var}
+style.bash.10=fore:#000000,back:#FFFFE0
+# Back Ticks
+style.bash.11=fore:#FFFF00,back:#A08080
+# Here-doc (delimiter)
+style.bash.12=fore:#000000,back:#DDD0DD
+# Here-doc (single quoted, q)
+style.bash.13=fore:#7F007F,back:#DDD0DD,eolfilled,notbold
+# Braces are only matched in operator style
+braces.bash.style=7
+ 
+# HTML operand and white space
+style.hypertext.8=fore:#AC669D
+style.hypertext.10=fore:#AC669D
+ 
+# PHP
+# Default
+style.hypertext.118=$(font.base)
+# Matching braces
+style.hypertext.34=$(font.base)
+# Not maching braces
+style.hypertext.35=$(coulour.error)
+# Double quoted String
+style.hypertext.119=$(colour.string)
+# Single quoted string
+style.hypertext.120=$(colour.char)
+# Keyword
+style.hypertext.121=$(colour.keyword)
+# Number
+style.hypertext.122=$(colour.number)
+# Variable
+style.hypertext.123=$(colour.keyword2)
+# Comment
+style.hypertext.124=$(colour.code.comment.box)
+# One line comment
+style.hypertext.125=$(colour.code.comment.box)
+# PHP variable in double quoted string
+style.hypertext.126=$(colour.other)
+# PHP operator
+style.hypertext.127=$(font.base)
+ 
+# Text
+style.hypertext.0=$(font.base)
+# Tags
+style.hypertext.1=$(colour.keyword3)
+# Unknown Tags
+style.hypertext.2=fore:#FF0000
+# Attributes
+style.hypertext.3=fore:#53ABAB
+# Unknown Attributes
+style.hypertext.4=fore:#FF0000
+</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br><br><br>
+
+</div>
