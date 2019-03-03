@@ -23,7 +23,7 @@ id: config
                 <li><a href="#9">Refine info for audio/video</a></li>
                 <li><a href="#10">Integrate system trash</a></li>
                 <li><a href="#11">UI enhancements</a></li>
-                <li><a href="#12">Mounting drives with SSH</a></li>
+                <li><a href="#12">Mounting an android device</a></li>
              </ul>
     </li>
   </ul>
@@ -47,7 +47,7 @@ id: config
                 <li><a href="#9">Refine info for audio/video</a></li>
                 <li><a href="#10">Integrate system trash</a></li>
                 <li><a href="#11">UI enhancements</a></li>
-                <li><a href="#12">Mounting drives with SSH</a></li>
+                <li><a href="#12">Mounting an android device</a></li>
              </ul>
 </td></tr></table></div>
 
@@ -1571,11 +1571,11 @@ change white in tab??
 
 <br><br><br><br>
 
-<h2 id="12" class="tag">Mounting drives with SSH </h2>
+<h2 id="12" class="tag">Mounting and browsing an android device </h2>
 
 <br><br>
 
-<h3>Example: mount and browse file system on an Android device</h3>
+<h3>1. using SSH and the phone's wifi hotspot </h3>
 
 <div class="bullet"><ul><li>get "SSHFS Droid" app</li>
 <li>in the app settings: unselect require wifi, change p/w</li>
@@ -1588,18 +1588,19 @@ sudo mkdir /mnt/j1</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <li>enable allow_other in /etc/fuse.conf</li>
-<li>mount the android device with the command (noting the ip address that SSHFS Droid gives after linux box connectrs to the hotspot - in my case 192.168.43.1:2222) <b>- this will vary every time if mobile data is turned on!</b></li>
+<li>mount the android device with the command (noting the ip address that SSHFS Droid gives after linux box connects to the hotspot - in my case 192.168.43.1:2222) <b>- this will vary every time if mobile data is turned on! (so turn it off)</b></li>
+
 <form><textarea name="T" id="cmd" rows="1" cols="80">
-sudo sshfs -d root@192.168.43.1:/storage /mnt/j1 -p2222 -o allow_other</textarea>
+sudo sshfs -d root@192.168.43.1:/storage /mnt/phone -p2222 -o allow_other</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<li>now the device will be mounted at /mnt/j1, with /storage (i.e. SDcard, extSDcard) at top level</li>
+<li>now the device will be mounted at /mnt/phone, with /storage (i.e. SDcard, extSDcard) at top level</li>
 
 <li>normal sshfs unmount is with </li>
 
 <form><textarea name="T" id="cmd" rows="1" cols="30">
-sudo fusermount -u /mnt/j1</textarea>
+sudo fusermount -u /mnt/phone</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -1613,11 +1614,39 @@ map ,ssj1 shell -str sshfs -d root@192.168.43.1:/storage /mnt/j1 -p2222 -o allow
 map ,ssju shell -r sudo  fusermount -u /mnt/j1</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br><br>
 
+<h3>2. using mtp connection via usb cable </h3>
 
+<div class="bullet"><ul><li>install mtp
+<form><textarea name="T" id="install" rows="1" cols="30">
+sudo apt-get install mtp-tools go-mtpfs</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<li>make a dir in user home for a mount point 
+<li>then connect the phone via usb and set file transfer to mtp
+<li>run `go-mtpfs ~/mount-point-dir`
+<li>unmount the device with `fusermount -u ~/mount-point-dir`
+<br>
+</li></ul></div>
+The following commands are for checking the android's connection:
+<form><textarea name="T" id="cmd" rows="2" cols="30">
+mtp-detect
+mtp-connect</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
+<br>
+<b>Ranger mapping: </b>
 
-
+<form><textarea name="T" id="file" rows="4" cols="80">
+map ,mtd  shell -st mtp-detect
+map ,mtc  shell -st mtp-connect
+map ,mtg shell -f go-mtpfs %f		# highlight the mount-point dir
+map ,mtu shell -f fusermount -u %f</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
 
 <br><br><br><br>
 

@@ -77,6 +77,17 @@ aptitude full-upgrade </textarea>
 Now go ahead and install bluefish or whatever, without any systemd dependency issues!
 <br><br>
 
+Note: if apt complains that the repository key is missing, you need to fix it with the following commands:
+<textarea name="T" id="install" rows="2" cols="80">
+sudo gpg --keyserver pgpkeys.mit.edu --recv-key BB23C00C61FC752C
+sudo gpg -a --export BB23C00C61FC752C | sudo apt-key add -</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+where 'BB23C00C61FC752C' is the key signature reported by apt - change as necessary.
+
+<br><br><br><br>
+
 Download a Devuan iso from their site at <a href="https://files.devuan.org/devuan_jessie_beta/" target="https://files.devuan.org/devuan_jessie_beta/">https://files.devuan.org/devuan_jessie_beta/</a>
 <br><br>
 Read about Devuan without having systemd or dbus running <a href="https://talk.devuan.org/t/migrating-from-debian-to-a-minimalist-devuan/181">talk.devuan.org/t/migrating-from-debian-to-a-minimalist-devuan</a>

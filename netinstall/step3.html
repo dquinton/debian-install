@@ -103,7 +103,17 @@ sudo apt-get install handbrake</textarea>
 Without sourcing the deb-multimedia repository, you can find the great video cutter Avidemux here <a href="http://www.avidemux.org/nightly/appImage/">videmux.org/nightly/appImage/</a>
 <br><br>
 run app image with /dir../avidemux*.app
+<br><br>
+
+Recently, after a system upgrade, the app wouldn't run and I needed to provide a symlink to a library, a fake file 'libva-drm.so.1' linking to libva-drm.so.2,
+<form>
+<textarea name="T" id="cmd" rows="2" cols="80">
+cd /usr/lib/x86_64-linux-gnu
+sudo ln -s  /usr/lib/x86_64-linux-gnu/libva-drm.so.2.300.0 libva-drm.so.1</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 <br><br><br>
+
 
 <h3>Bombono</h3> 
 An easy dvd creator. download from <a href="https://pkgs.org/download/bombono">pkgs.org/download/bombono</a>

@@ -325,8 +325,8 @@ To get the latest version, add the qgis repo..
 (see the Qgis Debian install page here <a href="https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu">https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu</a>)
 
 <form><textarea name="T" id="install" rows="6" cols="100">
-sudo sh -c 'echo "deb http://qgis.org/debian stretch main" >> /etc/apt/sources.list'  
-sudo sh -c 'echo "deb-src http://qgis.org/debian stretch main " >> /etc/apt/sources.list'  
+sudo sh -c 'echo "deb http://qgis.org/debian buster main" >> /etc/apt/sources.list'  
+sudo sh -c 'echo "deb-src http://qgis.org/debian buster main " >> /etc/apt/sources.list'  
 wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
 gpg --fingerprint CAEB3DC3BDF7FB45
 gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
@@ -334,12 +334,47 @@ sudo apt-get update && sudo apt-get install qgis python-qgis </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-Note: running testing you will need to add the "stretch" repo, not "jessie".<br>
-This may not be recommended if running Devuan.
+Note: running testing you will need the "buster" repo.<br>
+This may not be recommended if running Devuan.??
 <br><br>
 <b>Also, if you run a dist-upgrade</b> at any time, its most likely that Qgis will be removed in the process, so you will need to reinstall qgis with the above apt-get command again.
+<br><br>
+After upgrading to devuan ascii (testing) I couldn't reinstall qgis (which was removed in the upgrade) because libqt5 was screaming for qtbase-abi-5-11-2, which was not available anywhere.  The only solution was to make a dummy qtbase-abi-5-11-2 debian archive and install it with dpkg. To do that,
+<br>
 
+<div class="bullet"><ul><li>first install the package 'equivs'
 
+<li>Then create a file
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+nano qtbase-abi.control</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<li>and fill it with
+
+<form>
+<textarea name="T" id="file" rows="8" cols="80">
+Section: misc
+Priority: optional
+Standards-Version: 3.9.2
+
+Package: qtbase-abi-5-11-2
+Version: 5.11.2
+Depends: libqt5core5a
+Description: fake package for qgis which needs a qtbase-abi-5-11-2</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<li>then run
+<form>
+<textarea name="T" id="cmd" rows="1" cols="50">
+equivs-build qtbase-abi.control</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<li>and install the package, before installing qgis again
+</ul>
+</div>
+<br><br>
 
 <br><br>
 <hr noshade="noshade">

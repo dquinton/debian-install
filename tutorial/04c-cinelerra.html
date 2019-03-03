@@ -73,7 +73,7 @@ The manual lists the keyboard shortcuts quite well, here I just list the main ke
 <td width="160"> Left/Right</td>
 <td width="360">moves the timeline along</td>
 <td width="160"> X/C/V</td>
-<td width="320">cut/copy/paste</td>
+<td width="320">cut/copy/paste (X also splits an edit)</td>
 </tr>
 <tr>
 <td >Alt-Left/Alt-Right</td>
@@ -185,7 +185,7 @@ Unfortunately, there are no shortcut settings in Preferences.
 <ul>
 <li>to move an edit, activate <b>drag-drop mode</b>, then click and drag the edit to another place
 <li>to select an edit, in either mode, double click on the titlebar
-<li>to select an area, activate <b>copy-paste mode</b>, then click and drag on edits
+<li>to select an area, activate <b>copy-paste mode</b>, then click and drag on edits, and Shift-click-drag to extend/shrink the area already selected
 <li>to select everything left or right of the insert point, press <b>Shift-Home </b>or <b>Shift-End</b>
 <li>to select the whole timeline hit <b>A</b>
 <li>to select with more accuracy, play to or find a start point and press <b>[</b> (set in-point), then play until the end point is found and press <b>]</b> (set out-point), then click on the in-point and <b>Shift-click</b> on the out-point to select the time between them
@@ -354,7 +354,7 @@ Cinelerra offers some outstanding tools for control of colour output, but master
 <li><b>color balance</b>: adjust cyan, magenta and yellow levels
 <li><b>gradient:</b> to set a coloured light effect.. <b>linear</b>: adjust angle, inner radius zero, reduce outer radius a little, set inner and outer colours..  <b>radial</b>: move the radial center off the picture on X or Y axis and also reduce outer radius
 <li><b>histogram:</b> drag the three pointers to set pre, mid and end of curve - to adjust brightness and shadows
- <li><b>histogram:</b> control the histogram curve with points
+ <li><b>histogram:</b> control the histogram curve with points -move the left arrow to affect blacks, right arrow for whites, middle for mid-tones.
  <li><b>hue saturation:</b> easily increase colour or reduce to b/w picture
 </ul>
 <br><br>
@@ -379,11 +379,13 @@ easily set keyframes in effects to alter the parameters through time..
 <li>click on the glass icon to set the degree of rotation
 </ul>
 <br>
-but, rotating a video (e.g. 16:9 aspect ratio 90 degrees) will crop top and bottom (as obviously 1920 pix wide can't rotate and stand up in 1080 pix high - its top and bottom won't fit in), so what you need is the "<b>Scale</b>" effect placed above the rotate effect, so that the video width can be scaled down to the new height dimension before rotation. 
+but, rotating a video (e.g. 16:9 aspect ratio 90 degrees) will crop top and bottom (as obviously 1920 pix wide can't rotate and stand up in 1080 pix high - its top and bottom won't fit in), so you can either attach the "<b>Scale</b>" effect (above the rotate effect, to scale the video width down to the new height dimension before rotation). 
 <ul><li>attach the scale effect and then right click on it >> <b>Move up</b> to set it above Rotate
 <li>Scale: just click on the glass, click on "Constrain ratio" then use mouse scroll button to raise the value to something less than 1. 
-
 </ul>
+<br>
+OR, after applying rotation, click on the "Adjust camera automation" button in the compositor window, and the Shift-left-click-drag to resize the video so that as much as you need fits onto the canvas (and turn off key-framing first!).
+
 
 <br><br>
 <h3>Scaling down video</h3>
@@ -395,6 +397,9 @@ To produce video with smaller dimensions than the source, you need to set the fo
 <li>Then click on the glass icon button on the effect and set the dimensions or scale.
 <li>you can also use <b>Auto Scale</b> effect and then Right click >> <b>Presets</b> and click and enter new values
 </ul>
+<br>
+But even EASIER.. after setting canvas size, click the "Adjust camera automation" button in the compositor window, and the Shift-left-click-drag to resize the video (and turn off key-framing first!).
+
 
 
 <br><br>
@@ -437,3 +442,4 @@ This technique will create a movement and transform shrink/grow of the video pic
 <br><br><br><br>
 </div>
 </div>
+(and turn off key-framing first!)
