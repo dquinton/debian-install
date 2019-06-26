@@ -291,22 +291,27 @@ Get the latest Viking from here <a href="http://sourceforge.net/projects/viking/
 get build dependencies<br>
 <form>
 <textarea name="T" id="install" rows="4" cols="80">
-sudo apt-get install libcurl4-openssl-dev gnome-doc-utils libexif-dev scrollkeeper libbz2-dev libmagic-dev libgps-dev intltool libexpat1 libexpat1-dev libgtk2.0-dev libgexiv2-dev libsqlite3-dev libmapnik-dev</textarea>
+sudo apt-get install libcurl4-gnutls-dev libgtk2.0-dev libsqlite3-dev nettle-dev libgeoclue-2-dev libgexiv2-dev libgps-dev libmagic-dev libbz2-dev libzip-dev liboauth-dev libmapnik-dev</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
+note that libmapnik pulls in a large amount of packages and it can be left out.
 
-
+<br>
 <br>
 unpack viking and run:
 <form>
 <textarea name="T" id="cmd" rows="3" cols="30">
-./configure
+./configure --disable-mapnik
 make
 sudo make install</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 or sudo checkinstall to make a deb package
+<br><br>
+
+the --disable-mapnik flag is necessary in order to build without libmapnik installed
 <br><br>
 See my <a href="{{site.baseurl}}/tutorial/11a-gps.html">GIS page</a> for more details!
 <br><br>
