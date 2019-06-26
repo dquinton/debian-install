@@ -52,7 +52,7 @@ id: net
 <div class="cont">
 
 
-<span class="bblue">updated May 2017</span>
+<span class="bblue">updated May 2019</span>
 <br><br><br>
 
 The following method is ideal for building a minimal Debian/Devuan install (without bloat) as it can install just the basic system without a desktop environment or any software packages, following which, you boot into a command prompt (or you can chroot from a working Debian system) where you  install whatever else you need, through an internet connection. The Netinstall ISO does give you the choice to install a full Desktop Environment as well, if you choose to, but then you can't specify exactly what you want installed at that level.
@@ -93,11 +93,16 @@ An ISO file contains every file needed to be put on a CD/DVD/USB stick in order 
 
   <br>
 <h3>Devuan</h3>
-<a href="https://files.devuan.org/devuan_ascii/"><b>files.devuan.org</b></a><br><br>
-if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" (that Debian wheezy used for its init scripts), I advise installing the Devuan branch of Debian.
+
+if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" (that Debian wheezy used for its init or start-up scripts), I advise installing the Devuan branch of Debian (rather than trying to exclude systemd, which is very difficult to do if not impossible due to dependency issues).
 <br><br>
 Devuan is a fork of Debian, mirroring most packages to Debian repositories, but providing its own versions where Debian packages demand systemd - thus providing a systemd-free Debian... 
+<br><br>
 
+download from here, live ISO and netinst CD from under 'installer-iso'<br>
+<a href="https://files.devuan.org/devuan_ascii/"><b>files.devuan.org/devuan_ascii</b></a><br><br>
+<br><br>
+<a href="https://devuan.org/get-devuan">devuan.org/get-devuan</a>
 <br><br>
 
 <h3>Debian </h3>

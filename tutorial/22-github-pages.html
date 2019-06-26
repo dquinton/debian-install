@@ -400,9 +400,9 @@ git push --set-upstream origin gh-pages</textarea>&nbsp;<input type="button" cla
 <br><br>
 If however you didn't clone the repo to local, and there are files on Github repo you don't have locally, you will get an error, "error: failed to push some refs to 'https://github.com/...' hint: Updates were rejected because the remote contains work that you do not have locally."
 <br><br>
-so you can use `git push origin master' or `git push -f' to force ovewrite of files
+so you can use `git push origin master' or `git push -f' to force overwrite of files
 <br><br>
-to update your local repository to the newest commit, incase there are commits from elsewhere, execute 
+to update your local repository to the newest commit, in case there are commits from elsewhere, execute 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 git pull</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
@@ -438,7 +438,22 @@ git add --all
 git commit -m "Fixed untracked files"
 git push</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br><br>
 
+If status reports that your local and remote repo have diverged, you can run either of these two commands:
+
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+git merge origin/gh-pages</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+git rebase origin/gh-pages</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+(where 'origin/gh-pages' is normally 'origin/master')<br>
+See the answer here <a href="https://stackoverflow.com/questions/2452226/master-branch-and-origin-master-have-diverged-how-to-undiverge-branches">stackoverflow.com...</a>
+<br><br>
 
 <br><br>
 <span class="ht">Github tips <a href="https://gist.github.com/aguilarcarlos/dc8ff22845991c860e67">https://gist.github.com/aguilarcarlos/dc8ff22845991c860e67</a></span>
