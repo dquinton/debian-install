@@ -55,15 +55,21 @@ id: net
 <span class="bblue">updated May 2017</span>
 <br><br><br>
 
-The following method is ideal for building a minimal Debian install (without bloat) as it can install just the basic system without a desktop environment or any software packages, following which, you boot into a command prompt (or you can chroot from a working Debian system) where you  install whatever else you need, through an internet connection. The Netinstall CD does give you the choice to install a full Desktop Environment as well, if you choose to, but then you can't specify exactly what you want installed at that level.
+The following method is ideal for building a minimal Debian/Devuan install (without bloat) as it can install just the basic system without a desktop environment or any software packages, following which, you boot into a command prompt (or you can chroot from a working Debian system) where you  install whatever else you need, through an internet connection. The Netinstall ISO does give you the choice to install a full Desktop Environment as well, if you choose to, but then you can't specify exactly what you want installed at that level.
 <br><br>
-Another method is to get a Debian Live CD with a full Desktop of your choice, if you prefer, but again you lose the fun of building the install yourself, cut down to the exact packages you want on your box.
+Another method is to get a Live CD with a full DE (desktop environment) of your choice, if you prefer, but again you lose the fun of building the install yourself, cut down to the exact packages you want on your box.
 <br><br>
-There are different releases of Debian - <b>Experimental</b> (better not to use, because there will be many breakages of your system), <b>Unstable</b> (don't either, there will still be breaks), <b>Testing</b> (where packages from new release are sent down to before becoming stable, will still be bugs), and <b>Stable</b> (where packages are well-tested and bugs mostly already repaired).
+Each release of Debian/Devuan passes through three stages of development life before becoming stable - <br>
+1st, <b>Experimental</b> (better not to use, because there will be many breakages of your system), <br>
+2nd, <b>Unstable</b> (don't either, there will still be breaks), <br>
+and 3rd, <b>Testing</b> (where packages are sent down to before becoming stable, and will still have bugs, but are newer versions than those in stable).  
 <br><br>
-<b>Stretch</b> became the new Debian stable in 2017.. Debian 9.  For better package updates, you can follow Debian testing, by adding "<b>buster</b>" or "<b>testing</b>" to your package sources list instead of "<b>stretch</b>" (I'll show how below).  If you add "testing", your Debian will stay with testing even when current testing becomes the new Stable.  
+
+A new release is called <b>Stable</b>, packages are well-tested and bugs mostly already repaired, but software is not so cutting-edge and it's sometimes needful to obtain packages direct from developers to run the most up to date versions.
 <br><br>
-However, when Testing is still new in life there may be some things that could break your system (meaning you might have crashes or package install conflicts to sort out)... so its advisable to run stable while testing is still early in life, and it's highly recommended for production systems or servers.  You can still install some packages from testing as well, by using the "-t testing" option with apt-get, while your default release is set to stretch or stable (but that's mish-mashing releases which may not be healthy).
+You can follow any release stage (e.g. Testing), by adding its stage name to your sources list (I'll show how below) which means you will always keep your system at that level, regardless whether testing becomes stable in a new release.  If you add the code name of the current testing to your sources, you will stay with that release when it becomes stable and will need to change the code name in order to follow testing again.  
+<br><br>
+However, when Testing is still new in life there may be some things that could break your system (meaning you might have crashes or package install conflicts to sort out)... so its advisable to run stable while testing still needs ironing out, and it's highly recommended for production systems or servers.  You can still install some packages from testing as well, by using the "-t testing" option with apt-get, while your default release is set to stable (but that's mish-mashing releases which may not be healthy).
 <br><br><a name="1"></a>
 Upgrading to Testing later on is very straight forward - see my page <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade debian</a>.
 
@@ -72,31 +78,39 @@ Upgrading to Testing later on is very straight forward - see my page <a href="{{
 <b id="1" class="tag">Pre-install, get an ISO file...</b>
 
 <br><br>
-An iso file contains every file needed to be put on a CD/DVD/USB stick in order to make a bootable medium with the chosen type of Debian Linux.  A suitable ISO to USB program will unpack the ISO to the USB stick. 
+An ISO file contains every file needed to be put on a CD/DVD/USB stick in order to make a bootable medium with the chosen type of Debian/Devuan Linux.  A suitable ISO to USB program will unpack the ISO to the USB stick. 
 <br><br><br>
 
-<h2>Debian Netinstall CD</h2>
+<h2>Netinstall CD</h2>
+
+
+
+<!-- CHECK HERE -->
+
+
+
+
 
   <br>
-
-<table border="1" cellspacing="0" style="border-collapse:collapse;border-color:rgb(136,136,136);border-width:1px">
-<tr>
-<td style="width:360px;height:54px">&nbsp;<a href="http://www.debian.org/distrib/netinst">Debian Stable </a> <br>&nbsp;(under "Small CDs")</td>
-<td style="width:360px;height:24px">&nbsp;<a href="http://www.debian.org/devel/debian-installer/">Debian Testing</a><br> &nbsp;(under "Netinst")</td>
-</tr></table>
-<br>
-Note: if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" (that Debian wheezy used for its init scripts), it was possible to install Wheezy and then upgrade to Jessie with care (see my <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade Debian</a> page).. but starting with Stretch this won't be possible.  So I advise installing the Devuan branch of Debian.
+<h3>Devuan</h3>
+<a href="https://files.devuan.org/devuan_ascii/"><b>files.devuan.org</b></a><br><br>
+if you would like to install Debian without the controversial "<b>systemd-sysv</b>" package, and stay with "<b>sysvinit</b>" (that Debian wheezy used for its init scripts), I advise installing the Devuan branch of Debian.
 <br><br>
-
 Devuan is a fork of Debian, mirroring most packages to Debian repositories, but providing its own versions where Debian packages demand systemd - thus providing a systemd-free Debian... 
+
 <br><br>
-you can download a Devuan iso from their site at <a href="https://files.devuan.org/devuan_ascii/"><b>files.devuan.org</b></a>
-<br><br>
+
+<h3>Debian </h3>
+Look at the Debian site here  <a href="http://www.debian.org">Debian.org </a> 
+<br>
+
+<a href="http://www.debian.org/distrib/netinst">Debian Stable </a> &nbsp;(under "Small CDs")<br>
+<a href="http://www.debian.org/devel/debian-installer/">Debian Testing</a>&nbsp;(under "Netinst")<br>
 
 
 
 <br><br>
-<h2> Debian Live CD</h2>
+<h2>Live CD</h2>
 
 
 <br>
@@ -126,16 +140,7 @@ You could also use Fsmithred's Live CD made with Devuan.. <a href="http://source
 
 <br>
 <br>
-<h3>So the options are.....</h3>
-<div class="bullet"><ul><li>Use the Netinstall Cd to get started with (its more fun than using a live CD which has the desktop environment already), and once you've spent more time building your Debian, you can use Refractasnapshot to backup or clone it.</li>
 
-<li>Use a Live CD, in case you don't have the time to build Debian from scratch yourself.</li>
-
-<li>Make your own Live CD - but it takes a lot more time to get it right, plus it needs a sizeable area on disk to work with.</li>
-</ul></div>
-<br>
-<hr noshade="noshade">
-<br><br>
 
 <h2>Make a bootable USB stick</h2>
 Put the ISO onto a usb stick with a few easy steps with <a href="http://unetbootin.sourceforge.net/">Unetbootin</a> - see my <a href="{{site.baseurl}}/helps/01-usb-installer.html">usbinstaller</a> page
@@ -210,7 +215,7 @@ Note: it's not advisable to move a partition along on the hdd, as Gparted will a
 
 If you are planning to dual boot Debian with Windows (i.e. have both installed and choose from a menu which one to boot) it will be easy as chips if your Win OS partition was custom sized with separate data partitions - then you just need to resize any data partition to make space for Debian.  However, if your PC came with factory-installed Windoze, then the OS partition may indeed take up half or even the whole of the hard-disk.  In that case, you'll need to run some operations in W so that you can shrink the OS partition down to a more moderate 50 to 80Gb.
 <br><br>
-I ran the following tasks in Win7 to do this: 
+I ran the following tasks in Win7 to do this (and these may be old now, I don't use or touch W any more): 
 
 <div class="bullet"><ul>
 <li>disk clean-up</li>
@@ -225,7 +230,7 @@ I ran the following tasks in Win7 to do this:
 <br>
 Finally I shrunk it right down to the size I wanted it with Gparted (but you may want to back up the partition before doing this).
 <br><br>
-If you're going to to wipe the W partition (yeah!) but there's data on it, back-up what you need to external drive or data partition if present, or else shrink down the W partition and make a temporary partition to move stuff onto.
+If you're going to to wipe the W partition (yeah!) but there's data on it, back-up what you need first.
 <br><br>
 <div class="caut">Take care if you actually shift a Windows (Win 7) partition along the HDD, say to make more space for a Linux partition, as this will LIKELY render the Windows OS unbootable because the W boot sector will be changed. You would then need to fix that with a Windows Disk by running the repair boot option.</div>
 <br><br>
@@ -317,6 +322,10 @@ deb http://security.debian.org/ stretch/updates main contrib non-free</textarea>
 see <a href="http://http.debian.net/">http://http.debian.net/</a>
 <br><br>
 You could also add the multimedia repository (deb-multimedia) to the sources file, which has many useful codecs, but its not recommended by Debian.
+
+
+<!-- CHECK HERE -->
+
 
 <br><br>
 My sources list for Debian looks like so:

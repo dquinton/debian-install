@@ -288,10 +288,10 @@ sudo apt-get install gpsbabel gpsbabel-gui viking</textarea>
 <br><br>
 Get the latest Viking from here <a href="http://sourceforge.net/projects/viking/files/">http://sourceforge.net/projects/viking/files/</a>
 <br><br>
-get build dependencies<br> (see here <a href="https://github.com/viking-gps/viking">https://github.com/viking-gps/viking</a>)
+get build dependencies<br>
 <form>
 <textarea name="T" id="install" rows="4" cols="80">
-sudo apt-get install libcurl4-gnutls-dev libgtk2.0-dev libsqlite3-dev nettle-dev libmapnik-dev libgeoclue-2-dev libgexiv2-dev libgps-dev libmagic-dev libbz2-dev libzip-dev liboauth-dev</textarea>
+sudo apt-get install libcurl4-openssl-dev gnome-doc-utils libexif-dev scrollkeeper libbz2-dev libmagic-dev libgps-dev intltool libexpat1 libexpat1-dev libgtk2.0-dev libgexiv2-dev libsqlite3-dev libmapnik-dev</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -307,14 +307,6 @@ sudo make install</textarea>
 </form>
 <br>
 or sudo checkinstall to make a deb package
-<br><br>
-run this instead to disable mapnik and save some disk space (ie don't install libmapnik-dev above)
-<form>
-<textarea name="T" id="cmd" rows="1" cols="30">
-./configure --disable-mapnik</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
 <br><br>
 See my <a href="{{site.baseurl}}/tutorial/11a-gps.html">GIS page</a> for more details!
 <br><br>
@@ -428,8 +420,8 @@ if success then unpack xiphos and cd there, install with
 <br><br>
 <br><br><br>
 
-<b>Next page: 
+<b>Next pages: 
 <br><br>
-<a style="font-size: 1.2em; " href="step5.html">Step5</a> - Enable multiarch, Google earth, Skype</b>
+<a style="font-size: 1.2em; " href="lxde-fast.html">LXDE fast install</a>&nbsp;&nbsp;&nbsp;<a style="font-size: 1.2em; " href="../configure.html">Configure Debian</a></b>
 <br><br>
 </div>

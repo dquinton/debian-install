@@ -10,11 +10,11 @@ id: help
 <div class="cont">
 
 
-Many laptops are hampered by a maximum volume that seems much too quiet and it's particularly annoying when you're trying to play some media that was encoded with poor audio settings, so that there's almost nothing heard at all.  In such cases, it would be nice to amplify the sound above the normal 100% full volume, but it doesn't go (well we I'm talking laptop speakers, not plugin ones).  
+Many laptops are hampered by a maximum volume that seems much too quiet and it's particularly annoying when you're trying to play some media that was encoded with poor audio settings, so that there's almost nothing heard at all.  In such cases, it would be nice to amplify the sound above the normal 100% full volume (well I'm talking laptop speakers, not plugin ones).  
 <br><br>
-VLC can boost to about 125% and pulse audio has some settings to boost to 150%.  But can it be done on a system with just Alsa installed? It sure can!
+VLC can boost to about 125% and Mpv can go up to 130% by pressing the * key.  Pulse audio has some settings to boost to 150%, but can it be done on a system with just Alsa installed?  Yes it can, but it actually <b> rendered my system frozen on several ocassions!</b>
 <br><br>
-First we need to create an Alsa config file, and in there we will make a new control that makes the default audio channel its slave, and then itself sets a higher max dB limit.
+First you need to create an Alsa config file, and in there you make a new control that makes the default audio channel its slave, and then that new control sets a higher max dB limit.
 <br><br>
 There are quite a few forum posts (like <a href="http://www.linuxquestions.org/questions/slackware-14/alsa-with-pre-amp-4175527907-print/">here</a>) with ideas, but when I tried following them I had endless problems with Alsa not able to recognise the slave.  
 <br><br>
