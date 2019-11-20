@@ -4,20 +4,47 @@ description: Installing Debian from the Netinstall CD with LXDE - fast method - 
 title: LXDE fast install
 id: net
 ---
+<div class="onpage">
+  <ul>
+    <li>
+        On this page &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Overview of the install</a></li>
+                <li><a href="#xorg">Xorg error</a></li>
+                <li><a href="#3">Install packages</a></li>
+                <li><a href="#4">Last set up things</a></li>
+                <li><a href="#5">Post netinstall scripts</a></li>
+                </ul>
+    </li>
+  </ul>
+</div>
 
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Overview of the install</a><br>
+   <a href="#xorg">Xorg error</a><br>
+   <a href="#3">Install packages</a><br>
+   <a href="#4">Last set up things</a><br>
+   <a href="#5">Post netinstall scripts</a><br>
+</td></tr></table></div>
 <div class="parent"><a href="../netinstall.html">Netinstall</a> ></div>
 
 <div class="cont">
 
-<h2>Overview of the install</h2>
-updated June 2017
+<h2 id="1" class="tag">Overview of the install</h2>
+updated Nov 2019
 <br><br>
 
 It looks like this for the Netinstall CD..
 <div class="numb"><ol><li>Run the Netinstall CD</li>
 <li>Restart and login to root</li>
-<li>add norecommends file</li>
-<li>install the desktop:</li></ol></div>
+<li>check sources file, sudoers, fstab, interfaces</li>
+<li>copy config files to home, or mount home if partition already present</li>
+<li>run apt-uptate and full-upgrade, then install the desktop...</li>
+
+</ol></div>
+<br>
+(see my install scripts at the bottom of this page)
 <br><br>
 <b>for LXDE</b>
 <form>
@@ -28,15 +55,19 @@ apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpu
 <br>
 
 add if you like: <span class="inst">synaptic apt-xapian-index gdebi</span>
-<br><br><br>
+<br><br>
 
 I go without lxde and lightdm now, and add here: <span class="inst">openbox lxpanel lxtask leafpad</span>
 <br><br>
+and you may need firmware such as <span class="inst">firmware-amd-graphics firmware-linux firmware-linux-nonfree firmware-iwlwifi </span>
+
+
+<br><br><br>
 
 <b>for plain openbox</b>
 <form>
-<textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop elinks gparted bash-completion command-not-found udiskie gvfs</textarea>
+<textarea name="T" id="install" rows="4" cols="100">
+apt-get install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop elinks gparted bash-completion command-not-found ntp udiskie gvfs xcape</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -81,22 +112,30 @@ allowed_users=anybody
 needs_root_rights=yes</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
+or the other way is to install elogind with,
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+apt-get install elogind libpam-elogind</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
 <br><br><br>
 
 
-<b>5.</b>&nbsp;&nbsp; Install the full programme suite:
-
+<b id="3" class="tag">6.&nbsp;&nbsp; Install packages</b>
+<br><br>
 file manager..<br>
 <form>
 <textarea name="T" id="install" rows="5" cols="100">
-apt-get install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs feh imagemagick exiftool w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer bluetooth blueman openjdk-8-jre icedtea-8-plugin zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs-backends sshfs locate git cups gpa ntp yad rpl</textarea>
+apt-get install ranger thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs feh imagemagick exiftool w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer bluetooth blueman openjdk-8-jre zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs-backends sshfs locate git cups gpa ntp yad rpl partclone trash-cli</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 media player/encoder/desktop apps..
 <form>
 <textarea name="T" id="install" rows="6" cols="100">
-apt-get install mplayer2 vlc handbrake audacious gnome-sound-recorder lame gimp darktable inkscape abcde eyed3 bashburn gnome-color-chooser systemsettings xpdf x11-apps gpsbabel clipit uget clamtk gdmap bleachbit ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict artha transmission easytag xfce4-notes-plugin bluefish elinks yelp filezilla docky gtk2-engines gtk2-engines-xfce gtk3-engines-xfce </textarea>
+apt-get install mplayer2 vlc handbrake audacious gnome-sound-recorder lame gimp darktable inkscape abcde eyed3 bashburn gnome-color-chooser systemsettings xpdf x11-apps gpsbabel clipit uget clamtk gdmap bleachbit ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict transmission easytag xfce4-notes-plugin bluefish elinks yelp filezilla docky geany</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -111,24 +150,21 @@ Just add/remove what you like to/from this.
 
  
 <br><br>
-<b>6. </b>&nbsp;&nbsp;Install the build dependencies (as on the Netinstall page) 
+<b>7. </b>&nbsp;&nbsp;Install the build dependencies (as on the Netinstall page) 
 <br><br>
 
 with a fast connection you can get this done in an hour, but then setting up takes time - of course, days!<br>
 You can always cancel apt downloading of packages and resume it later on, just use Ctrl-C to cancel.  Press up arrow and Enter in the terminal to hit the same apt-get command again and apt will continue with downloading.
-<br><br>
 
-<b>7.</b> &nbsp;&nbsp;add user to sudoer file, setup fstab and configure wireless
+
 <br><br>
-<b>8.</b>&nbsp;&nbsp; boot into the system.
-<br><br><br>
 
 
 Which leaves <span class="blue">Ranger, compton, Libre Office, video editors, ffmpeg, Avidemux, Bombono, XnViewMP, web browser, Viking, Qgis, Refractasnapshot, ClamTK </span> ......to install from downloaded packages.
 
 
-<br><br><br>
-<h3>Last set up things</h3>
+<br><br><br><br>
+<h3 id="4" class="tag">Last set up things</h3>
 power options in Xfce-power-manager
 <br><br>
 edit ~/.config/user-dirs.dirs to change which dir's get the "Documents", "Music", "Video" icons in Thunar, if installed.
@@ -159,6 +195,147 @@ and paste this line at the end, Ctrl-X,y,Enter:
 <form>
 <textarea name="T" id="file" rows="1" cols="30">
 NotShowIn=LXDE</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br><br>
+
+<h3 id="5" class="tag">Post netinstall scripts</h3>
+These are pretty basic but they help to automate some work and help me not to forget anything at the time. Adapt them to your needs.
+<br><br>
+<b>1. system files setup script</b>
+<br><br>
+
+the system files that I rsync to the new system are contained in a heap of folders in a dir called netinstall_1910, that are named with the location the files are normally found at, e.g. etc-xdg-menus folder contains files found at /etc/xdg/menus.
+<br><br>
+for how to chroot, see my  <a href="{{site.baseurl}}/helps/03-chrooting.html">chrooting page</a>
+<br><br>
+<form>
+<textarea name="T" id="file" rows="40" cols="120">
+#!/bin/bash
+#script to set up system files, run in chroot env, as root - Quinton, 10/2019
+#chroot the new install, in booted system run `sudo rsync -arult netinstall_1910 /mnt/tmp`, then at chroot prompt `cd /tmp/netinstall_1910` and run this script, or paste parts of it on the command line
+
+#enter your username for setting up groups
+USER=
+
+#set home in fstab
+nano /etc/fstab
+mv /home /home1 && mkdir /home && mount -a
+
+#check interfaces
+nano /etc/network/interfaces
+
+#add groups
+for g in dialout plugdev lpadmin admin clamav fuse audio ;do groupadd -f $g
+for g in netdev dialout plugdev lpadmin admin clamav fuse audio sudo ;do adduser $USER $g; done
+
+#add nopasswd line to sudoers, to allow for script to call shutdown, reboot and suspend without getting stuck for need of user password
+echo %sudo ALL=NOPASSWD: /sbin/shutdown, /sbin/reboot, /usr/sbin/pm-suspend >> /etc/sudoers
+
+
+###########################
+#start syncing system files - copied from a previous install
+
+rsync -art etc/hosts /etc
+
+#check that hostname is correct =hostname at install
+nano /etc/hosts
+
+#iptables (firewall)
+rsync -art etc/iptables.up.rules /etc
+
+#apt lists
+rsync -arult etc-apt/ /etc/apt
+
+#udisks2 file for automounting, if no display manager
+rsync -art etc-polkit-1--localauthority-50-local.d/ /etc/polkit-1/localauthority/50-local.d
+
+rsync -art etc-X11-cursors/ /etc/X11/cursors 
+rsync -arult etc-xdg-menus/ /etc/xdg/menus
+rsync -arult lib-firmware/ /lib/firmware
+
+#root config files, such as colours, bash alias, ranger
+rsync -arult root/ /root
+
+#xs script and any other home-made sys-level script
+rsync -art usr-bin/ /usr/bin
+
+#screen resolution, leave for laptop (low res screen)
+#mkdir /etc/X11/xorg.conf.d && rsync -art etc-X11-xorg.conf.d/ /etc/X11/xorg.conf.d
+
+
+#############################
+#prepare apt cache, mount var partition if have one
+mkdir /media/var && mount /dev/sda7 /media/var
+
+#backup apt archives and apt lists and make symlinks to the same on var mounted at /media/var
+mv /var/cache/apt/archives /var/cache/apt/archives1 && mkdir /var/cache/apt/archives && ln /media/var/cache/apt/archives /var/cache/apt/
+mv /var/lib/apt/lists /var/lib/apt/lists1 && mkdir /var/lib/apt/lists && ln /media/var/lib/apt/lists /media/var/lib/apt/
+
+</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+<b>2. Package install script</b>
+<form>
+<textarea name="T" id="file" rows="40" cols="120">
+#!/bin/bash
+#script to install packages after new Netinstall, run in chroot env from running Linux system - Quinton, 10/2019
+#included here are 1. possible missed pkgs from netinstall, 2. openbox desktop (no display mgr), 3. thunar file man, 4. ranger with media viewers, 5. file archiving, disk utilities, printing, bluetooth, android, etc, 6. media editors and desktop apps, 7. build dependencies, 8. ffmpeg build deps, 9. viking build deps, 10. jekyll pre-install, 11. refractasnapshot deps,
+
+apt-get install aptitude
+aptitude update
+aptitude full-upgrade
+
+aptitude install consolekit sudo grub2 laptop-mode-tools network-config iw rfkill lshw \
+\
+xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop elinks gparted bash-completion command-not-found udiskie gvfs xcape firmware-amd-graphics firmware-linux firmware-linux-nonfree firmware-iwlwifi elogind libpam-elogind \
+\
+thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra thunar-media-tags-plugin xdg-user-dirs exiftool feh imagemagick \
+\
+ranger w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer trash-cli \
+\
+zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk partclone gvfs-backends sshfs locate git cups gpa ntp yad rpl bluetooth blueman openjdk-8-jre mtp-tools go-mtpfs adb  \
+\
+mplayer2 vlc cin handbrake audacious gnome-sound-recorder lame gimp darktable inkscape vivaldi-stable abcde eyed3 bashburn gnome-color-chooser xpdf x11-apps gpsbabel clipit uget clamtk gdmap bleachbit ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict transmission easytag xfce4-notes-plugin bluefish yelp filezilla docky dvdrip dvdbackup libdvdcss2 ttf-mscorefonts-installer \
+\
+build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake checkinstall yasm libqt4-dev kdelibs5-dev libsdl1.2-dev libsdl-image1.2-dev libxml2-dev \
+\
+libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libschroedinger-dev libmp3lame-dev libfaac-dev libfaad-dev libgsm1-dev libopencore-amrnb-dev libopencore-amrwb-dev libsamplerate0-dev libjack-dev libsox-dev ladspa-sdk swh-plugins libmad0-dev libpango1.0-dev libass-dev libfdk-aac-dev libopus-dev libvpx-dev libx264-dev libx265-dev \
+\
+libcurl4-gnutls-dev libgtk2.0-dev libsqlite3-dev nettle-dev libgeoclue-2-dev libgexiv2-dev libgps-dev libmagic-dev libbz2-dev libzip-dev liboauth-dev \
+\
+ruby ruby-dev \
+\
+squashfs-tools live-boot live-config live-boot-initramfs-tools live-config-sysvinit libburn4 libjte1 libisofs6 libisoburn1 xorriso isolinux 
+ 
+ 
+#update clamtk virus definitions with
+freshclam
+
+
+#install downloaded deb packages - install their dependencies first
+dpkg z_get_debs/*.deb
+
+
+#reorganise the .desktop files, after package install - replace with own copied
+mv /usr/share/applications /usr/share/applications.bak
+mkdir /usr/share/applications
+rsync -arlt usr-share-applications/ /usr/share/applications
+rsync -arlt usr-share-desktop-directories/ /usr/share/desktop-directories
+rsync -arlt usr-share-icons/ /usr/share/icons
+
+
+#check what linux kernel is installed
+dpkg --list | grep linux-image
+uname -r 
+
+#check which version is available from your release
+apt-cache search linux-image
+
+</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 

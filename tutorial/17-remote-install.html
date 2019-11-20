@@ -324,9 +324,9 @@ su to root and run these in the build directory, to create lists which will be u
 <br><br>
 First of all, those needed for successful build as they are possibly excluded by the "no-recommends" option.
 <br>
-<textarea name="T" id="cmd" rows="3" cols="100">
+<form><textarea name="T" id="cmd" rows="3" cols="100">
 for p in eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup grub2 consolekit aptitude laptop-mode-tools network-config iw ;do echo $p &gt;&gt; config/package-lists/needed.list.chroot ;done</textarea>
- <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 then do either
@@ -334,7 +334,7 @@ then do either
 <br>
 <b>1. minimal LXDE install</b>
 <br>
-<textarea name="T" id="cmd" rows="5" cols="100">
+<form><textarea name="T" id="cmd" rows="5" cols="100">
 for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad xfce4-power-manager rxvt-unicode htop elinks gparted aptitude bash-completion command-not-found ntp debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -344,16 +344,16 @@ for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd t
 or <br>
 <b>2. plain openbox install</b>
 <br>
-<textarea name="T" id="cmd" rows="5" cols="100">
-for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpolkit lxpanel lxtask wicd tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop elinks gparted aptitude bash-completion command-not-found udiskie gvfs ntp debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+<form><textarea name="T" id="cmd" rows="5" cols="100">
+for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpolkit lxpanel lxtask wicd tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop elinks gparted aptitude bash-completion command-not-found udiskie gvfs ntp xcape debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
 <b>For Thunar</b>
 <br>
-<textarea name="T" id="cmd" rows="4" cols="100">
-for p in thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra bluetooth blueman ntfs-3g blktool dosfstools mtools testdisk gvfs-backends zip unzip bzip2 p7zip-full openjdk-8-jre icedtea-8-plugin git cups gpa ntp rpl ;do echo $p config/package-lists/thunar.list.chroot ;done</textarea>
+<form><textarea name="T" id="cmd" rows="4" cols="100">
+for p in thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra bluetooth blueman ntfs-3g blktool dosfstools mtools testdisk gvfs-backends zip unzip bzip2 p7zip-full openjdk-8-jre icedtea-8-plugin git cups gpa ntp rpl xrandr ;do echo $p >> config/package-lists/thunar.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -361,8 +361,8 @@ for p in thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tum
 
 <b>All other apps</b>
 <br>
-<textarea name="T" id="cmd" rows="7" cols="100">
-for p in mpv vlc handbrake audacious gnome-sound-recorder lame gimp darktable inkscape abcde eyed3 bashburn gnome-color-chooser xpdf x11-apps feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer gpsbabel clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict xfce4-notes-plugin hasciicam bluefish filezilla yelp easytag catfish pyrenamer xfburn xpad gtk2-engines gtk2-engines-xfce gtk3-engines-xfce ;do echo $p config/package-lists/apps.list.chroot ;done</textarea>
+<form><textarea name="T" id="cmd" rows="7" cols="100">
+for p in mplayer2 vlc handbrake audacious gnome-sound-recorder lame gimp darktable inkscape abcde eyed3 bashburn gnome-color-chooser xpdf x11-apps ranger feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer gpsbabel clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict xfce4-notes-plugin bluefish filezilla yelp easytag xpad geany ttf-mscorefonts-installer ;do echo $p >> config/package-lists/apps.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -372,8 +372,8 @@ for p in mpv vlc handbrake audacious gnome-sound-recorder lame gimp darktable in
 
 <b>For build dependencies</b>
 <br>
-<textarea name="T" id="cmd" rows="4" cols="100">
-for p in build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev x11-xserver-utils libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake checkinstall ;do echo $p config/package-lists/build.list.chroot ;done</textarea>
+<form><textarea name="T" id="cmd" rows="4" cols="100">
+for p in build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev x11-xserver-utils libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake checkinstall ;do echo $p >> config/package-lists/build.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -394,10 +394,11 @@ Put their .deb archives in config/packages.chroot -for example, most recent Xnvi
 
 <br><br>
 
-
-Note with thunar: the latest is found in <a href="http://packages.debian.org/experimental/thunar">experimental</a>, but it has so many dependencies it failed to install for me using packages.
+<b>Package pinning example</b>
+<br>
+with thunar a few years back, the latest was found in experimental</a>, but it had so many dependencies it failed to install just using packages.
 <br><br>
-Therefore it is wiser to pin it to the experimental repository, with all other packages defaulting to the config repository, like this
+Therefore it was necessary to pin it to the experimental repository, with all other packages defaulting to the config repository, like this
 
 
 <form><textarea name="T" id="cmd" rows="2" cols="80">
@@ -524,10 +525,15 @@ or get the <a href="http://packages.debian.org/wheezy/live-boot-initramfs-tools"
 
 If you'd like to customize the Live cd environment, with autostart, no recommends files etc, you simply add the files to <span style="color: #0b5394">config/includes.chroot </span>directory with the same dir tree as they need in a real file system.
 <br>
-<ul><li>put the LXDE autostart file in <span style="background-color:rgb(208,224,227)">config/includes.chroot/etc/xdg/lxsession/LXDE/</span></li></ul>
+<ul><li>put the LXDE autostart file in
+<br>
+ <span style="background-color:rgb(208,224,227)"><b>config/includes.chroot/etc/xdg/lxsession/LXDE/</b></span></li>
 
 
-Add config files to <span style="background-color:rgb(208,224,227)">config/includes.chroot/etc/skel/</span> so that they will be used to create the live user's home directory... and the installed user's?
+<li>Add config files to
+<br>
+ <span style="background-color:rgb(208,224,227)"><b>config/includes.chroot/etc/skel/</b></span> <br>
+ so that they will be used to create the live user's home directory... and the installed user's?</ul>
 <br><br>
 <a href="http://live-systems.org/manual/current/html/live-manual/customizing-contents.en.html#479" >http://live-systems.org/manual/...</a>
 <br>

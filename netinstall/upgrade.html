@@ -255,16 +255,9 @@ dpkg --list | grep linux</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
-Then you will need to run update-grub
+update-grub and update-initramfs will run automatically after a kernel removal.
 
-<br><br>
-<b>Note: you most likely will need to update initramfs as well..</b> for example, I installed the linux 4.17 kernel and forgot about initramfs, resulting in a hang during boot, with EXT4-fs I/O error and kernel waiting for the root partition endlessly...
 
- <form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-sudo update-initramfs -u</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
 <br><br>
 <br><br>
 <h3>2. Install from stable backports</h3>
@@ -322,7 +315,7 @@ apt-get install linux-image-3.16-amd64</textarea>
 
 <br><br><br><br>
 
-<h2 id="7" class="tag">Upgrade notes</h2>
+<h2 id="7" class="tag">Upgrade notes (very old)</h2>
 <br>
 <h3>Wheezy to Jessie</h3><br>
 
@@ -355,7 +348,7 @@ change <span style="color:#076b00">user-session=lightdm-xsession</span> to <span
 
 <span class="prob">Broken apt-get after update?</span><br>
 If you choose to keep the original sudoers file, you won't be able to apt-get or aptitude later,
-so you need to terminal: su, root p/w, visudo
+so you need to terminal: su, root p/w, EDITOR=nano visudo
 <br><br>
 cursor down after the line <span style="color:#076b00">Defaults  env_reset</span>
 <br><br>

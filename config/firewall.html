@@ -32,9 +32,9 @@ id: config
 
 I finally got a little tired of Firestarter - although it did a good job most of the time, it annoyed me when I was trying to share my connection or connect to another box with a simple network.
 <br><br>
-Actually, all it's doing is acting as a manager of the system's ports, accepting and rejecting traffic, by writing iptables. So that's why its possible to ditch your GUI firewall because you can configure your own iptables and have complete control with them, like allow any unusual ports which a GUI firewall might just block. 
+Actually, all it does is act as a manager of the system's ports, accepting and rejecting traffic, by writing "iptables". So that's why it's possible to ditch your GUI firewall because you can configure your own iptables and have complete control with them, like allow any unusual ports which a GUI firewall might just block. 
 <br><br>
-I still don't know a lot about IP tables, with hardly any time to learn, but they can be used extensively... I got a firewall set up using the iptables file on the Debian Wiki here <a href="https://wiki.debian.org/iptables">https://wiki.debian.org/iptables</a>
+I still don't know much about IP tables, with hardly any time to learn, but they can be used extensively... I got a firewall set up using the iptables file on the Debian Wiki here <a href="https://wiki.debian.org/iptables">https://wiki.debian.org/iptables</a>
 
 <br><br>
 With just a few easy steps...
@@ -49,7 +49,8 @@ nano /etc/iptables.test.rules </textarea>
 
 2. &nbsp;&nbsp;&nbsp;fill that with the Debian Wiki example (including a new line at end after "COMMIT") and save it
 <br><br>
-3. &nbsp;&nbsp;&nbsp;stop firestarter
+
+3. &nbsp;&nbsp;&nbsp;stop firestarter, if you have it running
 <br><br>
 4. &nbsp;&nbsp;&nbsp;run 
 <form><textarea name="T" id="cmd" rows="1" cols="50">
@@ -74,7 +75,7 @@ iptables-save > /etc/iptables.up.rules</textarea>
 <br>
 
 
-7. &nbsp;&nbsp;&nbsp;to have the rules run at start-up, 
+7. &nbsp;&nbsp;&nbsp;and to have the rules run at start-up, make a file
 <form><textarea name="T" id="cmd" rows="1" cols="50">
 nano /etc/network/if-pre-up.d/iptables</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
@@ -91,7 +92,7 @@ fill with this script
 </form>
 <br>
 
-make the script executable with 
+finally, make the script executable with 
 <form><textarea name="T" id="cmd" rows="1" cols="50">
 chmod +x /etc/network/if-pre-up.d/iptables</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">

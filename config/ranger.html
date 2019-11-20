@@ -102,7 +102,7 @@ git clone https://github.com/hut/ranger.git</textarea>
 
 optional installs for Ranger:
 <form><textarea name="T" id="install" rows="2" cols="80">
-sudo apt-get install w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer</textarea>
+sudo apt-get install w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer trash-cli</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -896,7 +896,7 @@ map fid   shell darktable %f          #edit image with darktable</textarea>
 
 <br><br>
 <h3 id="mog" class="tag">map fim for mogrify commands</h3>
-<form><textarea name="T" id="file" rows="15" cols="150">
+<form><textarea name="T" id="file" rows="18" cols="150">
 ##### mogrify commands ##########
 map fim1  shell -f mkdir "../${PWD##*/}_a"; mogrify -path "../${PWD##*/}_a" -resize '1200x1200>' -quality 90 *.jpg *.JPG            
                                     #reduce jpegs in current dir and place new images in dir_a 1 level up
@@ -906,6 +906,9 @@ map fim3  console shell -f mogrify -resize '1200x1200>' -quality 90 *{.jpg|.JPG}
 map fim4  console shell -f find . -type f -iname "*.jpg" -print0 | xargs -0 mogrify -resize '1024x1024>' -quality 84 {} \;
                                                         #reduce jpegs RECURSIVELY, start from current dir, OVERWRITE files, 1024pix, 84%
 map fim5  shell -f mogrify -format jpg -quality 100 *.png      #convert png to jpeg -progress will be noted by green temp file moving down list
+map fimr1 console -p27 shell -f mogrify -rotate -90 %s%s
+map fimr2 console -p27 shell -f mogrify -rotate 90 %s%s
+
 map fim6  shell -f sh ~/scripts/image-resize.sh %f           #see image processing page for these 2 scripts
 map fim7  shell -f sh ~/scripts/image-convert.sh %f
 map fixx  shell -f jhead -di %s                           #remove iptc keywords from selected images</textarea>
@@ -1619,7 +1622,7 @@ map ,ssju shell -r sudo  fusermount -u /mnt/j1</textarea>
 <h3>2. using mtp connection via usb cable </h3>
 
 <div class="bullet"><ul><li>install mtp
-<form><textarea name="T" id="install" rows="1" cols="30">
+<form><textarea name="T" id="install" rows="1" cols="50">
 sudo apt-get install mtp-tools go-mtpfs</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -1629,7 +1632,8 @@ sudo apt-get install mtp-tools go-mtpfs</textarea>
 <li>unmount the device with `fusermount -u ~/mount-point-dir`
 <br>
 </li></ul></div>
-The following commands are for checking the android's connection:
+<br>
+The following commands are used for checking the android's connection, and may not be necessary for connecting, but if the device will not mount, try detecting it first:
 <form><textarea name="T" id="cmd" rows="2" cols="30">
 mtp-detect
 mtp-connect</textarea>
@@ -1640,10 +1644,10 @@ mtp-connect</textarea>
 <b>Ranger mapping: </b>
 
 <form><textarea name="T" id="file" rows="4" cols="80">
-map ,mtd  shell -st mtp-detect
-map ,mtc  shell -st mtp-connect
-map ,mtg shell -f go-mtpfs %f		# highlight the mount-point dir
-map ,mtu shell -f fusermount -u %f</textarea>
+map ,td  shell -st mtp-detect
+map ,tc  shell -st mtp-connect
+map ,tg shell -f go-mtpfs %f		# highlight the mount-point dir
+map ,tu shell -f fusermount -u %f</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -1656,6 +1660,6 @@ map ,mtu shell -f fusermount -u %f</textarea>
 <br><br><br>
 <b>Next page: 
 <br><br>
-<a style="font-size: 1.2em; " href="thunar.html">Firewall</a> - GUI filebrowser and right-click actions</b>
+<a style="font-size: 1.2em; " href="firewall.html">Firewall</a> - setting the network traffic firewall using iptables</b>
 <br><br>
 </div>
