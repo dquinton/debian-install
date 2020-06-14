@@ -50,7 +50,7 @@ This might work if you hava an installed system that can't boot.  Put Super Grub
 With the system up you can install GRUB and update it easily. As root,
 
 <form><textarea name="T" id="cmd" rows="3" cols="30">
-apt-get install grub
+apt install grub
 grub-install /dev/sda
 update-grub</textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
@@ -139,8 +139,8 @@ ping debian.org </textarea>
 <li> edit /etc/apt/sources.list if necessary, then install Grub</li>
 
 <form><textarea name="T" id="cmd" rows="3" cols="50">
-ping debian.org apt-get update
-apt-get install grub
+ping debian.org apt update
+apt install grub
 grub-install /dev/sda </textarea>
 <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>

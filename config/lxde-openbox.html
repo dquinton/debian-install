@@ -155,7 +155,7 @@ Window borders and fonts do the same as in Obconf... it's a tad confusing, there
 To enable better-looking widgets you need gtk2-engines installed..
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install gtk2-engines</textarea>
+sudo apt install gtk2-engines</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -171,7 +171,7 @@ gtk2-engines-xfce gtk2-engines-murrine gtk2-engines-cleanice gtk2-engines-aurora
 <h3>Mouse cursor themes</h3>
 <form>
 <textarea name="T" id="install" rows="1" cols="100">
-sudo apt-get install dmz-cursor-theme xcursor-themes moblin-cursor-theme</textarea>
+sudo apt install dmz-cursor-theme xcursor-themes moblin-cursor-theme</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -293,7 +293,7 @@ get dependencies for the latest version to install -compton-master:
 
 <form>
 <textarea name="T" id="install" rows="1" cols="100">
-sudo apt-get install libconfig-dev asciidoc libdrm-dev libgl1-mesa-glx libgl1-mesa-dev</textarea>
+sudo apt install libconfig-dev asciidoc libdrm-dev libgl1-mesa-glx libgl1-mesa-dev</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -413,7 +413,7 @@ Icon=video</textarea>
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
-sudo leafpad /etc/xdg/menus/lxde-applications.menu</textarea>
+sudo geany /etc/xdg/menus/lxde-applications.menu</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -475,7 +475,7 @@ To make the Super key activate main menu when pressed alone (so that Super key c
 <br>
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install xcape</textarea>
+sudo apt install xcape</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -526,10 +526,10 @@ cp -p /etc/xdg/openbox/* ~/.config/openbox</textarea>
 
 <br>
 
-install openbox menu editor "OBmenu", download <a href="http://obmenu.sourceforge.net/download.html">http://obmenu.sourceforge.net/download.html</a> or apt-get,
+install openbox menu editor "OBmenu", download <a href="http://obmenu.sourceforge.net/download.html">http://obmenu.sourceforge.net/download.html</a> or apt,
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install obmenu</textarea>
+sudo apt install obmenu</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -587,11 +587,11 @@ Under "Files" I have "Config files".. a zenity dialogue pops up with a list of r
 
 file=$(zenity --width=360 --height=320 --list --title "Config files" --text "Select file to open"  --column File "sources.list" "fstab" "lightdm.conf" "autostart" "lxde-rc.xml")
 
-if [ "$file" = "sources.list" ]; then gksu leafpad /etc/apt/sources.list
-elif [ "$file" = "fstab" ]; then gksu leafpad /etc/fstab
-elif [ "$file" = "lightdm.conf" ]; then gksu leafpad /etc/lightdm/lightdm.conf
-elif [ "$file" = "autostart" ]; then leafpad ~/.config/lxsession/LXDE/autostart
-elif [ "$file" = "lxde-rc.xml" ]; then leafpad ~/.config/openbox/lxde-rc.xml
+if [ "$file" = "sources.list" ]; then gksu geany /etc/apt/sources.list
+elif [ "$file" = "fstab" ]; then gksu geany /etc/fstab
+elif [ "$file" = "lightdm.conf" ]; then gksu geany /etc/lightdm/lightdm.conf
+elif [ "$file" = "autostart" ]; then geany ~/.config/lxsession/LXDE/autostart
+elif [ "$file" = "lxde-rc.xml" ]; then geany ~/.config/openbox/lxde-rc.xml
 
 else
     exit 0
@@ -613,7 +613,7 @@ You will also need to install yad (improved zenity)...
 To get icons on your ob menu you need to put &#60;showIcons>yes&#60;/showIcons> in the &#60;menu> section near the end of your lxde-rc.xml file.
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-leafpad ~/.config/openbox/lxde-rc.xml</textarea>
+geany ~/.config/openbox/lxde-rc.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -825,7 +825,7 @@ This menu kind of replaces a launcher panel, giving quick access to the most use
 make a file
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-leafpad ~/.config/openbox/menu-primary.xml</textarea>
+geany ~/.config/openbox/menu-primary.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 and copy the contents of my <a href="{{site.baseurl}}/files/menu-primary.html">menu-primary.xml</a>  to it. 
@@ -841,7 +841,7 @@ I figured how to get the dynamic apps menu onto an OB menu - just make a file wi
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-leafpad ~/.config/openbox/menu-apps.xml</textarea>
+geany ~/.config/openbox/menu-apps.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form><img src="{{site.baseurl}}/zimages/obmenu-apps.png" width="137" height="215" alt="obmenu-apps: my OB menu with main apps" align="right">
 and copy this content into it:
@@ -865,7 +865,7 @@ You can use my menu.. first make a file
   <img src="{{site.baseurl}}/zimages/obmenu-utility.png" width="179" height="324" alt="obmenu-utility: my OB menu with utility apps" align="right">
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-leafpad ~/.config/openbox/menu-utility.xml</textarea>
+geany ~/.config/openbox/menu-utility.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 and copy the contents of my <a href="{{site.baseurl}}/files/menu-utility.html">menu-utility.xml</a> to it. 
@@ -912,7 +912,7 @@ So to add apps like that or to have full control of Docky, you'll need to edit t
 <br>
 <form>
 <textarea name="T" id="cmd" rows="2" cols="80">
-leafpad ~/.gconf/apps/docky-2/Docky/Interface/DockPreferences/Dock1/%gconf.xml</textarea>
+geany ~/.gconf/apps/docky-2/Docky/Interface/DockPreferences/Dock1/%gconf.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -937,7 +937,7 @@ To set keybindings by hand, which is easy but you need to take care and always d
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="50">
-leafpad ~/.config/openbox/lxde-rc.xml</textarea>
+geany ~/.config/openbox/lxde-rc.xml</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -1002,7 +1002,7 @@ W-T			Terminal
 W-O			Open file
 W-U			power down
 W-D			toggle show desktop
-W-1			open leafpad
+W-1			open geany
 W-2			open web browser
 W-Esc			task manager
 C-Esc			lxde menu
@@ -1017,7 +1017,7 @@ W-H 			clipit history (set in clipit)</textarea>
 
 <h3>keyboard section key bindings..</h3>
 
-Be very careful to keep opening and closing "keybind" or "action" or else the whole file will be invalid and openbox will have no functioning keys or menus! Make a copy of the file before making changes, and edit it in leafpad so that you can undo changes if necessary.
+Be very careful to keep opening and closing "keybind" or "action" or else the whole file will be invalid and openbox will have no functioning keys or menus! Make a copy of the file before making changes, and edit it in geany so that you can undo changes if necessary.
 <br><br>
 You can use key chains too - see <a href="http://openbox.org/wiki/Help:Bindings">the wiki page</a>.
 <br><br>
@@ -1171,7 +1171,7 @@ Keybindings for running applications
     </keybind>
     <keybind key="W-1">
       <action name="Execute">
-        <execute>leafpad</execute>
+        <execute>geany</execute>
       </action>
     </keybind>
    
@@ -1193,9 +1193,9 @@ Keybindings for running applications
       </action>
     </keybind>
     
-<!-- keybind to script open file with leafpad  -->
+<!-- keybind to script open file with geany  -->
     <keybind key="W-O">
-       <action name="Execute"><execute>sh ~/scripts/open-leafpad</execute>
+       <action name="Execute"><execute>sh ~/scripts/open-geany</execute>
        </action>
     </keybind>
  <!--
@@ -1316,12 +1316,12 @@ obviously you need to find your own keys-->
 
  
 <br>
-script for the above keybind to open a file with leafpad:
+script for the above keybind to open a file with geany:
 
 <form>
 <textarea name="T" id="file" rows="2" cols="80">
 #!/bin/bash
-leafpad "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
+geany "`yad --title='Open file' --file --filename=$HOME/`"</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 

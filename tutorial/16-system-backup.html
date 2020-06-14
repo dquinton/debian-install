@@ -214,7 +214,7 @@ see here <a href="https://wiki.debian.org/Backup/Clone">https://wiki.debian.org/
 and here <a href="https://wiki.archlinux.org/index.php/Partclone" rel="noreferrer">https://wiki.archlinux.org/index.php/Partclone</a>
 
 <form><textarea name="T" id="cmd" rows="1" cols="30">
-sudo apt-get install partclone</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+sudo apt install partclone</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
@@ -342,7 +342,7 @@ sudo dpkg -i refracta*</textarea>
 If there are unmet dependencies, sort it out with 
 
 <form><textarea name="T" id="cmd" rows="1" cols="30">
-sudo apt-get install -f</textarea>
+sudo apt install -f</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -374,7 +374,7 @@ or get the sid release deb binary from <a href="https://pkgs.org/download/yad">p
 change the refracta working directory out of /home (to another partition), using the config file:
 
 <form><textarea name="T" id="cmd" rows="1" cols="50">
-sudo leafpad /etc/refractasnapshot.conf</textarea>
+sudo geany /etc/refractasnapshot.conf</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -382,7 +382,7 @@ sudo leafpad /etc/refractasnapshot.conf</textarea>
 edit the exclude list (to reduce the final iso size)
 
 
-sudo leafpad /usr/lib/refractasnapshot/snapshot_exclude.list
+sudo geany /usr/lib/refractasnapshot/snapshot_exclude.list
 
 I added
 
@@ -440,7 +440,7 @@ Get the latest bleachbit from <a href="http://bleachbit.sourceforge.net/download
 <div class="bullet"><ul>
 <li>install a dependency: 
 <form><textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install python-simplejson</textarea>
+sudo apt install python-simplejson</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form></li>
 <li>install the bleachbit deb</li>
@@ -476,7 +476,7 @@ cp /usr/share/applications/refractainstaller.desktop ~/Desktop/</textarea>
 </li>
 <li>edit the exclude list
 <form><textarea name="T" id="cmd" rows="1" cols="80">
-sudo leafpad /usr/lib/refractainstaller/installer_exclude.list</textarea>
+sudo geany /usr/lib/refractainstaller/installer_exclude.list</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 </li>
@@ -498,7 +498,7 @@ to install the package, get from <a href="http://sourceforge.net/projects/refrac
 install the dependencies
 
 <form><textarea name="T" id="install" rows="2" cols="80">
-sudo apt-get install fuseiso hwinfo libhd16 pmount live-boot live-config mtools</textarea>
+sudo apt install fuseiso hwinfo libhd16 pmount live-boot live-config mtools</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -549,7 +549,7 @@ You could install these on your 64bit Debian before running the snapshot, but it
 
 is worth looking at too, its a file system archiver, as the name suggests <a href="http://www.fsarchiver.org/Main_Page" rel="noreferrer">http://www.fsarchiver.org/Main_Page</a>
 <br><br>
-you can apt-get it, or download the <a href="http://sourceforge.net/projects/fsarchiver/files/fsarchiver-bin/">binary file</a>
+you can apt it, or download the <a href="http://sourceforge.net/projects/fsarchiver/files/fsarchiver-bin/">binary file</a>
 <br><br>
 It has a frontend called fsarchiver_dialog, <a href="http://zolli.altervista.org/fsa_dial/">http://zolli.altervista.org/fsa_dial/</a>
 

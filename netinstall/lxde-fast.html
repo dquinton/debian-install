@@ -48,7 +48,7 @@ It looks like this for the Netinstall CD..
 <b>for LXDE</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf geany rxvt-unicode bash-completion htop elinks gparted xcape</textarea>
+apt install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf geany rxvt-unicode bash-completion htop elinks gparted xcape</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -56,7 +56,7 @@ apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpu
 add if you like: <span class="inst">synaptic apt-xapian-index gdebi</span>
 <br><br>
 
-I go without lxde and lightdm now, and add here: <span class="inst">openbox lxpanel lxtask leafpad</span>
+I go without lxde and lightdm now, and add here: <span class="inst">openbox lxpanel lxtask geany</span>
 <br><br>
 and you may need firmware such as <span class="inst">firmware-amd-graphics firmware-linux firmware-linux-nonfree firmware-iwlwifi </span>
 
@@ -66,7 +66,7 @@ and you may need firmware such as <span class="inst">firmware-amd-graphics firmw
 <b>for plain openbox</b>
 <form>
 <textarea name="T" id="install" rows="4" cols="100">
-apt-get install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode geany xfce4-power-manager htop elinks gparted bash-completion ntp xcape </textarea>
+apt install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode geany xfce4-power-manager htop elinks gparted bash-completion ntp xcape </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -75,7 +75,7 @@ apt-get install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils ope
 necessary packages and may be missing after a Netinstall without internet:
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
-apt-get install aptitude sudo grub2 laptop-mode-tools network-config iw rfkill lshw</textarea>
+apt install aptitude sudo grub2 laptop-mode-tools network-config iw rfkill lshw</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -92,7 +92,7 @@ or<br>
 fix with:
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-apt-get install xserver-xorg-legacy</textarea>
+apt install xserver-xorg-legacy</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -115,7 +115,7 @@ needs_root_rights=yes</textarea>
 or the other way is to install elogind with,
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-apt-get install elogind libpam-elogind</textarea>
+apt install elogind libpam-elogind</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -129,14 +129,14 @@ apt-get install elogind libpam-elogind</textarea>
 Thunar file manager..
 <form>
 <textarea name="T" id="install" rows="2" cols="100">
-apt-get install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs feh imagemagick </textarea>
+apt install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs feh imagemagick </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 Ranger, file-system utils, printing, bluetooth
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install ranger feh imagemagick exiftool w3m w3m-img less xsel xvkbd atool mediainfo jhead ffmpegthumbnailer  trash-cli bluetooth blueman zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs sshfs locate git cups gpa ntp yad rpl partclone fsarchiver</textarea>
+apt install ranger feh imagemagick exiftool w3m w3m-img less xsel xvkbd atool mediainfo jhead ffmpegthumbnailer  trash-cli bluetooth blueman zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs sshfs locate git cups gpa ntp yad rpl partclone fsarchiver</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -145,7 +145,7 @@ apt-get install ranger feh imagemagick exiftool w3m w3m-img less xsel xvkbd atoo
 media player/encoder/desktop apps..
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install mpv handbrake audacious lame gimp inkscape abcde eyed3 xpdf x11-apps gpsbabel clipit uget clamtk gdmap bleachbit meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict transmission easytag xfce4-notes-plugin bluefish yelp filezilla </textarea>
+apt install mpv handbrake audacious lame gimp inkscape abcde eyed3 xpdf x11-apps gpsbabel clipit uget clamtk gdmap bleachbit meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict transmission easytag xfce4-notes-plugin bluefish yelp filezilla </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -164,7 +164,7 @@ Just add/remove what you like from this.
 <br><br>
 
 with a fast connection you can get this done in an hour, but then setting up takes time - of course, days!<br>
-You can always cancel apt downloading of packages and resume it later on, just use Ctrl-C to cancel.  Press up arrow and Enter in the terminal to hit the same apt-get command again and apt will continue with downloading.
+You can always cancel apt downloading of packages and resume it later on, just use Ctrl-C to cancel.  Press up arrow and Enter in the terminal to hit the same apt command again and apt will continue with downloading.
 
 
 <br><br>

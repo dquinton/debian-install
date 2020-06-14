@@ -42,7 +42,7 @@ id: net
 
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get update && sudo apt-get upgrade </textarea>
+sudo apt update && sudo apt upgrade </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -58,7 +58,7 @@ if your sources list is correct (on the debian release you are following) you ca
 
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get dist-upgrade </textarea>
+sudo apt dist-upgrade </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -106,8 +106,8 @@ sudo nano /etc/apt/apt.conf</textarea>
 developers recommend 
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
-sudo apt-get update
-sudo apt-get dist-upgrade</textarea>
+sudo apt update
+sudo apt dist-upgrade</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -119,7 +119,7 @@ You could first download all the packages needed for the upgrade with
 
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get update && sudo apt-get --download-only dist-upgrade</textarea>
+sudo apt update && sudo apt --download-only dist-upgrade</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -151,17 +151,17 @@ sudo aptitude --simulate full-upgrade > ~/upgrade.txt</textarea>
 (to put the result into a text file in home)
 <br><br>
 
-You could try the apt-get dist-upgrade way first, and see if its all plain-sailing or not.... but if APT is asking you to remove like about half of your system, because of breakages, then you had better think wisely. 
+You could try the apt dist-upgrade way first, and see if its all plain-sailing or not.... but if APT is asking you to remove like about half of your system, because of breakages, then you had better think wisely. 
 <br><br>
 Next, try the aptitude way, as it will offer perhaps a better solution - removing some but not so many packages, which can be reinstalled later on (if they are needed or exist in the release - note that some packages are obsoleted and replaced with ones of different names).
 <br><br>
 I upgraded just now and there were quite a few packages to be removed by aptitude dist-upgrade, so I ran through the ones I thought were important (many lib's will have different names) at Debian packages, and I only found a few that will need re-installing.
 <br><br>
-<span class="caut">Caution!  If you (by mistake) use the apt-get command "upgrade" after changing your sources file, and actually you are intending to upgrade to another release, apt will not actually upgrade to the new release but will only update your installed packages from the new release -and you will get an irreparable mix of packages from different releases.</span>
+<span class="caut">Caution!  If you (by mistake) use the apt command "upgrade" after changing your sources file, and actually you are intending to upgrade to another release, apt will not actually upgrade to the new release but will only update your installed packages from the new release -and you will get an irreparable mix of packages from different releases.</span>
 <br><br>
 For example, if you are stable and you do an upgrade with packages from testing, you will get a mixed install of both stable and testing - and then trying to dist-upgrade, you will have hundreds of packages held back, unable to install because of countless dependency problems.
 <br><br>
-If you did that, you can revert to stable in sources and do an apt-get update, apt-get upgrade, to revert to stable install, and then change sources to testing again, update lists and do a dist-upgrade. 
+If you did that, you can revert to stable in sources and do an apt update, apt upgrade, to revert to stable install, and then change sources to testing again, update lists and do a dist-upgrade. 
 <br><br>
 The plain "upgrade" command will <i>not add</i> any new packages or <i>remove</i> unneeded ones -which is necessary when upgrading to another release.
 
@@ -213,7 +213,7 @@ check to see if your packages are available in wheezy-backports by doing a searc
 update apt cache and then install a package from backports with 
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get -t wheezy-backports install <package></textarea>
+sudo apt -t wheezy-backports install <package></textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -246,7 +246,7 @@ apt-cache search linux-image </textarea>
 <br><br>
 
 reboot and select the new kernel if necessary<br>
-if it runs well and fixes hardware issues such as video or networking, you can remove the older kernel with apt-get
+if it runs well and fixes hardware issues such as video or networking, you can remove the older kernel with apt
 <br><br>
 find its package name with 
  <form>
@@ -275,14 +275,14 @@ install the desired kernel
 <h3>3. Install from Testing on Stable</h3>
 <span class="caut">note that this method may install quite a lot of packages from testing and you could end up with a mixed distro Debian.</span>
 <br><br>
-First add Testing to sources (with stable set to default in apt preferences if running a stable Debian install), then apt-get update, apt-cache search linux-image to see what kernels are available
+First add Testing to sources (with stable set to default in apt preferences if running a stable Debian install), then apt update, apt-cache search linux-image to see what kernels are available
 <br><br>
-Install the linux-headers first, e.g. apt-get install linux-headers-3.xx-x
+Install the linux-headers first, e.g. apt install linux-headers-3.xx-x
 <br><br>
 reinstall initramfs-tools from testing, 
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install -t testing initramfs-tools </textarea>
+sudo apt install -t testing initramfs-tools </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
  -as without doing this a looping problem is caused with linux-image
@@ -304,8 +304,8 @@ install in this order: gcc-4.8-base, gcc-4.8
 <br>
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
-apt-get install linux-headers-3.16-amd64
-apt-get install linux-image-3.16-amd64</textarea>
+apt install linux-headers-3.16-amd64
+apt install linux-image-3.16-amd64</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -346,8 +346,8 @@ sudo nano /etc/lightdm/lightdm.conf</textarea>
 change <span style="color:#076b00">user-session=lightdm-xsession</span> to <span style="color:#076b00">user-session=xfce</span>
 <br><br>
 
-<span class="prob">Broken apt-get after update?</span><br>
-If you choose to keep the original sudoers file, you won't be able to apt-get or aptitude later,
+<span class="prob">Broken apt after update?</span><br>
+If you choose to keep the original sudoers file, you won't be able to apt or aptitude later,
 so you need to terminal: su, root p/w, EDITOR=nano visudo
 <br><br>
 cursor down after the line <span style="color:#076b00">Defaults  env_reset</span>

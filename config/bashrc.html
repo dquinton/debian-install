@@ -37,7 +37,7 @@ id: config
 <h2 id="1" class="tag">Changing the bash prompt colours </h2>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
-leafpad ~/.bashrc</textarea>
+geany ~/.bashrc</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -59,7 +59,7 @@ with a space at the end before the closing quote mark.
 <b>And for root user</b>, to set the prompt colours when you switch to root user (su).. <br>
 su to root, then open root's bashrc file,
 <form><textarea name="T" id="cmd" rows="1" cols="30">
-leafpad ~/.bashrc</textarea>
+geany ~/.bashrc</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -108,8 +108,8 @@ alias apt='grep apt ~/.bash_aliases'          #prints only the apt aliases of .b
 alias dp='grep dpkg ~/.bash_aliases'        #prints only the dpkg aliases of .bash_aliases
 alias ht='htop'                                 #decent terminal task manager
 alias rr='ranger'                              #ranger, the very capable bash dir browser
-alias lf='leafpad'
-alias slf='sudo leafpad'
+alias lf='geany'
+alias slf='sudo geany'
 alias ..='cd ..'
 alias cd2='cd `yad --title="Cd to" --file --directory --height=400 --width=500`'
 alias cs2='cs `yad --title="Cd to and list" --file --directory --height=400 --width=500`'      
@@ -131,20 +131,20 @@ alias m10='ps auxf | sort -nr -k 4 | head -10'       #lists top ten memory-using
 alias f10m='~/scripts/find10m'                           #scripts to list files over 10m or 100m
 alias f100m='~/scripts/find100m'
 
-alias a-u='sudo apt-get update'
-alias a-udif='sudo apt-get update -o Acquire::Pdiffs=true'
-alias a-i='sudo apt-get install'
-alias a-r='sudo apt-get remove'
-alias a-rp='sudo apt-get remove --purge'
-alias a-if='sudo apt-get -f install'
+alias a-u='sudo apt update'
+alias a-udif='sudo apt update -o Acquire::Pdiffs=true'
+alias a-i='sudo apt install'
+alias a-r='sudo apt remove'
+alias a-rp='sudo apt remove --purge'
+alias a-if='sudo apt -f install'
 alias at-i='sudo aptitude install'
-alias a-a='sudo apt-get autoremove'
-alias a-ud='sudo apt-get update && sudo apt-get upgrade'
-alias a-ug='sudo apt-get upgrade'
-alias a-du='sudo apt-get dist-upgrade'
+alias a-a='sudo apt autoremove'
+alias a-ud='sudo apt update && sudo apt upgrade'
+alias a-ug='sudo apt upgrade'
+alias a-du='sudo apt dist-upgrade'
 alias ap-du='sudo aptitude dist-upgrade'
-alias a-c='sudo apt-get autoclean'
-alias a-clean='sudo apt-get clean'
+alias a-c='sudo apt autoclean'
+alias a-clean='sudo apt clean'
 alias a-s='apt-cache search'        #enter name/part of name of package 2 c available versions   
 alias ahi='apt-history install'       #need apt-history
 alias ahu='apt-history upgrade'
@@ -250,17 +250,17 @@ echo "Select a file to open
 #this part contains the commands that are run by each option
 read n
 case $n in
-    1) gksu leafpad /etc/apt/sources.list;;
-    2) gksu leafpad /etc/fstab;;
-    3) gksu leafpad /etc/lightdm/lightdm.conf;;
+    1) gksu geany /etc/apt/sources.list;;
+    2) gksu geany /etc/fstab;;
+    3) gksu geany /etc/lightdm/lightdm.conf;;
     4) nano ~/.config/lxsession/LXDE/autostart &;;
-    5) leafpad ~/.config/openbox/lxde-rc.xml &;;
-    6) leafpad ~/.config/openbox/menu.xml &;;
-    7) leafpad ~/.config/openbox/menu-utility.xml &;;
-    30) leafpad ~/.bashrc &;;
-    31) leafpad ~/.bash_aliases &;;
-    32) leafpad ~/scripts/bashfileoption &;;
-    33) leafpad ~/scripts/bashcommands &;;    
+    5) geany ~/.config/openbox/lxde-rc.xml &;;
+    6) geany ~/.config/openbox/menu.xml &;;
+    7) geany ~/.config/openbox/menu-utility.xml &;;
+    30) geany ~/.bashrc &;;
+    31) geany ~/.bash_aliases &;;
+    32) geany ~/scripts/bashfileoption &;;
+    33) geany ~/scripts/bashcommands &;;    
     *) invalid option;;
 esac</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">

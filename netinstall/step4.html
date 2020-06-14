@@ -65,7 +65,7 @@ A light-weight web browser. You need to enable the userscripts plugin in Prefere
 To get flash working, run
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install flashplugin-nonfree</textarea>
+sudo apt install flashplugin-nonfree</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -88,7 +88,7 @@ Google are continuing flash media support for Linux with their Pepper Flash Play
 <br><br>
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install pepperflashplugin-nonfree</textarea>
+sudo apt install pepperflashplugin-nonfree</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 for wheezy you need to get it from <a href="http://packages.debian.org/wheezy-backports/pepperflashplugin-nonfree">wheezy-backports</a>
@@ -102,7 +102,7 @@ if its not for you then you can try requesting html5 from <a href="http://www.yo
 a simple plugin allows the browser to play any web movie that VLC is capable of playing<br><br>
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install browser-plugin-vlc</textarea>
+sudo apt install browser-plugin-vlc</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -250,7 +250,7 @@ Both "Pretty Good Privacy" (PGP) and GnuPG implement OpenGPG.  The latter is a c
 
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install gnupg2 gpa</textarea>
+sudo apt install gnupg2 gpa</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -289,7 +289,7 @@ plus, add your user to the <b>dialout</b> group -as with my 60csx (firmware 4.0)
 An excellent app for collating, sorting and editing GPS data.  Its simple and (quite) stable.  Files are saved as .vik and are only usable in Viking, and so data needs exporting to gpx format for sharing with any one else or with GIS map-making software.  Exporting can be done by individual layer or all layers in one go.
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install gpsbabel gpsbabel-gui viking</textarea>
+sudo apt install gpsbabel gpsbabel-gui viking</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -299,7 +299,7 @@ Get the latest Viking from here <a href="http://sourceforge.net/projects/viking/
 get build dependencies<br>
 <form>
 <textarea name="T" id="install" rows="4" cols="80">
-sudo apt-get install libcurl4-gnutls-dev libgtk2.0-dev libsqlite3-dev nettle-dev libgeoclue-2-dev libgexiv2-dev libgps-dev libmagic-dev libbz2-dev libzip-dev liboauth-dev libmapnik-dev</textarea>
+sudo apt install libcurl4-gnutls-dev libgtk2.0-dev libsqlite3-dev nettle-dev libgeoclue-2-dev libgexiv2-dev libgps-dev libmagic-dev libbz2-dev libzip-dev liboauth-dev libmapnik-dev</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -329,7 +329,7 @@ See my <a href="{{site.baseurl}}/tutorial/11a-gps.html">GIS page</a> for more de
 
 
 <form><textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install qgis python-qgis inkscape</textarea>
+sudo apt install qgis python-qgis inkscape</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -343,14 +343,14 @@ sudo sh -c 'echo "deb-src http://qgis.org/debian buster main " >> /etc/apt/sourc
 wget -O - https://qgis.org/downloads/qgis-2017.gpg.key | gpg --import
 gpg --fingerprint CAEB3DC3BDF7FB45
 gpg --export --armor CAEB3DC3BDF7FB45 | sudo apt-key add -
-sudo apt-get update && sudo apt-get install qgis python-qgis </textarea>
+sudo apt update && sudo apt install qgis python-qgis </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 Note: running testing you will need the "buster" repo.<br>
 This may not be recommended if running Devuan.??
 <br><br>
-<b>Also, if you run a dist-upgrade</b> at any time, its most likely that Qgis will be removed in the process, so you will need to reinstall qgis with the above apt-get command again.
+<b>Also, if you run a dist-upgrade</b> at any time, its most likely that Qgis will be removed in the process, so you will need to reinstall qgis with the above apt command again.
 <br><br>
 After upgrading to devuan ascii (testing) I couldn't reinstall qgis (which was removed in the upgrade) because libqt5 was screaming for qtbase-abi-5-11-2, which was not available anywhere.  The only solution was to make a dummy qtbase-abi-5-11-2 debian archive and install it with dpkg. To do that,
 <br>
@@ -396,7 +396,7 @@ equivs-build qtbase-abi.control</textarea>
 <h2 id="7" class="tag">Bible</h2>
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install xiphos fonts-sil-ezra </textarea>
+sudo apt install xiphos fonts-sil-ezra </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -405,7 +405,7 @@ or download latest from <a href="https://sourceforge.net/projects/gnomesword/fil
 install dependencies<br>
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
-sudo apt-get install libgtkhtml-4.0-dev libgtkhtml-editor-4.0-dev webkitgtk-3.0 libwebkitgtk-3.0-dev  libgsf-1-dev libgnomeprintui2.2 libicu-dev</textarea>
+sudo apt install libgtkhtml-4.0-dev libgtkhtml-editor-4.0-dev webkitgtk-3.0 libwebkitgtk-3.0-dev  libgsf-1-dev libgnomeprintui2.2 libicu-dev</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>

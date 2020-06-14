@@ -38,20 +38,20 @@ From 7.0, <a href="https://wiki.debian.org/Multiarch/HOWTO">Debian supports simu
 <br><br>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
-sudo dpkg --add-architecture i386 && sudo apt-get update</textarea>
+sudo dpkg --add-architecture i386 && sudo apt update</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br><br>
 Note: after enabling another architecture, you may have to specify from then on which arch to retrieve and install packages from, like this
 <br><br>
-apt-get install -a amd64 <package>
+apt install -a amd64 <package>
 <br><br>
 or set the preference for your architecture with editing the apt.conf file
 <br><br>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
-sudo leafpad /etc/apt/apt.conf</textarea>
+sudo geany /etc/apt/apt.conf</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -65,7 +65,7 @@ APT::Architecture="amd64";</textarea>
 </form>
 
 <br>
-save it and apt-get install will retrieve from amd64 packages
+save it and apt install will retrieve from amd64 packages
 <br><br>
 If at any time you need to be done with i386 (or any other arch), use this command:
 <br>
@@ -94,7 +94,7 @@ dpkg --get-selections | grep i386 | awk '{print $1}'</textarea>
 And remove them with,
 <form>
 <textarea name="T" id="cmd" rows="2" cols="80">
-sudo apt-get remove --purge `dpkg --get-selections | grep i386 | awk '{print $1}'`</textarea>
+sudo apt remove --purge `dpkg --get-selections | grep i386 | awk '{print $1}'`</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -125,7 +125,7 @@ Sort it out with:
 
 <form>
 <textarea name="T" id="install" rows="1" cols="30">
-sudo apt-get -f install</textarea>
+sudo apt -f install</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -150,7 +150,7 @@ Download skype from their <a href="http://www.skype.com/en/download-skype/skype-
 <form>
 <textarea name="T" id="cmd" rows="2" cols="30">
 sudo dpkg -i skype-debian*.deb
-sudo apt-get -f install</textarea>
+sudo apt -f install</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 

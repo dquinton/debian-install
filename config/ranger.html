@@ -102,7 +102,7 @@ git clone https://github.com/hut/ranger.git</textarea>
 
 optional installs for Ranger:
 <form><textarea name="T" id="install" rows="2" cols="80">
-sudo apt-get install w3m w3m-img less xsel xvkbd atool mediainfo jhead ffmpegthumbnailer trash-cli</textarea>
+sudo apt install w3m w3m-img less xsel xvkbd atool mediainfo jhead ffmpegthumbnailer trash-cli</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -429,7 +429,7 @@ And that's just the basics!  There are endless possibilities with Ranger because
 <tr><td>-w                 </td><td>bash waits at the end of the process so that you can read the output and then press enter</td></tr></table>
 
 <br><br>
-typing '<b>@-rf leafpad</b>' will open a file with sudo (writes `shell -rf leafpad %s` to console)
+typing '<b>@-rf geany</b>' will open a file with sudo (writes `shell -rf geany %s` to console)
 
 <br><br>
 Check the rc.conf file
@@ -640,7 +640,7 @@ mv $1 "${2%.*}.${1##*.}"</textarea>
 <form><textarea name="T" id="file" rows="10" cols="120">
 ##### open file ##########
 
-map Op   shell -f leafpad %f                #open with leafpad
+map Op   shell -f geany %f                #open with geany
 map Og   shell -f geany %s                #open with geany
 map Ow   shell -f libreoffice4.4 %s        #will open any open doc format file, or other compatible, with libre office (change version)
 map On   shell -f rxvt -e nano %f        #open file forked in nano
@@ -690,7 +690,7 @@ map Pm  console shell -r mkdir%space
 map Pt  console shell -r touch%space
 map Pn  console shell -r nano 
 map Pe  shell -r nano %f                    #edit file with nano
-map Pp  shell -f gksu leafpad %f             #open with leafpad
+map Pp  shell -f gksu geany %f             #open with geany
 map Pr  console shell -r mv %f%space               #(type new name after) rename file
 map P+  shell -rs chmod +x %f                           #make a file executable
 map Pw  console shell -r chown -R $USER:$USER %%s            #change ownership of sel'd files
@@ -728,11 +728,11 @@ map xx3  cd /media/VIDEO/.Trash-1000/files</textarea>
 <form><textarea name="T" id="file" rows="9" cols="80">
 ####### Edit config files ##########
 
-map .1  shell -f leafpad ~/.config/ranger/rc.conf
+map .1  shell -f geany ~/.config/ranger/rc.conf
 map .2  shell -fr rxvt -e nano /etc/apt/sources.list
 map .3  shell -fr rxvt -e nano /etc/fstab
-map .4  shell -f leafpad ~/.config/openbox/rc.xml
-map .5  shell -f leafpad ~/.config/openbox/menu.xml
+map .4  shell -f geany ~/.config/openbox/rc.xml
+map .5  shell -f geany ~/.config/openbox/menu.xml
 map .6  shell nano ~/.config/openbox/autostart</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -1535,8 +1535,8 @@ then to restore a file, select and yank with yy, then hit h (I change history ke
 <h3>1. Remove "user@host" from the title bar</h3>
 <div class="bullet"><ul><li>in ranger type `g R`</li>
 <li>navigate to gui/widgets/ and highlight titlebar.py</li>
-<li>type exactly: `@ gksu leafpad` <Enter></li>
-<li>or if you have leafpad/editor mapped to a key, e.g. my `shell -f gksu leafpad %s` is mapped to Ps</li>
+<li>type exactly: `@ gksu geany` <Enter></li>
+<li>or if you have geany/editor mapped to a key, e.g. my `shell -f gksu geany %s` is mapped to Ps</li>
 
 <li>in the file comment these lines (#), then save and quit/restart ranger</li></ul></div>
 <form><textarea name="T" id="file" rows="4" cols="80">
@@ -1623,7 +1623,7 @@ map ,ssju shell -r sudo  fusermount -u /mnt/j1</textarea>
 
 <div class="bullet"><ul><li>install mtp
 <form><textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install mtp-tools go-mtpfs</textarea>
+sudo apt install mtp-tools go-mtpfs</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <li>make a dir in user home for a mount point 

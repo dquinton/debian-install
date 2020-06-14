@@ -60,7 +60,7 @@ On connected laptop (a):
 
 <div class="numb">
 <ol><li>Install Live CD X (preferred Debian)</span></li>
-<li>Remove/install apps and make apt-get remove line Y, install line Z</li>
+<li>Remove/install apps and make apt remove line Y, install line Z</li>
 <li>Copy <span style="color: #3d85c6" >/var/lib/apt/lists/</span> (Apt-L), <span style="color: #3d85c6" >/var/cache/apt/ </span> (Apt-C), plus config files (CF), /etc/apt/sources.list (SL), libflashplayer.so from /usr/lib/chromium/plugins to a USB stick</li>
 </ol></div >
 <br>
@@ -70,7 +70,7 @@ on remote laptop (b)</span>
 <ol><li>Install X  </span></li>
 <li>Fine details: add user to sudoer, "no recommends" file, edit fstab</span></li>
 <li>copy over Apt-</span>L and Apt-</span>C</span></li>
-<li>Execute apt-get lines Y and Z</span></li>
+<li>Execute apt lines Y and Z</span></li>
 <li>Copy over config files and CTRL-ALT F2, reboot</span></li>
 <li>Install other apps from deb's</span></li>
 <li>Copy over SL to (b) (in case of internet connectivity later) and attempt wireless driver install on (b) to make internet-ready</span></li>
@@ -81,10 +81,10 @@ on remote laptop (b)</span>
 
 Future update of laptop (b) should be possible too.
 <div class="numb">
-<ol><li>on (a) apt-get clean &amp; apt-get update &amp; apt-get upgrade</span></li>
+<ol><li>on (a) apt clean &amp; apt update &amp; apt upgrade</span></li>
 <li>copy Apt-L</span> and Apt-C </span>from (a)</span></li>
 <li>delete and replace Apt-</span>L and Apt-</span>C on (b) with those new from (a)</span></li>
-<li>on (b) run apt-get upgrade</span></li>
+<li>on (b) run apt upgrade</span></li>
 </ol></div >
 
 <br>
@@ -108,7 +108,7 @@ Well, now I found there's a tool that's just right for this... <b>Keryx</b>.  It
 <br>
 
 <form><textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install simple-cdd approx</textarea>
+sudo apt install simple-cdd approx</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -476,7 +476,7 @@ If you'd like to customize the Live cd environment, with autostart, no recommend
 make a file
 
 <form><textarea name="T" id="cmd" rows="1" cols="80">
-leafpad config/includes.chroot/etc/live/config/user-setup.conf</textarea>
+geany config/includes.chroot/etc/live/config/user-setup.conf</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -625,7 +625,7 @@ Then use sudo chown -R on the 'my-livecd' dir, to allow write access to the live
 <li>Second time the Live CD built successfully! But I had no live-installer because my lh config flag was --debian-installer=true (incorrect) and not --debian-installer live</li>
 
 <li>Third time and "LiveInstaller" was found in the Other sub-menu (it is also found in System &gt;Install Debian Sid).  It complained about the kernel version that I needed to boot the 486 kernel, but I just continued and it allowed me to install. </li>
-<li>Xfce4-power-manager and catfish were the only two app's that couldn't run on the new install.  Running apt-get build-dep I found quite a lot of dependencies were missing.  I guess these could be added to a package list to get them added to the build.  Run these commands in the build directory:</li></ul>
+<li>Xfce4-power-manager and catfish were the only two app's that couldn't run on the new install.  Running apt build-dep I found quite a lot of dependencies were missing.  I guess these could be added to a package list to get them added to the build.  Run these commands in the build directory:</li></ul>
 <br>
 <b>catfish</b>
 
@@ -673,7 +673,7 @@ Then use sudo chown -R on the 'my-livecd' dir, to allow write access to the live
 <li>GRUB did not install and, as I was installing to a Win7 machine and needed it to dual-boot, I used Super Grub (Rescatux) to boot the new OS, then I ran</li></ul>
 
 <form><textarea name="T" id="cmd" rows="2" cols="50">
-sudo apt-get install grub
+sudo apt install grub
 sudo grub-install /dev/sda</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
