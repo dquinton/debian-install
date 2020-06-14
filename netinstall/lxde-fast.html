@@ -32,24 +32,23 @@ id: net
 <div class="cont">
 
 <h2 id="1" class="tag">Overview of the install</h2>
-updated Nov 2019
+updated June 2020
 <br><br>
-
+<br>
 It looks like this for the Netinstall CD..
 <div class="numb"><ol><li>Run the Netinstall CD</li>
 <li>Restart and login to root</li>
 <li>check sources file, sudoers, fstab, interfaces</li>
 <li>copy config files to home, or mount home if partition already present</li>
-<li>run apt-uptate and full-upgrade, then install the desktop...</li>
+<li>run apt update and apt full-upgrade, then install the desktop...</li>
 
 </ol></div>
-<br>
-(see my install scripts at the bottom of this page)
+
 <br><br>
 <b>for LXDE</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf leafpad rxvt-unicode htop elinks gparted bash-completion command-not-found</textarea>
+apt-get install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf geany rxvt-unicode bash-completion htop elinks gparted xcape</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -67,7 +66,7 @@ and you may need firmware such as <span class="inst">firmware-amd-graphics firmw
 <b>for plain openbox</b>
 <form>
 <textarea name="T" id="install" rows="4" cols="100">
-apt-get install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop elinks gparted bash-completion command-not-found ntp udiskie gvfs xcape</textarea>
+apt-get install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode geany xfce4-power-manager htop elinks gparted bash-completion ntp xcape </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -76,7 +75,7 @@ apt-get install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils ope
 necessary packages and may be missing after a Netinstall without internet:
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
-apt-get install consolekit aptitude sudo grub2 laptop-mode-tools network-config iw rfkill lshw</textarea>
+apt-get install aptitude sudo grub2 laptop-mode-tools network-config iw rfkill lshw</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -125,17 +124,28 @@ apt-get install elogind libpam-elogind</textarea>
 
 <b id="3" class="tag">6.&nbsp;&nbsp; Install packages</b>
 <br><br>
-file manager..<br>
+
+
+Thunar file manager..
 <form>
-<textarea name="T" id="install" rows="5" cols="100">
-apt-get install ranger thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs feh imagemagick exiftool w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer bluetooth blueman openjdk-8-jre zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs-backends sshfs locate git cups gpa ntp yad rpl partclone trash-cli</textarea>
+<textarea name="T" id="install" rows="2" cols="100">
+apt-get install thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra xdg-user-dirs feh imagemagick </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+Ranger, file-system utils, printing, bluetooth
+<form>
+<textarea name="T" id="install" rows="3" cols="100">
+apt-get install ranger feh imagemagick exiftool w3m w3m-img less xsel xvkbd atool mediainfo jhead ffmpegthumbnailer  trash-cli bluetooth blueman zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk gvfs sshfs locate git cups gpa ntp yad rpl partclone fsarchiver</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
+
+
 media player/encoder/desktop apps..
 <form>
-<textarea name="T" id="install" rows="6" cols="100">
-apt-get install mplayer2 vlc handbrake audacious gnome-sound-recorder lame gimp darktable inkscape abcde eyed3 bashburn gnome-color-chooser systemsettings xpdf x11-apps gpsbabel clipit uget clamtk gdmap bleachbit ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict transmission easytag xfce4-notes-plugin bluefish elinks yelp filezilla docky geany</textarea>
+<textarea name="T" id="install" rows="3" cols="100">
+apt-get install mpv handbrake audacious lame gimp inkscape abcde eyed3 xpdf x11-apps gpsbabel clipit uget clamtk gdmap bleachbit meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict transmission easytag xfce4-notes-plugin bluefish yelp filezilla </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -143,9 +153,9 @@ apt-get install mplayer2 vlc handbrake audacious gnome-sound-recorder lame gimp 
 
 
 no longer with me, but could be useful:<br>
-<span class="inst">k3b libk3b6-extracodecs normalize-audio marble pinta cheese catfish pyrenamer xfburn xpad</span>
+<span class="inst">marble pinta cheese catfish pyrenamer xfburn xpad</span>
 <br><br>
-Just add/remove what you like to/from this.
+Just add/remove what you like from this.
 <br><br>
 
  
@@ -160,7 +170,7 @@ You can always cancel apt downloading of packages and resume it later on, just u
 <br><br>
 
 
-Which leaves <span class="blue">Ranger, compton, Libre Office, video editors, ffmpeg, Avidemux, Bombono, XnViewMP, web browser, Viking, Qgis, Refractasnapshot, ClamTK </span> ......to install from downloaded packages.
+Which leaves <span class="blue">Ranger, compton, Libre Office, video editors, ffmpeg, XnViewMP, Vivaldi, Viking, Qgis, Refractasnapshot </span> ......to install from downloaded packages.
 
 
 <br><br><br><br>
@@ -171,32 +181,7 @@ edit ~/.config/user-dirs.dirs to change which dir's get the "Documents", "Music"
 <br><br>
 
 If you install Synaptic and you want a launcher: copy the .desktop file from /usr/share/app's to ~/.local/share/applications/ and change "Exec=synaptic" to: <span style="color:#076b00">Exec=gksu /usr/sbin/synaptic</span>, or use the command in openbox menu (see configuring lxde)
-<br><br>
-For gparted, use <span style="color:#076b00">gksu /usr/sbin/gparted</span>
 
-<br><br><br>
-<h3>Polkit error message on start-up</h3>
-After a fresh install May '13, I had this report pop up on start-up:<br>
-
-<span style="color:#800080;">GDBus.Error:org.freedesktop.PolicyKit1.Error.Failed: An authentication agent already exists for the given subject </span>
-<br>
--which is the gnome polkit trying to run when LXDE has its own polkit running already. 
-
-<br><br>
-So we fix this with editing the polkit .desktop file in autostart, like so:
-
-<form>
-<textarea name="T" id="cmd" rows="1" cols="80">
-sudo nano /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-and paste this line at the end, Ctrl-X,y,Enter:
-<form>
-<textarea name="T" id="file" rows="1" cols="30">
-NotShowIn=LXDE</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
 
 <br><br><br>
 
@@ -211,7 +196,7 @@ the system files that I rsync to the new system are contained in a heap of folde
 for how to chroot, see my  <a href="{{site.baseurl}}/helps/03-chrooting.html">chrooting page</a>
 <br><br>
 <form>
-<textarea name="T" id="file" rows="40" cols="120">
+<textarea name="T" id="file" rows="30" cols="120">
 #!/bin/bash
 #script to set up system files, run in chroot env, as root - Quinton, 10/2019
 #chroot the new install, in booted system run `sudo rsync -arult netinstall_1910 /mnt/tmp`, then at chroot prompt `cd /tmp/netinstall_1910` and run this script, or paste parts of it on the command line
@@ -219,28 +204,16 @@ for how to chroot, see my  <a href="{{site.baseurl}}/helps/03-chrooting.html">ch
 #enter your username for setting up groups
 USER=
 
-#set home in fstab
-nano /etc/fstab
-mv /home /home1 && mkdir /home && mount -a
-
-#check interfaces
-nano /etc/network/interfaces
-
 #add groups
 for g in dialout plugdev lpadmin admin clamav fuse audio ;do groupadd -f $g
 for g in netdev dialout plugdev lpadmin admin clamav fuse audio sudo ;do adduser $USER $g; done
 
+
 #add nopasswd line to sudoers, to allow for script to call shutdown, reboot and suspend without getting stuck for need of user password
 echo %sudo ALL=NOPASSWD: /sbin/shutdown, /sbin/reboot, /usr/sbin/pm-suspend >> /etc/sudoers
 
-
-###########################
-#start syncing system files - copied from a previous install
-
-rsync -art etc/hosts /etc
-
 #check that hostname is correct =hostname at install
-nano /etc/hosts
+nano /etc/hostname
 
 #iptables (firewall)
 rsync -art etc/iptables.up.rules /etc
@@ -265,14 +238,6 @@ rsync -art usr-bin/ /usr/bin
 #mkdir /etc/X11/xorg.conf.d && rsync -art etc-X11-xorg.conf.d/ /etc/X11/xorg.conf.d
 
 
-#############################
-#prepare apt cache, mount var partition if have one
-mkdir /media/var && mount /dev/sda7 /media/var
-
-#backup apt archives and apt lists and make symlinks to the same on var mounted at /media/var
-mv /var/cache/apt/archives /var/cache/apt/archives1 && mkdir /var/cache/apt/archives && ln /media/var/cache/apt/archives /var/cache/apt/
-mv /var/lib/apt/lists /var/lib/apt/lists1 && mkdir /var/lib/apt/lists && ln /media/var/lib/apt/lists /media/var/lib/apt/
-
 </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -280,60 +245,53 @@ mv /var/lib/apt/lists /var/lib/apt/lists1 && mkdir /var/lib/apt/lists && ln /med
 
 <b>2. Package install script</b>
 <form>
-<textarea name="T" id="file" rows="40" cols="120">
+<textarea name="T" id="file" rows="50" cols="120">
 #!/bin/bash
-#script to install packages after new Netinstall, run in chroot env from running Linux system - Quinton, 10/2019
-#included here are 1. possible missed pkgs from netinstall, 2. openbox desktop (no display mgr), 3. thunar file man, 4. ranger with media viewers, 5. file archiving, disk utilities, printing, bluetooth, android, etc, 6. media editors and desktop apps, 7. build dependencies, 8. ffmpeg build deps, 9. viking build deps, 10. jekyll pre-install, 11. refractasnapshot deps,
+#script to install packages after new Netinstall, run in chroot env from running Linux system - Quinton, 06/2020
+#included here are 1. possible missed pkgs from netinstall, 2. openbox desktop (no display mgr), 3. thunar file man, 4. ranger with media viewers, file archiving, disk utilities, printing, bluetooth, android, etc, 5. media editors and desktop apps, 6. build dependencies, 7. ffmpeg build deps, 8. viking build deps, 9. jekyll pre-install, 10. refractasnapshot deps,
 
-apt-get install aptitude
-aptitude update
-aptitude full-upgrade
 
-aptitude install consolekit sudo grub2 laptop-mode-tools network-config iw rfkill lshw \
-\
-xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop elinks gparted bash-completion command-not-found udiskie gvfs xcape firmware-amd-graphics firmware-linux firmware-linux-nonfree firmware-iwlwifi elogind libpam-elogind \
-\
-thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra thunar-media-tags-plugin xdg-user-dirs exiftool feh imagemagick \
-\
-ranger w3m w3m-img less xsel atool mediainfo jhead ffmpegthumbnailer trash-cli \
-\
-zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk partclone gvfs-backends sshfs locate git cups gpa ntp yad rpl bluetooth blueman openjdk-8-jre mtp-tools go-mtpfs adb  \
-\
-mplayer2 vlc cin handbrake audacious gnome-sound-recorder lame gimp darktable inkscape vivaldi-stable abcde eyed3 bashburn gnome-color-chooser xpdf x11-apps gpsbabel clipit uget clamtk gdmap bleachbit ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict transmission easytag xfce4-notes-plugin bluefish yelp filezilla docky dvdrip dvdbackup libdvdcss2 ttf-mscorefonts-installer \
-\
-build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake checkinstall yasm libqt4-dev kdelibs5-dev libsdl1.2-dev libsdl-image1.2-dev libxml2-dev \
-\
-libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libschroedinger-dev libmp3lame-dev libfaac-dev libfaad-dev libgsm1-dev libopencore-amrnb-dev libopencore-amrwb-dev libsamplerate0-dev libjack-dev libsox-dev ladspa-sdk swh-plugins libmad0-dev libpango1.0-dev libass-dev libfdk-aac-dev libopus-dev libvpx-dev libx264-dev libx265-dev \
-\
-libcurl4-gnutls-dev libgtk2.0-dev libsqlite3-dev nettle-dev libgeoclue-2-dev libgexiv2-dev libgps-dev libmagic-dev libbz2-dev libzip-dev liboauth-dev \
-\
-ruby ruby-dev \
-\
-squashfs-tools live-boot live-config live-boot-initramfs-tools live-config-sysvinit libburn4 libjte1 libisofs6 libisoburn1 xorriso isolinux 
- 
+apt update
+apt dist-upgrade
+
+#1
+apt install sudo grub2 network-config iw rfkill lshw 
+
+#2
+apt install xorg pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode htop elinks gparted bash-completion xcape firmware-amd-graphics firmware-linux firmware-linux-nonfree firmware-iwlwifi elogind libpam-elogind 
+
+#3
+apt install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-extra thunar-media-tags-plugin xdg-user-dirs 
+
+#4
+apt install ranger w3m w3m-img less xsel xvkbd atool mediainfo jhead ffmpegthumbnailer trash-cli exiftool feh imagemagick zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk partclone sshfs locate git cups gpa ntp yad rpl bluetooth blueman mtp-tools go-mtpfs adb pmount udiskie gvfs 
+
+#5
+apt install mpv vlc handbrake audacious gnome-sound-recorder lame gimp inkscape abcde eyed3 xpdf x11-apps geany gpsbabel clipit uget clamtk gdmap bleachbit ksnapshot kcharselect meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict transmission easytag xfce4-notes-plugin bluefish yelp dvdbackup ttf-mscorefonts-installer screengrab
+
+#6
+apt install build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake yasm libqt4-dev kdelibs5-dev libsdl1.2-dev libsdl-image1.2-dev libxml2-dev 
+
+#7
+apt install libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libmp3lame-dev libfaac-dev libfaad-dev libgsm1-dev libopencore-amrnb-dev libopencore-amrwb-dev libsamplerate0-dev libjack-dev libsox-dev ladspa-sdk swh-plugins libmad0-dev libpango1.0-dev libass-dev libfdk-aac-dev libopus-dev libvpx-dev libx264-dev libx265-dev
+
+#8
+apt install libcurl4-gnutls-dev libgtk2.0-dev libsqlite3-dev nettle-dev libgeoclue-2-dev libgexiv2-dev libgps-dev libmagic-dev libbz2-dev libzip-dev liboauth-dev 
+
+#9
+apt installruby ruby-dev 
+gem install jekyll
+
+#10
+apt install squashfs-tools live-boot live-config live-boot-initramfs-tools live-config-sysvinit libburn4 libjte1 libisofs6 libisoburn1 xorriso isolinux 
+
+apt install qgis
+
+#for compton build
+ asciidoc xsltproc libconfig-dev
  
 #update clamtk virus definitions with
 freshclam
-
-
-#install downloaded deb packages - install their dependencies first
-dpkg z_get_debs/*.deb
-
-
-#reorganise the .desktop files, after package install - replace with own copied
-mv /usr/share/applications /usr/share/applications.bak
-mkdir /usr/share/applications
-rsync -arlt usr-share-applications/ /usr/share/applications
-rsync -arlt usr-share-desktop-directories/ /usr/share/desktop-directories
-rsync -arlt usr-share-icons/ /usr/share/icons
-
-
-#check what linux kernel is installed
-dpkg --list | grep linux-image
-uname -r 
-
-#check which version is available from your release
-apt-cache search linux-image
 
 </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">

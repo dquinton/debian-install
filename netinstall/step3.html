@@ -44,12 +44,12 @@ id: net
 
 <form>
 <textarea name="T" id="install" rows="2" cols="50">
-sudo apt-get update
-sudo apt-get install mplayer2 vlc audacious </textarea>
+sudo apt update
+sudo apt install mpv audacious </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-that's two video players that can handle all you need, and a winamp-style music player. I don't install gnome-mplayer now, as mplayer2 comes with mpv.
+that's a great video player that can handle all you need, and a winamp-style music player.
 
 <br><br><br>
 <h3>Audacious Qt</h3><br>
@@ -58,7 +58,7 @@ download the latest stable from <a href="http://audacious-media-player.org/downl
 get the dependencies
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
-sudo apt-get install qt5-default vorbis-tools libvorbis-dev libflac-dev libfaad-dev libneon27-dev libcdio-dev</textarea>
+sudo apt install qt5-default vorbis-tools libvorbis-dev libflac-dev libfaad-dev libneon27-dev libcdio-dev</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -94,7 +94,7 @@ with the plugins, just <span style="color:#994900">./configure, make, sudo make 
 get it from the repo's - the venerable, quality video encoder
 <form>
 <textarea name="T" id="install" rows="1" cols="30">
-sudo apt-get install handbrake</textarea>
+sudo apt install handbrake</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -122,7 +122,7 @@ then do..
 <form>
 <textarea name="T" id="cmd" rows="2" cols="30">
 sudo dpkg -i bombono*deb
-sudo apt-get install -f</textarea>
+sudo apt install -f</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -132,7 +132,7 @@ sudo apt-get install -f</textarea>
 <h3>Audio editors</h3>
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install ardour audacity qjackctl</textarea>
+sudo apt install ardour audacity qjackctl</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -147,7 +147,7 @@ that's a quality sound recorder and audio editor.  To record with ardour you'll 
 <br>
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get install abcde eyed3 lame</textarea>
+sudo apt install abcde eyed3 lame</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -168,7 +168,7 @@ lame is needed for mp3 encoding.
 with the deb-multimedia repo, you can..
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install k9copy dvdrip dvdbackup libdvdcss2</textarea>
+sudo apt install k9copy dvdrip dvdbackup libdvdcss2</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -176,13 +176,13 @@ otherwise you need to look for packages elsewhere.
 <br><br>
 get libdvdcss from <a href="https://pkgs.org/download/libdvdcss2">pkgs.org/download/libdvdcss2</a>
 <br><br>
-<br>k9copy and dvdrip are both graphical, and you can select which title to rip. <br>
+<br>k9copy and dvdrip are both graphical, and you can select which title to rip (but again, there's KDE libraries to install). <br>
 dvdbackup is command-line, and it rips the DVD to hdd in its entirety. <br>
 With <b>libdvdcss2</b> installed you can play and possibly rip a DVD encrypted with CSS (Content Scramble System), e.g. it enables Handbrake to rip encrypted dvd titles to mp4, but there is still other encrypion it can't deal with.
 <br><br>
 To rip with dvdbackup, cd to the dir to store the dvd and run <span class="cmd">dvdbackup -i /dev/dvd -M -o movie</span>
 <br><br>
-furiusisomount and acetoneiso are two useful apps but only available in testing.
+furiusisomount and acetoneiso are two other useful apps.
 
 <br><br>
 <hr noshade="noshade">
@@ -192,20 +192,20 @@ furiusisomount and acetoneiso are two useful apps but only available in testing.
 
 <form>
 <textarea name="T" id="install" rows="4" cols="80">
-sudo apt-get install xpdf x11-apps clipit uget clamtk easytag gdmap ksnapshot kcharselect luckybackup meld regexxer bleachbit transmission yelp gnome-color-chooser systemsettings xsel xvkbd goldendict xfce4-notes-plugin bluefish filezilla bashburn</textarea>
+sudo apt install xpdf x11-apps clipit uget clamtk easytag gdmap meld regexxer bleachbit transmission yelp xsel xvkbd goldendict xfce4-notes-plugin bluefish filezilla screengrab</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-that gets you... a light-weight a pdf viewer, basic x11 tools, clipboard manager, download manager, virus scanner, id3 tag writer, graphical disk map, kde screenshot taker, character map, data backup utility, file/directory comparison app, file text search/replace, system cleanup app, torrent downloader, help agent, Gnome's desktop colours editor, KDE's control panel, x-selection tools, dictionary, gnome webcam app, grouped sticky notes, html editor, ftp manager, terminal dvd writer
+that gets you... a light-weight a pdf viewer, basic x11 tools, clipboard manager, download manager, virus scanner, id3 tag writer, graphical disk map, file/directory comparison app, file text search/replace, system cleanup app, torrent downloader, help agent, x-selection tools, dictionary, grouped sticky notes, html editor, ftp manager, screenshot taker
 <br><br>
 <span class="prob">transmission gets permissions error - right click on a torrent and > Set Location, select the actual download location.</span>
 
 <br><br>
 
-for a fully functional DVD burner, there's xfburn (basic) or k3b (unless you'd prefer an easy command-line tool like bashburn)
+for a fully functional DVD burner, there's xfburn (basic) or k3b with KDE bloat (unless you'd prefer an easy command-line tool like bashburn -which has gone from the package lists)
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install k3b libk3b6-extracodecs normalize-audio</textarea>
+sudo apt install k3b libk3b6-extracodecs normalize-audio</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -215,7 +215,7 @@ the last two packages there are to enable conversion of wav to mp3 or mp3 to wav
 Xfce stuff and panel plugins 
 <form>
 <textarea name="T" id="install" rows="4" cols="80">
-sudo apt-get install xfce4-taskmanager xfprint4 xfce4-notes-plugin xfce4-screenshooter xfce4-dict x-tile xarchiver gstreamer-0.10 xfce4-cpugraph-plugin xfce4-netload-plugin xfce4-wavelan-plugin xfce4-systemload-plugin xfce4-mount-plugin xfce4-places-plugin xfce4-timer-plugin xfce4-volumed</textarea>
+sudo apt install xfce4-taskmanager xfprint4 xfce4-notes-plugin xfce4-screenshooter xfce4-dict x-tile xarchiver gstreamer-0.10 xfce4-cpugraph-plugin xfce4-netload-plugin xfce4-wavelan-plugin xfce4-systemload-plugin xfce4-mount-plugin xfce4-places-plugin xfce4-timer-plugin xfce4-volumed</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -263,7 +263,7 @@ these are Linux-specific anti-trojan programs
 
 <form>
 <textarea name="T" id="install" rows="1" cols="80">
-sudo apt-get install rkhunter chkrootkit</textarea>
+sudo apt install rkhunter chkrootkit</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -334,26 +334,24 @@ or you can try hostsblock <a href="http://gaenserich.github.io/hostsblock/">http
 
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
-sudo apt-get install evince geekie pyrenamer catfish cheese docky flush hasciicam xfburn xpad geany axel-kapt tucan pdfshuffler gperiodic </textarea>
+sudo apt install evince geekie pyrenamer catfish cheese docky flush hasciicam xfburn xpad geany axel-kapt tucan pdfshuffler </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
 
 evince, geekie - gui pdf and image viewers<br>
-pyrenamer, catfish - batch rename and file search gui tools
+pyrenamer, catfish - batch rename and file search gui tools<br>
 cheese, hasciicam - webcam apps<br>
-docky - app launcher dock
+docky - app launcher dock<br>
 flush or transmission -bit torrent handlers<br>
-xfburn - dvd burner<br>
 xpad - make notes<br>
-geany - powerful text editor<br>
 axel-kapt -download accelerator<br>
 tucan -upload-downloader for file share sites<br>
 <br><br><br>
 
 <form>
 <textarea name="T" id="install" rows="2" cols="80">
-sudo apt-get install gconf-editor gnome-system-tools gnome-disk-utility gnome-font-viewer ttf-mscorefonts-installer </textarea>
+sudo apt install gconf-editor gnome-system-tools gnome-disk-utility gnome-font-viewer ttf-mscorefonts-installer </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -364,11 +362,20 @@ kdemultimedia-kio-plugins - enables reading and conversion of audio from CD's in
 mscorefonts - includes Times, Tahoma, Verdana, Ariel etc.<br>
 <br><br><br>
 
+For backups...<br>
+<form>
+<textarea name="T" id="install" rows="1" cols="80">
+sudo apt install luckybackup backintime-qt4 rsbackup restic</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+there's 2x GUI and 2x command line utilities <br>
+<br><br>
 
 <b>Edu-games for learners</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="80">
-sudo apt-get install tuxtype tuxmath extremetuxracer supertux tuxguitar tuxpuck ktouch ktuberling kig step klavaro kbruch kturtle kalzium education-music raincat gamine bomber bomberclone</textarea>
+sudo apt install tuxtype tuxmath extremetuxracer supertux tuxguitar tuxpuck ktouch ktuberling kig step klavaro kbruch kturtle kalzium education-music raincat gamine bomber bomberclone</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br><br>
@@ -379,9 +386,6 @@ to enable transparency of the Xfce roxterm terminal emulator, check "enable disp
 <b>clipit:</b> set automatic paste
 <br><br><br>
 <b>problems:</b> <br>
-<span class="prob">gnome mplayer resizes to full size on every play (bad for HD video on a low res screen)</span> <br>
--enable playlist, or try in Pref's >Interface >only allow one instance, >remember window location and size, >uncheck "resize window when new video is loaded" and Alt-F8 drag smaller on the first video.
-<br><br>
 <span class="prob">bluetooth mouse doesn't get detected or doesn't pair</span> <br>
 note: connecting via bluetooth manager (i.e. the system's own bluetooth adapter) might be more tricky, but not impossible, while using the mouse's own USB adapter will be sweet and instant.<br>
 -replace mouse battery! click on pair (not set up) in bluetooth manager and enter 0000, and if it doesn't connect switch off the mouse for a minute or two and back on, e voila, it's connected.
@@ -390,7 +394,7 @@ note: connecting via bluetooth manager (i.e. the system's own bluetooth adapter)
 <br><br>
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
-sudo leafpad /usr/share/polkit-1/actions/org.freedesktop.NetworkManager.policy</textarea>
+sudo nano /usr/share/polkit-1/actions/org.freedesktop.NetworkManager.policy</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 search for <span style="color:#0F4F0B">org.freedesktop.NetworkManager.settings.modify.system</span>

@@ -44,8 +44,8 @@ div.parent {             /* link to parent above page title */
 
 
 div.cont { 
-  background: #CECECE; 
-  color: #0A0A0A;
+  background: #2E2D32; 
+  color: #D7D7D7;
   min-height: 600px;
   font-family:  PT Sans, Dejavu sans, Tahoma, sans-serif;
   font-size: .9em;
@@ -121,12 +121,12 @@ h4 {
 }
 
 .ht { display:inline;
-  background-color:#87C6FC;
+  background-color:#4F0089;
   #font-weight: bold;
 }
 
 .caut { display:inline;
-  background-color:#E1C386;
+  background-color:#68081A;
   #font-weight: bold;
 }
 
@@ -208,25 +208,25 @@ table {
 .prob {   color:#730973;}
 
 textarea#install { 
-  background-color : #E3DEDE;
+  background-color : #0E0E0E;
   border: 2px solid #6C6D80;
   padding: 8px;
   margin: 6px 0px 4px;
   border-radius: 5px 5px 2px 2px;
-  color: #250808;
+  color: #FD7D94;
 }
 
 textarea#cmd { 
-  background-color : #E3DEDE;
+  background-color : #0E0E0E;
   border: 2px solid #6C6D80;
   padding: 8px;
   margin: 6px 0px 4px;
   border-radius: 5px 5px 2px 2px;
-  color: #6A3200;
+  color: #FFAD68;
 }
 
 textarea#file { 
-  background-color : #E3DEDE;
+  background-color : #0E0E0E;
   border: 2px solid #6C6D80;
   padding: 8px;
   margin: 6px 0px 4px;

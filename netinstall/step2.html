@@ -34,8 +34,6 @@ id: net
 <br>
 <h2 id="1" class="tag">Video editors</h2>
 <br>
-Updated 08-2017
-<br><br><br>
 
 <span style="color: #1818B3; ">
 <b>____Basic____</b></span>
@@ -98,7 +96,6 @@ the non-linear video editor from KDE (hence its name.. KDE-n-li-v-e) that is bot
 I give some tips on it on my page, <a href="{{site.baseurl}}/tutorial/04-kdenlive-hd-video.html"><b>Kdenlive and HD video</b></a>.
 <br><br><br>
 
-(Basic install)<br>
 If you're not too concerned about getting the latest codecs, you can use this install line - and if you run Debian testing then kdenlive should be quite up to date.
 
 <br><br>
@@ -112,7 +109,7 @@ sudo apt-get install x264 libmp3lame0 libquicktime2 kdenlive frei0r-plugins dvgr
 Note: since Debian 8 (Jessie), kdenlive depends on libav-tools - no longer ffmpeg.
 <br><br><br>
 
-<b>Latest release: </b> see my <a href="{{site.baseurl}}/netinstall/kdenlive.html"><b>kdenlive page</b></a> for info on installing the Appimage or from source.
+For the latest release, see my <a href="{{site.baseurl}}/netinstall/kdenlive.html"><b>kdenlive page</b></a> for info on installing the Appimage or from source.
 
 <br><br><br>
 <h3>VLMC</h3>
@@ -130,7 +127,7 @@ available in the Debian repo or downloaded from <a href="https://www.blender.org
 <br><br>
 
 
-one of its major flaws (presently) is it can't render utilising full CPU power, it renders single-thread, split between cpu cores. A work around is to use a script that splits up the work between cpu cores and then concatenates the parts into a complete movie - but that might get tehnical (sound glitches).
+one of its major flaws (presently) is it can't render utilising full CPU power, it renders single-thread, split between cpu cores. 
 <br><br>
 See my <a href="{{site.baseurl}}/tutorial/04a-blender-vse.html"><b>Blender page</b></a> for my tips and links to tutorials
 <br><br><br>
@@ -157,7 +154,7 @@ cin. GG can be more easily run without building it - you may want to preinstall 
 <br><br>
 to get using cinelerra GG, either..
 <br><br>
-1. add the repo line below to your sources file and use apt-get,
+1. add the repo line below to your sources file,
 
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
@@ -251,7 +248,7 @@ next get the build dependencies:<br>
 <form>
 <textarea name="T" id="install" rows="6" cols="100">
 sudo apt-get update
-sudo apt-get install cmake build-essential yasm libqt4-dev kdelibs5-dev libsdl1.2-dev libsdl-image1.2-dev libxml2-dev libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libschroedinger-dev libmp3lame-dev libfaac-dev libfaad-dev libgsm1-dev libopencore-amrnb-dev libopencore-amrwb-dev libsamplerate0-dev libjack-dev libsox-dev ladspa-sdk swh-plugins libmad0-dev libpango1.0-dev libass-dev libfdk-aac-dev libopus-dev libvpx-dev libx264-dev libx265-dev </textarea>
+sudo apt-get install cmake build-essential yasm libqt4-dev libsdl1.2-dev libsdl-image1.2-dev libxml2-dev libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libmp3lame-dev libfaac-dev libfaad-dev libgsm1-dev libopencore-amrnb-dev libopencore-amrwb-dev libsamplerate0-dev libjack-dev libsox-dev ladspa-sdk swh-plugins libmad0-dev libpango1.0-dev libass-dev libfdk-aac-dev libopus-dev libvpx-dev libx264-dev libx265-dev </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -322,18 +319,18 @@ sudo apt-get install openjdk-8-jre</textarea>
 </form>
 
 <br>
-apt-get install libreoffice from repository, or better, download LibreOffice 5.x from <a href="http://www.libreoffice.org/download/?nodetect">libreoffice.org/download/</a>
+apt-get install libreoffice from repository, or better, download LibreOffice from <a href="http://www.libreoffice.org/download/?nodetect">libreoffice.org/download/</a>
 <br><br>
 To remove an older version (because installing a newer version may leave the previous version in /opt - all 700mb of it)..
 
 <form>
 <textarea name="T" id="install" rows="1" cols="50">
-sudo apt-get remove libreoffice*</textarea>
+sudo apt-get remove libreofficeX.X*</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
-
-
+where X.X is the release no. of the last version you installed. e.g 6.2
+<br><br>
 extract from the downloaded tar file and cd to the dir and into the DEBS dir, and then: 
 <br>
 <form>

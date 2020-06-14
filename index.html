@@ -10,7 +10,7 @@ id: intro
 <h3>Wanting install a fast, low-memory consuming Linux system on your box?  just read on...</h3>  
 <br><br>
 
-Debian GNU Linux is an OS that works 100% of the time, and is fast, stable and powerful... Made by developers from around the world who contribute their skills for free and also keep it free for every one... it's so well developed that some popular Linux 'distros' are built on it (including Ubuntu and Mint).  
+Debian GNU Linux is an OS that works 100% of the time, and is fast, stable and powerful... Made by developers from around the world who contribute their skills for free and also keep it free for everyone... it's so well made that some popular Linux 'distros' are built on it such as including Ubuntu and Mint. 
 <br><br>
 But in 2016, a change took place in Debian when it was voted to switch to a complex start-up daemon called <b>systemd</b> and the old 'init' start-up scripts that were easy to customise were scrapped, leaving practically no choice on the matter to debian users (which opens the controversy about systemd as Debian is meant to be about freedom of choice).  The new daemon is also extremely difficult to learn and also it can't easily be bypassed as so many other programs depend on it.  Trying to run Debian on the old sysinit is now nigh impossible.  
 
@@ -19,7 +19,7 @@ But in 2016, a change took place in Debian when it was voted to switch to a comp
 Finding systemd running after upgrading to Debian Jessie came as a little surprise and I tried everything I could to remove it, as the reason I chose Debian was to be free of lock-ins.  While I succeeded at the time, I was then left unable to install any program that depended on systemd. After that I came to <b>Devuan</b>, a Debian branch that keeps systemd out of everything.  Sysinit is able to operate like before and any system or software package that needs systemd is repackaged by Devuan maintainers in order to exclude it.  All other packages are simply mirrored from the Debian software repositories. Release code names are different to Debian and it is not possible (since Jessie) to dist-upgrade from Debian to Devuan.
 <br><br>
 
-On these pages are all the steps necessary to get Devuan installed and configured, which is no different really to installing Debian.  The only differences are: lines in sources file, systemd negative pinning, and location of ISO downloads.
+On these pages are all the steps necessary to get Devuan installed and configured, which is practically no different to installing Debian.  The only differences are: lines in sources file, systemd negative pinning, and location of ISO downloads.
 <br><br>
 With Debian/Devuan the days of a hanging system chewing on memory are gone. ...it's time to format those Windoze partitions!  
 <br><br>
@@ -28,7 +28,7 @@ With Debian/Devuan the days of a hanging system chewing on memory are gone. ...i
 <b>...</b>
 My install steps begin on the next page, getting started by downloading a Netinstall CD or Live CD from the web..
 <br><br>
-The <b>Net-install CD</b> gives you the base system. After that, you can install whatever else that you need from the 1000's of packages in the Debian repository, using a few simple commands.  I've kept my package list pretty minimal, and I'm conscious of choosing low-memory consuming apps where possible. 
+The <b>Net-install CD</b> gives you the base system. After that, you can install whatever else that you need from the 1000's of packages in the Debian repository, using a few simple commands.  I've kept my package list pretty minimal, and I'm conscious of choosing low-memory consuming apps where possible.   This is the fun way to install, building the desktop how you would prefer it, but you do need a lot more time to get it running and also some command-line ability.  You'll also need to look on-line for answers if you run into any problems.
 <br><br>
 If you're really new to Linux you could get Debian/Devuan running quite easily by using a <b>Live CD </b>with a full Desktop Environment included (though it will be a much bigger download).  
 <br><br>
@@ -50,7 +50,7 @@ If you're really new to Linux you could get Debian/Devuan running quite easily b
 
 <br><br>
 <table cellpadding="2" align="center"><tr>
-<td><a href="zimages/desktop-01-panels.jpeg"><img src="{{site.baseurl}}/zimages/desktop-01-panels-sm.jpeg" width="320" height="200" alt="Debian desktop with panels"></a></td>
+<td>&nbsp;<a href="zimages/desktop-01-panels.jpeg"><img src="{{site.baseurl}}/zimages/desktop-01-panels-sm.jpeg" width="320" height="200" alt="Debian desktop with panels"></a></td>
 <td>&nbsp;<a href="zimages/desktop-03-menu.jpeg"><img src="{{site.baseurl}}/zimages/desktop-03-menu-sm.jpeg" width="320" height="200" alt="Debian main menu"></a></td>
 <td>&nbsp;<a href="zimages/desktop-04-obmenu.jpeg"><img src="{{site.baseurl}}/zimages/desktop-04-obmenu-sm.jpeg" width="320" height="200" alt="Debian desktop with Openbox menu"></a></td></tr>
 <tr><td width="50" align="center">My Debian desktop with panels</td>
@@ -66,8 +66,6 @@ If you're really new to Linux you could get Debian/Devuan running quite easily b
 <br><br>
 This site is hosted for free at Github. I use Jekyll to transform my site content into plain html pages - see my <a href="{{site.baseurl}}/tutorial/22-github-pages.html">github page</a> to know how.
 <br>If you spot any errors in the site you can <a href="https://github.com/dquinton/debian-install/issues"><b>record an issue</b></a>, if you like, thanks
-<br><br><br>
-I set my font in the style sheet to PT sans, which you can download from <a href="http://www.fontsquirrel.com/fonts/PT-Sans">here</a>.
 <br><br><br><br>
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">Debian install notes</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://dquinton.github.io/debian-install/" property="cc:attributionName" rel="cc:attributionURL">D Quinton</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.<br><br><br>
 </div>

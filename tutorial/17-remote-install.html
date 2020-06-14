@@ -13,7 +13,7 @@ id: tutor
                 <li><a href="#1">Cloning the apt-cache!</a></li>
                 <li><a href="#1a">Keryx </a></li>
                 <li><a href="#2">Simple-CDD  </a></li>
-                <li><a href="#3">Live-Helper </a></li>
+                <li><a href="#3">Live-Build </a></li>
              </ul>
     </li>
   </ul>
@@ -24,7 +24,7 @@ id: tutor
    <a href="#1">Cloning the apt-cache!</a><br>
    <a href="#1a">Keryx  </a><br>
    <a href="#2">Simple-CDD  </a><br>
-   <a href="#3">Live-Helper </a><br>
+   <a href="#3">Live-Build </a><br>
 </td></tr></table>
 </div>
 <div class="parent"><a href="../tutorials.html">Tutorials</a> ></div>
@@ -212,20 +212,15 @@ useful read:
 <hr>
 
 <h3>1. install</h3>
-add sid snapshots to sources list (not sure if this is still required?)
 
-<form><textarea name="T" id="cmd" rows="6" cols="100">
-su
-sh -c 'echo "deb http://live.debian.net/debian/ sid-snapshots main contrib non-free" &gt;&gt; /etc/apt/sources.list'
-wget http://live.debian.net/debian/project/keys/archive-key.asc -O - | apt-key add -
-apt-get update
-apt-get install live-helper</textarea>
+<form><textarea name="T" id="cmd" rows="2" cols="30">
+sudo apt update
+apt install live-build</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
-now find some space on a partition where all the live-build work will take place 
-
+now find some space on a partition where all the live-build work will take place and run the initial setup command, `lh config`:
 
 <form><textarea name="T" id="cmd" rows="3" cols="30">
 mk dir my-livecd
@@ -246,7 +241,7 @@ The command is run with options to build what you want:
 example 1.
 
 <form><textarea name="T" id="cmd" rows="2" cols="100">
-lh config --architecture i386 -d wheezy -p lxde --archive-areas "main contrib non-free" --debian-installer live</textarea>
+lh config --architecture i386 -d buster -p lxde --archive-areas "main contrib non-free" --debian-installer live</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -254,7 +249,7 @@ lh config --architecture i386 -d wheezy -p lxde --archive-areas "main contrib no
 example 2.<br>
 
 <form><textarea name="T" id="cmd" rows="2" cols="100">
-lh config -d squeeze -p xfce --archive-areas "main contrib non-free" --debian-installer live --linux-flavours 686</textarea>
+lh config -d buster -p xfce --archive-areas "main contrib non-free" --debian-installer live --linux-flavours 686</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -267,14 +262,16 @@ lh config --mirror-bootstrap "http://cdn.debian.net/debian/" --mirror-chroot "ht
 
 <br>
 
-You can keep using "lh config" with different parameters to set up the configuration before building -but note that you can't override one that's been set unless you do a "lh clean" -it is better to use an auto script (see below).  The "chroot" mirror is where packages will come from and the "binary" is what the Live CD will be set to (chroot mirror should default to --mirror-bootstrap).  
+You can keep using `lh config` with different parameters to set up the configuration before building -but note that you can't override one that's been set unless you do a `lh clean` -it is better to use an auto script (see below).  
+<br><br>
+The "chroot" mirror is where packages will come from and the "binary" is what the Live CD will be set to (chroot mirror should default to --mirror-bootstrap).  
 See <a href="http://manpages.ubuntu.com/manpages/oneiric/lb_config.1..html">http://manpages.ubuntu.com/</a>
 <br><br>
 The 486 flavour with i386 architecture, or 686 with amd64, is essential for the live installer to work, or else you will just have a Live CD, so the man page says.
 <br><br>
-
+<br>
 <b>Or use an auto script</b><br>
-All config options can be put into an auto script so that one only needs to run "lh config" and the options are set from the script.
+All config options can be put into an auto script so that you only need to run `lh config` and the options are set from the script.
 <br>
 <a href="http://live-systems.org/manual/current/html/live-manual/managing-a-configuration.en.html#309">http://live-systems.org/manual/...</a>
 <br><br>
@@ -287,23 +284,27 @@ cp /usr/share/doc/live-build/examples/auto/* auto/</textarea>
 <br>
 
 edit auto/config to look something like this -adapt to your preference, with amd64/686 or whatever.  Here's how it looks with my example 3,
-<span style="color: #0F4F0B" size="3">#!/bin/sh<br>
-lb config noauto \<br>
-     --architectures <span style="background-color:rgb(249,203,156)">i386</span> \<br>
-     --linux-flavours <span style="background-color:rgb(249,203,156)">486</span> \<br>
-     --mirror-bootstrap http://<span style="background-color:rgb(249,203,156)">ftp.uk.debian.org</span>/debian/ \<br>
-<span style="color: #0F4F0B" size="3">    --mirror-chroot http://<span style="color:rgb(56,118,29);background-color:rgb(249,203,156)">ftp.uk.debian.org</span>/debian/ \<br>
-     --mirror-binary http://<span style="color:rgb(56,118,29);background-color:rgb(249,203,156)">ftp.uk.debian.org</span>/debian/ \<br>
-     --mirror-chroot-security http://security.debian.org/ \<br>
-     --archive-areas "main contrib non-free" \<br>
---apt-recommends disabled \<br>
-</span>
-    --apt aptitude \<br>
-         -d <span style="background-color:rgb(249,203,156)">wheezy</span> \<br>
-         --debian-installer live \<br>
-     "${@}"
+<span style="color: #0F4F0B" size="3">
+	
 <br>
 </span>
+<form><textarea name="T" id="cmd" rows="14" cols="80">
+#!/bin/sh
+lb config noauto \
+     --architectures i386 \
+     --linux-flavours 486 \
+     --mirror-bootstrap http://ftp.uk.debian.org/debian/ \
+     --mirror-chroot http://ftp.uk.debian.org/debian/ \
+     --mirror-binary http://ftp.uk.debian.org/debian/ \
+     --mirror-chroot-security http://security.debian.org/ \
+     --archive-areas "main contrib non-free" \
+     --apt-recommends disabled \
+    --apt aptitude \
+     -d wheezy \
+     --debian-installer live \
+     "${@}"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br><br>
 The script is read when lh build is run.
@@ -315,17 +316,17 @@ Note: in the file <span style="color: #0b5394">config/bootstrap</span> there is 
 <br>
 <hr>
 
-<h3>3. Add package lists before the build</h3>
+<h3>3. Add package name lists before the build</h3>
 <br>
-updated Oct 2017
+updated June 2020
 <br><br>
-su to root and run these in the build directory, to create lists which will be used to install whatever you need to the build:
+su to root and run these in the build directory, to create lists which will be used to install whatever you need added to the build:
 
 <br><br>
 First of all, those needed for successful build as they are possibly excluded by the "no-recommends" option.
 <br>
 <form><textarea name="T" id="cmd" rows="3" cols="100">
-for p in eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup grub2 consolekit aptitude laptop-mode-tools network-config iw ;do echo $p &gt;&gt; config/package-lists/needed.list.chroot ;done</textarea>
+for p in eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup grub2 aptitude laptop-mode-tools network-config iw ;do echo $p config/package-lists/needed.list.chroot ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -335,7 +336,7 @@ then do either
 <b>1. minimal LXDE install</b>
 <br>
 <form><textarea name="T" id="cmd" rows="5" cols="100">
-for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf leafpad xfce4-power-manager rxvt-unicode htop elinks gparted aptitude bash-completion command-not-found ntp debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf geany xfce4-power-manager rxvt-unicode bash-completion htop elinks gparted ntp xcape debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -345,37 +346,26 @@ or <br>
 <b>2. plain openbox install</b>
 <br>
 <form><textarea name="T" id="cmd" rows="5" cols="100">
-for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpolkit lxpanel lxtask wicd tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode leafpad xfce4-power-manager htop elinks gparted aptitude bash-completion command-not-found udiskie gvfs ntp xcape debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpolkit lxpanel lxtask elogind libpam-elogind wicd tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode bash-completion geany xfce4-power-manager htop elinks gparted ntp xcape debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
-<b>For Thunar</b>
+<b>3. Ranger</b>
 <br>
-<form><textarea name="T" id="cmd" rows="4" cols="100">
-for p in thunar thunar-volman thunar-archive-plugin thunar-media-tags-plugin tumbler tumbler-plugins-extra bluetooth blueman ntfs-3g blktool dosfstools mtools testdisk gvfs-backends zip unzip bzip2 p7zip-full openjdk-8-jre icedtea-8-plugin git cups gpa ntp rpl xrandr ;do echo $p >> config/package-lists/thunar.list.chroot ;done</textarea>
+<form><textarea name="T" id="cmd" rows="5" cols="100">
+for p in ranger w3m w3m-img less xsel xvkbd atool mediainfo jhead ffmpegthumbnailer trash-cli exiftool feh imagemagick zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk partclone fsarchiver sshfs locate git cups gpa ntp yad rpl bluetooth blueman mtp-tools go-mtpfs adb pmount udiskie gvfs ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
 <br><br>
 
-<b>All other apps</b>
-<br>
-<form><textarea name="T" id="cmd" rows="7" cols="100">
-for p in mplayer2 vlc handbrake audacious gnome-sound-recorder lame gimp darktable inkscape abcde eyed3 bashburn gnome-color-chooser xpdf x11-apps ranger feh imagemagick xsel xvkbd w3m w3m-img atool mediainfo jhead ffmpegthumbnailer gpsbabel clipit uget clamtk gdmap bleachbit transmission ksnapshot kcharselect luckybackup meld regexxer xiphos fonts-sil-ezra rkhunter chkrootkit goldendict xfce4-notes-plugin bluefish filezilla yelp easytag xpad geany ttf-mscorefonts-installer ;do echo $p >> config/package-lists/apps.list.chroot ;done</textarea>
- <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
 
+If you are making a Live CD for a basic install (to add further packages post-install) then no point in making the build too complex or over-sized, and I would leave it at that.<br>
+but if you are aiming to insall on multiple boxes and you would prefer a larger choice of packages pre-installed on the live CD then you can create more package lists like these.<br>
 
 
 <br><br>
 
-<b>For build dependencies</b>
-<br>
-<form><textarea name="T" id="cmd" rows="4" cols="100">
-for p in build-essential intltool pkg-config libalglib-dev libglib2.0-dev libdbus-1-dev libdbus-glib-1-dev libx11-dev libgtk2.0-dev libwnck-dev x11-xserver-utils libgudev-1.0-dev libgtkmm-2.4-dev libssl-dev libnotify-dev gcc make cmake checkinstall ;do echo $p >> config/package-lists/build.list.chroot ;done</textarea>
- <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
 
 <br><br>
 <a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html#373">http://live-systems.org/manual/...</a>
@@ -408,7 +398,7 @@ echo "deb http://ftp.uk.debian.org/debian/ experimental main" > config/archives/
 
 <br>
 <form><textarea name="T" id="cmd" rows="1" cols="80">
-sudo leafpad config/archives/experimental.pref.chroot</textarea>
+sudo nano config/archives/experimental.pref.chroot</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -417,9 +407,8 @@ sudo leafpad config/archives/experimental.pref.chroot</textarea>
 
 add this content
 
-
 <form><textarea name="T" id="file" rows="8" cols="80">
-Package: thunar libexo-1-0 libxfce4ui-1-0 libxfce4util6 thunar-data libxfce4ui-1-dev libthunarx-2-0 exo-utils libxfce4util-dev libxfconf-0-dev libxfconf-0-2
+Package: thunar .....[plus dependencies]
 Pin: release n=experimental
 Pin-Priority: 600
 
@@ -437,7 +426,7 @@ Pin-Priority: 1</textarea>
 -say, if it is a recommended package or installed by a metapackage, you give it a negative Pin-Priority in config/apt/preferences,
 
 <form><textarea name="T" id="cmd" rows="1" cols="50">
-sudo leafpad config/apt/preferences</textarea>
+sudo nano config/apt/preferences</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -457,71 +446,12 @@ see: <a href="http://live-systems.org/manual/current/html/live-manual/customizin
 
 <hr>
 
-<h3>5. add the multimedia repo</h3>
-add the multimedia repository (or any repo you like, same method), in my-livecd dir:
-
-<form><textarea name="T" id="cmd" rows="2" cols="100">
-echo "deb http://www.deb-multimedia.org testing main non-free" > config/archives/deb-multimedia.list.chroot </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-copy deb-multimedia-keyring.gpg 
-<form><textarea name="T" id="cmd" rows="1" cols="100">
-cp /usr/share/keyrings/deb-multimedia-keyring.gpg config/archives/deb-multimedia.key.chroot</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br><br><br>
-
-<hr>
-
-<h3>6. live-initramfs </h3>
-(this is not in the recent debian live manual -try without first)
-<br>
-Enable live-helper to use the latest snapshot of live-initramfs with a sources list entry (run in my-livecd dir)
-
-<form><textarea name="T" id="cmd" rows="3" cols="80">
-mkdir config/chroot_sources
-sh -c 'echo "deb http://live.debian.net/ sid-snapshots main contrib non-free" &gt; config/chroot_sources/debian-live_sid-snapshots.chroot'</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-<br>
-and at binary stage with
-<form><textarea name="T" id="cmd" rows="2" cols="80">
-cp config/chroot_sources/debian-live_sid-snapshots.chroot config/chroot_sources/debian-live_sid-snapshots.binary<br></textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-<br>
-
-
-get the gpg key:
-
-<form><textarea name="T" id="cmd" rows="2" cols="80">
-wget http://live.debian.net/debian/project/keys/archive-key.asc -O config/chroot_sources/debian-live_sid-snapshots.chroot.gpg</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-<br>
-copy it to the binary
-
-<form><textarea name="T" id="cmd" rows="2" cols="80">
-cp config/chroot_sources/debian-live_sid-snapshots.chroot.gpg config/chroot_sources/debian-live_sid-snapshots.binary.gpg</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-<a href="http://live.debian.net/manual/1.x/html/ch02s02.html">http://live.debian.net/manual/1.x/html/ch02s02.html</a><br>
-<a href="http://live.debian.net/debian/project/keys/">http://live.debian.net/debian/project/keys/</a>
-<br>
-<br>
-
-or get the <a href="http://packages.debian.org/wheezy/live-boot-initramfs-tools">live-boot-initramfs-tools</a> deb file and put it in config/packages.chroot <br>
 
 <br><br><br>
 
 <hr>
 
-<h3>7. Add files to be included in the Live cd</h3>
+<h3>6. Add files to be included in the Live cd</h3>
 
 If you'd like to customize the Live cd environment, with autostart, no recommends files etc, you simply add the files to <span style="color: #0b5394">config/includes.chroot </span>directory with the same dir tree as they need in a real file system.
 <br>
@@ -565,7 +495,7 @@ LIVE_USER_DEFAULT_GROUPS="plugdev netdev powerdev dialout lpadmin admin clamav"<
 <hr>
 
 
-<h3>8. Building the live cd</h3>
+<h3>7. Building the live cd</h3>
 
 to run live build, cd to my-livecd and enter (sudo or as root)
 
