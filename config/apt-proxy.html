@@ -1,0 +1,214 @@
+---
+layout: default
+description: Setting up a proxy for APT - by D Quinton
+title: APT Proxy
+id: tutor
+---
+<div class="onpage">
+  <ul>
+    <li>
+        On this page          <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">Approx</a></li>
+                <li><a href="#2">Apt-cacher-ng </a></li>
+               </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">Approx</a><br>
+   <a href="#2">Apt-cacher-ng </a><br>
+  
+</td></tr></table>
+</div>
+<div class="parent"><a href="../configure.html">Configure</a> ></div>
+
+<div class="cont">
+
+
+<h2 id="1" class="tag">Approx</h2>
+
+<form><textarea name="T" id="install" rows="1" cols="50">
+sudo apt install approx xinetd</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<a href="http://www.debianadmin.com/upgrade-multiple-debian-systems-with-approx.html">http://www.debianadmin.com/...</a> <br>
+I still can't get this to work.  Approx is called by a super-server, such as rinetd or xinetd.
+<br> <br>
+
+set the mirror and un-comment some lines in the file
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/approx/approx.conf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+e.g.
+<form><textarea name="T" id="file" rows="2" cols="50">
+debian          http://cdn.debian.net/debian
+security        http://security.debian.org</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+The file uses aliases followed by mirror addresses.  The aliases are used in the sources.list file, tagged onto "server:port" e.g.<br>
+http://approx:9999/debian<br>
+
+<br>
+How it can work for devuan I'm not sure, probably by ignoring aliases and  including the devuan repository path in sources, eg.<br>
+deb http://approx:9999/deb.devuan.org/merged/dists/beowulf
+
+<br><br>
+Or with only the apt conf proxy file:
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/apt/apt.conf.d/99HttpProxy</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+and paste in this
+
+<form><textarea name="T" id="file" rows="3" cols="50">
+Acquire {
+  HTTP::proxy "http://approx:9999";
+}</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br><br>
+then setup xinetd
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/xinetd.d/approx</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+And append following text:
+<form><textarea name="T" id="file" rows="12" cols="50">
+service approx
+{
+flags=REUSE
+socket_type = stream
+protocol = tcp
+wait = no
+user = approx
+server = /usr/sbin/approx
+instances = 20
+disable = no
+port   = 9999
+}</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+user=approx or root?
+
+<br><br>
+To restart xinetd service type the command:<br>
+# /etc/init.d/xinetd restart
+<br><br>
+To stop xinetd service type the command:<br>
+# /etc/init.d/xinetd stop
+<br><br>
+To stop xinetd service type the command:<br>
+# /etc/init.d/xinetd start
+<br><br>
+Verify that xinetd is running<br>
+# /etc/init.d/xinetd status
+<br><br>
+
+<a href="https://www.cyberciti.biz/faq/linux-how-do-i-configure-xinetd-service/">.../linux-how-do-i-configure-xinetd-service/</a><br>
+(only gives partial detail!)
+
+<br><br><br>
+import the apt cache into approx cache (only works if deb files are recent)
+
+
+<form><textarea name="T" id="cmd" rows="2" cols="50">
+sudo approx-import /var/cache/apt/archives/*.deb
+sudo service networking restart</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br><br>
+<hr>
+<br>
+
+<h2 id="2" class="tag">Apt-cacher-ng</h2>
+
+This proxy works very well indeed, and it requires less work to setup!
+<br><br>
+
+<a href="https://www.tecmint.com/apt-cache-server-in-ubuntu/">https://www.tecmint.com/...</a>
+<br>
+<a href="https://www.unix-ag.uni-kl.de/~bloch/acng/html/index.html">https://www.unix-ag.uni-kl.de/...</a>
+<br><br>
+
+Install with
+<form><textarea name="T" id="install" rows="1" cols="50">
+sudo install apt-cacher-ng</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+edit the conf file:
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano /etc/apt-cacher-ng/acng.conf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and uncheck these lines
+<br><br>
+BindAddress: 0.0.0.0<br>
+ReportPage: acng-report.html<br>
+PidFile: /var/run/apt-cacher-ng/pid<br>
+<br>
+and ignore the sources lines
+<br><br>
+save the file then:
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+sudo /etc/init.d/apt-cacher-ng restart</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+Add the file /etc/apt/apt.conf.d/99HttpProxy with this content
+
+
+<form><textarea name="T" id="file" rows="3" cols="50">
+Acquire {
+  HTTP::proxy "http://localhost:3142";
+}</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+/etc/apt/sources.list ??<br>
+add localhost:3142/ before deb.devuan.org
+
+<br><br><br>
+import deb files
+<br>
+
+<form><textarea name="T" id="cmd" rows="4" cols="80">
+cd /var/cache
+mkdir apt-cacher-ng/_import
+cp -laf /var/cache/apt/archives/*deb /var/cache/apt-cacher-ng/_import
+chown -R apt-cacher-ng apt-cacher-ng/_import</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(or use ln to make symlinks)
+<br><br>
+open in browser: http://localhost:3142<br>
+and click Report link<br>
+then Click Start import
+
+
+
+<br><br><br><br>
+
+
+<br><br><br><br>
+</div>

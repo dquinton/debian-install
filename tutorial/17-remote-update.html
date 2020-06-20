@@ -1,0 +1,71 @@
+---
+layout: default
+description: Updating Debian in places without the internet - by D Quinton
+title: Remote update
+id: tutor
+---
+
+
+<div class="cont">
+
+
+<br>
+
+<h2 id="1" class="tag">Cloning the apt-cache!</h2>
+
+I've been pondering on the task of installing Linux (Debian wheezy LXDE) to remote laptops (zero internet connectivity), but having a connected laptop at base.
+
+<br>
+Obviously, a customised Live CD would be the ideal option of installing the system with all the app's needed.
+<br>
+Otherwise, I could "clone" my install on the connected laptop by using the same Live CD on the remote PC's and copying the apt index and apt cache onto them.  But would it work?
+<br><br>
+On connected laptop (a):
+
+
+<div class="numb">
+<ol><li>Install Live CD X (preferred Debian)</span></li>
+<li>Remove/install apps and make apt remove line Y, install line Z</li>
+<li>Copy <span style="color: #3d85c6" >/var/lib/apt/lists/</span> (Apt-L), <span style="color: #3d85c6" >/var/cache/apt/ </span> (Apt-C), plus config files (CF), /etc/apt/sources.list (SL), libflashplayer.so from /usr/lib/chromium/plugins to a USB stick</li>
+</ol></div >
+<br>
+
+on remote laptop (b)</span>
+<div class="numb">
+<ol><li>Install X  </span></li>
+<li>Fine details: add user to sudoer, "no recommends" file, edit fstab</span></li>
+<li>copy over Apt-</span>L and Apt-</span>C</span></li>
+<li>Execute apt lines Y and Z</span></li>
+<li>Copy over config files and CTRL-ALT F2, reboot</span></li>
+<li>Install other apps from deb's</span></li>
+<li>Copy over SL to (b) (in case of internet connectivity later) and attempt wireless driver install on (b) to make internet-ready</span></li>
+<li>Copy over libflashplayer.so </span></li>
+</ol>
+</div >
+<br><br>
+
+Future update of laptop (b) should be possible too.
+<div class="numb">
+<ol><li>on (a) apt clean &amp; apt update &amp; apt upgrade</span></li>
+<li>copy Apt-L</span> and Apt-C </span>from (a)</span></li>
+<li>delete and replace Apt-</span>L and Apt-</span>C on (b) with those new from (a)</span></li>
+<li>on (b) run apt upgrade</span></li>
+</ol></div >
+
+<br>
+
+This page here <a href="http://gnuser.wordpress.com/2007/11/20/installing-packages-on-debian-computers-without-internet-connection/">http://gnuser.wordpress.com...</a> is very helpful method for installing packages on a PC with no internet connection.  If it is an unknown Debian install, or it's out of date, or out of sync with the connected machine (a), then it would be necessary to find out which packages are needed as there may well be many more needed than the base PC (a) would need during an update.</span>
+<br><br>
+<br>
+
+<h2 id="1a" class="tag">The right tool</h2>
+
+Well, now I found there's a tool that's just right for this... <b>Keryx</b>.  It makes a database for a target box, ie with what packages it has, and what versions, and then uses an online box to retrieve what it needs to update or install new on the target - all via a USB stick.  
+<br><br>
+<a href="http://opensourceforu.efytimes.com/2010/09/offline-package-install-linux-made-easy-keryx/">see about...</a>  Get it here <a href="https://launchpad.net/keryx">https://launchpad.net/keryx</a>
+
+
+<br><br><br><br>
+<br>
+</div>
+</div>

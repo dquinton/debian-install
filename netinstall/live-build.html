@@ -1,0 +1,611 @@
+---
+layout: default
+description: Create a custom Live Devuan/Debian CD using Live-Build- by D Quinton
+title: Live-build
+id: tutor
+---
+
+<div class="onpage">
+  <ul>
+    <li>
+        On this page          <a href="#">TOP</a>
+             <ul>
+                <li><a href="#1">1. Install</a></li>
+                <li><a href="#2">2. Congfigure the live cd build </a></li>
+                <li><a href="#3">3. Add package lists </a></li>
+             <li><a href="#4">4. Customised packages</a></li>
+             <li><a href="#5">5. Add files to be included  </a></li>
+             <li><a href="#6">6. Building the live CD</a></li>
+             <li><a href="#7">Build notes </a></li>
+             <li><a href="#8">Simple-CDD </a></li>
+                        
+             </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="pagemenu">
+<table cellpadding="5"><tr><td>
+   <a href="#1">1. Install</a><br>   
+   <a href="#2">2. Congfigure the live cd build  </a><br>
+   <a href="#3">3. Add package lists </a></br>
+    <a href="#4">4. Customised packages</a></br>
+    <a href="#5">5. Add files to be included  </a></br>
+     <a href="#6">6. Building the live CD</a></br>
+    <a href="#7">Build notes </a></br>
+     <a href="#8">Simple-CDD </a></br>
+</td></tr></table>
+</div>
+<div class="parent"><a href="../netinstall.html">NetInstall</a> ></div>
+
+<div class="cont">
+
+
+<br>
+updated June 2020
+<br><br>
+Back in 2012, I was trying everything I could do to get a customised Live CD put together so that I could start installing Debian on other PC's.  I spent a long time learning how to use Live build, and I tweaked it so that I could make a Live CD with about 95% of the apps and config I wanted.  But then how about updating the Live CD?  It required another build process over the internet that could take hours (it's a lot faster with apt caching though).  
+<br><br>
+But what if you install a heap of apps that a user will want to remove?  That could be a waste of time.  Better, I think, to make a basic Live CD to install a base system with the bare minimal needed for a desktop and internet connectivity, and then install other packages later on, per user requirement.  You could even include some guides to installing software.
+<br><br>
+If you want to  install with a much larger choice of software ready to go, it would be better to build that system in a real desktop, with all your menus and other tweaks, and then run <b>refractasnapshot</b> (see my <a href="16-system-backup.html">system backup</a> page) on it, to make a Live CD from the installed system.  
+<br><br>
+So my strategy would be:<br>
+1. <b>Live Build</b> - minimal base install (easy to keep cleaning and re-building it) <br>
+2. <b>Refractasnapshot</b> - a grander Live CD with much more choice installed.
+<br><br>
+
+
+<br>
+
+
+Man page:
+<a href="http://live-systems.org/manual/current/html/live-manual/toc.en.html">http://live-systems.org/manual/...</a>
+<br>
+
+useful read:
+<a href="http://live-systems.org/manual/current/html/live-manual/customization-overview.en.html#334">live-manual/customization-overview....</a>
+<br><br>
+
+<br>
+
+<h3 id="1" class="tag">1. install</h3>
+
+<form><textarea name="T" id="cmd" rows="2" cols="30">
+sudo apt update
+apt install live-build</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+and it will be essential to make sure you have these installed too:
+<form><textarea name="T" id="cmd" rows="2" cols="80">
+apt install squashfs-tools live-boot live-config live-boot-initramfs-tools live-config-sysvinit libburn4 libjte1 libisofs6 libisoburn1 xorriso isolinux </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+now find some space on a partition where all the live-build work will take place (up to 4Gb for basic) and run the initial setup command, `lb config`:
+
+<form><textarea name="T" id="cmd" rows="3" cols="30">
+mk dir my_live_build
+cd my_live_build
+lb config</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+(that will build the basic config tree)
+<br><br><br>
+
+
+<hr>
+<br>
+<h3 id="2"class="tag">2. Congfigure the live cd build</h3>
+The command is run with options to build what you want:
+<br><br>
+example 1.
+
+<form><textarea name="T" id="cmd" rows="2" cols="100">
+lb config --architecture i386 -d buster -p lxde --archive-areas "main contrib non-free" --debian-installer live</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+example 2.<br>
+
+<form><textarea name="T" id="cmd" rows="2" cols="100">
+lb config -d buster -p xfce --archive-areas "main contrib non-free" --debian-installer live --linux-flavours 686</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+example 3.
+<form><textarea name="T" id="cmd" rows="4" cols="100">
+lb config --mirror-bootstrap "http://cdn.debian.net/debian/" --mirror-chroot "http://cdn.debian.net/debian/" --mirror-chroot-security "http://security.debian.org/debian/" --apt-recommends disabled --architecture amd64 --linux-flavours 686 --archive-areas "main contrib non-free" -d wheezy --debian-installer live --apt aptitude</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+You can keep using `lb config` with different parameters to set up the configuration before building -but note that you can't override one that's been set unless you do a `lb clean` -it is better to use an auto script (see below).  
+<br><br>
+The "chroot" mirror is where packages will come from and the "binary" is what the Live CD will be set to (chroot mirror should default to --mirror-bootstrap).  
+See <a href="http://manpages.ubuntu.com/manpages/oneiric/lb_config.1..html">http://manpages.ubuntu.com/</a>
+<br><br>
+The 686 flavour with amd64, is essential for the live installer to work, or else you will just have a Live CD without installer, so the man page says.
+<br><br>
+<br>
+<b>Or use an auto script</b><br>
+All config options can be put into an auto script so that you only need to run `lb config` and the options are set from the script.
+<br>
+<a href="http://live-systems.org/manual/current/html/live-manual/managing-a-configuration.en.html#309">http://live-systems.org/manual/...</a>
+<br><br>
+
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+cp /usr/share/doc/live-build/examples/auto/* auto/</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+edit auto/config to look something like this -adapt to your preference, with amd64/686 or whatever.  Here's how it looks with my example 3,
+<span style="color: #0F4F0B" size="3">
+	
+<br>
+</span>
+<form><textarea name="T" id="cmd" rows="14" cols="80">
+#!/bin/sh
+lb config noauto \
+     --architectures i386 \
+     --linux-flavours 486 \
+     --mirror-bootstrap http://ftp.uk.debian.org/debian/ \
+     --mirror-chroot http://ftp.uk.debian.org/debian/ \
+     --mirror-binary http://ftp.uk.debian.org/debian/ \
+     --mirror-chroot-security http://security.debian.org/ \
+     --archive-areas "main contrib non-free" \
+     --apt-recommends disabled \
+    --apt aptitude \
+     -d wheezy \
+     --debian-installer live \
+     "${@}"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+The script is read when lb config is run.  but you may need to run `lb config --conffile auto/config`
+<br><br>
+I set the mirrors to devuan and lb config still set up for a Debian Jessie build.  So following that you will need to edit the files in config/ to enable a devuan build.
+<br><br>
+<span style="color: #0b5394">config/bootstrap</span> set Disribution to Devuan and mirrors to <br>
+http://deb.devuan.org/merged beowulf<br>
+http://deb.devuan.org/merged beowulf-security<br>
+http://deb.devuan.org/merged beowulf-updates<br>
+<br><br>
+
+<span style="color: #0b5394">config/build</span> <br>
+Mirror-Bootstrap: http://deb.devuan.org/merged beowulf
+<br><br>
+
+<span style="color: #0b5394">config/chroot</span> <br>
+LB_SECURITY="true"<br>
+LB_UPDATES="true"
+<br><br>
+
+<span style="color: #0b5394">config/common</span> <br>
+LB_APT_HTTP_PROXY="http://localhost:3142/"<br>
+LB_APT_RECOMMENDS="false"
+<br><br>
+
+The proxy line is for Apt-cacher-ng APT proxy.
+<br><br>
+Note: to speed up the process and avoid downloading all the packages again and again with each new build attempt, it is highly recomended that you set up a good APT caching proxy that live-build will retrieve packages from (and being downloaded already through the proxy they are kept in the proxy cache to be  retrieved much faster the next time).
+<br><br>
+See my <a href="../config/apt-proxy.html">APT proxy</a> page for notes how to do that.
+
+
+<br><br><br><br>
+<hr>
+
+<h3 id="3" class="tag">3. Add package name lists before the build</h3>
+<br>
+su to root and run these in the build directory, to create lists which will be used to install whatever you need added to the build:
+
+<br><br>
+First of all, those needed for successful build as they are possibly excluded by the "no-recommends" option.
+<br>
+<form><textarea name="T" id="cmd" rows="3" cols="100">
+for p in eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup grub2 aptitude laptop-mode-tools network-config iw ;do echo $p config/package-lists/needed.list.chroot ;done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+then do either
+
+<br>
+<b>1. minimal LXDE install</b>
+<br>
+<form><textarea name="T" id="cmd" rows="5" cols="100">
+for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf geany xfce4-power-manager rxvt-unicode bash-completion htop elinks gparted ntp xcape debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+ <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+or <br>
+<b>2. plain openbox install</b>
+<br>
+<form><textarea name="T" id="cmd" rows="5" cols="100">
+for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpolkit lxpanel lxtask elogind libpam-elogind wicd tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode bash-completion geany xfce4-power-manager htop elinks gparted ntp xcape debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+ <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+<b>3. Ranger</b>
+<br>
+<form><textarea name="T" id="cmd" rows="5" cols="100">
+for p in ranger w3m w3m-img less xsel xvkbd atool mediainfo jhead ffmpegthumbnailer trash-cli exiftool feh imagemagick zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk partclone fsarchiver sshfs locate git cups gpa ntp yad rpl bluetooth blueman mtp-tools go-mtpfs adb pmount udiskie gvfs ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+ <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+
+If you are making a Live CD for a basic install (further packages to be added post-install) then no point in making the build too complex or over-sized, and I would leave it at that.
+<br><br>
+but if you have ny othe specific areas of packages needed, such as samba, then you can create more package lists like these.<br>
+
+
+<br><br>
+<a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html#373">http://live-systems.org/manual/...</a>
+<br>
+<br><br>
+
+
+<hr>
+<br>
+
+<h3 id="4" class="tag">4. Add other/customised packages</h3> 
+You can put .deb archives in config/packages.chroot. 
+<br><br>
+! Check the packages names with running <span style="color: #6A3200" >dpkg-name *.deb</span> in the dir as they must comply to be included.<br>
+<a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html">http://live-systems.org/manual/...</a>
+
+<br><br>
+<br>
+<b>Package pinning </b>
+<br>
+with thunar a few years back, the latest was found in experimental</a>, but it had so many dependencies it failed to install just using packages.
+<br><br>
+Therefore it was necessary to pin it to the experimental repository, with all other packages defaulting to the config repository, like this
+
+
+<form><textarea name="T" id="cmd" rows="2" cols="80">
+echo "deb http://ftp.uk.debian.org/debian/ experimental main" > config/archives/experimental.list.chroot</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+sudo nano config/archives/experimental.pref.chroot</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+
+add this content
+
+<form><textarea name="T" id="file" rows="8" cols="80">
+Package: thunar .....[plus dependencies]
+Pin: release n=experimental
+Pin-Priority: 600
+
+Package: *
+Pin: release n=experimental
+Pin-Priority: 1</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+<br>
+<b>Omit a package from the build </b><br>
+-say, if it is a recommended package or installed by a metapackage, you give it a negative Pin-Priority in config/apt/preferences,
+
+<form><textarea name="T" id="cmd" rows="1" cols="50">
+sudo nano config/apt/preferences</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<form><textarea name="T" id="file" rows="3" cols="30">
+Package: iceweasel
+Pin: version *
+Pin-Priority: -1</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<br>
+
+see: <a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html#466">.../customizing-package-installation.en.html#466</a>
+<br>
+<br><br>
+
+<br><br>
+
+<hr>
+<br>
+<h3 id="5" class="tag">5. Add files to be included in the Live cd</h3>
+
+If you'd like to customize the Live CD environment, with autostart, no recommends files etc, you simply add the files to <span style="color: #0b5394">config/includes.chroot </span>directory with the same dir tree as they need in a real file system.
+<br><br>
+<ul><li>apt files > config/includes.chroot/etc/apt <br>
+<li>LXDE autostart file  > config/includes.chroot/etc/xdg/lxsession/LXDE
+
+<li>openbox files > config/includes.chroot/etc/skel/.config/openbox <br>
+
+<li>ranger files > config/includes.chroot/etc/skel/.config/ranger <br>
+
+<li> home dot files > config/includes.chroot/etc/skel <br>
+</ul>
+
+
+<br><br>
+<a href="http://live-systems.org/manual/current/html/live-manual/customizing-contents.en.html#479" >http://live-systems.org/manual/...</a>
+<br>
+
+<br><br>
+
+
+<b>Set groups for the Live user</b>
+<br>
+make a file
+
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+nano config/includes.chroot/etc/live/config/user-setup.conf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+and fill with [include whatever groups you require]
+
+<form><textarea name="T" id="file" rows="1" cols="100">
+LIVE_USER_DEFAULT_GROUPS="plugdev netdev powerdev dialout lpadmin admin clamav audio sudo"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+<br>
+
+<hr>
+<br>
+
+<h3 id="6" class="tag">6. Building the live cd</h3>
+
+to run live build, cd to my_live_build and enter (sudo or as root)
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+lb build</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+and this command can be split into four parts:
+
+<form><textarea name="T" id="cmd" rows="4" cols="30">
+lb bootstrap
+lb chroot
+lb binary
+lb source</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+where bootstrap caches all the necessary packages<br>
+chroot unpacks and installs them and carries out tasks in the chroot env<br>
+binary creates a squashfs compressed archive<br>
+source puts it into a bootable ISO image<br>
+<br><br>
+
+to cleanup the working directory to build again 
+
+<form><textarea name="T" id="cmd" rows="1" cols="30">
+lb clean --binary</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+to build again with changes to config (this cleans chroot so all the packages will need unpacking again with the next build)
+
+<form><textarea name="T" id="cmd" rows="2" cols="30">
+lb clean
+lb build</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+to build with interactive options
+
+<form><textarea name="T" id="cmd" rows="3" cols="50">
+lb clean
+lb config --interactive shell
+lb build</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br><br>
+
+The iso file will be created (if successful) in the "my_live_build" directory, which just needs (renaming and) burning to disk or sending to a usb stick.
+<br><br>
+
+You can make a live build from your installed system with (haven't tested it myself)
+
+<form><textarea name="T" id="cmd" rows="2" cols="50">
+lb config --bootstrap copy --debian-installer live
+lb build</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+But this won't build a devuan system
+<br><br><br>
+
+
+<hr>
+
+<h3 id="7" class="tag">Build Notes</h3>
+
+<div class="bullet">
+<ul><li>if a build has been interrupted, lb build might fail, if so do</li>
+<form><textarea name="T" id="cmd" rows="2" cols="30">
+lb clean --purge 
+lb build</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+but it <i>will </i>clean out the cache!  
+<br><br>
+
+   Example, the build fails with an error:<br>
+
+<span style="color: #134f5c;background-color:rgb(217,210,233)">P: Configuring file /etc/debian_chroot
+    /usr/share/live/build/scripts/build/lb_chroot_debianchroot: 50: /usr/share/live/build/scripts/build/lb_chroot_debianchroot: cannot create       chroot/etc/debian_chroot: Directory nonexistent<br>
+    P: Begin unmounting filesystems...<br>
+    P: Saving caches...<br>
+    chroot: failed to run command `/usr/bin/env': No such file or directory</span>
+
+<br><br>
+
+Another one would be:<br>
+     <span style="color: #134f5c;background-color:rgb(217,210,233)"> P: Begin install linux-image... cp: cannot stat `chroot/boot/vmlinuz-*': No such file or directory <br>
+P: Begin unmounting filesystems</span> 
+<br>
+
+And this error would require unmounting the file system where the build was in process in order to build successfully. See here <a href="http://www.mail-archive.com/debian-live-devel@lists.alioth.debian.org/msg03522.html">mail-archive...</a>
+<br><br>
+
+ Another error I had was aptitude failing to download packages and reporting:<br><br>
+
+ <span style="color: #134f5c;background-color:rgb(217,210,233)">E: Cannot get debconf version. Is debconf installed?</span>
+        
+<br><br>
+try fixing this with
+
+<form><textarea name="T" id="cmd" rows="2" cols="100">
+cd chroot/var/lib/dpkg/
+cp available-old available && cp diversions-old diversions && cp status-old status</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+<li>I also found out that build will terminate prematurely if the filesystem is mounted with "noexec" or "nodev" (which are set by "user" or "users" in fstab!) So what I did was edit /etc/fstab for the partition I'm using for backups and live-helper, remove "users" from the line, then do `sudo mount -a` (remounted drives as per fstab) 
+<br>
+because of this running live build on a separate partition to any system/data partition is probably essential.
+<br>
+Then use sudo chown -R on the 'my_live_build' dir, to allow write access to the live build directory, which is more useful.</li>
+
+<li>the build may also terminate if APT is specified and there is a package not found. You can switch to Aptitude so that the build won't terminate on these, with: <span style="color:#6A3200">lb config --apt aptitude</span></li>
+
+
+<li>there's a catch to turning off package recommends as there are some needed recommends (to make the live cd work) and these will need to be added to the package lists (list made above), see <a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html">customizing-package-installation</a></li>
+
+<li>recommends for <a href="http://packages.debian.org/wheezy/live-boot">live-boot</a> and <a href="http://packages.debian.org/wheezy/live-config">live-config</a> include: <span style="color: #7C2020">eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup</span></li>
+
+
+
+<li>my build couldn't find "linux-firmware" even with "contrib non-free" set in the config so I got the deb files and put them config/packages.chroot, which were:<span style="color: #0b5394"> firmware-linux firmware-linux-free firmware-linux-nonfree  </span>from<a href="http://packages.debian.org/wheezy/firmware-linux">http://packages.debian.org</a></li>
+
+<li>I also downloaded and put <span style="color: #0b5394">debian-installer-launcher </span>in config/packages.chroot to make sure it was added.</li>
+
+<li>the first time I got stuck with multiarch-support libgcc1 libc6 pre-depends circle!  But that may have been fixed now as a bug.</li>
+
+<li>Second time the Live CD built successfully! But I had no live-installer because my lb config flag was --debian-installer=true (incorrect) and not --debian-installer live</li>
+
+<li>Third time and "LiveInstaller" was found in the Other sub-menu (it is also found in System &gt;Install Debian Sid).  It complained about the kernel version that I needed to boot the 486 kernel, but I just continued and it allowed me to install. </li>
+
+</div>
+
+
+
+
+<br>
+
+<br>
+<b>Install problems</b>
+
+<ul><li>No ext3 or ext4 partitioning option!  So I had to select "Use free space automatically".  this made ext4 partitions for / and /home and a swap of 4Gb.  Later, with Gparted, I removed the /home and swap partitons and made new ones (smaller).  After booting the system, and logging in as root, /etc/fstab needed making and /dev/sda? mounting to /home.  Then I could log in as my user.</li>
+<li>with one install I still couldn't log-in the user, so logged in as root, deleted that user with <span style="color: #6A3200">deluser bob </span>and then added it again with <span style="color: #6A3200">adduser bob</span>, and bob was then added to /home and I could log-in</li>
+<li>GRUB did not install and, as I was installing to a Win7 machine and needed it to dual-boot, I used Super Grub (Rescatux) to boot the new OS, then I ran</li></ul>
+
+<form><textarea name="T" id="cmd" rows="2" cols="50">
+sudo apt install grub
+sudo grub-install /dev/sda</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+<ul><li>Grub Recover CD does a good job too, automatically searches for OS and installs GRUB with options -see my <a href="../helps/02-grub.html">GRUB page</a></li>
+<li>In fact, if I attempted GRUB install the installer terminated early without finishing (set up users and passwords etc) so I found I had to use the "Go back" button at Configure Mirrors stage in order to select "Continue without installing GRUB".</li></ul>
+<br><br><br><br><br>
+
+
+<h2 id="8" class="tag">Simple-CDD</h2>
+<a href="http://wiki.debian.org/Simple-CDD/Howto">http://wiki.debian.org/...</a>
+<br>
+
+<form><textarea name="T" id="install" rows="1" cols="50">
+sudo apt install simple-cdd approx</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+
+Firstly, make a working directory where you've got some space
+<form><textarea name="T" id="cmd" rows="2" cols="30">
+mkdir my-simple-cdd
+cd /my-simple-cdd </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+this is the basic build command, which may be out-dated by now:
+
+<form><textarea name="T" id="install" rows="1" cols="100">
+build-simple-cdd --dist wheezy --debian-mirror http://cdn.debian.net/debian --profiles NAME </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+fill in your own preferred mirror!
+<br><br>
+
+to make the profiles file (with package names), in my-simple-cdd dir:
+
+<form><textarea name="T" id="cmd" rows="2" cols="80">
+mkdir profiles
+for p in <packages to include> ; do echo $p >> profiles/NAME.packages ; done</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+
+simple-cdd defaults to just using main, so to also use contrib and non-free, put this in profiles/default.conf:
+
+<form><textarea name="T" id="file" rows="1" cols="50">
+mirror_components="main contrib non-free"</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br>
+<br>
+
+
+<br>
+
+lastly, invoke simple-cdd to pull from approx cache
+
+<form><textarea name="T" id="cmd" rows="1" cols="100">
+build-simple-cdd --dist wheezy --debian-mirror http://localhost:9999/debian --profiles NAME </textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+</div>
+</div>
