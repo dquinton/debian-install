@@ -214,8 +214,7 @@ I tried out some methods using zenity dialogues with shutdown/reboot/standby/log
 <br><br>
 Then I figured out yad.  Yad totally outshines zenity in this use, because, whereas zenity outputs only two values from a question dialogue, 0 and 1, yad can set a value to each button -and you can have as many buttons as you like.
 <br><br>
-(download yad, unpack and install with <span style="color:#994900;">./configure, make, sudo make install</span> <a href="https://code.google.com/p/yad/downloads/list">https://code.google.com/p/yad/downloads/list</a>)
-<br><br>
+
 So for my logout dialogue I have..
 
 <form>
@@ -340,7 +339,7 @@ see <a href="https://unix.stackexchange.com/questions/37428/arch-linux-mount-dis
 <br>
  <form>
 <textarea name="T" id="cmd" rows="1" cols="100">
-sudo nano /etc/polkit-1/localauthority/50-local.d/org.freedesktop.udisks2.pkla</textarea>
+sudo nano /etc/polkit-1/localauthority/50-local.d/udisks2.pkla</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>

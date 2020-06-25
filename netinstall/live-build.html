@@ -211,10 +211,10 @@ See my <a href="../config/apt-proxy.html">APT proxy</a> page for notes how to do
 su to root and run these in the build directory, to create lists which will be used to install whatever you need added to the build:
 
 <br><br>
-First of all, those needed for successful build as some are possibly excluded by the "no-recommends" option, and the depencies for live-build are needed too.
+First of all, those needed for successful build as some are possibly excluded by the "no-recommends" option, and the dependencies for live-build (need to be installed into the chroot system before creation of the squash filesystem and ISO).
 <br>
 <form><textarea name="T" id="cmd" rows="5" cols="100">
-for p in eject file live-boot-doc rsync uuid-runtime live-config-doc live-tools sudo user-setup grub2 aptitude laptop-mode-tools network-config iw squashfs-tools live-boot live-config live-boot-initramfs-tools live-config-sysvinit libburn4 libjte1 libisofs6 libisoburn1 xorriso isolinux librsvg2 ;do echo $p config/package-lists/needed.list.chroot ;done</textarea>
+for p in eject file rsync uuid-runtime sudo user-setup grub2 aptitude laptop-mode-tools iw live-boot live-boot-doc live-config live-config-doc live-tools live-boot-initramfs-tools live-config-sysvinit libburn4 libjte1 libisofs6 libisoburn1 isolinux syslinux-common librsvg2-bin xorriso squashfs-tools debian-installer ;do echo $p config/package-lists/needed.list.chroot ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -224,7 +224,7 @@ then do either
 <b>1. minimal LXDE install</b>
 <br>
 <form><textarea name="T" id="cmd" rows="5" cols="100">
-for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf geany xfce4-power-manager rxvt-unicode bash-completion htop elinks gparted ntp xcape debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf geany xfce4-power-manager rxvt-unicode bash-completion htop elinks gparted ntp xcape debian-installer ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
@@ -263,7 +263,7 @@ but if you have ny othe specific areas of packages needed, such as samba, then y
 <br>
 
 <h3 id="4" class="tag">4. Add other/customised packages</h3> 
-You can put .deb archives in config/packages.chroot. 
+You can put .deb archives in config/packages.chroot, such as any packages made from source (compton, checkinstall etc)
 <br><br>
 ! Check the packages names with running <span style="color: #6A3200" >dpkg-name *.deb</span> in the dir as they must comply to be included.<br>
 <a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html">http://live-systems.org/manual/...</a>
