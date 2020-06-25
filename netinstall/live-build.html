@@ -214,7 +214,7 @@ su to root and run these in the build directory, to create lists which will be u
 First of all, those needed for successful build as some are possibly excluded by the "no-recommends" option, and the dependencies for live-build (need to be installed into the chroot system before creation of the squash filesystem and ISO).
 <br>
 <form><textarea name="T" id="cmd" rows="5" cols="100">
-for p in eject file rsync uuid-runtime sudo user-setup grub2 aptitude laptop-mode-tools iw live-boot live-boot-doc live-config live-config-doc live-tools live-boot-initramfs-tools live-config-sysvinit libburn4 libjte1 libisofs6 libisoburn1 isolinux syslinux-common librsvg2-bin xorriso squashfs-tools debian-installer ;do echo $p config/package-lists/needed.list.chroot ;done</textarea>
+for p in eject file rsync uuid-runtime sudo user-setup grub2 aptitude laptop-mode-tools iw gnupg2 live-boot live-boot-doc live-config live-config-doc live-tools live-boot-initramfs-tools live-config-sysvinit libburn4 libjte1 libisofs6 libisoburn1 isolinux syslinux-common librsvg2-bin xorriso squashfs-tools debian-installer ;do echo $p config/package-lists/needed.list.chroot ;done</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -267,7 +267,8 @@ You can put .deb archives in config/packages.chroot, such as any packages made f
 <br><br>
 ! Check the packages names with running <span style="color: #6A3200" >dpkg-name *.deb</span> in the dir as they must comply to be included.<br>
 <a href="http://live-systems.org/manual/current/html/live-manual/customizing-package-installation.en.html">http://live-systems.org/manual/...</a>
-
+<br><br>
+Some packages might snag the chroot stage, giving an error such as: /usr/bin/env: 'gpg': No such file or directory
 <br><br>
 <br>
 <b>Package pinning </b>
