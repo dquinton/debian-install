@@ -103,6 +103,8 @@ From the Devuan website you can follow links to download mirrors from which you 
 Of the base-system images, you will find the 'netinstall' CD (300Mb) that requires an active internet connection to successfully install (LAN cable or WiFi) as well as a set of CD's numbered 1-4 (each around 600Mb) with CD1 named 'server' -- and these are for installing to a disconnected PC (no internet required) with CD1 installing the base and 2-4 with options of the main desktops (refer to Devuan website).
 <br>
 <a href="https://devuan.org/get-devuan">devuan.org/get-devuan</a>
+
+
 <br><br>
 After completing a fresh install this June 2020, and without any internet available (my satellite link having  browser login codes) I highly recommend using the Server installer.  And in line with my install method here (minimal) only CD1 is necessary to download.
 <br><br>
@@ -115,6 +117,15 @@ There's also Refracta Live CD made with Devuan.. <a href="http://sourceforge.net
 <br><br>
 For standard Debian you can look at the site here  <a href="http://www.debian.org">Debian.org </a> 
 <br>
+<br><br>
+Also, it's a good idea to run the checksum on the downloaded ISO so that you don't waste a CD or spend time making a USB stick and then the thing fails to boot!
+<br><br>
+Download the SHA256SUMS from the release archive and run this in same dir as the downloaded ISO file:
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sha256sum --ignore-missing -c SHA256SUMS</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br><br>
 <h3>Build your own ISO </h3>
@@ -127,10 +138,15 @@ But this method may not work for building Devuan... I would still recommend inst
 
 
 <h3>Make a bootable USB stick</h3>
-Put the ISO onto a usb stick with a few easy steps with <a href="http://unetbootin.sourceforge.net/">Unetbootin</a> - see my <a href="{{site.baseurl}}/helps/01-usb-installer.html">usbinstaller</a> page
+Put the ISO onto a usb stick with a few easy steps with <a href="https://sourceforge.net/projects/refracta/files/tools/">Refracta2usb</a> or any other one.
 <br>
 <br><br>
 Or onto a CD/DVD with any disk-burning utility, or with Linux command line.. using wodim or dd
+<form>
+<textarea name="T" id="cmd" rows="1" cols="30">
+wodim dev=/dev/sr0 -eject image.iso</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
