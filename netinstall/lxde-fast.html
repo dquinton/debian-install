@@ -248,8 +248,7 @@ rsync -art usr-bin/ /usr/bin
 <textarea name="T" id="file" rows="50" cols="120">
 #!/bin/bash
 #script to install packages after new Netinstall, run in chroot env from running Linux system - Quinton, 06/2020
-#included here are 1. possible missed pkgs from netinstall, 2. openbox desktop (no display mgr), 3. thunar file man, 4. ranger with media viewers, file archiving, disk utilities, printing, bluetooth, android, etc, 5. media editors and desktop apps, 6. build dependencies, 7. ffmpeg build deps, 8. viking build deps, 9. jekyll pre-install, 10. refractasnapshot deps,
-
+#included here are 1. possible missed pkgs from netinstall, 2. openbox desktop (no display mgr), 3. thunar file man, 4. ranger with media viewers, file archiving, disk utilities, printing, bluetooth, android, etc, 5. media editors and desktop apps, 6. build dependencies, 7. ffmpeg build deps, 8. viking build deps, 9. refractasnapshot/live-build/refracta2usb deps, 10. jekyll pre-install.
 
 apt update
 apt dist-upgrade
@@ -277,18 +276,18 @@ apt install libtheora-dev libxvidcore-dev libogg-dev libvorbis-dev libmp3lame-de
 
 #8
 apt install libcurl4-gnutls-dev libgtk2.0-dev libsqlite3-dev nettle-dev libgeoclue-2-dev libgexiv2-dev libgps-dev libmagic-dev libbz2-dev libzip-dev liboauth-dev 
+apt install qgis qgis-plugin-grass
 
 #9
-apt installruby ruby-dev 
-gem install jekyll
+apt install squashfs-tools live-boot live-config live-boot-initramfs-tools live-config-sysvinit libburn4 libjte1 libisofs6 libisoburn1 xorriso isolinux hwinfo libhd21 libx86emu2 pv syslinux syslinux-common
 
 #10
-apt install squashfs-tools live-boot live-config live-boot-initramfs-tools live-config-sysvinit libburn4 libjte1 libisofs6 libisoburn1 xorriso isolinux 
+apt install ruby ruby-dev 
+gem install jekyll
 
-apt install qgis
 
 #for compton build
- asciidoc xsltproc libconfig-dev
+apt install  asciidoc xsltproc libconfig-dev
  
 #update clamtk virus definitions with
 freshclam
