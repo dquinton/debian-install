@@ -37,7 +37,7 @@ div.parent {             /* link to parent above page title */
   top: 145px;
   left: 45px;
   }
-.parent a:link { color: #0058BA; text-decoration: none;}  
+.parent a:link { color: #4086F8; text-decoration: none;}  
 .parent a:focus,
 .parent a:hover { color: #0058BA; text-decoration: underline;  }
 .parent a:visited { color: #0058BA; }
@@ -64,7 +64,7 @@ div.cont {
 
 
 a,
-a:link { color: #1A4FA5; text-decoration: none;}
+a:link { color: #256EE2; text-decoration: none;}
 a:focus,
 a:hover {color: #154DA7; text-decoration: underline;  }
 a:visited {color: #63204C; }
@@ -231,7 +231,7 @@ textarea#file {
   padding: 8px;
   margin: 6px 0px 4px;
   border-radius: 5px 5px 2px 2px;
-  color: #0F4F0B;
+  color: #11AE06S;
 }
 
 input.submitLink {

@@ -1,8 +1,8 @@
 ---
 layout: default
-description: Setting up a proxy for APT - by D Quinton
+description: Setting up a proxycache for APT - by D Quinton
 title: APT Proxy
-id: tutor
+id: config
 ---
 <div class="onpage">
   <ul>
@@ -27,6 +27,25 @@ id: tutor
 <div class="parent"><a href="../configure.html">Configure</a> ></div>
 
 <div class="cont">
+
+Before I get started...<br> <br>
+Do you really need a proxy cache for apt packages??  If you are running a server with multiple machines to update all the time, then definitely yes.
+<br> <br>
+But if you are a single user with one or two systems installed, then there is actually an easier way to share the packages from APT.  You can just mount -bind the /var/cache/apt/archives dir to the same location on another system that you mount somewhere, or mount and chroot.
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+# mount --bind /var/cache/apt/archives <mountpoint>/var/cache/apt/archives</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+This would be difficult with live-build which caches in three places.
+
+<br><br> 
+You could even rsync the packager over with rsync -arult .
+<form><textarea name="T" id="cmd" rows="1" cols="80">
+# rsync -arult /var/cache/apt/archives/*deb <mountpoint>/var/cache/apt/archives</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+<br> <br><br> 
 
 Some choices of apt proxies are:
 <br> <br>
@@ -220,7 +239,8 @@ To clean the proxy cache, you need the report page too.
 <br><br>
 To clean the deb archives stored by apt in /var/cache/apt/archives (obtained through the proxy and used to install on system) just run `sudo apt clean`(this will not clean the proxy cache).
 <br><br>
-Note: do not add localhost:3142 [server:port] to every repo line (whether in sources.list or live-build config).  If you do you will create a mirror cache in /var/cache/apt-cacher-ng called "localhost"!
+Note: do not add localhost:3142 [server:port] to every repo line in sources.list - if you do you will create a mirror cache in /var/cache/apt-cacher-ng called "localhost"!
+
 
 
 <br><br><br>

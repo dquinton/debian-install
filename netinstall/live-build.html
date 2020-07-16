@@ -2,7 +2,7 @@
 layout: default
 description: Create a custom Live Devuan/Debian CD using Live-Build- by D Quinton
 title: Live-build
-id: tutor
+id: net
 ---
 
 <div class="onpage">
@@ -51,8 +51,8 @@ But what if you install a heap of apps that a user will want to remove?  That co
 If you want to  install with a much larger choice of software ready to go, it would be better to build that system in a real desktop, with all your menus and other tweaks, and then run <b>refractasnapshot</b> (see my <a href="16-system-backup.html">system backup</a> page) on it, to make a Live CD from the installed system.  
 <br><br>
 So my strategy would be:<br>
-1. <b>Live Build</b> - minimal base install (easy to keep cleaning and re-building it) <br>
-2. <b>Refractasnapshot</b> - a grander Live CD with much more choice installed.
+1. Initially, <b>Netinstall/Server ISO</b> or <b>Live Build</b> or <b>Debootstrap</b> followed by system backup with dd - minimal base install (easy to keep cleaning and re-building it) <br>
+2.  Later, <b>Refractasnapshot</b> - a grander Live CD with much more choice installed.
 <br><br>
 
 
@@ -176,7 +176,13 @@ The script is read when lb config is run.  but you may need to run `lb config --
 <br><br>
 I set the mirrors to devuan and lb config still set up for a Debian Jessie build.  So following that you will need to edit the files in config/ to enable a devuan build.
 <br><br>
-<span style="color: #0b5394">config/bootstrap</span> set Disribution to Devuan and mirrors to <br>
+
+<span style="color: #0b5394">config/binary</span>
+LB_BOOTAPPEND_LIVE="boot=live components keyboard-layouts=us,us keyboard-variants=colemak username=bob"
+<br><br>
+to set the keyboard to colemak and change username for live
+<br><br>
+ set Disribution to Devuan and mirrors to <br>
 http://deb.devuan.org/merged beowulf<br>
 http://deb.devuan.org/merged beowulf-security<br>
 http://deb.devuan.org/merged beowulf-updates<br>
@@ -201,7 +207,6 @@ The proxy line is for Apt-cacher-ng APT proxy.
 Note: to speed up the process and avoid downloading all the packages again and again with each new build attempt, it is highly recomended that you set up a good APT caching proxy that live-build will retrieve packages from (and being downloaded already through the proxy they are kept in the proxy cache to be  retrieved much faster the next time).
 <br><br>
 See my <a href="../config/apt-proxy.html">APT proxy</a> page for notes how to do that.
-
 
 <br><br><br><br>
 <hr>
@@ -237,6 +242,7 @@ or <br>
 for p in aptitude xorg lxtask pm-utils hdparm cpufrequtils alsa-utils openbox lxpolkit lxpanel lxtask elogind libpam-elogind wicd tango-icon-theme obconf obmenu lxappearance-obconf moblin-cursor-theme rxvt-unicode bash-completion geany xfce4-power-manager htop elinks gparted ntp xcape debian-installer-launcher ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+The problem with a plain -no DM- install is that the live ISO may have problems at login or launching Xorg.  So it might be advisable to add a DM, such as lightdm.
 <br><br>
 
 <b>3. Ranger</b>
@@ -279,14 +285,12 @@ Therefore it was necessary to pin it to the experimental repository, with all ot
 
 
 <form><textarea name="T" id="cmd" rows="2" cols="80">
-echo "deb http://ftp.uk.debian.org/debian/ experimental main" > config/archives/experimental.list.chroot</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+echo "deb http://ftp.uk.debian.org/debian/ experimental main" > config/archives/experimental.list.chroot</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 <br>
 <form><textarea name="T" id="cmd" rows="1" cols="80">
-sudo nano config/archives/experimental.pref.chroot</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+sudo nano config/archives/experimental.pref.chroot</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -360,16 +364,14 @@ If you'd like to customize the Live CD environment, with autostart, no recommend
 make a file
 
 <form><textarea name="T" id="cmd" rows="1" cols="80">
-nano config/includes.chroot/etc/live/config/user-setup.conf</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+nano config/includes.chroot/etc/live/config/user-setup.conf</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
 and fill with [include whatever groups you require]
 
 <form><textarea name="T" id="file" rows="1" cols="100">
-LIVE_USER_DEFAULT_GROUPS="plugdev netdev powerdev dialout lpadmin admin clamav audio sudo"</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+LIVE_USER_DEFAULT_GROUPS="plugdev netdev powerdev dialout lpadmin admin clamav audio sudo"</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
 
@@ -435,7 +437,8 @@ lb build</textarea>
 
 The iso file will be created (if successful) in the "my_live_build" directory, which just needs (renaming and) burning to disk or sending to a usb stick.
 <br><br>
-
+remember that to login the live CD, user=user, passwd=live
+<br><br><br>
 You can make a live build from your installed system with (haven't tested it myself)
 
 <form><textarea name="T" id="cmd" rows="2" cols="50">
@@ -446,7 +449,7 @@ lb build</textarea>
 But this won't build a devuan system
 <br><br><br>
 
-
+<br>
 <hr>
 
 <h3 id="7" class="tag">Build Notes</h3>
