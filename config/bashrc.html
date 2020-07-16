@@ -174,7 +174,89 @@ alias addgrp='sudo groupadd'                #type group name after
 
 alias bkp-s='sudo sh ~/scripts/bkpsys'     #these two scripts are tar backups found on my system backup page
 alias bkp-h='sh ~/scripts/bkphome'
-alias frac='sudo refractasnapshot'</textarea>
+alias frac='sudo refractasnapshot'
+alias al='cat ~/.bash_aliases'
+alias ala='grep apt ~/.bash_aliases'
+alias dp='grep dpkg ~/.bash_aliases'
+alias c='clear'
+alias e='exit'
+
+alias ht='htop'
+alias rr='ranger'
+alias ..='cd ..'
+###   cs already in bashrc =cd then ls
+alias cdz='cd `yad --file-selection --directory`'
+alias csz='cs `yad --file-selection --directory`'
+alias h='history'
+       
+alias ls='ls --color=auto --group-directories-first'    #list dir/files horizontally
+                    #shows dir/file list with permissions, owner, file size, date modified
+alias ll='ls -lh --color=auto --group-directories-first'
+alias lt='ls -alhrt'      #shows dir/file list sorted recently modified first
+alias la='ls -alh'                     #shows dir/file list including hidden
+alias l.='ls -d .* --color=auto'                 #shows only hidden files
+alias ll.='ls -lhd .* --color=auto'
+alias lr='ls -Rh'                   #shows files recursively
+alias du='du -ch'		#disk usage at current dir
+alias lsb='lsblk'            #list devices with mount points
+	  
+alias m10='ps auxf | sort -nr -k 4 | head -10'       #lists top ten memory-using processes 
+alias f10m='~/scripts/find10m'
+alias f100m='~/scripts/find100m'
+
+alias a-sr='sudo apt edit-sources'
+alias a-u='sudo apt-get update'
+alias a-up='sudo apt-get update -o Acquire::Pdiffs=true'
+alias a-i='sudo apt-get install'
+alias ap-i='sudo aptitude install'
+alias a-r='sudo apt-get remove'
+alias a-rp='sudo apt-get remove --purge'
+alias a-if='sudo apt-get -f install'
+alias at-i='sudo aptitude install'
+alias a-a='sudo apt-get autoremove'
+alias a-ud='sudo apt-get update && sudo apt-get upgrade'
+alias a-ug='sudo apt-get upgrade'
+alias a-du='sudo apt-get dist-upgrade'
+alias ap-du='sudo aptitude dist-upgrade'
+alias a-c='sudo apt-get autoclean'
+alias a-clean='sudo apt-get clean'
+alias dpk='sudo dpkg -i'
+alias dpkr='sudo dpkg -r'
+
+alias a-s='apt-cache search'   #enter name/part of name of package 2 c available pkgs
+alias a-v='apt-cache showpkg'   #enter name of package 2 c available versions
+alias a-d='apt-cache depends'   #enter name of package 2 list dependencies
+alias dpl='dpkg -l | grep' 	#enter name/part of name of package to see installed
+alias dpv='dpkg -s' 	#enter pkg name to c version installed
+alias dpq='dpkg-query -l'   #same
+alias dpc='dpkg -S'	#enter command to c what package it belongs to
+alias ap-npg='sudo aptitude show "~c" |grep Package'    #show removed but not purged
+alias ap-pg='sudo aptitude purge  "~c" '                              #purge removed but not purged
+
+alias ahi='apt-history install'
+alias ahu='apt-history upgrade'
+alias ahr='apt-history remove'
+
+alias visu='EDITOR=nano sudo visudo'
+
+alias pm='pmount'
+alias pum='pumount'
+alias pw0='sudo halt'
+alias bt0='sudo reboot'
+
+alias c-me='sudo chown -R $USER'
+alias me2g='sudo adduser $USER'     #type group name after
+alias addgrp='sudo groupadd'        #type group name after
+
+alias frac='sudo refractasnapshot'
+alias fracusb='refracta2usb'
+
+alias b1='sh ~/scripts/bashfileoption'
+alias b2='sh ~/scripts/bashcommands'
+alias go='sh ~/scripts/bashgo'
+
+alias web='elinks'
+</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
