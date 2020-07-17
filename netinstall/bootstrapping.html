@@ -1,0 +1,344 @@
+---
+layout: default
+description: Installing a new Devuan system using debootstrap - by D Quinton
+title: Devuan bootstrapping
+id: net
+---
+
+
+<div class="parent"><a href="../netinstall.html">NetInstall</a> ></div>
+
+<div class="cont">
+
+Using debootstrap is probably the fastest way to install a working Devuan-Debian system onto a hdd.  
+<br><br>
+In fact, the netinstall CD uses debootstrap, with some automated scripts and package installs to select from, but running one's own scripts with it seems very limited and you still need to boot it up or chroot into it to finish setting up, thus making extra steps.
+<br><br>
+Live-build uses it too but the end result is a live ISO to install to a CD or USB, that yoiu also ned to boot (if it works!) before installing it to any device.
+<br><br>
+Using debootstrap directly from an installed system reduces the need for downloading and writing an ISO file and booting anything.  Plus you can script the whole process to your liking, creating a new system ready to boot up in half an hour.
+<br><br>
+You could also run debootstrap from a live CD if you have no installed Linux to work from.
+<br><br>
+It is perhaps not for the complete novice however, although the process can be kept minimal and simplified to commands entered one by one.  
+<br><br><br>
+<h3>The process in brief</h3>
+<li>format & mount a device
+<li>setup apt on target
+<li>Debootstrap a base system
+<li>write /etc/fstab
+<li>install Grub
+<li>setup locale
+<li>insall desktop packages
+<li>finish any jobs in chroot, such as copy system files over, setup sudoers for new user, add to fstab</li>
+<br><br>
+
+The basic debootstrap command looks like this for devuan:
+<br>
+<textarea name="T" id="cmd" rows="1" cols="80">
+debootstrap --arch amd64 beowulf /mnt http://deb.devuan.org/merged/ beowulf</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+which translates to:<br>
+debootstrap ARCH SUITE TARGET MIRROR
+ <br><br>
+Other suite names to use can be found in /usr/share/debootstrap/scripts/
+ <br><br>
+To run it you will need to format a device and mount it and include the mount point (target) in the debootstrap command.
+ <br><br><br>
+ 
+ <h3>Scripting the process</h3>
+Scripting the whole process is much more fun, but the script has to be written with safety nets and well tested.
+<br><br>
+
+And here's a script that I put together... it selects a device, runs debootstrap and enters chroot.  It also copies over the apt cache to the target device.  
+<br><br>
+If the nework is good and debootstrap can retrieve the base packages and gpg keys OK, then the process will only take a few minutes.  If GPG fails to read the keys then it will fail, no system directories will get created on the target device and mounting sys, proc and dev will not work - hence the findmnt command in the script checks to see if the right system directories get mounted on the target or not.
+<br><br>
+Following that is another script that can be run in the chroot device.
+<br><br>
+
+
+
+<textarea name="T" id="file" rows="100" cols="120">
+#!/bin/bash
+#run as root, pls check through before running it! Use at your own risk. 
+#this script basically helps to automate selecting a device to install on, option format it, then run debootstrap (set here for devuan beowulf -check for others) before mounting and entering chroot on that device
+#the script stops there and work can be done in chroot, such as set up apt, fstab, grub2, locales, packages etc - to quit chroot type `exit`and then this script will complete, unmounting everything.
+
+
+#-----------------------------------------------------------------------------------------
+#set the Target device
+blkid
+echo -e "\n\nWhich partition would you like to use for the installation
+ of the operating system?\n "
+
+TGT=$(find /dev -mindepth 1 -maxdepth 1  -name "*[sh]d[a-z][1-9]*" -o -name "*nvme*p[1-9]" \
+  | sort | awk '{print $0 }' \
+  | yad  --center --list --title=$"Partitions" --text="Choose the partition." \
+    --separator="" --column $'Partitions' --height 380 --width 300 --button="OK":0)
+
+
+#-----------------------------------------------------------------------------------------
+#format target!!!
+mkfs.ext4 $TGT
+
+#-----------------------------------------------------------------------------------------
+#set target mount
+TMT=/mnt/target
+
+mkdir $TMT
+mount -t ext4 $TGT $TMT
+
+#-----------------------------------------------------------------------------------------
+#enable use of apt pkgs during bootstrap install stage - if installing stable these pkgs hardly change except for some security updates so they can be copied from your running system, if you are running the same distro as the one intending to install!!!
+mkdir -p $TMT/var/cache/apt/archives
+rsync -ar /var/cache/apt/archives/* $TMT/var/cache/apt/archives
+#or do: mount --bind /var/cache/apt/archives $TMT/var/cache/apt/archives
+
+
+#-----------------------------------------------------------------------------------------
+#run debootstrap cmd on target device, for devuan release
+debootstrap --arch amd64 beowulf $TMT http://deb.devuan.org/merged/ beowulf
+
+#-----------------------------------------------------------------------------------------
+#copy the chroot commands script over
+rsync -arult bootstrap_chroot.sh $TMT/tmp
+
+#-----------------------------------------------------------------------------------------
+#copy apt files from running system
+echo -e "\n\n.................................Setting up apt on target...."
+rsync -ar /etc/apt $TMT/etc/
+
+
+#-----------------------------------------------------------------------------------------
+#mount local dirs to TMT
+mount -t proc proc $TMT/proc
+mount -t sysfs sys $TMT/sys
+mount -o bind /dev $TMT/dev
+cp /etc/resolv.conf $TMT/etc/resolv.conf
+cp /proc/mounts $TMT/etc/mtab
+
+#-----------------------------------------------------------------------------------------
+#check mounts with
+findmnt
+echo -e "\n\n###################################################################################\n#
+#  Is all OK?  Look above for errors. 
+#  If debootstrap cannot obtain the release file or gpgv can't read it, then debootstrap will fail to install the base system and base directories, 
+#  meaning that nothing just specified will mount (errors: mount points do not exist for /proc, /sys and /dev, and resolv.conf and mtab do not exist). \n#
+###################################################################################\n
+\n\nPress Enter if OK, or Q to quit the script"
+read ans
+	case $ans in
+		[1]) break ;;
+		[Qq]*) exit 0 ;;
+	esac
+
+#-----------------------------------------------------------------------------------------
+#change root to target
+chroot $TMT /bin/bash
+
+
+#-----------------------------------------------------------------------------------------
+#unmounting
+TMT=/mnt/target
+umount $TMT/home
+umount $TMT/sys $TMT/dev $TMT/proc 
+umount /var/cache/apt/archives
+
+echo -e "\n\n.................................All local sys unmounted from target!
+.................................Target still mounted at $TMT"
+
+echo "\n\nUnmount $TMT as well? \n
+press Enter to unmount 
+press Q and Enter to keep $TMT mounted."
+
+	read ans
+	case $ans in
+		[1]) break ;;
+		[Qq]*) exit 0 ;;
+	esac
+	
+umount $TMT
+umount $TMT
+#2nd time to give the not mounted message!</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+Another script here, to run commands in chroot.
+
+<form>
+<textarea name="T" id="file" rows="100" cols="120">
+#!/bin/bash
+#run as root: sh /tmp/bootstrap_chroot.sh
+#already copied to the target install at /tmp
+
+#-----------------------------------------------------------------------------------------
+#confirm that the right device is mounted
+dev1=$(findmnt -fn -o SOURCE /)
+devmnt=$(findmnt -fn -o TARGET /)
+echo -e "\n\nDevice $dev1 mounted on $devmnt is now root.\n
+Is all OK? If the device given is your working box mounted at / then chroot did not work!\n
+(Enter to continue/Ctrl-c to abort)\n\n"
+read yes
+
+#-----------------------------------------------------------------------------------------
+#announce there is a settings dir in chroot /tmp
+CONF=/tmp/bootstrap_conf
+
+#-----------------------------------------------------------------------------------------
+#updarte pkg lists
+apt update
+
+
+#-----------------------------------------------------------------------------------------
+#configure locale
+echo -e "\n\n.................................Installing locale and rsync...."
+apt install tzdata locales localepurge rsync keyboard-configuration yad
+dpkg-reconfigure locales
+dpkg-reconfigure keyboard-configuration
+
+
+#-----------------------------------------------------------------------------------------
+#write root fs to fstab file
+uuidroot=$(findmnt -fn -o UUID /)
+
+echo -e "UUID=$uuidroot\t/\text4\tdefaults\t0\t1" > /etc/fstab
+
+cat /etc/fstab
+blkid
+echo -e "\n\nBasic file system table written to /etc/fstab 
+Is all OK? Hit Enter to continue or type N and enter to open nano editor\n\n"
+
+	read ans
+	case $ans in
+		[1]) break ;;
+		[Nn]*) nano /etc/fstab ;;
+	esac
+
+
+#-----------------------------------------------------------------------------------------
+#install boot-loader
+apt install grub2
+
+
+
+
+#-----------------------------------------------------------------------------------------
+#separate /home partition
+echo -e "\n\nDo you intend to use a separate /home partition?\n 
+ (Enter Y or N): \n\n"
+
+read ans
+	case $ans  in
+		[nN]) break ;;
+		[yY]) home=$(find /dev -mindepth 1 -maxdepth 1  -name "*[sh]d[a-z][1-9]*" -o -name "*nvme*p[1-9]" \
+  | sort | awk '{print $0 }' \
+  | yad  --center --list --title=$"Partitions" --text="Choose the partition." \
+    --separator="" --column $'Partitions' --height 380 --width 300 --button="OK":0)
+		
+		mkfs.ext4 $home && mount $home /home ;;
+	esac
+
+
+#-----------------------------------------------------------------------------------------
+#write /home to fstab file
+uuidhome=$(findmnt -fn -o UUID  $home)
+
+echo -e  "UUID=$uuidhome\t/home\text4\tdefaults\t0\t2" >> /etc/fstab
+
+
+cat /etc/fstab
+echo -e "\n\nHome partition written to /etc/fstab !
+Is all OK? Hit Enter to continue or type N and enter to open nano editor\n\n"
+
+	read ans
+	case $ans in
+		[1]) break ;;
+		[Nn]*) nano /etc/fstab ;;
+	esac
+
+
+#-----------------------------------------------------------------------------------------
+#root passwd
+echo "\n\nCreate a password for root"
+passwd
+
+#add user
+echo -e "\n\nCreate a new user for login...\nEnter the user name and press Enter\n\n"
+read user
+adduser $user
+
+#add groups
+echo "\n\n.................................Adding groups and user $user to groups"
+for g in dialout plugdev lpadmin admin clamav fuse audio ;do groupadd -f $g; done
+for g in netdev dialout plugdev lpadmin admin clamav fuse audio sudo ;do adduser $user $g; done
+
+
+#-----------------------------------------------------------------------------------------
+
+echo $"
+ Use a swap file?  Enter Y or N
+"
+	read swap
+	case $swap in
+		[Nn]) break ;;
+		[Yy]*) 
+		echo -e $"\nMaking a swap file...\n"
+	fallocate -l 1G /swapfile
+	mkswap /swapfile
+	chmod 600 /swapfile
+	echo -e "\nAdding swap fiile entry to fstab...\n"
+	echo -e "swap\t/swapfile\tswap\tsw\t0\t0" >> /etc/fstab
+	mkdir -p /etc/initramfs-tools/conf.d
+	echo -e "RESUME=/swapfile" >> /etc/initramfs-tools/conf.d/resume
+			;;		
+	esac
+	
+
+#-----------------------------------------------------------------------------------------
+#apt install basic pkg list
+apt install sudo iw rfkill lshw aptitude debootstrap linux-image-amd64 
+
+apt install xorg pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode htop elinks links2 gparted bash-completion xcape kbd less acpi elogind libpam-elogind xserver-xorg-legacy xserver-xorg-video-nvidia
+
+apt install firmware-amd-graphics firmware-linux firmware-linux-nonfree firmware-iwlwifi 
+
+apt install ranger w3m w3m-img less xsel xvkbd  atool mediainfo jhead ffmpegthumbnailer trash-cli exiftool feh imagemagick zip unzip bzip2 p7zip-full ntfs-3g blktool dosfstools mtools testdisk partclone sshfs locate git cups gpa ntp yad rpl bluetooth blueman mtp-tools go-mtpfs adb pmount udiskie gvfs cdrdao discover rename apt-file xbacklight
+
+
+echo -e "\n\n.................................Done installing pkgs with apt!"
+
+#-----------------------------------------------------------------------------------------
+update-grub
+
+#-----------------------------------------------------------------------------------------
+#just as a reminder to avoid any problems with command not found
+echo "export PATH=$PATH:$HOME/scripts:/usr/sbin:/usr/local/bin" >> $user/.bashrc
+
+
+#-----------------------------------------------------------------------------------------
+
+echo "
+Exit chroot and unmount devices? 
+press Enter if that's OK - you can then attempt to boot into the new system!
+press Q, Enter to quit the script, stay in chroot and continue work on the new install at the command line."
+
+	read ans
+	case $ans in
+		[1]) break ;;
+		[Qq]*) exit 0 ;;
+	esac
+	
+exit 
+</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+
+
+
+<br><br><br><br>
+</div>
