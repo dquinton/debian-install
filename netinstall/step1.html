@@ -106,7 +106,7 @@ Of the base-system images, you will find the 'netinstall' CD (300Mb) that requir
 
 
 <br><br>
-After completing a fresh install this June 2020, and without any internet available (my satellite link having  browser login codes) I highly recommend using the Server installer.  And in line with my install method here (minimal) only CD1 is necessary to download.
+After completing a fresh install this June 2020 without any internet available, I had god success with the Server installer ISO.  And actualy only CD1 is necessary to download if you want to install minimal.
 <br><br>
 I should also note that it was necessary to use 'Expert install' under 'Advanced options', as simply running the top 'install' option the installer keeps asking for the network! 
 <br><br>
@@ -118,7 +118,7 @@ There's also Refracta Live CD made with Devuan.. <a href="http://sourceforge.net
 For standard Debian you can look at the site here  <a href="http://www.debian.org">Debian.org </a> 
 <br>
 <br><br>
-Also, it's a good idea to run the checksum on the downloaded ISO so that you don't waste a CD or spend time making a USB stick and then the thing fails to boot!
+It's a good idea to run the checksum on the downloaded ISO so that you don't waste a CD or spend time making a USB stick and then the thing fails to boot!
 <br><br>
 Download the SHA256SUMS from the release archive and run this in same dir as the downloaded ISO file:
 <form>
@@ -137,9 +137,11 @@ It basically uses a progam called Debootstrap and a load of scripts to install a
 
 <br><br><br>
 <h3>Install a system with  Debootstrap</h3>
-This method removes the need for an ISO creation and booting into the live system before installing it.  All you need to do is run debootstrap from a running system to install a  complete system onto another device (SSD, USB etc), which will be bootable by the end of the process.  Page coming up!
-
-
+This method removes the need for downloading an ISO file and booting into a live system from removable media before installing it.  All you need to do is run debootstrap from a running linux box to install a  complete system onto another device (SSD, USB etc), which will be bootable by the end of the process.  
+<br><br>
+<b>This method is actually the fastest of all these methods</b>, but you will need to know something about Debian first, and of course, already have a working linux box to work from.
+<br><br>
+Check out my <a href="{{site.baseurl}}/netinstall/bootstrapping.html"><b>bootstrapping</b></a> page!
 
 <br>
 <br><br>
