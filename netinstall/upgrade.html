@@ -273,7 +273,7 @@ install the desired kernel
 
 <br><br><br>
 <h3>3. Install from Testing on Stable</h3>
-<span class="caut">note that this method may install quite a lot of packages from testing and you could end up with a mixed distro Debian.</span>
+<span class="caut">note that this method may install quite a lot of packages from testing and you could end up with a mixed-release Debian.</span>
 <br><br>
 First add Testing to sources (with stable set to default in apt preferences if running a stable Debian install), then apt update, apt-cache search linux-image to see what kernels are available
 <br><br>
@@ -315,54 +315,6 @@ apt install linux-image-3.16-amd64</textarea>
 
 <br><br><br><br>
 
-<h2 id="7" class="tag">Upgrade notes (very old)</h2>
-<br>
-<h3>Wheezy to Jessie</h3><br>
-
-Packages needing re-install after upgrade:<br>
-with APT... audacious audacious-plugins icedtea-7-plugin lxpanel blueman<br>
-manual .... googleearth multisystem <br>
-(ge needs ia32-libs which are obsoleted in Jessie - install a dummy package from <a href="http://forums.debian.net/viewtopic.php?f=10&t=111898">/viewtopic.php?f=10&t=111898</a>)
-<br><br>
-<span class="prob">mplayer fails to play files - mplayer error while loading shared libraries: libdvdnavmini.so.4: cannot open shared object file</span><br>
-as root<br>
-<form>
-<textarea name="T" id="cmd" rows="2" cols="80">
-cd /usr/lib/x86_64-linux-gnu
-ln -s libdvdnav.so.4.1.2 libdvdnavmini.so.4</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-<br><br>
-
-<h3>Squeeze to Wheezy</h3><br>
-<span class="prob">on login, the default session shows Xsession, not Xfce</span><br>
--in 
-<form>
-<textarea name="T" id="cmd" rows="1" cols="50">
-sudo nano /etc/lightdm/lightdm.conf</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-change <span style="color:#076b00">user-session=lightdm-xsession</span> to <span style="color:#076b00">user-session=xfce</span>
-<br><br>
-
-<span class="prob">Broken apt after update?</span><br>
-If you choose to keep the original sudoers file, you won't be able to apt or aptitude later,
-so you need to terminal: su, root p/w, EDITOR=nano visudo
-<br><br>
-cursor down after the line <span style="color:#076b00">Defaults  env_reset</span>
-<br><br>
-highlight this line here and middle mouse button in the terminal to paste it:
-<form>
-<textarea name="T" id="file" rows="1" cols="100">
- Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-
-then CTRL-X, y and Enter<br><br>
-from <a href="http://note.harajuku-tech.org/cksum-dpkg-warning-ldconfig-not-found-in-path">http://note.harajuku-tech.org/...</a>
-
-<br><br><br><br>
 <b>Next page: 
 <br><br>
 <b><a style="font-size: 1.2em; " href="go-devuan.html">Go Devuan</a> - moving to the Devuan branch of Debian</b>

@@ -33,6 +33,13 @@ It is perhaps not for the complete novice however, although the process can be k
 <li>finish any jobs in chroot, such as copy system files over, setup sudoers for new user, add to fstab</li>
 <br><br>
 
+Fist get it from repo...<br>
+<textarea name="T" id="cmd" rows="1" cols="30">
+sudo apt install debootstrap</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
 The basic debootstrap command looks like this for devuan:
 <br>
 <textarea name="T" id="cmd" rows="1" cols="80">
@@ -185,9 +192,6 @@ Is all OK? If the device given is your working box mounted at / then chroot did 
 (Enter to continue/Ctrl-c to abort)\n\n"
 read yes
 
-#-----------------------------------------------------------------------------------------
-#announce there is a settings dir in chroot /tmp
-CONF=/tmp/bootstrap_conf
 
 #-----------------------------------------------------------------------------------------
 #updarte pkg lists
@@ -337,7 +341,37 @@ exit
 </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br><br>
+Finally, while the target device is miounted, I sync over system settings files from my running box
 
+<textarea name="T" id="file" rows="30" cols="80">
+rsync -arlt /etc/default/keyboard /mnt/target/etc/default
+rsync -arlt /etc/modprobe.d/alsa-base.conf /mnt/target/etc/modprobe.d
+rsync -arlt /etc/network/if-pre-up.d/iptables /mnt/target/etc/network/if-pre-up.d
+rsync -arlt /etc/network/interfaces /mnt/target/etc/network
+mkdir -p /etc/polkit-1/localauthority/50-local.d
+rsync -arlt /etc/polkit-1/localauthority/50-local.d/udisks2.pkla /mnt/target/etc/polkit-1/localauthority/50-local.d
+rsync -arlt /etc/X11/cursors/moblin.theme /mnt/target/etc/X11/cursors
+rsync -arlt /etc/X11/xorg.conf.d/10-monitor.conf //mnt/targetetc/X11/xorg.conf.d
+rsync -arlt /etc/X11/Xwrapper.config /mnt/target/etc/X11
+rsync -arlt /etc/xdg/menus/lxde-applications.menu /mnt/target/etc/xdg/menus
+rsync -arlt /etc/hostname /mnt/target/etc
+rsync -arlt /etc/hosts /mnt/target/etc
+rsync -arlt /etc/iptables.up.rules /mnt/target/etc
+rsync -arlt /usr/bin/apt-history /mnt/target/usr/bin
+rsync -arlt /usr/bin/xs /mnt/target/usr/bin
+chmod +x /mnt/target/usr/bin/xs
+chmod +x /mnt/target/usr/bin/apt-history
+rsync -arlt /usr/share/desktop-directories/editor.directory /mnt/target/usr/share/desktop-directories
+rsync -arlt /usr/share/icons/* /mnt/target/usr/share/icons
+rsync -arlt /root/.config/geany/geany.conf /mnt/target/root/.config/geany
+mkdir /mnt/target/root/.config/geany/colorschemes
+rsync -arlt /root/.config/geany/colorschemes/* /mnt/target/root/.config/geany/colorschemes
+rsync -arlt /root/.config/ranger/* /mnt/target/root/.config/ranger
+rsync -arlt /root/.bashrc /mnt/target/root
+rsync -arlt /root/.bash_aliases /mnt/target/root
+
+<textarea name="T" id="file" rows="50" cols="80">
 
 
 <br><br><br><br>
