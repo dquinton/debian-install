@@ -30,14 +30,14 @@ id: tutor
 
 <div class="cont">
 
-Here's a video editor that can pack a punch.  Cinelerra is an exceptional video/audio workstation with professional tools and output abilities, and it's awesomely stable on Debian.. A film maker for Linux to replace all others - for more advanced users that is.
+Here's a video editor that can pack a punch.  Cinelerra is an exceptional video/audio workstation with professional tools and output abilities, and it's awesomely stable on Debian.. A film maker for Linux to replace all others - and certainly for more advanced users, but it's not too technical to make use of.
 
 <br><br>
 See my Netinstall Step2 page for how to install.
 <br><br>
-cinelerra documentation <a href="https://cinelerra-cv.org/docs.php">https://cinelerra-cv.org/docs.php</a>
+cinelerra documentation <a href="https://www,cinelerra-gg.org">https://www.cinelerra-gg.org</a>
 <br><br>
-I recommend you download the pdf manual from there and check out all the other resources.
+I recommend you download the pdf user manual and check out all the other resources -searh cinelerr gg on Youtube for some good video tutorials (not all in English)
 <br><br>
 
 <b>tutorials</b><br>
@@ -242,7 +242,7 @@ by default, mouse buttons Left, middle, Right (1,2,3) do the following:
 <li>switch to Drag and Drop mode with <b>E</b>
 <li>click on an edit title bar and drag it along the timeline
 <li>insertion arrows will appear to show you where it will be placed, and just drop it between two edits
-<li>you can also select multiple edits or between in-out points and press <b>X</b> to cut, and then <b>V </b>to paste back in at another point
+<li>you can also select multiple edits or between in-out points and press <b>X</b> to cut, and then <b>V </b>to paste back in at another point (be careful if I/O are set)
 </ul>
 
 <br><br>
@@ -279,7 +279,7 @@ by default, mouse buttons Left, middle, Right (1,2,3) do the following:
 <li>fade in: similar, just make a keyframe first at point of the end of fade in then make one and drag down at point of the start of fade in
 </ul>
 <br>
-<b>still another method:</b> drag a video transition onto the end of the edit and make sure there is no video after the edit end. The video will transition to black! Nice!
+<b>still another method:</b> drag a video transition onto the end of the edit and make sure there is no video after the edit end and no video on tracks above. The video will transition to black! Nice!
 <br><br>
 this can be done for fade in, and also audio fades.
 <br>
@@ -299,7 +299,39 @@ note: the overlay band for audio fade by default is set to normal level at base 
 <li>press the "To clip" button and the selected part of edits will copy to the Clip resource window
 <li>also you can right-click in Clips and click Paste clip
 <li>you can copy/paste clips to the timeline, or a new timeline window
+<li>if you right-click on a clip and then click Nest to Media, it will be found in media, from there it will insert onto timeline with just one vid and one audio track, regardless if clip made from many tracks
 </ul>
+
+<br><br>
+<h3>Nesting projects</h3>
+You can import project xml files (EDLs) into any other project, whereby you can compile lots of individual editing sessions into a bigger work, without all their sometimes complex tracks and plugins cluttering up the whole timeline.
+<ul>
+<li>open media and select xml of project to import
+<li>then choose either load strategy of create new resources only, to add as clips to resources window,
+<li>or EDL strategy of Nested, to insert directly to the timeline
+</ul>
+
+<br><br>
+<h3>Open EDL</h3>
+When you import project xml files (EDLs) into a new project, you can adjust the plugins already applied to the imported project - that is now a clip in the master project.  If you just pile the clips onto the timeline you won't see the plugins that the original pre-import projects had attached to their media on the timeline.
+<ul>
+<li>In resources window, rightclick on a clip that was imported from xml, then select Open EDL
+<li>the clip is focused and you can make changes to its plugins
+<li>when done, look at the top right corner for a number -usually 1- and click on that to close the clip's EDL and return to master project timeline
+<li>the clip icon disappears from the resource window while its EDL is open
+</ul>
+
+<br><br>
+<h3>Use proxy clips</h3>
+This can be a very useful thing, especially with very large video dimensions and/or low powered CPUs - but even a 16 core Ryzen 3700X at 4.2GHz will keep motoring just with playing back video in the compositor
+<ul>
+<li>Settings > Proxy settings
+<li>check the Use scaler option and set 1/2, keep mpeg, set to 1000000 or even 500000 if it's bearable (depends on detail needed in editing)
+<li>check Auto proxy and hit the Tick
+<li>during edits you can disable proxies, via a P or S button at top right, to see better detail at times
+<li>Before render, reset scale to full size in Proxy settings
+</ul>
+
 
 <br><br>
 <h3>Rendering</h3>
@@ -316,11 +348,14 @@ note: the overlay band for audio fade by default is set to normal level at base 
 
 
 <h3>Batch Rendering</h3>
+According to the manual, a batch is one or several projects in one edl ? You can then render one project in different formats, or multiple in same format.
 <ul>
 <li>Open File > Batch Render
 <li>Set output file and format, and the project EDL (xml file) and hit <b>New</b> to add to the batch queue
+<li>when a job is highlighted in the list, its format or output name can be set
+<li>a project must have an active region for rendering - selection, I/O region, or the insert point should be placed before the content!
 <li>Run them from the Batch Render window or hit <b>Save Jobs</b> to save a batch list (but job does not match session?)
-<li>close Cin and render from the command line.. run `<b>cin -r</b>`
+<li>close Cin and render from the command line.. run `<b>cin -r batchjob.xml</b>`
 <li>command line render will abort if an output file already exists
 </ul>
 <br><br>
@@ -351,7 +386,7 @@ Cinelerra offers some outstanding tools for control of colour output, but master
 <li>dragging the pointers apart increases the control range, then moving the dot point along adjusts the control
 <li><b>brightness/contrast:</b> set values in the Preset window
 <li><b>color 3 way:</b> probably easier tool to use for saturation control, just increase Saturation control and leave the color adjustment alone, increase Midtone and Highlight values to increase brightness
-<li><b>color balance</b>: adjust cyan, magenta and yellow levels
+<li><b>color balance</b>: adjust cyan, magenta and yellow levels - for example if a camera made bad WB and the picture is tinted blue etc
 <li><b>gradient:</b> to set a coloured light effect.. <b>linear</b>: adjust angle, inner radius zero, reduce outer radius a little, set inner and outer colours..  <b>radial</b>: move the radial center off the picture on X or Y axis and also reduce outer radius
 <li><b>histogram:</b> drag the three pointers to set pre, mid and end of curve - to adjust brightness and shadows
  <li><b>histogram:</b> control the histogram curve with points -move the left arrow to affect blacks, right arrow for whites, middle for mid-tones.
@@ -386,25 +421,27 @@ but, rotating a video (e.g. 16:9 aspect ratio 90 degrees) will crop top and bott
 <br>
 OR, after applying rotation, click on the "Adjust camera automation" button in the compositor window, and the Shift-left-click-drag to resize the video so that as much as you need fits onto the canvas (and turn off key-framing first!).
 
-
+<br>
 <br><br>
 <h3>Scaling down video</h3>
 
 To produce video with smaller dimensions than the source, you need to set the format dimensions and then add a video effect to the entire timeline.<br>
 <ul>
-<li>Open format settings with Ctrl-F and set the canvas size to the scaled down dimensions
-<li>then right click on the timeline >> <b>Attach effect </b>>> <b>Scale</b>, click OK (or open Video effects in the resource window and find Scale, drag it to an edit or the selected area).
+<li>Open format settings with Ctrl-F and set the canvas size to the scaled down dimensions - sets format of output video when rendered
+<li>then right click on the timeline >> <b>Attach effect </b>>> <b>Scale</b>, click OK (or open Video effects in the resource window and find Scale, drag it to an edit, the selected area, or the patch bay if i/o are not set).
 <li>Then click on the glass icon button on the effect and set the dimensions or scale.
 <li>you can also use <b>Auto Scale</b> effect and then Right click >> <b>Presets</b> and click and enter new values
 </ul>
 <br>
-But even EASIER.. after setting canvas size, click the "Adjust camera automation" button in the compositor window, and the Shift-left-click-drag to resize the video (and turn off key-framing first!).
+But even EASIER.. after setting canvas size, click the "Adjust camera automation" button in the compositor window, and the Shift-left-click-drag to resize the video (but make sure you turn off key-framing first!).
+<br><br>
 
+Note: if you set the output format to a smaller scale than the source media, the project will be cropped.  This might be a valid technique, say, if your media is in 3K or 4K and output is 2K (1080p), but it may not be suitable for the entire track as detail such as faces could be lost.
 
-
+<br>
 <br><br>
 <h3>Image overlays </h3>
-this is easy as resizing/positioning one armed track in the compositor window 
+this is easy as resizing/positioning in the compositor window with only one track armed  -so that an overlying track is positioned over the full-size track underneath
 <ul>
 <li>arm only the track you want to resize as an overlay with <b>Shift-Tab </b>on the track (disarms all other tracks)
 <li>show the <b>Compositor</b> window and click on <b>Projector</b> tool

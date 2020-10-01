@@ -378,8 +378,8 @@ Geolocating</div>
 <tbody>
 <tr>
 <td style="width:262.79861092567444px;height:22.79861092567444px"><a href="{{site.baseurl}}/zimages/digikam-geofilter.jpeg"  imageanchor="1"><img border="0" height="200" src="{{site.baseurl}}/zimages/digikam-geofilter-sm.jpeg" width="320"></a></td>
-<td style="width:333.79861092567444px;height:22.79861092567444px">&nbsp;<a href="{{site.baseurl}}/zimages/digikam-geofilter1.jpeg"  imageanchor="1"><img border="0" height="198" src="{{site.baseurl}}/zimages/digikam-geofilter1-sm.jpeg" width="320"></a></td>
-<td style="width:354.79861092567444px;height:22.79861092567444px">&nbsp;<a href="{{site.baseurl}}/zimages/digikam-geofilter3.jpeg"  imageanchor="1"><img border="0" height="198" src="{{site.baseurl}}/zimages/digikam-geofilter3-sm.jpeg" width="320"></a></td>
+<td style="width:333.79861092567444px;height:22.79861092567444px"><a href="{{site.baseurl}}/zimages/digikam-geofilter1.jpeg"  imageanchor="1"><img border="0" height="198" src="{{site.baseurl}}/zimages/digikam-geofilter1-sm.jpeg" width="320"></a></td>
+<td style="width:354.79861092567444px;height:22.79861092567444px"><a href="{{site.baseurl}}/zimages/digikam-geofilter3.jpeg"  imageanchor="1"><img border="0" height="198" src="{{site.baseurl}}/zimages/digikam-geofilter3-sm.jpeg" width="320"></a></td>
 </tr>
 </tbody>
 </table>
@@ -429,18 +429,22 @@ Digikam Handbook&nbsp;<a href="http://docs.kde.org/development/en/extragear-grap
 Whilst that is very handy, what if you save pics from the web which are full of useless tags? &nbsp;It will be tiring to delete all the tags you don't need from those web pics and your Tags list (one by one!). &nbsp;So I wouldn't save web pics into a Collection album. &nbsp;Save them elsewhere, then you can remove all their tags before moving to an album.
 <br><br>
 
-Remove exif/iptc data with Imagemagick:
+Remove metadata with Imagemagick:
 
 <div class="bullet"><ul>
-<li>make a Thunar custom action or Ranger key with, for just the iptc data (keywords etc.): <span style="background-color:rgb(103,78,167);color:rgb(238,238,238);font-size:medium">ls | xargs&nbsp;mogrify +profile iptc</li>
-
-<li>for all exif data:&nbsp;<span style="font-size:medium;color:#ffd966;background-color:rgb(116,27,71)">ls | xargs mogrify -strip</span>
-<br><br>
-<span style="font-size:medium;color:#0b5394">Warning! the ls function will apply the command to all files in the directory!</span></li>
+<li>make a Thunar custom action or Ranger key with, for just the iptc data (keywords etc.): <span style="background-color:rgb(103,78,167);color:rgb(238,238,238);font-size:medium">ls | xargs mogrify +profile iptc</li>
 
 <li>for applying only to the selected files use <span style="color:#eeeeee;background-color:rgb(103,78,167);line-height:27px;font-size:medium">mogrify +profile iptc %F</span></li>
 
-<li>there's also jhead, with the command to remove iptc data: <span style="color:#eeeeee;background-color:rgb(103,78,167)">ls | xargs jhead -di</li>
+
+<li>To remove ALL exif data (including datetimeoriginal etc) : <span style="font-size:medium;color:#ffd966;background-color:rgb(116,27,71)">ls | xargs mogrify -strip</span>
+<br><br>
+<span style="font-size:medium;color:#0b5394">Warning! the ls function will apply the command to all files in the directory!</span></li>
+<li>Use instead for selected files: <span style="font-size:medium;color:#ffd966;background-color:rgb(116,27,71)">mogrify -strip %F</span>
+
+<li>there's also jhead, with the command to remove iptc (keywords) and xmp (subject) data: <span style="font-size:medium;color:#eeeeee;background-color:rgb(103,78,167)">ls | xargs jhead -di -dx<br></span></li>
+
+<li>or do <span style="font-size:medium;color:#eeeeee;background-color:rgb(103,78,167)">jhead -di -dx %F<br></span>
 </ul></div>
 <br><br>
 
@@ -473,7 +477,7 @@ Here are mainly Thunar right-click actions - all of these, if usable, are rewrit
 <br><br>
 <div class="bullet"><ul>
 <li>Edit &gt;Configure custom actions &gt;click + to make a new action, name it "convert all png to jpeg", with&nbsp;this next line as&nbsp;the command:</li>
-<li><span  style="color:#eeeeee;background-color:rgb(19,79,92)">mogrify -format jpg -quality 100 *.png</span></li>
+<li><span  style="font-size:medium;color:#eeeeee;background-color:rgb(19,79,92)">mogrify -format jpg -quality 100 *.png</span></li>
 <li>in Appearance Conditions (for Thunar), enter <span style="background-color:rgb(213,166,189)">*.png;*.PNG,</span> and check "Image files"</li>
 </ul></div>
 
@@ -482,7 +486,7 @@ Resize JPEGs for quick-viewing or uploading tasks<br>
 
 <div class="bullet"><ul>
 
-<li><span style="color:#eeeeee;background-color:rgb(53,28,117)">mogrify -resize '1200x1200&gt;' -quality 90 *.jpg *.JPG</span></li>
+<li><span style="font-size:medium;color:#eeeeee;background-color:rgb(53,28,117)">mogrify -resize '1200x1200&gt;' -quality 90 *.jpg *.JPG</span></li>
 <li>for a Thunar action, "resize all jpegs 1200p 90%", make conditions <span style="background-color:rgb(213,166,189)">*.JPG;*.jpg;*.jpeg;*.JPEG</span></li>
 </ul></div>
 <br>

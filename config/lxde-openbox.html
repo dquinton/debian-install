@@ -500,6 +500,15 @@ xcape -e 'Super_L=Control_L|Escape' &</textarea>
 </form>
 <br><br>
 
+Or, to change the Super key to call up the Openbox menu and enable a right super key to call the main apps menu (see below for menu setup and ob key bindings)
+<form>
+<textarea name="T" id="file" rows="1" cols="50">
+xcape -e 'Super_L=Super_L|Down;Super_R=Super_L|Up' &</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br><br>
+
+<br><br>
 you can set multiple xcape key events like this..
 
 <form>
@@ -684,7 +693,7 @@ The next lines go in the "mouse" section, to set the mouse clicks to launch the 
 <br><br>
 <form><textarea name="T" id="file" rows="45" cols="50">
 <!--
-    Show OB menu with mouse click on open windows - put in frame context 
+    Show OB menu with mouse click on open windows - put this in frame context 
 -->
       <mousebind button="W-Right" action="Click">
         <action name="ShowMenu">
@@ -733,7 +742,7 @@ The next lines go in the "context root" section, to set the mouse clicks to laun
 <br><br>
 <form><textarea name="T" id="file" rows="56" cols="50">
 <!--
-Show OB menu with mouse click -desktop root!!
+Show OB menu with mouse click -on desktop root!!
 -->
     <context name="Root">
 
@@ -1024,7 +1033,7 @@ You can use key chains too - see <a href="http://openbox.org/wiki/Help:Bindings"
 (Not including the OB menu keybinds -see above)
 <br>
 <form>
-<textarea name="T" id="file" rows="290" cols="80">
+<textarea name="T" id="file" rows="292" cols="80">
  <!-- 
 
 Keybindings for desktop switching 
@@ -1213,6 +1222,7 @@ keybindings for LXPanel
         <command>lxpanelctl menu</command>
       </action>
     </keybind>
+<!-- see note about using Super key -->
 
 <!-- power off scripts -->
    
