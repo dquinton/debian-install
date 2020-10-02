@@ -30,15 +30,18 @@ id: tutor
 
 <div class="cont">
 
-Here's a video editor that can pack a punch.  Cinelerra is an exceptional video/audio workstation with professional tools and output abilities, and it's awesomely stable on Debian.. A film maker for Linux to replace all others - and certainly for more advanced users, but it's not too technical to make use of.
+Here's a video editor that can pack a punch.  Cinelerra is an exceptional video/audio workstation with professional tools and output abilities, and it's awesomely stable on Debian.. A film maker for Linux to replace all others - and certainly for more advanced users, but it's not too technical to make use of, even for beginners.
+<br><br>
+See how it scored on my video editor testing page here <a href="{{site.baseurl}}/tutorial/04b-video-editors.html"><b>video editor review/score sheet</b></a> <br>
+The score is approaching 60 points (a point for each good feature), leaving others, including blender, well behind.
 
 <br><br>
-See my Netinstall Step2 page for how to install.
+Refere to my Netinstall Step2 page for how to install.
 <br><br>
 cinelerra documentation <a href="https://www,cinelerra-gg.org">https://www.cinelerra-gg.org</a>
 <br><br>
-I recommend you download the pdf user manual and check out all the other resources -searh cinelerr gg on Youtube for some good video tutorials (not all in English)
-<br><br>
+I recommend you download the pdf user manual and check out all the other resources -searh 'cinelerra gg' on Youtube for some good video tutorials (not all in English) though
+<br><br><br>
 
 <b>tutorials</b><br>
 <a href="http://www.g-raffa.eu/Cinelerra/HOWTO/index.html">g-raffa.eu/Cinelerra/HOWTO/index.html</a><br>
@@ -318,7 +321,12 @@ When you import project xml files (EDLs) into a new project, you can adjust the 
 <li>In resources window, rightclick on a clip that was imported from xml, then select Open EDL
 <li>the clip is focused and you can make changes to its plugins
 <li>when done, look at the top right corner for a number -usually 1- and click on that to close the clip's EDL and return to master project timeline
-<li>the clip icon disappears from the resource window while its EDL is open
+<li>the clip icon disappears from the resource window while its EDL is open (logicaly because now the resource window shows you what is in the opened EDL, not the main EDL)
+<li>However, if you add a clip to the timeline, opening its EDL and making changes to plugins will not affect the timeline content 
+you must either:
+- Open the EDL before adding the clip to the timeline, make adjustments, close the EDL then add in to timeline
+- first NEST the clip to MEDIA and add it from there to the timeline.  When nested it becomes a main project asset and media is reflected on the timeline.
+<li>an imported project xml may itself have imported and nested projects!  So when you Open EDL on a nested clip, in the media window you will see if it has previous nested clips - then those too can be opened with Open EDL (and the number at top right will jump to 2, and clicking on it returns you to 1 - the numbker 2 means 2-layer open EDL)
 </ul>
 
 <br><br>

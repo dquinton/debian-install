@@ -138,34 +138,30 @@ See my <a href="{{site.baseurl}}/tutorial/04a-blender-vse.html"><b>Blender page<
 <b>____Advanced____</b></span>
 
 <br><br><br>
-<h3>Cinelerra</h3>
+<h3>Cinelerra GG</h3>
 
-A video editor for Linux that is perhaps without rival. The three main versions available are HV (maintained by the original author and without community input, and lacking many features added by the community), CV (the community version that builds on HV releases) and GG (from Good Guy).
+A video editor for Linux that is perhaps without rival. The maintained community version is GG.
 <br><br>
 
-downloads..
-<br><br>
-<a href="https://cinelerra-cv.org/download_cv.php">get cin CV </a>(v2.3, quicktime-based) ........ 
-<a href="https://cinelerra-gg.org/download_gg.php">get cin GG </a>(v5.1, ffmpeg-based) ... 
+See the Cin-GG site here... <a href="https://www.cinelerra-gg.org/"> www.cinelerra-gg.org</a>
 <br><br><br>
-cin. CV must be built for debian, there's no packaging done after deb-multimedia shifted to cinelerra HV.  
+cin GG can be run easily without building it - you may want to preinstall the latest ffmpeg (see below)
 <br><br>
-cin. GG can be more easily run without building it - you may want to preinstall the latest ffmpeg (see below)
-<br><br>
-to get using cinelerra GG, either..
+You can either..
 <br><br>
 1. add the repo line below to your sources file,
 
 <form>
 <textarea name="T" id="file" rows="1" cols="80">
-deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian9 stretch main</textarea>
+deb [trusted=yes] https://cinelerra-gg.org/download/pkgs/debian10 buster main</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
-
-2. download the .deb archive from <a href="https://cinelerra-gg.org/download/pkgs/debian9/">cinelerra-gg.org/download/pkgs/debian9</a> 
+or<br>
+2. download the monthly built .deb archive from <a href="https://cinelerra-gg.org/download/pkgs/debian10/">cinelerra-gg.org/download/pkgs/debian9</a> 
 <br><br>
-3. download and unpack the stand-alone archive from <a href="https://cinelerra-gg.org/">cinelerra-gg.org</a>, and run it with `./cin`<br>
+or<br>
+3. download and unpack the stand-alone archive from and run it with `./cin`<br>
 <br><br>
 -> unpack the txz archive with
 
@@ -177,46 +173,14 @@ tar xvf cinelerra-5.1-</textarea>
 <br><br><br>
 
 
-to build cinelerra-CV, first get dependencies:
-
-<form>
-<textarea name="T" id="install" rows="4" cols="80">
-aptitude install libtool libogg-dev libvorbis-dev libdv-dev libtheora-dev libjpeg-dev libfaac-dev libfaad-dev libtiff-dev libx264-dev libfftw3-dev libopenexr-dev uuid-dev libmjpegtools-dev liba52-dev libmp3lame-dev libsndfile-dev nasm libxv-dev</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-and I had to choose this option:
-<br><br><span style="font-size: 0.9em;">
- &nbsp;Downgrade the following packages:  <br>
-1) &nbsp;&nbsp;&nbsp;&nbsp;    libfftw3-double3 [3.3.6p2-1 (now) -> 3.3.5-3 (testing)]<br>
-2)  &nbsp;&nbsp;&nbsp;&nbsp;   libfftw3-single3 [3.3.6p2-1 (now) -> 3.3.5-3 (testing)]<br>
-<br><br></span>
-then run
-
-<form>
-<textarea name="T" id="cmd" rows="1" cols="30">
-./autogen.sh</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<form>
-<textarea name="T" id="cmd" rows="1" cols="30">
-./configure</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<form>
-<textarea name="T" id="cmd" rows="2" cols="30">
-make
-sudo make install</textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
 <br><br>
-<b>See my tips and links to tutorials on <a href="{{site.baseurl}}/tutorial/04c-cinelerra.html">my Cinelerra page...</a></b>
+<b>See my tips and links to some tutorials on <a href="{{site.baseurl}}/tutorial/04c-cinelerra.html">my Cinelerra page...</a></b>
 
 <br><br>
 
 <b>And see how all these video editors scored with me after some vigorous testing I did in 2017</b> ......on my <a href="{{site.baseurl}}/tutorial/04b-video-editors.html"><b>video editor review/score sheet</b></a>
 <br><br>
-- admittedly, only a couple of days with the first four above and a month with blender, but some years with kdenlive, and now two years with cinelerra (the overall favorite!)... 
+- admittedly, only a couple of days with the first four above and a month with blender, but some years with kdenlive, and two years with cinelerra (the overall favorite!)... 
 <br><br>
 
 
