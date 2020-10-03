@@ -178,10 +178,28 @@ The number pad has playback shortcuts too. Since Nov 2017, these shortcuts have 
 Pressing Ctrl with any of the playback keys and the time betwen in/out points will be played.
 
 <br><br><br>
-Unfortunately, there are no shortcut settings in Preferences.
+There are no shortcut settings in Preferences, but the keys available are pretty good, especially on a 105 keys layout.
 <br><br><br><br>
 
 <h2 id="3" class="tag">My Tips</h2>
+<br><br>
+
+<h3>Inserting media to edit</h3>
+hit O, locate your source files, select the ones you need, then select the insert strategy, either:
+<ul>
+<li>Replace the current project - on new tracks or concatenated all on 1 video/1 audio tracks
+<li>Append to project - on new tracks or concatenated
+<li>Paste in at the Insert point, set In-point or over selected I/O region
+<li>Make new resources only - added to media, not to timeline
+</ul>
+<br>
+With media loaded in the resource window, you can
+<ul>
+<li>drag items from the Media bin to the timeline and they will snap to the start or between any edits there already
+<li>open the Viewer window and drag items into it from Media, then play through and set I/O points and hit the To Clip button - the cut section becomes a clip in the Clips bin, and this can be dragged down to the timeluine (this could save the timeline getting full of unwanted content befor editing)
+<li>drag items from Media or clips over to the Compositor window - they will be inserted at the Insert point or the In-point if it is set or replacing the selected I/O region
+<li>and to arrange clips in any order, that they are added to the project, you can rename them
+</ul>
 <br><br>
 
 <h3>Selecting edits and areas</h3>
@@ -200,7 +218,7 @@ Unfortunately, there are no shortcut settings in Preferences.
 
 
 <br><br>
-<h3>cutting</h3>
+<h3>cutting on the TImeline</h3>
 <ul>
 <li>press <b>Del</b> or <b>X </b>to cut a selection (edits move up, no gap created)
 <li>press <b>M</b> to mute a selection (edits stay put, gap created), press <b>CM </b>to first copy selected area then mute it
@@ -222,8 +240,8 @@ and first the awkward way:
 <li>select area: play until the cut point is reached and pause... press <b>Alt-Right</b> to move to the end of the edit... then press <b>Shift-Ctrl-Left</b> to select from end of edit back to the pause point... press <b>del </b>or <b>X</b> to remove the end of the edit
 <li>to contract the edit from the start you'd need to either make an in-point before playing, and out-point at the cut point, or do <b>Alt-Left</b> to return to start (after played until cut point) and <b>Shift-Ctrl-Right</b> to select up to pause point and then delete.
 <br><br></ul>
-Three new functions in CGG: 
-<ul><li>press <b>Ctrl-Alt-,</b> to snap left handle to insert point, or <b>Ctrl-Alt-.</b> to snap right handle to insert point - this makes work much easier!
+Three new functions in CinGG: 
+<ul><li>press <b>Ctrl-Alt-comma</b> to snap left handle to insert point, or <b>Ctrl-Alt-fullstop</b> to snap right handle to insert point - this makes work much easier!
 <li>Also, press <b>Shift-Ctrl-Alt-,</b> or <b>Shift-Ctrl-Alt-.</b> to snap from insert point to next label, to left or right (this instantly removes the everything between these points, so watch out)
 <li>and press <b>Ctrl-Alt</b> while clicking on the edit handle to snap edit end to insert point
 </ul>
@@ -316,7 +334,7 @@ You can import project xml files (EDLs) into any other project, whereby you can 
 
 <br><br>
 <h3>Open EDL</h3>
-When you import project xml files (EDLs) into a new project, you can adjust the plugins already applied to the imported project - that is now a clip in the master project.  If you just pile the clips onto the timeline you won't see the plugins that the original pre-import projects had attached to their media on the timeline.
+When you import project xml files (edit decision lists /EDLs) into a new project, you can adjust the plugins already applied to the imported project - that is now a clip in the master project.  If you just pile the clips onto the timeline you won't see the plugins that the original pre-import projects had attached to their media on the timeline.
 <ul>
 <li>In resources window, rightclick on a clip that was imported from xml, then select Open EDL
 <li>the clip is focused and you can make changes to its plugins
@@ -356,7 +374,7 @@ This can be a very useful thing, especially with very large video dimensions and
 
 
 <h3>Batch Rendering</h3>
-According to the manual, a batch is one or several projects in one edl ? You can then render one project in different formats, or multiple in same format.
+You can render one project in different formats, just add it to list multiple times, or multiple projects in same or any format.
 <ul>
 <li>Open File > Batch Render
 <li>Set output file and format, and the project EDL (xml file) and hit <b>New</b> to add to the batch queue
@@ -372,6 +390,7 @@ According to the manual, a batch is one or several projects in one edl ? You can
 <br><br>
 <h2 id="4" class="tag">Some effects handy to know</h2>
 <br><br>
+Note: when you resize an effect on the timeline, by dragging its ends, it causes other effects to move along too - so you must hold Shift when dragging to make only that effect move and no others to be affected.
 
 <h3>Video transitions</h3>
 <ul>
