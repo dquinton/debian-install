@@ -76,7 +76,7 @@ The manual lists the keyboard shortcuts quite well, here I just list the main ke
 <td width="160"> Left/Right</td>
 <td width="360">moves the timeline along</td>
 <td width="160"> X/C/V</td>
-<td width="320">cut/copy/paste (X also splits an edit)</td>
+<td width="320">cut/copy/paste (X also splits an edit if no area selected)</td>
 </tr>
 <tr>
 <td >Alt-Left/Alt-Right</td>
@@ -93,24 +93,24 @@ The manual lists the keyboard shortcuts quite well, here I just list the main ke
 <tr>
 <td>Ctrl-Left/Ctrl-Right</td>
 <td>go to prev/next label</td>
-<td>E</td>
+<td> E</td>
 <td>toggle drag-drop/cut-paste modes</td>
 <tr>
 <td >Down/Up/Shift-scroll</td>
 <td>zoom in/out (also scroll button on zoom factor, lower left)</td>
-<td>L</td>
+<td> L</td>
 <td>toggle label</td>
 </tr>
 <tr>
-<td >F</td>
+<td > F</td>
 <td>fit all/selection to display</td>
-<td >[/]</td>
+<td > [ and ]</td>
 <td>toggle in/out points</td>
 </tr>
 <tr>
 <td>Shift-Home/Shift-End</td>
 <td>highlight from insert point to start/end</td>
-<td >A </td>
+<td > A </td>
 <td>select all</td>
 </tr>
 
@@ -137,8 +137,8 @@ The manual lists the keyboard shortcuts quite well, here I just list the main ke
 <tr>
 <td >Ctrl-Space</td>
 <td>play area between in/out points</td>
-<td > D</td>
-<td>remove last track</td>
+<td > Shift-N</td>
+<td>add new track</td>
 </tr>
 
 <tr>
@@ -149,8 +149,9 @@ The manual lists the keyboard shortcuts quite well, here I just list the main ke
 </tr>
 </tbody></table>
 <br><br>
-The number pad has playback shortcuts too. Since Nov 2017, these shortcuts have been added to main keys:
+Playback direction and speed is controlled with the number pad.
 <br>
+
 <table cellpadding="6" cellspacing="0" border="1" style="border-collapse: collapse; background-color: transparent;"><tbody>
 <tr>
 <td width="160" > </td>
@@ -160,23 +161,24 @@ The number pad has playback shortcuts too. Since Nov 2017, these shortcuts have 
 <td width="160">fast mo</td>
 </tr>
 <tr>
-<td > backward</td>
-<td>Alt-U</td>
-<td > Alt-I</td>
-<td>Alt-O</td>
-<td>Alt-P</td>
+<td > backward ></td>
+<td> 4</td>
+<td > 5</td>
+<td> 6</td>
+<td> +</td>
 </tr>
 <tr>
-<td > forward</td>
-<td>Alt-J</td>
-<td > Alt-K</td>
-<td>Alt-L</td>
-<td>Alt-:</td>
+<td > forward ></td>
+<td> 1</td>
+<td > 2</td>
+<td> 3</td>
+<td> Enter</td>
 </tr>
 </tbody></table>
 <br>
 Pressing Ctrl with any of the playback keys and the time betwen in/out points will be played.
-
+<br><br>
+These shortcuts have been added to main keyboard but they are useless for the Colemak layout.
 <br><br><br>
 There are no shortcut settings in Preferences, but the keys available are pretty good, especially on a 105 keys layout.
 <br><br><br><br>
@@ -184,7 +186,7 @@ There are no shortcut settings in Preferences, but the keys available are pretty
 <h2 id="3" class="tag">My Tips</h2>
 <br><br>
 
-<h3>Inserting media to edit</h3>
+<h3>Inserting media to the project</h3>
 hit O, locate your source files, select the ones you need, then select the insert strategy, either:
 <ul>
 <li>Replace the current project - on new tracks or concatenated all on 1 video/1 audio tracks
@@ -196,17 +198,20 @@ hit O, locate your source files, select the ones you need, then select the inser
 With media loaded in the resource window, you can
 <ul>
 <li>drag items from the Media bin to the timeline and they will snap to the start or between any edits there already
-<li>open the Viewer window and drag items into it from Media, then play through and set I/O points and hit the To Clip button - the cut section becomes a clip in the Clips bin, and this can be dragged down to the timeluine (this could save the timeline getting full of unwanted content befor editing)
+<li>drag them over the video track and both video and audio are added to timeline, drag over the audio track and onnlu the audio of the media is appended, disarm audio track and only video is appended
+<li>drag them over to the Compositor and the media will be added at the insert point or at the In-point, or replacing any selection or I/O area on the timeline (as the compositor views the timeline)
+<li>open the Viewer window and drag items into it from Media (or right-click on a file > open in new window), then play through and set I/O points and hit the To Clip button or hit<b> I</b> - the cut section becomes a clip in the Clips bin, and this can be dragged down to the timeluine (this could save the timeline getting full of unwanted content befor editing)
+<li>or there are buttons to splice the selected part into the project, or to overwrite, at the insert point
 <li>drag items from Media or clips over to the Compositor window - they will be inserted at the Insert point or the In-point if it is set or replacing the selected I/O region
 <li>and to arrange clips in any order, that they are added to the project, you can rename them
 </ul>
 <br><br>
 
+
 <h3>Selecting edits and areas</h3>
 <ul>
-<li>to move an edit, activate <b>drag-drop mode</b>, then click and drag the edit to another place
-<li>to select an edit, in either mode, double click on the titlebar
-<li>to select an area, activate <b>copy-paste mode</b>, then click and drag on edits, and Shift-click-drag to extend/shrink the area already selected
+<li>to select an edit (really the area of the edit) double click on the titlebar
+<li>to select an area, activate <b>copy-paste mode</b>, or I-beam, then click and drag on edits, and Shift-click-drag to extend/shrink the area already selected
 <li>to select everything left or right of the insert point, press <b>Shift-Home </b>or <b>Shift-End</b>
 <li>to select the whole timeline hit <b>A</b>
 <li>to select with more accuracy, play to or find a start point and press <b>[</b> (set in-point), then play until the end point is found and press <b>]</b> (set out-point), then click on the in-point and <b>Shift-click</b> on the out-point to select the time between them
@@ -218,13 +223,46 @@ With media loaded in the resource window, you can
 
 
 <br><br>
-<h3>cutting on the TImeline</h3>
+<h3>Moving edits</h3>
+<ul>
+<li>to move an edit, switch to Drag and Drop mode with <b>E</b>
+<li>click on an edit and drag it along the timeline
+<li>insertion arrows will appear to show you where it will be placed, and just drop it between two edits
+<li>if there is blank space on the track when you drag an edit a coloured box moves about to where you want it - green, can drop; yellow, carn drop and will align with another edit; blue can't fit; green wrong track type
+<li>select multiple edits with left clicking while holding Ctrl, or middle mouse button > Select edits, to select edits on the insert point
+<li>to cut/copy selected, press middle button > Copy pack/Cut pack - then <b>V </b> will paste them back in at another point (be careful if I/O are set), middle-button Paste will drop them at the mouse cursor
+<li>to create a group of edits, select holding Ctrl, then Shift-left mouse on them - they will stay as a group until ungrouped with Shift-click again
+<li>to remove the selected or grouped edits use <b>Ctrl-X </b> or <b>Ctrl-M </b>  to mute them
+<li>Ctrl-Shift-A clears selections
+</ul>
+
+
+<br><br>
+<h3>Transforming edit ends</h3>
+when you move the mouse pointer to the edge of an edit an arrow appears, click on this and drag the end left or right. The mouse button you use decides what the dragging does.
+<br><br>
+by default, mouse buttons Left, middle, Right (1,2,3) do the following:
+<ul>
+<li>LMB: only the selected edit end transforms, shortening, or lengthening and following edits all move up to make space or fill space - edits on other tracks (eg audio) will move together, if they are synchronous and the tracks are armed 
+<li>MMB: the selected edit end transforms, and the following edit also retracts/extends in time to make space for or replace what the selected edit retracted from
+<li>RMB: the edit is slipped, meaning, the start/end time is changed to earlier/later from the source media
+<li>when dragging an edit to transform its length, pressing Ctrl-Alt will allow clip end to snap to any edit end (on tracks above or below) or to a label etc.
+<li>there ari also Slide edit and drag edge options that can be set
+
+</ul>
+
+
+<br><br>
+<h3>Cutting on the TImeline</h3>
 <ul>
 <li>press <b>Del</b> or <b>X </b>to cut a selection (edits move up, no gap created)
+<li>press X with no selection and a hard cut is performed at she cursor
 <li>press <b>M</b> to mute a selection (edits stay put, gap created), press <b>CM </b>to first copy selected area then mute it
-<li>if in/out points are set the time between will be cut (or copied) or muted
-<li>press <b>V</b> to paste any cut/copied edit (including muted time), it will insert at the insert point and the edits will shift up to the right
+<li>if in/out points are set the time between will be removed, cut, copied or muted
+<li>press <b>V</b> to paste any cut/copied edit (including copied muted time), it will insert at the insert point and the edits will shift up to the right
 <li>select <b>Trim Selection</b> on the Edit menu to crop the timeline to selected!
+<li>To make sure that video and audio tracks cut together, set Settings > Align cursor on frames
+Shift-Space to make blank space at insert point - hold down to increase length of the blank, e.g. to make space for titles at the start
 </ul>
 <br><br>
 <h3>removing gaps</h3>
@@ -234,37 +272,18 @@ With media loaded in the resource window, you can
 
 <br><br>
 <h3>Snapping edit ends</h3>
-and first the awkward way:
-
+This method is used for cutting the front or end of edits off.
+<br>
 <ul><li>use in/out points: play until the cut point is reached and pause, then press <b>[</b> to set in-point... press <b>Alt-Right</b> to move to the end of the edit and press <b>]</b> to set out-point... press <b>del </b>or <b>X</b> to remove the end of the edit
 <li>select area: play until the cut point is reached and pause... press <b>Alt-Right</b> to move to the end of the edit... then press <b>Shift-Ctrl-Left</b> to select from end of edit back to the pause point... press <b>del </b>or <b>X</b> to remove the end of the edit
 <li>to contract the edit from the start you'd need to either make an in-point before playing, and out-point at the cut point, or do <b>Alt-Left</b> to return to start (after played until cut point) and <b>Shift-Ctrl-Right</b> to select up to pause point and then delete.
 <br><br></ul>
-Three new functions in CinGG: 
+Three new functions in CinGG that make this work much faster: 
 <ul><li>press <b>Ctrl-Alt-comma</b> to snap left handle to insert point, or <b>Ctrl-Alt-fullstop</b> to snap right handle to insert point - this makes work much easier!
-<li>Also, press <b>Shift-Ctrl-Alt-,</b> or <b>Shift-Ctrl-Alt-.</b> to snap from insert point to next label, to left or right (this instantly removes the everything between these points, so watch out)
+<li>Also, press <b>Shift-Ctrl-Alt-comma</b> or <b>Shift-Ctrl-Alt-fullstop</b> to snap from insert point to next label, to left or right (this instantly removes the everything between these points, so watch out)
 <li>and press <b>Ctrl-Alt</b> while clicking on the edit handle to snap edit end to insert point
 </ul>
 
-<br><br>
-<h3>Transforming edit ends</h3>
-when you move the mouse pointer to the edge of an edit an arrow appears, then you can drag the end left or right. The mouse button you use decides what the dragging does.
-<br><br>
-by default, mouse buttons Left, middle, Right (1,2,3) do the following:
-<ul>
-<li>LMB: only the selected edit end transforms, shortening, or lengthening and following edits all move up to make space or fill space - edits on other tracks (eg audio) will move together, if they are synchronous and the tracks are armed 
-<li>MMB: the selected edit end transforms, and the following edit also retracts/extends in time to make space for or replace what the selected edit retracted from
-<li>RMB: the edit is slipped, meaning, the start/end time is changed to earlier/later from the source media
-</ul>
-
-<br><br>
-<h3>Swap edits</h3>
-<ul>
-<li>switch to Drag and Drop mode with <b>E</b>
-<li>click on an edit title bar and drag it along the timeline
-<li>insertion arrows will appear to show you where it will be placed, and just drop it between two edits
-<li>you can also select multiple edits or between in-out points and press <b>X</b> to cut, and then <b>V </b>to paste back in at another point (be careful if I/O are set)
-</ul>
 
 <br><br>
 <h3>Labels</h3>
@@ -309,26 +328,64 @@ this can be done for fade in, and also audio fades.
 <h3>Fading audio</h3>
 note: the overlay band for audio fade by default is set to normal level at base of track, which means you can't achieve reduced audio or silence until you adjust that base level...
 <ul>
-<li>first select <b>Audio Fade</b> at bottom and lower "Automation adjust minimum" quite a bit, say, to <b>-45.0</b> (with the mouse scroll button over it) so that the base line will reach negative level
+<li>first select <b>Audio Fade</b> at bottom and lower the "Automation adjust minimum" quite a bit, say, to <b>-45.0</b> (with the mouse scroll button over it) so that the base line will reach negative level
 <li>then you can set keyframes as per video fade in/fade out
 </ul>
 
 <br><br>
-<h3>Make clips from the timeline</h3>
-<ul>
-<li>select an area on the timeline
-<li>press the "To clip" button and the selected part of edits will copy to the Clip resource window
-<li>also you can right-click in Clips and click Paste clip
-<li>you can copy/paste clips to the timeline, or a new timeline window
-<li>if you right-click on a clip and then click Nest to Media, it will be found in media, from there it will insert onto timeline with just one vid and one audio track, regardless if clip made from many tracks
+<h3>Speed auto</h3>
+Easily make changes to media playback using the speed auto band
+<li>under View menu, check Speed - if the speed line does not appear, set to Speed and adjust range to be shown, e.g. 0.005 to 5.125 which will allow speediing up five times, or set negative to 0 to enable slowing down
+<li>set a keyframe and then drag the speed line up to create fast-motion, or down fo slow-motion - the edit wiiil adjust its length to reflect the time used by the new speed
+<li>then you might want to ajust audio in the same way - or leave it normal.
 </ul>
 
 <br><br>
-<h3>Nesting projects</h3>
+<h3>Patchbay controls</h3>
+To the left of each track is the patchbay where certain controls are found.  
+
+<ul>
+<li>Play track - decides if track will be rendered and appear in Compositor
+<li>Arm track - an armed track means that edits will apply, unarmed means edits will not apply - so if you want to cut off some audio but not affect the video track, disarm the video track first, make the cut, then re-arm it again to carry on.
+<li>Draw media - toggles thumbnails on video tracks or waveform on audio tracks
+<li>Don't send output - mutes the track so that it will be blank when rendered or viewed in Compositor
+<li>Gang fader - applies fader adjustments across tracks from the track enabled - including setting keyframes and dragging curves
+<li>Track data height - shrink or grow track display
+<li>Fader slider - drag this to left to fade the whole track.
+</ul><br>
+-click and drag a button from one patchbay to another it applies to the other.<br>
+-Shift-click on a button it applies to all tracks.<br>
+-Tab with mouse over track toggles that track armed<br>
+-Shift-Tab toggles only that track armed<br>
+
+
+<h3>Changing timeline appearance</h3>
+<ul>
+<li>you can change colours of bars for any edits - click select them in drag-drop mode, then rightclick
+<li>If you enable auto colour of assets in Prferences > Appearance, the edit bars will become multi coloured - also use the alpha slider at bottom to colourise the content area too.
+<li>the arrow buton in patchbay folds up the track to only title bar - click and drag down all tracks to close them all and make the timeline more compact (if there is so much clutter)
+<li>cycle the track positions with Shift-Up and Shift-Down - affects armed tracks, so unarmed do not move
+</ul>
+
+<br>
+<br><br>
+<h3>Make clips from edited material on the timeline</h3>
+<ul>
+<li>select an area on the timeline
+<li>press the "To clip" button or hit 'I' and the selected part of edits will copy to the Clip resource window
+<li>also you can right-click in Clips and click Paste clip
+<li>you can copy/paste clips to the timeline, or a new timeline window
+<li>if you right-click on a clip and then click Nest to Media, it will be found in media, from there it will insert onto timeline with just one vid and one audio track, regardless if clip made from many tracks
+<li>you can also copy a selection from the timeline/compositor and then paste it into another timeline
+<li>to copy a clip made in one instance over to another, right-click on the clip in resources > View in new window or drag to Viewer, set In-point at the start (Out-point will be automatically set to end), press C, open new instance, press V on timeline
+</ul>
+
+<br><br>
+<h3>Nesting sequences</h3>
 You can import project xml files (EDLs) into any other project, whereby you can compile lots of individual editing sessions into a bigger work, without all their sometimes complex tracks and plugins cluttering up the whole timeline.
 <ul>
 <li>open media and select xml of project to import
-<li>then choose either load strategy of create new resources only, to add as clips to resources window,
+<li>then choose either load strategy of create new resources only, to add as clips to resources window
 <li>or EDL strategy of Nested, to insert directly to the timeline
 </ul>
 
@@ -384,26 +441,34 @@ You can render one project in different formats, just add it to list multiple ti
 <li>close Cin and render from the command line.. run `<b>cin -r batchjob.xml</b>`
 <li>command line render will abort if an output file already exists
 </ul>
-<br><br>
+<br>
+<br><hr noshade="noshade">
 
-++++++++++++++++++++++++++++++++++++++
-<br><br>
+<br><br><br>
 <h2 id="4" class="tag">Some effects handy to know</h2>
-<br><br>
-Note: when you resize an effect on the timeline, by dragging its ends, it causes other effects to move along too - so you must hold Shift when dragging to make only that effect move and no others to be affected.
+
+<h3>Attaching plugins/effects</h3>
+<ul>
+<li>Simply drag an effect from resources to the video or audio track or right-click on a track and attach effect
+<li>the effect will be applied to only a single edit, a selected area or I/O points
+<li>drag the effect to the patchbay for it to apply to the entire track - but first remove I/O points
+<li>when attaching effects, they will stack up under the edits
+<li>resize an effect on the timeline by dragging its ends - and to prevent other effects to moving along too hold Shift when dragging to make only that effect move and no others to be affected.
+<li>to move the effect, switch to drag mide with E and click drag
+<li>if there is no space on the effect bar to move the effect into (it will probably jump to space at the end if you try fit it into a small space), just drag a hew effect down to an edit and it will extend the stack of effects, then move theeffect into empty space on the lower bar just created.
 
 <h3>Video transitions</h3>
 <ul>
 <li>drag a transition from the Resource window onto a join between two edits, A and B: hovering over the start of edit B will show a box over the join on which to drop it
-<li>Right click on the transition effect icon at the edit join to set the duration
+<li>Right click on the transition effect icon at the edit join to set the duration or drag the duration bar
 <li>note: the transition between edits will begin at start of edit B, which means preferably there is some time left of 1st edit that will show in part during the transition - if there is no more of source media after end of edit A end then edit A picture will freeze during the transition!
 <li>the transition may not look very good played realtime in the timeline but it should be good once rendered - you can set in/out points to render that part to run a test first.
 
 </ul>
 <br><br>
-<b>note:</b> if you have applied an effect such as colour-correction to edit A and the effect is not attached (not wanted) on edit B, you will run into a small problem with a video transition.. do you stop the effect at end of A (and then visible edit A suddenely returns to pre-effect picture during the transition) or do you exten it to the end of the transition (and then edit B gets coated with edit A effect for the duration of the transition, which is bad)? 
+<b>note:</b> if you have applied an effect such as colour-correction to edit A and the effect is not attached (not wanted) on edit B, you will run into a small problem with a video transition.. do you stop the effect at end of A (and then visible edit A suddenely returns to pre-effect picture during the transition) or do you extend it to the end of the transition (and then edit B gets coated with edit A effect for the duration of the transition, which is bad)? 
 <br><br>
-What you need to do in this case, is add a video track above and drag edit A onto it, then drag-extend the effect attached to edit A to the end of the transition - the effect will then not alter edit B picture!
+Answer: what you need to do in this case, is add a video track above and drag edit A onto it, then drag-extend the effect attached to edit A to the end of the transition - the effect will then not alter edit B picture!
 <br>
 <br><br>
 <h3>Colour correction</h3>
