@@ -208,47 +208,57 @@ With media loaded in the resource window, you can
 <br><br>
 
 
-<h3>Selecting edits and areas</h3>
+<br><br>
+<h3>Align Audio with Video</h3>
+Some cameras make a complete mess of things, recording the audio of clips a few frames linger than the video and when you join thirty clips on the timeline the disjoint becomes enlarged as you progress resulting in some bad dislocations that take pains to set right - or you could spend hours cutting all the ends off the audio clips to keep it in sync with mouths and hammers!
+<br>
+But here's an automatic tool that does the whole timeline in one click!  Good work Good Guy! I wonder if this function was added after my request on the mailing list?
 <ul>
-<li>to select an edit (really the area of the edit) double click on the titlebar
-<li>to select an area, activate <b>copy-paste mode</b>, or I-beam, then click and drag on edits, and Shift-click-drag to extend/shrink the area already selected
+<li>select the area with the edits to align or the whole timeline with <b>A</b> 
+<li>Edit menu > Align edits
+</ul>
+
+
+
+<h3>Selecting edits and areas - Cut and Paste Mode</h3>
+<ul>
+<li>to select an edit (really a column of time passed by an edit) double click on it
+<li>to select a time length, click and drag on timeline, and Shift-click-drag to extend/shrink the area already selected
 <li>to select everything left or right of the insert point, press <b>Shift-Home </b>or <b>Shift-End</b>
 <li>to select the whole timeline hit <b>A</b>
 <li>to select with more accuracy, play to or find a start point and press <b>[</b> (set in-point), then play until the end point is found and press <b>]</b> (set out-point), then click on the in-point and <b>Shift-click</b> on the out-point to select the time between them
 <li>to remove in/out points, just double-press <b>[</b> and <b>]</b>
 <li>you can also do <b>Shift-Alt and click </b>on a point along the timeline to select from that point back to the insert point
-<li>another way is to adjust the selected time using the entry fields at the bottom panel - Bkspace, enter new value, Enter
-<li>to cancel selection, press <b>A </b>twice, or click in the timeline (copy paste mode)
+<li>another way is to adjust the selected time using the entry fields at the bottom panel - press Bkspace, enter new value, Enter
+<li>to cancel selection, press <b>A </b>twice, or click in the timeline (only copy paste mode)
 </ul>
+With any edit or time space selected, you can perform copy, cut, remove or mute actions, or send to a clip that will be stored in the Clips folder (see below);<br>
+Also, you can attach effects to that selection;<br>
+If you double-click on an edit, hold Ctrl and drag, you can move both video and audio of a clip together - but they need to be aligned on same frames, and with some stupid source media this never happens! It is actually far more effective if you switch to drag and drop mode with <b>E </b>  for moving edits
 
 
-<br><br>
-<h3>Moving edits</h3>
+
+<br><br><br>
+<h3>Moving edits - Drag and Drop Mode</h3>
 <ul>
-<li>to move an edit, switch to Drag and Drop mode with <b>E</b>
-<li>click on an edit and drag it along the timeline
+<li>hold Ctrl and left click on an edit then drag it along the timeline - it will change its position on the timeline, so that edits will shift into the space where it was and no edits will be deformed or cut - but if you drag an edit without pressing 
+Ctrl... God have mercy on you!
+<li>hold Shift and drag selected edits means that they will overwrite whatever edits they are dropped on
 <li>insertion arrows will appear to show you where it will be placed, and just drop it between two edits
 <li>if there is blank space on the track when you drag an edit a coloured box moves about to where you want it - green, can drop; yellow, carn drop and will align with another edit; blue can't fit; green wrong track type
-<li>select multiple edits with left clicking while holding Ctrl, or middle mouse button > Select edits, to select edits on the insert point
+<li>select multiple edits with left clicking while holding Ctrl, or middle mouse button > Select edits, to select edits on the insert point, or all edits between I/O points, or within a selection
 <li>to cut/copy selected, press middle button > Copy pack/Cut pack - then <b>V </b> will paste them back in at another point (be careful if I/O are set), middle-button Paste will drop them at the mouse cursor
-<li>to create a group of edits, select holding Ctrl, then Shift-left mouse on them - they will stay as a group until ungrouped with Shift-click again
-<li>to remove the selected or grouped edits use <b>Ctrl-X </b> or <b>Ctrl-M </b>  to mute them
-<li>Ctrl-Shift-A clears selections
+<li>to remove the selected edits use <b>Ctrl-X </b> or <b>Ctrl-M </b>  to mute them
+<li><b>Ctrl-Shift-A </b>clears selections
+<li>there is also some functionality while in cut and paste mode, if you hold Ctrl and click on edits it selects them, but you can only drag one edit at a time in that mode
 </ul>
 
-
 <br><br>
-<h3>Transforming edit ends</h3>
-when you move the mouse pointer to the edge of an edit an arrow appears, click on this and drag the end left or right. The mouse button you use decides what the dragging does.
-<br><br>
-by default, mouse buttons Left, middle, Right (1,2,3) do the following:
+<h3>Create a group of edits</h3>
 <ul>
-<li>LMB: only the selected edit end transforms, shortening, or lengthening and following edits all move up to make space or fill space - edits on other tracks (eg audio) will move together, if they are synchronous and the tracks are armed 
-<li>MMB: the selected edit end transforms, and the following edit also retracts/extends in time to make space for or replace what the selected edit retracted from
-<li>RMB: the edit is slipped, meaning, the start/end time is changed to earlier/later from the source media
-<li>when dragging an edit to transform its length, pressing Ctrl-Alt will allow clip end to snap to any edit end (on tracks above or below) or to a label etc.
-<li>there ari also Slide edit and drag edge options that can be set
-
+<li>In drag and drop mode, select clips holding Ctrl, then Shift-left click on them - they are grouped and given a colour code, which surrounds the group when you click on it, or can be seen in each of the group's edit's title bar when no longer selected.  They will stay as a group until ungrouped with Shift-click again
+<li>creating groups has some good advantages, as if you need to frequently move a number of edits, being grouped you can just select them all with a single click, or select multiple groups, and move them, copy them, send to clip and so forth
+<li>you must use <b>Ctrl-X</b>,  <b>Ctrl-C </b>or <b>Ctrl-M </b>  with groups, delete key has no function
 </ul>
 
 
@@ -271,6 +281,21 @@ by default, mouse buttons Left, middle, Right (1,2,3) do the following:
 <li>to remove empty space, double-click in the space to highlight it and then press <b>X </b>or <b>Del</b>
 </ul>
 
+
+<br><br>
+<h3>Transforming edit ends</h3>
+when you move the mouse pointer to the edge of an edit an arrow appears, click on this and drag the end left or right. The mouse button you use decides what the dragging does.
+<br><br>
+by default, mouse buttons Left, middle, Right (1,2,3) do the following:
+<ul>
+<li>LMB: only the selected edit end transforms, shortening, or lengthening and following edits all move up to make space or fill space - edits on other tracks (eg audio) will move together, if they are synchronous and the tracks are armed 
+<li>MMB: the selected edit end transforms, and the following edit also retracts/extends in time to make space for or replace what the selected edit retracted from
+<li>RMB: the edit is slipped, meaning, the start/end time is changed to earlier/later from the source media
+<li>when dragging an edit to transform its length, pressing Ctrl-Alt will allow clip end to snap to any edit end (on tracks above or below) or to a label etc.
+<li>there ari also Slide edit and drag edge options that can be set
+
+</ul>
+
 <br><br>
 <h3>Snapping edit ends</h3>
 This method is used for cutting the front or end of edits off.
@@ -284,6 +309,20 @@ Three new functions in CinGG that make this work much faster:
 <li>Also, press <b>Shift-Ctrl-Alt-comma</b> or <b>Shift-Ctrl-Alt-fullstop</b> to snap from insert point to next label, to left or right (this instantly removes the everything between these points, so watch out)
 <li>and press <b>Ctrl-Alt</b> while clicking on the edit handle to snap edit end to insert point
 </ul>
+
+
+
+<br><br>
+<h3>Inter-view Mode</h3>
+Here is a very useful tool, enabling you to see where a media or clip has been used on the timeline
+<ul>
+<li>In the resource window, turn on Full play in the top drop-down
+<li>middle-button on a clip and a large thumb comes up, with a top black/white band (the source) and a bottom black/red band (the timeline), where the white is the parts of source used in timeline, and the red is where the used source is placed on the timeline
+<li>click on the top band to open the clip in Viewer to make adjustments
+<li>click on the bottom band to focus to the clip's place on the timeline
+<li>Shift-click on the bottom band to select the clip's content on the timeline
+</ul>
+
 
 
 <br><br>
