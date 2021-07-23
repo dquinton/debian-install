@@ -194,8 +194,10 @@ table {
 	background-color: transparent; 
 	font-size: 1em;
 } 
-.index a:link, .tabl a:link { color: #00326A; text-decoration: none;}  
-.index a:hover, .tabl a:hover {color: #154DA7; text-decoration: underline;  }
+.index a:link, .tabl a:link { color: #2D90FF; text-decoration: none;}  
+.index a:hover, .tabl a:hover {color: #0058BA; text-decoration: underline;  }
+.index a:visited, .tabl a:visited { color: #CE32B4; text-decoration: none;}
+
 
 .tabl{                             /* yes tabl not table */
 	background-color: transparent; 

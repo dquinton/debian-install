@@ -63,12 +63,7 @@ A Live CD will also install a full DE (desktop environment) of your choice, but 
 
 <br><br><br>
 Each release of Debian/Devuan is code-named and passes through three stages of development life before becoming stable - <br>
-<br><br>
-In 2016, a change took place in Debian when it was voted to switch to a complex start-up daemon called <b>systemd</b> and the old 'init' start-up scripts that were easy to customise were scrapped, leaving practically no choice on the matter to debian users (which opens the controversy about systemd as Debian is meant to be about freedom of choice).  The new daemon is also extremely difficult to learn and also it can't easily be bypassed as so many other programs depend on it.  Trying to run Debian on the old sysinit is now nigh impossible.  
-
-<br><br>
-Finding systemd running after upgrading to Debian Jessie came as a little surprise and I tried everything I could to remove it, as the reason I chose Debian was to be free of lock-ins.  While I succeeded at the time, I was then left unable to install any program that depended on systemd. After that I came to <b>Devuan</b>, a Debian branch that keeps systemd out of everything.  Sysinit is able to operate like before and any system or software package that needs systemd is repackaged by Devuan maintainers in order to exclude it.  All other packages are simply mirrored from the Debian software repositories. Release code names are different to Debian and it is not possible (since Jessie) to dist-upgrade from Debian to Devuan.
-<br><br>
+<br>
 <div class="bullet"><ul>
 <li><b>Experimental</b> (do not use, it is for developers! there will be many breakages of your system), <br>
 <li><b>Unstable</b> (don't either, there will still be breaks), <br>
@@ -99,6 +94,13 @@ An ISO file contains every file needed to be put on a CD/DVD/USB stick in order 
 <h3>Devuan</h3>
 
 Devuan is a fork of Debian that excludes the controversial "<b>systemd-sysv</b>" and is maintained by the Devuan foundation.  
+<br><br>
+In 2016, a change took place in Debian when it was voted to switch to a complex start-up daemon called <b>systemd</b> and the old 'init' start-up scripts that were easy to customise were scrapped, leaving practically no choice on the matter to debian users (which opens the controversy about systemd as Debian is meant to be about freedom of choice).  The new daemon is also extremely difficult to learn and also it can't easily be bypassed as so many other programs depend on it.  Trying to run Debian on the old sysinit is now nigh impossible.  
+
+<br><br>
+Finding systemd running after upgrading to Debian Jessie came as a little surprise and I tried everything I could to remove it, as the reason I chose Debian was to be free of lock-ins.  While I succeeded at the time, I was then left unable to install any program that depended on systemd. After that I came to <b>Devuan</b>, a Debian branch that keeps systemd out of everything.  Sysinit is able to operate like before and any system or software package that needs systemd is repackaged by Devuan maintainers in order to exclude it.  All other packages are simply mirrored from the Debian software repositories. Release code names are different to Debian and it is not possible (since Jessie) to dist-upgrade from Debian to Devuan.
+
+
 <br><br>
 
 From the Devuan website you can follow links to download mirrors from which you can find either stable or old-stable (those being beowulf and ascii currently in 2020).
