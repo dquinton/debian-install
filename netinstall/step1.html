@@ -129,7 +129,7 @@ It's a good idea to run the checksum on the downloaded ISO so that you don't was
 <br><br>
 Download the SHA256SUMS from the release archive and run this in same dir as the downloaded ISO file:
 <form>
-<textarea name="T" id="cmd" rows="1" cols="30">
+<textarea name="T" id="cmd" rows="1" cols="50">
 sha256sum --ignore-missing -c SHA256SUMS</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -160,7 +160,7 @@ Put the ISO onto a usb stick with a few easy steps with <a href="https://sourcef
 <br><br>
 Or onto a CD/DVD with any disk-burning utility, or with Linux command line.. using wodim or dd
 <form>
-<textarea name="T" id="cmd" rows="1" cols="30">
+<textarea name="T" id="cmd" rows="1" cols="50">
 wodim dev=/dev/sr0 -eject image.iso</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
