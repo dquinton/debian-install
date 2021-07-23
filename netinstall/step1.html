@@ -381,7 +381,7 @@ apt install xorg xfce4 lightdm pm-utils hdparm cpufrequtils xfce4-power-manager 
 </form>
 <br><br>
 
-If you need a GUI package manager and installer, add <span style="color:#7C2020">synaptic apt-xapian-index gdebi </span>
+If you need a GUI package manager and installer, add <span style="color:#FD7D94">synaptic apt-xapian-index gdebi </span>
 <br><br>
 This gets you a window manager, light desktop, display manager (login), network manager, power manager, browser, text editor and a cool terminal.
 <br><br>
@@ -404,7 +404,7 @@ apt install xorg lxde lightdm lxtask lxpolkit pm-utils hdparm cpufrequtils cpuli
 
 It's possible to run openbox alone without installing the lxde package (but just the parts of it you might need) and without even a Display Manager (login screen etc), but its a little complex to set up unless you're handy with Debian already.
 <br><br>
-To do that I leave out lxde and lightdm, and add instead: <span style="color:#7C2020">openbox lxpanel lxtask</span>.  Then at boot, when reaching the command prompt, just type "startx" and Enter. But you may have problems with Xorg display permissions if you opt out of installing a display manager -see <a href="{{site.baseurl}}/netinstall/lxde-fast.html#xorg">Xorg issue</a> 
+To do that I leave out lxde and lightdm, and add instead: <span style="color:#FD7D94">openbox lxpanel lxtask</span>.  Then at boot, when reaching the command prompt, just type "startx" and Enter. But you may have problems with Xorg display permissions if you opt out of installing a display manager -see <a href="{{site.baseurl}}/netinstall/lxde-fast.html#xorg">Xorg issue</a> 
 <br><br>
 <span class="ht">Warning! this is not perhaps a good idea for beginners.</span> Installing LXDE will be more straightforward. But see see my page, <a href="{{site.baseurl}}/config/plain-openbox.html">plain openbox</a> if this is the way you want to go!
 
@@ -442,7 +442,7 @@ apt install thunar thunar-volman thunar-archive-plugin tumbler tumbler-plugins-e
 <h3>Additional installs</h3>
 Prepare for bluetooth, NTFS and FAT32/exFAT support, ssh, archiving, printing, pgp, time, system backup
 <form>
-<textarea name="T" id="install" rows="2" cols="100">
+<textarea name="T" id="install" rows="3" cols="100">
 apt install bluetooth blueman ntfs-3g sshfs blktool dosfstools mtools exfat-utils exfat-fuse testdisk gvfs zip unzip bzip2 p7zip-full locate git less cups gpa ntp partclone fsarchiver printer-driver-brlaser</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
@@ -550,7 +550,7 @@ adduser <username> netdev</textarea>
 then restart networking with:
 <form>
 <textarea name="T" id="cmd" rows="1" cols="80">
-sudo /etc/init.d/network-manager restart</textarea>
+sudo /etc/init.d/networking restart</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 or just reboot into the desktop

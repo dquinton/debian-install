@@ -19,7 +19,7 @@
 .onpage ul a:link  {
   background: transparent; 
   }
-.onpage a:link { color: #8A8A8A; text-decoration: none;}  
+.onpage a:link { color: #B4B4B4; text-decoration: none;}  
 .onpage a:focus,
 .onpage a:hover { color: #8A8A8A; text-decoration: underline;  }
 .onpage a:visited { color: #8A8A8A; }
@@ -50,7 +50,7 @@
     margin-left: -56px;    /* move drop down list to the left */
   width: 420px;
   height: 15px;
-  color: #969696;
+  color: #DEDEDE;
    
 }
 
@@ -71,7 +71,7 @@
 .onpage ul ul li a, 
 .onpage ul ul li a:link,
 .onpage ul ul li a:visited  {
-  color: #969696;
+  color: #dedede;
 }
 
 .onpage ul ul li a:hover {

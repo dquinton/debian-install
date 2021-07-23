@@ -37,10 +37,10 @@ div.parent {             /* link to parent above page title */
   top: 145px;
   left: 45px;
   }
-.parent a:link { color: #0058BA; text-decoration: none;}  
+.parent a:link { color: #0E4D96; text-decoration: none;}  
 .parent a:focus,
-.parent a:hover { color: #0058BA; text-decoration: underline;  }
-.parent a:visited { color: #0058BA; }
+.parent a:hover { color: #075BBA; text-decoration: underline;  }
+.parent a:visited { color: #0E4D96; }
 
 
 div.cont { 
@@ -64,11 +64,16 @@ div.cont {
 
 
 a,
-a:link { color: #3F85F7; text-decoration: none;}
+a:link { color: #76B6FF; text-decoration: none;}
 a:focus,
-a:hover {color: #154DA7; text-decoration: underline;  }
-a:visited {color: #AD578E; }
+a:hover {color: #0058BA; text-decoration: underline;  }
+a:visited {color: #CE32B4; }
 a:active  { color: #80244D; } 
+
+index a:link, .tabl a:link { color: #2D90FF; text-decoration: none;}  
+.index a:hover, .tabl a:hover {color: #0058BA; text-decoration: underline;  }
+.index a:visited, .tabl a:visited { color: #CE32B4; text-decoration: none;}
+
 
 h1 { 
   background-color:#A9ABB9;
