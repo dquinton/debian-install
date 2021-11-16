@@ -103,7 +103,7 @@ Finding systemd running after upgrading to Debian Jessie came as a little surpri
 
 <br><br>
 
-From the Devuan website you can follow links to download mirrors from which you can find either stable or old-stable (those being beowulf and ascii currently in 2020).
+From the Devuan website you can follow links to download mirrors from which you can find either stable or old-stable (those being chimaera and beowulf currently, end of 2021). 
 <br>
 --> under the 'installer-iso' links you will find the base-system CD images, whereas under 'live' are the full desktop installer images.
 <br>
@@ -282,14 +282,14 @@ lines needed for Devuan:
 <br>
 <form>
 <textarea name="T" id="file" rows="8" cols="80">
-deb http://deb.devuan.org/merged beowulf main contrib non-free
-deb-src http://deb.devuan.org/merged beowulf main contrib non-free
+deb http://deb.devuan.org/merged chimaera main contrib non-free
+deb-src http://deb.devuan.org/merged chimaera main contrib non-free
 
-deb http://deb.devuan.org/merged beowulf-security main
-deb-src http://deb.devuan.org/merged beowulf-security main
+deb http://deb.devuan.org/merged chimaera-security main
+deb-src http://deb.devuan.org/merged chimaera-security main
 
-deb http://deb.devuan.org/merged beowulf-updates main
-deb-src http://deb.devuan.org/merged beowulf-updates main</textarea>
+deb http://deb.devuan.org/merged chimaera-updates main
+deb-src http://deb.devuan.org/merged chimaera-updates main</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -389,7 +389,7 @@ wicd is an alternative to network-manager-gnome.<br>
 lightdm is your best choice of display manager, Gnome's gdm3 comes with bloat of dependencies.<br>
 firestarter (firewall) is no longer maintained, so you are better off using iptables (see my <a href="{{site.baseurl}}/config/firewall.html">firewall</a> page)
 <br>
-for browsers you can choose between chromium, iceweasel and midori, plus others - see my Step4 page.
+for browsers you can choose between chromium, iron, icecat, midori, plus others - see my Step4 page.
 <br><br>
 <br>
 <h3>LXDE Desktop</h3>

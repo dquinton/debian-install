@@ -5,7 +5,7 @@ title: Devuan bootstrapping
 id: net
 ---
 
-
+ 
 <div class="parent"><a href="../netinstall.html">NetInstall</a> ></div>
 
 <div class="cont">
@@ -43,7 +43,7 @@ sudo apt install debootstrap</textarea>
 The basic debootstrap command looks like this for devuan:
 <br>
 <textarea name="T" id="cmd" rows="1" cols="80">
-debootstrap --arch amd64 beowulf /mnt http://deb.devuan.org/merged/ beowulf</textarea>
+debootstrap --arch amd64 chimaera /mnt http://deb.devuan.org/merged/ chimaera</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -72,7 +72,7 @@ Following that is another script that can be run in the chroot device.
 <textarea name="T" id="file" rows="100" cols="120">
 #!/bin/bash
 #run as root, pls check through before running it! Use at your own risk. 
-#this script basically helps to automate selecting a device to install on, option format it, then run debootstrap (set here for devuan beowulf -check for others) before mounting and entering chroot on that device
+#this script basically helps to automate selecting a device to install on, option format it, then run debootstrap (set here for devuan chimaera -check for others) before mounting and entering chroot on that device
 #the script stops there and work can be done in chroot, such as set up apt, fstab, grub2, locales, packages etc - to quit chroot type `exit`and then this script will complete, unmounting everything.
 
 
@@ -108,7 +108,7 @@ rsync -ar /var/cache/apt/archives/* $TMT/var/cache/apt/archives
 
 #-----------------------------------------------------------------------------------------
 #run debootstrap cmd on target device, for devuan release
-debootstrap --arch amd64 beowulf $TMT http://deb.devuan.org/merged/ beowulf
+debootstrap --arch amd64 chimaera $TMT http://deb.devuan.org/merged/ chimaera
 
 #-----------------------------------------------------------------------------------------
 #copy the chroot commands script over

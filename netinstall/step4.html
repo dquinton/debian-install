@@ -22,7 +22,7 @@ id: net
     </li>
   </ul>
 </div>
-
+ 
 <div class="pagemenu">
 <table cellpadding="5"><tr><td>
    <a href="#1">Light-weight web browsers</a><br>
@@ -294,6 +294,13 @@ An excellent app for collating, sorting and editing GPS data.  Its simple and (q
 sudo apt install gpsbabel gpsbabel-gui viking</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
+<br>
+Might need to make a symlink...
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+sudo ln -s /usr/lib/x86_64-linux-gnu/libgps.so.28.0.0 /usr/lib/x86_64-linux-gnu/libgps.so.23</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
 <br><br>
 Get the latest Viking from here <a href="http://sourceforge.net/projects/viking/files/">http://sourceforge.net/projects/viking/files/</a>
@@ -318,8 +325,6 @@ sudo make install</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-or sudo checkinstall to make a deb package
-<br><br>
 
 the --disable-mapnik flag is necessary in order to build without libmapnik installed
 <br><br>
@@ -338,23 +343,12 @@ sudo apt install qgis python-qgis inkscape</textarea>
 To get the latest version, add the qgis repo..
 <br>
 (see the Qgis Debian install page here <a href="https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu">https://qgis.org/en/site/forusers/alldownloads.html#debian-ubuntu</a>)
+<br>
+And follow instructions to add/install the keyring.
 
-<form><textarea name="T" id="install" rows="8" cols="100">
-sudo apt install gnupg software-properties-common
-sudo sh -c 'echo "deb http://qgis.org/debian buster main" >> /etc/apt/sources.list'  
-wget -qO - https://qgis.org/downloads/qgis-2020.gpg.key | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/qgis-archive.gpg --import
-sudo chmod a+r /etc/apt/trusted.gpg.d/qgis-archive.gpg
-sudo apt update && sudo apt install qgis python-qgis </textarea>
-&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
-</form>
-<br>
-Note: running testing you will need the "buster" repo.<br>
-This may not be recommended if running Devuan.??
 <br><br>
-<b>Also, if you run a dist-upgrade</b> at any time, its most likely that Qgis will be removed in the process, so you will need to reinstall qgis with the above apt command again.
-<br><br>
-After upgrading to devuan ascii (testing) I couldn't reinstall qgis (which was removed in the upgrade) because libqt5 was screaming for qtbase-abi-5-11-2, which was not available anywhere.  The only solution was to make a dummy qtbase-abi-5-11-2 debian archive and install it with dpkg. To do that,
-<br>
+<b>Also, if you run a dist-upgrade</b> at any time, it's possible that Qgis will be removed in the process, with python updates etc,so you will need to reinstall qgis.
+<br><br><br>
 
 <div class="bullet"><ul><li>first install the package 'equivs'
 
