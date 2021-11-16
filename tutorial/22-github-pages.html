@@ -380,13 +380,17 @@ the -m option submits the reason for the commit to git.
 Note: if you don't stage new files (add to tracking), you will get this kind of message: "nothing added to commit but untracked files present" with a list of local files that can't be commited becuse they are not tracked by Git yet.
 <br><br>
 
-to push all the new files or updated ones to Github,
+to push all the new files or updated ones to Github, first make sure you have a personal authentication token from the Github site -> Settings > Developer > Personal Access Tokens, and check Repo and generate, and copy it.
+<br><br>
+then add to the file .git/config like this https://<GITHUB_ACCESS_TOKEN>@github.com/<GITHUB_USERNAME>/<REPOSITORY_NAME>.git
+<br><br>
+Then you can push changes to remote..
 <form>
 <textarea name="T" id="cmd" rows="1" cols="30">
 git push</textarea>&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
-and you'll be promted for username and password - you will need a personal authentication token from Github site - Settings > Developer
+and you'll be promted for username and password (token)
 <br><br>
 though, if you set gh-pages as the default branch, you may get this error: "fatal: The current branch gh-pages has no upstream branch", and you'll need to run,
 
