@@ -71,14 +71,16 @@ Each release of Debian/Devuan is code-named and passes through three stages of d
 </div>
 <br><br>
 
-A new release is called <b>Stable</b>, packages are well-tested and bugs mostly already repaired, security updates are maintained but software is not so cutting-edge as in testing and it's sometimes needful to obtain packages direct from developers to run the most up to date versions.
+A new release is called <b>Stable</b>, packages are well-tested and bugs mostly already repaired, security updates are maintained but software is not so cutting-edge as in testing and it's sometimes needful to obtain packages direct from developers to run the most up-to-date versions.
 <br><br>
-You can follow any release stage (e.g. Testing), by adding its stage name to your sources list file (see below) which means you will always keep your system at that level, regardless whether testing becomes stable in a new release and the previous 'unstable' becomes the new testing.  If you add the code name of the current testing to your sources, you will stay with that release when it becomes stable and will need to change the code name in order to follow testing again.  
+You can follow any release stage (e.g. Testing), by adding its stage code name to your sources list file (see below) which means you will always keep your system on that release, regardless whether testing becomes stable in a new release and the previous 'unstable' becomes the new testing.  If you add the code name of the current testing to your sources, you will stay with that release when it becomes stable and will need to change the code name in order to follow testing again - whereas, if you just use the code name 'testing' you will aqlways stay on testing, regardless if testing beis released as stable, or if you use 'stable' you will keep on stable, regardless if stable becomes 'old stable' at some point.  
 <br><br>
-However, when Testing is still new in life there may be some things that could break your system (most likely you'll have package install conflicts to sort out)... so its advisable to run stable while testing still needs ironing out, and it's highly recommended for production systems or servers (where you don't want to run into any problems at all).  You can still install some packages from testing as well, by using the "-t testing" option with apt, while your default release is set to stable (but that's mish-mashing releases which may not be healthy).
+However, when Testing is still new in life there may be some things that could break your system (most likely you'll have package install conflicts to sort out)... so its advisable to run stable while testing is newly down from untable and still needs ironing out, and it's highly recommended for production systems or servers (where you don't want to run into any problems at all).  You can still install some packages from testing as well, by using the "-t testing" option with apt, while your default release is set to stable (but that's mish-mashing releases which may not be healthy).
 <br><br><a name="1"></a>
 Upgrading from Stable to Testing is very straight forward - see my page <a href="{{site.baseurl}}/netinstall/upgrade.html">upgrade debian</a>.
 
+<br><br>
+I used to be really avid following testing, to make sure I had the more recent packages and newer program versions running, and that is OK if you have a good internet connection, to keep upgrading the system (dist-upgrade), and also the time at hand to fix things (and also good internet is needed to sort things out)... but nowadays, me having a poor internet connection being one reason, and with many important apps now shipping Appimages that run by themselves, not needing an up-to-date system, I keep the box on stable, and find that plenty good.
 <br><br>
 <hr noshade="noshade"><br><br>
 <b id="1" class="tag">Pre-install, get an ISO file...</b>
@@ -376,16 +378,16 @@ Apologies for anything that no longer works!!! I don't run Xfce any more and so 
 To install a fully-functioning XFCE desktop, enter this on the command line:
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt install xorg xfce4 lightdm pm-utils hdparm cpufrequtils xfce4-power-manager wicd xfce4-notifyd geany chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme rxvt-unicode bash-completion htop elinks gparted </textarea>
+apt install xorg xfce4 lightdm pm-utils hdparm cpufrequtils xfce4-power-manager xfce4-notifyd chromium geany tango-icon-theme dmz-cursor-theme moblin-cursor-theme rxvt-unicode bash-completion htop elinks gparted network-manager-gnome</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
 
 If you need a GUI package manager and installer, add <span style="color:#FD7D94">synaptic apt-xapian-index gdebi </span>
 <br><br>
-This gets you a window manager, light desktop, display manager (login), network manager, power manager, browser, text editor and a cool terminal.
+This gets you a window manager, light desktop, display manager (login), power manager, browser, text editor, a cool terminal and sturdy network manager.
 <br><br>
-wicd is an alternative to network-manager-gnome.<br>
+the wicd network manager is no longer maintained<br>
 lightdm is your best choice of display manager, Gnome's gdm3 comes with bloat of dependencies.<br>
 firestarter (firewall) is no longer maintained, so you are better off using iptables (see my <a href="{{site.baseurl}}/config/firewall.html">firewall</a> page)
 <br>
@@ -397,7 +399,7 @@ for browsers you can choose between chromium, iron, icecat, midori, plus others 
 To install LXDE, (Lightweight X Desktop Environment) a slightly less memory-hungry desktop, enter this on the command line:
 <form>
 <textarea name="T" id="install" rows="4" cols="100">
-apt install xorg lxde lightdm lxtask lxpolkit pm-utils hdparm cpufrequtils cpulimit alsa-utils xfce4-power-manager wicd chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf geany rxvt-unicode bash-completion htop elinks gparted </textarea>
+apt install xorg lxde lightdm lxtask lxpolkit pm-utils hdparm cpufrequtils cpulimit alsa-utils xfce4-power-manager chromium tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf geany rxvt-unicode bash-completion htop elinks gparted network-manager-gnome </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>

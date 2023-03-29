@@ -307,12 +307,16 @@ Get the latest Viking from here <a href="http://sourceforge.net/projects/viking/
 <br><br>
 get build dependencies<br>
 <form>
-<textarea name="T" id="install" rows="4" cols="80">
-sudo apt install libcurl4-gnutls-dev libgtk2.0-dev libsqlite3-dev nettle-dev libgeoclue-2-dev libgexiv2-dev libgps-dev libmagic-dev libbz2-dev libzip-dev liboauth-dev libmapnik-dev</textarea>
+<textarea name="T" id="install" rows="5" cols="80">
+sudo apt install itstool gtk-doc-tools libcurl4-gnutls-dev libgtk2.0-dev libgtk-3-dev libjson-glib-dev libsqlite3-dev nettle-dev libgeoclue-2-dev libgexiv2-dev libgps-dev libmagic-dev libbz2-dev libzip-dev liboauth-dev libmapnik-dev</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-<br>
-note that libmapnik pulls in a large amount of packages and it can be left out.
+<br><br>
+
+
+
+Note that libmapnik pulls in a large amount of packages and it can be left out.<br>
+There is also a flatpak version available, but it needs flatpak set up and the KDE runtime installed, download size over 700MB!
 
 <br>
 <br>

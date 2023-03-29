@@ -48,7 +48,7 @@ It looks like this for the Netinstall CD..
 <b>for LXDE</b>
 <form>
 <textarea name="T" id="install" rows="3" cols="100">
-apt install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf geany rxvt-unicode bash-completion htop elinks gparted xcape</textarea>
+apt install xorg lxde lightdm lxtask xfce4-power-manager pm-utils hdparm cpufrequtils cpulimit alsa-utils network-manager-gnome tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu openbox-menu lxappearance-obconf geany rxvt-unicode bash-completion htop elinks gparted xcape</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br>
@@ -66,7 +66,7 @@ and you may need firmware such as <span class="inst">firmware-amd-graphics firmw
 <b>for plain openbox</b>
 <form>
 <textarea name="T" id="install" rows="4" cols="100">
-apt install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit wicd tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode geany xfce4-power-manager htop elinks gparted bash-completion ntp xcape </textarea>
+apt install xorg lxtask pm-utils hdparm cpufrequtils cpulimit alsa-utils openbox lxpanel lxtask lxpolkit tango-icon-theme obconf obmenu openbox-menu lxappearance-obconf moblin-cursor-theme rxvt-unicode geany xfce4-power-manager htop elinks gparted bash-completion ntp xcape network-manager-gnome </textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 <br><br>
@@ -81,7 +81,14 @@ apt install aptitude sudo grub2 laptop-mode-tools network-config iw rfkill lshw<
 <br>
 <br><br>
 
+Install Gtk themes...
+<form>
+<textarea name="T" id="install" rows="3" cols="100">
+apt install gtk2-engines gtk2-engines-xfce gtk2-engines-murrine gtk2-engines-cleanice gtk2-engines-aurora qt5-style-plugins</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
 
+<br><br>
 <b id="xorg" class="tag">Possible error with Xorg</b> without installing a display manager, when you run startx:
 <br><br>
 <span style="color:#800080;">parse_vt_settings Cannot open /dev/tty0 (Permission Denied)</span>

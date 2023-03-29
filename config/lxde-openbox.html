@@ -166,7 +166,7 @@ gtk2-engines-xfce gtk2-engines-murrine gtk2-engines-cleanice gtk2-engines-aurora
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
-<br>
+<br><br>
 
 <h3>Mouse cursor themes</h3>
 <form>
@@ -174,9 +174,27 @@ gtk2-engines-xfce gtk2-engines-murrine gtk2-engines-cleanice gtk2-engines-aurora
 sudo apt install dmz-cursor-theme xcursor-themes moblin-cursor-theme</textarea>
 &nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
-
-
 <br><br>
+To make Qt apps follow your Gtk theme (including qpdfview, luckybackup, midori, scribus and many more, because it's a pain if they are brightly lit on a dark themed desktop), you need to put an Export line in your ~/.profile file...
+<br><br>
+First install this package which will enable Qt to merge themes:
+<form>
+<textarea name="T" id="install" rows="1" cols="50">
+sudo apt install qt5-style-plugins</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+<br>
+
+then run this command,
+<form>
+<textarea name="T" id="cmd" rows="1" cols="80">
+echo "export QT_QPA_PLATFORMTHEME=gtk2" >> ~/.profile</textarea>
+&nbsp;<input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
+</form>
+then log out of openbox and log back in.
+
+
+
 <br><br>
 
 <h2 id="5" class="tag">GTK-3</h2>
@@ -199,6 +217,7 @@ gtk-3.0 themes have a "gtk.css " file that goes in ~/.themes/theme-name/gtk-3.0<
 <a href="http://worldofgnome.org/">http://worldofgnome.org/</a>
 <br><br>
 There is no GUI that can give us total control of our gtk-3 themes, so we have to edit the css files by hand.  What a load of work, just so we get our desktop colours right!  And how will PC learners cope with that?  I hope there will be a GUI in the future.
+<br><br>
 
 <br><br>
 <br><br>
@@ -223,7 +242,7 @@ gksu gnome-color-chooser</textarea>
 
 opened the saved theme file and then made changes to Default normal (foregrd/backgrd) and Entry fields normal (foregrd/backgrd), to make the theme a little lighter than normal user's.  Saved that as well to a theme file and clicked Apply.
 <br><br>
-
+<br><br>
 <div style="text-align:center">
 <a href="{{site.baseurl}}/zimages/thunar-normal.jpeg"><img src="{{site.baseurl}}/zimages/thunar-normal-sm.jpeg" width="400" height="250" alt="thunar as normal user"></a>&nbsp;&nbsp;<a href="{{site.baseurl}}/zimages/thunar-root.jpeg"><img src="{{site.baseurl}}/zimages/thunar-root-sm.jpeg" width="400" height="250" alt="thunar as root user"></a></div>
 
@@ -232,10 +251,15 @@ opened the saved theme file and then made changes to Default normal (foregrd/bac
 
 So that's.... <br>
 <b>Gnome color chooser</b> for GTK-2 apps<br>
-<b>KDE settings</b> for KDE and Qt apps<br>
-<b>css file hacking</b> for GTK-3 apps<br>
+<b>KDE settings</b> for KDE apps<br>
+<b>css file hacking</b> for GTK-3 apps
+<br><br>
 and there's one more, which you can learn about on my xterm page, the <b>Xresources file</b> for xterm, urxvt, xpdf <br>
-make that two more, the terminal text colours can be set using the <b>bashrc file</b>
+...make that two more, the terminal text colours can be set using the <b>bashrc file</b>
+
+<br><br>
+Lately (from 2021), I think that GCC is out-dated or unmaintained. So these days I just use a dark GTK theme.
+<br><br>
 
 <br><br>
 <br><br>

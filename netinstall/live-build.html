@@ -229,7 +229,7 @@ then do either
 <b>1. minimal LXDE install</b>
 <br>
 <form><textarea name="T" id="cmd" rows="5" cols="100">
-for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils wicd tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf geany xfce4-power-manager rxvt-unicode bash-completion htop elinks gparted ntp xcape debian-installer ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
+for p in xorg lxde lightdm lxtask pm-utils hdparm cpufrequtils alsa-utils network-manager-gnome tango-icon-theme dmz-cursor-theme moblin-cursor-theme obconf obmenu lxappearance-obconf geany xfce4-power-manager rxvt-unicode bash-completion htop elinks gparted ntp xcape debian-installer ;do echo $p &gt;&gt; config/package-lists/base.list.chroot ;done</textarea>
  <input type="button" class="submitLink" value="Select all" onClick="javascript:this.form.T.focus();this.form.T.select();">
 </form>
 
